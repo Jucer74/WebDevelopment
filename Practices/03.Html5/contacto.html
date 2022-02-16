@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Contacto</title>
+    <style>
+            .popup {
+              position: relative;
+              display: inline-block;
+              cursor: pointer;
+              -webkit-user-select: none;
+              -moz-user-select: none;
+              -ms-user-select: none;
+              user-select: none;
+              background-color: black;
+              color: white;
+              display: block;
+              height: 40px;
+              line-height: 40px;
+              text-decoration: none;
+              width: 100px;
+             text-align: center;
+            }
+            
+            .popup .popuptext {
+              visibility: hidden;
+              width: 160px;
+              background-color: #555;
+              color: #fff;
+              text-align: center;
+              border-radius: 6px;
+              padding: 8px 0;
+              position: absolute;
+              z-index: 1;
+              bottom: 125%;
+              left: 180%;
+              margin-left: -80px;
+            }
+            
+            .popup .popuptext::after {
+              content: "";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              margin-left: 5px;
+              border-width: 5px;
+              border-style: solid;
+              border-color: #555 transparent transparent transparent;
+            }
+            
+            .popup .show {
+              visibility: visible;
+              -webkit-animation: fadeIn 1s;
+              animation: fadeIn 1s;
+            }
+            
+            @-webkit-keyframes fadeIn {
+              from {opacity: 0;} 
+              to {opacity: 1;}
+            }
+            
+            @keyframes fadeIn {
+              from {opacity: 0;}
+              to {opacity:1 ;}
+
+            }
+            </style>
+</head>
+<body>
+    <ol>
+        <li>Correo: loaizad65@gmail.com</li>
+        <li>Numero: 3166733977</li>
+    </ol>
+    <h2 style="font-family: 'Courier New', Courier, monospace"> Formulario de contacto</h2>
+        <form action="">
+            <label for="fname">Nombre:</label><br>
+            <input type="text" id="fname" name="fname" value=""><br>
+            <label for="lname">Apellido:</label><br>
+            <input type="text" id="lname" name="lname" value=""><br>
+            <label for="lname">Numero:</label><br>
+            <input type="text" id="lname" name="lname" value=""><br><br>
+            <div class="popup" onclick="myFunction()">Enviar
+                <span class="popuptext" id="myPopup">Enviado</span>
+            </div>
+          </form>
+          <script>
+                function myFunction() {
+                  var popup = document.getElementById("myPopup");
+                  popup.classList.toggle("show");
+                }
+         </script>
+</body>
+</html>
