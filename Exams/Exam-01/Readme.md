@@ -1,4 +1,9 @@
-# Ejercicio
+# Evaluación Teórica (40%)
+Responda las preguntas del sigueinte Enlace:
+
+[https://b.socrative.com/teacher/#import-quiz/64952614](https://b.socrative.com/teacher/#import-quiz/64952614)
+
+# Ejercicio (60%)
 Utilizando **Bootstrap 5** , complete la pagina **Portafolio.html** de forma que cumpla con las siguientes características:
 
 ## Home
