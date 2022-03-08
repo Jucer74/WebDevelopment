@@ -17,6 +17,11 @@
   font-size:30px;
 } 
 
+a {
+  color:#fff;
+  text-decoration: none;
+}
+
 .bg-black {
   color: #fff;
   background: #000;
