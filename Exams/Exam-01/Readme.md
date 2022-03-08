@@ -12,3 +12,6 @@ Utilizando **Bootstrap 5** , complete la pagina **Portafolio.html** de forma que
 
 ## Contact
 ![Contact](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Contact.jpg)
+
+recuerde Subir los cambios a su rama en esta misma ruta.
+**.../Exams/Exam-01**
