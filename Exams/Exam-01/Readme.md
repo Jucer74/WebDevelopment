@@ -1,5 +1,5 @@
 # Evaluación Teórica (40%)
-Responda las preguntas del sigueinte Enlace:
+Responda las preguntas del siguiente Enlace:
 
 [https://api.socrative.com/rc/JX7WVD](https://api.socrative.com/rc/JX7WVD)
 
