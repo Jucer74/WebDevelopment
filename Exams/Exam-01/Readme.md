@@ -1,7 +1,7 @@
 # Evaluación Teórica (40%)
 Responda las preguntas del sigueinte Enlace:
 
-
+[https://api.socrative.com/rc/JX7WVD](https://api.socrative.com/rc/JX7WVD)
 
 # Ejercicio (60%)
 Utilizando **Bootstrap 5** , complete la pagina **Portafolio.html** de forma que cumpla con las siguientes características:
