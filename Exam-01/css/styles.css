@@ -1,0 +1,29 @@
+#main-header img {
+  width: 100%;
+  height: 100%;
+}
+
+#main-header .nav-item {
+  width: 30%;
+  padding: 2em;
+}
+
+#main-header .nav-item:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.nav-icon {
+  font-size:30px;
+} 
+
+a {
+  color:#fff;
+  text-decoration: none;
+}
+
+.bg-black {
+  color: #fff;
+  background: #000;
+}
+
