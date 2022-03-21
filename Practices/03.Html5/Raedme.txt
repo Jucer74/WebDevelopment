@@ -13,8 +13,8 @@ Estudios.html
 Habiliddes.html
 - Pagina Desorganizada, mala indentacion
 - Existe un H1 sin texto
-- Muy bien por el uso de Progress, pero el texto de % No se ve, ya que esta en el lugar equivocado
++ Muy bien por el uso de Progress, pero el texto de % No se ve, ya que esta en el lugar equivocado
 Contacto.html
 - Pagina Desorganizada, mala indentacion
-- Muy bien por el uso de Popup
++ Muy bien por el uso de Popup
 - Se recomienda que los estilos y los scripts vayan en la secion del head y no en el Body
