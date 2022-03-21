@@ -1,6 +1,7 @@
 Mejorar el Login inicial pero ahora con componentes de Boostrap
 
-+ Muy bien por el uso de stylos propios
-- Pero el Gradien no se ajusta siempre, si se cambia a rotacion no se cambia, falta defirle mejor el tamaño
+- El Gradient no se ajusta siempre, si se cambia a rotacion no se cambia, falta definirle mejor el tamaño (vh-200)
 - Ni el boton, niel anchor tiene Id, no se puede interactuar con ellos en pruebas
-+ no califico registrar,html, porque no era parte dela entrega pero sumo puntos por incluirlo
++ Muy bien por incluir registrar.html, porque no era parte dela entrega 
+  - pero tiene errores el formulario, como por ejemplo los campos de contraseña van en texto plano  asi que no lo tendre en cuenta en la nota
+
