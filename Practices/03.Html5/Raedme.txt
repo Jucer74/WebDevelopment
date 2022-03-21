@@ -1,1 +1,20 @@
 Crear una pagina con componentes de HTML para mostrar su Curriculum
+
+Index.html
+- Pagina Desorganizada, mla indentacion
+- El contenido principal esta por fuera del Body
+- Exite un H1 que no conteine texto , sino un iframe
+Perfil.html
+- Pagina Desorganizada, mala indentacion
+- Existe un H1 sin texto
+Estudios.html
+- Pagina Desorganizada, mala indentacion
+- Existe un H1 sin texto
+Habiliddes.html
+- Pagina Desorganizada, mala indentacion
+- Existe un H1 sin texto
+- Muy bien por el uso de Progress, pero el texto de % No se ve, ya que esta en el lugar equivocado
+Contacto.html
+- Pagina Desorganizada, mala indentacion
+- Muy bien por el uso de Popup
+- Se recomienda que los estilos y los scripts vayan en la secion del head y no en el Body
