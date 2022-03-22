@@ -14,16 +14,82 @@
   <link rel="stylesheet" href="./css/styles.css">
   <title>Portafolio</title>
 </head>
-<body>
-  <div class="container">
-    <header id="main-header">
-    </header>
+<div class="container-fluid">
+  <header id="main-header">
+      <div class="row g-0 ">
+          <div class="col-lg-4 col-md-5">
+            <img src="img/person1.jpg">
+          </div>
+          <div class="col-lg-8 col-md-7 ">
+              <div class="flex-column">
+                  <div class="p-5 bg-dark text-white">
+                      <div class="d-flex flex-row justify-content-between align-items-center">
+                          <h1 class="display-4">John Doe</h1>
+                          <div class="d-none d-md-block">
+                              <a href="http://twitter.com" class="text-white">
+                                <i class="bi bi-twitter"></i>
+                              </a>
+                          </div>
+                          <div>
+                              <a href="http://facebook.com" class="text-white">
+                                <i class="bi bi-facebook"></i>
+                              </a>
+                          </div>
+                          <div>
+                              <a href="http://instagram.com" class="text-white">
+                                <i class="bi bi-instagram"></i>
+                              </a>
+                          </div>
+                          <div>
+                              <a href="http://github.com" class="text-white">
+                                <i class="bi bi-github"></i>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
 
-    <main>
-      <iframe id="iframeDetails" name="iframeDetails" src=""></iframe>
-    </main>
+                  <div class="p-4 bg-black">
+                      Experienced Full Stack Web Developer
+                  </div>
 
-    <footer id="main-footer" class="p-3 bg-dark text-white">
+                  <div class="d-flex g-0 text-white align-items-stretch text-center">
+                      <div class="col-md-3 col-xl-3 p-4 bg-primary" >
+                        <a href="home.html" target="iframeDetails">
+                          <i class="bi bi-house-fill nav-icon" ></i>
+                          <span class="h4 d-sm-block">Home</span>
+                        </a>
+                      </div>
+                      <div class="col-md-3 col-xl-3 p-4 bg-success">
+                        <a href="resume.html" target="iframeDetails">
+                          <i class="bi bi-mortarboard-fill nav-icon"></i>
+                          <span class="h4 d-none d-sm-block">Resume</span>
+                        </a>
+                      </div>
+                      <div class="col-md-3 col-xl-3 p-4 bg-warning">
+                        <a href="work.html" target="iframeDetails">
+                          <i class="bi bi-folder-fill nav-icon"></i>
+                          <span class="h4 d-none d-sm-block">Work</span>
+                        </a>
+                      </div>
+                      <div class="col-md-3 col-xl-3 p-4 bg-danger">
+                        <a href="contact.html" target="iframeDetails">
+                          <i class="bi bi-envelope-fill nav-icon"></i>
+                          <span class="h4 d-none d-sm-block">Contact</span>
+                        </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!--home-->
+    <div class="col-12">
+      <iframe class="w-100" height="800" id="iframeDetails" name="iframeDetails" src="home.html"></iframe>
+    </div>
+    <footer id="main-footer" class="container-fluid py-5 px-5 bg-secondary text-white">
+      <button type="button" class="btn btn-outline-light">
+        <i class="bi bi-cloud-fill"></i> Download Resume
+      </button>
     </footer>
   </div>
 </body>
