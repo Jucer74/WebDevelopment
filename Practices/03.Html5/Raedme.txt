@@ -1,1 +1,5 @@
 Crear una pagina con componentes de HTML para mostrar su Curriculum
+
+- No existe formulario de Contacto
+- No se Usa el aside, sino qu se copian las paginas una tras otra
+- Mala indentacion en algunas paginas
