@@ -1,1 +1,6 @@
 Mejorar el Login inicial pero ahora con componentes de Boostrap
+
+- Falta el formulario de Registro
+- El ajuste principal era usando Bootstrap no CSS
+- Mala Identacion
+- Faltan los Ids
