@@ -9,14 +9,26 @@ Utilizando **Bootstrap 5** , complete la pagina **Portafolio.html** de forma que
 ## Home
 ![Home](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Home.jpg)
 
+### Funcional
+- No esta la pagina
+### Codigo
 ## Resume
 ![Resume](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Resume.jpg)
 
+### Funcional
+- No esta la pagina
+### Codigo
 ## Work
 ![Work](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Work.jpg)
 
+### Funcional
+- No esta la pagina
+### Codigo
 ## Contact
 ![Contact](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Contact.jpg)
+
+### Funcional
+### Codigo
 
 recuerde Subir los cambios a su rama en esta misma ruta.
 **.../Exams/Exam-01**
