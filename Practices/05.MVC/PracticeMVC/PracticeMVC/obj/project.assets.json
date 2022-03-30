@@ -6237,11 +6237,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\repos\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
+      "projectUniqueName": "D:\\User\\Documentos\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
       "projectName": "PracticeMVC",
-      "projectPath": "D:\\repos\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
+      "projectPath": "D:\\User\\Documentos\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
       "packagesPath": "C:\\Users\\loaiz\\.nuget\\packages\\",
-      "outputPath": "D:\\repos\\PracticeMVC\\PracticeMVC\\obj\\",
+      "outputPath": "D:\\User\\Documentos\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\loaiz\\AppData\\Roaming\\NuGet\\NuGet.Config",

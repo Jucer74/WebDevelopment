@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mrUzYCzObBUpzHOKdXPQBEVwDL2c9pDgn6upg4HfO7Rg4ZZNbR0X64/Xjb60VImJATRJJTI78sg539iPgM0/PA==",
+  "dgSpecHash": "/LJ4ASBJofIZ2lt7/EM8jcdLkwXC4ubbMrXqZhR/E2irKfwVYrRy4tNVnBp3BmCzUlHIet0uNrTUB/OylrI8yQ==",
   "success": true,
-  "projectFilePath": "D:\\repos\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
+  "projectFilePath": "D:\\User\\Documentos\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\loaiz\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\loaiz\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
