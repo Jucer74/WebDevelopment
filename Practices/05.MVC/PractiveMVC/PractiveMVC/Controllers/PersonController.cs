@@ -18,7 +18,7 @@ namespace PractiveMVC.Controllers
             personList = new List<PersonModel>()
             {
                new PersonModel{Id=1, FirstName="Julio", LastName="Robles", DateOfBirth= DateTime.Parse("10/08/1974"), Sex='M'},
-               new PersonModel{Id=1, FirstName="Juan", LastName="Robles", DateOfBirth=DateTime.Parse("07/27/1996"), Sex='M'},
+               new PersonModel{Id=1, FirstName="Juan", LastName="Robles", DateOfBirth=DateTime.Parse("07/11/1996"), Sex='M'},
                new PersonModel{Id=1, FirstName="Pilar", LastName="Lopez", DateOfBirth=DateTime.Parse("04/10/1976"), Sex='F'}
             };
          }
