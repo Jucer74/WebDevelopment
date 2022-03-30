@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj": {}
+    "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj": {
+    "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj",
+        "projectUniqueName": "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj",
         "projectName": "PractiveMVC",
-        "projectPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj",
-        "packagesPath": "C:\\Users\\Jucer\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\obj\\",
+        "projectPath": "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\PractiveMVC.csproj",
+        "packagesPath": "C:\\Users\\diazm\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PractiveMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Jucer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\diazm\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -63,7 +63,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
