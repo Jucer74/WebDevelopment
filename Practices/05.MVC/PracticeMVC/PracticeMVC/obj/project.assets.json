@@ -6232,19 +6232,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jucer\\.nuget\\packages\\": {}
+    "C:\\Users\\jcrrc\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
+      "projectUniqueName": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
       "projectName": "PracticeMVC",
-      "projectPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
-      "packagesPath": "C:\\Users\\Jucer\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\obj\\",
+      "projectPath": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
+      "packagesPath": "C:\\Users\\jcrrc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Jucer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jcrrc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6293,7 +6298,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
