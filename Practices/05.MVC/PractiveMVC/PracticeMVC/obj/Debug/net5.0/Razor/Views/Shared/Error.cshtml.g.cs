@@ -14,20 +14,20 @@ namespace AspNetCore
     using Microsoft.AspNetCore.Mvc.ViewFeatures;
 #nullable restore
 #line 1 "D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC\PractiveMVC\PracticeMVC\Views\_ViewImports.cshtml"
-using PractiveMVC;
+using PracticeMVC;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 2 "D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC\PractiveMVC\PracticeMVC\Views\_ViewImports.cshtml"
-using PractiveMVC.Models;
+using PracticeMVC.Models;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d6a5625cc8fb4476f348b0fe9041c550465d8bf9", @"/Views/Shared/Error.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"88e2abd0feb331ef014608dd88ddfa4d3f921329", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4fe6068260a5a7da64c01f95298de80006a68e63", @"/Views/_ViewImports.cshtml")]
     #nullable restore
     public class Views_Shared_Error : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ErrorViewModel>
     #nullable disable
