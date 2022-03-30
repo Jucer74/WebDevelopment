@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PractiveMVC.Models
 {
-   public class Person
+   public class PersonModel
    {
       public int Id { get; set; }
       
