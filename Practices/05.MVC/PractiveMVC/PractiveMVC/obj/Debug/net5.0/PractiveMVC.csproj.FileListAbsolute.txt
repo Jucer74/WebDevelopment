@@ -116,3 +116,4 @@ D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC
 D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC\PractiveMVC\PractiveMVC\obj\Debug\net5.0\Razor\Views\Person\Create.cshtml.g.cs
 D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC\PractiveMVC\PractiveMVC\obj\Debug\net5.0\Razor\Views\Person\Edit.cshtml.g.cs
 D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC\PractiveMVC\PractiveMVC\obj\Debug\net5.0\Razor\Views\Person\Details.cshtml.g.cs
+D:\Documents\Dropbox\Personal\Cursos\Web Development\Repository\Practices\05.MVC\PractiveMVC\PractiveMVC\obj\Debug\net5.0\Razor\Views\Person\Index.cshtml.g.cs
