@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace PractiveMVC.Models
+namespace PracticeMVC.Models
 {
    public class PersonModel
    {

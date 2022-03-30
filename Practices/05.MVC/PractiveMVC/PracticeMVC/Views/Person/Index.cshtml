@@ -1,15 +1,15 @@
-﻿@model IEnumerable<PractiveMVC.Models.PersonModel>
+﻿@model IEnumerable<PracticeMVC.Models.PersonModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "PersonListView";
 }
 
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
-<table class="table">
+<table class="table table-bordered" id="personsTable" width="100%" cellspacing="0">
     <thead>
         <tr>
             <th>
@@ -27,11 +27,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.Sex)
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+      @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -49,11 +49,11 @@
                 @Html.DisplayFor(modelItem => item.Sex)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+               <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+               <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+               <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-}
+      }
     </tbody>
 </table>

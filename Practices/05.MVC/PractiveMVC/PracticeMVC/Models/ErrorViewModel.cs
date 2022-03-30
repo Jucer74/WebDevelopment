@@ -1,6 +1,6 @@
 using System;
 
-namespace PractiveMVC.Models
+namespace PracticeMVC.Models
 {
    public class ErrorViewModel
    {

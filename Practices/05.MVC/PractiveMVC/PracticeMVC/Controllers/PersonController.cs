@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using PractiveMVC.Models;
+using PracticeMVC.Models;
 using System;
 using System.Collections.Generic;
 
-namespace PractiveMVC.Controllers
+namespace PracticeMVC.Controllers
 {
    public class PersonController : Controller
    {

@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PractiveMVC
+namespace PracticeMVC
 {
    public class Startup
    {
