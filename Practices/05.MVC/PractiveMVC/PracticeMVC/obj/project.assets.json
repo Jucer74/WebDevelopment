@@ -6232,19 +6232,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jucer\\.nuget\\packages\\": {}
+    "C:\\Users\\diazm\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
+      "projectUniqueName": "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
       "projectName": "PracticeMVC",
-      "projectPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
-      "packagesPath": "C:\\Users\\Jucer\\.nuget\\packages\\",
-      "outputPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\obj\\",
+      "projectPath": "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
+      "packagesPath": "C:\\Users\\diazm\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\diazm\\OneDrive\\Documents\\GitHub\\WebDevelopment\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jucer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\diazm\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6293,7 +6293,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
