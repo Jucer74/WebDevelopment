@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj": {}
+    "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj": {}
   },
   "projects": {
-    "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj": {
+    "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
+        "projectUniqueName": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
         "projectName": "PracticeMVC",
-        "projectPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\PracticeMVC.csproj",
+        "projectPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\PracticeMVC.csproj",
         "packagesPath": "C:\\Users\\Jucer\\.nuget\\packages\\",
-        "outputPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PractiveMVC\\PracticeMVC\\obj\\",
+        "outputPath": "D:\\Documents\\Dropbox\\Personal\\Cursos\\Web Development\\Repository\\Practices\\05.MVC\\PracticeMVC\\PracticeMVC\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jucer\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[5.0.2, )"
+            },
+            "RestSharp": {
+              "target": "Package",
+              "version": "[107.3.0, )"
             }
           },
           "imports": [
@@ -63,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }
