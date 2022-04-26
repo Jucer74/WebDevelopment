@@ -1,7 +1,7 @@
 # Evaluación Teórica (40%)
 Responda las preguntas del siguiente Enlace:
 
-[https://api.socrative.com/rc/8fL3MA](https://forms.gle/XKEjk3PpVqzXJN3ZA)
+[Examen](https://forms.gle/XKEjk3PpVqzXJN3ZA)
 
 # Ejercicio (60%)
 Desarrolle una aplicacion tipo MVC paa interactuar con la API de Reminders.
@@ -25,7 +25,7 @@ La recursos asociados son:
  7. Eliminar REcordatorios por categoria (DELETE: /api/v1/reminders/category/{id})
   
 Las tablas asociadas son las siguientes:
-![Entidades](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/img/ER-diagram.jpg)
+![Entidades](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/img/ER-Diagram.jpg)
 
 Utilice el siguiente ejemplo para diseñar su UI
 [https://www.freeformatter.com/cron-expression-generator-quartz.html](https://www.freeformatter.com/cron-expression-generator-quartz.html)
