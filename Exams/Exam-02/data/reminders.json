@@ -1,0 +1,27 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "description": "personal"
+    },
+    {
+      "id": 2,
+      "description": "Citas"
+    },
+    {
+      "id": 3,
+      "description": "Cumpleaños"
+    }
+  ],
+  "reminders": [
+    {
+      "id": 1,
+      "categoryId": 1,
+      "description": "Pago de deudas",
+      "startDate": "2022-04-01",
+      "cronExpression": " * * * * 1",
+      "numberOfTimes": 5,
+      "enabled": true
+    }
+  ]
+}
