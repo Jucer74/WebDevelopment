@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "liBtSRg5McMz2aC1RaBTOiW2edNRXgBRR+KCPRv9y2cR+dKnjspGxANp2cct0a0bJUxmoP5BsXs0tXZ5A3ggpA==",
+  "dgSpecHash": "VlxKwg0VwdHYjy9vVe6gbOe3J2fbaIzG2sU/zFl7vBGHr7a7TdlPML+nHhTxDwKVCwmVKXbP56IB5ArYSg5R0w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jcrrc\\Desktop\\ReminderApp\\ReminderApp\\ReminderApp.csproj",
+  "projectFilePath": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Exams\\Exam-02\\ReminderApp\\ReminderApp\\ReminderApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jcrrc\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\jcrrc\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

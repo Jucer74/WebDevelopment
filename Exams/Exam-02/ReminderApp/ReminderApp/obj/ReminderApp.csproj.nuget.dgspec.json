@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jcrrc\\Desktop\\ReminderApp\\ReminderApp\\ReminderApp.csproj": {}
+    "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Exams\\Exam-02\\ReminderApp\\ReminderApp\\ReminderApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jcrrc\\Desktop\\ReminderApp\\ReminderApp\\ReminderApp.csproj": {
+    "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Exams\\Exam-02\\ReminderApp\\ReminderApp\\ReminderApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jcrrc\\Desktop\\ReminderApp\\ReminderApp\\ReminderApp.csproj",
+        "projectUniqueName": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Exams\\Exam-02\\ReminderApp\\ReminderApp\\ReminderApp.csproj",
         "projectName": "ReminderApp",
-        "projectPath": "C:\\Users\\jcrrc\\Desktop\\ReminderApp\\ReminderApp\\ReminderApp.csproj",
+        "projectPath": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Exams\\Exam-02\\ReminderApp\\ReminderApp\\ReminderApp.csproj",
         "packagesPath": "C:\\Users\\jcrrc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jcrrc\\Desktop\\ReminderApp\\ReminderApp\\obj\\",
+        "outputPath": "C:\\Users\\jcrrc\\Documents\\GitHub\\WebDevelopment\\Exams\\Exam-02\\ReminderApp\\ReminderApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
