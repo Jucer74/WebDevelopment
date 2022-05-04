@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Cron Job Scheduler";
+}
+
+<h3>Cron Job Scheduler</h3>
+<!--Pass the CronViewModel to CronWidget template-->
+<div class="row" data-bind="template:{name:'CronWidgit',data:vm1}">
+</div>
+
+<br />
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>JSON Data</strong>
+        </div>
+        <div class="panel-body">
+            <div data-bind="highlighter:data()"></div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-success" data-bind="click:reset">
+                Reset Cron Widget
+            </button>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row" data-bind="template:{name:'CronWidgit',data:vm2}">
+</div>
+<br />
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong>JSON Data</strong>
+        </div>
+        <div class="panel-body">
+            <div data-bind="highlighter:data2()"></div>
+        </div>
+        <div class="panel-footer">
+            <button class="btn btn-success" data-bind="click:reset2">
+                Reset Cron Widget 2
+            </button>
+        </div>
+    </div>
+</div>
+
+@section styles
+{
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+}
+
+@section scripts
+{
+    <!--Include cron.js and _Templates for Cron Widgit-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="~/Scripts/app/cron.js"></script>
+    @Html.Partial("_SimpleTemplate")
+    <script src="~/Scripts/app/app.js"></script>
+}
+

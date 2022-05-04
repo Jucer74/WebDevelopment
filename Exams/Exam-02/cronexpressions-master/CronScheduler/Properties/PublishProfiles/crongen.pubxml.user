@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>http://localhost/crongen</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>11/17/2015 22:44:59</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>11/17/2015 22:44:59</publishTime>
+    </File>
+    <File Include="bin/CronScheduler.dll">
+      <publishTime>11/17/2015 22:44:56</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>10/27/2015 13:27:37</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>10/27/2015 13:27:37</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>10/27/2015 13:27:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Deployment.dll">
+      <publishTime>10/27/2015 13:27:37</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.dll">
+      <publishTime>10/27/2015 13:27:37</publishTime>
+    </File>
+    <File Include="bin/System.Web.Webpages.Razor.dll">
+      <publishTime>10/27/2015 13:27:37</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.css.map">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Content/bootstrap-theme.min.css">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Content/bootstrap.css.map">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Content/bootstrap.min.css">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Content/Site.css">
+      <publishTime>11/02/2015 17:05:21</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.eot">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.svg">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.ttf">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="fonts/glyphicons-halflings-regular.woff2">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>10/27/2015 13:30:53</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>11/17/2015 22:44:57</publishTime>
+    </File>
+    <File Include="Scripts/app/advance.js">
+      <publishTime>11/02/2015 18:47:46</publishTime>
+    </File>
+    <File Include="Scripts/app/app.js">
+      <publishTime>10/29/2015 12:02:34</publishTime>
+    </File>
+    <File Include="Scripts/app/cron.js">
+      <publishTime>10/29/2015 10:25:13</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.js">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.min.js">
+      <publishTime>10/27/2015 13:28:42</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.9.1.js">
+      <publishTime>10/27/2015 13:28:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.9.1.min.js">
+      <publishTime>10/27/2015 13:28:41</publishTime>
+    </File>
+    <File Include="Scripts/jquery-1.9.1.min.map">
+      <publishTime>10/27/2015 13:28:41</publishTime>
+    </File>
+    <File Include="Scripts/knockout-3.3.0.debug.js">
+      <publishTime>10/27/2015 13:30:53</publishTime>
+    </File>
+    <File Include="Scripts/knockout-3.3.0.js">
+      <publishTime>10/27/2015 13:30:53</publishTime>
+    </File>
+    <File Include="Scripts/modernizr-2.6.2.js">
+      <publishTime>10/27/2015 13:29:54</publishTime>
+    </File>
+    <File Include="Views/Cron/Advance.cshtml">
+      <publishTime>11/02/2015 17:16:34</publishTime>
+    </File>
+    <File Include="Views/Cron/Index.cshtml">
+      <publishTime>10/30/2015 13:10:32</publishTime>
+    </File>
+    <File Include="Views/Cron/_AdvanceCronWidget.cshtml">
+      <publishTime>11/02/2015 16:51:44</publishTime>
+    </File>
+    <File Include="Views/Cron/_SimpleTemplate.cshtml">
+      <publishTime>10/29/2015 12:07:14</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>11/02/2015 17:32:18</publishTime>
+    </File>
+    <File Include="Views/web.config">
+      <publishTime>10/27/2015 13:27:36</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>10/27/2015 13:29:52</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>11/17/2015 22:44:57</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

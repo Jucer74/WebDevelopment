@@ -1,0 +1,34 @@
+﻿<script type="text/html" id="CronWidgit">
+    <div class="col-md-12">
+        Every:
+        <select data-bind="options:availableOptions, optionsText:'name',
+        value:selectedOption"></select>
+        &nbsp;
+        <span data-bind="with:templateData">
+            <span data-bind="template:{name: template(), data:data}"></span>
+        </span>
+        @*&nbsp;
+        <a href="#" data-bind="click:notify" class="btn btn-info">Notify</a>*@
+    </div>
+</script>
+
+
+
+<script type="text/html" id="Week">
+    <span>on</span>&nbsp;
+    <select data-bind="options:days,value:day"></select>&nbsp;
+    <span data-bind="template:{name: 'Day', data:dayModel()}"></span>
+</script>
+
+<script type="text/html" id="Month">
+    <span>on the</span>&nbsp;
+    <select data-bind="options:days,value:day"></select> day&nbsp;
+    <span data-bind="template:{name: 'Day', data:dayModel()}"></span>
+</script>
+
+<script type="text/html" id="Year">
+    <span>on the</span>&nbsp;
+    <select data-bind="options:days,value:day"></select> of&nbsp;
+    <select data-bind="options:months,value:month"></select> &nbsp;
+    <span data-bind="template:{name: 'Day', data:dayModel()}"></span>
+</script>

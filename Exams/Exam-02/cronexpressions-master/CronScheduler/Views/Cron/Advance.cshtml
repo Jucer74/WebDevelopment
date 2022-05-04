@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Advance Scheduler";
+}
+<br />
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-7">
+            <div class="panel panel-default output">
+                <div class="panel-heading">
+                    <h4>Advance Scheduler</h4>
+                </div>
+                <div class="panel-body">
+                    <div data-bind="template:{name:'cronWidget',data:widgetModel}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="panel panel-info output">
+                <div class="panel-heading">
+                    <h4>Output</h4>
+                </div>
+                <div class="panel-body">
+                    <div data-bind="highlighter:widgetModel.chosenData"
+                         style="word-break: break-all">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section styles
+{
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
+}
+
+@section scripts
+{
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
+    <script src="~/Scripts/app/advance.js"></script>
+    @Html.Partial("_AdvanceCronWidget")
+}

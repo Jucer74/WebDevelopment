@@ -1,0 +1,91 @@
+﻿<script type="text/html" id="cronWidget">
+    <div>
+        <div class="col-md-12">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" data-bind="foreach:tabs">
+                <li data-bind="css:active">
+                    <a href="#" data-bind="click:$parent.selectTab">
+                        <span data-bind="text:name"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div role="tabpanel" class="tab-pane" data-bind="with:templateData">
+                <div data-bind="template:{name:template(),data:data}">
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-12">
+            <div class="well well-small" data-bind="text:chosenData" style="word-break:break-all">
+
+            </div>
+        </div>*@
+    </div>
+
+</script>
+<script type="text/html" id="weekly">
+    <div class="tab-content">
+        <div class="well well-small">
+            <ul data-bind="foreach:availableDays">
+                <li class="days">
+                    <input type="checkbox" data-bind="value:parseInt(val), checked:$parent.days" />
+                    <span data-bind="text:text"></span>&nbsp;&nbsp;
+                </li>
+            </ul>
+        </div>
+        <div class="alert alert-info">
+            <span>Start Time</span>
+            <select data-bind=" options:hours,value:hour" class="cron-input"></select>&nbsp;:&nbsp;
+            <select data-bind="options:minutes,value:minute" class="cron-input"></select>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="monthly">
+    <div class="tab-content">
+        <div class="well well-small">
+            <input type="radio" value="1" name="monthlyRadio" data-bind="checked:isRecurring">&nbsp;Day&nbsp;
+            <input id="mdayInput" type="text" class="cron-input" data-bind="value:day">&nbsp;of every
+            <input id="monthInput" type="text" class="cron-input" data-bind="value:month">&nbsp;month(s)
+        </div>
+        <div class="well well-small">
+            <input type="radio" value="0" name="monthlyRadio" data-bind="checked:isRecurring">&nbsp;
+            <select data-bind=" options:weeks, optionsText:'text',optionsValue:'val',value:nweek" class="cron-input"></select>&nbsp;&nbsp;:&nbsp;
+            <select class="cron-input"
+                    data-bind="options:availableDays,optionsText:'text',optionsValue:'val', value:nday"></select>
+            &nbsp;of every&nbsp;
+            <input type="text" class="cron-input" data-bind="value:nmonth">&nbsp;month(s)
+        </div>
+        <div class="alert alert-info">
+            <span>Start Time</span>
+            <select data-bind=" options:hours,value:hour" class="cron-input"></select>&nbsp;:&nbsp;
+            <select data-bind="options:minutes,value:minute" class="cron-input"></select>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="yearly">
+    <div class="tab-content">
+        <div class="well well-small">
+            <input type="radio" value="1" name="yearlyRadio" data-bind="checked:isRecurring">&nbsp;Every&nbsp;
+            <select data-bind=" options:availableMonths,value:month, optionsText:'text',
+                optionsValue:'val'" class="cron-input-month"></select>&nbsp;in day&nbsp;
+            <input type="text" class="cron-input" data-bind="value:day">
+        </div>
+        <div class="well well-small">
+            <input type="radio" value="0" name="yearlyRadio" data-bind="checked:isRecurring">&nbsp;The&nbsp;
+            <select data-bind=" options:weeks, optionsText:'text',optionsValue:'val',value:nweek" class="cron-input"></select>&nbsp;&nbsp;:&nbsp;
+            <select class="cron-input"
+                    data-bind="options:availableDays,optionsText:'text',optionsValue:'val', value:nday"></select>
+            &nbsp;of &nbsp;
+            <select data-bind=" options:availableMonths,value:nmonth, optionsText:'text',
+                optionsValue:'val'" class="cron-input-month"></select>
+        </div>
+        <div class="alert alert-info">
+            <span>Start Time</span>
+            <select data-bind=" options:hours,value:hour" class="cron-input"></select>&nbsp;:&nbsp;
+            <select data-bind="options:minutes,value:minute" class="cron-input"></select>
+        </div>
+    </div>
+</script>
