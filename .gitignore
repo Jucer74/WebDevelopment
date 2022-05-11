@@ -1,32 +1,113 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
+###################
+# compiled source #
+###################
+*.com
+*.class
 *.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
 *.exe
-*.out
-*.app
+*.pdb
+*.dll.config
+*.cache
+*.suo
+# Include dlls if they’re in the NuGet packages directory
+!/packages/*/lib/*.dll
+!/packages/*/lib/*/*.dll
+# Include dlls if they're in the CommonReferences directory
+!*CommonReferences/*.dll
+####################
+# VS Upgrade stuff #
+####################
+UpgradeLog.XML
+_UpgradeReport_Files/
+###############
+# Directories #
+###############
+bin/
+obj/
+TestResults/
+###################
+# Web publish log #
+###################
+*.Publish.xml
+#############
+# Resharper #
+#############
+/_ReSharper.*
+*.ReSharper.*
+############
+# Packages #
+############
+# it’s better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+######################
+# Logs and databases #
+######################
+*.log
+*.sqlite
+# OS generated files #
+######################
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+[Bb]in
+[Oo]bj
+[Tt]est[Rr]esults
+*.suo
+*.user
+*.[Cc]ache
+*[Rr]esharper*
+packages
+NuGet.exe
+_[Ss]cripts
+*.exe
+*.dll
+*.nupkg
+*.ncrunchsolution
+*.dot[Cc]over
+
+node_modules
+scripts/flow/*/.flowconfig
+.flowconfig
+*~
+*.pyc
+.grunt
+_SpecRunner.html
+__benchmarks__
+build/
+remote-repo/
+coverage/
+.module-cache
+fixtures/dom/public/react-dom.js
+fixtures/dom/public/react.js
+test/the-files-to-test.generated.js
+*.log*
+chrome-user-data
+*.sublime-project
+*.sublime-workspace
+.idea
+*.iml
+.vscode
+*.swp
+*.swo
+
+packages/react-devtools-core/dist
+packages/react-devtools-extensions/chrome/build
+packages/react-devtools-extensions/chrome/*.crx
+packages/react-devtools-extensions/chrome/*.pem
+packages/react-devtools-extensions/firefox/build
+packages/react-devtools-extensions/firefox/*.xpi
+packages/react-devtools-extensions/firefox/*.pem
+packages/react-devtools-extensions/shared/build
+packages/react-devtools-extensions/.tempUserDataDir
+packages/react-devtools-inline/dist
+packages/react-devtools-shell/dist
+packages/react-devtools-timeline/dist
