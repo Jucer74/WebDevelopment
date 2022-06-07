@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PracticeMVC.Models;
+using PracticeMVC.Services;
 using System;
 using System.Collections.Generic;
 
@@ -8,10 +9,11 @@ namespace PracticeMVC.Controllers
 {
    public class PersonController : Controller
    {
-      private static List<PersonModel> personList;
+      private readonly IPersonService _personService;
 
-      public PersonController()
+      public PersonController(IPersonService personService)
       {
+<<<<<<< HEAD
          // Mock User List
          if (personList is null)
          {
@@ -22,27 +24,21 @@ namespace PracticeMVC.Controllers
                new PersonModel{Id=1, FirstName="Pilar", LastName="Lopez", DateOfBirth=DateTime.Parse("04/10/1976"), Sex='F'}
             };
          }
+=======
+         _personService = personService;
+>>>>>>> main
       }
 
       // GET: PersonController
       public ActionResult Index()
       {
-         return View(personList);
+         return View(_personService.GetAll());
       }
 
       // GET: PersonController/Details/5
       public ActionResult Details(int id)
       {
-         Models.PersonModel person = new Models.PersonModel()
-         {
-            Id = 1,
-            FirstName = "John",
-            LastName = "Doe",
-            DateOfBirth = DateTime.Parse("1974/10/08"),
-            Sex = 'M'
-         };
-
-         return View(person);
+         return View(_personService.GetById(id));
       }
 
       // GET: PersonController/Create

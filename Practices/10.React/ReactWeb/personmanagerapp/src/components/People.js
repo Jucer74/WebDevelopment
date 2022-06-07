@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Container, Table, Form } from 'react-bootstrap';
@@ -280,3 +281,9 @@ export function List() {
     </Container>
   );
 }
+=======
+
+export const People = () => (
+  <h1>People</h1>
+)
+>>>>>>> main

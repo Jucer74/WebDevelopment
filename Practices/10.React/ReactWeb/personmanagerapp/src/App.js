@@ -6,8 +6,9 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List, People } from './components/People';
+import { People } from './components/People';
 import { NavigationBar } from './components/NavigationBar';
+
 
 function App() {
   return (
@@ -17,9 +18,9 @@ function App() {
         <Layout>
           <Router>
             <Routes>
-              <Route path="/" element={<List />} />
+              <Route path="/" element={<Home />} />
               <Route path="Home" element={<Home />} />
-              <Route path="People" element={<List />}  />
+              <Route path="People" element={<People />} />
               <Route path="Login" element={<Login />} />
               <Route element={<NoMatch/>} />
             </Routes>
