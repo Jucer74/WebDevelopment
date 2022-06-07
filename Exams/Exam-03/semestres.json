@@ -1,0 +1,32 @@
+{
+  "semesters": [
+    {
+      "description": "Andrea",
+      "id": 1
+    },
+    {
+      "description": "La mama de tarzan",
+      "id": 2
+    }
+  ],
+  "assignatures": [
+    {
+      "idSemester": "1",
+      "nombreMateria": "Ingenieria de Requisitos",
+      "description": "No se",
+      "id": 1
+    },
+    {
+      "idSemester": "1",
+      "nombreMateria": "Fundamentos de Programacion",
+      "description": "Andres",
+      "id": 2
+    },
+    {
+      "idSemester": "2",
+      "nombreMateria": "Desarrollo de Paginas Web",
+      "description": "Cumple",
+      "id": 3
+    }
+  ]
+}
