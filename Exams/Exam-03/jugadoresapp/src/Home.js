@@ -1,4 +1,5 @@
 import React from 'react'
+import "./Home.css";
 
 
 const Home = () =>{
@@ -9,7 +10,7 @@ const Home = () =>{
         <h3 class="display-6">64594</h3>
         <hr class="my-4"/>
         </div>      
-        <img style={{borderRadius:"30px", width:"1000px"}}src='https://caracol.com.co/radio/imagenes/2022/04/19/el_pulso_del_futbol/1650386081_724819_1650386234_miniatura_normal.jpg'/>
+        <img  class="responsive" style={{borderRadius:"30px", }}src='https://caracol.com.co/radio/imagenes/2022/04/19/el_pulso_del_futbol/1650386081_724819_1650386234_miniatura_normal.jpg'/>
     </div>
   )
 }
