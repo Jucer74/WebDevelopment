@@ -1,0 +1,75 @@
+{
+  "jugadores": [
+    {
+      "Imagen": "",
+      "Nombre": "Cristiano Ronaldo",
+      "Numero": "7",
+      "Posicion": "Delantero",
+      "Pais": "Portugal",
+      "Equipo": "Manchester United",
+      "id": 1
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Paul Pogba",
+      "Numero": "6",
+      "Posicion": "Mediocampista",
+      "Pais": "Francia",
+      "Equipo": "Manchester United",
+      "id": 2
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Kylian Mbappe",
+      "Numero": "7",
+      "Posicion": "Delantero",
+      "Pais": "Francia",
+      "Equipo": "Paris Saint Germain",
+      "id": 3
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Teofilo Gutierez",
+      "Numero": "29",
+      "Posicion": "Delantero",
+      "Pais": "Colombia",
+      "Equipo": "Deportivo Cali",
+      "id": 4
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Iago Falque",
+      "Numero": "14",
+      "Posicion": "Mediocampista",
+      "Pais": "España",
+      "Equipo": "America de Cali",
+      "id": 5
+    }
+  ],
+  "equipos": [
+    {
+      "Imagen": "",
+      "Nombre": "Manchester City",
+      "Liga": "Inglesa",
+      "id": 3
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Paris Saint Germain",
+      "Liga": "Francesa",
+      "id": 4
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Manchester United",
+      "Liga": "Inglesa",
+      "id": 7
+    },
+    {
+      "Imagen": "",
+      "Nombre": "Real Madrid",
+      "Liga": "Española",
+      "id": 8
+    }
+  ]
+}
