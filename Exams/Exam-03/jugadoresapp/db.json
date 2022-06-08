@@ -26,24 +26,6 @@
       "Pais": "Francia",
       "Equipo": "Paris Saint Germain",
       "id": 3
-    },
-    {
-      "Imagen": "",
-      "Nombre": "Teofilo Gutierez",
-      "Numero": "29",
-      "Posicion": "Delantero",
-      "Pais": "Colombia",
-      "Equipo": "Deportivo Cali",
-      "id": 4
-    },
-    {
-      "Imagen": "",
-      "Nombre": "Iago Falque",
-      "Numero": "14",
-      "Posicion": "Mediocampista",
-      "Pais": "España",
-      "Equipo": "America de Cali",
-      "id": 5
     }
   ],
   "equipos": [
