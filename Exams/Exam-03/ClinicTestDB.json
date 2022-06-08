@@ -195,21 +195,6 @@
       "Phone": "(433) 7089660",
       "Email": "driddiforde@joomla.org",
       "Information": "eget massa tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien"
-    },
-    {
-      "FirstName": "hols",
-      "LastName": "",
-      "DateOfBirth": "",
-      "Gender": "Male",
-      "BloodGroup": "",
-      "Height": "42",
-      "Weight": "43",
-      "Phone": "1234565432",
-      "Email": "gfd@hgfd",
-      "Information": "43",
-      "bloodGroup": "B-",
-      "DocumenType": "Ti",
-      "id": 16
     }
   ],
   "MedicalExams": [
@@ -254,6 +239,13 @@
       "Date": "4/13/2022",
       "TestName": "Electrocardiogram",
       "State": "Done"
+    },
+    {
+      "Date": "2022-06-08",
+      "TestName": "Orina",
+      "Patient_Id": "16",
+      "State": "Done",
+      "id": 7
     }
   ]
 }
