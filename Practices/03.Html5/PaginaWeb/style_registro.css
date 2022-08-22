@@ -1,0 +1,32 @@
+
+div.letraGrande{
+    font-size: 60px;
+}
+
+div.cuadradoSup {
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 1920px; 
+    height: 200px; 
+    background: #ff8787;
+}
+
+div.cuadradoInf {
+    position: absolute;
+    top: 300px; left: 720px;
+    width: 500px; 
+    height: 500px; 
+    background: #ff8787;
+}
+
+.button {
+    background-color: #e7e56f; 
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+  }

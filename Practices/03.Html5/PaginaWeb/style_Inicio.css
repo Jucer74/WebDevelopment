@@ -1,0 +1,37 @@
+div.letraGrande{
+    font-size: 60px;
+}
+
+div.cuadradoSup {
+    position: absolute;
+    top: 0px; left: 0px;
+    width: 1920px; 
+    height: 200px; 
+    background: #ff8787;
+}
+
+.redondo{
+    display: block;
+    position: absolute;
+    top: 250px; left: 0px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #ff8787;
+}
+
+div.letraMedia{
+    font-size: 50px;
+}
+
+.button_Grande {
+    background-color: #ff8787; 
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 20px 200px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    
+  }
