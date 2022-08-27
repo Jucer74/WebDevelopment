@@ -1,7 +1,7 @@
 # Evaluación Teórica (40%)
 Responda las preguntas del siguiente Enlace:
 
-[Examen](https://forms.gle/XKEjk3PpVqzXJN3ZA)
+[Examen]()
 
 # Ejercicio (60%)
 Desarrolle una aplicacion tipo MVC paa interactuar con la API de Reminders.
