@@ -7,25 +7,25 @@ Responda las preguntas del siguiente Enlace:
 Utilizando **Bootstrap 5** , complete la pagina **Portafolio.html** de forma que cumpla con las siguientes características:
 
 ## Home
-![Home](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Home.jpg)
+![Home](https://github.com/Jucer74/WebDevelopment/blob/main/Practices/03.Bootstrap/Plantillas/Home.jpg)
 
 ### Funcional
 - No esta la pagina
 ### Codigo
 ## Resume
-![Resume](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Resume.jpg)
+![Resume](https://github.com/Jucer74/WebDevelopment/blob/main/Practices/03.Bootstrap/Plantillas/Resume.jpg)
 
 ### Funcional
 - No esta la pagina
 ### Codigo
 ## Work
-![Work](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Work.jpg)
+![Work](https://github.com/Jucer74/WebDevelopment/blob/main/Practices/03.Bootstrap/Plantillas/Work.jpg)
 
 ### Funcional
 - No esta la pagina
 ### Codigo
 ## Contact
-![Contact](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-01/Plantillas/Contact.jpg)
+![Contact](https://github.com/Jucer74/WebDevelopment/blob/main/Practices/03.Bootstrap/Plantillas/Contact.jpg)
 
 ### Funcional
 ### Codigo
