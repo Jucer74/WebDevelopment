@@ -1,0 +1,291 @@
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    margin: 0;
+}
+
+.Enlaces{
+	list-style: none;
+	padding: 0;
+	background: #ffffff;
+	margin: auto;
+}
+
+.Enlaces li{
+    display: inline-block;
+	text-align: center;
+}
+
+.Enlaces li a{
+    margin-right: 1.5rem;
+}
+
+
+.Menu p{
+    font-family: cursive;
+    position: absolute;
+    width: 297px;
+    height: 110px;
+    left: 69px;
+    top: 1000px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    /* or 83% */
+    text-align: center;
+    letter-spacing: -0.015em;
+    text-transform: capitalize;
+
+    color: rgba(0, 0, 0, 0.8);
+    }
+
+.Menu button{
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    left: 150px;
+    top: 1300px;
+}
+
+.Menu2 p{
+    position: absolute;
+    width: 297px;
+    height: 110px;
+    left: 900px;
+    top: 1000px;
+
+    font-family: cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 30px;
+    /* or 83% */
+
+    text-align: center;
+    letter-spacing: -0.015em;
+    text-transform: capitalize;
+
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.Menu2 button{
+    position: absolute;
+    width: 130px;
+    height: 40px;
+    left: 998px;
+    top: 1400px;
+
+}
+
+.Medium h3{
+    font-family: cursive;
+    position: absolute;
+    width: 600px;
+    height: 110px;
+    left: 850px;
+    top: 592px;
+    font-style: normal;
+    font-weight: 220;
+    font-size: 20px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.005em;
+
+    color: #6600B7;
+}
+
+.Menu h3{
+    position: absolute;
+    width: 290px;
+    height: 98px;
+    left: 50px;
+    top: 850px;
+
+    font-family: cursive;
+    font-style: normal;
+    font-weight: 350;
+    font-size: 36px;
+    line-height: 36px;
+    /* identical to box height, or 100% */
+
+    text-align: center;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+
+    color: #001AFF;
+}
+
+.Menu2 h3{
+    position: absolute;
+    width: 686px;
+    height: 36px;
+    left: 900px;
+    top: 850px;
+
+    font-family: cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    /* identical to box height, or 100% */
+
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+
+    color: #FF7A00;
+
+}
+
+.Redes h2{
+    position: absolute;
+    width: 446px;
+    height: 30px;
+    left: 450px;
+    top: 1500px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #FF0000;
+}
+
+h1{
+    font-family: cursive;
+}
+
+h2{
+    font-family: cursive;
+}
+
+
+
+.Redes h4{
+    position: absolute;
+    width: 800px;
+    height: 300px;
+    left: 300px;
+    top: 1700px;
+    font-family: cursive;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    color: #0047FF;
+}
+
+.dib0{
+    position: absolute;
+    width: 350px;
+    height: 450px;
+    left: 0px;
+    top: 18px;
+}
+
+.dib1{
+    position: absolute;
+    width: 330px;
+    height: 450px;
+    left: 330px;
+    top: 0px;
+}
+
+.dib2 img{
+    position: absolute;
+    width: 350px;
+    height: 450px;
+    left: 0px;
+    top: 420px;
+}
+
+.dib3 img{ 
+    position: absolute;
+    width: 350px;
+    height: 450px;
+    left: 330px;
+    top: 420px;
+}
+
+.dib4{
+    box-sizing: border-box;
+    position: absolute;
+    width: 420px;
+    height: 401px;
+    left: 880px;
+    top: 99px;
+    mix-blend-mode: normal;
+    border: 1px solid #000000;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border-radius: 100px;
+}
+
+.dib5 img{
+    position: absolute;
+    width: 400px;
+    height: 550px;
+    left: 436px;
+    top: 850px;
+
+}
+
+.dib6 img{
+    position: absolute;
+    width: 400px;
+    height: 540px;
+    left: 1231px;
+    top: 1000px;
+}
+
+.dib7 img{
+    position: absolute;
+    width: 154px;
+    height: 148px;
+    left: 420px;
+    top: 1550px;
+}
+
+.dib8 img{
+    position: absolute;
+    width: 155px;
+    height: 148px;
+    left: 600px;
+    top: 1550px;
+}
+
+.dib9 img{
+    position: absolute;
+    width: 158px;
+    height: 148px;
+    left: 750px;
+    top: 1550px;
+}
+
+.contenedor{
+    max-width: 1400px;
+    margin: auto;
+}
+
+header .logo{
+    margin: 0;
+    padding: 25px 30px; 
+    font-weight: bold;
+    color:DeepPink;
+}
+
+header a{
+    padding: 5px 12px;
+    text-decoration: none;
+    font-weight: bold;
+    color:Salmon;
+}
+
+header a:hover{
+    color:blue;
+}
+
