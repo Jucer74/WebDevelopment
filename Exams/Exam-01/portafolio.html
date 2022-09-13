@@ -1,96 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-    <!-- Icon-Font -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <!-- Styles -->
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>Portafolio</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">  
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
+  <!-- Icon-Font -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>Portafolio</title>
 </head>
-
 <body>
-    <div class="container">
-        <header id="main-header">
-            <div class="row g-0">
-                <div class="col-lg-4 col-md-5"> 
-                    <img src="./img/imagen1.jpg">
-                </div>
-                    <div class="col-lg-8 col-md-7">
-                        <div class="d-flex flex-column bg-dark">
-                            <div class="d-flex align-items-center justify-content-md-around" style="padding: 10px 50px 200px;">
-                                <h2 style="color:white; position:relative; left:30px; top:90px; font-size: 50px;" >Daniela Guevara </h2> 
-                                <i class="bi bi-facebook text-white" style="color:white; position:relative; left:30px; top:90px;"></i>
-                                    <i class="bi bi-twitter text-white" style="color:white; position:relative; left:30px; top:90px;"></i>
-                                    <i class="bi bi-instagram text-white" style="color:white; position:relative; left:30px; top:90px;"></i>
-                                    <i class="bi bi-github text-white" style="color:white; position:relative; left:30px; top:90px;"></i>
-                                </div>
-                                <div class="d-flex flex-column bg-black p-4">
-                                    <h6 style="color: white;">Desarollador web sin experiencia </h6>
-                                </div>
-                            </div>
-                            <div class="d-flex g-0 text-white align-items-stretch text-center">
-                                <div class="col-md-3 col-xl-3 p-5 bg-primary" >
-                                  <a href="home.html" target="iframeDetails">
-                                    <i class="bi bi-house-fill nav-icon" ></i>
-                                    <span class="h4 d-sm-block">Home</span>
-                                  </a>
-                                </div>
-                                <div class="col-md-3 col-xl-3 p-5 bg-success" >
-                                    <a href="resume.html" target="iframeDetails">
-                                      <i class="bi bi-mortarboard-fill nav-icon" ></i>
-                                      <span class="h4 d-sm-block">Resume</span>
-                                    </a>
-                                  </div>
-                                  <div class="col-md-3 col-xl-3 p-5 bg-warning" >
-                                    <a href="work.html" target="iframeDetails">
-                                      <i class="bi bi-folder-fill nav-icon" ></i>
-                                      <span class="h4 d-sm-block">Work</span>
-                                    </a>
-                                  </div>
-                                  <div class="col-md-3 col-xl-3 p-5 bg-danger" >
-                                    <a href="contact.html" target="iframeDetails">
-                                      <i class="bi bi-envelope-fill nav-icon" ></i>
-                                      <span class="h4 d-sm-block">Contact</span>
-                                    </a>
-                                  </div>
-                                  <script>
-                                    $(".port-item").click(function () {
-                                      $(".collapse").collapse("hide");
-                                    });
-                                
-                                    $(document).on("click", '[data-toggle="lightbox"]', function (e) {
-                                      e.preventDefault();
-                                      $(this).ekkoLightbox();
-                                    });
-                                  </script>
-                            </div>
-                            </div>
-                        </div>
-                    </div> 
-            </div>
-        </header>
-    </div>
-    <Div class="container">
-        <main>
-            <div class="row">
-            <iframe id="iframeDetails" name="iframeDetails" src="home.html"  height= "650"></iframe>
-            </div>
-        </main>
-        <footer id="main-footer" class="p-3 bg-dark text-white">
-         <i class="bi bi-download"><button class="btn btn-outline-light" type="submit">Donwload Resume</button></i>
-        </footer>
-    </div>
-</body>
+  <div class="container">
+    <header id="main-header">
+    </header>
 
+    <main>
+      <iframe id="iframeDetails" name="iframeDetails" src="./Home.html"></iframe>
+    </main>
+    
+    <footer id="main-footer" class="p-3 bg-dark text-white">
+      <div class="row">
+        <div class="col-md-6">
+          <a href="#" class="btn btn-outline-light">
+            <i class="bi bi-download"></i> Download Resume
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
 </html>
