@@ -9,18 +9,17 @@
 }
 
 #main-header .nav-item:hover {
-  opacity: 0.8;
   cursor: pointer;
 }
-
-.nav-icon {
-  font-size:30px;
-} 
 
 a {
   color:#fff;
   text-decoration: none;
 }
+
+.nav-icon {
+  font-size:30px;
+} 
 
 .bg-black {
   color: #fff;
