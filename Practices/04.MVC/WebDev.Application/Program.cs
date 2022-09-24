@@ -1,7 +1,16 @@
+using Microsoft.Extensions.DependencyInjection;
+using System.Configuration;
+using WebDev.Application.Config;
+using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 var builder = WebApplication.CreateBuilder(args);
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+ConfigurationManager Configuration = builder.Configuration; // allows both to access and to set up the config
+builder.Services.AddControllersWithViews();
+builder.Services.Configure<ApiConfiguration>(Configuration.GetSection("ApiConfiguration"));
 
 var app = builder.Build();
 
