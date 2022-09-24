@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Configuration;
 using WebDev.Application.Config;
+using WebDev.Services;
 using ConfigurationManager = Microsoft.Extensions.Configuration.ConfigurationManager;
 var builder = WebApplication.CreateBuilder(args);
 
