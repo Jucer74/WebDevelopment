@@ -2,6 +2,13 @@
 
 namespace EmployeesWeb.Application.Models
 {
+   public enum DepartmentType
+   {
+      IT,
+      Audit,
+      Finance
+   }
+
    public class Employee
    {
       [Key]
@@ -14,9 +21,9 @@ namespace EmployeesWeb.Application.Models
       public string? LastName { get; set; }
 
       [Required(ErrorMessage = "The HireDate is Required")]
-      public DateTime HireDate{ get; set; }
+      public DateTime HireDate { get; set; }
 
       [Required(ErrorMessage = "The Department is Required")]
-      public string Departmen { get; set; }
+      public DepartmentType Department { get; set; }
    }
 }
