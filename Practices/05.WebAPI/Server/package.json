@@ -1,0 +1,17 @@
+{
+  "name": "webapi-server",
+  "version": "1.0.0",
+  "description": "Simulacion de Web Api",
+  "main": "server.js",
+  "scripts": {
+    "start": "json-server --watch ./db.json",
+    "start-auth": "node server.js"
+  },
+  "author": "Julio Robles",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "json-server": "^0.17.0",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
