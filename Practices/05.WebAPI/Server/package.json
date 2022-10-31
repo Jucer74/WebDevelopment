@@ -4,7 +4,7 @@
   "description": "Simulacion de Web Api",
   "main": "server.js",
   "scripts": {
-    "start": "json-server --watch ./db.json",
+    "start": "json-server --watch ./EmployeesDB.json",
     "start-auth": "node server.js"
   },
   "author": "Julio Robles",
