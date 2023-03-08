@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PricatMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Adicionar</a>
+    
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+               <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+            </td>
+            <td>
+               <img src="@Url.Content("~/Images/" + item.ImageName )" height="64" width="64" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
