@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Database\" />
-    <Folder Include="Context\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,6 +24,20 @@
     <None Include="wwwroot\Images\Arepas-Logo.png" />
     <None Include="wwwroot\Images\Arepas-Rellenas.jfif" />
     <None Include="wwwroot\Images\Header-Image.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Database\PricatDB.db">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
