@@ -15,7 +15,7 @@ Implemente una aplicación denominada **PricatMVC**, que permita
 7. Adicione la Opcion Productos al menu principal (NavBar)
 8. Ajuste las columnas de la tabla para que La descripcion y el Nombre tengan maximo 50 Caracteres
 9. Todos Los enlaces de las vistas debe deben ser botones y cumplir con un estandard
-10. El diseño de las vistas es Adaptative y Responsive
+10. El diseño de las vistas debe ser correcto y debe cumplir con ser Adaptative y Responsive
 
 
 **Notas**

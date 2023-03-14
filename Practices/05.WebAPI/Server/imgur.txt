@@ -1,3 +1,0 @@
-imgur
-client_id: e2943fa8ec76185
-client_secret: 0eecacae1385ff2500a782c55e8ea0f7d626e780
