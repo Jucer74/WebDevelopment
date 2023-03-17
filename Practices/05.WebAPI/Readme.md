@@ -114,10 +114,21 @@ namespace SchoolMVC.Controllers
 }
 ```
 
-## Las Vistas
+Adicionamos la Opcion **Students** al menu principal, para ello modificamos la vista **_layout.cshtml** que esta dentro del directio **Views/Shared** y agregamos el siguiente codigo jsto despues del la opcion de **Privacy**
+
+```html
+<li class="nav-item">
+    <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
+</li>
+```
+
+
+## Las Vistas y Acciones
 Del Controlador seleccione una a una las Funciones y agregue las vistas correspondientes (Excluya las funciones marcadas como **ValidateAntiForgeryToken**)
 
-1. **Index**
+### 1. **Index**
+
+**La Vista**
 - Sobre la palabra **Index** haga click derecho y del menu contextual seleccione Adicionar Vista (**Add View...**)
 - Escoja la opcion (Razor View) dentro del contexto MVC/View
 - En la Ventana de Vista asigne los sigientes valores
@@ -126,16 +137,109 @@ Del Controlador seleccione una a una las Funciones y agregue las vistas correspo
   - **Model Class**: Student
 - Adicione la Vista
 
-2. **Details**
-- Sobre la palabra **Details** haga click derecho y del menu contextual seleccione Adicionar Vista (**Add View...**)
-- Escoja la opcion (Razor View) dentro del contexto MVC/View
-- En la Ventana de Vista asigne los sigientes valores
-  - **View Name**: Details
-  - **Template**: Details
-  - **Model Class**: Student
-- Adicione la Vista
+**El Controlador**
+- Volvemos al Controlador y vamos a simular la respuesta para validar nuestra ejecución, así:
+- Adicione las librerias para manejo de lista y para el uso del modelo
+```csharp
+using Microsoft.AspNetCore.Mvc;
+using SchoolMVC.Models;
+```
+-  Adicione un atributo de clase para la lista de estudiantes y Cree un constructor para la clase controlador y adicione elementos para la clase para simular los datos de los usuarios.
+```csharp
+private static List<Student> studentList;
+private static int numStudents;
+public StudentsController()
+{
+    // Mock Student List
+    if (studentList is null)
+    {
+        studentList = new List<Student>()
+        {
+            new Student{Id=1, FirstName="Julio", LastName="Robles", DateOfBirth=DateTime.Parse("10-08-1974"), Sex='M'},
+            new Student{Id=2, FirstName="Pilar", LastName="Lopez", DateOfBirth=DateTime.Parse("04-10-1976"), Sex='F'},
+            new Student{Id=3, FirstName="Felipe", LastName="Daza", DateOfBirth=DateTime.Parse("07-27-1996"), Sex='M'},
+        };
 
-3. **Create**
+        numStudents = studentList.Count;
+    }
+}
+```
+- Modifique la acción **Index** para simular la respuesta pasando la lista de usuario como el modelo de la vista, así:
+```csharp
+// GET: StudentsController
+public ActionResult Index()
+{
+    return View(studentList);
+}
+```
+-  Ejecute la aplicación presionando **F5** y valide los resultados, seleccionando la opcion de **Students** del menu principal.
+
+-  Mejore la vista **Index** usando las clases de Bootstrap para los botones
+
+```csharp
+@model IEnumerable<SchoolMVC.Models.Student>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sex)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sex)
+            </td>
+            <td>
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+```
+___
+### 2. **Create**
 - Sobre la palabra **Create** haga click derecho y del menu contextual seleccione Adicionar Vista (**Add View...**)
 - Escoja la opcion (Razor View) dentro del contexto MVC/View
 - En la Ventana de Vista asigne los sigientes valores
@@ -144,7 +248,18 @@ Del Controlador seleccione una a una las Funciones y agregue las vistas correspo
   - **Model Class**: Student
 - Adicione la Vista
 
-4. **Edit**
+___
+### 3. **Details**
+- Sobre la palabra **Details** haga click derecho y del menu contextual seleccione Adicionar Vista (**Add View...**)
+- Escoja la opcion (Razor View) dentro del contexto MVC/View
+- En la Ventana de Vista asigne los sigientes valores
+  - **View Name**: Details
+  - **Template**: Details
+  - **Model Class**: Student
+- Adicione la Vista
+
+___
+### 4. **Edit**
 - Sobre la palabra **Edit** haga click derecho y del menu contextual seleccione Adicionar Vista (**Add View...**)
 - Escoja la opcion (Razor View) dentro del contexto MVC/View
 - En la Ventana de Vista asigne los sigientes valores
@@ -153,7 +268,8 @@ Del Controlador seleccione una a una las Funciones y agregue las vistas correspo
   - **Model Class**: Student
 - Adicione la Vista
 
-5. **Delete**
+___
+### 5. **Delete**
 - Sobre la palabra **Delete** haga click derecho y del menu contextual seleccione Adicionar Vista (**Add View...**)
 - Escoja la opcion (Razor View) dentro del contexto MVC/View
 - En la Ventana de Vista asigne los sigientes valores
