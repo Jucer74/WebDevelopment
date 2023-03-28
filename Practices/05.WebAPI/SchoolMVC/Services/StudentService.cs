@@ -48,7 +48,7 @@ public class StudentService
 
     private async Task<List<Student>> GetAllStudents()
     {
-        var request = new RestRequest("people", Method.Get);
+        var request = new RestRequest($"{baseUrl}/people", Method.Get);
         var queryResult = await _restClient.GetAsync(request);
 
         List<Student>? data = JsonConvert.DeserializeObject<List<Student>>(queryResult.Content!);
@@ -58,7 +58,7 @@ public class StudentService
 
     private async Task<Student> GetStudentById(int id)
     {
-        var request = new RestRequest($"people/{id}", Method.Get);
+        var request = new RestRequest($"{baseUrl}/people/{id}", Method.Get);
 
         var queryResult = await _restClient.GetAsync(request);
 
@@ -69,7 +69,7 @@ public class StudentService
 
     private async Task<Student> PostStudent(Student student)
     {
-        var request = new RestRequest($"people", Method.Post);
+        var request = new RestRequest($"{baseUrl}/people", Method.Post);
         request.AddJsonBody(student);
 
         var queryResult = await _restClient.PostAsync(request);
@@ -81,7 +81,7 @@ public class StudentService
 
     private async Task<Student> PutStudent(Student student)
     {
-        var request = new RestRequest($"people/{student.Id}", Method.Put);
+        var request = new RestRequest($"{baseUrl}/people/{student.Id}", Method.Put);
         request.AddJsonBody(student);
 
         var queryResult = await _restClient.PutAsync(request);
@@ -93,7 +93,7 @@ public class StudentService
 
     private async Task<bool> RemoveStudent(int id)
     {
-        var request = new RestRequest($"people/{id}", Method.Delete);
+        var request = new RestRequest($"{baseUrl}/people/{id}", Method.Delete);
 
         var queryResult = await _restClient.DeleteAsync(request);
 
