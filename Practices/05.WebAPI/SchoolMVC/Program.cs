@@ -1,7 +1,15 @@
+using Microsoft.Build.Framework;
+using RestSharp;
+using SchoolMVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddMvc();
+builder.Services.AddScoped<RestClient>();
+builder.Services.AddScoped<StudentService>();
 
 var app = builder.Build();
 
