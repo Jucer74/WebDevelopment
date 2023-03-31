@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SchoolMVC.Dtos;
 using SchoolMVC.Models;
 using SchoolMVC.Services;
-using System.Collections.Generic;
 
 namespace SchoolMVC.Controllers
 {
     public class StudentsController : Controller
     {
-        private static List<Student> studentList= null!;
+        private static List<Student> studentList = null!;
         private static int numStudents;
 
         private static StudentService _studentService;
@@ -22,6 +22,13 @@ namespace SchoolMVC.Controllers
         {
             studentList = await _studentService.GetAll();
             return View(studentList);
+        }
+
+        public async Task<ActionResult> ByPage(int page, int limit)
+        {
+            var queryResult = await _studentService.ByPage(page, limit);
+
+            return View(queryResult);
         }
 
         // GET: StudentsController/Details/5
@@ -90,16 +97,16 @@ namespace SchoolMVC.Controllers
                 if (ModelState.IsValid)
                 {
                     var studentFound = studentList.FirstOrDefault(u => u.Id == student.Id);
-                    
-                    if(studentFound == null)
+
+                    if (studentFound == null)
                     {
                         return View();
                     }
 
-                    studentFound.FirstName= student.FirstName;
+                    studentFound.FirstName = student.FirstName;
                     studentFound.LastName = student.LastName;
                     studentFound.DateOfBirth = student.DateOfBirth;
-                    studentFound.Sex= student.Sex;
+                    studentFound.Sex = student.Sex;
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -137,7 +144,6 @@ namespace SchoolMVC.Controllers
                 {
                     return View();
                 }
-
 
                 studentList.Remove(studentFound);
                 return RedirectToAction(nameof(Index));
