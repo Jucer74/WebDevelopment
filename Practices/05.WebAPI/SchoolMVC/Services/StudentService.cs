@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RestSharp;
+using SchoolMVC.Dtos;
 using SchoolMVC.Models;
 
 namespace SchoolMVC.Services;
@@ -22,7 +23,24 @@ public class StudentService
         return studentList;
 	}
 
-	public async Task<Student> GetById(int id)
+    public async Task<QueryResult> ByPage(int page, int limit)
+    {
+        var studentList = await GetStudentsByPage(page, limit);
+
+        var queryResult = new QueryResult()
+        {
+            Students = studentList,
+            Pagination = new PaginationData ()
+            {
+                Page= page,
+                Limit = limit
+            }            
+        };
+
+        return queryResult;
+    }
+
+    public async Task<Student> GetById(int id)
 	{
         var student = await GetStudentById(id);
         return student;
@@ -49,20 +67,32 @@ public class StudentService
     private async Task<List<Student>> GetAllStudents()
     {
         var request = new RestRequest($"{baseUrl}/people", Method.Get);
-        var queryResult = await _restClient.GetAsync(request);
+        var response = await _restClient.GetAsync(request);
 
-        List<Student>? data = JsonConvert.DeserializeObject<List<Student>>(queryResult.Content!);
+        List<Student>? data = JsonConvert.DeserializeObject<List<Student>>(response.Content!);
 
         return data!;
     }
+
+    private async Task<List<Student>> GetStudentsByPage(int page, int limit)
+    {
+        var request = new RestRequest($"{baseUrl}/people?_page={page}&_limit={limit}", Method.Get);
+        var response = await _restClient.GetAsync(request);
+        var totalCount = response.Headers.Get[""]
+
+        List<Student>? data = JsonConvert.DeserializeObject<List<Student>>(response.Content!);
+
+        return data!;
+    }
+
 
     private async Task<Student> GetStudentById(int id)
     {
         var request = new RestRequest($"{baseUrl}/people/{id}", Method.Get);
 
-        var queryResult = await _restClient.GetAsync(request);
+        var response = await _restClient.GetAsync(request);
 
-        Student? data = JsonConvert.DeserializeObject<Student>(queryResult.Content!);
+        Student? data = JsonConvert.DeserializeObject<Student>(response.Content!);
 
         return data!;
     }
@@ -72,9 +102,9 @@ public class StudentService
         var request = new RestRequest($"{baseUrl}/people", Method.Post);
         request.AddJsonBody(student);
 
-        var queryResult = await _restClient.PostAsync(request);
+        var response = await _restClient.PostAsync(request);
 
-        Student? data = JsonConvert.DeserializeObject<Student>(queryResult.Content!);
+        Student? data = JsonConvert.DeserializeObject<Student>(response.Content!);
 
         return data!;
     }
@@ -84,9 +114,9 @@ public class StudentService
         var request = new RestRequest($"{baseUrl}/people/{student.Id}", Method.Put);
         request.AddJsonBody(student);
 
-        var queryResult = await _restClient.PutAsync(request);
+        var response = await _restClient.PutAsync(request);
 
-        Student? data = JsonConvert.DeserializeObject<Student>(queryResult.Content!);
+        Student? data = JsonConvert.DeserializeObject<Student>(response.Content!);
 
         return data!;
     }
@@ -95,10 +125,10 @@ public class StudentService
     {
         var request = new RestRequest($"{baseUrl}/people/{id}", Method.Delete);
 
-        var queryResult = await _restClient.DeleteAsync(request);
+        var response = await _restClient.DeleteAsync(request);
 
-        var data = queryResult.Content!;
+        var data = response.Content!;
 
-        return queryResult.IsSuccessStatusCode;
+        return response.IsSuccessStatusCode;
     }
 }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SchoolMVC.Models.Student>
+﻿@model SchoolMVC.Dtos.QueryResult
 
 @{
     ViewData["Title"] = "Index";
@@ -14,25 +14,25 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Id)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                FirstName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                LastName
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
+                DateOfBirth
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Sex)
+                Sex
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.Students) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Id)
@@ -59,3 +59,17 @@
     </tbody>
 </table>
 
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item">
+            <a class="page-link" asp-area="" asp-controller="Students" asp-action="ByPage" asp-route-page="1" asp-route-limit="10">Fisrt</a>
+        </li>
+        
+        <li class="page-item">
+            <a class="page-link" asp-area="" asp-controller="Students" asp-action="ByPage" asp-route-page="@Model.Page-1" asp-route-limit="10">Previs</a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">@Model.Page</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item"><a class="page-link" href="#">Last</a></li>
+    </ul>
+</nav>
