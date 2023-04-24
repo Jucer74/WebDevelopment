@@ -78,7 +78,6 @@ public class StudentService
     {
         var request = new RestRequest($"{baseUrl}/people?_page={page}&_limit={limit}", Method.Get);
         var response = await _restClient.GetAsync(request);
-        var totalCount = response.Headers.Get[""]
 
         List<Student>? data = JsonConvert.DeserializeObject<List<Student>>(response.Content!);
 
