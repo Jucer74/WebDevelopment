@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PricatMVC.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Adicionar</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            <td>
+                    <a class="btn btn-warning" asp-area="" asp-controller="Products" asp-action="ProductByCategory" asp-route-id="@item.Id">Productos</a>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
