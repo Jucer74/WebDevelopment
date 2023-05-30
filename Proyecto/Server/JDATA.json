@@ -1,0 +1,210 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Judon",
+      "description": "Nondisp unsp condyle fx low end r femr, 7thQ",
+      "price": 21116,
+      "imgUrl": "https://www.goya.com/media/7859/arepas-cornmeal-patties.jpg?quality=80"
+    },
+    {
+      "id": 2,
+      "name": "Dominica",
+      "description": "Nondisp fx of 2nd metatarsal bone, l foot, init for opn fx",
+      "price": 13163,
+      "imgUrl": "http://dummyimage.com/1400x700.png/5fa2dd/ffffff"
+    },
+    {
+      "id": 3,
+      "name": "Tynan",
+      "description": "Oth injury due to oth acc to oth powered wtrcrft, sequela",
+      "price": 19912,
+      "imgUrl": "http://dummyimage.com/1400x700.png/cc0000/ffffff"
+    },
+    {
+      "id": 4,
+      "name": "Fredra",
+      "description": "Old laceration of cervix uteri",
+      "price": 17383,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 5,
+      "name": "Roxane",
+      "description": "Bitten by rat",
+      "price": 9810,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 6,
+      "name": "Marcelline",
+      "description": "Labor and delivery complicated by cord complication, unsp",
+      "price": 20386,
+      "imgUrl": "http://dummyimage.com/1400x700.png/dddddd/000000"
+    },
+    {
+      "id": 7,
+      "name": "Gwenny",
+      "description": "Hemophthalmos, left eye",
+      "price": 20037,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 8,
+      "name": "Rubetta",
+      "description": "Other hypertrophic osteoarthropathy, unspecified thigh",
+      "price": 19745,
+      "imgUrl": "http://dummyimage.com/1400x700.png/dddddd/000000"
+    },
+    {
+      "id": 9,
+      "name": "Gerrilee",
+      "description": "Poisoning by tricyclic antidepressants, accidental",
+      "price": 22456,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 10,
+      "name": "Felizio",
+      "description": "Pulmonary complications of anesthesia during pregnancy",
+      "price": 7558,
+      "imgUrl": "http://dummyimage.com/1400x700.png/cc0000/ffffff"
+    },
+    {
+      "id": 11,
+      "name": "Drucie",
+      "description": "Acquired total absence of pancreas",
+      "price": 5998,
+      "imgUrl": "http://dummyimage.com/1400x700.png/5fa2dd/ffffff"
+    },
+    {
+      "id": 12,
+      "name": "Selinda",
+      "description": "Corrosions of other internal organs, initial encounter",
+      "price": 5710,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 13,
+      "name": "Dennie",
+      "description": "Other difficulties with micturition",
+      "price": 21776,
+      "imgUrl": "http://dummyimage.com/1400x700.png/dddddd/000000"
+    },
+    {
+      "id": 14,
+      "name": "Mata",
+      "description": "Toxic effect of copper and its compounds, acc, sequela",
+      "price": 16978,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 15,
+      "name": "Beret",
+      "description": "Toxic effect of carbon tetrachloride, undetermined, subs",
+      "price": 16372,
+      "imgUrl": "http://dummyimage.com/1400x700.png/cc0000/ffffff"
+    },
+    {
+      "id": 16,
+      "name": "Dionis",
+      "description": "Other rupture of muscle (nontraumatic), left hand",
+      "price": 18402,
+      "imgUrl": "http://dummyimage.com/1400x700.png/dddddd/000000"
+    },
+    {
+      "id": 17,
+      "name": "Eldredge",
+      "description": "Oth diabetes mellitus with hypoglycemia without coma",
+      "price": 8140,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 18,
+      "name": "Rodrique",
+      "description": "Abnormal radiologic findings on dx imaging of unsp kidney",
+      "price": 8582,
+      "imgUrl": "http://dummyimage.com/1400x700.png/ff4444/ffffff"
+    },
+    {
+      "id": 19,
+      "name": "Foster",
+      "description": "Toxic effect of other ingested (parts of) plant(s)",
+      "price": 26861,
+      "imgUrl": "http://dummyimage.com/1400x700.png/cc0000/ffffff"
+    },
+    {
+      "id": 20,
+      "name": "Chelsie",
+      "description": "Commrcl fix-wing aircraft explosion injuring occupant, subs",
+      "price": 11200,
+      "imgUrl": "http://dummyimage.com/1400x700.png/cc0000/ffffff"
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "userEmail": "ddenington0@gmail.com",
+      "fullName": "Dix Denington",
+      "address": "9 Memorial Parkway",
+      "phoneNumber": "6937765728",
+      "password": "492esTjmj"
+    },
+    {
+      "id": 2,
+      "userEmail": "wryam1@gmail.com",
+      "fullName": "Willard Ryam",
+      "address": "2 Upham Lane",
+      "phoneNumber": "2084600358",
+      "password": "wIK5hDLRG"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "deliveryFullName": "Dix Denington",
+      "deliveryAddress": "9 Memorial Parkway",
+      "deliveryPhoneNumber": "6937765728",
+      "notes": "Perro bravo, no timbrar",
+      "totalPrice": 49880
+    },
+    {
+      "deliveryFullName": "Dix Denington",
+      "deliveryAddress": "9 Memorial Parkway",
+      "deliveryPhoneNumber": "6937765728",
+      "notes": "Gritar, No hay timbre",
+      "totalPrice": 43456,
+      "id": 2
+    }
+  ],
+  "ordersDetail": [
+    {
+      "id": 1,
+      "orderId": 1,
+      "productId": 17,
+      "quantity": 2,
+      "priceOrd": 16280
+    },
+    {
+      "id": 2,
+      "orderId": 1,
+      "productId": 20,
+      "quantity": 3,
+      "priceOrd": 33600
+    },
+    {
+      "productId": 2,
+      "quantity": 2,
+      "priceOrd": 26326,
+      "orderId": "2",
+      "id": 3
+    },
+    {
+      "productId": 12,
+      "quantity": 3,
+      "priceOrd": 17130,
+      "orderId": "2",
+      "id": 4
+    }
+  ]
+}
