@@ -1,0 +1,308 @@
+<!-- Define the document type and language -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags to specify character set, viewport, and IE compatibility -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Load Font Awesome CSS from a CDN with a specific version and integrity hash -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+        integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+
+    <!-- Load Bootstrap CSS from a CDN with a specific version and integrity hash -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+
+    <!-- Load Ekko Lightbox CSS from a CDN with a specific version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
+
+    <!-- Load custom CSS from the "style.css" file in the "css" folder -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Set the title of the webpage -->
+    <title>Portfolio</title>
+</head>
+
+<body>
+    <!-- Start of the container that wraps the entire page content -->
+    <div class="container">
+        <!-- HEADER SECTION -->
+        <header id="main-header">
+            <div class="row no-gutters">
+                <!-- Left column containing the person's image -->
+                <div class="col-lg-4 col-md-5">
+                    <img src="img/person1.jpg" alt="">
+                </div>
+                <!-- Right column containing person's name, social media links, and description -->
+                <div class="col-lg-8 col-md-7">
+                    <div class="d-flex flex-column">
+                        <!-- Top section with person's name and social media icons -->
+                        <div class="p-5 bg-dark text-white">
+                            <div class="d-flex flex-row justify-content-between align-items-center">
+                                <h1 class="display-4">John Doe</h1>
+                                <div class="d-none d-md-block">
+                                    <a href="http://twitter.com" class="text-white">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="http://facebook.com" class="text-white">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="http://instagram.com" class="text-white">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="http://github.com" class="text-white">
+                                        <i class="fab fa-github"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Description section -->
+                        <div class="p-4 bg-black">
+                            Experienced Full Stack Web Developer
+                        </div>
+
+                        <!-- Navigation section with clickable items -->
+                        <div>
+                            <div class="d-flex flex-row text-white align-items-stretch text-center">
+                                <!-- Home -->
+                                <div class="port-item p-4 bg-primary" data-toggle="collapse" data-target="#home">
+                                    <i class="fas fa-home fa-2x d-block"></i>
+                                    <span class="d-none d-sm-block">Home</span>
+                                </div>
+                                <!-- Resume -->
+                                <div class="port-item p-4 bg-success" data-toggle="collapse" data-target="#resume">
+                                    <i class="fas fa-graduation-cap fa-2x d-block"></i>
+                                    <span class="d-none d-sm-block">Resume</span>
+                                </div>
+                                <!-- Work -->
+                                <div class="port-item p-4 bg-warning" data-toggle="collapse" data-target="#work">
+                                    <i class="fas fa-folder-open fa-2x d-block"></i>
+                                    <span class="d-none d-sm-block">Work</span>
+                                </div>
+                                <!-- Contact -->
+                                <div class="port-item p-4 bg-danger" data-toggle="collapse" data-target="#contact">
+                                    <i class="fas fa-envelope fa-2x d-block"></i>
+                                    <span class="d-none d-sm-block">Contact</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HOME SECTION -->
+        <div id="home" class="collapse show">
+            <div class="card card-body bg-primary text-white py-5">
+                <h2>Welcome To My Page</h2>
+                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, ut!</p>
+            </div>
+
+            <!-- Skills section with progress bars -->
+            <div class="card card-body py-5">
+                <h3>My Skills</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus ea excepturi officia quisquam
+                    atque eos.</p>
+                <hr>
+                <h4>HTML 5</h4>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width:100%"></div>
+                </div>
+                <h4>CSS 3</h4>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width:100%"></div>
+                </div>
+                <h4>JavaScript</h4>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width:90%"></div>
+                </div>
+                <h4>PHP</h4>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width:80%"></div>
+                </div>
+                <h4>Python</h4>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" style="width:70%"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESUME SECTION -->
+        <div id="resume" class="collapse">
+            <div class="card card-body bg-success text-white py-5">
+                <h2>My Resume</h2>
+                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, ut!</p>
+            </div>
+
+            <!-- Work experience section -->
+            <div class="card card-body py-5">
+                <h3>Where Have I Worked?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque similique saepe inventore rem
+                    vitae esse.</p>
+                <!-- Card deck to show different job experiences -->
+                <div class="card-deck">
+                    <div class="card">
+                        <!-- Card content for one job experience -->
+                        <div class="card-body">
+                            <h4 class="card-title">Devmasters</h4>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam.
+                            </p>
+                            <p class="p-2 mb-3 bg-dark text-white">
+                                Position: Full Stack Developer
+                            </p>
+                            <p class="p-2 mb-3 bg-dark text-white">
+                                Phone: (444) 444-4444
+                            </p>
+                        </div>
+                        <div class="card-footer">
+                            <h6 class="text-muted">Dates: 2015 - 2018</h6>
+                        </div>
+                    </div>
+
+                    <!-- Additional cards for other job experiences -->
+                </div>
+            </div>
+        </div>
+
+        <!-- WORK SECTION -->
+        <div id="work" class="collapse">
+            <div class="card card-body bg-warning text-white py-5">
+                <h2>My Work</h2>
+                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, ut!</p>
+            </div>
+
+            <!-- Portfolio section with images -->
+            <div class="card card-body py-5">
+                <h3>What Have I Built?</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum nostrum repudiandae debitis, nam
+                    iste amet.</p>
+                <!-- Grid layout for displaying images -->
+                <div class="row no-gutters">
+                    <div class="col-md-3">
+                        <a href="https://unsplash.it/1200/768.jpg?image=252" data-toggle="lightbox">
+                            <img src="https://unsplash.it/600.jpg?image=252" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    <!-- Additional columns for more images -->
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <div id="contact" class="collapse">
+            <div class="card card-body bg-danger text-white py-5">
+                <h2>Contact</h2>
+                <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, ut!</p>
+            </div>
+
+            <!-- Contact form section -->
+            <div class="card card-body py-5">
+                <h3>Get In Touch</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error quos illo, dicta id voluptates enim.
+                </p>
+                <!-- Form to enter name, email, and message -->
+                <form>
+                    <!-- Form group for name input -->
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white">
+                                    <i class="fas fa-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control bg-dark text-white" placeholder="Name">
+                        </div>
+                    </div>
+
+                    <!-- Form group for email input -->
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </div>
+                            <input type="email" class="form-control bg-dark text-white" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <!-- Form group for message input -->
+                    <div class="form-group">
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-danger text-white">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </span>
+                            </div>
+                            <textarea class="form-control bg-dark text-white" placeholder="Name"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <input type="submit" value="Submit" class="btn btn-danger btn-block btn-lg">
+                </form>
+            </div>
+        </div>
+
+        <!-- FOOTER SECTION -->
+        <footer id="main-footer" class="p-5 bg-dark text-white">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Button to download the resume -->
+                    <a href="#" class="btn btn-outline-light">
+                        <i class="fas fa-cloud"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- End of the container -->
+
+<!-- Load jQuery library from a CDN with a specific version and integrity hash -->
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<!-- Load Popper.js library from a CDN with a specific version and integrity hash -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+
+<!-- Load Bootstrap library from a CDN with a specific version and integrity hash -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+
+<!-- Load Ekko Lightbox library from a CDN with a specific version -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js"></script>
+
+<!-- Start of script -->
+<script>
+    // When an element with the class 'port-item' is clicked, hide all elements with the class 'collapse'.
+    $('.port-item').click(function () {
+        $('.collapse').collapse('hide');
+    });
+
+    // When an element with a data attribute of 'data-toggle="lightbox"' is clicked,
+    // prevent the default click behavior, and invoke Ekko Lightbox to display the image or media.
+    $(document).on('click', '[data-toggle="lightbox"]', function (e) {
+        e.preventDefault();
+        $(this).ekkoLightbox();
+    });
+</script>
+<!-- End of script -->
+
+</body>
+
+</html>
