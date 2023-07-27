@@ -1,0 +1,129 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos del work */
+.work {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 39px;
+}
+
+/* Estilos del work_container */
+.work_container {
+  display: flex;
+  flex-direction: column;
+  background-color: #e2a212;
+  width: 100%;
+  color: white;
+  padding: 5px;
+}
+
+/* Estilos del work_container_title */
+.work_container_title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 20px;
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+/* Estilos del work_container_paragraph */
+.work_container_paragraph {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+/* Estilos del work_container_2 */
+.work_container_2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  color: black;
+  padding: 5px;
+}
+
+/* Styles for the image grid container */
+.work_image_grid {
+  display: grid;
+  width: 95%;
+  grid-template-columns: repeat(4, 1fr); /* Four columns */
+  grid-template-rows: repeat(2, 1fr); /* Two rows */
+  grid-gap: 10px; /* Gap between images */
+  margin: 20px; /* Adjust the margin for spacing */
+}
+
+/* Styles for the images in the grid */
+.work_image_grid img {
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  width: calc(
+    40% - 5px
+  ); /* Ajustar el ancho de las imágenes y el espacio entre ellas */
+  height: auto;
+  margin-bottom: 10px; /* Agregar un espacio inferior entre las imágenes */
+}
+
+/* Media Queries para dispositivos con máximo ancho de 480px (e.g., móviles más pequeños) */
+@media screen and (max-width: 480px) {
+  /* Ajustar estilos para móviles más pequeños */
+  .work_container_title {
+    font-size: 1.6rem;
+  }
+
+  .work_container_paragraph {
+    font-size: 1rem;
+  }
+
+  .work_image_grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    grid-template-rows: repeat(4, 1fr); /* Cuatro filas */
+    grid-gap: 5px; /* Reducir espacio entre imágenes */
+    margin: 10px; /* Ajustar margen para móviles más pequeños */
+  }
+}
+
+/* Media Queries para dispositivos con máximo ancho de 768px (e.g., móviles y tablets) */
+@media screen and (max-width: 768px) {
+  /* Ajustar estilos para móviles y tablets */
+  .work_container_title {
+    font-size: 1.8rem;
+  }
+
+  .work_container_paragraph {
+    font-size: 1rem;
+  }
+
+  .work_image_grid {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    grid-template-rows: repeat(4, 1fr); /* Cuatro filas */
+    grid-gap: 5px; /* Reducir espacio entre imágenes */
+    margin: 10px; /* Ajustar margen para móviles y tablets */
+  }
+}
+
+/* Media Queries para dispositivos con mínimo ancho de 769px (e.g., PC y tablets más grandes) */
+@media screen and (min-width: 769px) {
+  /* Ajustar estilos para tablets más grandes y PC */
+  .work_container_title {
+    font-size: 2rem;
+  }
+
+  .work_container_paragraph {
+    font-size: 1.2rem;
+  }
+
+  .work_image_grid {
+    grid-template-columns: repeat(4, 1fr); /* Cuatro columnas */
+    grid-template-rows: repeat(2, 1fr); /* Dos filas */
+    grid-gap: 10px; /* Espacio entre imágenes */
+    margin: 20px; /* Ajustar margen para tablets más grandes y PC */
+  }
+}

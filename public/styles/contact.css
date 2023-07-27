@@ -1,0 +1,136 @@
+/* Estilos generales */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos del contact */
+.contact {
+  width: 100%;
+}
+
+/* Estilos del contact_container */
+.contact_container {
+  display: flex;
+  flex-direction: column;
+  background-color: #db4141;
+  width: 100%;
+  color: white;
+  padding: 5px;
+  flex-direction: column;
+  margin-top: 39px;
+}
+
+/* Estilos del contact_container_title */
+.contact_container_title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-left: 20px;
+  padding-top: 20px;
+}
+
+/* Estilos del contact_container_paragraph */
+.contact_container_paragraph {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+/* Estilos del contact_container_2 */
+.contact_container_2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px;
+}
+
+/* Estilos del contact_form_container */
+.contact_form_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  padding: 5px;
+  margin: 20px;
+  margin-left: 50px;
+}
+
+.contact_form_container_input input[type="text"],
+.contact_form_container_input input[type="email"],
+.contact_form_container_input textarea {
+  width: 100%;
+  background-color: #373839;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Asegura que el padding y el borde no afecten el tamaño total */
+}
+
+/* Estilos del contact_form_container_submit */
+.contact_form_container_submit {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact_form_container_submit input[type="submit"] {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  background-color: #db4141;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.contac_icons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.contact .bi {
+  fill: white;
+  width: 12%;
+  height: 36px;
+  margin-bottom: 10px;
+  background-color: #db4141;
+  border-radius: 4px;
+}
+
+.contact .bi-pencil-fill {
+  height: 198px;
+  border-radius: 4px;
+}
+
+/* Media queries para diferentes dispositivos */
+
+/* Tablets en modo horizontal */
+@media only screen and (min-width: 768px) {
+  .contact_container {
+    height: 210px;
+  }
+
+  /* Ajusta los estilos necesarios para tablets en modo horizontal */
+  .contact_form_container {
+    margin-left: 20px; /* Por ejemplo, reducir el margen izquierdo */
+  }
+}
+
+/* Tablets en modo vertical y dispositivos móviles */
+@media only screen and (max-width: 767px) {
+  /* Ajusta los estilos necesarios para tablets en modo vertical y dispositivos móviles */
+  .contact_form_container {
+    margin-left: 10px; /* Por ejemplo, reducir el margen izquierdo aún más */
+  }
+
+  .contact_form_container_input input[type="text"],
+  .contact_form_container_input input[type="email"],
+  .contact_form_container_input textarea {
+    /* Ajusta el tamaño de los inputs y textarea para pantallas más pequeñas */
+    font-size: 14px;
+    padding: 8px;
+  }
+}
