@@ -1,0 +1,276 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+  }
+  
+  .header img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .info {
+    color: #040404;
+  }
+  
+  .info h1 {
+    margin: 0;
+  }
+  
+  .social img {
+    padding-left: 90px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .content-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .home, .resume, .work, .contact {
+    flex-basis: 22%;
+    padding: 10px;
+    background-color: #2196F3;
+    color: #ffffff;
+    padding-bottom: 20px;
+  }
+  
+  .resume {
+    background-color: #4CAF50;
+  }
+  
+  .work {
+    background-color: #FFC107;
+  }
+  
+  .contact {
+    background-color: #FF5722;
+  }
+  .home-home{
+    flex-basis: 100%;
+    padding: 10px;
+    background-color: #2196F3;
+    
+  }
+  .resume-resume {
+    background-color: #4CAF50;
+    flex-basis: 100%;
+    padding: 10px;
+  }
+  .contact-contact {
+    background-color: #FF5722;
+    flex-basis: 100%;
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+  .work-work {
+    background-color: #FFC107;
+    flex-basis: 100%;
+    padding: 10px;
+  }
+.h22{
+    text-decoration: none;
+}
+.contenedor1 {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0; 
+  }
+  .contenedor2 {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0;
+    margin-bottom: 10px; 
+  }
+  .contenedor3 {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0; 
+  }
+  .contenedor4 {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0;
+    margin-bottom: 10px; 
+  }
+  .contenedor5 {
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0; 
+  }
+.home a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+.resume a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+.contact a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+.work a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+
+  .form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FF5722;
+    padding-bottom: 20px;
+    
+  }
+  .form-group {
+    margin-bottom: 15px;
+    padding-right: 30px;
+    
+  }
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: rgb(75, 74, 74);
+    font-weight: bold;
+    
+  }
+  .form-group input[type="text"],
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid black;
+    background-color: rgb(80, 80, 80);
+    color: white;
+    
+  }
+  .submit-btn {
+    background-color: rgb(81, 81, 81);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  .submit-btn:hover {
+    background-color: #333;
+  }
+  .collage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+  }
+  
+  .collage img {
+    width: 100%;
+    height: auto;
+  }
+  .footer {
+    background-color: #ccc; 
+    text-align: center;
+    padding: 10px; 
+  }
+
+  
+
+  .segundo{
+      background-color:green;
+      font-size: 20px;
+      margin: 0; 
+      color: white;
+      padding: 50px;
+      width: 1255;
+      height: 50px;
+      flex-direction: column;
+
+
+    }
+    h3{
+      font-size: 24px;
+      margin:0;
+    }
+    .primero{
+      font-size: 16px;
+    }
+
+    .tercero{
+      background-color: white;
+      color: black;
+      font-size: 15px;
+      padding: 20px;
+      margin: 0; 
+
+
+
+    }
+    h4{
+      font-size: 24px;
+    }
+
+    .container1 {
+      display: flex;
+  }
+
+
+  .subdivision {
+      flex: 1;
+      padding: 20px;
+      margin: 10px;
+      border: 1px solid #ccc;
+  }
+
+
+  .subdivision2 {
+      padding: 10px;
+      border: 1px solid black;
+      margin-top: 10px;
+      border-radius: 20px; 
+  }
+  h5{
+      font-size: 20px;
+  }
+  .contenedor {
+      background-color: black;
+      color: white;
+      font-size: 15px;
+      padding: 20px;
+      margin: 0;
+      margin-bottom: 10px; 
+    }
+   
