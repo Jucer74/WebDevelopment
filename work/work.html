@@ -1,0 +1,287 @@
+<head>
+    <title>desarrollo web</title>
+    <style>
+      body {
+        font-family: 'Courier New', Courier, monospace;
+        margin: 0;
+        padding: 0;
+      }
+      
+      header {
+        padding: 50px; 
+        margin-left: 20px;
+      }
+  
+      .titles-container {
+        display: inline-block; 
+      }
+      
+  
+      h1 {
+        background-color: #333;
+        font-size: 20px;
+        margin: 0; 
+        color: white;
+        padding: 50px;
+        width: 1266px;
+      }
+  
+      h2 {
+        background-color: black;
+        color: white;
+        font-size: 15px;
+        padding: 20px;
+        margin: 0; 
+      }
+  
+      img {
+        width: 299px;
+        height: 305px;
+        border-radius: 5px;
+        float: left;
+        display: block;
+      }
+  
+      nav {
+        background-color:white;
+        padding: 0;
+      }
+  
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0px;
+        text-align: center;
+        display: flex; 
+      }
+  
+      nav ul li {
+        margin: 5px;
+        padding: 0px;
+      }
+  
+      .titles-container button {
+        font-size: 15px; 
+        padding: 35px 105px; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: transparent;
+      }
+  
+    .titles-container button:hover {
+        opacity: 0.5;
+      }
+      .titles-container .Home {
+        background-color: blue; 
+      }
+  
+      .titles-container .Resume {
+        background-color: green; 
+      }
+  
+      .titles-container .Work {
+        background-color: yellow; 
+      }
+  
+      .titles-container .Contact {
+        background-color: red; 
+      }
+  
+      nav ul li a {
+        display: block;
+        text-decoration: none;
+        padding: 0px;
+      }
+      .container {
+        display: inline-block; 
+        
+        
+      }
+      
+      .segundo{
+          background-color:yellow;
+          font-size: 20px;
+          margin: 0; 
+          color: white;
+          padding: 50px;
+          width: 1255;
+          height: 50px;
+          flex-direction: column;
+          
+          
+        }
+        h3{
+          font-size: 24px;
+          margin:0;
+        }
+        .primero{
+          font-size: 16px;
+        }
+  
+        .tercero{
+          background-color: white;
+          color: black;
+          font-size: 15px;
+          padding: 20px;
+          margin: 0; 
+         
+        
+          
+        }
+        h4{
+          font-size: 24px;
+        }
+       
+  
+
+  
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+      .foot button{
+        font-size: 15px; 
+        padding: 15px 20px; 
+        color: white; 
+        border-radius: 20px; 
+        display: flex;
+        background-color: transparent;
+       
+      }
+      .foot img {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+      button img {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 10px;
+      }
+      h1 img {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 10px;
+        float: right;
+        margin-right: 150px;
+      }
+      .container2 {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    
+    .image {
+        width: 20%;
+        margin: 0px;
+        margin-bottom: 30px;
+       
+    }
+
+   
+    .first-row {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+     
+    </style>
+  </head>
+  <body>
+    
+    <div class="titles-container">
+        <img src="../img/imagen1.jpg">
+      <h1>Jaime Andrés Cardona
+        <img src="../img/imagen9.jpg">
+        <img src="../img/imagen8.jpg">
+        <img src="../img/imagen7.jpg">
+        <img src="../img/imagen6.jpg">
+      </h1>
+      <h2>Experienced Full Stack Web Developer</h2>
+      <nav>
+        <ul>
+            <li>
+                <button class="Home" onclick="window.location.href='../home/Home.html'">
+                  <img src="../img/imagen2.jpg">
+                  Home
+                </button>
+              </li>
+              <li>
+                <button class="Resume" onclick="window.location.href='../resume/Resume.html'">
+                  <img src="../img/imagen3.jpg">
+                  Resume
+                </button>
+              </li>
+              <li>
+                <button class="Work" onclick="window.location.href='../work/Work.html'">
+                  <img src="../img/imagen4.jpg">
+                  Work
+                </button>
+              </li>
+              <li>
+                <button class="Contact" onclick="window.location.href='../contact/Contact.html'">
+                  <img src="../img/imagen5.jpg">
+                  Contact
+                </button>
+              </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container">
+        <section class="segundo">
+            <h3>My Resume</h3>
+            <p class="primero">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nihil, ut! </p>
+        </section>
+        <section class="tercero">
+            <h4>Where Have I Worked?</h4>
+            <p class="cuarto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque similique saepe inventore rem vitae esse. </p>
+        </section>
+        <div class="container2">
+            <div class="first-row">
+                <div class="image">
+                    <img src="../img/imagen11.jpg">
+                </div>
+                <div class="image">
+                    <img src="../img/imagen12.jpg">
+                </div>
+                <div class="image">
+                    <img src="../img/imagen13.jpg">
+                </div>
+                <div class="image">
+                    <img src="../img/imagen14.jpg">
+                </div>
+            </div>
+            <div class="image">
+                <img src="../img/imagen15.jpg">
+            </div>
+            <div class="image">
+                <img src="../img/imagen16.jpg">
+            </div>
+            <div class="image">
+                <img src="../img/imagen17.jpg">
+            </div>
+            <div class="image">
+                <img src="../img/imagen18.jpg">
+            </div>
+        </div>
+
+  
+    <footer class="foot">
+        <button class="Home" onclick="window.location.href=''">
+            <img src="../img/imagen10.jpg">
+            Download Resume
+          </button>
+      </footer>
+    
+  </body>
+  
