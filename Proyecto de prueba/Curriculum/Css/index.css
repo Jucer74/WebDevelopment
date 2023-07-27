@@ -1,0 +1,187 @@
+/* Estilos generales */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Estilos del encabezado */
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: left; /* Alineación a la izquierda */
+}
+
+header h2 {
+    font-size: 18px;
+    margin: 0;
+    text-align: left; /* Alineación a la izquierda */
+}
+
+#perfil-foto {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.iconos {
+    text-align: center;
+}
+
+.iconos h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: left; /* Alineación a la izquierda */
+}
+
+.iconos a {
+    color: #555;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.iconos a:hover {
+    color: #333;
+}
+
+.trabajo {
+    text-align: left; /* Alineación a la izquierda */
+    margin: 20px 0;
+}
+
+.trabajo h2 {
+    font-size: 24px;
+    color: #555;
+    margin: 0;
+}
+
+.seccion {
+    text-align: left; /* Alineación a la izquierda */
+    margin-bottom: 30px;
+}
+
+.seccion ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.seccion li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.seccion a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.seccion a:hover {
+    color: #333;
+}
+
+.home {
+    text-align: left; /* Alineación a la izquierda */
+    margin: 40px 0;
+}
+
+.home h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.home p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.skills {
+    text-align: left; /* Alineación a la izquierda */
+    margin: 40px 0;
+}
+
+.skills h1 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.skills p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.aprendido {
+    margin: 40px 0;
+}
+
+.aprendido ul {
+    list-style: none;
+    padding: 0;
+}
+
+.aprendido li {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.lenguaje {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.barra {
+    background-color: #f1f1f1;
+    height: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progreso {
+    height: 100%;
+    background-color: #333; /* Color de la barra llena */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.download-resume {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.download-resume:hover {
+    background-color: #fff;
+    color: #333;
+}
