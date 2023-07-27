@@ -19,10 +19,11 @@ img {
     background-color: darkgoldenrod;
     color: white;
     margin-left: -11%;
+    display: inline-block;
 }
 
 .name {
-    background-color: cadetblue;
+    background-color: #353948;
     height: 50%;
     display: flex;
 }
@@ -40,9 +41,8 @@ img {
 }
 
 .specialty {
-    background-color: coral;
+    background-color: black;
     height: 15%;
-    margin-top: -4%;
 }
 
 .options {
@@ -50,14 +50,32 @@ img {
     height: 35%;
     margin-top: -3px;
 }
-.options li {
-    list-style: none;
-    display: flex;
-    justify-content: left;
-}
 
-.options li a {
+.options button a {
     text-decoration: none;
     cursor: pointer;
     color: white;
+}
+
+button { 
+    width: 24.7%;
+    height: 100%;
+    margin-left: 0;
+}
+
+#button1 {
+    background-color: #007AFF;
+
+}
+
+#button2 {
+    background-color: #25A843;
+}
+
+#button3 {
+    background-color: #FCBF06;
+}
+
+#button4 {
+    background-color: #DD3546;
 }
