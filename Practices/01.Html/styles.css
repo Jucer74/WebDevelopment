@@ -1,0 +1,582 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: grey;
+  height: 100vh;
+}
+
+textarea {
+  font-family: Arial, sans-serif;
+}
+
+.container-header {
+  display: flex;
+}
+
+.container-header-image {
+  width: 300px;
+  height: 300px;
+}
+
+.container-header-image img {
+  width: 300px;
+  height: 300px;
+}
+
+.container-header-info {
+  width: 100vw;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-header-info-networks {
+  background-color: grey;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.container-header-info-networks-social a {
+  margin: 30px;
+}
+
+.container-header-info-networks-social img {
+  width: 20px;
+  height: 20px;
+  transition: 0.5s;
+}
+
+.container-header-info-networks-social img:hover {
+  width: 40px;
+  height: 40px;
+}
+
+.name {
+  color: white;
+  font-size: 3rem;
+  margin: 30px;
+}
+
+.container-header-info-experienceText {
+  background-color: black;
+  padding: 25px;
+  color: white;
+  font-size: 10px;
+}
+
+.container-header-info-nav {
+  display: flex;
+  height: 100vh;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: auto 10px;
+}
+
+.container-header-info-nav a {
+  color: white;
+}
+
+.container-header-info-nav img {
+  width: 40px;
+  height: 40px;
+}
+
+.container-header-info-nav-home {
+  background-color: #007aff;
+}
+
+.container-header-info-nav-resume {
+  background-color: #27a844;
+}
+
+.container-header-info-nav-work {
+  background-color: #fec107;
+}
+
+.container-header-info-nav-contact {
+  background-color: #dc3546;
+}
+
+.container-header-info-nav-home,
+.container-header-info-nav-resume,
+.container-header-info-nav-work,
+.container-header-info-nav-contact {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+/*HOME*/
+
+.container-content-welcome {
+  padding: 45px;
+  height: 150px;
+  background-color: #007aff;
+}
+
+.container-content-welcome h5 {
+  font-size: 30px;
+  color: white;
+}
+
+.container-content-welcome p {
+  color: white;
+  margin-top: 10px;
+}
+
+.container-content-skills {
+  background-color: whitesmoke;
+  padding: 30px;
+}
+
+.container-content-skills h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px auto;
+}
+
+hr {
+  margin: 15px auto;
+}
+
+.container-content-skills-language-percentage {
+  height: 15px;
+  background-color: #ccc;
+  position: relative;
+  border-radius: 5px;
+}
+
+.container-content-skills-language-percentage.html::before {
+  background-color: #4caf50;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.container-content-skills-language-percentage.css::before {
+  background-color: #4caf50;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.container-content-skills-language-percentage.javascript::before {
+  background-color: #4caf50;
+  width: 90%;
+  border-radius: 5px;
+}
+
+.container-content-skills-language-percentage.php::before {
+  background-color: #4caf50;
+  width: 75%;
+  border-radius: 5px;
+}
+
+.container-content-skills-language-percentage.python::before {
+  background-color: #4caf50;
+  width: 55%;
+  border-radius: 5px;
+}
+
+.container-content-skills-language-percentage::before {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 100%;
+  padding-right: 5px;
+}
+
+/*RESUME*/
+
+.container-content-myResume {
+  padding: 45px;
+  height: 150px;
+  background-color: #27a844;
+}
+
+.container-content-myResume h5 {
+  font-size: 30px;
+  color: white;
+  text-align: left;
+}
+
+.container-content-myResume p {
+  color: white;
+  margin-top: 10px;
+}
+
+.container-content-experience {
+  background-color: whitesmoke;
+  padding: 30px;
+}
+
+.container-content-experience h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px auto;
+}
+
+.container-content-experience-table {
+  margin: 10px auto;
+  display: flex;
+}
+
+.container-content-experience-table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-content-experience-table-1,
+.container-content-experience-table-2,
+.container-content-experience-table-3 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+  padding: 15px;
+  border: 2px solid gray;
+  gap: 20px;
+}
+
+.container-content-experience-table-1 h3,
+.container-content-experience-table-2 h3,
+.container-content-experience-table-3 h3 {
+  text-align: left;
+  margin: 0px;
+}
+
+.container-content-experience-table-date {
+  padding: 10px;
+  border: 2px solid grey;
+  background-color: rgb(208, 205, 205);
+  bottom: 0;
+}
+
+.container-content-experience-table-1-position {
+  background-color: rgb(60, 59, 59);
+  color: white;
+  padding: 10px;
+}
+
+.container-content-experience-table-1-phone {
+  background-color: rgb(60, 59, 59);
+  color: white;
+  padding: 10px;
+}
+
+/*WORK*/
+
+.container-content-myWork {
+  padding: 45px;
+  height: 150px;
+  background-color: #fec107;
+}
+
+.container-content-myWork h5 {
+  font-size: 30px;
+  color: white;
+  text-align: left;
+}
+
+.container-content-myWork p {
+  color: white;
+  margin-top: 10px;
+}
+
+.container-content-photos {
+  background-color: whitesmoke;
+  padding: 30px;
+}
+
+.container-content-photos h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px auto;
+}
+
+.container-content-photos-image {
+  margin: 10px auto;
+}
+
+.container-content-photos-image-up {
+  width: 100%;
+  display: flex;
+}
+
+.photoField {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=251);
+  background-size: cover;
+}
+
+.photoTools {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=252);
+  background-size: cover;
+}
+
+.photoWaterfall {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=253);
+  background-size: cover;
+}
+
+.photoForest {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=254);
+  background-size: cover;
+}
+
+.photoRoad {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=255);
+  background-size: cover;
+}
+
+.photoMountains {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=256);
+  background-size: cover;
+}
+
+.photoLake {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=257);
+  background-size: cover;
+}
+
+.photoBirds {
+  width: 25%;
+  min-height: 300px;
+  background-image: url(https://unsplash.it/600.jpg?image=258);
+  background-size: cover;
+}
+
+/*CONTACT*/
+
+.container-content-myContact {
+  padding: 45px;
+  height: 150px;
+  background-color: #dc3546;
+}
+
+.container-content-myContact h5 {
+  font-size: 30px;
+  color: white;
+  text-align: left;
+}
+
+.container-content-myContact p {
+  color: white;
+  margin-top: 10px;
+}
+
+.container-content-data {
+  background-color: whitesmoke;
+  padding: 30px;
+}
+
+.container-content-data h3 {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.container-content-data-form {
+  width: 100%;
+  margin: 10px auto;
+  padding: 10px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.container-content-data-form-name {
+  display: flex;
+  align-items: center;
+}
+
+.container-content-data-form-email {
+  display: flex;
+  align-items: center;
+}
+
+.container-content-data-form-coments {
+  display: flex;
+  align-items: center;
+}
+
+.container-content-data-form-coments textarea {
+  width: 99%;
+  height: 30px;
+  background-color: grey;
+  border: none;
+  padding: 5px;
+}
+
+.container-content-data-form img {
+  width: 30px;
+  height: 30px;
+  background-color: #dc3546;
+  padding: 2px;
+  margin: 2px;
+}
+
+.container-content-data-form input {
+  width: 99%;
+  height: 30px;
+  background-color: grey;
+  border: none;
+  padding: 5px;
+}
+
+.container-content-data-form input::placeholder,
+textarea::placeholder {
+  color: white;
+}
+
+.container-content-data-form-button {
+  width: 100%;
+  margin: 5px auto;
+  border: none;
+  background-color: #dc3546;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+}
+
+/*FOOTER*/
+
+.container-footer {
+  padding: 20px 10px;
+  display: flex;
+}
+
+.container-footer a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 3px solid white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 13px;
+  color: white;
+  margin: 10px;
+}
+
+.container-footer a img {
+  width: 13px;
+  height: 15px;
+}
+
+.container-content {
+  display: none;
+}
+
+#home-content:target {
+  display: block;
+}
+
+#resume-content:target,
+#work-content:target,
+#contact-content:target {
+  display: block;
+}
+
+@media (max-width: 750px) {
+  .container-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-header-image {
+    width: 380px;
+    height: 300px;
+  }
+
+  .container-header-image img {
+    width: 380px;
+    height: 300px;
+  }
+
+  .container-header-info-networks {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .container-header-info-experienceText {
+    text-align: center;
+  }
+
+  .container-header-info-networks-social a {
+    margin: 25px;
+  }
+
+  .container-header-info-nav img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .container-header-info-nav a {
+    font-size: 15px;
+  }
+
+  .container-content-welcome {
+    padding: 30px;
+  }
+
+  .container-content-welcome h5,
+  p {
+    text-align: center;
+  }
+
+  .container-content-data h3 {
+    text-align: center;
+  }
+
+  .container-content-skills {
+    background-color: whitesmoke;
+    padding: 30px;
+  }
+
+  .container-content-skills h3 {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 5px auto;
+  }
+
+  .container-content-photos-image-up {
+    flex-direction: column;
+  }
+
+  .photoField,
+  .photoBirds,
+  .photoForest,
+  .photoLake,
+  .photoMountains,
+  .photoRoad,
+  .photoTools,
+  .photoWaterfall {
+    width: 100%;
+  }
+
+  .container-content-experience-table {
+    flex-direction: column;
+  }
+}
