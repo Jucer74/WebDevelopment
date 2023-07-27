@@ -1,0 +1,393 @@
+/* Estilos para el contenedor principal */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+  }
+  
+  .container2 {
+    width: 100%;
+    background-color: #ffffff;
+    box-sizing: border-box; /* Ajustar el ancho del padding al tamaño total del contenedor */
+    
+  }
+  
+  /* Estilos para el div con la clase 'FotoPerfil' */
+  .FotoPerfil {
+    flex: 0 0 250px; /* Ancho fijo de la foto de perfil */
+  }
+  
+  .FotoPerfil img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Estilos para el div con la clase 'nomb-redes' */
+  .nomb-redes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 0 20px;
+    background-color: #678381;
+  }
+  
+  .nomb {
+    margin-bottom: 10px;
+  }
+  
+  .nomb h1 {
+    font-size: 24px;
+    color: #fff;
+  }
+  
+  .Redes button {
+    margin: 5px;
+    padding: 8px 12px;
+    background-color: #e0e0e000;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .Redes button img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* Estilos para el div con la clase 'experiencia' */
+  .experiencia {
+    text-align: center;
+    font-size: 18px;
+    /* margin-top: 20px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 20px 20px;
+    background-color: #000000;
+    color: #ffffff;
+  }
+  /*/
+  /* Estilos para el enlace dentro del botón de navegación */
+  .navegacion button a {
+    text-decoration: none; /* Elimina el subrayado */
+    color: #ffffff; /* Cambia el color del texto a blanco */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navegacion button img {
+    width: 30px;
+    height: 30px;
+    /* margin-bottom: 5px; */
+  }
+  
+  /* Estilos adicionales para el botón de navegación */
+  .navegacion button {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* margin: 5px; */
+    padding: 15px 30px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #678381; /* Color de fondo del botón */
+    color: #ffffff; /* Color del texto dentro del botón */
+  }
+  
+  /* Estilos para el div con la clase 'navegacion' */
+  .navegacion {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* margin-top: 20px; */
+  }
+  
+  .navegacion button img {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+  }
+  
+  .navegacion button:nth-of-type(1) {
+    background-color: rgb(0, 132, 255);
+  }
+  
+  .navegacion button:nth-of-type(2) {
+    background-color: rgb(33, 146, 52);
+  }
+  
+  .navegacion button:nth-of-type(3) {
+    background-color: rgb(230, 200, 31);
+  }
+  
+  .navegacion button:nth-of-type(4) {
+    background-color: rgb(252, 54, 54);
+  }
+  
+  .navegacion button {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 15px 30px;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  
+  
+  /* Estilos para el div con la clase 'barras' */
+  .barras {
+    margin-top: 30px;
+    width: 100%; /* Las barras ocuparán todo el ancho del container2 */
+  }
+  
+  /* Estilos para las barras de experiencia */
+  .skill {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .skill-name {
+    flex: 0 0 100px;
+  }
+  
+  .skill-bar {
+    flex: 1;
+    height: 20px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    overflow: hidden; /* Evitar que el contenido exceda los límites del div */
+  }
+  
+  .skill-bar::after {
+    content: "";
+    display: block;
+    height: 100%;
+    background-color: #4CAF50;
+    border-radius: 8px;
+    width: var(--skill-percentage, 0%);
+  }
+  
+  .welcome{
+    background-color:rgb(252, 54, 54);
+    padding: 20px 20px 40px;
+    display: block;
+    color: #fff;
+  }
+  
+  /* Responsive adjustments */
+  @media screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      max-width: 100%;
+    }
+  
+    .FotoPerfil {
+      margin-bottom: 20px;
+    }
+  
+    .nomb-redes {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .experiencia {
+      flex-direction: column;
+    }
+  
+    .navegacion {
+      flex-wrap: wrap;
+    }
+  
+    .navegacion button {
+      flex: 1 0 50%;
+    }
+  }
+
+  .descripcion-table {
+    width: 33.33%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  .descripcion-table td {
+    padding: 10px;
+    border-bottom: 1px solid #cccccc;
+    text-align: center;
+  }
+
+  .descripcion-table td:first-child {
+    font-weight: bold;
+  }
+
+  /* Estilos para el contenedor de las tablas */
+  .tablas-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* Estilo para el contenedor de las tablas */
+.tablas-container {
+    display: flex;
+  }
+  
+  /* Estilo para cada tabla */
+  .tabla {
+    border: 1px solid #ccc; /* Contorno de la tabla */
+    margin-right: 10px; /* Espacio entre tablas */
+    padding: 10px; /* Espacio dentro de la tabla */
+  }
+  
+  /* Estilo para aumentar una celda hacia abajo correspondiente a la fecha */
+  .tabla td {
+    padding: 10px; /* Espacio dentro de las celdas */
+    text-align: center; /* Alineación del contenido al centro */
+  }
+  
+  /* Aumentar el tamaño de la celda de la fecha */
+  .tabla td.fecha {
+    height: 20px; /* Altura de la celda para la fecha */
+    background-color: #dadada; /* Color de fondo para la celda de la fecha */
+    font-size: 20px; /* Tamaño de fuente para la fecha */
+  }
+  
+
+
+  .position-tabla {
+    text-align: center;
+    font-size: 12px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 20px 20px;
+    background-color: #202020;
+    color: #ffffff;
+  }
+
+  
+  .phone-tabla {
+    text-align: center;
+    font-size: 12px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 20px 20px;
+    background-color: #202020;
+    color: #ffffff;
+  }
+
+  .descripcion-tabla{
+    text-align: left;
+  }
+
+  .titulo-tabla{
+    text-align: left;
+  }
+
+
+/* Estilo para el mosaico de imágenes */
+.mosaico-imagenes {
+    display: grid;
+    grid-gap: 0; /* Elimina los espacios en blanco entre las imágenes */
+  }
+  
+  /* Estilo para cada fila de imágenes en el mosaico */
+  .fila-imagenes {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  /* Estilo para cada imagen en el mosaico */
+  .imagen {
+    width: 100%; /* Cada imagen ocupa el 100% del ancho del contenedor */
+    padding-top: 100%; /* Establece la proporción 1:1 (altura igual al 100% del ancho) */
+    position: relative;
+  }
+  
+  .imagen img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta las imágenes para cubrir todo el contenedor */
+  }
+  
+  /* Estilo para el formulario */
+.formulario {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilo para cada campo del formulario */
+  .campo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo para el icono */
+  .navegacion {
+    font-size: 20px;
+    margin-right: 5px;
+    color: white;
+    padding: 3px;
+    border-radius: 50%;
+  }
+  
+  /* Estilo para el campo de texto y el textarea */
+  .input-texto {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    color: #333;
+    background-color: #333; /* Color gris para el fondo del campo de texto */
+  }
+  
+  
+  /* Estilo para el botón */
+  .boton {
+    padding: 10px 20px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+  }
+  
+  /* Estilo para evitar el borde azul al hacer clic en el botón */
+  .boton:focus {
+    outline: none;
+  }
+  
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,224 @@
+/* Estilos para el contenedor principal */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+}
+
+.container2 {
+  width: 100%;
+  background-color: #ffffff;
+  box-sizing: border-box; /* Ajustar el ancho del padding al tamaño total del contenedor */
+  
+}
+
+/* Estilos para el div con la clase 'FotoPerfil' */
+.FotoPerfil {
+  flex: 0 0 250px; /* Ancho fijo de la foto de perfil */
+}
+
+.FotoPerfil img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos para el div con la clase 'nomb-redes' */
+.nomb-redes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 0 20px;
+  background-color: #678381;
+}
+
+.nomb {
+  margin-bottom: 10px;
+}
+
+.nomb h1 {
+  font-size: 24px;
+  color: #fff;
+}
+
+.Redes button {
+  margin: 5px;
+  padding: 8px 12px;
+  background-color: #e0e0e000;
+  border: none;
+  cursor: pointer;
+}
+
+.Redes button img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Estilos para el div con la clase 'experiencia' */
+.experiencia {
+  text-align: center;
+  font-size: 18px;
+  /* margin-top: 20px; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  padding: 20px 20px;
+  background-color: #000000;
+  color: #ffffff;
+}
+/*/
+/* Estilos para el enlace dentro del botón de navegación */
+.navegacion button a {
+  text-decoration: none; /* Elimina el subrayado */
+  color: #ffffff; /* Cambia el color del texto a blanco */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.navegacion button img {
+  width: 30px;
+  height: 30px;
+  /* margin-bottom: 5px; */
+}
+
+/* Estilos adicionales para el botón de navegación */
+.navegacion button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin: 5px; */
+  padding: 15px 30px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #678381; /* Color de fondo del botón */
+  color: #ffffff; /* Color del texto dentro del botón */
+}
+
+/* Estilos para el div con la clase 'navegacion' */
+.navegacion {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* margin-top: 20px; */
+}
+
+.navegacion button img {
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+}
+
+.navegacion button:nth-of-type(1) {
+  background-color: rgb(0, 132, 255);
+}
+
+.navegacion button:nth-of-type(2) {
+  background-color: rgb(33, 146, 52);
+}
+
+.navegacion button:nth-of-type(3) {
+  background-color: rgb(230, 200, 31);
+}
+
+.navegacion button:nth-of-type(4) {
+  background-color: rgb(252, 54, 54);
+}
+
+.navegacion button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  padding: 15px 30px;
+  color: #ffffff;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+
+/* Estilos para el div con la clase 'barras' */
+.barras {
+  margin-top: 30px;
+  width: 100%; /* Las barras ocuparán todo el ancho del container2 */
+}
+
+/* Estilos para las barras de experiencia */
+.skill {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skill-name {
+  flex: 0 0 100px;
+}
+
+.skill-bar {
+  flex: 1;
+  height: 20px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  overflow: hidden; /* Evitar que el contenido exceda los límites del div */
+}
+
+.skill-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 8px;
+  width: var(--skill-percentage, 0%);
+}
+
+.welcome{
+  background-color:rgb(0, 132, 255);
+  padding: 20px 20px 40px;
+  display: block;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    max-width: 100%;
+  }
+
+  .FotoPerfil {
+    margin-bottom: 20px;
+  }
+
+  .nomb-redes {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .experiencia {
+    flex-direction: column;
+  }
+
+  .navegacion {
+    flex-wrap: wrap;
+  }
+
+  .navegacion button {
+    flex: 1 0 50%;
+  }
+}
