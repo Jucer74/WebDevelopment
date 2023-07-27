@@ -1,0 +1,185 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #f0f0f0;
+}
+
+#perfil {
+    position: relative;
+}
+
+#perfil-foto {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+}
+
+.iconos {
+    display: flex;
+    background-color: #333;
+    align-items: center;
+    padding: 20px;
+}
+
+.iconos h1 {
+    font-size: 36px;
+    color: white;
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.iconos a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+.trabajo {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.trabajo h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Navegación */
+.seccion {
+    display: flex;
+    background-color: #333;
+}
+
+.seccion ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.seccion li {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.seccion a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+}
+
+/* Estilos de enlaces de navegación */
+.seccion li.home-nav a { background-color: blue; }
+.seccion li.resume-nav a { background-color: green; }
+.seccion li.work-nav a { background-color: #ffc107; }
+.seccion li.contact-nav a { background-color: red; }
+
+/* Sección de Contacto */
+.contacto {
+    background-color: red;
+    padding: 40px;
+    text-align: left;
+    color: white;
+}
+
+.contacto h2 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.contacto p {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.get-in-touch {
+    background-color: white;
+    padding: 40px;
+    text-align: left;
+    color: #333;
+}
+
+.get-in-touch h2 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.get-in-touch p {
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+/* Formulario */
+.formulario {
+    margin-top: 30px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.input-container i {
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.input-container button {
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    display: block;
+    margin: 0 auto; 
+}
+footer {
+    background-color: #333;
+    padding: 40px;
+    position: relative;
+    margin-left: -8px;
+    margin-right: -8px;
+}
+
+.download-resume {
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    padding: 10px 20px;
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+.download-resume i {
+    margin-right: 10px;
+}
+
+i.fas.fa-cloud-download-alt {
+    color: white;
+    font-size: 15px;
+}
+
+
+
+
+
+
+

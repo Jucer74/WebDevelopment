@@ -1,0 +1,141 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Perfil */
+#perfil {
+    position: relative;
+}
+
+#perfil-foto {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+}
+
+/* Iconos de redes sociales */
+.iconos {
+    display: flex;
+    background-color: #333;
+    align-items: center;
+    padding: 20px;
+}
+
+.iconos h1 {
+    font-size: 36px;
+    color: white;
+    margin-left: 20px;
+    font-weight: 400;
+}
+
+.iconos a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+/* Información de trabajo */
+.trabajo {
+    background-color: black;
+    color: white;
+    padding: 20px;
+}
+
+.trabajo h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Navegación */
+.seccion {
+    display: flex;
+    background-color: #333;
+}
+
+.seccion ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.seccion li {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.seccion a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+}
+
+/* Estilos de enlaces de navegación */
+.seccion li.home-nav a { background-color: blue; }
+.seccion li.resume-nav a { background-color: green; }
+.seccion li.work-nav a { background-color: #ffc107; }
+.seccion li.contact-nav a { background-color: red; }
+
+.my-resume-section {
+    background-color: green;
+    color: white;
+    text-align: left;
+    padding: 40px;
+}
+
+.my-resume-section h2 {
+    font-size: 36px;
+    margin: 0;
+}
+
+.tabla{
+    display: inline-block;
+    position: relative;
+    border-collapse: collapse;
+    left: 30px;
+    top: 80px;
+    padding-right: 50px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabla h1{
+    color: black;
+}
+
+.tabla p{
+    color: black;
+}
+
+.tabla h2{
+    background-color: #333;
+    color: white;
+    margin-left: 30px;
+    padding: 10px;
+    font-size: 15px;
+}
+.worked-section {
+    background-color: white;
+    color: #333;
+    text-align: left;
+    padding: 40px;
+}
+
+.worked-section h2 {
+    font-size: 36px;
+    margin: 0;
+}
+
+
+
+
+
+
+
