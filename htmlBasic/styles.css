@@ -1,0 +1,337 @@
+/* styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+  }
+  
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  nav li {
+    flex-grow: 1;
+    margin-right: 20px;
+  }
+  
+  nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+  }
+  
+  nav a:hover {
+    text-decoration: underline;
+  }
+  
+  .container { 
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0px;
+    background-color: #fff;
+    color: #000;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .image-container {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    margin-right: 0px;
+    border-radius: 0rem;
+  }
+  
+  img {
+    width: 300px;
+    height: 300px;
+    margin-right: 0px;
+    object-fit: cover;
+    border-radius: 0rem;
+  }
+  
+  .profile-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile h2 {
+    font-size: 30px;
+    margin: 0;
+    background-color: #888;
+    padding: 60px;
+    border: none;
+    color: #fff;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile h2 i {
+    margin-inline-start: 20px;
+  }
+  
+  .profile p {
+    font-size: 18px;
+    margin: 0;
+    color: #777;
+    background-color: #000;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    border-radius: 0;
+  }
+  
+  nav {
+    margin-left: 20px;
+    padding-top: 20px;
+    text-align: center;
+  }
+  
+  /* Establecer el fondo de los hipervínculos con los colores específicos */
+  a.home-link {
+    background-color: rgb(48, 138, 255);
+  }
+  
+  a.resume-link {
+    background-color: rgb(114, 219, 114);
+  }
+  
+  a.work-link {
+    background-color: rgb(255, 170, 67);
+  }
+  
+  a.contact-link {
+    background-color: rgb(235, 88, 88);
+  }
+
+  .sub-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: rgb(48, 138, 255);
+    color: #fff;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .sub-containerr {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: rgb(114, 219, 114);
+    color: #fff;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .sub-containerrr {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: rgb(255, 170, 67);
+    color: #fff;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .sub-containerrrr {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: rgb(235, 88, 88);
+    color: #fff;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .subb-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .ultimo {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: #888;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .subbb-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .subbbb-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .ultimooo {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: #888;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .subbbbb-container {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .ultimoooo {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: #888;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+  
+  .column{
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px; /* Agregamos un margen superior para separarlo del container anterior */
+  }
+
+  .skills {
+  margin-bottom: 20px;
+}
+
+.skill__bar {
+  background-color: #ddd;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress {
+  background-color: #4CAF50;
+  height: 100%;
+}
+
+/* Estilos para la cuadrícula de imágenes */
+.image-grid {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .row img {
+    width: calc(33.33% - 10px); /* Calcula el ancho de las imágenes para ocupar 1/3 del espacio y deja un espacio de 10px entre ellas */
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px; /* Agrega un margen inferior para separar las filas */
+  }
+
+  .contact-form {
+    max-width: 860px;
+    margin: 0 auto;
+    background-color: white;
+    color: #030303;
+    text-align: left;
+    padding: 20px;
+    margin-top: 0px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  textarea {
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    height: 150px;
+  }
+  
+  button {
+    background-color: rgb(235, 88, 88);
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: rgb(235, 88, 88);
+  }  
+
+
+
+
+  
+  
+  
+  
+  
+  
