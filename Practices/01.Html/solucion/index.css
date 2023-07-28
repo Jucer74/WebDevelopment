@@ -1,0 +1,227 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans;
+    /* font-size: max(1.1vw, 12px); */
+}
+
+.grid-page {
+    position: sticky;
+    display: grid;
+    font-size: max(1vw, 12px);
+    max-height: 46vh;
+    min-height: 25vh;
+    /* border: 1px solid #ffeead; */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 13vh 7vh 13vh;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+    outline-style: groove;
+}
+
+.profile-picture img {
+    grid-area: 1 / 1  / -1 / 3;
+    margin: 0 0;
+    width: 33vw;
+    height: 33vh;
+    transition: -webkit-filter 0.5s ease-in-out;
+}
+
+.profile-picture img:hover {
+    -webkit-filter: invert(100%); !important;
+}
+
+#profile-container {
+    grid-row: 1;
+    grid-column: 2 / -1;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background-color: #323a41;
+  
+}
+
+#profile-description {
+    grid-row: 2;
+    grid-column: 2 / -1;
+    background-color: black;
+    font-color: white;
+    padding-left: 2vw;
+    justify-content: center;
+    transition: background-color 0.6s ease;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+
+#profile-description p {
+    padding-top: 1%;
+}
+
+#profile-description:hover{
+    background-color: white;
+    color: black;
+    font-style: italic;
+}
+
+#profile-description:hover p:after {
+    content: " ... en construcción :D 👷🏼‍♂️";
+}
+
+
+#profile-name {
+    font-size: min(3em, 5vw);
+    font-weight: 300;
+    padding: 5%;
+    margin-left: .5vw;
+    margin-right: .5vw;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.socials {
+    display: flex;
+    flex: 1;
+    justify-content: space-evenly;
+
+    margin-left: 10%;
+    margin-right: 4%;
+}
+
+.socialico {
+    padding: 8px;
+    margin-left: 1vw;
+    font-size: 0.8em;
+
+}
+
+.socialico img {
+    width: 1.5vw;
+    filter: invert(100%);
+}
+
+.profile-navbar {
+    grid-row: 3;
+    grid-column: 2 / -1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.profile-navbar a:focus , .profile-navbar-item:hover {
+    transform: scale(1.1) translateY(3px);      
+    transform: background-color 0.6s ease;
+    background-color: #323a41;
+    border-radius: 8px;    
+}
+
+.profile-navbar a:link{
+    text-decoration: none;
+    color: #ffe;
+}
+
+.profile-navbar a:visited{
+   color: #ffe;
+   text-decoration: none;
+   transition: text-decoration 0.5s ease;
+}
+
+
+.profile-navbar-item {
+    width: 19vw;
+    height: 100%;
+    background-color: var(--color);
+    transition: background-color 0.6s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-navbar-item span {
+    font-size: 3vw;
+}
+
+.profile-navbar-item:nth-child(1){
+    --color: #097efb;
+}
+
+.profile-navbar-item:nth-child(2){
+    --color: #31ac4c;
+}
+
+.profile-navbar-item:nth-child(3){
+    --color: #fdc413;
+}
+
+.profile-navbar-item:nth-child(4){
+    --color: #dd3e4e;
+}
+
+
+.grid-page > div {
+    color: #ffe;
+}
+
+/* css general de componentes con los ++haxs htmx */
+
+#lulpopup {
+    position: absolute;
+    top: 50%;
+    left: 50vw;
+    transform: translate(-60%, -50%);
+}
+
+#page-content {
+    width: 100%;
+    top: 30vh;
+}
+
+.gridfotos {
+    display: grid;
+    width: 100wh;
+    height: 25vh;
+    gap: 8px;
+    margin-top: 2vh;
+    margin-left: 12vh;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: left;
+
+}
+
+.gridfotos img {
+    border-radius: 12px;
+    max-width: 25vh;
+    box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+#headerbanner {
+    color: white;
+    position: relative;
+    height: 20vh;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: -1;
+
+}
+
+#headerbanner > div{
+    text-align: center;
+    margin: 0;
+    top: 1vh;
+}
+
+@media screen and (max-width: 600px) {
+  .gridfotos {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+}

@@ -1,17 +1,102 @@
-<html>
-  <body style="background-color: black">
-    <img
-      title="nadaaun"
-      src="https://media.tenor.com/SB_Uh3KftOUAAAAC/times-up-go-back.gif"
-      style="width: 75%; justify-content: center; padding: 10%"
-    />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <!-- tocó activar los haxs y despertar el only HTML -->
+    <!-- full stack developer xD -->
+    <!-- con HTMX, el HTML++ -->
+    <script src="https://unpkg.com/htmx.org/dist/htmx.js"></script>
 
-    <h2 style="color: white; padding-left: 30%; overflow-wrap: break-word; padding-right: 10%;">
-      <b><p style="color: red">Error</p></b>
-      Has llegado muy temprano aquí, regresa más tarde.
-    </h2>
+    <title> John Doe's Site</title>
+    <meta name="description" content="una tarea en html+css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- para los iconos cheveres -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
 
-    <small style="font-size: 10; padding-left: 50%"> por favor </small>
+    <div class="grid-page">
+        <div class="profile-picture">
+          <a href="gridfotos.html" hx-get="gridfotos.html" hx-target="#gridfotos">
+            <img src="https://th.bing.com/th/id/OIG.0voo7K0CvuJXXOhsKuAF?pid=ImgGn"
+              title="lafotodeperfilde_johndoe" alt="unaimagen" width="520px" height="520px"
+            /></a>
+        </div>
+
+        <div id="profile-container">
+          <div id="profile-name">John Doe</div>
+            <div class="socials">
+              <div class="socialico">
+                <img src="https://www.svgrepo.com/show/89364/twitter-social-logotype.svg" alt="twitterlogo">
+               
+              </div>
+              <div class="socialico">
+                <img src="https://www.svgrepo.com/show/500854/facebook.svg" alt="facebooklogo">
+              </div>
+              <div class="socialico">
+                <a href="lul.html" hx-get="lul.html" hx-target="#lulpopup"
+                >
+                <img src="https://www.svgrepo.com/show/494344/instagram.svg" alt="instagramlogo"></a>
+              </div>
+              <div class="socialico">
+                <a href="https://github.com/etensor">
+                <img src="https://www.svgrepo.com/show/503359/github.svg" alt="githublogo"></a>
+              </div>
+            </div>  
+        </div>
+        
+        <div id="profile-description">
+          <p> Experienced Full Stack Web Developer</p>
+        </div>
+
+        <div class="profile-navbar">
+          <a href="./pages/home.html" 
+            class="profile-navbar-item"
+            hx-get="./pages/home.html"
+            hx-target="#page-content"
+            >
+            <span class="material-symbols-outlined">house</span>
+            Home
+          </a>
+          <a href="pages/resume.html"
+            class="profile-navbar-item"
+            hx-get="pages/resume.html"
+            hx-target="#page-content"
+            >
+            <span class="material-symbols-outlined">school</span>
+              Resume
+          </a>
+          <a href="pages/work.html"
+            class="profile-navbar-item"
+            hx-get="pages/work.html"
+            hx-target="#page-content"
+          >
+            <span class="material-symbols-outlined">work</span>
+              Work
+          </a>
+          <a href="pages/contact.html"
+            class="profile-navbar-item"
+            hx-get="pages/contact.html"
+            hx-target="#page-content"
+          >
+            <span class="material-symbols-outlined">mail</span>
+            Contact
+        </a>
+        </div>
+    </div> 
+
+
+    <!-- aqui es donde htmx hace la magia :D :D -->
+
+    <div id="lulpopup" hx-toggle="true"></div>
+    <div id="gridfotos" hx-toggle="true"></div>
+    <div id="page-content"></div>
+
+
+    <script src="" async defer></script>
 
   </body>
 </html>
