@@ -10,7 +10,6 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 38px;
 }
 
 /* Estilos del resume_container */
@@ -23,6 +22,7 @@ body {
   padding: 5px;
   height: 220px; /* Tamaño exacto del contenedor */
   box-sizing: border-box; /* Incluye el padding y border en el cálculo del tamaño */
+  margin-top: 39px;
 }
 
 /* Estilos del resume_container_title */
@@ -52,13 +52,9 @@ body {
 
 /* Estilos para la tarjeta de presentación de proyectos */
 .resume_container_3 {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(300px, 1fr)
-  ); /* Ajustar el tamaño mínimo y máximo de las tarjetas */
-  justify-content: center;
-  gap: 50px;
+  display: flex; /* Cambiar de grid a flex */
+  flex-wrap: wrap; /* Asegurarse de que las tarjetas se envuelvan si no caben en una fila */
+  justify-content: center; /* Centrar horizontalmente los elementos */
   color: black;
   padding: 5px;
 }
@@ -72,6 +68,7 @@ body {
   text-align: left;
   border: 1px solid black;
   box-sizing: border-box; /* Incluye el padding y border en el cálculo del tamaño */
+  margin: 20px;
 }
 
 .card_title {
@@ -125,51 +122,10 @@ body {
   margin-top: 30px;
 }
 
-/* Media queries */
-/* For tablets and larger screens (landscape) */
-@media screen and (min-width: 768px) {
-  .resume_container_3 {
-    grid-template-columns: repeat(3, 1fr); /* Mostrar 3 tarjetas por fila */
-    gap: 30px; /* Reducir el espacio entre las tarjetas */
+/* Media query del resume_container dispositivos mobiles quitar el margin top*/
+@media (max-width: 768px) {
+  .resume_container {
+    margin-top: 0px;
   }
 }
 
-/* For small tablets and larger phones (portrait) */
-@media screen and (max-width: 767px) {
-  .resume_container_3 {
-    grid-template-columns: repeat(2, 1fr); /* Mostrar 2 tarjetas por fila */
-    gap: 20px; /* Reducir el espacio entre las tarjetas */
-  }
-
-  .resume_card {
-    max-width: 350px; /* Limitar el ancho máximo de las tarjetas en dispositivos pequeños */
-  }
-
-  .card_title {
-    font-size: 1.5rem;
-  }
-
-  .card_paragraph {
-    font-size: 25px;
-  }
-}
-
-/* For smaller phones */
-@media screen and (max-width: 480px) {
-  .resume_container_3 {
-    grid-template-columns: 1fr; /* Mostrar 1 tarjeta por fila */
-    gap: 15px; /* Reducir el espacio entre las tarjetas */
-  }
-
-  .resume_card {
-    max-width: 300px; /* Limitar el ancho máximo de las tarjetas en dispositivos aún más pequeños */
-  }
-
-  .card_title {
-    font-size: 1.2rem;
-  }
-
-  .card_paragraph {
-    font-size: 20px;
-  }
-}

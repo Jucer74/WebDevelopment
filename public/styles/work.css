@@ -9,7 +9,6 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 39px;
 }
 
 /* Estilos del work_container */
@@ -20,7 +19,8 @@ body {
   width: 100%;
   color: white;
   padding: 5px;
-  height: 220px;
+  height: 210px;
+  margin-top: 39px;
 }
 
 /* Estilos del work_container_title */
@@ -67,6 +67,10 @@ body {
 
 /* Media queries para ajustar el grid de imágenes */
 @media screen and (max-width: 768px) {
+  .work_container {
+    margin-top: 0px;
+  }
+  
   .work_image_grid {
     grid-template-columns: repeat(2, 1fr); /* Dos columnas de igual ancho */
   }
@@ -77,6 +81,10 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+  .work_container {
+    margin-top: 0px;
+  }
+
   .work_image_grid {
     grid-template-columns: repeat(1, 1fr); /* Una columna de ancho completo */
   }

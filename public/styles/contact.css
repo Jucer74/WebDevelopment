@@ -16,14 +16,14 @@ body {
   background-color: #db4141;
   width: 100%;
   color: white;
+  height: 220px;
   padding: 5px;
   flex-direction: column;
-  margin-top: 39px;
 }
 
 /* Estilos del contact_container_title */
 .contact_container_title {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 700;
   margin-left: 20px;
   padding-top: 20px;
@@ -105,22 +105,21 @@ body {
   border-radius: 4px;
 }
 
-/* Media queries para diferentes dispositivos */
-
-/* Tablets en modo horizontal */
-@media only screen and (min-width: 768px) {
+/* Media queries para contact_container dispositivos desktop agregar el margin top */
+/* Desktops y laptops */
+@media only screen and (min-width: 992px) {
+  /* Ajusta los estilos necesarios para desktops y laptops */
   .contact_container {
-    height: 210px;
-  }
-
-  /* Ajusta los estilos necesarios para tablets en modo horizontal */
-  .contact_form_container {
-    margin-left: 20px; /* Por ejemplo, reducir el margen izquierdo */
+    margin-top: 39px;
   }
 }
 
 /* Tablets en modo vertical y dispositivos móviles */
 @media only screen and (max-width: 767px) {
+  .contact_container_title {
+    margin-top: 10px;
+  }
+
   /* Ajusta los estilos necesarios para tablets en modo vertical y dispositivos móviles */
   .contact_form_container {
     margin-left: 10px; /* Por ejemplo, reducir el margen izquierdo aún más */
