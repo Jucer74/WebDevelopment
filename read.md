@@ -28,6 +28,10 @@ Depues de clonar el repositorio se debe de entrar a la carpeta del proyecto con 
 ``` bash
 cd practica_d_w
 ```
+Instalar python en caso de no tenerlo instalado, para instalarlo se debe de ejecutar el siguiente comando:
+``` bash
+sudo apt-get install python
+```
 
 Para poder usar la pagina web se debe ejecutar un servidor local, en este caso se utilizo el modulo de python http.server, para ejecutarlo se debe de ejecutar el siguiente comando en la terminal:
 ``` bash
