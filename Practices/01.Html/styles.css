@@ -1,0 +1,130 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Remove gutters for columns inside .no-gutters */
+.no-gutters > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  
+  /* Common column classes with responsive breakpoints */
+  [class*="col-"],
+  [class*="col-"] {
+    position: relative;
+    width: 80%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .twitterLogo img{
+
+   width: 10px;
+   height: 20px;
+
+  }
+
+
+  /* Estilos adicionales para el contenedor principal y el body */
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mainHeader {
+    width: 100%;
+  }
+  
+  .principalBox {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end; /* Alinea el contenido hacia la derecha */
+  }
+  
+  .col-lg-8.col-md-7 {
+    align-self: flex-start; /* Posiciona el elemento en la parte superior */
+  }
+
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+  }
+  
+  html {
+    font-family: sans-serif;
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -ms-overflow-style: scrollbar;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Global box-sizing rule */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  
+  /* Utility classes */
+  .align-items-center {
+    align-items: center !important;
+  }
+  
+  .justify-content-between {
+    justify-content: space-between !important;
+  }
+  
+  .flex-row {
+    flex-direction: row !important;
+  }
+  
+  .d-flex {
+    display: flex !important;
+  }
+  
+  .text-white {
+    color: #fff !important;
+  }
+  
+  /* Custom styles for the snippet */
+  .p-5 {
+    padding: 20px;
+  }
+  
+  .bg-dark {
+    background-color: #333;
+  }
+  
+  .principalBox{
+    display: flex;
+    flex-direction: row;
+  }
+  .name {
+   
+    margin-top: 20px;
+  }
+  
+  .name h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+  
+  .name div {
+    margin-left: 10px;
+    font-size: 1.5rem;
+  }
+  
+  
