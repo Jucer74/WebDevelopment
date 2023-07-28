@@ -1,0 +1,42 @@
+.imagen{
+    width: 420px;
+    height: 420px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+.name{
+    font-size: 69px;
+    color: #ffffff;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+span{
+    background-color: #333333;
+    display: flex;
+    height: 130px;
+    align-content: top;
+}
+.x{
+    width: 30px;
+    height: 30px;
+    padding-left: 600px;
+}
+.insta{
+    width: 30px;
+    height: 30px;
+    padding-left: 50px;
+}
+.facebook{
+    width: 30px;
+    height: 30px;
+    padding-left: 50px;
+}
+.github{
+    width: 30px;
+    height: 30px;
+    padding-left: 50px;
+}
+a{
+    color: #333333;
+}
