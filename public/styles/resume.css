@@ -21,11 +21,13 @@ body {
   width: 100%;
   color: white;
   padding: 5px;
+  height: 220px; /* Tamaño exacto del contenedor */
+  box-sizing: border-box; /* Incluye el padding y border en el cálculo del tamaño */
 }
 
 /* Estilos del resume_container_title */
 .resume_container_title {
-  font-size: 2rem;
+  font-size: 40px;
   font-weight: 700;
   margin-left: 20px;
   padding-top: 20px;
@@ -51,7 +53,10 @@ body {
 /* Estilos para la tarjeta de presentación de proyectos */
 .resume_container_3 {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Ajustar el tamaño mínimo y máximo de las tarjetas */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Ajustar el tamaño mínimo y máximo de las tarjetas */
   justify-content: center;
   gap: 50px;
   color: black;
@@ -61,12 +66,12 @@ body {
 .resume_card {
   width: 100%; /* Utilizar el ancho máximo del contenedor grid */
   max-width: 500px; /* Limitar el ancho máximo de las tarjetas */
-  height: 400px;
   padding: 20px;
   border-radius: 3px;
   margin-top: 20px;
   text-align: left;
   border: 1px solid black;
+  box-sizing: border-box; /* Incluye el padding y border en el cálculo del tamaño */
 }
 
 .card_title {
@@ -125,6 +130,7 @@ body {
 @media screen and (min-width: 768px) {
   .resume_container_3 {
     grid-template-columns: repeat(3, 1fr); /* Mostrar 3 tarjetas por fila */
+    gap: 30px; /* Reducir el espacio entre las tarjetas */
   }
 }
 
@@ -132,6 +138,7 @@ body {
 @media screen and (max-width: 767px) {
   .resume_container_3 {
     grid-template-columns: repeat(2, 1fr); /* Mostrar 2 tarjetas por fila */
+    gap: 20px; /* Reducir el espacio entre las tarjetas */
   }
 
   .resume_card {
@@ -150,7 +157,8 @@ body {
 /* For smaller phones */
 @media screen and (max-width: 480px) {
   .resume_container_3 {
-    grid-template-columns: repeat(1, 1fr); /* Mostrar 1 tarjeta por fila */
+    grid-template-columns: 1fr; /* Mostrar 1 tarjeta por fila */
+    gap: 15px; /* Reducir el espacio entre las tarjetas */
   }
 
   .resume_card {

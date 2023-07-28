@@ -1,4 +1,3 @@
-/*Style home*/
 /* Estilos generales */
 body {
   margin: 0;
@@ -7,7 +6,7 @@ body {
 
 /* Estilos del home */
 .home {
-  height: 100vh;
+  min-height: 100vh; /* Usamos min-height en lugar de height para evitar problemas en pantallas pequeñas */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -50,31 +49,20 @@ body {
   padding: 5px;
 }
 
-/* Inline CSS to create the divider */
-.home hr {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-  border-top: 2px solid #000;
-  width: 95%;
-  margin: 10px 0;
-}
-
 /* Estilos del home_container_3 */
-.home .home_container_3 {
+.home_container_3 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 95%;
-  height: auto;
+  width: 100%;
   color: black;
   margin: auto;
+  padding: 5px;
 }
 
 /* Styles for individual skill */
 .skill {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -154,6 +142,12 @@ body {
   }
 
   .skill_name {
-    font-size: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Display skills in a single column */
+  .home_container_2 {
+    flex-direction: column;
+    align-items: center;
   }
 }

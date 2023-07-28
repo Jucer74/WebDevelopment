@@ -13,9 +13,6 @@ body {
   margin-top: 32px;
   border-top: 1px solid white;
   text-align: center;
-}
-
-.footer_content {
   display: flex;
   justify-content: left;
 }
@@ -61,5 +58,26 @@ body {
   .footer_link_download {
     margin-top: 10px; /* Margen superior reducido en dispositivos móviles */
     margin-right: 0; /* Eliminamos el margen derecho en dispositivos móviles */
+  }
+}
+
+/* Media Queries para dispositivos con pantallas menores a 375px */
+@media screen and (max-width: 375px) {
+  .footer_content {
+    padding: 20px; /* Padding reducido en dispositivos con pantallas menores a 375px */
+    margin-top: 20px; /* Margen superior reducido en dispositivos con pantallas menores a 375px */
+  }
+
+  .footer_botton_download {
+    margin-top: 16px; /* Margen superior reducido en dispositivos con pantallas menores a 375px */
+  }
+
+  .footer_logo {
+    margin-left: 5px; /* Eliminamos el margen izquierdo en dispositivos con pantallas menores a 375px */
+  }
+
+  .footer_link_download {
+    margin-top: 10px; /* Margen superior reducido en dispositivos con pantallas menores a 375px */
+    margin-right: 0; /* Eliminamos el margen derecho en dispositivos con pantallas menores a 375px */
   }
 }

@@ -47,6 +47,10 @@
   height: 71px;
 }
 
+.navbar_paragraph:hover {
+  background-color: #23202d;
+}
+
 /* Estilos para el titulo del parrafo */
 .navbar_paragraph_title {
   font-size: 20px;
@@ -107,6 +111,23 @@
   background-color: #db4141;
 }
 
+/* Cambiar el color al pasar el cursor por encima */
+#navbar_home:hover {
+  background-color: #23202d;
+}
+
+#navbar_resume:hover {
+  background-color: #23202d;
+}
+
+#navbar_work:hover {
+  background-color: #23202d;
+}
+
+#navbar_contact:hover {
+  background-color: #23202d;
+}
+
 /* Media Queries para dispositivos móviles */
 @media screen and (max-width: 768px) {
   .navbar_container {
@@ -116,27 +137,27 @@
 
   .navbar_logo {
     width: 100%; /* La imagen ocupa todo el ancho disponible */
-    max-width: none; /* Eliminamos el máximo de 400px */
-    height: auto; /* Altura automática para adaptarse al ancho */
+    height: 400px; /* Altura automática para adaptarse al ancho */
   }
 
   .navbar_profile {
     flex-direction: column; /* Apilamos el contenido en dispositivos móviles */
-    align-items: flex-start; /* Alineamos el contenido al inicio */
-    margin: 20px 20px 0; /* Margen superior e inferior de 20px, margen derecho de 0 */
-    justify-content: flex-start; /* Alineamos el título al inicio */
+    align-items: center; /* Alineamos el contenido al centro */
+    margin: 10px; /* Margen reducido */
+    justify-content: center; /* Centramos el título */
   }
 
   .navbar_name_perfil {
     margin-left: 0; /* Eliminamos el margen izquierdo */
-    margin-bottom: 10px; /* Margen inferior de 10px */
+    margin-bottom: 5px; /* Margen inferior reducido */
     text-align: center; /* Centramos el título */
+    font-size: 24px; /* Tamaño del título reducido */
   }
 
   .socials {
     margin-right: 0; /* Eliminamos el margen derecho */
     grid-template-columns: repeat(2, 1fr); /* Dos columnas proporcionales */
-    grid-gap: 20px; /* Espacio entre los iconos */
+    grid-gap: 10px; /* Espacio entre los iconos reducido */
   }
 
   .navbar_menu {
@@ -145,10 +166,18 @@
 
   .navbar_menu_item {
     height: auto; /* Altura automática para adaptarse al contenido */
+    font-size: 24px; /* Tamaño del texto reducido */
+  }
+
+  .navbar_menu_item svg {
+    width: 32px; /* Tamaño del ícono reducido */
+    height: 32px;
+    margin-bottom: 5px;
   }
 
   .navbar_paragraph_title {
     margin-top: 10px; /* Margen superior de 10px */
     padding: 10px; /* Padding reducido */
+    font-size: 18px; /* Tamaño del texto reducido */
   }
 }
