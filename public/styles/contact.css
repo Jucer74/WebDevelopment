@@ -23,7 +23,7 @@ body {
 
 /* Estilos del contact_container_title */
 .contact_container_title {
-  font-size: 30px;
+  font-size: 40px;
   font-weight: 700;
   margin-left: 20px;
   padding-top: 20px;
@@ -118,6 +118,7 @@ body {
 @media only screen and (max-width: 767px) {
   .contact_container_title {
     margin-top: 10px;
+    font-size: 30px;
   }
 
   /* Ajusta los estilos necesarios para tablets en modo vertical y dispositivos móviles */
