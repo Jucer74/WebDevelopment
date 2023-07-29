@@ -40,3 +40,45 @@ span{
 a{
     color: #333333;
 }
+.desc{
+    font-size: 32px;
+    color: #ffffff;
+    padding-left: 475px;
+    padding-top: 10px;
+}
+.carrera{
+    background-color: #000000;
+    display: flex;
+    height: 60px;
+    align-content: top;
+}
+.home{
+    background-color: #008cff;
+    display: auto;
+    height: 230px;
+    width: 230px;
+    align-content: top;
+    padding-left: 420px;
+}
+.homepage{
+    color: rgb(0, 0, 0, 0);
+    background-color: rgb(0, 0, 0, 0);
+    border: none;
+    display: flex;
+}
+.casa{
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    display: flexbox;
+    margin: none;
+    border: none;
+    padding-right: 20px;
+}
+.hometext{
+    font-size: 16px;
+    color: #ffffff;
+    align-self: center;
+    padding-top: 100px;
+    padding-left: 90px;
+}
