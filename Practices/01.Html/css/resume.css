@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/** PARTE SUPERIOR **/ 
+.infomation {
+    background-color: #25A843;
+    height: 30%;
+    color: white;
+    padding: 2%;
+    margin-top: -1.8%;
+}
+
+.infomation p {
+    margin-top: -10px;
+}
+
+/** CENTRO **/
+.text-work {
+    height: 20%;
+    margin-left: 3%
+}
+
+.footer-sty {
+    margin-top: 5%;
+}
+
+/** ESTILO DE TABLAS **/
+.tables {
+    margin: 2%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+  
+table {
+    width: 20%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+#th-1 {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+  
+
+#th-2 {
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+#some-information {
+    background-color: #343A43;
+    margin-top: 3%;
+    color: white;
+    padding: 2%;
+}
+
+#dates {
+    color: grey;
+    padding: 5%;
+    font-size: 12px;
+}

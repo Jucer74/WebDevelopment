@@ -1,5 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 body {
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
 }
 
+/** PARTE SUPERIOR **/ 
+.infomation {
+    background-color: #007AFF;
+    height: 30%;
+    color: white;
+    padding: 2%;
+    margin-top: -1.8%;
+}
+
+.infomation p {
+    margin-top: -10px;
+}
+
+/** CENTRO **/
+.text-skill {
+    height: 20%;
+    margin-left: 2%;
+}
+
+.infomation p {
+    margin-top: -10px;
+}
+
+hr {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+/** PARTE INFERIOR **/ 
+
+.skills {
+    height: 50%;
+    margin-left: 2%;
+}
+
+.rod1 {
+    border: 1px solid #25A843;
+    width: 98%;
+    height: 10px;
+    background-color: #25A843;
+    border-radius: 5px;
+}
+
+.rods {
+    display: flex;
+}
+
+.rod2 {
+    border: 1px solid #25A843;
+    width: 88%;
+    height: 10px;
+    background-color: #25A843;
+    border-radius: 5px 0 0  5px;
+}
+
+.rod3 {
+    border: 1px solid gainsboro;
+    width: 10%;
+    height: 10px;
+    background-color: gainsboro;
+    border-radius: 0 5px 5px 0;
+}
+
+.rod4 {
+    border: 1px solid #25A843;
+    width: 78%;
+    height: 10px;
+    background-color: #25A843;
+    border-radius: 5px 0 0  5px;
+}
+
+.rod5 {
+    border: 1px solid gainsboro;
+    width: 20%;
+    height: 10px;
+    background-color: gainsboro;
+    border-radius: 0 5px 5px 0;
+}
+
+.rod6 {
+    border: 1px solid #25A843;
+    width: 68%;
+    height: 10px;
+    background-color: #25A843;
+    border-radius: 5px 0 0  5px;
+}
+
+.rod7 {
+    border: 1px solid gainsboro;
+    width: 30%;
+    height: 10px;
+    background-color: gainsboro;
+    border-radius: 0 5px 5px 0;
+}
+
+.footer-sty {
+    margin-top: 5%;
+}

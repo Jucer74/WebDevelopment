@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/** PARTE SUPERIOR **/ 
+.infomation {
+    background-color: #FCBF06;
+    height: 30%;
+    color: white;
+    padding: 2%;
+    margin-top: -1.8%;
+}
+
+.infomation p {
+    margin-top: -10px;
+}
+
+/** CENTRO **/
+.text-work {
+    height: 20%;
+    margin-left: 3%
+}
+
+
+/** ESTILO Y TAMAÑO DE LAS IMAGENES **/
+.images {
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    height: 50%;
+}
+
+
+img { 
+    width: 25%;
+    height: 25%;
+}
+
+
+/** FOOTER **/ 
+.footer-sty {
+    margin-top: 5%;
+}

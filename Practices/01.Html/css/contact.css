@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+/** PARTE SUPERIOR **/ 
+.infomation {
+    background-color: #DD3546;
+    height: 30%;
+    color: white;
+    padding: 2%;
+    margin-top: -1.8%;
+}
+
+.infomation p {
+    margin-top: -10px;
+}
+
+/** CENTRO **/
+.text-work {
+    height: 20%;
+    margin-left: 3%
+}
+
+/** ESTILO DEL FORMULARIO **/
+.contact {
+    height: 50%;
+    margin-left: 2%;
+}
+
+.contact h2{
+    background-color: #DD3546;
+    color: white;
+    width: 2.5%;
+    height: 2.5%;
+}
+
+.contact input {
+    background-color: #343A43;
+    color: grey;
+    height: 30%;
+    width: 90%;
+    margin-top: 1.4%;
+    padding: 0.4%;
+    margin-left: 0.2%;
+}
+
+.forms {
+    display: flex;
+}
+
+button {
+    height: 45px;
+    width: 94%;
+    border-radius: 5px;
+    background-color: #DD3546;
+    color: white;
+    border: none;
+    font-size: 15px;
+}
+
+/** FOOTER **/
+.footer-sty {
+    margin-top: 5%;
+}
