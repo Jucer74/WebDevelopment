@@ -1,3 +1,4 @@
 #headerbanner {
     background-color: #30a449;
+    z-index: -1;
 }

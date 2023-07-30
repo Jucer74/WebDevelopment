@@ -6,28 +6,34 @@ html, body {
 }
 
 .grid-page {
-    position: sticky;
+    position: fixed;
+    height: 33vh;
     display: grid;
-    font-size: max(1vw, 12px);
-    max-height: 46vh;
-    min-height: 25vh;
+    font-size: max(1vw,11px);
     /* border: 1px solid #ffeead; */
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 13vh 7vh 13vh;
+    grid-template-rows: 44% 24% 32%;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
     outline-style: groove;
+    margin: 2px;
+    z-index: 2;
 }
+
 
 .profile-picture img {
     grid-area: 1 / 1  / -1 / 3;
     margin: 0 0;
-    width: 33vw;
-    height: 33vh;
+    width: 28vw;
+    min-height: 25vh;
+    max-height: 33vh;
+    object-fit: cover;
+    z-index: -1;
     transition: -webkit-filter 0.5s ease-in-out;
 }
 
 .profile-picture img:hover {
-    -webkit-filter: invert(100%); !important;
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
 }
 
 #profile-container {
@@ -44,7 +50,7 @@ html, body {
     grid-row: 2;
     grid-column: 2 / -1;
     background-color: black;
-    font-color: white;
+    color: white;
     padding-left: 2vw;
     justify-content: center;
     transition: background-color 0.6s ease;
@@ -70,7 +76,7 @@ html, body {
 
 
 #profile-name {
-    font-size: min(3em, 5vw);
+    font-size: 3em;
     font-weight: 300;
     padding: 5%;
     margin-left: .5vw;
@@ -85,21 +91,19 @@ html, body {
 .socials {
     display: flex;
     flex: 1;
-    justify-content: space-evenly;
-
+    justify-content: flex-end;
     margin-left: 10%;
     margin-right: 4%;
 }
 
 .socialico {
-    padding: 8px;
-    margin-left: 1vw;
-    font-size: 0.8em;
+    padding-left: 15%;
+    padding-right: 5%;
 
 }
 
 .socialico img {
-    width: 1.5vw;
+    width: max(10px, 0.9vw);
     filter: invert(100%);
 }
 
@@ -113,6 +117,7 @@ html, body {
     font-size: 1.1em;
     font-weight: 500;
 }
+
 
 .profile-navbar a:focus , .profile-navbar-item:hover {
     transform: scale(1.1) translateY(3px);      
@@ -145,7 +150,7 @@ html, body {
 }
 
 .profile-navbar-item span {
-    font-size: 3vw;
+    font-size: 2vw;
 }
 
 .profile-navbar-item:nth-child(1){
@@ -174,54 +179,37 @@ html, body {
 #lulpopup {
     position: absolute;
     top: 50%;
-    left: 50vw;
-    transform: translate(-60%, -50%);
+    transform: translate(30vw, -50%);
+    max-width: 35vw;
+    min-width: 100px;
+    z-index: 3;
 }
 
 #page-content {
     width: 100%;
-    top: 30vh;
+    transform: translateY(33vh);
 }
 
-.gridfotos {
-    display: grid;
-    width: 100wh;
-    height: 25vh;
-    gap: 8px;
-    margin-top: 2vh;
-    margin-left: 12vh;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    justify-items: left;
-
-}
-
-.gridfotos img {
-    border-radius: 12px;
-    max-width: 25vh;
-    box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
-}
 
 #headerbanner {
     color: white;
-    position: relative;
+    position: sticky;
     height: 20vh;
     padding-left: 3%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    z-index: -1;
+    top: 0;
+    font-size: 0.9em;
+    line-height: 0.9;
 
 }
 
+/*
 #headerbanner > div{
     text-align: center;
     margin: 0;
     top: 1vh;
 }
-
-@media screen and (max-width: 600px) {
-  .gridfotos {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
-}
+*/

@@ -1,42 +1,145 @@
-/* los componentes son extendibles en css !!!! */
+/* los componentes son extendibles en css  */
+
+.container {
+    position: relative;
+    display: flex;
+    transform: translateY(33vh);
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #313b42;
+    color: #ffe;
+    z-index: 1;
+}
 
 .gridfotos {
-    margin-left: 5vh;
-    margin-right: 5vh;
+    margin-right: 2vh;
     margin-bottom: 5px;
-    border-bottom: 2px solid #00000020;
-    border-radius: 5px;
-    font-size: 0.8wh;
-    height: 90%;
+    border-bottom: 2px solid #9baac72c;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+    gap: 2%;
+    margin-left: 5vh;
+    width: clamp(60%, 75%, 80%);
+    overflow: hidden;
+    align-items: center;
+
+    /* los media queries se pueden dentro de los selectores :o:o:ooo */
+    @media screen and (min-width: 800px) {
+        grid-template-columns: repeat(auto-fit, minmax(25vh, 1fr));
+    }
+
+
+}
+    /*
+    display: grid;
+    justify-content: space-between;
+    max-height: 25vw;
+    gap: 6px;
+    margin-top: 2vh;
+    margin-left: 8vh;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+    grid-template-rows: 1fr;
+}*/
+
+.gridfotos .grid-item img {
+  height: clamp(15vh,20vh,25vh); 
+  object-fit: contain; /* no dejamos que escapen de su contenedor */
+  border-radius: 12px;
+  box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  animation: fadeIn 2s ease-in;
 }
 
+
+/*
+
+.gridfotos img {
+    border-radius: 12px;
+    box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
+    width: 60%;
+    aspect-ratio: 1/1;
+}
+*/
 .gridfotos a {
-    font-size: 1.5em;
-    padding-left: 20%;
+    font-size: 1.3em;
+    padding-left: 3%;
 }
 
-.gridfotos .gridbanner {
-    /* top and bottom | left and right */
-    margin: 2vh 2vh 0 0;
-    border-left: double #000;
-    height: 85%;
-    padding-left: 2vh;
+.gridfotos .grid-item img {
+    animation: fadeIn 2s ease-in-out;
+}
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateX(20px);}
+    100% { opacity: 1; transform: translateX(0px);}
+}
+
+.gridbanner {
+    width: clamp(15%,25%,40%);
+    font-size: 0.9em;
+    border-left: double #ffe;
+    height: auto;
+    margin-top: 2vh;
+    margin-left: 5vh;
+    flex-basis: clamp(15%, 25%,100%);
+    text-align: center;
+}
+
+.gridbanner .highlight-box {
+    background-color: #566167;
+    padding: 1vh 1vh;
+    margin: 5% 5%;
+    width: auto;
+    border-radius: 6px;
+}
+
+.gridbanner a {
+    font-size: 1.1em;
 }
 
 .gridbanner p {
     font-family: 'Roboto', sans-serif;
-    transition: translateX 1s ease;
+    transition: transform 1.5s linear;
+    text-align: end;
+    color: #ffe;
+    padding-right: 2vh;
+    padding-left: 2vh;
+    font-size: 0.9em;
+
 }
 
 .gridbanner p:hover {
-    transform: translateX(10px) scale(1.2);
-    padding-left: 1vh;
+    transform: translateX(-2vw) scale(1.1);
+    padding-left: 1%
 }
 
-.gridfotos img {
-    transition: transform 3s ease-in-out;
+.gridfotos .grid-item img {
+    transition: transform 1.5s linear;
+    position: inherit;
 }
 
-.gridfotos img:hover{
-    transform: scale(2.7) translate(8vh,2vh);
+.gridfotos .grid-item img:hover{
+    position: fixed;
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+@media screen and (max-width: 650px) {
+    .gridfotos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+    }
+
+    .gridfotos .grid-item {
+        width: auto; /* para que se vean melas en el celcho */
+    }
+
+    .gridbanner {
+        max-width: 40%;
+        min-width: 30%;
+    }
+
 }
