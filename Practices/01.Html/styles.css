@@ -52,33 +52,41 @@ a{
     height: 60px;
     align-content: top;
 }
-.home{
-    background-color: #008cff;
-    display: auto;
-    height: 230px;
-    width: 230px;
-    align-content: top;
+.wrapper {
     padding-left: 420px;
-}
-.homepage{
-    color: rgb(0, 0, 0, 0);
-    background-color: rgb(0, 0, 0, 0);
+    display: grid;
+    grid-template-rows: 230px 230px 230px 230px;
+    grid-template-columns: 357px 357px 357px 357px;
+  }
+  .grid-item1 {
+    background: rgb(0, 140, 255);
+    text-align: center;
+    padding-top: 105px;
+    color: #ffffff;
     border: none;
-    display: flex;
-}
-.casa{
+  }
+  .grid-item2 {
+    background: rgb(0, 156, 21);
+    text-align: center;
+    padding-top: 105px;
+    color: #ffffff;
+    border: none;
+  }
+  .grid-item3 {
+    background: rgb(255, 251, 0);
+    text-align: center;
+    padding-top: 105px;
+    color: #ffffff;
+    border: none;
+  }
+  .grid-item4 {
+    background: rgb(255, 0, 0);
+    text-align: center;
+    padding-top: 105px;
+    color: #ffffff;
+    border: none;
+  }
+  .iconos{
     width: 40px;
     height: 40px;
-    align-self: center;
-    display: flexbox;
-    margin: none;
-    border: none;
-    padding-right: 20px;
-}
-.hometext{
-    font-size: 16px;
-    color: #ffffff;
-    align-self: center;
-    padding-top: 100px;
-    padding-left: 90px;
-}
+  }
