@@ -1,0 +1,66 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+}
+
+.navar-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.image{
+    padding: 0;
+    margin: 0;
+}
+
+.image img{
+    width: 285px;
+    height: 297px;
+}
+
+.personal-information{
+    display: flex;
+    flex-direction: row;
+}
+
+.personal-information h1 {
+    margin: 20px;
+}
+
+.navar-menu{
+    margin: 10px;
+}
+
+#iframe-selector{
+    display: flex;
+    flex-direction: row;
+}
+
+#iframe-selector li{
+    padding: 0px;
+    margin: 0px;
+    width: 193px;
+    height: 176px;
+}
+
+#social-media{
+    display: flex;
+    flex-direction: row;
+}
+
+#social-media li{
+    padding: 0px;
+    margin: 0px;
+    width: 193px;
+    height: 176px;
+}
