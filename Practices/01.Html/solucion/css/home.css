@@ -9,6 +9,7 @@ referenciando un archivo css */
 /* Por eso, se usa el css en el html de la pagina, no inline pero internal */
 #headerbanner {
     background-color: #0c80fe;
+<<<<<<< HEAD
 }
 
 /*
@@ -119,3 +120,7 @@ hr {
 #headerbanner .aligncenter_masuntoque {
     margin-top: -18px;
 } */
+=======
+    z-index: 0;
+}
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)

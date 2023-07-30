@@ -3,9 +3,14 @@
 .container {
     position: relative;
     display: flex;
+<<<<<<< HEAD
     grid-area: gridpics;
     flex-wrap: wrap;
     /*top: 10vh;*/
+=======
+    transform: translateY(33vh);
+    flex-wrap: wrap;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     justify-content: space-between;
     background-color: #313b42;
     color: #ffe;
@@ -14,6 +19,7 @@
 
 .gridfotos {
     margin-right: 2vh;
+<<<<<<< HEAD
     margin-bottom: 4px;
     border-bottom: 2px solid #9baac72c;
     flex: 1;
@@ -64,6 +70,47 @@
   animation: fadeIn 2s ease-in;
 }
 
+=======
+    margin-bottom: 5px;
+    border-bottom: 2px solid #9baac72c;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+    gap: 2%;
+    margin-left: 5vh;
+    width: clamp(60%, 75%, 80%);
+    overflow: hidden;
+    align-items: center;
+
+    /* los media queries se pueden dentro de los selectores :o:o:ooo */
+    @media screen and (min-width: 800px) {
+        grid-template-columns: repeat(auto-fit, minmax(25vh, 1fr));
+    }
+
+
+}
+    /*
+    display: grid;
+    justify-content: space-between;
+    max-height: 25vw;
+    gap: 6px;
+    margin-top: 2vh;
+    margin-left: 8vh;
+    width: 100%;
+    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+    grid-template-rows: 1fr;
+}*/
+
+.gridfotos .grid-item img {
+  height: clamp(15vh,20vh,25vh); 
+  object-fit: contain; /* no dejamos que escapen de su contenedor */
+  border-radius: 12px;
+  box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
+  z-index: 1;
+  animation: fadeIn 2s ease-in;
+}
+
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 
 /*
 
@@ -75,7 +122,11 @@
 }
 */
 .gridfotos a {
+<<<<<<< HEAD
     font-size: 1.1em;
+=======
+    font-size: 1.3em;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     padding-left: 3%;
 }
 
@@ -88,7 +139,11 @@
 }
 
 .gridbanner {
+<<<<<<< HEAD
     width: clamp(25%,30%,40%);
+=======
+    width: clamp(15%,25%,40%);
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     font-size: 0.9em;
     border-left: double #ffe;
     height: auto;
@@ -107,7 +162,11 @@
 }
 
 .gridbanner a {
+<<<<<<< HEAD
     font-size: 0.8em;
+=======
+    font-size: 1.1em;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 }
 
 .gridbanner p {
@@ -117,7 +176,12 @@
     color: #ffe;
     padding-right: 2vh;
     padding-left: 2vh;
+<<<<<<< HEAD
     font-size: 0.8em;
+=======
+    font-size: 0.9em;
+
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 }
 
 .gridbanner p:hover {
@@ -127,6 +191,7 @@
 
 .gridfotos .grid-item img {
     transition: transform 1.5s linear;
+<<<<<<< HEAD
 }
 
 .gridfotos .grid-item img:hover{
@@ -143,23 +208,45 @@
     .gridfotos {
         display: grid;
         grid-template-columns: 1fr;
+=======
+    position: inherit;
+}
+
+.gridfotos .grid-item img:hover{
+    position: fixed;
+    transform: scale(1.5);
+    z-index: 1;
+}
+
+@media screen and (max-width: 650px) {
+    .gridfotos {
+        display: flex;
+        flex-wrap: wrap;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
         justify-content: center;
         gap: 6px;
     }
 
     .gridfotos .grid-item {
+<<<<<<< HEAD
         width: 100%;
+=======
+        width: auto; /* para que se vean melas en el celcho */
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     }
 
     .gridbanner {
         max-width: 40%;
         min-width: 30%;
     }
+<<<<<<< HEAD
 }
 
 @media screen and (min-width: 351px) and (max-width: 700px) {
     .gridfotos {
         grid-template-columns: repeat(auto-fit, minmax(16vh, 1fr)); 
     }    
+=======
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 
 }

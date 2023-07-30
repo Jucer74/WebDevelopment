@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* #headerbanner {
     background-color: #e20c0c;
     z-index: -1;
@@ -32,3 +33,9 @@
 
 }
  */
+=======
+#headerbanner {
+    background-color: #30a449;
+    z-index: -1;
+}
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
