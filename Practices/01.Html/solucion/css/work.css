@@ -1,4 +1,17 @@
 
 #headerbanner {
     background-color: #f4bb0a;
+    color: white;
+    position: sticky;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    top: 0;
+    font-size: 0.9em;
+    line-height: 0.8;
+    z-index: 0;
+    /* padding order: top right bottom left */
+
 }

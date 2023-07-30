@@ -9,7 +9,6 @@ html, body {
     position: fixed;
     height: 33vh;
     display: grid;
-    font-size: max(1vw,11px);
     /* border: 1px solid #ffeead; */
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 44% 24% 32%;
@@ -76,7 +75,7 @@ html, body {
 
 
 #profile-name {
-    font-size: 3em;
+    font-size: clamp(16px,4vw,48px);
     font-weight: 300;
     padding: 5%;
     margin-left: .5vw;
@@ -103,7 +102,7 @@ html, body {
 }
 
 .socialico img {
-    width: max(10px, 0.9vw);
+    width: clamp(14px, 1.2vw,18px);
     filter: invert(100%);
 }
 
@@ -114,7 +113,7 @@ html, body {
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
-    font-size: 1.1em;
+    font-size: clamp(12px, 1.2vw, 16px);
     font-weight: 500;
 }
 
@@ -149,8 +148,8 @@ html, body {
     flex-direction: column;
 }
 
-.profile-navbar-item span {
-    font-size: 2vw;
+.profile-navbar-item a span {
+    font-size: 4vh;
 }
 
 .profile-navbar-item:nth-child(1){
@@ -195,15 +194,27 @@ html, body {
     color: white;
     position: sticky;
     height: 20vh;
-    padding-left: 3%;
+    padding-left: 3vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     top: 0;
     font-size: 0.9em;
-    line-height: 0.9;
+    line-height: 0.8;
+    z-index: 0;
+}
 
+iframe {
+    top: 33vh;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: block;
+    position: absolute;
+    height: calc(100vh - 30vh);
 }
 
 /*

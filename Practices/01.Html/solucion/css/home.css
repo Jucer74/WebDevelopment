@@ -1,4 +1,24 @@
+/* Si solo se usa iframe, todos los css son innecesarios */
+/* al estar luego internos en cada html. */
 #headerbanner {
     background-color: #0c80fe;
-    z-index: 0;
 }
+
+/*
+#home-subtitulo {
+    font-size: 0.9em;
+    padding: 3vh;
+}
+
+#homediv {
+    line-height: 0.9;
+}
+
+#skillsdiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 3vh;
+}
+*/

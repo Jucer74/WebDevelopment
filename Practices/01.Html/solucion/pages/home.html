@@ -1,82 +1,141 @@
-<div id="headerbanner">
-    <link rel="stylesheet" href="css/home.css">
-    <h1> Welcome To My Page </h1> 
-    Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!
+<!-- link no funciona con iframe, htmx ok -->
+<link rel="stylesheet" href="css/home.css">
+<title> John Doe's Home</title>
+
+
+<div id="homediv">
+  <div id="headerbanner">
+      <!-- <link rel="stylesheet" href="css/home.css"> -->
+      <h1> Welcome To My Page </h1> 
+      Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!
+  </div>
+
+  <div id="home-subtitulo">
+    <h2>My Skills</h2>
+    Lorem ipsum, dolor sit amet consectetur adipisióng elit Delectus ea excepturi officia quisquam atque eos.
+    <br/></br><br/><hr/>
+  </div>
+
+  <div id="skillsdiv"> 
+    <label for="skill1">
+      <h2> HTML 5 </h2>
+    </label>
+    <div class="skill">
+      <progress id="skill1" value="85" max="100"> 100% </progress>
+    </div>
+
+    <label for="skill2">
+      <h2> CSS 3</h2>
+    </label>
+    <div class="skill">
+      <progress id="skill2" value="100" max="100"> 100% </progress>
+    </div>
+    <label for="skill3">
+      <h2> JavaScript </h2>
+    </label>
+    <div class="skill">
+      <progress id="skill3" value="100" max="100"> 100% </progress>
+    </div>
+
+    <label for="skill3">
+      <h2> Time Management </h2>
+    </label>
+    <div class="skill">
+      <progress id="skill4" value="15" max="100"> 100% </progress>
+    </div>
+
+    <label for="skill5">
+      <h2> Python </h2>
+    </label>
+    <div class="skill">
+      <progress id="skill5" value="85" max="100"> 100% </progress>
+    </div>
+
+  </div>
+
+  <div id="home-bottombox">
+    <div id="download-box">
+      ☁️ Download Resume
+    </div>
+  </div>
 
 </div>
 
-<style>
 
-    .header {
-      background-color: #333;
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    .content {
-      padding: 20px;
-    }
-    .item {
-      margin-bottom: 20px;
-    }
+
+
+<style> 
+  /* internal porque sino a iframe no le gusta */ 
+  #headerbanner {
+      background-color: #0c80fe;
+      color: white;
+      position: sticky;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      top: 0;
+      font-size: 0.9em;
+      line-height: 0.8;
+      z-index: 0;
+  }
+
+  #home-subtitulo {
+      font-size: 0.9em;
+      padding: 3vh 3vh 0vh 3vh;
+      margin: 0;
+  }
+
+  #homediv {
+      line-height: 0.9;
+  }
+
+  #skillsdiv {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      padding-left: 3vh;
+      padding-right: 3vh;
+      font-weight: 320;
+      line-height: 0.5;
+      font-family: 'Roboto', sans-serif;
+      padding-bottom: 3vh;
+  }
+  #skillsdiv label {
+      margin: 0;
+      padding: 0;
+  }
+
+  #skillsdiv .skill {
+      width: 100%;
+      height: 1.6vh;
+      background-color: #e9edf0;
+      border-radius: 6px;
+      margin-bottom: 1vh;
+      overflow: hidden;
+  }
+  #skillsdiv progress {
+      background: #26a144;
+      width: 100%;
+  }
+
+  #home-bottombox {
+      border-left:   1px inset #e9edf0;
+      border-right:  1px inset #e9edf0;
+      border-bottom: 1px inset #e9edf0;
+      background-color: #35393f;
+      padding: 5vh 6vh 4vh 6vh;
+  }
+  #download-box {
+      border: solid 1px #e9edf0;
+      color: white;
+      padding: 2vh;
+      border-radius: 6px;
+      font-size: 0.9em;
+      font-weight: 400;
+      width: -moz-fit-content; /* no olvidar soporte pa firefox  */
+      width: fit-content;
+  }
 </style>
-
-  <div class="header">
-    <h1>Scrollable Page</h1>
-  </div>
-
-  <div class="content">
-    <div class="item">
-      <h2>Section 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula tristique nibh, ac ullamcorper purus blandit id. Nullam ut nunc eget purus blandit faucibus.</p>
-    </div>
-    <div class="item">
-      <h2>Section 2</h2>
-      <p>Integer ut ligula at felis malesuada aliquet. Duis aliquet justo vitae mi venenatis, ut aliquam ligula varius. Fusce finibus velit eget nibh pulvinar, at tincidunt sapien congue.</p>
-    </div>
-    <!-- Repeat the "item" div to add more content -->
-    <div class="item">
-      <h2>Section 3</h2>
-      <p>Vivamus eu tellus in neque suscipit bibendum. Curabitur nec euismod nunc. Nunc quis bibendum turpis, nec mollis turpis.</p>
-    </div>
-    <div class="item">
-      <h2>Section 4</h2>
-      <p>Suspendisse potenti. Aenean vehicula nec arcu vel luctus. Ut nec metus non massa suscipit gravida.</p>
-    </div>
-    <!-- Repeat the "item" div to add more content -->
-    <!-- ... -->
-    <div class="item">
-      <h2>Section 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula tristique nibh, ac ullamcorper purus blandit id. Nullam ut nunc eget purus blandit faucibus.</p>
-    </div>
-    <div class="item">
-      <h2>Section 2</h2>
-      <p>Integer ut ligula at felis malesuada aliquet. Duis aliquet justo vitae mi venenatis, ut aliquam ligula varius. Fusce finibus velit eget nibh pulvinar, at tincidunt sapien congue.</p>
-    </div>
-    <!-- Repeat the "item" div to add more content -->
-    <div class="item">
-      <h2>Section 3</h2>
-      <p>Vivamus eu tellus in neque suscipit bibendum. Curabitur nec euismod nunc. Nunc quis bibendum turpis, nec mollis turpis.</p>
-    </div>
-    <div class="item">
-      <h2>Section 4</h2>
-      <p>Suspendisse potenti. Aenean vehicula nec arcu vel luctus. Ut nec metus non massa suscipit gravida.</p>
-    </div>
-    <div class="item">
-      <h2>Section 1</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vehicula tristique nibh, ac ullamcorper purus blandit id. Nullam ut nunc eget purus blandit faucibus.</p>
-    </div>
-    <div class="item">
-      <h2>Section 2</h2>
-      <p>Integer ut ligula at felis malesuada aliquet. Duis aliquet justo vitae mi venenatis, ut aliquam ligula varius. Fusce finibus velit eget nibh pulvinar, at tincidunt sapien congue.</p>
-    </div>
-    <!-- Repeat the "item" div to add more content -->
-    <div class="item">
-      <h2>Section 3</h2>
-      <p>Vivamus eu tellus in neque suscipit bibendum. Curabitur nec euismod nunc. Nunc quis bibendum turpis, nec mollis turpis.</p>
-    </div>
-    <div class="item">
-      <h2>Section 4</h2>
-      <p>Suspendisse potenti. Aenean vehicula nec arcu vel luctus. Ut nec metus non massa suscipit gravida.</p>
-    </div>
-  </div>
