@@ -32,6 +32,7 @@ body {
 }
 
 .grid-page {
+<<<<<<< HEAD
     top: 0;
     position: sticky;
     grid-area: header;
@@ -45,6 +46,18 @@ body {
     box-shadow: 0px 8px 5vh rgba(0, 0, 0, 0.4);
     /* outline-style: inset; */
     /* margin-top: 2px; */
+=======
+    position: fixed;
+    height: 33vh;
+    display: grid;
+    font-size: max(1vw,11px);
+    /* border: 1px solid #ffeead; */
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 44% 24% 32%;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
+    outline-style: groove;
+    margin: 2px;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     z-index: 2;
 }
 
@@ -52,9 +65,15 @@ body {
 .profile-picture img {
     grid-area: 1 / 1  / -1 / 3;
     margin: 0 0;
+<<<<<<< HEAD
     width: 33vw;
     min-height: 15vh;
     max-height: 31vh;
+=======
+    width: 28vw;
+    min-height: 25vh;
+    max-height: 33vh;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     object-fit: cover;
     z-index: -1;
     transition: -webkit-filter 0.5s ease-in-out;
@@ -105,9 +124,15 @@ body {
 }
 
 
+<<<<<<< HEAD
 .profile-name {
     font-size: clamp(18px,4.2vw,48px);
     font-weight: 360;
+=======
+#profile-name {
+    font-size: 3em;
+    font-weight: 300;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     padding: 5%;
     margin-left: .5vw;
     margin-right: .5vw;
@@ -134,7 +159,11 @@ body {
 }
 
 .socialico img {
+<<<<<<< HEAD
     width: clamp(11px, 1.2vw,18px);
+=======
+    width: max(10px, 0.9vw);
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     filter: invert(100%);
 }
 
@@ -158,10 +187,16 @@ body {
     font-size: 0.6rem;
 }
 
+<<<<<<< HEAD
 .profile-navbar-item:focus , .profile-navbar-item:hover {
     /* transform: scale(1.1); */
     /* translate(-1.5vw, 3px);       */
     outline-style: groove;
+=======
+
+.profile-navbar a:focus , .profile-navbar-item:hover {
+    transform: scale(1.1) translateY(3px);      
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     transform: background-color 0.6s ease;
     background-color: #323a41;
 }
@@ -197,6 +232,13 @@ body {
     flex-direction: column;
 }
 
+<<<<<<< HEAD
+=======
+.profile-navbar-item span {
+    font-size: 2vw;
+}
+
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 .profile-navbar-item:nth-child(1){
     --color: #097efb;
 }
@@ -230,6 +272,7 @@ body {
 }
 */
 
+<<<<<<< HEAD
 /* el iframe parece ignorar esta config */
 /* aun asi usa la misma clase */
 /* 
@@ -243,6 +286,26 @@ body {
     font-size: 0.63em;
     line-height: 0.7;
     width: 100%;
+=======
+#page-content {
+    width: 100%;
+    transform: translateY(33vh);
+}
+
+
+#headerbanner {
+    color: white;
+    position: sticky;
+    height: 20vh;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    top: 0;
+    font-size: 0.9em;
+    line-height: 0.9;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 
 } */
 /* no tiene efecto en divs dentro del iframe */
@@ -268,6 +331,7 @@ body {
     padding-right: 2vh;
 }
 
+<<<<<<< HEAD
 .home-subtitulo h2 {
     font-size: 1.7em;
     font-weight: 430;
@@ -319,6 +383,8 @@ body {
 .body-container > div {
     flex-grow: 1;
 }*/
+=======
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 /*
 #headerbanner > div{
     text-align: center;
@@ -326,6 +392,7 @@ body {
     top: 1vh;
 }
 */
+<<<<<<< HEAD
 .body-container > iframe {
     height: 100vh;
     /* width: 100vw; */
@@ -333,3 +400,5 @@ body {
     margin: 0;
     padding: 0;
 }
+=======
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)

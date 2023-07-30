@@ -4,9 +4,14 @@
     position: relative;
     display: flex;
 <<<<<<< HEAD
+<<<<<<< HEAD
     grid-area: gridpics;
     flex-wrap: wrap;
     /*top: 10vh;*/
+=======
+    transform: translateY(33vh);
+    flex-wrap: wrap;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
     transform: translateY(33vh);
     flex-wrap: wrap;
@@ -19,6 +24,7 @@
 
 .gridfotos {
     margin-right: 2vh;
+<<<<<<< HEAD
 <<<<<<< HEAD
     margin-bottom: 4px;
     border-bottom: 2px solid #9baac72c;
@@ -71,6 +77,8 @@
 }
 
 =======
+=======
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     margin-bottom: 5px;
     border-bottom: 2px solid #9baac72c;
     flex: 1;
@@ -110,6 +118,9 @@
   animation: fadeIn 2s ease-in;
 }
 
+<<<<<<< HEAD
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
+=======
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 
 /*
@@ -123,7 +134,11 @@
 */
 .gridfotos a {
 <<<<<<< HEAD
+<<<<<<< HEAD
     font-size: 1.1em;
+=======
+    font-size: 1.3em;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
     font-size: 1.3em;
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
@@ -140,7 +155,11 @@
 
 .gridbanner {
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: clamp(25%,30%,40%);
+=======
+    width: clamp(15%,25%,40%);
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
     width: clamp(15%,25%,40%);
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
@@ -163,7 +182,11 @@
 
 .gridbanner a {
 <<<<<<< HEAD
+<<<<<<< HEAD
     font-size: 0.8em;
+=======
+    font-size: 1.1em;
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
     font-size: 1.1em;
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
@@ -177,7 +200,12 @@
     padding-right: 2vh;
     padding-left: 2vh;
 <<<<<<< HEAD
+<<<<<<< HEAD
     font-size: 0.8em;
+=======
+    font-size: 0.9em;
+
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
     font-size: 0.9em;
 
@@ -191,6 +219,7 @@
 
 .gridfotos .grid-item img {
     transition: transform 1.5s linear;
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 
@@ -213,6 +242,12 @@
 }
 
 .gridfotos .grid-item img:hover{
+=======
+    position: inherit;
+}
+
+.gridfotos .grid-item img:hover{
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     position: fixed;
     transform: scale(1.5);
     z-index: 1;
@@ -222,6 +257,9 @@
     .gridfotos {
         display: flex;
         flex-wrap: wrap;
+<<<<<<< HEAD
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
+=======
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
         justify-content: center;
         gap: 6px;
@@ -229,7 +267,11 @@
 
     .gridfotos .grid-item {
 <<<<<<< HEAD
+<<<<<<< HEAD
         width: 100%;
+=======
+        width: auto; /* para que se vean melas en el celcho */
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
         width: auto; /* para que se vean melas en el celcho */
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
@@ -240,12 +282,15 @@
         min-width: 30%;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 @media screen and (min-width: 351px) and (max-width: 700px) {
     .gridfotos {
         grid-template-columns: repeat(auto-fit, minmax(16vh, 1fr)); 
     }    
+=======
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 

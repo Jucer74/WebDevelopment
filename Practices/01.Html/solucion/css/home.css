@@ -10,6 +10,7 @@ referenciando un archivo css */
 #headerbanner {
     background-color: #0c80fe;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 /*
@@ -120,6 +121,10 @@ hr {
 #headerbanner .aligncenter_masuntoque {
     margin-top: -18px;
 } */
+=======
+    z-index: 0;
+}
+>>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 =======
     z-index: 0;
 }
