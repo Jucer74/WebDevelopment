@@ -1,0 +1,75 @@
+.click__resume{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #26A844;
+}
+
+#welcome{
+    padding-top: 50px;
+    padding-left: 60px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+}
+
+#welcome__message{
+    height: 100px;
+    padding-left: 60px;
+    color: white;
+    font-size: 20px;
+}
+
+#contenedor-trabajos{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+}
+
+h3{
+    color: black;
+    padding-left: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-size: 30px;
+}
+
+#trabajos{
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 40px;
+}
+
+.subdivision{
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.contenedor{
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0;
+    margin-bottom: 30px; 
+}
+
+.subdivision2{
+    padding: 10px;
+    border: 1px solid black;
+}
+
+h5{
+    font-size: 20px;
+    padding-bottom: 15px;
+}
+
+h6{
+    font-size: 15px;
+    color: black;
+    padding-bottom: 20px;
+}

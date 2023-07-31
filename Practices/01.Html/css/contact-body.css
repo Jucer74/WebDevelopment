@@ -1,0 +1,96 @@
+.click__contact{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #DC3546;
+}
+
+#welcome{
+    padding-top: 50px;
+    padding-left: 60px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+}
+
+#welcome__message{
+    height: 100px;
+    padding-left: 60px;
+    color: white;
+    font-size: 20px;
+}
+
+.contact-form{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding-bottom: 70px;
+}
+
+#intro{
+    height: 100px;
+    padding-top: 60px;
+    padding-left: 50px;
+    padding-bottom: 40px;
+    width: 95%;
+}
+
+#intro__text{
+    padding-top: 20px;
+}
+
+h4{
+    font-size: 25px;
+    color: black;
+}
+
+h5{
+    font-size: 15px;
+    color: black;
+}
+
+form {
+    width: 90%;
+    margin: 80px auto;
+    padding: 40px 60px 40px 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+}
+
+.boton-submit {
+    padding: 10px 20px;
+    background-color:red;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.inputs__icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+}

@@ -1,0 +1,30 @@
+footer {
+    display: flex;
+    background-color: #333;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+    height: 100px;
+    align-items: center;
+}
+
+.foot button{
+    font-size: 15px; 
+    padding: 10px 10px; 
+    color: white;
+    border-color: white;  
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;  
+}
+
+.foot button:hover {
+    opacity: 0.7;
+}
+
+.foot svg {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
