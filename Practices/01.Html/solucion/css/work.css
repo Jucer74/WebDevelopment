@@ -2,10 +2,14 @@
 #headerbanner {
     background-color: #f4bb0a;
 <<<<<<< HEAD
+<<<<<<< HEAD
     /*color: white;
 =======
     color: white;
 >>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
+=======
+    /*color: white;
+>>>>>>> f6d5ef1e (home ready, practicamente igualito visto 555x634 las dims de la foto. Me falta ya con este css meloski, hacer el resto :s)
     position: sticky;
     height: 20vh;
     display: flex;
@@ -17,10 +21,15 @@
     line-height: 0.8;
     z-index: 0;
 <<<<<<< HEAD
+<<<<<<< HEAD
     /* padding order: top right bottom left
     */
 =======
     /* padding order: top right bottom left */
 >>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
+=======
+    /* padding order: top right bottom left
+    */
+>>>>>>> f6d5ef1e (home ready, practicamente igualito visto 555x634 las dims de la foto. Me falta ya con este css meloski, hacer el resto :s)
 
 }

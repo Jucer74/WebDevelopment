@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/resume.css" />
   </head>
   <body>
+<<<<<<< HEAD
     <div class="grid-page">
       <!-- practicamente el header -->
       <div class="profile-picture">
@@ -60,6 +61,14 @@
               <img
                 src="https://www.svgrepo.com/show/494344/instagram.svg"
                 alt="instagramlogo"
+=======
+
+    <div class="grid-page"> <!-- practicamente el header -->
+        <div class="profile-picture">
+          <a href="gridfotos.html" hx-get="gridfotos.html" hx-target="#gridfotos">
+            <img src="https://th.bing.com/th/id/OIG.0voo7K0CvuJXXOhsKuAF?pid=ImgGn"
+              title="lafotodeperfilde_johndoe" alt="unaimagen" width="440px" height="440px"
+>>>>>>> f6d5ef1e (home ready, practicamente igualito visto 555x634 las dims de la foto. Me falta ya con este css meloski, hacer el resto :s)
             /></a>
           </div>
           <div class="socialico">
@@ -76,6 +85,7 @@
         <p>Experienced Full Stack Web Developer</p>
       </div>
 
+<<<<<<< HEAD
       <div class="profile-navbar">
         <a
           href="./pages/home.html"
@@ -129,8 +139,56 @@
         name="iframeMain"
       ></iframe>
     </div>
+=======
+        <div class="profile-navbar">
+          <a href="./pages/home.html" 
+            class="profile-navbar-item"
+            hx-get="./pages/home.html"
+            hx-target="#page-content"
+            >
+            <span class="material-symbols-outlined">house</span>
+            Home
+          </a>
+          <a href="pages/resume.html"
+            class="profile-navbar-item"
+            hx-get="pages/resume.html"
+            hx-target="#page-content"
+            >
+            <span class="material-symbols-outlined">school</span>
+              Resume
+          </a>
+          <a href="pages/work.html"
+            class="profile-navbar-item"
+            hx-get="pages/work.html"
+            hx-target="#page-content"
+          >
+            <span class="material-symbols-outlined">work</span>
+              Work
+          </a>
+          <a href="pages/contact.html"
+            class="profile-navbar-item"
+            hx-get="pages/contact.html"
+            hx-target="#page-content"
+          >
+            <span class="material-symbols-outlined">mail</span>
+            Contact
+          </a>
+          </div>
+        </div> 
+        
+      <div id="gridfotos" hx-toggle="true"></div>
+      <div id="lulpopup" hx-toggle="true"></div> 
+      <div class="body-container">
+>>>>>>> f6d5ef1e (home ready, practicamente igualito visto 555x634 las dims de la foto. Me falta ya con este css meloski, hacer el resto :s)
 
+      <!-- aqui es donde htmx hace la magia :D :D -->
+      <!-- o donde acomodamos los iframes -->
+      <!-- trigger,get:default content on load -->
+      <div id="page-content" hx-toggle="true" hx-get="pages/home.html" hx-trigger="load"></div>
+      <!-- <iframe src="pages/home.html" frameborder="0" title="default-home"></iframe> --> 
+    </div>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     <!-- <script src="" async defer></script> -->
     <!-- footer -->
@@ -144,8 +202,16 @@
     <div id="lulpopup" hx-toggle="true"></div>
     <!-- <div id="page-content" hx-toggle="true"></div> -->
     <iframe src="pages/home.html" frameborder="0" title="default-home"></iframe>
+=======
+    <!-- <script src="" async defer></script> -->
+    <!-- footer -->
+    <div id="footer-box">
+      <div id="download-box">
+        ☁️ Download Resume
+      </div>
+    </div>
+>>>>>>> f6d5ef1e (home ready, practicamente igualito visto 555x634 las dims de la foto. Me falta ya con este css meloski, hacer el resto :s)
 
-    <!-- <script src="" async defer></script> --> 
 
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
   </body>
