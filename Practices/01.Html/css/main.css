@@ -1,0 +1,217 @@
+.home_botom{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #007AFF;
+}
+
+.home_botom_r{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #26A844;
+}
+
+.home_botom_w{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #FEC107;
+}
+
+.home_botom_c{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #DC3546;
+}
+
+
+#welcome{
+    padding-top: 50px;
+    padding-left: 60px;
+    height: 100px;
+    color: white;
+}
+
+#descrip{
+    height: 100px;
+    padding-left: 60px;
+    color: white;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.my_skills{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding-bottom: 70px;
+}
+
+#descrip_skills{
+    height: 100px;
+    padding-top: 60px;
+    padding-left: 50px;
+    padding-bottom: 40px;
+    width: 95%;
+}
+
+#text_skills{
+    padding-top: 20px;
+}
+
+.languages{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-bottom: 20px;
+    width:98%;
+}
+
+.knowledge{
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width:inherit;
+}
+
+.knowledge::-webkit-progress-value {
+    background-color: green; 
+    border-radius: 8px;
+}
+
+.knowledge::-webkit-progress-bar {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
+
+
+
+
+
+
+#trabajos{
+    display: flex;
+    flex-direction: row;
+    padding-left: 3%;
+    padding-bottom: 40px;
+}
+
+.subdivision{
+    padding: 40px;
+    margin: 10px;
+    border: 1px solid #ccc;
+}
+
+.titu{
+    background-color: #ffffff;
+    padding: 20px;
+    padding-left: 1%;
+
+}
+
+.contenedor{
+    background-color: #333;
+    color: white;
+    font-size: 15px;
+    padding: 20px;
+    margin: 0;
+    margin-bottom: 30px; 
+}
+
+.subdivision2{
+    padding: 10px;
+    border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+.grid_container_fotos {
+    padding-left: 3%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas con el mismo ancho */
+    grid-gap: 0px; /* Espacio entre las celdas */
+    
+}
+
+.grid-item {
+    padding: 0px; /* Espacio interno */
+}
+
+/* Estilos para las imágenes dentro de los elementos de la cuadrícula */
+.grid-item img {
+    width: 100%; /* Las imágenes ocupan el 100% del ancho del elemento */
+    height: 100%; /* La altura se ajusta proporcionalmente */
+}
+
+
+
+.container_formulario{
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 100px;
+    border: 2px solid #DC3546;
+    background-color: #fff;
+}
+
+.form-group {
+    margin-bottom: 0px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  textarea {
+    resize: vertical;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #DC3546;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+
+
+
+
+
+

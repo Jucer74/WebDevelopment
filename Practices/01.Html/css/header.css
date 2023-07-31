@@ -1,0 +1,86 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+
+body{
+    font-family: Roboto, sans-serif;
+    background: rgb(255, 255, 255);
+}
+
+.cabecera{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+}
+
+#cabecera__imagen{
+    width: auto;
+    height: auto;
+    border-style: none;
+}
+
+.cabecera__derecha{
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-container-redes{
+    display: grid;
+    grid-template-rows: 300px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: auto;
+    background-color: #353A40;   
+}
+
+.redes{
+    padding-left: 60px;
+    padding-right: 60px;
+    width:max-content;
+}
+
+
+.info{
+    display: grid;
+    padding-left: 40px;
+    height: 100px;
+    align-items: center;
+    background-color: black;
+}
+
+.menu{
+    display: grid;
+    grid-template-rows: 200px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.menu button{
+    border: none; 
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.menu button:hover {
+    opacity: 0.4;
+}
+
+.Home{
+    background: #007AFF;
+}
+
+.Resume{
+    background: #26A844;
+}
+
+.Work{
+    background: #FEC107;
+}
+
+.Contact{
+    background: #DC3546;
+}
