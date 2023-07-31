@@ -55,9 +55,10 @@
 
 .gridfotos .grid-item img {
   height: auto;
+  max-height: 16vh;
   object-fit: contain; /* no dejamos que escapen de su contenedor */
   border-radius: 12px;
-  width: 100%;
+  width: auto;
   box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
   z-index: 1;
   animation: fadeIn 2s ease-in;
@@ -74,7 +75,7 @@
 }
 */
 .gridfotos a {
-    font-size: 1.3em;
+    font-size: 1.1em;
     padding-left: 3%;
 }
 
@@ -106,7 +107,7 @@
 }
 
 .gridbanner a {
-    font-size: 1.1em;
+    font-size: 0.8em;
 }
 
 .gridbanner p {
@@ -116,8 +117,7 @@
     color: #ffe;
     padding-right: 2vh;
     padding-left: 2vh;
-    font-size: 0.9em;
-
+    font-size: 0.8em;
 }
 
 .gridbanner p:hover {

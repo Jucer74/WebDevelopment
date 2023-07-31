@@ -284,7 +284,7 @@ iframe {
     grid-area: sbody;
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 23vh);
+    /* min-height: calc(100vh - 23vh); */
     margin-top: -18vh;
 }/*
 .body-container > div {
