@@ -1,156 +1,146 @@
 
-body{
-    background-color: #363B40;
+body {
+    background-color: #ffffff;
     margin: 3%;
     font-family: 'Roboto', sans-serif;
 }
 
-#header-portfolio{
+/*---------------- Header ----------------*/
+#header-portfolio {
     display: flex;
     height: 30%;
     width: 100%;
 }
 
 #profile-picture {
-    display: flex;
-    height: 30%;
+    height: 100%;
     width: 30%;
     object-fit: cover;
 }
 
-#left-header{
+#left-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
-    margin: 0;
-    padding: 0;
 }
 
-#name-socialbtn{
+#name-socialbtn {
     display: flex;
-    margin: 0;
     align-items: center;
     height: 40%;
-    width: 100%;
-
+    padding: 0 4% 0 4%;
+    background-color: #363B40;
 }
 
-#name{
-    padding-left: 5%;
-    padding-right: 5%;
+#name {
     color: #FFFFFF;
     font-size: 3vw;
     font-weight: 300;
+    margin: 0;
 }
 
 #social-buttons {
     display: flex;
-    height: 100%;
+    justify-content: space-between;
+    align-items: center;
     width: 55%;
-    justify-content: space-between; 
-    align-items: center; 
-    margin: 0;
-  }
+}
 
-  .social-icon {
+.social-icon {
     width: 15%;
+}
+
+.social-btn {
     display: flex;
     justify-content: center;
-    align-items: center;
-  }
+}
 
-  .social-btn{
-    display: flex;
-    justify-content: center;
-  }
-
-#section-description{
+/*---------------- Description ----------------*/
+#section-description {
     display: flex;
     align-items: center;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding: 0 3%;
     background-color: #000700;
     height: 20%;
 }
 
-#description{
+#description {
     font-weight: 300;
     font-size: 1vw;
     margin: 0;
-    justify-content: center;
-    background-color: #000700;
     color: #FFFFFF;
 }
 
-#nav-bar{
+/*---------------- Nav Bar ----------------*/
+#nav-bar {
     display: flex;
     justify-content: space-between;
-
     height: 40%;
 }
 
-.nav-btn{
+.nav-btn {
     display: flex;
     flex-direction: column;
-    width: 25%;
     align-items: center;
     justify-content: center;
-    padding: auto;
+    width: 25%;
     color: #FFFFFF;
     text-decoration: none;
     font-size: 1vw;
     font-weight: 500;
 }
 
-.nav-icon{
+.nav-icon {
     width: 15%;
 }
 
-h6{
-    margin: 0;
-}
-#home-btn{
+#home-btn {
     background-color: #0583F2;
 }
 
-#resume-btn{
+#resume-btn {
     background-color: #29A63C;
 }
 
-#work-btn{
+#work-btn {
     background-color: #F2A20C;
 }
 
-#contact-btn{
+#contact-btn {
     background-color: #D93654;
 }
 
-.screen{
+/*---------------- Main ----------------*/
+
+.screen {
     display: flex;
     height: 55vw;
-
 }
 
-#footer-portfolio{
+/*---------------- Footer ----------------*/
+
+#footer-portfolio {
     display: flex;
     height: 10vw;
     align-items: center;
-
     padding-left: 5%;
+    background-color: #363B40;
 }
 
-#download-btn{
-    display: inline-flex;
+#download-btn {
+    display: flex;
     align-items: center;
     justify-content: center;
     background-color: #363B40;
-    border: 1px  solid #FFFFFF;
+    border: 1px solid #FFFFFF;
     color: #FFFFFF;
     width: 15%;
     height: 20%;
     font-size: 1vw;
 }
 
-#download-icon{
-    display: flex;
+#download-icon {
     width: 12%;
     padding-right: 3%;
 }

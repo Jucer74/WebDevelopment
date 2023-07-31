@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header id="header-portfolio">
         <img id="profile-picture" src="src/img/person1.jpg" alt="Foto de Carlos Serrato"> 
@@ -16,7 +18,7 @@
             <section id="name-socialbtn">
                 <h1 id="name">Carlos Serrato</h1>
                 <div id="social-buttons">
-                    <a  class="social-btn" href="https://twitter.com/">
+                    <a class="social-btn" href="https://twitter.com/">
                         <img class="social-icon" src="src/img/twitter.png" alt="">
                     </a>
                     <a class="social-btn" href="https://www.facebook.com/">
@@ -34,29 +36,31 @@
                 <p id="description">Ingeniero Multimedia e Ingeniero de Sistemas</p>
             </section>
             <nav id="nav-bar">
-                <a class="nav-btn" id="home-btn" href="#home">
-                    <img class="nav-icon"src="src/img/home.png"> home
+                <a class="nav-btn" id="home-btn" href="src/html/homeScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/home.png" alt="Home"> Home
                 </a>
-                <a class="nav-btn" id="resume-btn" href="#resume" target="">
-                    <img class="nav-icon"src="src/img/graduate.png"> Resume
+                <a class="nav-btn" id="resume-btn" href="src/html/resumeScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/graduate.png" alt="Resume"> Resume
                 </a>
-                <a class="nav-btn" id="work-btn" href="#work">
-                    <img class="nav-icon"src="src/img/folder.png">Work
+                <a class="nav-btn" id="work-btn" href="src/html/workScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/folder.png" alt="Work"> Work
                 </a>
-                <a class="nav-btn" id="contact-btn" href="#contact">
-                   <img class="nav-icon"src="src/img/email.png"> Contact
+                <a class="nav-btn" id="contact-btn" href="src/html/contactScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/email.png" alt="Contact"> Contact
                 </a>
             </nav>
         </aside>
     </header>
-    <main>
-        <iframe class = "screen" src="homeScreen.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
 
+    <main>
+        <iframe name="screen" class="screen" src="src/html/resumeScreen.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
     </main>
+
     <footer id="footer-portfolio">
         <button id="download-btn"> 
-            <img id= "download-icon" src="src/img/nube.png"> Download Resume
+            <img id="download-icon" src="src/img/nube.png" alt="Download"> Download Resume
         </button>
     </footer>
+
 </body>
 </html>
