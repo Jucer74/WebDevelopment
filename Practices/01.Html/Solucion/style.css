@@ -1,0 +1,92 @@
+
+body{
+    background-color: #363B40;
+    margin: 5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+#header-portfolio{
+    display: flex;
+    height: 25%;
+    width: 100%;
+}
+
+#profile-picture {
+    width: 20%;
+}
+
+#left-header{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#name-socialbtn{
+    display: flex;
+    margin: 0;
+    align-items: center;
+    height: 40%;
+    width: 100%;
+
+}
+
+#name{
+    padding-left: 5%;
+    padding-right: 5%;
+    color: #FFFFFF;
+    font-size: 3vw;
+    font-weight: 300;
+}
+
+#social-buttons {
+    display: flex;
+    height: 100%;
+    width: 60%;
+    justify-content: space-between; 
+    align-items: center; 
+    margin: 0;
+  }
+
+  .social-icon {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .social-btn{
+    display: flex;
+    justify-content: center;
+  }
+
+#section-description{
+    display: flex;
+    align-items: center;
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: #000700;
+    height: 20%;
+}
+
+#description{
+    font-weight: 300;
+    font-size: 1vw;
+    margin: 0;
+    justify-content: center;
+    background-color: #000700;
+    color: #FFFFFF;
+}
+
+#nav-bar{
+    display: flex;
+    justify-content: space-between;
+    background-color: cyan;
+    height: 40%;
+}
+
+.nav-btn{
+    width: 25%;
+    text-align: center;
+    padding: auto;
+    border: 2px solid red;
+}
