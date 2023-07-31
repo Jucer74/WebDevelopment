@@ -21,23 +21,21 @@ body {
         "header-banner"
         "sbody"
         "footer";
-    grid-template-rows: 28vh auto 21vh 1fr 10vh;
+    grid-template-rows: 31vh auto 21vh 1fr 9vh;
 }
 
 .grid-page {
     top: 0;
     position: sticky;
     grid-area: header;
-    height: 28vh;
+    height: 31vh;
     display: grid;
     /* border: 1px solid #ffeead; */
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 42% 21% 36%;
-    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
-    outline-style: groove;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-top: 2px;
+    grid-template-rows: 42% 21% 37%;
+    box-shadow: 0px 8px 5vh rgba(0, 0, 0, 0.4);
+    /* outline-style: inset; */
+    /* margin-top: 2px; */
     z-index: 2;
 }
 
@@ -45,9 +43,9 @@ body {
 .profile-picture img {
     grid-area: 1 / 1  / -1 / 3;
     margin: 0 0;
-    width: 30vw;
+    width: 33vw;
     min-height: 15vh;
-    max-height: 28vh;
+    max-height: 31vh;
     object-fit: cover;
     z-index: -1;
     transition: -webkit-filter 0.5s ease-in-out;
@@ -126,7 +124,7 @@ body {
 }
 
 .socialico img {
-    width: clamp(14px, 1.2vw,18px);
+    width: clamp(11px, 1.2vw,18px);
     filter: invert(100%);
 }
 
@@ -141,7 +139,10 @@ body {
     font-weight: 400;
 }
 .profile-navbar span {
-    font-size: 1.7em;
+    font-size: 1.3rem;
+}
+.profile-navbar a {
+    font-size: 0.6rem;
 }
 
 .profile-navbar a:focus , .profile-navbar-item:hover {
@@ -208,6 +209,7 @@ body {
 
 #page-content {
     width: 100%;
+    height: auto;
     /*transform: translateY(23vh);*/
     /*min-height: 77dvh;*/
 }
@@ -218,21 +220,25 @@ body {
     /*margin-top: 33vh;*/
     color: white;
     position: sticky;
-    height: 18vh;
-    top: 24vh;
+    height: 15vh;
+    top: 30vh;
     padding-left: 2vh;
     margin-top: -3vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
-    font-size: 0.65em;
-    line-height: 0.65;
+    font-size: 0.63em;
+    line-height: 0.7;
     z-index: 1; /* Increased z-index to position it above gridfotos */
 
-}    
+}
+
+#headerbanner  span {
+    margin-top: -2vh;
+}
 #headerbanner h1,h2,h3 {
-    font-weight: 440;
+    font-weight: 480;
+    font-size: 1.5em;
 
 }
 
@@ -250,23 +256,24 @@ iframe {
 /* footer css */
 
 #footer-box {
-    width: 100swh;
+    width: 100%;
     grid-area: footer;
     border-left:   1px inset #596069;
     border-right:  1px inset #596069;
-    border-bottom: 2px inset #596069;
+    border-bottom: 1px inset #596069;
     background-color: #35393f;
     /* dynamic height :o :o unidades para el responsiveness */
-    padding: 3svh 4dvh;
-    position: static;
+    padding: 3.2vh 4vh;
     /*margin-top: 15vh;*/
+    position: fixed;
+    bottom: 0;
 }
 #download-box {
-    border: solid 2px #e9edf0;
+    border: inset 1px #e9edf0;
     color: white;
-    padding: 1.2vh;
-    border-radius: 6px;
-    font-size: 0.9em;
+    padding: 0.7vh;
+    border-radius: 4px;
+    font-size: 1em;
     font-weight: 400;
     width: -moz-fit-content; /* no olvidar soporte pa firefox  */
     width: fit-content;
@@ -279,8 +286,6 @@ iframe {
     flex-direction: column;
     min-height: calc(100vh - 23vh);
     margin-top: -18vh;
-    margin-bottom: -10vh;
-
 }/*
 .body-container > div {
     flex-grow: 1;
