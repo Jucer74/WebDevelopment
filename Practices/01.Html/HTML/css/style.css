@@ -1,0 +1,62 @@
+
+/*
+Practica:
+
+#Nombre{
+    color: rgb(0, 0, 0);
+    font-size: 80px;
+    background-color: #363738;
+    margin-left: 750px;
+    padding: 100px;
+    height: 500px;
+    height: 250px;
+}
+#sudtitle{
+    background-color: #A8A196;
+padding: 50px;
+}*/
+
+*{
+    margin: 0;
+}
+
+body {
+    font-family: sans-serif;
+    text-align: center;
+    
+}
+
+
+.image {
+    display: flex;
+    float: left;
+
+
+}
+
+#perfil{
+    width: 500px;
+    
+}
+
+.caja1 {
+    background-color:rgb(95, 94, 94) ;
+    
+}
+
+#caja2{
+    background-color:rgb(95, 94, 94) ;
+
+}
+
+#imagenes{
+
+    background-color:  rgb(95, 94, 94);
+    float: left;
+}
+
+.icon{
+    width: 50px;
+
+}
+
