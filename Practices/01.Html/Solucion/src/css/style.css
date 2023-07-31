@@ -1,18 +1,21 @@
 
 body{
     background-color: #363B40;
-    margin: 5%;
+    margin: 3%;
     font-family: 'Roboto', sans-serif;
 }
 
 #header-portfolio{
     display: flex;
-    height: 25%;
+    height: 30%;
     width: 100%;
 }
 
 #profile-picture {
-    width: 20%;
+    display: flex;
+    height: 30%;
+    width: 30%;
+    object-fit: cover;
 }
 
 #left-header{
@@ -41,7 +44,7 @@ body{
 #social-buttons {
     display: flex;
     height: 100%;
-    width: 60%;
+    width: 55%;
     justify-content: space-between; 
     align-items: center; 
     margin: 0;
@@ -80,13 +83,74 @@ body{
 #nav-bar{
     display: flex;
     justify-content: space-between;
-    background-color: cyan;
+
     height: 40%;
 }
 
 .nav-btn{
+    display: flex;
+    flex-direction: column;
     width: 25%;
-    text-align: center;
+    align-items: center;
+    justify-content: center;
     padding: auto;
-    border: 2px solid red;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+.nav-icon{
+    width: 15%;
+}
+
+h6{
+    margin: 0;
+}
+#home-btn{
+    background-color: #0583F2;
+}
+
+#resume-btn{
+    background-color: #29A63C;
+}
+
+#work-btn{
+    background-color: #F2A20C;
+}
+
+#contact-btn{
+    background-color: #D93654;
+}
+
+.screen{
+    display: flex;
+    height: 55vw;
+
+}
+
+#footer-portfolio{
+    display: flex;
+    height: 10vw;
+    align-items: center;
+
+    padding-left: 5%;
+}
+
+#download-btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #363B40;
+    border: 1px  solid #FFFFFF;
+    color: #FFFFFF;
+    width: 15%;
+    height: 20%;
+    font-size: 1vw;
+}
+
+#download-icon{
+    display: flex;
+    width: 12%;
+    padding-right: 3%;
 }

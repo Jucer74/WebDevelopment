@@ -1,0 +1,102 @@
+body{
+    height: 100vh;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.header-section{
+  display: flex;
+  flex-flow: column;
+  background-color: #0583F2;
+  margin: 0;
+  width: 100%;
+  height: 25%;
+  color: #ffffff;
+  padding-left: 2%;
+  padding-right: 2%;
+  justify-content: center;
+}
+
+
+.title-section{
+    margin: 0;
+    font-size: 1.5vw;
+}
+
+.title-language{
+    margin-top: 1.5%;
+    font-size: 1.7vw;
+}
+
+.description-section{
+    margin-top: 0.5%;
+    font-size: 1vw;
+}
+
+main{
+    padding-top: 3%;
+    padding-left: 3% ;
+    padding-right: 3%;
+    background-color: #ffffff;
+    height: 100vw;
+}
+
+
+#skills{
+    border-top: 1px solid rgb(207, 207, 207);
+    margin-top: 3%;
+}
+
+.progress-bar {
+    display: flex;
+    width: 100%; 
+    height: 1.2vw; 
+    background-color: #f0f0f0; /* Background color of the progress bar */
+    border-radius: 1px; /* Rounded corners to give a nice look */
+    position: relative; /* Required for positioning the pseudo-element */
+  }
+  
+  #bar-html5::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 80%; 
+    background-color: #4CAF50;
+    border-radius: inherit;
+  }
+
+  #bar-css::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 60%; 
+    background-color: #4CAF50;
+    border-radius: inherit;
+  }
+
+  #bar-javascript::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 40%; 
+    background-color: #4CAF50;
+    border-radius: inherit;
+  }
+
+  #bar-python::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 90%; 
+    background-color: #4CAF50;
+    border-radius: inherit;
+  }
+
+  #bar-java::before {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 30%; 
+    background-color: #4CAF50;
+    border-radius: inherit;
+  }

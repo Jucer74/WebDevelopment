@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Carlos Serrato</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
@@ -34,19 +34,29 @@
                 <p id="description">Ingeniero Multimedia e Ingeniero de Sistemas</p>
             </section>
             <nav id="nav-bar">
-                <a class="nav-btn" href="#home">Home</a>
-                <a class="nav-btn" href="#resume">Resume</a>
-                <a class="nav-btn" href="#work">Work</a>
-                <a class="nav-btn" href="#contact">Contact</a>
+                <a class="nav-btn" id="home-btn" href="#home">
+                    <img class="nav-icon"src="src/img/home.png"> home
+                </a>
+                <a class="nav-btn" id="resume-btn" href="#resume" target="">
+                    <img class="nav-icon"src="src/img/graduate.png"> Resume
+                </a>
+                <a class="nav-btn" id="work-btn" href="#work">
+                    <img class="nav-icon"src="src/img/folder.png">Work
+                </a>
+                <a class="nav-btn" id="contact-btn" href="#contact">
+                   <img class="nav-icon"src="src/img/email.png"> Contact
+                </a>
             </nav>
         </aside>
     </header>
     <main>
-        <iframe src="homeScreen.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
-       
+        <iframe class = "screen" src="homeScreen.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+
     </main>
-    <footer>
-        <button> Download Resume</button>
+    <footer id="footer-portfolio">
+        <button id="download-btn"> 
+            <img id= "download-icon" src="src/img/nube.png"> Download Resume
+        </button>
     </footer>
 </body>
 </html>
