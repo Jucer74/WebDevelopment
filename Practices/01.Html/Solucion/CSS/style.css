@@ -3,6 +3,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: -10px;
 
 }
 
@@ -11,6 +12,8 @@ header{
     flex-direction: row;
     padding: 0px;
     margin: 0px;
+    background-color: #353A40;
+    color: white;
 }
 
 .navar-menu{
@@ -19,11 +22,13 @@ header{
 }
 
 .image{
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
 }
 
-.image img{
+.image #persona{
     width: 285px;
     height: 297px;
 }
@@ -38,19 +43,57 @@ header{
 }
 
 .navar-menu{
-    margin: 10px;
+    margin: 0px;
+    padding: -10px;
+}
+
+.navar-menu p {
+    padding: 20px;
+    background-color: black;
+}
+
+.menu{
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    
 }
 
 #iframe-selector{
+    list-style-type: none;
     display: flex;
     flex-direction: row;
+    align-items: flex-start;
 }
 
 #iframe-selector li{
-    padding: 0px;
-    margin: 0px;
-    width: 193px;
-    height: 176px;
+
+    margin-left: 0px;
+    width: 163px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#iframe-selector a{
+   text-decoration: none;
+}
+
+.home {
+    background-color: #007AFF;
+}
+
+.resume{
+    background-color: #27A844;
+}
+
+.work{
+    background-color: #FEC107;
+}
+
+.contact{
+    background-color: #DC3546;
 }
 
 #social-media{
@@ -61,6 +104,6 @@ header{
 #social-media li{
     padding: 0px;
     margin: 0px;
-    width: 193px;
-    height: 176px;
+    width: 83px;
+    height: 76px;
 }
