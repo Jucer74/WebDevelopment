@@ -3,8 +3,9 @@
 .container {
     position: relative;
     display: flex;
-    transform: translateY(33vh);
+    grid-area: gridpics;
     flex-wrap: wrap;
+    /*top: 10vh;*/
     justify-content: space-between;
     background-color: #313b42;
     color: #ffe;
@@ -13,23 +14,32 @@
 
 .gridfotos {
     margin-right: 2vh;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     border-bottom: 2px solid #9baac72c;
     flex: 1;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
-    gap: 2%;
-    margin-left: 5vh;
-    width: clamp(60%, 75%, 80%);
-    overflow: hidden;
+    grid-template-columns: repeat(auto-fit, minmax(48%, 1fr));
+    gap: 6px;
+    height: auto;
+    margin-left: 3vh;
+    width: clamp(60%, 75%, 85%);
+    overflow: visible;
     align-items: center;
+    justify-content: center;
 
     /* los media queries se pueden dentro de los selectores :o:o:ooo */
     @media screen and (min-width: 800px) {
-        grid-template-columns: repeat(auto-fit, minmax(25vh, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(12vh, 1fr));
     }
 
+}
 
+.gridfotos .grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 48%;
+    margin-bottom: 10px;
 }
     /*
     display: grid;
@@ -44,9 +54,10 @@
 }*/
 
 .gridfotos .grid-item img {
-  height: clamp(15vh,20vh,25vh); 
+  height: auto;
   object-fit: contain; /* no dejamos que escapen de su contenedor */
   border-radius: 12px;
+  width: 100%;
   box-shadow: -7px 10px 10px rgba(0, 0, 0, 0.4);
   z-index: 1;
   animation: fadeIn 2s ease-in;
@@ -76,7 +87,7 @@
 }
 
 .gridbanner {
-    width: clamp(15%,25%,40%);
+    width: clamp(25%,30%,40%);
     font-size: 0.9em;
     border-left: double #ffe;
     height: auto;
@@ -116,30 +127,39 @@
 
 .gridfotos .grid-item img {
     transition: transform 1.5s linear;
-    position: inherit;
 }
 
 .gridfotos .grid-item img:hover{
-    position: fixed;
     transform: scale(1.5);
+    position: fixed;
     z-index: 1;
 }
 
-@media screen and (max-width: 650px) {
+/* visajes para el responsiveness, que visaje.
+    se puede usar minmax para que se adapte a la pantalla
+    y que no se vea tan mal en celulares */
+
+@media screen and (max-width: 350px) {
     .gridfotos {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: 1fr;
         justify-content: center;
         gap: 6px;
     }
 
     .gridfotos .grid-item {
-        width: auto; /* para que se vean melas en el celcho */
+        width: 100%;
     }
 
     .gridbanner {
         max-width: 40%;
         min-width: 30%;
     }
+}
+
+@media screen and (min-width: 351px) and (max-width: 700px) {
+    .gridfotos {
+        grid-template-columns: repeat(auto-fit, minmax(16vh, 1fr)); 
+    }    
 
 }

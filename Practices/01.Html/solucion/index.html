@@ -18,11 +18,11 @@
   </head>
   <body>
 
-    <div class="grid-page">
+    <div class="grid-page"> <!-- practicamente el header -->
         <div class="profile-picture">
           <a href="gridfotos.html" hx-get="gridfotos.html" hx-target="#gridfotos">
             <img src="https://th.bing.com/th/id/OIG.0voo7K0CvuJXXOhsKuAF?pid=ImgGn"
-              title="lafotodeperfilde_johndoe" alt="unaimagen" width="520px" height="520px"
+              title="lafotodeperfilde_johndoe" alt="unaimagen" width="440px" height="440px"
             /></a>
         </div>
 
@@ -84,19 +84,29 @@
           >
             <span class="material-symbols-outlined">mail</span>
             Contact
-        </a>
-        </div>
-    </div> 
+          </a>
+          </div>
+        </div> 
+        
+      <div id="gridfotos" hx-toggle="true"></div>
+      <div id="lulpopup" hx-toggle="true"></div> 
+      <div class="body-container">
 
+      <!-- aqui es donde htmx hace la magia :D :D -->
+      <!-- o donde acomodamos los iframes -->
+      <!-- trigger,get:default content on load -->
+      <div id="page-content" hx-toggle="true" hx-get="pages/home.html" hx-trigger="load"></div>
+      <!-- <iframe src="pages/home.html" frameborder="0" title="default-home"></iframe> --> 
+    </div>
 
-    <!-- aqui es donde htmx hace la magia :D :D -->
-    <!-- o donde acomodamos los iframes -->
-    <div id="gridfotos" hx-toggle="true"></div>
-    <div id="lulpopup" hx-toggle="true"></div>
-    <!-- <div id="page-content" hx-toggle="true"></div> -->
-    <iframe src="pages/home.html" frameborder="0" title="default-home"></iframe>
+    <!-- <script src="" async defer></script> -->
+    <!-- footer -->
+    <div id="footer-box">
+      <div id="download-box">
+        ☁️ Download Resume
+      </div>
+    </div>
 
-    <!-- <script src="" async defer></script> --> 
 
   </body>
 </html>

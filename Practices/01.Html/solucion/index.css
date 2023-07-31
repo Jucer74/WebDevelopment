@@ -2,19 +2,42 @@ html, body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans;
+    font-size: 16px;
     /* font-size: max(1.1vw, 12px); */
+}/*
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}*/
+
+/* mejorando el layout melo */
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas:
+        "header"
+        "gridpics"
+        "header-banner"
+        "sbody"
+        "footer";
+    grid-template-rows: 28vh auto 21vh 1fr 10vh;
 }
 
 .grid-page {
-    position: fixed;
-    height: 33vh;
+    top: 0;
+    position: sticky;
+    grid-area: header;
+    height: 28vh;
     display: grid;
     /* border: 1px solid #ffeead; */
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 44% 24% 32%;
+    grid-template-rows: 42% 21% 36%;
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
     outline-style: groove;
-    margin: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
     z-index: 2;
 }
 
@@ -22,9 +45,9 @@ html, body {
 .profile-picture img {
     grid-area: 1 / 1  / -1 / 3;
     margin: 0 0;
-    width: 28vw;
-    min-height: 25vh;
-    max-height: 33vh;
+    width: 30vw;
+    min-height: 15vh;
+    max-height: 28vh;
     object-fit: cover;
     z-index: -1;
     transition: -webkit-filter 0.5s ease-in-out;
@@ -61,6 +84,7 @@ html, body {
 
 #profile-description p {
     padding-top: 1%;
+    font-size: 0.6em;
 }
 
 #profile-description:hover{
@@ -75,8 +99,8 @@ html, body {
 
 
 #profile-name {
-    font-size: clamp(16px,4vw,48px);
-    font-weight: 300;
+    font-size: clamp(18px,4.2vw,48px);
+    font-weight: 360;
     padding: 5%;
     margin-left: .5vw;
     margin-right: .5vw;
@@ -113,10 +137,12 @@ html, body {
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
-    font-size: clamp(12px, 1.2vw, 16px);
-    font-weight: 500;
+    font-size: 0.7em;
+    font-weight: 400;
 }
-
+.profile-navbar span {
+    font-size: 1.7em;
+}
 
 .profile-navbar a:focus , .profile-navbar-item:hover {
     transform: scale(1.1) translateY(3px);      
@@ -146,10 +172,6 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-}
-
-.profile-navbar-item a span {
-    font-size: 4vh;
 }
 
 .profile-navbar-item:nth-child(1){
@@ -186,37 +208,83 @@ html, body {
 
 #page-content {
     width: 100%;
-    transform: translateY(33vh);
+    /*transform: translateY(23vh);*/
+    /*min-height: 77dvh;*/
 }
 
 
 #headerbanner {
+    grid-area: header-banner;
+    /*margin-top: 33vh;*/
     color: white;
     position: sticky;
-    height: 20vh;
-    padding-left: 3vh;
+    height: 18vh;
+    top: 24vh;
+    padding-left: 2vh;
+    margin-top: -3vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    top: 0;
-    font-size: 0.9em;
-    line-height: 0.8;
-    z-index: 0;
+    font-size: 0.65em;
+    line-height: 0.65;
+    z-index: 1; /* Increased z-index to position it above gridfotos */
+
+}    
+#headerbanner h1,h2,h3 {
+    font-weight: 440;
+
 }
 
 iframe {
-    top: 33vh;
+    top: 30vh;
     width: 100%;
-    height: 100vh;
     margin: 0;
     padding: 0;
     border: none;
     display: block;
     position: absolute;
-    height: calc(100vh - 30vh);
+    height: calc(100vh - 33vh);
 }
 
+/* footer css */
+
+#footer-box {
+    width: 100swh;
+    grid-area: footer;
+    border-left:   1px inset #596069;
+    border-right:  1px inset #596069;
+    border-bottom: 2px inset #596069;
+    background-color: #35393f;
+    /* dynamic height :o :o unidades para el responsiveness */
+    padding: 3svh 4dvh;
+    position: static;
+    /*margin-top: 15vh;*/
+}
+#download-box {
+    border: solid 2px #e9edf0;
+    color: white;
+    padding: 1.2vh;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 400;
+    width: -moz-fit-content; /* no olvidar soporte pa firefox  */
+    width: fit-content;
+    font-size: 0.5em;
+}
+/* toca acomodar el body para que no se coma el footer */
+.body-container {
+    grid-area: sbody;
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 23vh);
+    margin-top: -18vh;
+    margin-bottom: -10vh;
+
+}/*
+.body-container > div {
+    flex-grow: 1;
+}*/
 /*
 #headerbanner > div{
     text-align: center;
