@@ -1,0 +1,49 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.casilla {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin: 10px;
+}
+
+.cont {
+    background-color: rgb(202, 12, 12);
+    color: white;
+    width: auto; height: auto;
+
+}
+
+.casilla i {
+    /* Estilos para el ícono */
+    /* Por ejemplo, usando Font Awesome */
+    color: blue;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+}
+
+.form input {
+    display: flex;
+
+    width: 400px;
+}
+
+.name {
+    background-color: red;
+    border-radius: 15%;
+   
+   
+    color: white;
+    width: 20px; height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
