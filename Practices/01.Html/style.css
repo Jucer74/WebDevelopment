@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Noto+Sans+SC:wght@100;300&display=swap');
+
+*{
+
+    margin: 0;
+
+}
+
+#cabezera{
+
+    display: flex;
+    height: 541px;
+
+}
+
+#person{
+
+    width: 550px;
+
+}
+
+#name{
+
+    color: white;
+    font-size: 200%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.icon-redes{
+
+    width: 25px;
+
+}
+
+#information{
+
+    background-color: gray;
+    display: flex;
+    height: 190px;
+    width: 1370px;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+#social-media{
+
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#information-text{
+
+    background-color: black;
+    height: 135px;
+    display: flex;
+    align-items: center;
+
+}
+
+#text-information{
+
+    color: white;
+    margin-left: 30px;
+    font-size: 130%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#sections{
+
+    background-color: darkcyan;
+    /*display: flex;
+    height: 216px;
+    align-items: center;
+    justify-content: space-around;*/
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    height: 216px;
+
+}
+
+.icon-information{
+
+    width: 35px;
+    
+}
+
+#caja-home{
+
+    display: flex;
+    flex-direction: column;
+    background-color: #007BFF;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#caja-resume{
+
+    display: flex;
+    flex-direction: column;
+    background-color: #28A744;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#caja-work{
+
+    display: flex;
+    flex-direction: column;
+    background-color: #FFC007;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#contact{
+
+    display: flex;
+    flex-direction: column;
+    background-color: #DC3546;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.text-section{
+
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#contact-top{
+
+    display: flex;
+    flex-direction: column;
+    background-color: #DC3546;
+    height: 180px;
+    justify-content: center;
+
+}
+
+#contact-medium{
+
+    height: 350px;
+}
+
+#text-contact-top{
+
+    margin-left: 25px;
+    color: white;
+    font-size: 200%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#parrafo-contact{
+
+    margin-left: 25px;
+    color: white;
+    font-size: 120%;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#text-contact-medium{
+
+    margin-top: 20px;
+    margin-left: 25px;
+    color: black;
+    font-size: 200%;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+#parrafo-contact-medium{
+
+    margin-left: 25px;
+    color: black;
+    font-size: 120%;
+    margin-top: 10px;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+.icon-sesion{
+
+    width: 25px;
+
+}
+
+#caja-sesion{
+
+    width: 35px;
+    height: 35px;
+    background-color: #DC3546;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 25px;
+
+}
+
+.sesion-name{
+
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.input-sesion{
+
+    width: 1820px;
+    background-color:#353A40;
+    color: white;
+
+}
+
+#button-submit{
+
+    margin-left: 25px;
+    margin-top: 20px;
+    height: 35px;
+    background-color: #DC3546;
+    color: white;
+    width: 1862px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 115%;
+
+}
+
+#button-submit:hover{
+
+    cursor: pointer;
+    background-color: #E15D69;
+
+}
+
+#icono-cloud{
+
+    width: 40px;
+
+}
+
+#download{
+
+    display: flex;
+    background-color: #353A40;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    margin-left: 25px;
+    border: 3px solid white;
+    width: 210px;
+    justify-content: space-evenly;
+
+}
+
+#download:hover{
+
+    background-color: #8D9093;
+    cursor: pointer;
+
+}
+
+#footer{
+
+    background-color: #353A40;
+    height: 150px;
+    display: flex;
+    align-items: center;
+
+}
+
