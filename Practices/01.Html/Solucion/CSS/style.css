@@ -4,7 +4,7 @@ main{
     justify-content: center;
     align-items: center;
     margin: -10px;
-
+    font-family: 'Roboto', sans-serif;
 }
 
 header{
@@ -14,6 +14,30 @@ header{
     margin: 0px;
     background-color: #353A40;
     color: white;
+}
+
+footer{
+    display: flex;
+    width: 50%;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: #353A40;
+}
+
+footer button{
+    background-color: white;
+    border: 0px;
+    display:flex ;
+    padding: 4px;
+    border-radius: 5%;
+}
+
+footer .button-download {
+    text-decoration: none;
+    background-color: #353A40;
+    color: white;
+    padding: 10px 24px;
+    border: white;
 }
 
 .navar-menu{
@@ -36,6 +60,8 @@ header{
 .personal-information{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .personal-information h1 {
@@ -44,7 +70,6 @@ header{
 
 .navar-menu{
     margin: 0px;
-    padding: -10px;
 }
 
 .navar-menu p {
@@ -53,13 +78,16 @@ header{
 }
 
 .menu{
-    padding: 0px;
-    margin: 0px;
+    margin-top: -30px;
+    height: 10vh;
     display: flex;
-    
+
 }
 
 #iframe-selector{
+    margin-left: -38px;
+    margin-top: -50;
+    height: 100%;
     list-style-type: none;
     display: flex;
     flex-direction: row;
@@ -67,10 +95,9 @@ header{
 }
 
 #iframe-selector li{
-
     margin-left: 0px;
     width: 163px;
-    height: 110px;
+    height: 113px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,21 +111,67 @@ header{
     background-color: #007AFF;
 }
 
+.home a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
 .resume{
     background-color: #27A844;
+}
+
+.resume a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
 }
 
 .work{
     background-color: #FEC107;
 }
 
+.work a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+}
+
 .contact{
     background-color: #DC3546;
+}
+
+.contact a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.social-media{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 #social-media{
     display: flex;
     flex-direction: row;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
 }
 
 #social-media li{
@@ -106,4 +179,17 @@ header{
     margin: 0px;
     width: 83px;
     height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+iframe{
+    width: 50.3%;
+    height: 65vh;
+}
+
+.social-link img{
+    width: 25px;
+    height: 25px;
 }

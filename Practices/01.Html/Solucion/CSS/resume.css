@@ -1,0 +1,21 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+.head-color{
+    background-color: #27A844;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+}
+
+.cards{
+    display: flex;
+    flex-direction: row;
+    margin: 30px;
+    border: 2px #27A844;
+}

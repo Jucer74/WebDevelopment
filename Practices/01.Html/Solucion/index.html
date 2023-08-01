@@ -4,78 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <main>
-    <header>
-        <section class="image">
-            <img id="persona" src="../img/person1.jpg" alt="persona">
-        </section>
+    <body>
+        <header>
+            <section class="image">
+                <img id="persona" src="../img/person1.jpg" alt="persona">
+            </section>
         <section class="navar-menu">
-        <div class="personal-information">
-            <h1>Michael  Estiven Reyes</h1>
-        
-            <nav class="social-media">
-                <ul id="social-media">
-                    <li>
-                        <a href="" class="social-link">
-                            <img src="" alt="">
+            <div class="personal-information">
+                <h1>Michael  Estiven Reyes</h1>
+            
+                <nav class="social-media">
+                    <ul id="social-media">
+                        <li>
+                            <a href="" class="social-link">
+                                <img src="../img/gorjeo.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="social-link">
+                                <img src="../img/facebook.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="social-link">
+                                <img src="../img/instagram.png" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" class="social-link">
+                                <img src="../img/github.png" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <p>Multimedia engeniering</p>
+    
+            <nav class="menu">
+                <ul id="iframe-selector">
+                    <li class="home">
+                        <a  href="./Vistas/home.html" target="iframe-body">
+                            <img src="../img/icons8-casa-24 (1).png" alt="home" style="width: 50px; height: 50px;">home
                         </a>
                     </li>
-                    <li>
-                        <a href="" class="social-link">
-                            <img src="" alt="">
+                    <li class="resume">
+                        <a  href="./Vistas/resume.html" target="iframe-body">
+                            <img src="../img/icons8-currículum-50 (1).png" alt="resume" >resume
                         </a>
                     </li>
-                    <li>
-                        <a href="" class="social-link">
-                            <img src="" alt="">
+                    <li class="work">
+                        <a  href="./Vistas/work.html" target="iframe-body">
+                            <img src="../img/icons8-negocio-50.png" alt="work">work
                         </a>
                     </li>
-                    <li>
-                        <a href="" class="social-link">
-                            <img src="" alt="">
+                    <li class="contact">
+                        <a  href="./Vistas/contact.html" target="iframe-body">
+                            <img src="../img/icons8-contacts-50.png" alt="contact">contact
                         </a>
                     </li>
                 </ul>
             </nav>
-        </div>
-        
-        <p>Multimedia engeniering</p>
-
-        <nav class="menu">
-            <ul id="iframe-selector">
-                <li class="home">
-                    <a  href="./Vistas/home.html" target="iframe-body">
-                        <img src="" alt="">home
-                    </a>
-                </li>
-                <li class="resume">
-                    <a  href="./Vistas/resume.html" target="iframe-body">
-                        <img src="" alt="">resume
-                    </a>
-                </li>
-                <li class="work">
-                    <a  href="./Vistas/work.html" target="iframe-body">
-                        <img src="" alt="">work
-                    </a>
-                </li>
-                <li class="contact">
-                    <a  href="./Vistas/contact.html" target="iframe-body">
-                        <img src="" alt="">contact
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </section>
-    </header>
-    <body>
+        </section>
+        </header>
     
-        <iframe name="iframe-body" src="./Vistas/home.html" frameborder="0" style="width: 100vh; height: 50vh;"></iframe>
+        <iframe name="iframe-body" src="./Vistas/home.html" frameborder="0""></iframe>
         
+        <footer>
+           <button> <a href="" class="button-download"> Download Resume</a></button>
+        </footer>
+
     </body>
-    <footer>
-     <a href="" class="buttom-dowload"> Download Resume</a>
-    </footer>
 </main>
 </html>

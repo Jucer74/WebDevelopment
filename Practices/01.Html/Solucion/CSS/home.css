@@ -1,0 +1,14 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+.head-color{
+    background-color: #007AFF;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+}
