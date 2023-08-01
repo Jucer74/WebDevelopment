@@ -1,0 +1,33 @@
+* {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-decoration: none;
+    
+}
+body, html {
+    height: 100%; /* Asegura que el body y el html ocupen toda la altura del viewport */
+    margin: 0; /* Elimina los márgenes predeterminados de body y html */
+    display: flex;
+    flex-direction: column;
+}
+
+.progreso h2 progress {
+    text-align: center;
+    
+}
+.home-info {
+    background-color: rgb(9, 9, 179);
+    color: white;
+    width: auto; height: auto;
+
+    
+}
+div {
+    margin: 10px;
+}
+
+#tamano {
+    width: 75%;
+    margin: 6px;
+    
+
+}
