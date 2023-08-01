@@ -1,0 +1,156 @@
+.cabecera{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+}
+
+#cabecera__imagen{
+    width: auto;
+    height: auto;
+}
+
+.cabecera__derecha{
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-container1 {
+    display: grid;
+    grid-template-rows: 300px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: auto;
+    background-color: #353A40;
+}
+
+.grid-item1{
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+h1{
+    color: white;
+    font-size: 40px;
+}
+
+p{
+    color: white;
+}
+
+
+.cabecera__middle{
+    display: grid;
+    padding-left: 40px;
+    height: 100px;
+    align-items: center;
+    background-color: black;
+}
+
+.grid-container2 {
+    display: grid;
+    grid-template-rows: 200px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid-item2{
+    padding-top: 50px;
+    background: #007AFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.grid-item3{
+    padding-top: 50px;
+    background: #26A844;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.grid-item4{
+    padding-top: 50px;
+    background: #FEC107;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+.grid-item5{
+    padding-top: 50px;
+    background: #DC3546;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+}
+
+
+.menu__link{
+    text-decoration: none;
+}
+
+
+.home{
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    width: auto;
+    background: #007AFF;
+}
+
+.welcome{
+    padding-top: 50px;
+    padding-left: 60px;
+    height: 60px;
+    color: white;
+    font-size: 40px;
+}
+
+.welcome__message{
+    height: 100px;
+    padding-left: 60px;
+    color: white;
+    font-size: 20px;
+}
+
+.Skills{
+    padding-top: 50px;
+    padding-left: 60px;
+    height: 60px;
+    font-size: 40px;
+}
+
+.Skills_message{
+    height: 100px;
+    padding-left: 60px;
+    font-size: 20px;
+}
+
+.column_column_right{
+    padding-top: 100px;
+    height: 100px;
+    padding-left: 60px;
+    display: grid;
+    gap: .5em;
+}
+
+.habilidad{
+    padding: 1em 0;
+}
+
+.habilidad__item{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.habilidad__bar{
+    width: 95%;
+    height: 8px;
+    background-color: #26A844;
+}
