@@ -90,3 +90,9 @@ a{
     width: 40px;
     height: 40px;
   }
+  .banner{
+    background: rgb(0, 140, 255);
+    display: auto;
+    height: 230px;
+    color: rgb(0, 140, 255);
+  }
