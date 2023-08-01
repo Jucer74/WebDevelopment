@@ -1,29 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+* {
+
+    margin: 0;
+
+}
+
+#container {
+    height: 443px;
+    display: flex;
+
+}
+
+#perfil {
+
+    width: 450px;
+
+}
+
+#nombre-perfil {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 370%;
+}
+
+#nombre-logos {
+    display: flex;
+    background-color: rgb(88, 88, 88);
+    width: 899px;
+    height: 170px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#full {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+    margin-left: 15px;
+    height: 50px;
+    align-items: center;
+}
+
+.icon {
+    width: 15px;
+}
+
+#imagenes {
+    /*
+    -Grid pratice-
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;*/
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+}
+
+#caja2 {
+    color: aliceblue;
+    background-color: black;
+}
+
+#cajones {
+    color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    width: 899px;
+    height: 223px;
+}
+
+#home {
+    background-color: #376EB5;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+}
+
+#resume {
+    background-color: #2AA844;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+}
+
+#work {
+    background-color: #FCC00D;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+}
+
+#contact {
+    background-color: #E15E6B;
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    font-family: 'Roboto', sans-serif;
+    justify-content: center;
+}
+
+.Casa {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.Resume {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.Work {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+.Contact {
+    display: flex;
+    width: 50px;
+    height: 50px;
+}
+
+#caja-baja {
+    display: flex;
+    background-color: #E15E6B;
+    color: white;
+    width: 1349px;
+    height: 170px;
+    font-family: 'Roboto', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#Welcome {
+    justify-content: space-evenly;
+    font-size: 200%;
+    margin-left: 25px;
+}
+
+#parrafo {
+    justify-content: space-evenly;
+    font-size: 100%;
+    margin-left: 25px;
+}
+
+#body2 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    display: flex;
+    width: 1349px;
+    height: 69px;
+    margin-top: 25px;
+}
+
+#Titulo {
+    display: flex;
+    margin-left: 25px;
+
+}
+
+#parrafo2 {
+    display: flex;
+    margin-left: 25px;
+
+}
+#cajaA{
+    display: flex;
+    margin-left: 25px;
+
+}
+
+#box {
+    background-color: #E15E6B;
+    width: 50px;
+}
+#box1{
+background-color: gray;
+margin-left: 5px;
+
+}
+#cajaB{
+background-color: gray;
+width: 50px;
+
+}
+#bos{
+background-color: #E15E6B;
+
+
+}
+
 
 /*
-Practica:
-
-#Nombre{
-    color: rgb(0, 0, 0);
-    font-size: 80px;
-    background-color: #363738;
-    margin-left: 750px;
-    padding: 100px;
-    height: 500px;
-    height: 250px;
-}
-#sudtitle{
-    background-color: #A8A196;
-padding: 50px;
-}*/
-
-*{
-    margin: 0;
-}
-
 body {
     font-family: sans-serif;
     text-align: center;
-    
+    margin: 0%;
+
 }
 
 
@@ -32,31 +220,37 @@ body {
     float: left;
 
 
+
 }
 
-#perfil{
+#perfil {
     width: 500px;
-    
+
 }
 
 .caja1 {
-    background-color:rgb(95, 94, 94) ;
-    
-}
-
-#caja2{
-    background-color:rgb(95, 94, 94) ;
+    background-color: rgb(95, 94, 94);
 
 }
 
-#imagenes{
+#caja2 {
+    background-color: rgb(95, 94, 94);
 
-    background-color:  rgb(95, 94, 94);
+}
+
+#imagenes {
+    background-color: rgb(95, 94, 94);
     float: left;
+    display: flex;
 }
 
-.icon{
+.icon {
     width: 50px;
 
 }
 
+.kj {
+    display: flex;
+
+
+}*/
