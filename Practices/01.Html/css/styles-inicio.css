@@ -1,0 +1,85 @@
+.click__inicio{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: auto;
+    background: #007AFF;
+}
+
+#bienvenida{
+    padding-top: 50px;
+    padding-left: 60px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+}
+
+#mensaje_B{
+    height: 100px;
+    padding-left: 60px;
+    color: white;
+    font-size: 20px;
+}
+
+.skills{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    padding-bottom: 70px;
+}
+
+#intro{
+    height: 100px;
+    padding-top: 60px;
+    padding-left: 50px;
+    padding-bottom: 40px;
+    width: 95%;
+}
+
+#intro__text{
+    padding-top: 20px;
+}
+
+h4{
+    font-size: 25px;
+    color: black;
+}
+
+h5{
+    font-size: 15px;
+    color: black;
+}
+
+h6{
+    font-size: 20px;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.languages{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    width:98%;
+}
+
+.knowledge{
+    height: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width:inherit;
+}
+
+.knowledge::-webkit-progress-value {
+    background-color: green; 
+    border-radius: 8px;
+}
+
+.knowledge::-webkit-progress-bar {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+}
