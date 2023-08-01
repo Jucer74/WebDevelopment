@@ -9,13 +9,10 @@
 #container {
     height: 443px;
     display: flex;
-
 }
 
 #perfil {
-
     width: 450px;
-
 }
 
 #nombre-perfil {
@@ -177,80 +174,32 @@
 #parrafo2 {
     display: flex;
     margin-left: 25px;
-
 }
-#cajaA{
+
+#cajaA {
     display: flex;
     margin-left: 25px;
-
 }
 
 #box {
     background-color: #E15E6B;
     width: 50px;
 }
-#box1{
-background-color: gray;
-margin-left: 5px;
 
-}
-#cajaB{
-background-color: gray;
-width: 50px;
-
-}
-#bos{
-background-color: #E15E6B;
-
-
+#box1 {
+    background-color: gray;
+    margin-left: 5px;
 }
 
-
-/*
-body {
-    font-family: sans-serif;
-    text-align: center;
-    margin: 0%;
-
-}
-
-
-.image {
+#cajaB {
     display: flex;
-    float: left;
-
-
-
+    margin-left: 25px;
 }
 
-#perfil {
-    width: 500px;
-
-}
-
-.caja1 {
-    background-color: rgb(95, 94, 94);
-
-}
-
-#caja2 {
-    background-color: rgb(95, 94, 94);
-
-}
-
-#imagenes {
-    background-color: rgb(95, 94, 94);
-    float: left;
-    display: flex;
-}
-
-.icon {
+#bos {
+    background-color: #E15E6B;
     width: 50px;
-
+    height: 50px;
 }
 
-.kj {
-    display: flex;
 
-
-}*/
