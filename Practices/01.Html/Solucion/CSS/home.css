@@ -12,3 +12,26 @@ body{
 
     padding: 10px;
 }
+
+.skill{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px;
+}
+
+.barra{
+    margin: 20px;
+    width: 350px;
+    height: 20px;
+    background: rgb(110, 110, 110);
+    border-radius: 10px;
+}
+
+.progreso{
+    width: var(--h);
+    height: 100%;
+    background: #007AFF;
+    border-radius: 10px;
+}
