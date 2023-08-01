@@ -658,4 +658,196 @@ body {
     
     }
 
+    .redes {
+
+        transition: .5s;
+        width: 20px;
+    
+    }
+
+    #texto-medio {
+
+
+        height: 50px;
+        font-size: 85%;
+        padding-left: 25px;
+
+    }
+
+    #cabezera-derecha-abajo {
+
+        height: 125px;
+    
+    }
+    
+    #home {
+    
+
+        font-size: 55%;
+    
+    }
+    
+    #resume {
+    
+        font-size: 55%;
+    
+    }
+    
+    #work {
+    
+        font-size: 55%;
+    
+    }
+    
+    #contact {
+    
+        font-size: 55%;
+    
+    }
+
+    .iconos {
+
+        width: 35px;
+    
+    }
+
+    #cabezera {
+
+        height: 280px;
+    
+    }
+
+    .inputs {
+
+        width: 1100px;
+    
+    }
+
+    #boton-submit {
+
+        width: 1179px;
+    
+    }
+
+    .linea-llena {
+
+        width: 1200px;
+    
+    }
+
+    #linea-java-1 {
+
+        width: 1100px;
+    
+    }
+    
+    #linea-java-2 {
+    
+        width: 100px;
+    
+    }
+
+    #linea-php-1 {
+
+        width: 920px;
+    
+    }
+    
+    #linea-php-2 {
+    
+        width: 280px;
+    
+    }
+    
+    #linea-python-1 {
+    
+        width: 700px;
+    
+    }
+    
+    #linea-python-2 {
+    
+        width: 500px;
+    
+    }
+
+    .contacto-caja {
+
+        width: 390px;
+    
+    }
+
+    .position {
+
+        width: 325px;
+    
+    }
+
+    #imagenes-work {
+
+        background-color: #007BFF;
+        height: 600px;
+        width: 1200px;
+    
+    }
+
+    #foto1 {
+
+        grid-column-start: 1;
+        width: 300px;
+    
+    }
+    
+    #foto2 {
+    
+        grid-column-start: 2;
+        width: 300px;
+    
+    }
+    
+    #foto3 {
+    
+        grid-column-start: 3;
+        width: 300px;
+    
+    }
+    
+    #foto4 {
+    
+        grid-column-start: 4;
+        width: 300px;
+    
+    }
+    
+    #foto5 {
+    
+        grid-row-start: 2;
+        width: 300px;
+    
+    }
+    
+    #foto6 {
+    
+        grid-column-start: 2;
+        grid-row-start: 2;
+        width: 300px;
+    
+    }
+    
+    #foto7 {
+    
+        grid-column-start: 3;
+        grid-row-start: 2;
+        width: 300px;
+    
+    }
+    
+    #foto8 {
+    
+        grid-column-start: 4;
+        grid-row-start: 2;
+        width: 300px;
+    
+    }
+
 }
