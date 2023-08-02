@@ -7,13 +7,12 @@
     --content-height: 100%;
 }
 
-body, html {
+body, html, iframe {
     margin: 0;
     padding: 0;
     height: var(--content-height);
     width: var(--content-width);
 }
-
 
 header {
     height: var(--header-height);
