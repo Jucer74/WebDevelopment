@@ -1,65 +1,80 @@
 /* Dimensions */
+:root {
+    --header-height: 20%;
+    --main-height: 70%;
+    --footer-height: 10%;
+    --content-width: 100%;
+    --content-height: 100%;
+}
+
 body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
-    width: 100%;
-}
-
-:root {
-    --Header-Height: 20%;
-    --Main-Height: 70%;
-    --Footer-Height: 10%;
-}
-
-.Header-Height {
-    height: var(--Header-Height);
-}
-
-.Main-Height {
-    height: var(--Main-Height);
-}
-
-.Footer-Height {
-    height: var(--Footer-Height);
+    height: var(--content-height);
+    width: var(--content-width);
 }
 
 
+header {
+    height: var(--header-height);
+    border: 1px solid yellow;
+}
 
-/* Colors */
-.Color-Gray {
+main {
+    height: var(--main-height);
+    border: 1px solid blue;
+}
+
+footer {
+    height: var(--footer-height);
+    border: 1px solid red;
+}
+
+/* Containers */
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.box {
+    border: 1px solid black;
+}
+
+/* Back Colors */
+.back-color-gray {
     background-color: #353A40;
 }
 
-.Color-LightGray {
+.back-color-lightgray {
     background-color: #F7F7F7;
 }
 
-.Color-Black{
+.back-color-black{
     background-color: #000000;
 } 
 
-.Color-White{
+.back-color-white{
     background-color: #FFFFFF;
 } 
 
-.Color-Blue{
+.back-color-blue{
     background-color: #007AFF;
 } 
 
-.Color-Green{
+.back-color-green{
     background-color: #27A844;
 } 
 
-.Color-Yellow{
+.back-color-yellow{
     background-color: #FEC107;
 }
 
-.Color-Red{
+.back-color-red{
     background-color: #DC3546;
 } 
 
-.Color-Bar{
+.back-color-bar{
     background-color: #2DA643;
 } 
+
 
