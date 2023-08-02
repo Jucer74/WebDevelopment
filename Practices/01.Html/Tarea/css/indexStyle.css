@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.color-Gray {
+    background-color: #353A40;
+}
+
+.color-LightGray {
+    background-color: #F7F7F7;
+}
+
+.color-Yellow {
+    background-color: #FCBF06;
+}
+
+.color-Green {
+    background-color: #25A843;
+}
+
+.color-Blue {
+    background-color: #007AFF;
+}
+
+.color-Red {
+    background-color: #DD3546;
+}
+
+.color-Black {
+    background-color: black;
+}
+
+.color-White {
+    background-color: white;
+}
