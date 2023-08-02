@@ -22,7 +22,7 @@ body {
   padding: 5px;
   height: 220px; /* Tamaño exacto del contenedor */
   box-sizing: border-box; /* Incluye el padding y border en el cálculo del tamaño */
-  margin-top: 116px;
+  margin-top: 115px;
 }
 
 /* Estilos del resume_container_title */

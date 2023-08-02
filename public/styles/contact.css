@@ -21,7 +21,7 @@ body {
   color: white;
   height: 220px;
   padding: 5px;
-  margin-top: 116px;
+  margin-top: 115px;
 }
 
 /* Estilos del contact_container_title */
@@ -115,6 +115,12 @@ body {
 /* Media queries para contact_container dispositivos desktop agregar el margin top */
 /* Desktops y laptops */
 @media screen and (max-width: 480px) {
+  .contact_container {
+    margin-top: 0px;
+  }
+}
+
+@media screen and (max-width: 700px) {
   .contact_container {
     margin-top: 0px;
   }
