@@ -6,7 +6,10 @@ body {
 
 /* Estilos del contact */
 .contact {
+  min-height: 100vh; /* Usamos min-height en lugar de height para evitar problemas en pantallas pequeñas */
   width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Estilos del contact_container */
@@ -18,7 +21,7 @@ body {
   color: white;
   height: 220px;
   padding: 5px;
-  flex-direction: column;
+  margin-top: 116px;
 }
 
 /* Estilos del contact_container_title */
@@ -111,10 +114,9 @@ body {
 
 /* Media queries para contact_container dispositivos desktop agregar el margin top */
 /* Desktops y laptops */
-@media only screen and (min-width: 992px) {
-  /* Ajusta los estilos necesarios para desktops y laptops */
+@media screen and (max-width: 480px) {
   .contact_container {
-    margin-top: 39px;
+    margin-top: 0px;
   }
 }
 
