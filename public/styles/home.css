@@ -20,7 +20,7 @@ body {
   width: 100%;
   color: white;
   padding: 5px;
-  height: 220px;
+  height: 210px;
   margin-top: 39px;
 }
 
@@ -94,7 +94,7 @@ body {
 @media screen and (min-width: 768px) {
   .home_container_2,
   .home_container_3 {
-    width: 70%;
+    width: 98%;
   }
 
   .skill_name {

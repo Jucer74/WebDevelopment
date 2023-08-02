@@ -100,9 +100,13 @@ body {
   border-radius: 4px;
 }
 
+
+.contac_icons_pencil{
+  background-color: #db4141;
+}
+
 .contact .bi-pencil-fill {
-  height: 198px;
-  border-radius: 4px;
+  height: 100px;
 }
 
 /* Media queries para contact_container dispositivos desktop agregar el margin top */

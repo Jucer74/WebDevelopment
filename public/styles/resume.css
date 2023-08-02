@@ -62,13 +62,16 @@ body {
 .resume_card {
   width: 100%; /* Utilizar el ancho máximo del contenedor grid */
   max-width: 500px; /* Limitar el ancho máximo de las tarjetas */
-  padding: 20px;
   border-radius: 3px;
   margin-top: 20px;
   text-align: left;
   border: 1px solid black;
   box-sizing: border-box; /* Incluye el padding y border en el cálculo del tamaño */
   margin: 20px;
+}
+
+.resume_card_2{
+  padding: 20px;
 }
 
 .card_title {
@@ -111,16 +114,20 @@ body {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  color: #666;
-  font-size: 30px;
-  margin-left: 10px;
+  color: black;
+  font-size: 20px;
+  margin-left: 25px;
 }
 
-.resume_container_3 hr {
-  border-top: 2px solid #000;
+.card_content_date {
+  background-color: #ececec;
   width: 100%;
-  margin-top: 30px;
+  height: 60px;
+  border-radius: 2px;
+  margin-top: 10px;
+  border-top: 1px solid black;
 }
+
 
 /* Media query del resume_container dispositivos mobiles quitar el margin top*/
 @media (max-width: 768px) {
@@ -128,4 +135,3 @@ body {
     margin-top: 0px;
   }
 }
-
