@@ -1,3 +1,32 @@
+/* Dimensions */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+:root {
+    --Header-Height: 20%;
+    --Main-Height: 70%;
+    --Footer-Height: 10%;
+}
+
+.Header-Height {
+    height: var(--Header-Height);
+}
+
+.Main-Height {
+    height: var(--Main-Height);
+}
+
+.Footer-Height {
+    height: var(--Footer-Height);
+}
+
+
+
+/* Colors */
 .Color-Gray {
     background-color: #353A40;
 }
