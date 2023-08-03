@@ -1,6 +1,66 @@
-<div id="headerbanner">
-    <link rel="stylesheet" href="css/work.css">
-    <h1> My Work </h1> 
-    Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!
+<!DOCTYPE html>
 
-</div>
+<html>
+    <head>
+        <title> John Doe's Work </title>
+
+    </head>
+    <body>
+
+    
+    <div class="main-content">
+        <div class="headerbanner">
+            <h1> My Work </h1> 
+            Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!
+        </div>
+    </div>
+        
+        <!-- <script src="" async defer></script> -->
+    </body>
+</html>
+
+<style> 
+  .headerbanner {
+    background-color: #f4bb0a;
+    color: white;
+    grid-area: pagetitle;
+    height: 19vh;
+    padding-left: 2vh;
+    margin-top: -2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.55em;
+    line-height: 0.5;
+    z-index: 1; 
+    margin-left: -2vh;
+    margin-right: -2vh;
+  }
+
+  .home-subtitulo {
+    font-size: 0.5em;
+    padding: 2vh 0 0 2vh;
+    margin: 0;
+    font-weight: 300;
+    padding-right: 2vh;
+  }
+  .home-subtitulo h2 {
+    font-size: 1.7em;
+    font-weight: 430;
+    padding-bottom: 1px;
+  }
+
+  .page-column {
+    line-height: 0.9;
+    display: grid;
+    grid-template-areas:
+      "pagetitle"
+      "bodypage";
+    grid-template-columns: 1fr;
+  }
+
+  .main-content {
+    grid-area: bodypage;
+  }
+
+</style>

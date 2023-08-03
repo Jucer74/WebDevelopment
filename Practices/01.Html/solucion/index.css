@@ -1,15 +1,23 @@
-html, body {
+body {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans;
     font-size: 16px;
     /* font-size: max(1.1vw, 12px); */
 }/*
+
 body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
 }*/
+
+h1 {
+    color:white;
+    
+}
+
+
 
 /* mejorando el layout melo */
 body {
@@ -17,22 +25,23 @@ body {
     display: grid;
     grid-template-areas:
         "header"
-        "gridpics"
-        "header-banner"
+        /* "gridpics" */
         "sbody"
         "footer";
-    grid-template-rows: 31vh auto 21vh 1fr 9vh;
+    grid-template-rows: 31vh 1fr 9vh;
 }
 
 .grid-page {
     top: 0;
     position: sticky;
     grid-area: header;
-    height: 31vh;
+    min-height: 15vh;
+    height: auto;
+    margin: 0;
     display: grid;
     /* border: 1px solid #ffeead; */
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 42% 21% 37%;
+    grid-template-rows: 42% 20% 38%;
     box-shadow: 0px 8px 5vh rgba(0, 0, 0, 0.4);
     /* outline-style: inset; */
     /* margin-top: 2px; */
@@ -56,7 +65,7 @@ body {
     filter: invert(100%);
 }
 
-#profile-container {
+.profile-container {
     grid-row: 1;
     grid-column: 2 / -1;
     display: flex;
@@ -66,7 +75,7 @@ body {
   
 }
 
-#profile-description {
+.profile-description {
     grid-row: 2;
     grid-column: 2 / -1;
     background-color: black;
@@ -80,23 +89,23 @@ body {
 }
 
 
-#profile-description p {
+.profile-description p {
     padding-top: 1%;
     font-size: 0.6em;
 }
 
-#profile-description:hover{
+.profile-description:hover{
     background-color: white;
     color: black;
     font-style: italic;
 }
 
-#profile-description:hover p:after {
-    content: " ... en construcción :D 👷🏼‍♂️";
+.profile-description:hover p:after {
+    content: " ... en construcción :D ";
 }
 
 
-#profile-name {
+.profile-name {
     font-size: clamp(18px,4.2vw,48px);
     font-weight: 360;
     padding: 5%;
@@ -114,7 +123,8 @@ body {
     flex: 1;
     justify-content: flex-end;
     margin-left: 10%;
-    margin-right: 4%;
+    /* margin-right: 4%; */
+    padding-right: 5%;
 }
 
 .socialico {
@@ -137,6 +147,8 @@ body {
     text-align: center;
     font-size: 0.7em;
     font-weight: 400;
+    max-width: 67vw;
+    background-color: #000;
 }
 .profile-navbar span {
     font-size: 1.3rem;
@@ -146,10 +158,10 @@ body {
 }
 
 .profile-navbar a:focus , .profile-navbar-item:hover {
-    transform: scale(1.1) translateY(3px);      
+    transform: scale(1.1) translate(-1.5vw, 3px);      
     transform: background-color 0.6s ease;
     background-color: #323a41;
-    border-radius: 8px;    
+    border-radius: 8px;
 }
 
 .profile-navbar a:link{
@@ -165,8 +177,9 @@ body {
 
 
 .profile-navbar-item {
-    width: 19vw;
-    height: 100%;
+    width: 16.8vw; /* 66vw/4 */
+    height: 11.8vh; /* 31vh *0.38 */ 
+    /* si mantenemos las dims de la foto */
     background-color: var(--color);
     transition: background-color 0.6s ease;
     display: flex;
@@ -197,8 +210,8 @@ body {
 }
 
 /* css general de componentes con los ++haxs htmx */
-
-#lulpopup {
+/*
+.lulpopup {
     position: absolute;
     top: 50%;
     transform: translate(30vw, -50%);
@@ -206,56 +219,55 @@ body {
     min-width: 100px;
     z-index: 3;
 }
+*/
 
-#page-content {
-    width: 100%;
-    height: auto;
-    /*transform: translateY(23vh);*/
-    /*min-height: 77dvh;*/
-}
-
-
-#headerbanner {
-    grid-area: header-banner;
-    /*margin-top: 33vh;*/
+/* el iframe parece ignorar esta config */
+/* aun asi usa la misma clase */
+/* 
+.headerbanner {
+    grid-area: pagetitle;
     color: white;
-    position: sticky;
-    height: 15vh;
-    top: 30vh;
-    padding-left: 2vh;
-    margin-top: -3vh;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 0.63em;
     line-height: 0.7;
-    z-index: 1; /* Increased z-index to position it above gridfotos */
+    width: 100%;
 
-}
+} */
+/* no tiene efecto en divs dentro del iframe */
 
-#headerbanner  span {
+/* 
+.headerbanner  span {
     margin-top: -2vh;
 }
-#headerbanner h1,h2,h3 {
+.headerbanner h1,h2,h3 {
     font-weight: 480;
     font-size: 1.5em;
+    margin-top: -2vh;
+} */
 
+
+/* main css */
+
+.home-subtitulo {
+    font-size: 0.5em;
+    padding: 2vh 0 0 2vh;
+    margin: 0;
+    font-weight: 300;
+    padding-right: 2vh;
 }
 
-iframe {
-    top: 30vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    border: none;
-    display: block;
-    position: absolute;
-    height: calc(100vh - 33vh);
+.home-subtitulo h2 {
+    font-size: 1.7em;
+    font-weight: 430;
+    padding-bottom: 1px;
 }
 
 /* footer css */
 
-#footer-box {
+.footer-box {
     width: 100%;
     grid-area: footer;
     border-left:   1px inset #596069;
@@ -268,7 +280,7 @@ iframe {
     position: fixed;
     bottom: 0;
 }
-#download-box {
+.download-box {
     border: inset 1px #e9edf0;
     color: white;
     padding: 0.7vh;
@@ -285,7 +297,15 @@ iframe {
     display: flex;
     flex-direction: column;
     /* min-height: calc(100vh - 23vh); */
-    margin-top: -18vh;
+    /* margin-top: -18vh; */
+    font-size: 0.9em;
+    /* margin-left: -1.25vw; */
+    /* margin-right: -2vw; */
+    width: 100%;
+    padding: 0;
+    height: auto;
+    /* margin-bottom: 0; */
+    /* min-height: 64vh; */
 }/*
 .body-container > div {
     flex-grow: 1;
@@ -297,3 +317,11 @@ iframe {
     top: 1vh;
 }
 */
+.body-container > iframe {
+    height: 100vh;
+    /* width: 100vw; */
+    max-height: calc(100vh - 40vh);
+    margin: 0;
+    padding: 0;
+    
+}

@@ -1,6 +1,123 @@
 
-<div id="headerbanner">
-    <link rel="stylesheet" href="css/resume.css">
-    <h1> Resume </h1> 
-    HTMX は 楽しいです。
-</div>
+<!-- asi aca por mientras htmx, 
+    luego encerrar en otra div para iframe
+    para respetar ni idea, el orden.-->
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>John Doe's Resume</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link rel="stylesheet" href="../css/resume.css"> -->
+    </head>
+    <body>
+        
+       <div class="main-content">
+            <div class="headerbanner">
+                <h1> Resume </h1> 
+                Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!
+            </div>
+
+            <div class="resumediv">
+                <h1>Where Have I Worked?</h1>
+                Lorem ipaum dolor sit amet consectetur adpisxing elt Dolaremaue similique ssepe inventore rem vitae esse.|
+
+                <div class="exp-div">
+
+                </div>
+            </div>
+       </div>
+
+        <script src="" async defer></script>
+    </body>
+</html>
+
+
+
+<!-- /* internal porque sino a iframe no le gusta */
+/* no se como */  -->
+
+<style> 
+  
+.headerbanner {
+    background-color: #30a449;
+    color: white;
+    grid-area: pagetitle;
+    height: 19vh;
+    padding-left: 2vh;
+    margin-top: -2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 0.55em;
+    line-height: 0.5;
+    z-index: 1; 
+    margin-left: -2vh;
+    margin-right: -2vh;
+}
+.headerbanner h1 {
+    margin-top: -2vh;
+}
+
+.home-subtitulo {
+    font-size: 0.5em;
+    padding: 2vh 0 0 2vh;
+    margin: 0;
+    font-weight: 300;
+    padding-right: 2vh;
+}
+.home-subtitulo h2 {
+    font-size: 1.7em;
+    font-weight: 430;
+    padding-bottom: 1px;
+}
+
+.page-column {
+    line-height: 0.9;
+    display: grid;
+    grid-template-areas:
+    "pagetitle"
+    "bodypage";
+    grid-template-columns: 1fr;
+}
+
+.main-content {
+    grid-area: bodypage;
+}
+
+
+.resumediv {
+    padding-top: 4vh;
+    font-size: 0.5em;
+    padding-left: 1vh;
+    padding-right: 2vh;
+    line-height: 0.8em;
+}
+.resume p {
+    font-size: 0.6em;
+}
+.resume h1 {
+    font-weight: 350;
+}
+
+.resumediv h1, p {
+    font-family:'Roboto', sans;
+    font-weight: 400;
+}
+
+
+.exp-div {
+    display: grid;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    grid-template-columns: repeat(auto, 1fr);
+    grid-template-rows: auto;
+
+}
+
+
+</style>
+

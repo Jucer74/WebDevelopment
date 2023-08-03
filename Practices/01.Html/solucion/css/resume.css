@@ -1,4 +1,34 @@
-#headerbanner {
-    background-color: #30a449;
+/* #headerbanner {
+    background-color: #e20c0c;
     z-index: -1;
 }
+
+#resumediv {
+    padding-top: 4vh;
+    font-size: 0.5em;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    line-height: 0.8em;
+}
+#resume p {
+    font-size: 0.6em;
+}
+#resume h1 {
+    font-weight: 350;
+}
+
+#resumediv h1, p {
+    font-family:'Roboto', sans;
+    font-weight: 400;
+}
+
+
+#exp-div {
+    display: grid;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    grid-template-columns: repeat(auto, 1fr);
+    grid-template-rows: auto;
+
+}
+ */
