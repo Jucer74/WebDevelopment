@@ -1,0 +1,89 @@
+/* Dimensions */
+:root {
+    --header-height: 20%;
+    --main-height: 70%;
+    --footer-height: 10%;
+    --content-width: 100%;
+    --content-height: 100%;
+}
+
+html, body, iframe  {
+    margin: 0; 
+    padding: 0;
+    border: 0;
+    height: var(--content-height);
+    width: var(--content-width);
+}
+
+header {
+    height: var(--header-height);
+    border: 3px solid yellow;
+}
+
+main {
+    height: var(--main-height);
+    border: 3px solid blue;
+}
+
+footer {
+    height: var(--footer-height);
+    border: 3px solid red;
+}
+
+/* Containers */
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+}
+
+.box {
+    /* align-self: stretch; */
+    border: 3px solid black;
+    flex: 1;
+}
+
+.box-photo {
+    /* flex: 0 0 15%; */
+    width: 15%;
+    border: 3px solid black;
+}
+
+/* Back Colors */
+.back-color-gray {
+    background-color: #353A40;
+}
+
+.back-color-lightgray {
+    background-color: #F7F7F7;
+}
+
+.back-color-black{
+    background-color: #000000;
+} 
+
+.back-color-white{
+    background-color: #FFFFFF;
+} 
+
+.back-color-blue{
+    background-color: #007AFF;
+} 
+
+.back-color-green{
+    background-color: #27A844;
+} 
+
+.back-color-yellow{
+    background-color: #FEC107;
+}
+
+.back-color-red{
+    background-color: #DC3546;
+} 
+
+.back-color-bar{
+    background-color: #2DA643;
+} 
+
+
