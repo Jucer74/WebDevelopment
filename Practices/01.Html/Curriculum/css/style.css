@@ -1,3 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    width: 100%;
+    height: 200px;
+}
+
+iframe {
+    width: 1897px; 
+    height: 95vh; 
+    border: none;
+}
+
 #perfil {
     position: absolute;  
     top: 0px;  
@@ -6,15 +22,16 @@
   
 #perfil-foto {
     width: 350px;
-    height: 350px;
+    height: 367px;
 }
   
 
 .iconos {
+    width: 1545px;
     display: flex;
-    background-color: #333;
+    background-color: #353A40;
     align-items: center;
-    position: absolute; 
+    position: relative; 
     top: 0px; 
     left: 350px;
     right: 0px;
@@ -46,12 +63,11 @@
   
 
 .trabajo{
+    width: 1545px;
     display: flex;
     background-color: black;
-    position: absolute;
+    position: relative;
     left: 350px;
-    right: 0px;
-    top: 160px;
     border-left: 2px solid white;
     border-top: 2px solid white;
 }
@@ -71,7 +87,7 @@
     position: absolute;
     left: 350px;
     right: 0px;
-    top: 215px;   
+    top: 230px;   
     border-left: 2px solid white;
     border-top: 2px solid white;
 }
@@ -99,45 +115,41 @@
         flex-direction: column; 
         align-items: center; 
         justify-content: center; 
-        width: 386px; 
+        width: 384.7px;
         height: 100%;   
     }
     
 
     .seccion li.home-nav a {
-        background-color: blue; 
+        background-color: #007AFF; 
         border-right: 2px solid white;
     }
 
     .seccion li.resume-nav a {
-        background-color: green;
+        background-color: #27A844;
         border-right: 2px solid white;
     }
 
 
     .seccion li.work-nav a {
-        background-color: rgb(65, 11, 65);
+        background-color: #FEC107;
         border-right: 2px solid white;
     }
 
 
     .seccion li.contact-nav a {
-        background-color: red;
+        background-color: #DC3546;
     }
 
 
 .home{
     position: relative;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: 350px;
-    background-color: blue;
+    margin-top: 135px;
+    background-color: #007AFF;
     height: 150px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 40px;
     border-top: 2px solid white;
 }
-
 
     .home h1,
     .home p{
@@ -150,7 +162,7 @@
 .skills{
     position: relative;
     background-color: white;
-    padding-top: 10px;
+    padding-top: 40px;
     padding-bottom: 10px;
     margin-top: 40px;
 }
@@ -198,19 +210,16 @@
 
 .progreso{
     height: 100%;
-    background-color: blue;
+    background-color: #359F4C;
     border-radius: 5px;
 }
 
 .resume{
     position: relative;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: 350px;
-    background-color: green;
+    padding-top: 40px;
+    margin-top: 135px;
+    background-color: #27A844;
     height: 150px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     border-top: 2px solid white;
 }
 
@@ -226,7 +235,7 @@
 .worked{
     position: relative;
     background-color: white;
-    padding-top: 10px;
+    padding-top: 40px;
     padding-bottom: 10px;
     margin-top: 40px;
 }
@@ -252,29 +261,25 @@
     max-width: 800px; 
     margin: 20px auto; 
     margin-top: 50px;
+    margin-left: 65px;
 }
       
     .row {
         display: flex;
-
     }
       
     .row img {
         width: 220px; 
         height: 220px; 
         object-fit: cover; 
-        border-radius: 5px; 
       }
 
 .work{
     position: relative;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: 350px;
-    background-color: rgb(65, 11, 65);
+    padding-top: 40px;
+    margin-top: 135px;
+    background-color: #FEC107;
     height: 150px;
-    padding-top: 10px;
-    padding-bottom: 10px;
     border-top: 2px solid white;
 }
 
@@ -290,7 +295,7 @@
 .build{
     position: relative;
     background-color: white;
-    padding-top: 10px;
+    padding-top: 40px;
     padding-bottom: 10px;
     margin-top: 40px;
 }
@@ -300,7 +305,7 @@
         position: absolute;
         bottom: -12px; 
         left: 30px; 
-        right: 30px; 
+        right: 20px; 
         border-bottom: 1px solid grey; 
     }
 
@@ -313,11 +318,10 @@
 
 
 .formulario {
-        width: 1000px;
-        margin: 50px auto;
+        width: 1800px;
+        margin-top: 40px;
         padding: 40px;
         border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
       }
       
       
@@ -329,14 +333,15 @@ form {
 .form-group {
     display: flex;
     align-items: center;
-    margin-bottom: 70px;
+    margin-bottom: 20px;
 }
       
     .form-group i {
         margin-right: 10px;
+        padding: 5px;
         font-size: 20px;
         color: #fff; 
-        background-color: red; 
+        background-color: #DC3546; 
         width: 35px; 
         height: 35px; 
         display: flex;
@@ -344,17 +349,28 @@ form {
         align-items: center; 
     }
     
-input, textarea {
+input {
         flex: 1;
-        padding: 10px;
+        padding: 15px;
         border: 1px solid #ccc;
         border-radius: 5px;
+        color: white;
+        background-color: #353A40;
+}
+
+textarea{
+    flex: 1;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: white;
+    background-color: #353A40;
 }
       
 button {
-    padding: 10px;
+    padding: 20px;
     border: none;
-    background-color: red;
+    background-color: #DC3546;
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
@@ -366,13 +382,10 @@ button {
 
 .contacto{
     position: relative;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: 350px;
-    background-color: red;
+    margin-top: 135px;
+    background-color: #DC3546;
     height: 150px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 40px;
     border-top: 2px solid white;
 }
 
@@ -387,7 +400,7 @@ button {
 .mensaje{
     position: relative;
     background-color: white;
-    padding-top: 10px;
+    padding-top: 40px;
     padding-bottom: 10px;
     margin-top: 40px;
 }
@@ -413,37 +426,53 @@ button {
     display: inline-block;
     position: relative;
     border-collapse: collapse;
-    left: 30px;
+    left: 150px;
     top: 80px;
-    padding-right: 50px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    margin-right: 120px;
+    padding-right: 20px;
+    padding-top: 20px;
+    border: 1px solid #9B9F9A;
+    border-radius: 5px;
 }
 
 .tabla h1{
-    color: black;
+    color: #353A40;
 }
 
 .tabla p{
-    color: black;
+    color: #353A40;
+    padding-top: 20px;
+    padding-bottom: 30px;
 }
 
 .tabla h2{
-    background-color: #333;
+    background-color: #353A40;
     color: white;
     margin-left: 30px;
+    margin-top: 10px;
     padding: 10px;
     font-size: 15px;
 }
 
-
+.tabla h3{
+    font-size: 15px;
+    background-color: #F7F7F7;
+    color: #9B9F9A;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-top: 30px;   
+    padding-bottom: 20px;
+    margin-right: -20px;
+    position: relative;
+    border-top: 1px solid #9B9F9A;
+    border-radius: 5px;
+}
 
 footer {
+    width: 1817px;
     background-color: #333; 
     padding: 40px; 
-    position: relative;
-    margin-left: -8px;
-    margin-right: -8px;
-    margin-top: 650px
+    position: absolute;
 }
   
 .download-resume {
@@ -453,7 +482,7 @@ footer {
     padding: 10px 20px;
     border: 2px solid white; 
     border-radius: 5px; 
-    background-color: #333; 
+    background-color: #353A40; 
 }
   
     .download-resume i {
