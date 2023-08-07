@@ -1,21 +1,26 @@
 .click__home{
     display: flex;
     flex-direction: column;
-    height: auto;
-    width: auto;
     background: #007AFF;
 }
 
+#welcome__section{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
 #welcome{
-    padding-top: 50px;
     padding-left: 60px;
-    height: 100px;
+    padding-top: 20px;
     color: white;
     font-size: 40px;
+    height: 75px;
 }
 
 #welcome__message{
-    height: 100px;
+    height: 75px;
     padding-left: 60px;
     color: white;
     font-size: 20px;
@@ -30,7 +35,7 @@
 }
 
 #intro{
-    height: 100px;
+    height: 50px;
     padding-top: 60px;
     padding-left: 50px;
     padding-bottom: 40px;

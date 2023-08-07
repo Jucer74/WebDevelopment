@@ -6,16 +6,23 @@
     background: #26A844;
 }
 
+#welcome__section{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
 #welcome{
-    padding-top: 50px;
     padding-left: 60px;
-    height: 100px;
+    padding-top: 20px;
     color: white;
     font-size: 40px;
+    height: 75px;
 }
 
 #welcome__message{
-    height: 100px;
+    height: 75px;
     padding-left: 60px;
     color: white;
     font-size: 20px;
