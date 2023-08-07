@@ -9,10 +9,9 @@ body {
 /** PARTE SUPERIOR **/ 
 .infomation {
     background-color: #25A843;
-    height: 30%;
+    height: 40%;
     color: white;
     padding: 2%;
-    margin-top: -1.8%;
 }
 
 .infomation p {
@@ -21,7 +20,6 @@ body {
 
 /** CENTRO **/
 .text-work {
-    height: 20%;
     margin-left: 3%
 }
 

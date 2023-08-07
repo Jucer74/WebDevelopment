@@ -9,10 +9,9 @@ body {
 /** PARTE SUPERIOR **/ 
 .infomation {
     background-color: #007AFF;
-    height: 30%;
+    height: 40%;
     color: white;
     padding: 2%;
-    margin-top: -1.8%;
 }
 
 .infomation p {
@@ -21,11 +20,10 @@ body {
 
 /** CENTRO **/
 .text-skill {
-    height: 20%;
     margin-left: 2%;
 }
 
-.infomation p {
+.text-skill p {
     margin-top: -10px;
 }
 
@@ -33,7 +31,6 @@ hr {
     margin-left: 2%;
     margin-right: 2%;
 }
-
 /** PARTE INFERIOR **/ 
 
 .skills {

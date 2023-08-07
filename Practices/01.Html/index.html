@@ -1,53 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/home.css">
-  <title>HOME</title>
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
 </head>
-
 <body>
-  <div class="header-sty">
-    <iframe src="header.html" frameborder="0" scrolling="no" style="width: 100%; height:290px"></iframe>
-  </div>
+    <header style="height:30%"> 
+        <div class="grid">
+            <div class="superior-izq">
+                <img class="color-White" src="img/person2.png">
+            </div>
+            <div class="superior-der">
+                <div class="grid-up" id="color-Gray" style="height: 35;">
+                    <div class="name">
+                        <h1 id="names">Yoo Kihyun 유기현</h1>
+                    </div>
+                    <div class="social-media">
+                        <ul>
+                            <li><a href="#" class="icon-twitter"></a></li>
+                            <li><a href="#" class="icon-facebook"></a></li>
+                            <li><a href="#" class="icon-instagram"></a></li>
+                            <li><a href="#" class="icon-github"></a></li>
+                          </ul>
+                    </div>
+                </div>
+                <div class="grid-center" id="color-Black" style="height: 15;">
+                    <h2 class="experience">Experience Full Stack Web Developer</h2>
+                </div>
+                <div class="grid-down" style="height: 50;">
+                    <button class="buttons" id="color-Blue">
+                        <a href="home.html" target="iframeMain" class="icon-home"><p>Home</p></a>
+                    </button>
+                    <button class="buttons" id="color-Green">
+                        <a href="resume.html" target="iframeMain" class="icon-cap"><p>Resume</p></a>
+                    </button>
+                    <button class="buttons" id="color-Yellow">
+                        <a href="work.html" target="iframeMain" class="icon-folder"><p>Work</p></a>
+                    </button>
+                    <button class="buttons" id="color-Red">
+                            <a href="contact.html" target="iframeMain" class="icon-mail"><p>Contact</p></a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <div class="main-sty">
-    <div class="infomation">
-      <h1>Welcome To My Page</h1>
-      <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero dolorum fugiat dolor dicta sed inventore.  </p>
-    </div>
+    <main style="height: 60%;">
+        <iframe src="home.html" name="iframeMain" width="100%" height="60%"></iframe>
+    </main>
 
-    <div class="text-skill">
-      <h2>My Skills</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error voluptate, ad temporibus saepe facilis perspiciatis iusto, dolorem porro soluta illum consectetur.</p>
-      
-    </div>
-    <hr>
-    <div class="skills">
-      <h3>HTML 5</h3>
-      <div class="rod1"></div>
-      <h3>CSS 3</h3>
-      <div class="rod1"></div>
-      <h3> JAVASCRIPT </h3>
-      <div class="rods">
-        <div class="rod2"></div>
-        <div class="rod3"></div>
-      </div>
-      <h3> PHP </h3>
-      <div class="rods">
-        <div class="rod4"></div>
-        <div class="rod5"></div>
-      </div>
-      <h3> PYTHON </h3>
-      <div class="rods">
-        <div class="rod6"></div>
-        <div class="rod7"></div>
-      </div>
-    </div>
-  </div>
-  <div class="footer-sty">
-    <iframe src="footer.html" frameborder="0" scrolling="no" style="width: 100%;"></iframe>
-  </div>
+    <footer class="footer-button" style="height: 10%;" id="color-Gray">
+        <button>
+            <a href="#" class="icon-cloud"> Download Resume</a>
+        </button>
+    </footer>
+
+
+   
+
 </body>
 </html>
