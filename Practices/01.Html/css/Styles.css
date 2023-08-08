@@ -1,5 +1,16 @@
-/* Dimensions */
+/* Global Variales */
 :root {
+    /* Colors */
+    --color-darkgray: #353A40;
+    --color-lightgray: #F7F7F7;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-blue: #007AFF;
+    --color-green: #27A844;
+    --color-yellow: #FEC107;
+    --color-red: #DC3546;
+    --color-bar: #2DA643;
+    /* Dimensions */
     --header-height: 20%;
     --main-height: 70%;
     --footer-height: 10%;
@@ -7,36 +18,84 @@
     --content-height: 100%;
 }
 
-body, html, iframe {
-    margin: 0;
+/* Dimensions */
+html, body, iframe  {
+    margin: 0; 
     padding: 0;
+    border: 0;
     height: var(--content-height);
     width: var(--content-width);
 }
 
+/* Main Sections */
 header {
     height: var(--header-height);
-    border: 1px solid yellow;
+    border: 3px solid var(--color-yellow);
 }
 
 main {
     height: var(--main-height);
-    border: 1px solid blue;
+    border: 3px solid var(--color-blue);
 }
 
 footer {
     height: var(--footer-height);
-    border: 1px solid red;
+    border: 3px solid var(--color-red);
 }
 
 /* Containers */
-.container {
+.container-row {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: nowrap;    
+    height: 100%;
+    flex-direction: row;
 }
 
+.container-col {
+    display: flex;
+    flex-wrap: nowrap;    
+    width: 100%;
+    flex-direction: column;
+}
+
+/* Boxes */
 .box {
     border: 1px solid black;
+    align-items: center;
+}
+
+.box-flex {
+    flex: 1;
+    flex-wrap: nowrap;
+}
+
+.box-photo {
+    width: 15%;
+}
+
+.box-name-social
+{
+    height: 25%;
+}
+
+.box-role
+{
+    height: 25%;
+    text-align: left;
+    align-content: center;
+
+}
+
+.box-nav {
+    height: 50%;
+}
+
+.box-name {
+    width: 40%;
+}
+
+.box-social {
+    width: 15%;
 }
 
 /* Back Colors */
