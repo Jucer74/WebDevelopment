@@ -3,6 +3,12 @@ body{
     margin: 0 0 0;
 }
 
+.color1 {color: #000015;}
+.color2 {color: #003354;}
+.color3 {color: #006ba2;}
+.color4 {color: #00adfb;}
+.color5 {color: #00fbff;}
+
 .grid-layout{
     display: grid;
     width: 80%;
@@ -59,10 +65,9 @@ body{
     height: 200px;
     margin: 0;
     color: white;
-    background-color: rgb(92, 92, 92);
+    background-color: #353a40;
     text-align: center;
     display: grid;
-    
 }
 
 /*iconos*/
@@ -71,7 +76,7 @@ body{
     display: grid;
     grid-template-columns: auto auto auto auto;
     height: 200px;
-    background-color: rgb(92, 92, 92);
+    background-color: #353A40;
 }
 
 /*trabajo*/
@@ -104,22 +109,22 @@ body{
 /*/*/
 .hc7{
     display: grid;
-    background-color: blue;
+    background-color: #007AFF;
     text-align: center;
 }
 .hc8{
     display: grid;
-    background-color: rgb(29, 151, 94);
+    background-color: #23B13B;
     text-align: center;
 }
 .hc9{
     display: grid;
-    background-color: rgb(164, 190, 17);
+    background-color: #FEC107;
     text-align: center;
 }
 .hc10{
     display: grid;
-    background-color: rgb(182, 114, 26);
+    background-color: #DC3546;
     text-align: center;
 }
 
