@@ -87,6 +87,7 @@ body{
 
 .hc4 h3{
     margin: 50px;
+    font-size:20px;
 }
 
 
@@ -120,17 +121,36 @@ body{
     background-color: #23B13B;
     text-align: center;
 }
+
+.hc8 h2{
+    color: white;
+    font-family: "Homizio Nova";
+    margin: 0 ;
+}
+
 .hc9{
     display: grid;
     background-color: #FEC107;
     text-align: center;
 }
+
+.hc9 h2{
+    color: white;
+    font-family: "Homizio Nova";
+    margin: 0 ;
+}
+
 .hc10{
     display: grid;
     background-color: #DC3546;
     text-align: center;
 }
 
+.hc10 h2{
+    color: white;
+    font-family: "Homizio Nova";
+    margin: 0 ;
+}
 
 
 
