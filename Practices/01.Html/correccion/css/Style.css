@@ -60,6 +60,8 @@ body{
     margin: 0;
     color: white;
     background-color: rgb(92, 92, 92);
+    text-align: center;
+    display: grid;
     
 }
 
@@ -78,42 +80,47 @@ body{
     height: 70px;
     margin: 0;
     color: white;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+    /* margin-left: 50px; */
 }
 
 /* botones */
 .hc5{
-    grid-column:2/4;
+    grid-column:2/4; /* no tocar */
     height: 180px;
     margin: 0;
-    background-color: rgb(198, 32, 145);
+    background-color: rgb(134, 25, 99);
+    display: grid;
+    grid-template-columns: auto auto auto auto ;
+    grid-template-rows: 100%;
+    
+
+    
 }
 
-.hc6{
-    grid-column:2/4;
-    height: 180px;
-    margin: 0;
-    display: grid;
-    grid-template-columns: 206px 206px 206px 206px;
-    grid-template-rows: 180px;
-}
 /*/*/
 .hc7{
     display: grid;
-    grid-template-columns: auto auto auto;
     background-color: blue;
+    text-align: center;
 }
 .hc8{
     display: grid;
-    grid-template-columns: auto auto auto;
+    background-color: rgb(29, 151, 94);
+    text-align: center;
 }
 .hc9{
     display: grid;
-    grid-template-columns: auto auto auto;
+    background-color: rgb(164, 190, 17);
+    text-align: center;
 }
 .hc10{
     display: grid;
-    grid-template-columns: auto auto auto;
+    background-color: rgb(182, 114, 26);
+    text-align: center;
 }
 
 
