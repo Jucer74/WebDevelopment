@@ -108,11 +108,32 @@ iframe {
     height: 25%;
     text-align: left;
     align-content: center;
+    background-color: black;
 }
 
 .box-nav {
     height: 10%;
 }
+.box-nav-home {
+    height: 25%;
+    width: 25%;
+}
+
+.box-nav-contact {
+    height: 25%;
+    width: 25%;
+}
+
+.box-nav-work {
+    height: 25%;
+    width: 25%;
+}
+
+.box-nav-home {
+    height: 25%;
+    width: 25%;
+}
+
 
 .box-name {
     width: 40%;
@@ -130,4 +151,25 @@ iframe {
 .box-social {
     width: 15%;
     background-color: #353A40; /* Set the background color */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Center-align the text */
+    color: white;
+}
+
+.box-social img {
+    max-width: 100%;
+    max-height: 70%;
+    background-color: white;
+    padding: 5px;
+    
+}
+h1 {
+    color: white;
+    font-family: Verdana, sans-serif;
+    font-size: 100%;
+   margin-left: 50px;
+   margin-top: 50px;
 }
