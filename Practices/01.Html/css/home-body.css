@@ -5,7 +5,7 @@
 }
 
 #welcome__section{
-    height: 150px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -14,14 +14,16 @@
 #welcome{
     padding-left: 60px;
     padding-top: 20px;
+    padding-bottom: 20px;
     color: white;
     font-size: 40px;
-    height: 75px;
+    height: 100%;
 }
 
 #welcome__message{
-    height: 75px;
+    height: 100%;
     padding-left: 60px;
+    padding-bottom: 40px;
     color: white;
     font-size: 20px;
 }
@@ -35,10 +37,10 @@
 }
 
 #intro{
-    height: 50px;
+    height: 100%;
     padding-top: 60px;
     padding-left: 50px;
-    padding-bottom: 40px;
+    padding-bottom: 30px;
     width: 95%;
 }
 
