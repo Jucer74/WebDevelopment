@@ -5,15 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login</title>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">    <!-- JavaScript Bundle with Popper -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> 
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script></head>
+
+    <style>
+
+        body{
+            background: rgb(209, 185, 185);
+            background: linear-gradient(to right, #d1f3ab, #8ba3f5, #f3e6ab);
+        }
+        .bg{
+            background-image: url("https://img.freepik.com/vector-premium/colorido-logo-mercado-gradiente_23-2148472540.jpg?w=740");
+            background-position: center center;
+        
+        }
+    </style>
+
+
 <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col"></div>
+    <div class="container w-75 bg-white mt-5 rounded shadow">
+
+        <div class="row align-items-stretch">
+           <div class="bg d-none d-lg-block col-md col-lg col-xl rounded">  <!-- parte resposive -->
+            <!-- imagen lateral clase bg -->
+            </div>
+
+            <div class="col bg-white p-5">
+                <h2 class="fw-bold text-center py-5">WELCOME</h2>
+
+                <form class="needs-validation" novalidate>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                        <div class="invalid-feedback">Please enter your password to continue.</div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="checkRemember">
+                            <label class="form-check-label" for="checkRemember">Remember me</label>
+                        </div>
+                        <a href="#" role="button"><small><u>Forgot Password?</u></small></a>
+                    </div>
+
+                    <div class="mb-4 text-center">
+                        <button type="submit" class="btn btn-primary px-4 mx-4 my-1">Sign in</button>
+                        <button type="submit" class="btn btn-outline-secondary px-4 mx-4 my-1">Sign up</button>
+                    </div>
+                    
+                    <script>
+                        // Self-executing function
+                        (function() {
+                            'use strict';
+                            window.addEventListener('load', function() {
+                                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                var forms = document.getElementsByClassName('needs-validation');
+                    
+                                // Loop over them and prevent submission
+                                var validation = Array.prototype.filter.call(forms, function(form) {
+                                    form.addEventListener('submit', function(event) {
+                                        if (form.checkValidity() === false) {
+                                            event.preventDefault();
+                                            event.stopPropagation();
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
+                    
+                   
+                    
+                    
+                </form>
+
+            </div> 
         </div>
     </div>
 
