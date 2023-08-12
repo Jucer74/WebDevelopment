@@ -3,7 +3,7 @@ Utilizando Bootstrap, implemente las paginas necesarias para realizar el proceso
 
 ![Forms](https://github.com/Jucer74/WebDevelopment/blob/main/Practices/02.Bootstrap/Forms.png)
 
-Observaciones y Comportamientos:
+## Observaciones y Comportamientos:
 - Deben Utilizar Bootstrap para el diseño de los componentes principales de las paginas
 - Pueden utilizar codigo HTML, CSS y Javascript en caso de ser necesario y que no se supla por los componentes de Bootstrap
 - La primer Pagina a desplegar es la pagina de Login
