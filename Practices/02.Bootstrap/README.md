@@ -6,6 +6,7 @@ Utilizando Bootstrap, implemente las paginas necesarias para realizar el proceso
 ## Observaciones y Comportamientos:
 - Deben Utilizar Bootstrap para el diseño de los componentes principales de las paginas
 - Pueden utilizar codigo HTML, CSS y Javascript en caso de ser necesario y que no se supla por los componentes de Bootstrap
+- Las paginas deben ser Adaptative y Responsive
 - La primer Pagina a desplegar es la pagina de Login
 - La pagina de Login debe validar los campos requeridos y si todo esta bien pasar al Menu, de lo contrario mostrar los mensajes respectivos
 - El Login debe Validar el Email y mostrar unmensaje en caso de que no sea un correo valido
