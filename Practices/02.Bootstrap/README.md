@@ -9,7 +9,7 @@ Utilizando Bootstrap, implemente las paginas necesarias para realizar el proceso
 - Las paginas deben ser Adaptative y Responsive
 - La primer Pagina a desplegar es la pagina de Login
 - La pagina de Login debe validar los campos requeridos y si todo esta bien pasar al Menu, de lo contrario mostrar los mensajes respectivos
-- El Login debe Validar el Email y mostrar unmensaje en caso de que no sea un correo valido
+- El Login debe Validar el Email y mostrar un mensaje en caso de que no sea un correo valido
 - Al selecionar el link de registro de la pagina de login, debe cargar la pagina de registro en modo Modal
 - En el Registro se debe validar que todos los campos sean requeridos y en caso de faltar alguno, debe mostrar los mensajes respectivos
 - El Campo de usario, debe validar que el campo sea un email y en caso de no serlo, debe mostrar el mensaje correspondiente
