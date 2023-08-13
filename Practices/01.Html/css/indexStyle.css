@@ -43,6 +43,40 @@ iframe {
     background-color: white;
 }
 
+
+/* Global Variales */
+:root {
+    /* Colors */
+    --color-darkgray: #353A40;
+    --color-lightgray: #F7F7F7;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-blue: #007AFF;
+    --color-green: #27A844;
+    --color-yellow: #FEC107;
+    --color-red: #DC3546;
+    --color-bar: #2DA643;
+    /* Dimensions */
+    --header-height: 20%;
+    --main-height: 70%;
+    --footer-height: 10%;
+    --content-width: 100%;
+    --content-height: 100%;
+}
+
+/* Main Sections*/
+header {
+    height: var(--header-height);
+}
+
+main {
+    height: var(--main-height);
+}
+
+footer {
+    height: var(--footer-height);
+}
+
 /** ESTILO DEL HEADER**/
 
 .grid {
@@ -57,7 +91,6 @@ img {
 }
 
 .superior-der {
-    background-color: chocolate;
     color: white;
 }
 
