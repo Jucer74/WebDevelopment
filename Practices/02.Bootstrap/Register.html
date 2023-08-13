@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<!-- Bootstrap JS Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+<!-- Bootsrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<link rel="stylesheet" href="./css/StylesRegister.css">
+
+<head>
+    <!-- Encabezado, enlaces a estilos y scripts -->
+</head>
+
+<body>
+    <header class="text-center mt-3">
+        <h1 class="h1">Registro</h1>
+    </header>
+    <main class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="registrationForm">
+                    <div class="form-group">
+                        <h2 class="h2">Usuario (Email):</h2>
+                        <input type="email" class="form-control" id="email" placeholder="Ingresa tu email" required>
+                    </div>
+                    <div class="form-group">
+                        <h2 class="h2">Nombre:</h2>
+                        <input type="text" class="form-control" id="firstName" placeholder="Ingresa tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <h2 class="h2">Apellido:</h2>
+                        <input type="text" class="form-control" id="lastName" placeholder="Ingresa tu apellido"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <!-- Acordion aquí -->
+                        <h2 class="h2">Fecha de Nacimiento:</h2>
+                        <div id="dateAccordion">
+                            <div class="accordion" id="accordionDate">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingDate">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseDate" aria-expanded="true"
+                                            aria-controls="collapseDate">
+                                            Seleccionar Fecha
+                                        </button>
+                                    </h2>
+                                    <div id="collapseDate" class="accordion-collapse collapse"
+                                        aria-labelledby="headingDate" data-bs-parent="#accordionDate">
+                                        <div class="accordion-body">
+                                            <input type="text" class="form-control" id="datepicker">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h2 class="h2">Sexo:</h2>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="gender" value="male"> Masculino
+                            </label>
+                            <label>
+                                <input type="radio" name="gender" value="female"> Femenino
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h2 class="h2">Contraseña:</h2>
+                        <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <h2 class="h2">Confirmar Contraseña:</h2>
+                        <input type="password" class="form-control" id="confirmPassword"
+                            placeholder="Confirma tu contraseña" required>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Aceptar</button>
+                        <button type="button" class="btn btn-secondary">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+</body>
+
+</html>
