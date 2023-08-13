@@ -26,6 +26,9 @@ body {
 }
 
 /* Otros estilos aquí */
+.form-group.row {
+    margin-bottom: 60px;
+}
 
 /* Agregamos un estilo específico para el acordeón */
 #dateAccordion {
