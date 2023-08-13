@@ -33,7 +33,8 @@
                                 </div>
 
                                 <div class="text-center mt-3 py-2">
-                                    <button class="btn btn-primary" id="loginButton">Ingresar</button>
+                                    <button class="btn btn-primary" id="loginButton"><a href="menu.html"
+                                            class="text-white text-decoration-none">Ingresar</a> </button>
                                     <a href="registro.html" class="nav-link py-3"><u><em>Registrarse</em></u></a>
                                 </div>
                             </form>
@@ -55,7 +56,7 @@
             const emailValue = emailInput.value;
             if (!validateEmail(emailValue)) {
                 emailError.textContent = 'Por favor, ingresa un correo válido.';
-                event.preventDefault(); 
+                event.preventDefault();
             } else {
                 emailError.textContent = '';
             }

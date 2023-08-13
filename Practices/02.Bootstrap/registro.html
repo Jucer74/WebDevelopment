@@ -47,7 +47,8 @@
               <div class="col-md-6 mb-3">
                 <label class="form-label">Sexo:</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="masculino" value="masculino" required>
+                  <input class="form-check-input" type="radio" name="gender" id="masculino" value="masculino" required
+                    checked>
                   <label class="form-check-label" for="masculino">
                     Masculino
                   </label>
@@ -65,7 +66,7 @@
                 <label for="password" class="form-label">Contraseña:</label>
                 <input type="password" class="form-control" placeholder="***********" id="password" name="password"
                   required>
-                  <small id="passwordError" class="text-danger"></small>
+                <small id="passwordError" class="text-danger"></small>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
@@ -95,60 +96,61 @@
   </script>
 
 
-<script>
-  const userInput = document.getElementById('username');
-  const passwordInput = document.getElementById('password');
-  const confirmPasswordInput = document.getElementById('confirmPassword');
-  const emailError = document.getElementById('emailError');
-  const passwordError = document.getElementById('passwordError');
-  const acceptButton = document.getElementById('acceptButton');
-  const registrationForm = document.getElementById('registrationForm');
+  <script>
+    // Validaciones
+    const userInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const emailError = document.getElementById('emailError');
+    const passwordError = document.getElementById('passwordError');
+    const acceptButton = document.getElementById('acceptButton');
+    const registrationForm = document.getElementById('registrationForm');
 
-  acceptButton.addEventListener('click', function (event) {
-    event.preventDefault();
+    acceptButton.addEventListener('click', function (event) {
+      event.preventDefault();
 
-    const emailValue = userInput.value;
-    const passwordValue = passwordInput.value;
-    const confirmPasswordValue = confirmPasswordInput.value;
+      const emailValue = userInput.value;
+      const passwordValue = passwordInput.value;
+      const confirmPasswordValue = confirmPasswordInput.value;
 
-    const requiredFields = registrationForm.querySelectorAll('[required]');
-    let allFieldsFilled = true;
+      const requiredFields = registrationForm.querySelectorAll('[required]');
+      let allFieldsFilled = true;
 
-    for (const field of requiredFields) {
-      if (!field.value) {
-        allFieldsFilled = false;
-        field.classList.add('is-invalid'); 
-      } else {
-        field.classList.remove('is-invalid'); 
+      for (const field of requiredFields) {
+        if (!field.value) {
+          allFieldsFilled = false;
+          field.classList.add('is-invalid');
+        } else {
+          field.classList.remove('is-invalid');
+        }
       }
-    }
-    
-    if (!validateEmail(emailValue)) {
-      emailError.textContent = 'Por favor, ingresa un correo válido.';
-    } else {
-      emailError.textContent = ''; // Borrar el mensaje de error del correo electrónico
-    }
-    
-    if (passwordValue !== confirmPasswordValue) {
-      passwordError.textContent = 'Las contraseñas no coinciden.';
-    } else {
-      passwordError.textContent = ''; // Borrar el mensaje de error de las contraseñas
-    }
 
-    if (allFieldsFilled && validateEmail(emailValue) && passwordValue === confirmPasswordValue) {
-      // Enviar el formulario si todos los campos están llenos, el correo es válido y las contraseñas coinciden
-      registrationForm.submit();
+      if (!validateEmail(emailValue)) {
+        emailError.textContent = 'Por favor, ingresa un correo válido.';
+      } else {
+        emailError.textContent = ''; // Borrar el mensaje de error del correo electrónico
+      }
 
-      // Agregado: Redirigir a la página de inicio de sesión después del envío exitoso
-      window.location.href = 'login.html';
+      if (passwordValue !== confirmPasswordValue) {
+        passwordError.textContent = 'Las contraseñas no coinciden.';
+      } else {
+        passwordError.textContent = ''; // Borrar el mensaje de error de las contraseñas
+      }
+
+      if (allFieldsFilled && validateEmail(emailValue) && passwordValue === confirmPasswordValue) {
+        // Enviar el formulario si todos los campos están llenos, el correo es válido y las contraseñas coinciden
+        registrationForm.submit();
+
+        // Agregado: Redirigir a la página de inicio de sesión después del envío exitoso
+        window.location.href = 'login.html';
+      }
+    });
+
+    function validateEmail(email) {
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(email);
     }
-  });
-
-  function validateEmail(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  }
-</script>
+  </script>
 
 
 </body>

@@ -1,0 +1,17 @@
+.navbar-brand{
+   margin-left: 40px;
+}
+
+i{
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+ul{
+    margin-left: 100px;
+    font-size: 20px;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 50px;
+}
