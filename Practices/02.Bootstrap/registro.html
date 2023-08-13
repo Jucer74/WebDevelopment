@@ -12,7 +12,7 @@
   <title>Registro</title>
 </head>
 
-<body>
+<body class="bg-secondary">
   <!-- Registro -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
     data-bs-backdrop="static" data-bs-keyboard="false">
@@ -25,36 +25,36 @@
           <form id="registrationForm">
             <div class="mb-3">
               <label for="username" class="form-label">Usuario:</label>
-              <input type="text" class="form-control" placeholder="JohnDoe@gmail.com" id="username" name="username"
+              <input type="text" class="form-control border border-dark" placeholder="JohnDoe@gmail.com" id="username" name="username"
                 required>
               <small id="emailError" class="text-danger"></small>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName" class="form-label">Nombre:</label>
-                <input type="text" class="form-control" placeholder="John" id="firstName" name="firstName" required>
+                <input type="text" class="form-control border border-dark" placeholder="John" id="firstName" name="firstName" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName" class="form-label">Apellido:</label>
-                <input type="text" class="form-control" placeholder="Doe" id="lastName" name="lastName" required>
+                <input type="text" class="form-control border border-dark" placeholder="Doe" id="lastName" name="lastName" required>
               </div>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="birthdate" class="form-label">Fecha de Nacimiento:</label>
-                <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                <input type="date" class="form-control border border-dark" id="birthdate" name="birthdate" required>
               </div>
               <div class="col-md-6 mb-3">
                 <label class="form-label">Sexo:</label>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="masculino" value="masculino" required
+                  <input class="form-check-input border border-dark" type="radio" name="gender" id="masculino" value="masculino" required
                     checked>
                   <label class="form-check-label" for="masculino">
                     Masculino
                   </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="gender" id="femenino" value="femenino" required>
+                  <input class="form-check-input border border-dark" type="radio" name="gender" id="femenino" value="femenino" required>
                   <label class="form-check-label" for="femenino">
                     Femenino
                   </label>
@@ -64,13 +64,13 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" class="form-control" placeholder="***********" id="password" name="password"
+                <input type="password" class="form-control border border-dark" placeholder="***********" id="password" name="password"
                   required>
                 <small id="passwordError" class="text-danger"></small>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
-                <input type="password" class="form-control" placeholder="***********" id="confirmPassword"
+                <input type="password" class="form-control border border-dark" placeholder="***********" id="confirmPassword"
                   name="confirmPassword" required>
               </div>
             </div>
