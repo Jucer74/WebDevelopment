@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
   <title>Registro</title>
 </head>
 
@@ -19,11 +22,12 @@
           <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
         </div>
         <div class="modal-body">
-          <form>
+          <form id="registrationForm">
             <div class="mb-3">
               <label for="username" class="form-label">Usuario:</label>
               <input type="text" class="form-control" placeholder="JohnDoe@gmail.com" id="username" name="username"
                 required>
+              <small id="emailError" class="text-danger"></small>
             </div>
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -61,6 +65,7 @@
                 <label for="password" class="form-label">Contraseña:</label>
                 <input type="password" class="form-control" placeholder="***********" id="password" name="password"
                   required>
+                  <small id="passwordError" class="text-danger"></small>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
@@ -71,8 +76,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" data-dismiss="modal"><a href="login.html"
-              class="text-white text-decoration-none">Aceptar</a></button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal"><a href=""
+              class="text-white text-decoration-none" id="acceptButton">Aceptar</a></button>
           <button type="button" class="btn btn-danger" data-dismiss="modal"><a href="login.html"
               class="text-white text-decoration-none">Cancelar</a></button>
         </div>
@@ -88,6 +93,64 @@
       myModal.show();
     };
   </script>
+
+
+<script>
+  const userInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+  const confirmPasswordInput = document.getElementById('confirmPassword');
+  const emailError = document.getElementById('emailError');
+  const passwordError = document.getElementById('passwordError');
+  const acceptButton = document.getElementById('acceptButton');
+  const registrationForm = document.getElementById('registrationForm');
+
+  acceptButton.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    const emailValue = userInput.value;
+    const passwordValue = passwordInput.value;
+    const confirmPasswordValue = confirmPasswordInput.value;
+
+    const requiredFields = registrationForm.querySelectorAll('[required]');
+    let allFieldsFilled = true;
+
+    for (const field of requiredFields) {
+      if (!field.value) {
+        allFieldsFilled = false;
+        field.classList.add('is-invalid'); 
+      } else {
+        field.classList.remove('is-invalid'); 
+      }
+    }
+    
+    if (!validateEmail(emailValue)) {
+      emailError.textContent = 'Por favor, ingresa un correo válido.';
+    } else {
+      emailError.textContent = ''; // Borrar el mensaje de error del correo electrónico
+    }
+    
+    if (passwordValue !== confirmPasswordValue) {
+      passwordError.textContent = 'Las contraseñas no coinciden.';
+    } else {
+      passwordError.textContent = ''; // Borrar el mensaje de error de las contraseñas
+    }
+
+    if (allFieldsFilled && validateEmail(emailValue) && passwordValue === confirmPasswordValue) {
+      // Enviar el formulario si todos los campos están llenos, el correo es válido y las contraseñas coinciden
+      registrationForm.submit();
+
+      // Agregado: Redirigir a la página de inicio de sesión después del envío exitoso
+      window.location.href = 'login.html';
+    }
+  });
+
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+</script>
+
+
 </body>
 
 </html>
