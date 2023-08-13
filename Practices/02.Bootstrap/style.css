@@ -15,3 +15,16 @@ ul{
 .navbar-nav .nav-item {
     margin-right: 50px;
 }
+
+.carousel-img {
+    margin-top: 100px;
+    width: 900px;
+    height: 600px;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
