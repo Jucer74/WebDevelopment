@@ -18,6 +18,7 @@
         .bg{
             background-image: url("https://img.freepik.com/vector-premium/colorido-logo-mercado-gradiente_23-2148472540.jpg?w=740");
             background-position: center center;
+            background-size: cover;
         
         }
     </style>
@@ -25,7 +26,7 @@
 
 <body>
 
-    <div class="container w-75 bg-white mt-5 rounded shadow">
+    <div class="container w-75 bg-white mt-5 mb-5 center rounded shadow">
 
         <div class="row align-items-stretch">
            <div class="col bg d-none d-lg-block rounded">  <!-- parte resposive -->
@@ -56,7 +57,7 @@
 
                     <div class="mb-4 text-center">
                         <button type="submit" class="btn btn-primary px-4 mx-4 my-1">Sign in</button>
-                        <button type="submit" class="btn btn-outline-secondary px-4 mx-4 my-1">Sign up</button>
+                        <a href="Register.html" class="btn btn-outline-secondary px-4 mx-4 my-1">Register</a>
                     </div>
                     
                     <script>
@@ -80,6 +81,41 @@
                             }, false);
                         })();
                     </script>
+
+                    <script>
+                        (function() {
+                            'use strict';
+                            window.addEventListener('load', function() {
+                                var forms = document.getElementsByClassName('needs-validation');
+                                var validation = Array.prototype.filter.call(forms, function(form) {
+                                    form.addEventListener('submit', function(event) {
+                                        event.preventDefault();
+                                        if (form.checkValidity() === false) {
+                                            event.stopPropagation();
+                                        } else {
+                                            // Obtener los datos almacenados en localStorage
+                                            var storedData = localStorage.getItem('userData');
+                                            if (storedData) {
+                                                var userData = JSON.parse(storedData);
+                                                var inputEmail = document.getElementById('inputEmail').value;
+                                                var inputPassword = document.getElementById('inputPassword').value;
+                                                
+                                                if (inputEmail === userData.email && inputPassword === userData.password) {
+                                                    // Datos correctos, redirigir a Home.html
+                                                    window.location.href = 'Home.html';
+                                                } else {
+                                                    // Datos incorrectos, mostrar modal
+                                                    var modal = new bootstrap.Modal(document.getElementById('invalidLoginModal'));
+                                                    modal.show();
+                                                }
+                                            }
+                                        }
+                                        form.classList.add('was-validated');
+                                    }, false);
+                                });
+                            }, false);
+                        })();
+                    </script>
                     
                    
                     
@@ -87,6 +123,24 @@
                 </form>
 
             </div> 
+        </div>
+    </div>
+
+    <!-- Modal para datos de inicio de sesión incorrectos -->
+    <div class="modal fade" id="invalidLoginModal" tabindex="-1" aria-labelledby="invalidLoginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="invalidLoginModalLabel">Invalid Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Your email or password is incorrect. Please try again.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
 

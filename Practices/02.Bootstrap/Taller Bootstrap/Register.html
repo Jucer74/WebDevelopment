@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<style>
+    body {
+        background: rgb(209, 185, 185);
+        background: linear-gradient(to right, #d1f3ab, #8ba3f5, #f3e6ab);
+    }
+
+    .bg {
+        background-image: url("https://document360.com/wp-content/uploads/2022/01/Ultimate-guide-to-writing-instructions-for-a-user-manual-Document360.png");
+        background-position: center center;
+    }
+</style>
+<body>
+    <div class="container w-75 bg-white mt-5 mb-5 shadow">
+        <div class="row align-items-stretch">
+            <div class="col bg d-none d-lg-block rounded">
+                <!-- imagen lateral clase bg -->
+            </div>
+            <div class="col bg-white p-5">
+                <h2 class="fw-bold text-center py-5">REGISTER</h2>
+                <form class="needs-validation" novalidate>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputFirstName">First Name</label>
+                        <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" required>
+                        <div class="invalid-feedback">Please enter your first name.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputLastName">Last Name</label>
+                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required>
+                        <div class="invalid-feedback">Please enter your last name.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputNickname">Nickname</label>
+                        <input type="text" class="form-control" id="inputNickname" placeholder="Nickname" required>
+                        <div class="invalid-feedback">Please enter a nickname.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputBirthdate">Birthdate</label>
+                        <input type="date" class="form-control" id="inputBirthdate" required>
+                        <div class="invalid-feedback">Please enter your birthdate.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Gender</label>
+                        <select class="form-select" required>
+                            <option value="" disabled selected>Select your gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <div class="invalid-feedback">Please select your gender.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputPassword">Password</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                        <div class="invalid-feedback">Please enter a password.</div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label" for="inputConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Confirm Password" required>
+                        <div class="invalid-feedback">Passwords do not match.</div>
+                    </div>
+                    <div class="mb-4 text-center">
+                        <button type="submit" class="btn btn-primary px-4 mx-4 my-1">Register</button>
+                    </div>
+                </form>
+                <script>
+                    // Self-executing function
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                            var forms = document.getElementsByClassName('needs-validation');
+                            // Loop over them and prevent submission
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    if (form.checkValidity() === false) {
+                                        event.preventDefault();
+                                        event.stopPropagation();
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+
+                <!-- registro script  -->
+                <script>
+                    (function() {
+                        'use strict';
+                        window.addEventListener('load', function() {
+                            var forms = document.getElementsByClassName('needs-validation');
+                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                form.addEventListener('submit', function(event) {
+                                    event.preventDefault();
+                                    if (form.checkValidity() === false) {
+                                        event.stopPropagation();
+                                    } else {
+                                        var email = document.getElementById('inputEmail').value;
+                                        var firstName = document.getElementById('inputFirstName').value;
+                                        var lastName = document.getElementById('inputLastName').value;
+                                        var nickname = document.getElementById('inputNickname').value;
+                                        var birthdate = document.getElementById('inputBirthdate').value;
+                                        var gender = document.querySelector('select.form-select').value;
+                                        var password = document.getElementById('inputPassword').value; // Obtener la contraseña
+                                        
+                                        var userData = {
+                                            email: email,
+                                            firstName: firstName,
+                                            lastName: lastName,
+                                            nickname: nickname,
+                                            birthdate: birthdate,
+                                            gender: gender,
+                                            password: password // Almacenar la contraseña
+                                        };
+                
+                                        localStorage.setItem('userData', JSON.stringify(userData));
+                                        
+                                        // Redirigir a index.html después del registro exitoso
+                                        window.location.href = 'index.html';
+                                    }
+                                    form.classList.add('was-validated');
+                                }, false);
+                            });
+                        }, false);
+                    })();
+                </script>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>
