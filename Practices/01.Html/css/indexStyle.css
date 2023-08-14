@@ -64,7 +64,16 @@ iframe {
     --content-height: 100%;
 }
 
-/* Main Sections*/
+/* Dimensions */
+html, body, iframe  {
+    margin: 0; 
+    padding: 0;
+    border: 0;
+    height: var(--content-height);
+    width: var(--content-width);
+}
+
+/* Main Sections */
 header {
     height: var(--header-height);
 }
@@ -76,6 +85,8 @@ main {
 footer {
     height: var(--footer-height);
 }
+
+
 
 /** ESTILO DEL HEADER**/
 
