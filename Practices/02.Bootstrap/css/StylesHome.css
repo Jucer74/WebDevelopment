@@ -21,6 +21,7 @@ header {
 .categoria-links {
     display: flex;
     align-items: center;
+    margin-left: auto; /* Pushes "Categoría 1" and "Categoría 2" to the right */
 }
 
 .categoria-links a {
@@ -29,10 +30,12 @@ header {
     margin: 0 20px;
 }
 
-.usuario-link a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
+.categoria-links img {
+    width: 50px; /* Adjust the width of the image as needed */
+    margin-right: 10px; /* Add some spacing between the image and the link */
+}
+
+.usuario-link {
     margin-left: auto; /* Pushes the "Usuario" link to the right */
 }
 
@@ -49,11 +52,13 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
 .carousel {
     display: flex;
     overflow: hidden;
     margin: 20px auto;
 }
+
 .carousel img {
     width: 100%;
     max-width: 600px;
