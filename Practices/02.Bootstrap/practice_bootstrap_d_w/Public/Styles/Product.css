@@ -1,0 +1,15 @@
+.btn-primary {
+  background-color: #ffc107;
+  border-color: black;
+  color: black;
+}
+
+.btn-danger {
+  border-color: black;
+  color: black;
+}
+
+.btn:hover {
+  background-color: #4f4730;
+  border-color: wheat;
+}

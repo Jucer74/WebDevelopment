@@ -1,0 +1,12 @@
+necesario 
+completo 
+consistente
+correcto
+factible
+prioritario
+verificable
+rastreable
+claro
+
+    
+DevSecOps consultar
