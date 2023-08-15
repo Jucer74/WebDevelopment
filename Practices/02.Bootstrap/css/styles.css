@@ -1,0 +1,23 @@
+body {
+  background-color: lightblue !important;
+}
+
+.main-section {
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 50%;
+  text-decoration: none;
+}
+
+.button-return a {
+  color: white;
+}
+
+.modal-content {
+  padding: 10px;
+}
+
+.carousel-item {
+height: 300px !important;
+background-size: cover;
+}
