@@ -4,74 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <!-- Bootsrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/StylesHome.css">
     <title>Document</title>
 </head>
 
 <body>
-    <section class="layout">
-        <div class="header">
-
-            1
-
-        </div>
-        <div class="main">
-            2
-
-            <section class="awSlider">
-                <div  class="carousel slide" data-ride="carousel">
-                  <!-- Indicators -->
-                  <ol class="carousel-indicators">
-                    <li data-target=".carousel" data-slide-to="0" class="active"></li>
-                    <li data-target=".carousel" data-slide-to="1"></li>
-                    <li data-target=".carousel" data-slide-to="2"></li>
-                    <li data-target=".carousel" data-slide-to="3"></li>
-                  </ol>
-              
-                  <!-- Wrapper for slides -->
-                  <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                      <img src="http://www.adobewordpress.com/wp-content/uploads/2014/02/wallpaper-thumb-941.jpg">
-                      <div class="carousel-caption">Görsel #1</div>
-                    </div>
-                    <div class="item">
-                      <img src="http://www.adobewordpress.com/wp-content/uploads/2014/02/wallpaper-thumb-101.jpg">
-                      <div class="carousel-caption">Görsel #2</div>
-                    </div>
-                    <div class="item">
-                      <img src="http://www.adobewordpress.com/wp-content/uploads/2014/02/wallpaper-thumb-1051.jpg">
-                      <div class="carousel-caption">Görsel #3</div>
-                    </div>
-                    <div class="item">
-                      <img src="http://www.adobewordpress.com/wp-content/uploads/2013/07/wallpaper-thumb-74.jpg">
-                      <div class="carousel-caption">Görsel #4</div>
-                    </div>
-                  </div>
-              
-                  <!-- Controls -->
-                  <a class="left carousel-control" href=".carousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Geri</span>
-                  </a>
-                  <a class="right carousel-control" href=".carousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">İleri</span>
-                  </a>
+    <header>
+        <h1>Mi Aplicación</h1>
+    </header>
+    <nav>
+        <a href="#">Categoría 1</a>
+        <a href="#">Categoría 2</a>
+        <a href="#">Usuario</a>
+    </nav>
+    <main>
+        <div class="slide">
+            <div class="slide-inner">
+                <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden=""
+                    checked="checked">
+                <div class="slide-item">
+                    <img src="./Img/OIP (1).jfif">
                 </div>
-              </section>
-
-           
-
+                <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="">
+                <div class="slide-item">
+                    <img src="./Img/OIP.jfif">
+                </div>
+                <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="">
+                <div class="slide-item">
+                    <img src="./Img/za31s3ff1j751.jpg">
+                </div>
+                <label for="slide-3" class="slide-control prev control-1">‹</label>
+                <label for="slide-2" class="slide-control next control-1">›</label>
+                <label for="slide-1" class="slide-control prev control-2">‹</label>
+                <label for="slide-3" class="slide-control next control-2">›</label>
+                <label for="slide-2" class="slide-control prev control-3">‹</label>
+                <label for="slide-1" class="slide-control next control-3">›</label>
+                <ol class="slide-indicador">
+                    <li>
+                        <label for="slide-1" class="slide-circulo">•</label>
+                    </li>
+                    <li>
+                        <label for="slide-2" class="slide-circulo">•</label>
+                    </li>
+                    <li>
+                        <label for="slide-3" class="slide-circulo">•</label>
+                    </li>
+                </ol>
+            </div>
         </div>
-        <div class="footer">
-
-
-            3
-
-
-        </div>
-
-    
-    </section>
+    </main>
+    <footer>
+        &copy; 2023 Mi Aplicación
+    </footer>
 </body>
 
 </html>
