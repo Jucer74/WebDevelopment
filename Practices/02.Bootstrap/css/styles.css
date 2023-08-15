@@ -26,6 +26,11 @@ body {
     background-color: var(--color-beige);
 }
 
+header {
+    background-color: var(--color-darkbrown);
+    height: 30%;
+}
+
 form {
     width: 30%;
     background-color: var(--color-lightbeige);
@@ -69,4 +74,22 @@ input {
     form {
         width: 100% !important;
     }
+}
+
+
+.navbar-brand, .navbar-nav a, .user{
+    font-size: 20px;
+    color: var(--color-white);
+}
+
+.navbar-nav a {
+    margin-left: 12%;
+}
+
+.text {
+    margin-right: 10%;
+}
+
+.icon-user{
+    margin-left: 2%;
 }
