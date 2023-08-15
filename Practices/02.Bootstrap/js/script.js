@@ -21,11 +21,11 @@ function register() {
 
   localStorage.setItem("userData", JSON.stringify(userData));
 
-  window.location.href = "../index.html";
+  window.location.href = "./index.html";
 }
 
 function returned() {
-  window.location.href = "../index.html";
+  window.location.href = "./index.html";
 }
 
 function login() {
@@ -40,9 +40,9 @@ function login() {
     savedData.password === password
   ) {
     alert("Inicio de sesión exitoso");
-    window.location.href = "../home.html";
+    window.location.href = "./home.html";
   } else {
     alert("Usuario o contraseña incorrectos");
-    window.location.href = "../index.html";
+    window.location.href = "./index.html";
   }
 }
