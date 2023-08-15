@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+
+    <style>
+        li::marker {
+            font-size: 0;
+        }
+    </style>
+</head>
+
+<header>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a href="./home.html"><img src="./assets/img/house-door-fill.svg" alt="Home" id="Home-icon"></a>
+            <a class="navbar-brand" href="./home.html" id="PricatApp-logo">PricatApp</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.html" id="mynavbar-link1">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./home.html" id="mynavbar-link2">Products</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex">
+                    <img src="./assets/img/person-fill.svg" alt="user" height="40">
+                    <div class="container-fluid">
+                        <span class="navbar-text">John Doe</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<body>
+    
+
+    <div class="container-lg my-2">
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000"
+            data-bs-pause="false">
+            <!-- Carousel indicators -->
+            <ol class="carousel-indicators">
+                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="3"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="4"></li>
+            </ol>
+
+            <!-- Wrapper for carousel items -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./assets/img/john-wick-3-parabellum_3840x2160_xtrafondos.com.jpg" class="d-block w-100"
+                        alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/miles-morales-en-spider-man-un-nuevo-universo_3840x2160_xtrafondos.com.jpg"
+                        class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/one-piece-artwork_3840x2160_xtrafondos.com.jpg" class="d-block w-100"
+                        alt="Slide 3">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/paisaje-digital-en-atardecer_3840x2160_xtrafondos.com.jpg"
+                        class="d-block w-100" alt="Slide 4">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/img/montanas-minimalista-arte-low-poly_3840x2160_xtrafondos.com.jpg"
+                        class="d-block w-100" alt="Slide 5">
+                </div>
+            </div>
+
+            <!-- Carousel controls -->
+            <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

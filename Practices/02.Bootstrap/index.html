@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+
+<head>
+  <script src="../assets/js/color-modes.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.115.4">
+  <title>Log in</title>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link href="./assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+
+    p {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="sign-in.css" rel="stylesheet">
+</head>
+
+<body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+
+  <main class="form-signin w-100 m-auto">
+    <form action="./home.html">
+      <img class="mb-4" src="https://usbcali.edu.co/sites/default/files/logousb-lineas-white-rgb.png" alt=""
+        width="auto" height="100">
+      <h1 class="h3 mb-3 fw-normal">Log into your account</h1>
+
+      <div class="mb-3 mt-3">
+        <label for="email">User:</label>
+        <input type="email" class="form-control" id="email" placeholder="john.doe@email.com" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="********" name="pswd" required>
+      </div>
+
+      <button class="btn btn-primary w-100 py-2" type="submit" id="btn-login">Log in</button>
+
+      <p><a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+          id="btn-register" data-bs-toggle="modal" data-bs-target="#myModal" data-title="Register">Register</a></p>
+    </form>
+
+    <div id="myModal" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+          <form>
+            <div class="modal-header">
+              <h5 class="modal-title">Register</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-3">
+                    <label class="form-label">User (Email address)</label>
+                    <input type="email" class="form-control" id="email" placeholder="john.doe@email.com" name="email"
+                      required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="John" name="name" required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastname" placeholder="Doe" name="lastname" required>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">Birthdate</label>
+                    <input type="date" class="form-control" id="birthdate" required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <label class="form-label">Sex</label>
+                  <div class="mb-3">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                        value="option1" checked>
+                      <label class="form-check-label" for="inlineRadio1">Masculine</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                        value="option2">
+                      <label class="form-check-label" for="inlineRadio2">Femenine</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">Password:</label>
+                    <input type="password" class="form-control" id="password" placeholder="********" name="pswd"
+                      required>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="mb-3">
+                    <label class="form-label">Confirm password:</label>
+                    <input type="password" class="form-control" id="confirm-password" placeholder="********" name="pswd"
+                      required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cancel">Cancel</button>
+              <button type="submit" class="btn btn-primary" id="btn-accept">Accept</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
