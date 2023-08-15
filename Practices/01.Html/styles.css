@@ -1,3 +1,7 @@
+:root{
+  --gris: grey;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +11,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: grey;
+  background-color: var(--gris);
   height: 100vh;
 }
 
@@ -217,17 +221,17 @@ hr {
 
 .container-content-experience {
   background-color: whitesmoke;
-  padding: 30px;
+  padding: 18px;
 }
 
 .container-content-experience h3 {
   font-size: 15px;
   font-weight: bold;
-  margin: 8px auto;
+  margin-bottom: 8px;
 }
 
 .container-content-experience-table {
-  margin: 10px auto;
+  margin-top: 10px;
   display: flex;
 }
 
@@ -464,7 +468,6 @@ textarea::placeholder {
 /*FOOTER*/
 
 .container-footer {
-  padding: 20px 10px;
   display: flex;
 }
 
@@ -485,9 +488,9 @@ textarea::placeholder {
   height: 15px;
 }
 
-.container-content {
+/* .container-content {
   display: none;
-}
+} */
 
 #home-content:target {
   display: block;
