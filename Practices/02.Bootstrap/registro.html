@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario de Registro</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title text-center">Formulario de Registro</h2>
+          <form id="registrationForm">
+            <div class="mb-3">
+              <label for="usuario" class="form-label">Usuario:</label>
+              <input type="text" id="usuario" name="usuario" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre:</label>
+              <input type="text" id="nombre" name="nombre" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="apellido" class="form-label">Apellido:</label>
+              <input type="text" id="apellido" name="apellido" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
+              <input type="date" id="fechaNacimiento" name="fechaNacimiento" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Sexo:</label>
+              <div class="form-check">
+                <input type="radio" id="sexoMasculino" name="sexo" value="masculino" class="form-check-input" required>
+                <label for="sexoMasculino" class="form-check-label">Masculino</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" id="sexoFemenino" name="sexo" value="femenino" class="form-check-input" required>
+                <label for="sexoFemenino" class="form-check-label">Femenino</label>
+              </div>
+              <div class="form-check">
+                <input type="radio" id="sexoOtro" name="sexo" value="otro" class="form-check-input" required>
+                <label for="sexoOtro" class="form-check-label">Otro</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label">Confirmar Contraseña:</label>
+              <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" required>
+            </div>
+            <button class="btn btn-primary btn-block"><a href="login.html" class="text-white text-decoration-none">Registrarse</a></button>
+          </div>
+          <button class="btn btn-primary btn-block"><a href="login.html" class="text-white text-decoration-none">Cancelar</a></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const registrationForm = document.getElementById('registrationForm');
+  registrationForm.addEventListener('submit', function(event) {
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+
+    if (password !== confirmPassword) {
+      alert('Las contraseñas no coinciden. Por favor, inténtalo de nuevo.');
+      event.preventDefault();
+      return;
+    }
+
+    const selectedSexo = document.querySelector('input[name="sexo"]:checked');
+    if (!selectedSexo) {
+      alert('Por favor, selecciona un género.');
+      event.preventDefault();
+      return;
+    }
+
+    const requiredFields = document.querySelectorAll('[required]');
+    for (const field of requiredFields) {
+      if (!field.value.trim()) {
+        alert('Por favor, completa todos los campos obligatorios.');
+        event.preventDefault();
+        return;
+      }
+    }
+  });
+});
+</script>
+</body>
+</html>

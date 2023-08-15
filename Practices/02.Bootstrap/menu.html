@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menú Carrusel con Bootstrap 5</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Menú Carrusel</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Categorias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="#">Productos</a>
+        </li>
+      </ul>
+    </div>
+    <div class="nav-item">
+      <i class="fas fa-user-circle text-white"></i>
+      <span class="user-name text-white">John Doe</span>
+    </div>
+  </div>
+</nav>
+
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://media.istockphoto.com/id/1414943618/es/foto/el-viento-levanta-el-polvo-en-el-desierto.webp?b=1&s=612x612&w=0&k=20&c=qfQGwzwG30dH37bFMthmFzdTwUPBtwRnrovR2depN1s=" class="d-block w-100" alt="Slide 1">
+    </div>
+    <div class="carousel-item">
+      <img src="https://media.istockphoto.com/id/1403500817/es/foto/los-craggies-en-las-monta%C3%B1as-blue-ridge.webp?b=1&s=612x612&w=0&k=20&c=GAsMpnQjjKqZYEvwesDwYS51k3zPEoet0AFzBFALRBk=" class="d-block w-100" alt="Slide 2">
+    </div>
+    <div class="carousel-item">
+      <img src="https://cdn.pixabay.com/photo/2016/02/13/12/26/aurora-1197753_640.jpg" class="d-block w-100" alt="Slide 3">
+    </div>
+    <div class="carousel-item">
+        <img src="https://cdn.pixabay.com/photo/2016/05/05/02/37/sunset-1373171_640.jpg" class="d-block w-100" alt="Slide 4">
+    </div>
+    <div class="carousel-item">
+        <img src="https://cdn.pixabay.com/photo/2013/07/18/20/26/sea-164989_640.jpg" class="d-block w-100" alt="Slide 5">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
