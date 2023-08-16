@@ -20,10 +20,11 @@
             <div class="mb-3">
                 <label class="form-label" for="inputPassword">Password</label>
                 <input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Password" required>
-            </div>     
-                <a class="btn btn-primary" href="./menu.html" role="button">Iniciar Sesion</a>
-
-                <div class="container m-auto ">
+            </div>   
+                <div>
+                    <a class="btn btn-primary" href="./menu.html" role="button">Iniciar Sesion</a>
+                </div>
+                <div class="container-fluid">
                     <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registrationModal">Registrarse</button>
                 </div>
                 
@@ -61,6 +62,7 @@
                                         <select class="form-control" id="gender" name="gender" required>
                                             <option value="masculino">Masculino</option>
                                             <option value="femenino">Femenino</option>
+                                            <option value="No binario">No binario</option>
                                         </select>
                                     </div>
                                     <div class="form-label" for="inputPassword">Contraseña
@@ -73,12 +75,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                <button target="./index.html"type="button" class="btn btn-primary" id="submitBtn">Registrarse</button>
+                                <a class="btn btn-primary" href="./index.html" role="button">Registrarse</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+              
                
                 <script>
                     $(function () {
