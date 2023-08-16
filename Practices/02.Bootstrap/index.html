@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+</head>
+<body>
+    <div class="m-4">
+        <form>
+            <div class="mb-3">
+                <label class="form-label" for="inputEmail">Email</label>
+                <input type="email" class="form-control is-valid" id="inputEmail" placeholder="Email" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="inputPassword">Password</label>
+                <input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Password" required>
+            </div>     
+                <a class="btn btn-primary" href="./menu.html" role="button">Iniciar Sesion</a>
+
+                <div class="container m-auto ">
+                    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#registrationModal">Registrarse</button>
+                </div>
+                
+                <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="registrationModalLabel">Registro</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="registrationForm">
+                                    <div class="form-group">
+                                        <label for="email">Usuario</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <div class="invalid-feedback">Por favor ingresa un user válido.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="firstName">Nombres</label>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="lastName">Apellidos</label>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="dob">Fecha de Nacimiento</label>
+                                        <input type="date" class="form-control" id="dob" name="dob" required>
+                                        <div class="invalid-feedback">Por favor ingresa una fecha válida.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="gender">Sexo</label>
+                                        <select class="form-control" id="gender" name="gender" required>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="femenino">Femenino</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-label" for="inputPassword">Contraseña
+                                        <input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Password" required>
+                                    </div>
+                                    <div class="form-label" for="inputPassword">Confirmar contraseña
+                                        <input type="password" class="form-control is-invalid" id="inputPassword" placeholder="Password" required>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                <button target="./index.html"type="button" class="btn btn-primary" id="submitBtn">Registrarse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               
+                <script>
+                    $(function () {
+                        $('dob').daterangepicker({
+                            singleDatePicker: true,
+                            showDropdowns: true,
+                            locale: {
+                                format: 'YYYY-MM-DD',
+                            }
+                        });
+                        
+                        document.getElementById('submitBtn').addEventListener('click', function() {
+                            var form = document.getElementById('registrationForm');
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        });
+                    });
+                </script>
+
+        </form>
+    </div>
+</body>
+</html>

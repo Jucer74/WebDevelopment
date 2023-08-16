@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a href="./menu.html" class="navbar-brand">
+                <img src="/src/images/house.svg" height="28" alt="CoolBrand">
+                <a class="nav-item nav-link">PricatApp</a>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav">
+
+                    <a href="./menu.html" class="nav-item nav-link active">Categorias</a>
+                    <a href="./menu.html" class="nav-item nav-link active">Productos</a>
+                
+                </div>
+                <div class="navbar-nav ms-auto">
+                    <a href="./index.html" class="nav-item nav-link">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<body>
+
+<!-- Carousel -->
+<div id="carouselmenu" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselmenu" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#carouselmenu" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#carouselmenu" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#carouselmenu" data-bs-slide-to="3"></button>
+      <button type="button" data-bs-target="#carouselmenu" data-bs-slide-to="4"></button>
+    </div>
+    
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./src/images/im1.png" alt="1" class="d-block" style="width:100%">
+      </div>
+      <div class="carousel-item">
+        <img src="./src/images/im2.png" alt="2" class="d-block" style="width:100%">
+      </div>
+      <div class="carousel-item">
+        <img src="./src/images/im3.png" alt="3" class="d-block" style="width:100%">
+      </div>
+      <div class="carousel-item">
+        <img src="./src/images/im4.png" alt="4" class="d-block" style="width:100%">
+      </div>
+      <div class="carousel-item">
+        <img src="./src/images/im5.png" alt="5" class="d-block" style="width:100%">
+      </div>
+    </div>
+    
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselmenu" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselmenu" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</body> 
+</html>
