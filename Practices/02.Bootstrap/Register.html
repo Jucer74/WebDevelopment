@@ -78,7 +78,23 @@
       </div>
    </main>
 
-   <script src="./js/scripts.js"></script>
+   <script>
+      const registrationForm = document.getElementById('registrationForm');
+      const passwordInput = document.getElementById('password');
+      const confirmPasswordInput = document.getElementById('confirmPassword');
+
+      // Agregar evento de envío al formulario
+      registrationForm.addEventListener('submit', (event) => {
+         if (passwordInput.value !== confirmPasswordInput.value) {
+            event.preventDefault(); // Evitar el envío del formulario
+            alert('Las contraseñas no coinciden. Por favor, verifica.');
+         } else if (registrationForm.checkValidity()) {
+            // Si todos los campos están llenos y las contraseñas coinciden
+            // Se redirige a index.html
+            window.location.href = 'Index.html';
+         }
+      });
+   </script>
 </body>
 
 </html>

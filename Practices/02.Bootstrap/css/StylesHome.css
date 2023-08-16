@@ -1,7 +1,6 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 header {
@@ -9,34 +8,6 @@ header {
     color: #fff;
     text-align: center;
     padding: 40px 0;
-}
-
-.navegador {
-    display: flex;
-    justify-content: center;
-    background-color: #444;
-    padding: 10px 0;
-}
-
-.categoria-links {
-    display: flex;
-    align-items: center;
-    margin-left: auto; /* Pushes "Categoría 1" and "Categoría 2" to the right */
-}
-
-.categoria-links a {
-    color: #fff;
-    text-decoration: none;
-    margin: 0 20px;
-}
-
-.categoria-links img {
-    width: 50px; /* Adjust the width of the image as needed */
-    margin-right: 10px; /* Add some spacing between the image and the link */
-}
-
-.usuario-link {
-    margin-left: auto; /* Pushes the "Usuario" link to the right */
 }
 
 .main {
@@ -175,7 +146,47 @@ footer {
          -1px 0px 2px rgba(255, 255, 255, 0);
 }
 
-.separator {
-    margin: 0 10px;
-    color: #fff;
+.horizontal-divider {
+    width: 100%; /* Ancho al 100% del contenedor */
+    height: 1px; /* Altura de la línea */
+    background-color: #999; /* Color de la línea */
+    margin: 10px 0; /* Espacio arriba y abajo */
+}
+
+.content-box {
+    width: 100%; /* Ocupar el ancho completo del header */
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box; /* Incluir el padding en el ancho total */
+}
+
+/* Estilos para el contenido superior */
+.top-box {
+    background-color: #333333;
+    padding: 10px;
+    margin-bottom: 10px; /* Espacio entre contenido superior e inferior */
+}
+
+.bottom-box {
+    background-color: #333333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.bottom-box a {
+    text-decoration: none;
+    color: white;
+    padding: 5px; /* Espacio interno en los enlaces */
+}
+
+/* Estilos específicos para el enlace "Usuario" */
+.bottom-box a:last-child {
+    margin-left: auto; /* Empuja el enlace "Usuario" hacia la derecha */
+}
+.top-box img {
+    display: block; /* Evita espacios en blanco debajo de la imagen */
+    max-width: 3%; /* Asegura que la imagen no exceda el ancho del contenedor */
+    max-height: 3%;
+    height: auto; /* Mantiene la proporción de la imagen */
 }
