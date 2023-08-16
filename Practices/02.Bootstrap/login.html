@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+
+<body class="bg-secondary">
+    <!-- Login -->
+    <section>
+        <div class="container-fluid mt-5 pt-5">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-8 col-md-6 m-auto">
+                    <div class="card border border-dark rounded-0">
+                        <div class="border-dark card-header bg-white">Login</div>
+                        <div class="card-body border-0 shadow">
+                            <form id="loginForm">
+                                <div class="form-group my-3 py-2">
+                                    <label for="email">Usuario:</label>
+                                    <input type="text" class="form-control border border-dark" id="email"
+                                        placeholder="JohnDoe@gmail.com" required>
+                                    <small id="emailError" class="text-danger"></small>
+                                </div>
+
+                                <div class="form-group my-3 py-2">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" class="form-control border border-dark" id="password"
+                                        placeholder="***********" required>
+                                </div>
+
+                                <div class="text-center mt-3 py-2">
+                                    <button class="btn btn-primary" id="loginButton"><a href="menu.html"
+                                            class="text-white text-decoration-none">Ingresar</a> </button>
+                                    <a href="registro.html" class="nav-link py-3"><u><em>Registrarse</em></u></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Validar Email
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+        const loginButton = document.getElementById('loginButton');
+        const loginForm = document.getElementById('loginForm');
+
+        loginButton.addEventListener('click', function (event) {
+            const emailValue = emailInput.value;
+            if (!validateEmail(emailValue)) {
+                emailError.textContent = 'Por favor, ingresa un correo válido.';
+                event.preventDefault();
+            } else {
+                emailError.textContent = '';
+            }
+        });
+
+        function validateEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+    </script>
+
+</body>
+
+</html>
