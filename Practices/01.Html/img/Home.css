@@ -71,7 +71,10 @@ main {
   display: flex;
   flex-direction: row;
 }
-
+.container-fluid {
+  
+  align-items: flex-start;
+}
 .menu {
   font-size: 0;
   width: 100%; height: auto;
