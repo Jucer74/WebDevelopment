@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <title>Home</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #884bf4, #66b7f9);
+    }
+    .navbar {
+      background-color: black;
+    }
+    .navbar-brand {
+      color: white;
+      font-size: 24px;
+    }
+    .username {
+      color: white;
+      font-size: 18px;
+      margin-right: 20px;
+    }
+    .navbar-link {
+      color: white;
+      font-size: 24px;
+      margin-right: 20px;
+    }
+    .carousel-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 80px); 
+      
+    }
+    .carousel-container img{
+      border-radius: 5%;
+    }
+
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-link" href="#carouselExample">
+        <i class="fas fa-home"></i> PricatApp
+    </a>
+    
+      <a class="navbar-brand" href="#carouselExample">Categorías</a>
+      <a class="navbar-brand" href="#carouselExample">Productos</a>
+      <span class="username">
+        <i class="fas fa-user fa-lg"></i> Usuario
+    </span>
+    
+    </div>
+  </nav>
+  
+  <div class="container mt-5">
+    <div class="carousel-container">
+      <div id="carouselExample" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./recursos/Primera.jpg" class="d-block w-100" alt="Imagen 1">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/Segunda.jpg" class="d-block w-100" alt="Imagen 2">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/Tercera.jpg" class="d-block w-100" alt="Imagen 3">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/Cuarta.jpg" class="d-block w-100" alt="Imagen 4">
+          </div>
+          <div class="carousel-item">
+            <img src="./recursos/Quinta.jpg" class="d-block w-100" alt="Imagen 5">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Siguiente</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
