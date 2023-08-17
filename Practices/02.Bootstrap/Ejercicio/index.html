@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+
+
+</head>
+<body>
+    
+    <section>
+
+        <div class="row g-0">
+
+            <div class="col-lg-6 col-md-12 contenedor-sesion min-vh-100">
+
+
+                <div class="d-flex justify-content-center px-lg-5 pt-lg-4 pb-lg-4 p-4 w-100">
+
+                    <img class="img-fluid icon-page" src="./src/desarrollo-game.png" alt="game">
+
+                </div>
+
+                <div class="px-lg-5 py-lg-4 p-4 bienvenido w-100">
+
+                    <h1 class="text-center mb-4">Bienvenido</h1>
+
+                    <form class="mb-5">
+                        <div class="mb-4">
+                          <label for="exampleInputEmail1" class="form-label">Correo</label>
+                          <input type="email" class="form-control input-inicio" placeholder="Ingresa tu correo" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+                        <div class="mb-4">
+                          <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+                          <input type="password" placeholder="Ingresa tu contraseña"  class="form-control input-inicio" id="exampleInputPassword1">
+                          <a id="emailHelp" href="#" class="form-text text-muted">¿Haz olvidado tu contraseña?</a>
+                        </div>
+                        <button id="boton-redireccionar" onclick="inicio()" type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                    </form>
+
+                    <p class="text-center">O inicia sesión con</p>
+                    
+                    <div class="d-flex justify-content-around">
+
+                        <button type="submit" class="boton-centrar btn btn-outline-light flex-grow-1 google-margin"><img class="google-margin" src="./src/google.svg" alt="google">Google</button>
+                        <button type="submit" class="boton-centrar btn btn-outline-light flex-grow-1 facebook-margin"><img class="google-margin" src="./src/facebook.svg" alt="facebook">Facebook</button>
+                        
+                    </div>
+
+                </div>
+
+                <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 w-100">
+
+                    <p class="no-account">¿No tienes una cuenta?</p> <a class="crear-cuenta" href="./register.html">Crea una cuenta</a>
+
+                </div>
+
+                
+            </div>
+
+            <div class="col-lg-6 col-md-12 img-fondo">
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="./java.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
