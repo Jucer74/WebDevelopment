@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../CSS/goblas-styles.css">
     <title>Home</title>
 </head>
@@ -20,10 +22,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                        <a href="#" class="nav-item nav-link active">Home</a>
-                        <a href="#" class="nav-item nav-link">Profile</a>
-                        <a href="#" class="nav-item nav-link">Messages</a>
-                        <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+                        <a href="#" class="nav-item nav-link">Category</a>
+                        <a href="#" class="nav-item nav-link">Products</a>
                     </div>
                     <div class="navbar-nav ms-auto">
                         <a href="./login.html" class="nav-item nav-link">Login</a>
@@ -32,5 +32,47 @@
             </div>
         </nav>
     </header>
+    <main>
+        <div id="myCarousel" class="carousel slide col-12" data-bs-ride="carousel" data-bs-interval="2000">
+            <!-- Carousel indicators -->
+            <ol class="carousel-indicators">
+                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+                <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+            </ol>
+        
+            <!-- Wrapper for carousel items -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../IMG/011-Cortesía-Secretaría-de-Cultura-de-Cali.png" class="d-block w-100 " alt="Slide 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="../IMG/03-Cortesía-Secretaría-de-Cultura-de-Cali.png" class="d-block w-100" alt="Slide 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="../IMG/1-6.jpg" class="d-block w-100" alt="Slide 3">
+                </div>
+            </div>
+        
+            <!-- Carousel controls -->
+            <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+        </div>
+    </main>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        var element = document.getElementById("myCarousel");
+        var myCarousel = new bootstrap.Carousel(element, {
+            interval: 2000
+        });
+    });
+
+</script>
+
+        
 </html>
