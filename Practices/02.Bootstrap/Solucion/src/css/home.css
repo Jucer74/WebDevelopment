@@ -1,0 +1,8 @@
+*{
+    font-family: 'Barlow', sans-serif;
+}
+
+.img-carousel{
+    max-width: 100%; 
+    max-height: 500px;
+}
