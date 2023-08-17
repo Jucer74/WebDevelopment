@@ -139,7 +139,7 @@
                 <div class="col-12">
                   <div class="mb-3">
                     <label class="form-label">User (Email address)</label>
-                    <input type="email" class="form-control" id="email" placeholder="john.doe@email.com" name="email"
+                    <input type="email" class="form-control" id="register-email" placeholder="john.doe@email.com" name="email"
                       required>
                   </div>
                 </div>
@@ -162,7 +162,7 @@
                 <div class="col-6">
                   <div class="mb-3">
                     <label class="form-label">Birthdate</label>
-                    <input type="date" class="form-control" id="birthdate" required>
+                    <input type="date" class="form-control" id="birthdate" min="1950-01-01" max="2023-08-15" required>
                   </div>
                 </div>
                 <div class="col-6">
@@ -194,6 +194,7 @@
                     <label class="form-label">Confirm password:</label>
                     <input type="password" class="form-control" id="confirm-password" placeholder="********" name="pswd"
                       required>
+                      <div id="passwordMismatch" class="form-text text-danger d-none">Las contraseñas no son iguales.</div>
                   </div>
                 </div>
               </div>
@@ -209,7 +210,28 @@
 
   </main>
 
+  <script>
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const passwordMismatchMessage = document.getElementById('passwordMismatch');
+    
+    confirmPasswordInput.addEventListener('input', () => {
+      if (passwordInput.value !== confirmPasswordInput.value) {
+        passwordMismatchMessage.classList.remove('d-none');
+      } else {
+        passwordMismatchMessage.classList.add('d-none');
+      }
+    });
+    
+    passwordInput.addEventListener('input', () => {
+      if (passwordInput.value === confirmPasswordInput.value) {
+        passwordMismatchMessage.classList.add('d-none');
+      }
+    });
+  </script>
+
   <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+  
 </body>
 
 </html>
