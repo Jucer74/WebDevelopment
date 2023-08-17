@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../CSS/goblas-styles.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="login-container container-sm py-5 my-5 ">
+        <div class="row col-md-3 ">
+            <div class="container border">
+                <div class="row ">
+                    <div class="col-sm-11 col-md-11 col-l-3 col-xxl-12">
+                        <h1>Login</h1>
+                    </div>
+                </div>    
+            </div>
+            <div class="container border py-3 ">
+               <div class="row justify-content-center aling-items-center">
+                    <div class="col-sm-11 col-md-11 col-l-8 col-xxl-10 ">
+                        <form class=" g-3 needs-validation" action="./index.html" novalidate>
+                            <div class="">
+                                <label for="validationCustomUsername was-validated" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                                    <div class="invalid-feedback">
+                                    Please fill with a username.
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div>
+                                <label for="psw" class="form-label">Contaseña</label>
+                                <input type="password" class="form-control" id="psw" name="psw" required>
+                                <div class="invalid-feedback">
+                                    Please fill this field.
+                                </div>
+                            </div>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="remember"> Remember me
+                                </label>
+                            </div>
+                            <div class="my-2 justify-content-center aling-items-center">
+                                <button type="submit" class="btn btn-primary">Ingresar</button>
+                            </div>
+                            <!-- Button HTML (to Trigger Modal) -->
+                            <a href="#myModal" class="btn btn-primary" data-bs-toggle="modal">Registrarse</a>
+                                
+                            <!-- Modal HTML -->
+                            <div id="myModal" class="modal fade" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Send Us a Message</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <iframe src="./register.html" frameborder="0"></iframe>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+            })
+        })()
+</script>
+</html>
