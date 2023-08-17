@@ -149,6 +149,7 @@ body {
     font-weight: 400;
     max-width: 67vw;
     background-color: #000;
+    border: none;
 }
 .profile-navbar span {
     font-size: 1.3rem;
@@ -157,12 +158,20 @@ body {
     font-size: 0.6rem;
 }
 
-.profile-navbar a:focus , .profile-navbar-item:hover {
-    transform: scale(1.1) translate(-1.5vw, 3px);      
+.profile-navbar-item:focus , .profile-navbar-item:hover {
+    /* transform: scale(1.1); */
+    /* translate(-1.5vw, 3px);       */
+    outline-style: groove;
     transform: background-color 0.6s ease;
     background-color: #323a41;
-    border-radius: 8px;
 }
+/* 
+.profile-navbar-item:nth-child(4):hover {
+    transform: scale(0.95);
+}
+.profile-navbar-item:nth-child(4) a:focus {
+    transform: scale(0.95);
+} */
 
 .profile-navbar a:link{
     text-decoration: none;
@@ -250,7 +259,7 @@ body {
 
 
 /* main css */
-
+/* 
 .home-subtitulo {
     font-size: 0.5em;
     padding: 2vh 0 0 2vh;
@@ -263,7 +272,7 @@ body {
     font-size: 1.7em;
     font-weight: 430;
     padding-bottom: 1px;
-}
+} */
 
 /* footer css */
 
@@ -323,5 +332,4 @@ body {
     max-height: calc(100vh - 40vh);
     margin: 0;
     padding: 0;
-    
 }

@@ -12,22 +12,82 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- <link rel="stylesheet" href="../css/resume.css"> -->
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
     </head>
     <body>
         
        <div class="main-content">
             <div class="headerbanner">
-                <h1> Resume </h1> 
-                Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!
+                <div class="aligncenter_masuntoque">
+                    <h1> Resume </h1> 
+                    <p>Lorem ipsum dolor,sit amet consectetur adipisicing elit. Nihil ut!</p>
+                </div>
             </div>
 
             <div class="resumediv">
-                <h1>Where Have I Worked?</h1>
-                Lorem ipaum dolor sit amet consectetur adpisxing elt Dolaremaue similique ssepe inventore rem vitae esse.|
+                <h1 class="titlepag">Where Have I Worked?</h1>
+                <p>Lorem ipaum dolor sit amet consectetur adpisxing elt Dolaremaue similique ssepe inventore rem vitae esse.</p>
 
-                <div class="exp-div">
+                <div class="exp-columns">
+
+                    
+                    <div class="exp-card-column">
+                        <div class="exp-card">
+                            <h1> Devmasters </h1>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam. </p>
+                            <div class="exp-card-focus">
+                                <p> Position: Full Stack Developer </p>
+                            </div>
+                            <div class="exp-card-focus">
+                                <p> Phone: (444) 444-4444 </p>
+                            </div>
+
+                            <hr/>
+                            <div class="exp-card-footer">
+                                <p> Dates: 2015 - 2018 </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-card-column">
+                        <div class="exp-card">
+                            <h1> Devmasters </h1>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam. </p>
+                            <div class="exp-card-focus">
+                                <p> Position: Full Stack Developer </p>
+                            </div>
+                            <div class="exp-card-focus">
+                                <p> Phone: (444) 444-4444 </p>
+                            </div>
+
+                            <hr/>
+                            <div class="exp-card-footer">
+                                <p> Dates: 2015 - 2018 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exp-card-column">
+                        <div class="exp-card">
+                            <h1> Devmasters </h1>
+                            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, magnam. </p>
+                            <div class="exp-card-focus">
+                                <p> Position: Full Stack Developer </p>
+                            </div>
+                            <div class="exp-card-focus">
+                                <p> Phone: (444) 444-4444 </p>
+                            </div>
+
+                            <hr/>
+                            <div class="exp-card-footer">
+                                <p> Dates: 2015 - 2018 </p>
+                            </div>
+                        </div>
+                    </div>
+ 
 
                 </div>
+                
             </div>
        </div>
 
@@ -46,20 +106,32 @@
     background-color: #30a449;
     color: white;
     grid-area: pagetitle;
-    height: 19vh;
-    padding-left: 2vh;
-    margin-top: -2vh;
+    height: 23vh;
+    padding-left: 2%;
+    margin-top: -1%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-size: 0.55em;
     line-height: 0.5;
     z-index: 1; 
-    margin-left: -2vh;
-    margin-right: -2vh;
+    margin-left: -2%;
+    margin-right: -2%;
 }
+/*
 .headerbanner h1 {
     margin-top: -2vh;
+}
+.headerbanner p, .headerbanner h1 {
+    margin-left: 2vh;
+} */
+.aligncenter_masuntoque p {
+    margin-top: 1%;
+}
+
+.aligncenter_masuntoque {
+    margin-top: -2vh;
+    margin-left: 1%;
 }
 
 .home-subtitulo {
@@ -92,32 +164,101 @@
 .resumediv {
     padding-top: 4vh;
     font-size: 0.5em;
-    padding-left: 1vh;
-    padding-right: 2vh;
-    line-height: 0.8em;
+    padding-left: 1%;
+    padding-right: 1%;
+    line-height: 0.9em;
 }
-.resume p {
-    font-size: 0.6em;
+.resumediv p {
+    /* font-size: 0.6em; */
+    color: #4a4a4a;
+    margin-top: 1.5%;
+    margin-bottom: 1.5%;
 }
-.resume h1 {
-    font-weight: 350;
+.title-pag {
+    font-weight: 380;
+    margin-top: 6%;
 }
 
 .resumediv h1, p {
     font-family:'Roboto', sans;
-    font-weight: 400;
 }
 
 
 .exp-div {
     display: grid;
-    padding-left: 2vh;
-    padding-right: 2vh;
     grid-template-columns: repeat(auto, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: 1;
+    height: 35vh;
 
 }
 
+.exp-card {
+    border: 1px solid #e6e6e6;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 50vh;
+
+}
+
+.exp-columns {
+    display: flex; 
+    justify-content: space-between;
+    margin-top: 2%;
+}
+
+.exp-card-column {
+    flex: 1;
+    padding: 0 2%;
+}
+
+.exp-card h1 {
+    font-weight: 300;
+}
+
+.exp-card h1, .exp-card p{
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.exp-card p {
+    margin-top: 3%;
+}
+
+.exp-card-focus {
+    /* padding-left: 2%; */
+    /* padding-right: 1%; */
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #3f4349;
+    font-size: 0.9em;
+    font-weight: 600;
+    height: 12%;
+    justify-content: center;
+    margin-top: 4%;
+    
+}
+.exp-card-focus p {
+    color: white;
+}
+
+hr {
+    margin-top: 6%;
+    /* margin-bottom: 2%; */
+    width: 100%;
+    /* border: 0.5px solid #1e1c1c; */
+}
+
+.exp-card-footer {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 2%;
+    margin-top: 0;
+    height: 100%;
+    background-color: #f7f7f7;
+}
 
 </style>
 
