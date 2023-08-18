@@ -20,7 +20,8 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x=> x.Id==id);
+            return View(student);
         }
 
         // GET: StudentsController/Create
@@ -47,7 +48,8 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id==id);
+            return View(student);
         }
 
         // POST: StudentsController/Edit/5
@@ -68,7 +70,8 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id==id);
+            return View(student);
         }
 
         // POST: StudentsController/Delete/5
