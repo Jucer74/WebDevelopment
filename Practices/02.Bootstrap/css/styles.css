@@ -1,0 +1,16 @@
+body {
+    height: 100%;
+  }
+
+.container-lg{
+      background-color: aliceblue;
+      border-radius: 10px; /* Bordes redondeados */
+      padding: 20px; /* Espaciado interno */
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.723); /* Sombra */
+      justify-content: center;
+      
+}
+#fotos{
+    width: auto ;
+    height: 600px;
+}
