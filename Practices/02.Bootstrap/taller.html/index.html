@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Login</title>
+</head>
+<body>
+    <div id="contentContainer">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="login-form">
+                    <h2 class="text-center">Iniciar sesión</h2>
+                    <div class="mb-3">                        
+                        <label for="username" class="form-label">Usuario</label>
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="••••••••••">
+                        
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <button type="button" class="btn btn-secondary" id="openRegistrationModal">Registrarse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registrationModal" tabindex="-1" aria-labelledby="registrationModalLabel" aria-hidden="true">
+       
+    </div>
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script> <!-- Agregamos el archivo JavaScript para esta página -->
+
+
+
+     <!-- Agrega los enlaces a los estilos de Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+</body>
+</html>
