@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Font Icon CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container">
+      <header id="header-main">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container d-flex justify-content-between">
+            <a class="navbar-brand" href="/index.html">
+              <img
+                src="logo.png"
+                width="30"
+                height="30"
+                class="d-inline-block align-text-top"
+              />
+              Arepaapp
+            </a>
+            <a class="navbar-text small" href="#productos"> Productos </a>
+            <a class="navbar-text small" href="#categorias"> Categorias </a> 
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a class="nav-link" target="mainWindow" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" target="mainWindow" href="register.html">Register</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+
+      <main>
+        <iframe id="ifDetails" name="mainWindow" class="w-100 bg-dark" src="./target.html"></iframe>
+      </main>
+
+      
+
+      <footer id="footer-main">
+        <div class="bg-dark border py-3 my-3">
+          <p>footer</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      // Sin este script el modal no sirve. Bootstrap necesita vincular el modal.
+      var myModal = new bootstrap.Modal(document.getElementById("loginModal"));
+    </script>
+  </body>
+</html>
