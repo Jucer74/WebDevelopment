@@ -23,7 +23,7 @@ public class Movie
     // Format hh:mi
     public string Duration { get; set; } = null!;
 
-    [Required(ErrorMessage = "The Duration is required")]
+    [Required(ErrorMessage = "The Rate is required")]
     // Format 0.0
     public float Rate { get; set; }
 
