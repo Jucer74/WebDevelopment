@@ -7,22 +7,22 @@ Responda las preguntas del siguiente Enlace:
 Implemente una aplicación denominada **MovieRank**, que permita:
 
 - El Login o ingreso a la aplicacion <br>
-![Login](./Images/Login.jpg)
+![Login](./images/Login.jpg)
 
 - El Registro de un nuevo usuario <br>
-![Register](./Images/Register.jpg)
+![Register](./images/Register.jpg)
 
 - El despliegue del menu principal de navegacion con Logo, Nombre de la aplicacion, opcion principal al CRUD de los elementos, el avatar e informacion del usuario asi como  la lista en Carousel de los 10 primeros elementos<br>
-![Menu](./Images/Menu.jpg)
+![Menu](./images/Menu.jpg)
 
 - Cada Opcion del Carousel contiene, una CARD con la imagen del elemento respectivo, el Nombre o Titulo, asi como una barra de progreso que marca un valor que puede ser un Rate o un tiempo faltante, segun sea el caso, asi como un boton que depliega los detalles del elemento.<br>
-![CarouselCard](./Images/CarouselCard.jpg)
+![CarouselCard](./images/CarouselCard.jpg)
 
 - La opcion de CRUD despliega en una tabla los elementos de la aplicacion y permite adicionar, Editar, ver detalles y eliminar un elemento <br>
-![CRUD](./Images/CRUD.jpg)
+![CRUD](./images/CRUD.jpg)
 
 - Al seleccionar la accion (Create. Edit, Details, Delete) se despliegan el formulario para capturar o validar los datos con la informacion correspondiente:
-![Actions](./Images/MovieActions.jpg)
+![Actions](./images/MovieActions.jpg)
 
 ## Consideraciones
 - Utilice como base la solucion **MovieRankMVC** de este mismo Directorio.
