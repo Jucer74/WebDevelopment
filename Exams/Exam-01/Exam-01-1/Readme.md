@@ -30,4 +30,5 @@ Implemente una aplicación denominada **MovieRank**, que permita:
 - Utilice HTML5, CSS3 y Javascript en las paginas que lo requieran
 - Elimine el codigo sobrante
 - Los datos deben almacenarse en memoria, posiblemente en una lista statica que podra ser pasada a la vista directamente o usando el objeto dinamico **ViewBag**.
+- Usar ASP Net MVC
 
