@@ -12,11 +12,11 @@ public class Student
     [Display(Name = "Nombre")] //le asigna un nombre diferentea al de
                                //la variable de la clase
                                //fisrtname cambia a Nombre en el display
-    public string FirstName { get; set; } = null;
+    public string FirstName { get; set; } = null!;
 
     [Required(ErrorMessage = "El apellido es requerido")]
     [Display(Name = "Apellido")]
-    public string LastName { get; set; } = null;
+    public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "El cumpleaños es requerido")]
     [Display(Name = "Cumpleaños")]
