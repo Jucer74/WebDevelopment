@@ -19,8 +19,8 @@ namespace StudensMVC.Controllers
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            var student = studentsList.FirstOrDefault(student => x.Id == id);
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id == id);
+            return View(student);
         }
 
         // GET: StudentsController/Create
@@ -48,7 +48,7 @@ namespace StudensMVC.Controllers
         public ActionResult Edit(int id)
         {
             var student = studentsList.FirstOrDefault(x => x.Id == id);
-            return View();
+            return View(student);
         }
 
         // POST: StudentsController/Edit/5
@@ -70,7 +70,7 @@ namespace StudensMVC.Controllers
         public ActionResult Delete(int id)
         {
             var student = studentsList.FirstOrDefault(x => x.Id == id);
-            return View();
+            return View(student);
         }
 
         // POST: StudentsController/Delete/5
