@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Registro</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="registration-form">
+                    <h2 class="text-center">Registro</h2>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="username" placeholder="Usuario">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="firstName" placeholder="Nombre">
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="lastName" placeholder="Apellido">
+                    </div>
+                    <div class="mb-3">
+                        <input type="date" class="form-control" id="birthdate" placeholder="Fecha de nacimiento">
+                    </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="gender">
+                            <option value="male">Masculino</option>
+                            <option value="female">Femenino</option>
+                            <option value="other">Otro</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmar contraseña">
+                    </div>
+                    <div class="d-grid">
+                        <button type="button" class="btn btn-primary" id="acceptButton">Aceptar</button>
+                        <button type="button" class="btn btn-secondary" id="cancelButton">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script> <!-- Agregamos el archivo JavaScript para esta página -->
+</body>
+</html>
