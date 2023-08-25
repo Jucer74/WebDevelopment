@@ -4,7 +4,7 @@ Responda las preguntas del siguiente Enlace:
 [Examen](https://forms.gle/rpo28N6bKRtp3xHr8)
 
 # Evaluación Práctica (60%)
-Implemente una aplicación denominada **MovieRank**, que permita:
+Implemente una aplicación denominada **BDayReminder**, que permita:
 
 - El Login o ingreso a la aplicacion <br>
 ![Login](./Images/Login.jpg)
@@ -22,10 +22,10 @@ Implemente una aplicación denominada **MovieRank**, que permita:
 ![CRUD](./Images/CRUD.jpg)
 
 - Al seleccionar la accion (Create. Edit, Details, Delete) se despliegan el formulario para capturar o validar los datos con la informacion correspondiente:
-![Actions](./Images/MovieActions.jpg)
+![Actions](./Images/FriendActions.jpg)
 
 ## Consideraciones
-- Utilice como base la solucion **MovieRankMVC** de este mismo Directorio.
+- Utilice como base la solucion **BDayReminderMVC** de este mismo Directorio.
 - Utilice la definicion de MVC para el Modelo de los datos
 - Utilice HTML5, CSS3 y Javascript en las paginas que lo requieran
 - Elimine el codigo sobrante
