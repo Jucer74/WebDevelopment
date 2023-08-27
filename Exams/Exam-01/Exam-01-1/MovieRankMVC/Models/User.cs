@@ -21,6 +21,15 @@ public class User
     public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "The Password is required")]
+    [DataType(DataType.Password)]
     [StringLength(50)]
     public string Password { get; set; } = null!;
+
+    [Compare("Password",ErrorMessage ="Please confirm your password")]
+    [DataType(DataType.Password)]
+    public string ConfirmPassword { get; set;} = null!;
+
+
+
+
 }

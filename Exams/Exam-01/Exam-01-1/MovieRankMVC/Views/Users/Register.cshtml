@@ -1,0 +1,71 @@
+﻿@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" id="registerForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="UserEmail" class="control-label"></label>
+                <input asp-for="UserEmail" class="form-control" />
+                <span asp-validation-for="UserEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("registerForm").addEventListener("submit", function (event) {
+        // Prevenir el envío del formulario
+        event.preventDefault();
+
+        // Obtener los valores de los campos del formulario
+        var userEmail = document.getElementById("UserEmail").value;
+        var password = document.getElementById("Password").value;
+
+        // Guardar los datos en el ViewBag
+     @ViewBag.RegisteredUserEmail = " + userEmail + ";
+     @ViewBag.RegisteredPassword = " + password + ";
+
+        // Mostrar los datos en la consola
+        console.log("User Email: " + userEmail);
+        console.log("Password: " + password);
+
+        // Redirigir al usuario a la página de inicio de sesión
+        window.location.href = "@Url.Action("Login", "Users")";
+    });
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
