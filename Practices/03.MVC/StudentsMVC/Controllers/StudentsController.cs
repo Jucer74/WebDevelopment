@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentsMVC.Models;
+using System.Collections.Generic;
 
 namespace StudentsMVC.Controllers
 {
     public class StudentsController : Controller
     {
 
-
         private static List<Student> studentsList = LoadStudents();
-
-
 
         // GET: StudentsController
         public ActionResult Index()
@@ -21,7 +19,7 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            var student = studentsList.FirstOrDefault(x => x.Id == id);
+            var student = studentsList.FirstOrDefault(x=> x.Id ==id); 
             return View(student);
         }
 
@@ -34,10 +32,12 @@ namespace StudentsMVC.Controllers
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Student student)
         {
             try
             {
+               
+                studentsList.Add(student);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -56,10 +56,12 @@ namespace StudentsMVC.Controllers
         // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Student student)
         {
             try
             {
+                var elementIndex = studentsList.FindIndex(i => i.Id == id);
+                studentsList[elementIndex] = student;
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -78,10 +80,13 @@ namespace StudentsMVC.Controllers
         // POST: StudentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Student student)
         {
             try
             {
+
+                var studentDelete = studentsList.FirstOrDefault(x => x.Id == student.Id);
+                studentsList.Remove(studentDelete);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -90,20 +95,21 @@ namespace StudentsMVC.Controllers
             }
         }
 
-
-
         private static List<Student> LoadStudents()
         {
             var students = new List<Student>();
 
-            students.Add(new Student() { Id = 1, FirstName = "John", LastName = "Doe", DateOfBirth = new DateTime(1999,09,18), Sex = 'M' });
-            students.Add(new Student() { Id = 2, FirstName = "Juan", LastName = "Casta", DateOfBirth = new DateTime(1999, 10, 18), Sex = 'M' });
-            students.Add(new Student() { Id = 3, FirstName = "Mario", LastName = "Torres", DateOfBirth = new DateTime(2002, 11, 11), Sex = 'M' });
-            students.Add(new Student() { Id = 4, FirstName = "Miguel", LastName = "Cordoba", DateOfBirth = new DateTime(2003, 7, 9), Sex = 'M' });
+            students.Add(new Student() { Id= 1, FirstName="John", LastName="Doe", DateOfBirth=new DateTime(1974, 10, 8), Sex='M' });
+            students.Add(new Student() { Id = 2, FirstName = "Eduardo", LastName = "Zuluaga", DateOfBirth = new DateTime(1998, 11, 9), Sex = 'M' });
+            students.Add(new Student() { Id = 3, FirstName = "Alejandra", LastName = "Martinez", DateOfBirth = new DateTime(1990, 10, 7), Sex = 'F' });
+            students.Add(new Student() { Id = 4, FirstName = "Mariana", LastName = "Escobar", DateOfBirth = new DateTime(2000, 12, 5), Sex = 'F' });
+
+
+
+
 
             return students;
         }
-
 
 
     }
