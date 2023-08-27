@@ -11,6 +11,8 @@ namespace MovieRankMVC.Controllers
         //global Variables
         private static List<Movie> moviesList = LoadMovies();
 
+        
+
         private static List<Movie> LoadMovies()
         {
             List<Movie> movies = new List<Movie>();
@@ -25,13 +27,18 @@ namespace MovieRankMVC.Controllers
 
             movies.Add(new Movie() { Id = 5, Title = "El Legado del Dragón", Synopsis = "En un mundo donde los dragones y los humanos coexisten, un joven descubre un huevo de dragón en un antiguo bosque. A medida que la amistad entre ellos crece, se enfrentan a desafíos que pondrán a prueba su unión.", Year = 2010, Duration = "1:50", Rate = 7, Poster = "legado_dragon.jpeg", Genres = "Animación | Aventura" });
 
+        
+
+
             return movies;
         }
 
         // GET: MoviesController
         public ActionResult Index()
         {
-            return View(moviesList);
+            ViewBag.Movies = moviesList;
+
+            return View(ViewBag.Movies);
         }
 
         // GET: MoviesController/Details/5
