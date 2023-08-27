@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
-using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace MovieRankMVC.Controllers
 {
     public class UsersController : Controller
     {
+        // Lista estática para almacenar los datos de registro
+        private static List<User> registeredUsers = new List<User>();
+
         public IActionResult Login()
         {
             return View();
@@ -15,12 +18,11 @@ namespace MovieRankMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(User user)
         {
-            var registeredUserEmail = TempData["RegisteredUserEmail"] as string;
-            var registeredPassword = TempData["RegisteredPassword"] as string;
+            var registeredUser = registeredUsers.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
 
-            if (user.UserEmail == registeredUserEmail && user.Password == registeredPassword)
+            if (registeredUser != null)
             {
-                TempData["AuthenticatedUser"] = user.UserEmail;
+                ViewBag.AuthenticatedUser = registeredUser.UserEmail;
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -42,10 +44,8 @@ namespace MovieRankMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                // Almacenar los datos registrados en TempData
-                TempData["RegisteredUserEmail"] = user.UserEmail;
-                TempData["RegisteredPassword"] = user.Password;
+                // Agregar el usuario a la lista estática
+                registeredUsers.Add(user);
 
                 return RedirectToAction(nameof(Login));
             }
