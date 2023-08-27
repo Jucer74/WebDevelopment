@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentsMVC.Models;
+using System.Collections.Generic;
 
 namespace StudentsMVC.Controllers
 {
@@ -19,7 +20,7 @@ namespace StudentsMVC.Controllers
         public ActionResult Details(int id)
         {
             var student = studentsList.FirstOrDefault(x=> x.Id ==id); 
-            return View();
+            return View(student);
         }
 
         // GET: StudentsController/Create
@@ -31,10 +32,12 @@ namespace StudentsMVC.Controllers
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Student student)
         {
             try
             {
+               
+                studentsList.Add(student);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -46,16 +49,19 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id == id);
+            return View(student);
         }
 
         // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Student student)
         {
             try
             {
+                var elementIndex = studentsList.FindIndex(i => i.Id == id);
+                studentsList[elementIndex] = student;
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -67,16 +73,20 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id == id);
+            return View(student);
         }
 
         // POST: StudentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Student student)
         {
             try
             {
+
+                var studentDelete = studentsList.FirstOrDefault(x => x.Id == student.Id);
+                studentsList.Remove(studentDelete);
                 return RedirectToAction(nameof(Index));
             }
             catch
