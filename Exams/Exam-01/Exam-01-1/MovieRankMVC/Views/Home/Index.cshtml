@@ -2,14 +2,25 @@
     ViewData["Title"] = "Home Page";
 }
 
- <div class="text-center">
+<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <img src="~\images\Jules.jpg" alt="">
-</div> 
+</div>
 
 <div class="text-center">
-    <img src="https://localhost:5001/images/Jules.jpg">
+    @* <img src="https://localhost:5001/images/Jules.jpg">
     <img src="https://localhost:5001/images/Blue-beetle.jpg">
-    <img src="https://localhost:5001/images/Elemental.jpg">
+    <img src="https://localhost:5001/images/Elemental.jpg"> *@
+
+    <div class="card" style="width: 18rem;">
+        <img src="https://localhost:5001/images/Jules.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
 </div>
