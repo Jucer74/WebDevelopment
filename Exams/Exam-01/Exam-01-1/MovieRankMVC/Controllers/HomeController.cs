@@ -15,8 +15,10 @@ namespace MovieRankMVC.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<Movie> moviesList = TempData["MoviesList"] as List<Movie>; // Recupera la lista desde TempData
+            return View(moviesList);
         }
+
 
         public IActionResult Privacy()
         {

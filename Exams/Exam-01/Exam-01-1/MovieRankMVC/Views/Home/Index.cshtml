@@ -28,39 +28,46 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        @for (int i = 0; i < ViewBag.MoviesList.Count; i += 3)
-        {
-                <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <div class="row">
-                    @for (int j = i; j < Math.Min(i + 3, ViewBag.MoviesList.Count); j++)
-                    {
-                        var movie = ViewBag.MoviesList[j];
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <img src="https://localhost:5001/images/@movie.Poster" class="d-block w-100" alt="@movie.Title">
-                                        <div class="card-body">
-                                            <h5 class="card-title">@movie.Title</h5>
-                                            <p class="card-text">@movie.Synopsis</p>
-                                            <a href="#" class="btn btn-primary">Details</a>
+@{
+    var moviesList = ViewBag.MoviesList as List<Movie>; // Obtener la lista de películas de ViewBag
+}
+
+@if (moviesList != null)
+{
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+            @for (int i = 0; i < moviesList.Count; i += 3)
+            {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <div class="row">
+                        @for (int j = i; j < Math.Min(i + 3, moviesList.Count); j++)
+                        {
+                            var movie = moviesList[j];
+                                        <div class="col-md-4">
+                                            <div class="card">
+                                                <img src="https://localhost:5001/images/@movie.Poster" class="d-block w-100" alt="@movie.Title">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">@movie.Title</h5>
+                                                    <p class="card-text">@movie.Synopsis</p>
+                                                    <a href="#" class="btn btn-primary">Details</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                    }
-                    </div>
-                </div>
-        }
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
+                        }
+                            </div>
+                        </div>
+            }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+}
 
 
 

@@ -51,9 +51,8 @@ namespace MovieRankMVC.Controllers
         // GET: MoviesController
         public ActionResult Index()
         {
-            ViewBag.Movies = moviesList;
-
-            return View(ViewBag.Movies);
+            ViewBag.MoviesList = moviesList; // Asignar la lista a ViewBag
+            return View(ViewBag.MoviesList);
         }
 
         // GET: MoviesController/Details/5
