@@ -1,6 +1,6 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Home Page";
-}
+}*@
 
 @*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -24,23 +24,26 @@
     </div>
 
 </div>*@
+@{
+    ViewData["Title"] = "Home Page";
+}
 
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
-        @for (int i = 0; i < Model.Count(); i += 3)
+        @for (int i = 0; i < ViewBag.MoviesList.Count; i += 3)
         {
                 <div class="carousel-item @(i == 0 ? "active" : "")">
                     <div class="row">
-                    @for (int j = i; j < Math.Min(i + 3, Model.Count()); j++)
+                    @for (int j = i; j < Math.Min(i + 3, ViewBag.MoviesList.Count); j++)
                     {
-                        var item = Model.ElementAt(j);
+                        var movie = ViewBag.MoviesList[j];
                                 <div class="col-md-4">
                                     <div class="card">
-                                        <img src="@item.Poster" class="d-block w-100" alt="@item.Title">
+                                        <img src="https://localhost:5001/images/@movie.Poster" class="d-block w-100" alt="@movie.Title">
                                         <div class="card-body">
-                                            <h5 class="card-title">@item.Title</h5>
-                                            <p class="card-text">@item.Synopsis</p>
-                                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary">Details</a>
+                                            <h5 class="card-title">@movie.Title</h5>
+                                            <p class="card-text">@movie.Synopsis</p>
+                                            <a href="#" class="btn btn-primary">Details</a>
                                         </div>
                                     </div>
                                 </div>
@@ -59,29 +62,6 @@
     </button>
 </div>
 
-@section Scripts {
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                console.log("Carousel initialized");
-                $('.carousel').carousel();
-            });
-        </script>
-}
 
-<style>
-    .carousel-control-prev, .carousel-control-next {
-        margin: 30%; /* Ajusta el valor según tus necesidades */
-        color: black;
-    }
 
-    .card {
-        margin: 0 .5em;
-        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
-        border: none;
-    }
 
-    .carousel-inner {
-        padding: 1em;
-    }
-</style>

@@ -7,12 +7,6 @@ namespace MovieRankMVC.Controllers
 {
     public class MoviesController : Controller
     {
-
-        //global Variables
-        private static List<Movie> moviesList = LoadMovies();
-
-        
-
         private static List<Movie> LoadMovies()
         {
             List<Movie> movies = new List<Movie>();
@@ -50,6 +44,9 @@ namespace MovieRankMVC.Controllers
 
             return movies;
         }
+
+        //global Variables
+        private static List<Movie> moviesList = LoadMovies();
 
         // GET: MoviesController
         public ActionResult Index()
