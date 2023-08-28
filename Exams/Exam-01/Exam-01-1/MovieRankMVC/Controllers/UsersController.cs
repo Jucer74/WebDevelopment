@@ -23,7 +23,7 @@ namespace MovieRankMVC.Controllers
             if (registeredUser != null)
             {
                 ViewBag.AuthenticatedUser = registeredUser.UserEmail;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Movies");
             }
             else
             {

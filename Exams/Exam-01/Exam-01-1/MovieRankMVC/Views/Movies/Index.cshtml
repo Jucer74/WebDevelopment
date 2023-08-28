@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Home</h1>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @for (int i = 0; i < Model.Count(); i += 3)
+        {
+            <div class="carousel-item @(i == 0 ? "active" : "")">
+                <div class="row">
+                    @for (int j = i; j < Math.Min(i + 3, Model.Count()); j++)
+                    {
+                        var item = Model.ElementAt(j);
+                        <div class="col-md-4">
+                            <div class="card">
+                                <img src="@item.Poster" class="d-block w-100" alt="@item.Title">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.Title</h5>
+                                    <p class="card-text">@item.Synopsis</p>
+                                    <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-primary">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            console.log("Carousel initialized");
+            $('.carousel').carousel();
+        });
+    </script>
+}
+
+<style>
+    .carousel-control-prev, .carousel-control-next {
+        margin: 30%; /* Ajusta el valor según tus necesidades */
+        color: black;
+    }
+
+    .card {
+        margin: 0 .5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: none;
+    }
+
+    .carousel-inner {
+        padding: 1em;
+    }
+</style>
