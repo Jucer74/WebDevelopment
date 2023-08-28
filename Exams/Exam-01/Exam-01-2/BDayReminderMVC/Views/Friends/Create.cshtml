@@ -50,12 +50,20 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+            <div class="form-group">
+                <label asp-for="PhotoData" class="control-label"></label>
+                <input asp-for="PhotoData" type="file" class="form-control" accept="image/*">
+                <span asp-validation-for="PhotoData" class="text-danger"></span>
+            </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <div class="form-group">
+        <input type="submit" value="Crear" class="btn btn-primary" />
+        <a class="btn btn-secondary" asp-action="Index">Back</a>
+    </div>
 </div>
 
 @section Scripts {

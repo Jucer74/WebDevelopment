@@ -4,8 +4,16 @@ namespace BDayReminderMVC.Models;
 
 public class Friend
 {
-    [Key]
-    public int Id { get; set; }
+    
+        [Key]
+        public int Id { get; set; }
+
+        // Propiedades existentes...
+
+        public byte[] PhotoData { get; set; } // Datos de la imagen
+        public string PhotoContentType { get; set; } // Tipo de contenido de la imagen
+    
+   
 
     [Required(ErrorMessage ="The FirstName is Required")]
     [StringLength(50)]
