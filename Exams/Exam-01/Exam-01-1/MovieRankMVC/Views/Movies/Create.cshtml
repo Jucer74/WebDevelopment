@@ -2,11 +2,10 @@
 
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <header>
-    <link rel="stylesheet" href="~/css/stylecreate.css" />
+    <link rel="stylesheet" href="~/css//stylecreate.css" />
 </header>
 
 <h1>Create New Movie</h1>
@@ -51,8 +50,9 @@
             <div class="form-group">
                 <label asp-for="Duration" class="control-label">Duration (HH:MM)</label>
                 <div class="duration-inputs">
-                    <input type="number" class="form-control" placeholder="Hours" min="0" max="5" />
-                    <input type="number" class="form-control" placeholder="Minutes" min="0" max="59" />
+                    <input type="number" class="form-control" name="Hours" placeholder="Hours" min="0" max="5" />
+                    <input type="number" class="form-control" name="Minutes" placeholder="Minutes" min="0" max="59" />
+
                 </div>
                 <span asp-validation-for="Duration" class="text-danger"></span>
             </div>
