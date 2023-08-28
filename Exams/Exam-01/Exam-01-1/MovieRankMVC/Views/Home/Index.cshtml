@@ -4,30 +4,67 @@
     ViewData["Title"] = "Movie CRUD";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <header>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #001f3f; /* Azul oscuro */
+        }
 
+        .carousel-inner {
+            display: flex;
+            flex-wrap: nowrap;
+        }
+
+        .carousel-item {
+            flex: 0 0 100%; /* Para que ocupe todo el ancho */
+            max-width: 100%;
+        }
+
+        .movie-card {
+            height: 90vh; /* Ocupa el 90% del alto de la pantalla */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-img-top {
+            height: 60vh; /* Altura fija para todas las imágenes */
+            width: auto; /* Ancho automático para mantener proporciones */
+            object-fit: cover; /* Ajusta la imagen para que llene el espacio sin deformarse */
+            margin: auto; /* Centra la imagen horizontalmente */
+        }
+
+        .card-body {
+            flex-shrink: 0; /* Evita que se reduzca */
+        }
+    </style>
 </header>
+
 <div class="carousel slide" data-ride="carousel" id="movieCarousel">
     <div class="carousel-inner">
 
-        @foreach (var movie in Model)
+        @for (int i = 0; i < Model.Count(); i++)
         {
-            <div class="carousel-item @(movie == Model.First() ? "active" : "")">
+            <div class="carousel-item @(i == 0 ? "active" : "")">
                 <div class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: rgba(0,0,0,0.5);">
-                    <div class="card movie-card" style="width: 18rem;">
-                        <img class="card-img-top" src="~/images/@movie.Poster" alt="@movie.Title">
-                        <div class="card-body">
-                            <h5 class="card-title">@movie.Title</h5>
-                            <p class="card-text">Rating: @movie.Rate</p>
-                            <a href="@Url.Action("Details", "Movies", new { id = movie.Id })" class="btn btn-primary">View Details</a>
+                    @for (int j = 0; j < 3 && i + j < Model.Count(); j++)
+                    {
+                        var movie = Model.ElementAt(i + j);
+                        <div class="card movie-card mx-2">
+                            <img class="card-img-top" src="~/images/@movie.Poster" alt="@movie.Title">
+                            <div class="card-body">
+                                <h5 class="card-title">@movie.Title</h5>
+                                <p class="card-text">Rating: @movie.Rate</p>
+                                <a href="@Url.Action("Details", "Movies", new { id = movie.Id })" class="btn btn-primary">View Details</a>
+                            </div>
                         </div>
-                    </div>
+                    }
                 </div>
             </div>
+            i += 2; // Incrementamos en 2 ya que ya hemos procesado 3 elementos en total
         }
 
     </div>
@@ -40,4 +77,3 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
-
