@@ -17,11 +17,10 @@ public class Friend
 
     [Required(ErrorMessage = "The DateOfBirth is Required")]
     [DataType(DataType.Date)]
-    public DateTime DateOfBirth { get; set; }
+    public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
     [Required(ErrorMessage = "The Sex is Required")]
-    [StringLength(1)]
-    public char Sex { get; set; } = 'M';
+    public char Sex { get; set; }
     
     public string Relations { get; set; } = null!;    
     
