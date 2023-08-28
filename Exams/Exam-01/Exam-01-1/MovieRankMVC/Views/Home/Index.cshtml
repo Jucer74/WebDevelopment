@@ -1,6 +1,11 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Movie CRUD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -12,6 +17,7 @@
         <div class="carousel-slide">
             <img src="imagen1.jpg" alt="Imagen 1">
         </div>
+
         <div class="carousel-slide">
             <img src="imagen2.jpg" alt="Imagen 2">
         </div>
@@ -25,3 +31,4 @@
 @section Scripts {
     <script src="~/js/script.js"></script>
 }
+

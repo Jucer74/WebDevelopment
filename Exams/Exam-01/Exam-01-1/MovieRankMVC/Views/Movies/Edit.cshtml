@@ -1,75 +1,96 @@
 ﻿@model MovieRankMVC.Models.Movie
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<header>
+    <link rel="stylesheet" href="~/css/stylecreate.css" />
+</header>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
-
-<h4>Movie</h4>
+<h1>Edit Movie</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+
+<form asp-action="Edit" asp-controller="Movies" method="post" enctype="multipart/form-data">
+    <div class="movie-form-container">
+        <!-- Image Preview Section -->
+        <div class="form-section">
+            <img id="imagePreview" class="default-image" src="~/images/@Model.Poster" alt="Poster Image Preview" />
+            <p>Current Poster Filename: @Model.Poster</p>
+            <label asp-for="Poster" class="control-label">Upload Poster</label>
+            <input type="file" asp-for="Poster" class="form-control" onchange="previewImage(event)" />
+            <span asp-validation-for="Poster" class="text-danger"></span>
+        </div>
+
+        <!-- Form Fields Section -->
+        <div class="form-section">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- ID (Hidden) -->
+            <input asp-for="Id" hidden />
+
+            <!-- Title -->
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Enter movie title" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
+
+            <!-- Synopsis -->
             <div class="form-group">
-                <label asp-for="Synopsis" class="control-label"></label>
-                <input asp-for="Synopsis" class="form-control" />
+                <label asp-for="Synopsis" class="control-label">Synopsis</label>
+                <textarea asp-for="Synopsis" class="form-control" rows="4" placeholder="Enter movie synopsis"></textarea>
                 <span asp-validation-for="Synopsis" class="text-danger"></span>
             </div>
+
+            <!-- Year -->
             <div class="form-group">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
+                <label asp-for="Year" class="control-label">Year</label>
+                <input asp-for="Year" class="form-control" placeholder="Enter release year" type="number" />
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
+
+            <!-- Duration -->
             <div class="form-group">
-                <label asp-for="Duration" class="control-label"></label>
-                <input asp-for="Duration" class="form-control" />
+                <label asp-for="Duration" class="control-label">Duration</label>
+                <input asp-for="Duration" class="form-control" placeholder="Enter duration" />
                 <span asp-validation-for="Duration" class="text-danger"></span>
             </div>
+
+            <!-- Rate -->
             <div class="form-group">
-                <label asp-for="Rate" class="control-label"></label>
-                <input asp-for="Rate" class="form-control" />
+                <label asp-for="Rate" class="control-label">Rate</label>
+                <input asp-for="Rate" class="form-control" placeholder="Enter rate" />
                 <span asp-validation-for="Rate" class="text-danger"></span>
             </div>
+
+            <!-- Genres -->
             <div class="form-group">
-                <label asp-for="Poster" class="control-label"></label>
-                <input asp-for="Poster" class="form-control" />
-                <span asp-validation-for="Poster" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Genres" class="control-label"></label>
-                <input asp-for="Genres" class="form-control" />
+                <label asp-for="Genres" class="control-label">Genres</label>
+                <input asp-for="Genres" class="form-control" placeholder="Enter genres" />
                 <span asp-validation-for="Genres" class="text-danger"></span>
             </div>
+
+            <!-- Submit Button -->
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn-submit" />
             </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div style="margin-top: 30px;">
+        <a asp-action="Index" style="color: white;">Back to List</a>
+    </div>
+</form>
 
-</body>
-</html>
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

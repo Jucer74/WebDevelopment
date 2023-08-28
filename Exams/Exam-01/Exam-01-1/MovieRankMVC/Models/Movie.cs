@@ -27,7 +27,7 @@ public class Movie
     // Format 0.0
     public float Rate { get; set; }
 
-    [Required(ErrorMessage = "The Title is required")]
+    [Required(ErrorMessage = "The Poster is required")]
     [StringLength(50)]
     // Include only ImageName.ext
     public string Poster { get; set; } = null!;
