@@ -75,10 +75,11 @@ namespace MovieRankMVC.Controllers
             else
             {
                 // Usuario no encontrado o contraseña incorrecta, mostrar mensaje de error
-                ModelState.AddModelError("", "Email or password is incorrect");
+                TempData["ErrorMessage"] = "Email or password is incorrect";
                 return View();
             }
         }
+
 
         // GET: UsersController/Register
         public IActionResult Register()
