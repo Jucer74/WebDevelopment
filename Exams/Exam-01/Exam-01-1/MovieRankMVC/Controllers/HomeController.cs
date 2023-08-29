@@ -29,7 +29,9 @@ namespace MovieRankMVC.Controllers
             movies.Add(new Movie() { Id = 8, Title = "Mission: Impossible - Dead Reckoning Part One", Synopsis = "Ethan Hunt y su equipo deben encontrar un arma peligrosa antes de que caiga en manos equivocadas.", Year = 2023, Duration = "02:43", Rate = 8.0f, Poster = "Mission-impossible-dead-reckoning-part-one.jpg", Genres = "Acción | Aventura | Thriller" });
             movies.Add(new Movie() { Id = 9, Title = "Teenage Mutant Ninja Turtles: Mutant Mayhem", Synopsis = "Las Tortugas Ninja deben ganarse el amor de Nueva York mientras enfrentan a un ejército de mutantes.", Year = 2023, Duration = "01:39", Rate = 7.5f, Poster = "Teenage-mutant-ninja-turtles-mutant-mayhem.jpg", Genres = "Animación | Acción | Aventura" });
             movies.Add(new Movie() { Id = 10, Title = "Top Gun: Maverick", Synopsis = "Después de treinta años, Maverick lidera a los mejores graduados de TOP GUN en una misión que exige un gran sacrificio.", Year = 2022, Duration = "02:10", Rate = 8.3f, Poster = "Top-Gun-Maverick.jpg", Genres = "Drama | Acción" });
-
+            movies.Add(new Movie() { Id = 11, Title = "Avengers: Endgame", Synopsis = "Tras los devastadores eventos de Infinity War, los Vengadores se reúnen para deshacer las acciones de Thanos.", Year = 2019, Duration = "03:01", Rate = 8.4f, Poster = "Avengers-Endgame.jpg", Genres = "Acción | Aventura | Ciencia Ficción" });
+            movies.Add(new Movie() { Id = 12, Title = "Indiana Jones and the Dial of Destiny", Synopsis = "El arqueólogo Indiana Jones corre contra el tiempo para recuperar un legendario artefacto que puede cambiar el curso de la historia.", Year = 2023, Duration = "02:34", Rate = 6.8f, Poster = "Indiana-jones-and-the-dial-of-destiny.jpg", Genres = "Acción | Aventura" });
+            
             return movies;
         }
 
