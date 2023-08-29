@@ -21,11 +21,12 @@ namespace MovieRankMVC.Controllers
             // Pasa la lista de películas a la vista
             return View(movies);
         }
-
-        public IActionResult Privacy()
+        public IActionResult Logout()
         {
-            return View();
+
+            return RedirectToAction("Login", "Users"); // Redirigir a la página de inicio
         }
+ 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
