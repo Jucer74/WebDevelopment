@@ -1,0 +1,68 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Signika&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&display=swap');
+
+body {
+}
+
+form {
+    width: 30%;
+    background-color: var(--color-lightbeige);
+    padding: 50px;
+    border-radius: 20px;
+    margin-top: 150px;
+}
+
+.btn-primary {
+    width: 50%;
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-brown);
+}
+
+h3, label {
+    color: var(--color-brown);
+    width: 100%;
+}
+
+h3, .modal-title {
+    font-family: 'Lilita One', cursive;
+    font-size: 40px;
+}
+
+input {
+    color: var(--color-lightbrown);
+}
+
+.modal-content {
+    background-color: var(--color-lightbeige);
+}
+
+.modal-header {
+    background-color: var(--color-darkbrown);
+    width: 100%;
+    color: var(--color-white);
+}
+
+@media only screen and (max-width: 600px) {
+    form {
+        width: 100% !important;
+    }
+}
+
+
+.navbar-brand, .navbar-nav a, .user {
+    font-size: 20px;
+    color: var(--color-white);
+}
+
+.navbar-nav a {
+    margin-left: 12%;
+}
+
+.text {
+    margin-right: 10%;
+}
+
+.icon-user {
+    margin-left: 2%;
+}

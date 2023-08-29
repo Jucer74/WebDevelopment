@@ -4,54 +4,36 @@
 }
 
 .text-blue {
-    color: #342780 !important;
-    font-weight: bolder !important;
+    color: #342780;
+    font-weight: bolder;
 }
 
 .text-blue:hover {
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 .text-title{
-    color: #342780 !important;
-    font-family: Arial, Helvetica, sans-serif !important;
-    font-size: larger !important;
-    font-weight: bolder !important;
+    color: #342780;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: larger;
+    font-weight: bolder;
 }
 
 .text-title:hover{
-    color: #ffffff !important;
+    color: #ffffff;
 }
 
 .svg-size-2{
     font-size: 2rem;
 }
 
-/* Table */
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-    background-color: #f2e30e;
-}
-
-/* Heading 1 */
-.h1-blue {
-    color: #342780;
-    font-weight: bolder;
-}
-
-/* Logo */
-.border-color-blue {
-    border: 3px solid #342780;
-}
-
-
-/* Carousel */
 @media (min-width: 768px) {
     .carousel-inner {
       display: flex;
     }
     .carousel-item {
       margin-right: 0;
-      flex: 0 0 25%;
+      flex: 0 0 33.333333%;
       display: block;
     }
   }

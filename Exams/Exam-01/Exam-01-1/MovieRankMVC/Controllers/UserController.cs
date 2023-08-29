@@ -6,7 +6,7 @@ namespace MovieRankMVC.Controllers
     public class UserController : Controller
     {
         // GET: UserController
-        public ActionResult Login()
+        public ActionResult Index()
         {
             return View();
         }
