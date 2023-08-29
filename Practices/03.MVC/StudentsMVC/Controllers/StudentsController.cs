@@ -7,11 +7,7 @@ namespace StudentsMVC.Controllers
     public class StudentsController : Controller
     {
 
-<<<<<<< HEAD
-        // Global variable
-=======
         // Global Variables
->>>>>>> origin/2023-02-1/julbarcif
         private static List<Student> studentsList = LoadStudents();
 
         // GET: StudentsController
@@ -23,10 +19,7 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-<<<<<<< HEAD
-=======
             var student = studentsList.FirstOrDefault(x => x.Id == id);
->>>>>>> origin/2023-02-1/julbarcif
             return View();
         }
 
@@ -54,10 +47,7 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
         {
-<<<<<<< HEAD
-=======
             var student = studentsList.FirstOrDefault(x => x.Id == id);
->>>>>>> origin/2023-02-1/julbarcif
             return View();
         }
 
@@ -79,10 +69,7 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-<<<<<<< HEAD
-=======
             var student = studentsList.FirstOrDefault(x => x.Id == id);
->>>>>>> origin/2023-02-1/julbarcif
             return View();
         }
 
@@ -114,11 +101,5 @@ namespace StudentsMVC.Controllers
         }
 
         #endregion Private-Methods
-<<<<<<< HEAD
-
     }
-
-=======
-    }
->>>>>>> origin/2023-02-1/julbarcif
 }

@@ -1,32 +1,3 @@
-<<<<<<< HEAD
-﻿{
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:48456",
-      "sslPort": 44345
-    }
-  },
-  "profiles": {
-    "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:5227",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "applicationUrl": "https://localhost:7056;http://localhost:5227",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-=======
 {
   "profiles": {
     "http": {
@@ -46,7 +17,6 @@
       },
       "dotnetRunMessages": true,
       "applicationUrl": "https://localhost:7210;http://localhost:5114"
->>>>>>> origin/2023-02-1/julbarcif
     },
     "IIS Express": {
       "commandName": "IISExpress",
@@ -54,11 +24,6 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-<<<<<<< HEAD
-    }
-  }
-}
-=======
     },
     "WSL": {
       "commandName": "WSL2",
@@ -80,4 +45,3 @@
     }
   }
 }
->>>>>>> origin/2023-02-1/julbarcif
