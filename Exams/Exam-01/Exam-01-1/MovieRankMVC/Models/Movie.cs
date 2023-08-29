@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 
 namespace MovieRankMVC.Models;
 
@@ -33,6 +34,9 @@ public class Movie
     public string Poster { get; set; } = null!;
 
     // Optional List separated with pipe (|) ej: Action|Adventure|Sci-fi
-    public string Genres { get; set; } = null!;
+    public string SelectedGenre { get; set; }
+    public List<SelectListItem> GenreOptions { get; set; }
+
+    public string NewGenre { get; set; }
 
 }

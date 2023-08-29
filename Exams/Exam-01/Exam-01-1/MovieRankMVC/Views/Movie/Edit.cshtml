@@ -1,0 +1,99 @@
+﻿@model MovieRankMVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Synopsis" class="control-label"></label>
+                <input asp-for="Synopsis" class="form-control" />
+                <span asp-validation-for="Synopsis" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label"></label>
+                <div class="duration-input">
+                    <input asp-for="Duration" class="form-control duration-hours" placeholder="hh" />
+                    <span>:</span>
+                    <input asp-for="Duration" class="form-control duration-minutes" placeholder="mm" />
+                </div>
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Rate" class="control-label"></label>
+                <input id="rateInput" asp-for="Rate" type="range" class="form-control-range" min="0.0" max="10.0" step="0.1" />
+                <span id="rateValue">0.0</span>
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Poster" class="control-label"></label>
+                <input asp-for="Poster" type="file" class="form-control-file" accept="*/*" />
+                <span asp-validation-for="Poster" class="text-danger"></span>
+                <p id="fileName"></p>
+
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedGenre" class="control-label"></label>
+                <select asp-for="SelectedGenre" class="form-control" asp-items="Model.GenreOptions">
+                    <option value="">Select Genre</option>
+                </select>
+                <span asp-validation-for="SelectedGenre" class="text-danger"></span>
+            </div>
+
+            <!-- Nuevo género personalizado -->
+            <div class="form-group">
+                <label asp-for="NewGenre" class="control-label"></label>
+                <input asp-for="NewGenre" class="form-control" />
+                <span asp-validation-for="NewGenre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        var rateInput = document.getElementById("rateInput");
+        var rateValue = document.getElementById("rateValue");
+
+        rateInput.addEventListener("input", function () {
+            rateValue.innerText = rateInput.value;
+        });
+    </script>
+}
