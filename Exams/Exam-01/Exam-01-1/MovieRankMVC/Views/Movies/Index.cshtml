@@ -32,10 +32,17 @@
                             <td>@Html.DisplayFor(modelItem => item.Title)</td>
                             <td class="button-cell">
                                 <div class="button-group">
-                                <a asp-action="Edit" asp-route-id="@item.Id"><img src="https://localhost:5001/images/edit.svg" alt="Edit" /></a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Details</a>
-                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">
+                                        <img src="https://localhost:5001/images/edit.svg" alt="Edit" style="width: 50px; height: 50px;" />
+                                    </a>
+                                    <a asp-action="Details" asp-route-id="@item.Id">
+                                        <img src="https://localhost:5001/images/details.svg" alt="Details" style="width: 50px; height: 50px;" />
+                                    </a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id">
+                                        <img src="https://localhost:5001/images/trash.svg" alt="Delete" style="width: 50px; height: 50px;" />
+                                    </a>
                                 </div>
+
                             </td>
                         </tr>
                 }
