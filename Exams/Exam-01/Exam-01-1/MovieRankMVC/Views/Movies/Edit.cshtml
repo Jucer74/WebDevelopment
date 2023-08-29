@@ -4,10 +4,23 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    body {
+        background-color: #0a192f;
+        color: #fff;
+    }
 
+    .container {
+        background-color: #172a45;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+</style>
 <div class="container">
     <h1 class="display-4">Edit Movie</h1>
-    <hr />
+
 
     <form asp-action="Edit" method="post" enctype="multipart/form-data">
         <div class="row">
