@@ -9,7 +9,7 @@
         @foreach (var movie in Model)
         {
             <div class="carousel-item @(movie == Model.First() ? "active" : "")">
-                <img src="@movie.Poster" class="d-block w-100" alt="Movie Image">
+                    <img src="https://localhost:5001/images/@movie.Poster" class="d-block w-100" alt="Movie Image">
                 <div class="carousel-caption">
                     <h3>@movie.Title</h3>
                     <p>Rate: @movie.Rate</p>
