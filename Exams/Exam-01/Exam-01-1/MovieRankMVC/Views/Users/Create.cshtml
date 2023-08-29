@@ -1,0 +1,124 @@
+﻿@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "Create User";
+}
+
+<style>
+    body {
+        background-color: #1d1d1d;
+    }
+
+    .card {
+        background-color: #1d1d1d;
+        border: none;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .card-header {
+        background-color: #ffc107;
+        color: #111;
+        font-weight: bold;
+        padding: 15px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .form-group label {
+        color: #343a40;
+        font-weight: bold;
+    }
+
+    .form-control {
+        background-color: #111;
+        border: 1px solid #ffc107;
+        border-radius: 5px;
+        color: #ffc107;
+        padding: 12px;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #ffc107;
+        }
+
+    .btn-primary {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #ffa000;
+            border-color: #ffa000;
+        }
+
+    header, footer {
+        display: none;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="m-2 p-2 col-sm-12 col-md-8 col-xl-8 rounded">
+            <div class="card">
+                <div class="card-header text-center">
+                    Register
+                </div>
+                <div class="bg-yellow text-center rounded">
+                    <img src="~/Posters/logo2.png" alt="Logo" class="img-fluid logo" />
+                </div>
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                        <div class="form-group">
+                            <label asp-for="UserEmail" class="control-label">User:</label>
+                            <input asp-for="UserEmail" class="form-control" placeholder="JohnDoe123@gmail.com" />
+                            <span asp-validation-for="UserEmail" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="FirstName" class="control-label">First Name:</label>
+                            <input asp-for="FirstName" class="form-control" placeholder="John" />
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="LastName" class="control-label">Last Name:</label>
+                            <input asp-for="LastName" class="form-control" placeholder="Doe" />
+                            <span asp-validation-for="LastName" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label">Password:</label>
+                            <input asp-for="Password" class="form-control" type="password" placeholder="***" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="control-label">Confirm Password:</label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="***" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary mx-2 text-black">Register</button>
+                            <a asp-action="Login" class="btn btn-secondary mx-2 text-black">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
