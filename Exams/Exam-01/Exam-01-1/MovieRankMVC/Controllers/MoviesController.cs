@@ -70,13 +70,12 @@ namespace MovieRankMVC.Controllers
                 return View();
             }
         }
+
         private Movie? GetMovieById(int id)
         {
             // Busca la película en la lista por su ID
             return moviesList.Find(movie => movie.Id == id);
         }
-
-
 
         private void UpdateMovie(Movie editedMovie)
         {
