@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace MovieRankMVC.Controllers
 {
@@ -63,7 +61,7 @@ namespace MovieRankMVC.Controllers
                 string userPassword = collection["Password"];
 
                 // Buscar el usuario en la lista userList
-                var user = userList.FirstOrDefault(u => u.UserEmail == userEmail && u.Password == userPassword);
+                var user = userList.Find(u => u.UserEmail == userEmail && u.Password == userPassword);
 
                 if (user != null)
                 {

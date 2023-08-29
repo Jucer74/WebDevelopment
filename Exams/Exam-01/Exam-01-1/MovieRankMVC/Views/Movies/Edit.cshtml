@@ -5,85 +5,83 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<header>
-    <link rel="stylesheet" href="~/css/stylecreate.css" />
-</header>
+<div class="container">
+    <h1 class="display-4">Edit Movie</h1>
+    <hr />
 
-<h1>Edit Movie</h1>
-<hr />
-
-<form asp-action="Edit" method="post" enctype="multipart/form-data">
-    <div class="movie-form-container">
-        <!-- Image Preview Section -->
-        <div class="form-section">
-            <img id="imagePreview" src="~/images/@Model.Poster" alt="Poster Image Preview" />
-            <label asp-for="Poster" class="control-label">Change Poster</label>
-            <input type="file" name="Poster" class="form-control" onchange="previewImage(event)" />
-            <span asp-validation-for="Poster" class="text-danger"></span>
-
-
-        </div>
-
-        <!-- Form Fields Section -->
-        <div class="form-section">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <!-- Hidden ID -->
-            <input asp-for="Id" hidden />
-
-            <!-- Title -->
-            <div class="form-group">
-                <label asp-for="Title" class="control-label">Title</label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <!-- Image Preview Section -->
+                <div class="form-group">
+                    <img id="imagePreview" src="~/images/@Model.Poster" alt="Poster Image Preview" class="img-fluid" />
+                    <label asp-for="Poster" class="control-label">Change Poster</label>
+                    <input type="file" name="Poster" class="form-control" onchange="previewImage(event)" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
+                </div>
             </div>
 
-            <!-- Synopsis -->
-            <div class="form-group">
-                <label asp-for="Synopsis" class="control-label">Synopsis</label>
-                <textarea asp-for="Synopsis" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Synopsis" class="text-danger"></span>
-            </div>
+            <div class="col-lg-8 col-md-6 col-sm-12 mb-4">
+                <!-- Form Fields Section -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <!-- Year -->
-            <div class="form-group">
-                <label asp-for="Year" class="control-label">Year</label>
-                <input asp-for="Year" class="form-control" type="number" />
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>
+                <!-- Hidden ID -->
+                <input asp-for="Id" hidden />
 
-            <!-- Duration -->
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label">Duration (HH:MM)</label>
-                <input asp-for="Duration" class="form-control" />
-                <span asp-validation-for="Duration" class="text-danger"></span>
-            </div>
+                <!-- Title -->
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
 
-            <!-- Rate -->
-            <div class="form-group">
-                <label asp-for="Rate" class="control-label">Rate</label>
-                <input asp-for="Rate" class="form-control" type="number" step="0.1" />
-                <span asp-validation-for="Rate" class="text-danger"></span>
-            </div>
+                <!-- Synopsis -->
+                <div class="form-group">
+                    <label asp-for="Synopsis" class="control-label">Synopsis</label>
+                    <textarea asp-for="Synopsis" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Synopsis" class="text-danger"></span>
+                </div>
 
-            <!-- Genres -->
-            <div class="form-group">
-                <label asp-for="Genres" class="control-label">Genres</label>
-                <input asp-for="Genres" class="form-control" />
-                <span asp-validation-for="Genres" class="text-danger"></span>
-            </div>
+                <!-- Year -->
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label">Year</label>
+                    <input asp-for="Year" class="form-control" type="number" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
 
-            <!-- Submit Button -->
-            <div class="form-group">
-                <input type="submit" value="Update" class="btn-submit" />
+                <!-- Duration -->
+                <div class="form-group">
+                    <label asp-for="Duration" class="control-label">Duration (HH:MM)</label>
+                    <input asp-for="Duration" class="form-control" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+
+                <!-- Rate -->
+                <div class="form-group">
+                    <label asp-for="Rate" class="control-label">Rate</label>
+                    <input asp-for="Rate" class="form-control" type="number" step="0.1" />
+                    <span asp-validation-for="Rate" class="text-danger"></span>
+                </div>
+
+                <!-- Genres -->
+                <div class="form-group">
+                    <label asp-for="Genres" class="control-label">Genres</label>
+                    <input asp-for="Genres" class="form-control" />
+                    <span asp-validation-for="Genres" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
             </div>
         </div>
-    </div>
 
-    <div style="margin-top: 30px;">
-        <a asp-action="Index" style="color: white;">Back to List</a>
-    </div>
-</form>
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
 
 <script>
     function previewImage(event) {
