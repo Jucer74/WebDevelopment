@@ -1,0 +1,125 @@
+﻿@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+
+    body {
+        background-color: #1d1d1d;
+        font-family: Arial, sans-serif;
+        margin: 0;
+    }
+
+    .card {
+        background-color: #1d1d1d;
+        border: none;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+    }
+
+    .card-header {
+        background-color: #ffc107;
+        color: #111;
+        font-weight: bold;
+        padding: 15px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .form-group label {
+        color: #343a40;
+        font-weight: bold;
+    }
+
+    .form-control {
+        background-color: #111;
+        border: 1px solid #ffc107;
+        border-radius: 5px;
+        color: #ffc107;
+        padding: 12px;
+        transition: border-color 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #ffc107;
+        }
+
+    .btn-primary {
+        background-color: #ffc107;
+        border-color: #ffc107;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s, border-color 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #ffa000;
+            border-color: #ffa000;
+        }
+
+    .register-link {
+        color: #ffa000;
+        margin-top: 15px;
+        display: inline-block;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+        .register-link:hover {
+            color: #ffa000;
+        }
+
+    header, footer {
+        display: none;
+    }
+
+</style>
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="m-2 p-2 col-sm-12 col-md-8 col-xl-8 rounded">
+            <div class="card">
+                <div class="card-header text-center">
+                    Login
+                </div>
+                <div class="card-body">
+                    <div class="bg-yellow text-center rounded">
+                        <img src="~/Posters/logo2.png" alt="Logo" class="img-fluid logo" />
+                    </div>
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label for="UserEmail">Username:</label>
+                            <input asp-for="UserEmail" class="form-control" placeholder="Username" />
+                            <span asp-validation-for="UserEmail" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Password">Password:</label>
+                            <input asp-for="Password" class="form-control" type="password" placeholder="Password" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="text-center mt-4">
+                        <button type="submit" class="btn btn-primary text-black">Login</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center mb-3">
+                    <a asp-action="Create" class="register-link">Register here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+
+

@@ -1,8 +1,150 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="~/path/to/bootstrap.css" rel="stylesheet" />
+    <style>
+
+        body {
+            background-color: #111;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        .movie-card {
+            background-color: #ffa000;
+            border: 1px solid #111;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0px 2px 5px #ffa000;
+            transition: transform 0.3s;
+        }
+
+            .movie-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .carousel-inner {
+            text-align: center;
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 20px;
+        }
+
+        .carousel-control-prev-icon {
+            margin-right: 5px;
+        }
+
+        .carousel-control-next-icon {
+            margin-left: 5px;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            position: absolute;
+            top: 20%;
+        }
+
+        .carousel-control-prev {
+            right: auto;
+            left: 0px;
+        }
+
+        .carousel-control-next {
+            left: auto;
+            right: 0px;
+        }
+
+        .navbar {
+            background-color:orange;
+        }
+
+        .carousel-control-prev, .carousel-control-next {
+            font-size: 24px;
+            color: #000; 
+            background-color: transparent; 
+        }
+
+        .carousel-control-prev {
+            left: -40px;
+        }
+
+        .carousel-control-next {
+            right: -40px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="/Home/Index">
+            <img src="~/Posters/logo2.png" alt="Logo" class="img-fluid logo" />
+        </a>
+        <div class="bg-yellow text-center rounded">
+              <h1 class="text-warning">TOP Movies</h1>
+        </div>
+    
+        <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @for (int i = 0; i < 10; i += 3)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <div class="row justify-content-center">
+                            @for (int j = i; j < i + 3 && j < 10; j++)
+                            {
+                                <div class="col-md-4">
+                                    <div class="card movie-card">
+                                        <img src="@Url.Content(Model.ElementAt(j).Poster)" class="card-img-top" alt="@Model.ElementAt(j).Title">
+                                        <div class="card-body">
+                                            <h5 class="card-title">@Model.ElementAt(j).Title</h5>
+                                            <p class="card-text">
+                                                <strong>Rate:</strong> @Model.ElementAt(j).Rate
+                                            </p>
+                                            <div class="progress">
+                                                <div class="progress-bar bg-dark" role="progressbar" style="width: @(Model.ElementAt(j).Rate * 10)%" aria-valuenow="@Model.ElementAt(j).Rate" aria-valuemin="0" aria-valuemax="10"></div>
+                                            </div>
+                                            <br>
+                                            <button class="btn btn-primary bg-dark" onclick="location.href='@Url.Action("Details", "Movies", new { id = Model.ElementAt(j).Id })'">Details</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#movieCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#movieCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+
+    <script src="~/path/to/jquery.js"></script>
+    <script src="~/path/to/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#movieCarousel').carousel();
+        });
+    </script>
+
+</body>
+</html>
