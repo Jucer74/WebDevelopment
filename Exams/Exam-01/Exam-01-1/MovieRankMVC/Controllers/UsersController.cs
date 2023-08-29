@@ -14,9 +14,10 @@ namespace MovieRankMVC.Controllers
 
         private static List<User> LoadUsers()
         {
-            List<User> users = new List<User>();
-
-            users.Add(new User() { Id = 1, UserEmail = "admin@email.com", FirstName = "Admin", LastName = "User", Password = "P4ssw0rd*01" });
+            List<User> users = new()
+            {
+                new User() { Id = 1, UserEmail = "admin@email.com", FirstName = "Admin", LastName = "User", Password = "P4ssw0rd*01" }
+            };
 
             return users;
         }
@@ -67,7 +68,7 @@ namespace MovieRankMVC.Controllers
         }
         public IActionResult Register()
         {
-            User userModel = new User();
+            User userModel = new();
             return View(userModel);
         }
 
@@ -79,6 +80,14 @@ namespace MovieRankMVC.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var existingUser = usersList.FirstOrDefault(u => u.UserEmail == user.UserEmail);
+
+                    if (existingUser != null)
+                    {
+                        ModelState.AddModelError("UserEmail", "A user with this email already exists.");
+                        return View();
+                    }
+
                     if (user.Password == user.ConfirmPassword)
                     {
                         int newId = usersList.Count + 1;
@@ -100,6 +109,7 @@ namespace MovieRankMVC.Controllers
                 return View();
             }
         }
+
 
 
     }

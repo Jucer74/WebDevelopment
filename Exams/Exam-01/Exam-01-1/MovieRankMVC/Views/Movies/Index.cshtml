@@ -20,7 +20,7 @@
                 <tr>
                     <th>Poster</th>
                     <th>Title</th>
-                    <th></th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,35 +48,36 @@
 </div>
 <style>
     /* Estilos base */
-
     .poster-cell {
-        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .poster-container {
-        position: relative;
         width: 100px;
         height: 150px;
         margin: 0 auto;
+        position: relative;
     }
 
     .poster-image {
         max-width: 100%;
         max-height: 100%;
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0; /* shorthand for top, right, bottom, left */
         margin: auto;
     }
 
     .button-cell {
-        vertical-align: middle;
+        display: flex;
+        align-items: center;
     }
 
     .button-group {
         display: flex;
         gap: 10px;
+        align-items: center;
     }
+
 </style>

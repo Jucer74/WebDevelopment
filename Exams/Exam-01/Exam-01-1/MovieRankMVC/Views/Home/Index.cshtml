@@ -55,7 +55,6 @@
         <span class="visually-hidden">Next</span>
     </a>
 </div>
-</div>
 
 
 @*Modal*@
@@ -118,7 +117,6 @@
 }
 
 <style>
-
     /* Estilos base */
 
     .carousel-control-prev,
@@ -127,6 +125,9 @@
         width: auto;
         color: black;
         background: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .carousel-control-prev {
@@ -141,6 +142,7 @@
         margin: 0.5em;
         box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
         border: none;
+        padding: 1em;
     }
 
     .carousel-inner {
@@ -156,18 +158,13 @@
 
     .aspect-ratio-content {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0; /* shorthand for top, right, bottom, left */
     }
 
     .image-container {
         width: 100%;
         height: 100%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+        background: center;
     }
 
     .rating-container {
@@ -182,14 +179,15 @@
         background-color: #e0e0e0;
         position: relative;
         margin-right: 5px;
+        border-radius: 5px;
+        overflow: hidden;
     }
 
     .filled-rating {
         height: 100%;
         background-color: #007bff;
-        position: absolute;
-        top: 0;
-        left: 0;
+        width: 0; /* Initial width */
+        transition: width 0.3s ease-in-out;
     }
 
     .rating-value {
@@ -198,9 +196,6 @@
 
     .progress.rating-bar {
         height: 25px;
-        border-radius: 5px;
-        background-color: #e0e0e0;
-        overflow: hidden;
     }
 
     .progress-bar.filled-rating {
@@ -208,5 +203,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 5px;
+        overflow: hidden;
     }
+
 </style>
