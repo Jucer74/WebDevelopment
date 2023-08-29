@@ -7,11 +7,11 @@
 <div class="container mt-5">
     <h1>Edit</h1>
 
-    <h4>Movie</h4>
-    <hr />
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Movie</h4>
+            <hr />
 
-    <div class="row">
-        <div class="col-md-4">
             <form method="post" asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
@@ -38,8 +38,8 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Rate" class="form-label">Rate</label>
-                    <input asp-for="Rate" type="range" min="0" max="10" step="0.1" class="form-range" />
-                    <output class="form-output">@Model.Rate</output>
+                    <input asp-for="Rate" id="rate-slider" type="range" min="0" max="10" step="0.1" class="form-range" />
+                    <output id="rate-output" class="form-output">@Model.Rate</output>
                     <span asp-validation-for="Rate" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
@@ -60,3 +60,13 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    const rateSlider = document.getElementById('rate-slider');
+    const rateOutput = document.getElementById('rate-output');
+
+    rateSlider.addEventListener('input', function() {
+        rateOutput.value = rateSlider.value;
+    });
+</script>
