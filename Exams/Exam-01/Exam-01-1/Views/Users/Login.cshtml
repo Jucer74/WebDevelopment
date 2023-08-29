@@ -1,0 +1,83 @@
+﻿Login:
+@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<style>
+
+    header, footer {
+        display: none;
+    }
+
+    /* Estilos para el fondo interactivo */
+    #my-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
+</style>
+
+<div id="my-background"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <div class="card mt-5 shadow border border-dark">
+                <div class="card-header bg-dark text-white">
+                    <img src="~/Posters/MovieRank-Cover.png" alt="Logo" class="img-fluid" width="100" height="100" />
+                    <h1 class="card-title text-center">MovieRank</h1>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Login">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="UserEmail" class="control-label">User:</label>
+                            <input asp-for="UserEmail" class="form-control border border-dark p-2 rounded mt-2" placeholder="John.Doe@gmail.com" />
+                            <span asp-validation-for="UserEmail" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Password" class="control-label">Password:</label>
+                            <input asp-for="Password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="***" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group text-center">
+                            <input type="submit" value="Login" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+                <div class="text-center mb-3">
+                    <a asp-action="Create" class="text-dark"><u><em>Register</em></u></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+        <script>
+            // Inicializa Vanta.js en el fondo interactivo
+            VANTA.NET({
+                el: "#my-background",
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00
+            });
+        </script>
+    }
+
+}
