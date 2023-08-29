@@ -15,7 +15,6 @@ body {
     .header h1 {
         margin: 0;
         font-size: 28px;
-
     }
 
 .table {
@@ -65,6 +64,7 @@ body {
     .btn-delete:hover {
         background-color: #c0392b; /* Un rojo un poco más oscuro al pasar el mouse */
     }
+
 .titulo {
     color: lightgray; /* Cambia "blue" por el color que desees */
 }
