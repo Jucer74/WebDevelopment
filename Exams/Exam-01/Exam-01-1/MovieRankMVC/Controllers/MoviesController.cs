@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MovieRankMVC.Controllers
 {
     public class MoviesController : Controller
     {
-        private static List<Movie> moviesList = LoadMovies();
         private static List<Movie> LoadMovies()
         {
             List<Movie> movies = new List<Movie>();
@@ -39,12 +40,20 @@ namespace MovieRankMVC.Controllers
             movies.Add(new Movie() { Id = 28, Title = "Batman: The Dark Knight", Synopsis = "Cuando la amenaza conocida como el Joker siembra el caos y la confusión en la gente de Gotham, Batman debe enfrentar una de las pruebas más grandes de su habilidad para luchar contra la injusticia, tanto psicológica como físicamente.", Year = 2008, Duration = "02:32", Rate = 9.0f, Poster = "Batman-the-dark-knight.jpg", Genres = "Acción | Crimen | Drama" });
             movies.Add(new Movie() { Id = 29, Title = "Captain America: The First Avenger", Synopsis = "Steve Rogers, un soldado militar rechazado, se transforma en el Capitán América después de tomar una dosis de un suero de super soldado. Pero ser el Capitán América tiene un precio, ya que intenta derrocar a un belicista y a una organización terrorista.", Year = 2011, Duration = "02:04", Rate = 6.9f, Poster = "Captain-America-The-First-Avenger.jpg", Genres = "Acción | Aventura | Ciencia Ficción" });
             movies.Add(new Movie() { Id = 30, Title = "The Lord of the Rings: The Two Towers", Synopsis = "Mientras Frodo y Sam se acercan a Mordor con la ayuda de Gollum, la comunidad dividida se enfrenta a Saruman y sus hordas de Isengard.", Year = 2002, Duration = "02:59", Rate = 8.8f, Poster = "The-Lord-of-the-Rings-The-Two-Towers.jpg", Genres = "Aventura | Acción | Drama" });
+
             return movies;
         }
-        public ActionResult Index()
+        private static List<Movie> moviesList = LoadMovies();
+
+        public IActionResult Index()
         {
             ViewBag.Movies = moviesList;
-            return View(ViewBag.Movies);
+            return View(moviesList);
+        }
+
+        public List<Movie> GetMoviesList()
+        {
+            return moviesList;
         }
 
         public ActionResult Details(int id)
@@ -64,7 +73,9 @@ namespace MovieRankMVC.Controllers
         {
             try
             {
-                AddMovie(movie);
+                int newId = moviesList.Count + 1;
+                movie.Id = newId;
+                moviesList.Add(movie);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -72,7 +83,6 @@ namespace MovieRankMVC.Controllers
                 return View();
             }
         }
-
         public ActionResult Edit(int id)
         {
             var movie = moviesList.FirstOrDefault(x => x.Id == id);
@@ -85,7 +95,14 @@ namespace MovieRankMVC.Controllers
         {
             try
             {
-                UpdateMovie(movie);
+                var existingMovie = moviesList.FirstOrDefault(x => x.Id == movie.Id);
+                existingMovie.Title = movie.Title;
+                existingMovie.Synopsis = movie.Synopsis;
+                existingMovie.Year = movie.Year;
+                existingMovie.Duration = movie.Duration;
+                existingMovie.Rate = movie.Rate;
+                existingMovie.Poster = movie.Poster;
+                existingMovie.Genres = movie.Genres;
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -104,44 +121,13 @@ namespace MovieRankMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            DeleteMovie(id);
-            ReenumerateMovieIds();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private void AddMovie(Movie movie)
-        {
-            int newId = moviesList.Count + 1;
-            movie.Id = newId;
-            moviesList.Add(movie);
-        }
-
-        private void UpdateMovie(Movie updatedMovie)
-        {
-            var existingMovie = moviesList.FirstOrDefault(x => x.Id == updatedMovie.Id);
-            if (existingMovie != null)
-            {
-                existingMovie.Title = updatedMovie.Title;
-                existingMovie.Synopsis = updatedMovie.Synopsis;
-                // ... (actualizar otras propiedades)
-            }
-        }
-
-        private void DeleteMovie(int id)
-        {
             var movieToDelete = moviesList.FirstOrDefault(x => x.Id == id);
-            if (movieToDelete != null)
-            {
-                moviesList.Remove(movieToDelete);
-            }
-        }
-
-        private void ReenumerateMovieIds()
-        {
+            moviesList.Remove(movieToDelete);
             for (int i = 0; i < moviesList.Count; i++)
             {
                 moviesList[i].Id = i + 1;
             }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

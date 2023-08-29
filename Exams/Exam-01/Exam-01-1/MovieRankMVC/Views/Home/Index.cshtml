@@ -1,26 +1,212 @@
-﻿﻿@{
-    ViewData["Title"] = "Home Page";
+﻿﻿
+@model List<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Home</h1>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        @for (int i = 0; i < Model.Count(); i += 3)
+        {
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+                    <div class="row">
+                    @for (int j = i; j < Math.Min(i + 3, Model.Count()); j++)
+                    {
+                        var movie = Model[j];
+                                <div class="col-md-4">
+                                    <div class="card h-100">
+                                        <div class="aspect-ratio-container">
+                                            <div class="aspect-ratio-content">
+                                                <div class="image-container"
+                                                    style="background-image: url('https://localhost:5001/images/@movie.Poster');"></div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">@movie.Title</h5>
+                                            <div class="rating-container">
+                                                <div class="progress rating-bar">
+                                                    <h6 class="progress-bar filled-rating" role="progressbar"
+                                                        style="width: @(movie.Rate * 10)%;">
+                                                        Rate @movie.Rate
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#detailsModal-@movie.Id">
+                                                Details
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                    }
+                    </div>
+                </div>
+        }
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </a>
+</div>
+</div>
+
+
+@*Modal*@
+@foreach (var movie in Model)
+{
+        <div class="modal fade" id="detailsModal-@movie.Id" tabindex="-1"
+            aria-labelledby="detailsModalLabel-@movie.Id" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="detailsModalLabel-@movie.Id">Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container mt-5">
+                            <div class="card">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="~/images/@movie.Poster" alt="Movie Poster"
+                                            class="img-fluid rounded"
+                                            style="padding: 15px; max-height: 100%;">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Title: @movie.Title</h5>
+                                            <p class="card-text">Synopsis: @movie.Synopsis</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="mb-0"><strong>Year:</strong> @movie.Year</p>
+                                            <p class="mb-0"><strong>Duration:</strong> @movie.Duration</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="mb-0"><strong>Rate:</strong> @movie.Rate</p>
+                                            <p class="mb-0"><strong>Genres:</strong> @movie.Genres</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <img src="~\images\Oppenheimer.jpg" alt="">
-</div>
+@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.carousel').carousel();
+            });
+        </script>
+}
 
-<div class="text-center">
-     <img src="https://localhost:5001/images/Oppenheimer.jpg">
-    <img src="https://localhost:5001/images/Spider-Man.jpg">
-    <img src="https://localhost:5001/images/Talk-to-me.jpg"> 
+<style>
 
-    <div class="card" style="width: 18rem;">
-        <img src="https://localhost:5001/images/Barbie.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="#" class="btn btn-primary">Go to the list!</a>
-        </div>
-    </div>
+    /* Estilos base */
 
-</div>
+    .carousel-control-prev,
+    .carousel-control-next {
+        margin: 0;
+        width: auto;
+        color: black;
+        background: none;
+    }
+
+    .carousel-control-prev {
+        left: -50px;
+    }
+
+    .carousel-control-next {
+        right: -50px;
+    }
+
+    .card {
+        margin: 0.5em;
+        box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
+        border: none;
+    }
+
+    .carousel-inner {
+        padding: 1em;
+    }
+
+    .aspect-ratio-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 150%;
+        overflow: hidden;
+    }
+
+    .aspect-ratio-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    .rating-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .rating-bar {
+        flex: 1;
+        height: 10px;
+        background-color: #e0e0e0;
+        position: relative;
+        margin-right: 5px;
+    }
+
+    .filled-rating {
+        height: 100%;
+        background-color: #007bff;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .rating-value {
+        margin: 0;
+    }
+
+    .progress.rating-bar {
+        height: 25px;
+        border-radius: 5px;
+        background-color: #e0e0e0;
+        overflow: hidden;
+    }
+
+    .progress-bar.filled-rating {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
