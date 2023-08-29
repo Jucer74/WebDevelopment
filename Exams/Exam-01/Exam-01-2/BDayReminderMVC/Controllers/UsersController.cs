@@ -1,10 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BDayReminderMVC.Models;
 
 namespace BDayReminderMVC.Controllers
 {
     public class UsersController : Controller
     {
+
+        private static List<User> userlist = LoadUser();
+       
         // GET: UsersController
         public ActionResult Index()
         {
@@ -14,7 +18,8 @@ namespace BDayReminderMVC.Controllers
         // GET: UsersController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var user = userlist.Find(user => user.Id == id);
+            return View(user);
         }
 
         // GET: UsersController/Create
@@ -23,13 +28,19 @@ namespace BDayReminderMVC.Controllers
             return View();
         }
 
+        public System.Security.Claims.ClaimsPrincipal GetUser()
+        {
+            return User;
+        }
+
         // POST: UsersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(User user)
         {
             try
             {
+                userlist.Add(user);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -37,20 +48,27 @@ namespace BDayReminderMVC.Controllers
                 return View();
             }
         }
-
+    
         // GET: UsersController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var user = userlist.Find(user => user.Id == id);
+            return View(user);
         }
 
         // POST: UsersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, User user)
         {
             try
             {
+                var editUsers = userlist.FirstOrDefault(user => user.Id == id);
+                if (editUsers != null)
+                {
+                    var index = userlist.IndexOf(editUsers);
+                    userlist[index] = user;
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -62,6 +80,7 @@ namespace BDayReminderMVC.Controllers
         // GET: UsersController/Delete/5
         public ActionResult Delete(int id)
         {
+            var user = userlist.Find(user => user.Id == id);
             return View();
         }
 
@@ -72,12 +91,34 @@ namespace BDayReminderMVC.Controllers
         {
             try
             {
+                var Remove = userlist.FirstOrDefault(user => user.Id == id);
+
+                if (Remove != null)
+                {
+                    userlist.Remove(Remove);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+
+        private static List<User> LoadUser()
+        {
+            var user = new List<User>();
+
+            user.Add(new Models.User()
+            {
+                user = "Admin@email.com",
+                firstName = "Admin",
+                lastName = "User",
+                Password = " P4ssw0rd*01"
+
+            });
+
+            return user;
         }
     }
 }

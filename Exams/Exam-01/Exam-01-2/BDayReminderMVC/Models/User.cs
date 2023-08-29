@@ -17,7 +17,7 @@ namespace BDayReminderMVC.Models
 
         [Required(ErrorMessage = "The Email is Required")]
         [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        public string user { get; set; }
 
         [Required(ErrorMessage = "The Password is Required")]
         [StringLength(50)]
