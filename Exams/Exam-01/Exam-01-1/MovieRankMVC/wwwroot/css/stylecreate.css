@@ -1,0 +1,90 @@
+﻿/* Estilos generales */
+body {
+    background-color: #34495E;
+    color: white;
+}
+
+.movie-form-container {
+    display: flex;
+    background-color: #2C3E50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.form-section {
+    flex: 1;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control, .btn-submit, .custom-file-upload, .btn-add {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #ABB2B9;
+    color: #34495E;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn-submit:hover {
+        background-color: #17202A;
+    }
+
+/* Estilos específicos */
+.rate-slider {
+    display: flex;
+    align-items: center;
+}
+
+    .rate-slider span {
+        margin-left: 10px;
+    }
+
+.duration-inputs {
+    display: flex;
+    gap: 10px;
+}
+
+    .duration-inputs input {
+        flex: 1;
+    }
+
+.default-image, #imagePreview {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+#imagePreview {
+    width: 400px;
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Opcional: para darle una sombra */
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #34495E;
+}
+
+    .custom-file-upload:hover {
+        background-color: #2C3E50;
+    }
+
+.btn-add {
+    display: block;
+    margin-top: 20px; /* Separación del botón de selección de archivo */
+    background-color: #094480; /* Color verde */
+}
+
+    .btn-add:hover {
+        background-color: #07396C; /* Un verde un poco más oscuro al pasar el mouse */
+    }

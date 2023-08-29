@@ -1,0 +1,108 @@
+﻿@model MovieRankMVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    body {
+        background-color: #0a192f;
+        color: #fff;
+    }
+
+    .container {
+        background-color: #172a45;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+</style>
+<div class="container">
+    <h1 class="display-4">Edit Movie</h1>
+
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <!-- Image Preview Section -->
+                <div class="form-group">
+                    <img id="imagePreview" src="~/images/@Model.Poster" alt="Poster Image Preview" class="img-fluid" />
+                    <label asp-for="Poster" class="control-label">Change Poster</label>
+                    <input type="file" name="Poster" class="form-control" onchange="previewImage(event)" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-6 col-sm-12 mb-4">
+                <!-- Form Fields Section -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <!-- Hidden ID -->
+                <input asp-for="Id" hidden />
+
+                <!-- Title -->
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+
+                <!-- Synopsis -->
+                <div class="form-group">
+                    <label asp-for="Synopsis" class="control-label">Synopsis</label>
+                    <textarea asp-for="Synopsis" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="Synopsis" class="text-danger"></span>
+                </div>
+
+                <!-- Year -->
+                <div class="form-group">
+                    <label asp-for="Year" class="control-label">Year</label>
+                    <input asp-for="Year" class="form-control" type="number" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+
+                <!-- Duration -->
+                <div class="form-group">
+                    <label asp-for="Duration" class="control-label">Duration (HH:MM)</label>
+                    <input asp-for="Duration" class="form-control" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+
+                <!-- Rate -->
+                <div class="form-group">
+                    <label asp-for="Rate" class="control-label">Rate</label>
+                    <input asp-for="Rate" class="form-control" type="number" step="0.1" />
+                    <span asp-validation-for="Rate" class="text-danger"></span>
+                </div>
+
+                <!-- Genres -->
+                <div class="form-group">
+                    <label asp-for="Genres" class="control-label">Genres</label>
+                    <input asp-for="Genres" class="form-control" />
+                    <span asp-validation-for="Genres" class="text-danger"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.getElementById('imagePreview');
+            output.src = reader.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

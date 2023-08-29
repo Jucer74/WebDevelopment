@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #212F3D;
+}
+
+.header {
+    background-color: #34495E;
+    color: white;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+    .header h1 {
+        margin: 0;
+        font-size: 28px;
+    }
+
+.table {
+    background-color: #ABB2B9;
+    box-shadow: 0px 4px 8px #273746;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+    .table th {
+        background-color: #ABB2B9;
+        font-weight: bold;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #95A5A6;
+    }
+
+.poster-img {
+    max-width: 100px;
+    height: auto;
+}
+
+.actions a {
+    margin-right: 10px;
+    transition: color 0.3s;
+}
+
+    .actions a:hover {
+        color: #17202A;
+    }
+
+.delete-link {
+    color: #AEB6BF;
+}
+
+.btn-delete {
+    margin: 10px 0;
+    background-color: #e74c3c; /* Color rojo para el botón de eliminar */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .btn-delete:hover {
+        background-color: #c0392b; /* Un rojo un poco más oscuro al pasar el mouse */
+    }
+
+.titulo {
+    color: lightgray; /* Cambia "blue" por el color que desees */
+}

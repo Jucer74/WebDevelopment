@@ -1,0 +1,74 @@
+﻿@model MovieRankMVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/stylecreate.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="display-4">Movie Details</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <!-- Image Preview Section -->
+                <div class="form-section">
+                    <img id="imagePreview" src="~/images/@Model.Poster" alt="Poster Image Preview" class="img-fluid" />
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-6 col-sm-12 mb-4">
+                <!-- Details Section -->
+                <div class="form-section">
+                    <dl class="row">
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Id)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Id)</dd>
+                        </div>
+
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Title)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Title)</dd>
+                        </div>
+
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Synopsis)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Synopsis)</dd>
+                        </div>
+
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Year)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Year)</dd>
+                        </div>
+
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Duration)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Duration)</dd>
+                        </div>
+
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Rate)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Rate)</dd>
+                        </div>
+
+                        <div class="col-sm-12 mb-4">
+                            <dt class="details-label">@Html.DisplayNameFor(model => model.Genres)</dt>
+                            <dd class="details-value">@Html.DisplayFor(model => model.Genres)</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 30px;">
+            <a asp-action="Index" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Back to List</a>
+        </div>
+    </div>
+</body>
+</html>
