@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Reflection;
 
 namespace MovieRankMVC.Models
 {
@@ -31,5 +30,3 @@ namespace MovieRankMVC.Models
         public string ConfirmPassword { get; set; } = null!;
     }
 }
-
-

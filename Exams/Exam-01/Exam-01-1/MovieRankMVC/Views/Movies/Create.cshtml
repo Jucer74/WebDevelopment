@@ -4,139 +4,144 @@
     ViewData["Title"] = "Create";
 }
 
-<header>
-    <link rel="stylesheet" href="~/css//stylecreate.css" />
-</header>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/stylecreate.css">
 
-<h1>Create New Movie</h1>
-<hr />
+</head>
+<body style="background-color: #34495E; color: white;">
 
-<form asp-action="Create" method="post" enctype="multipart/form-data">
-    <div class="movie-form-container">
-        <!-- Image Preview Section -->
-        <div class="form-section">
-            <img id="imagePreview" class="default-image" src="~/images/Previsualizacion.jpeg" alt="Poster Image Preview" />
-            <label asp-for="Poster" class="control-label">Upload Poster</label>
-            <input type="file" asp-for="Poster" class="form-control" onchange="previewImage(event)" />
-            <span asp-validation-for="Poster" class="text-danger"></span>
-        </div>
 
-        <!-- Form Fields Section -->
-        <div class="form-section">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <!-- Title -->
-            <div class="form-group">
-                <label asp-for="Title" class="control-label">Title</label>
-                <input asp-for="Title" class="form-control" placeholder="Enter movie title" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-
-            <!-- Synopsis -->
-            <div class="form-group">
-                <label asp-for="Synopsis" class="control-label">Synopsis</label>
-                <textarea asp-for="Synopsis" class="form-control" rows="4" placeholder="Enter movie synopsis"></textarea>
-                <span asp-validation-for="Synopsis" class="text-danger"></span>
-            </div>
-
-            <!-- Year -->
-            <div class="form-group">
-                <label asp-for="Year" class="control-label">Year</label>
-                <input asp-for="Year" class="form-control" placeholder="Enter release year" type="number" min="2004" value="2004" />
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>
-
-            <!-- Duration -->
-            <div class="form-group">
-                <label asp-for="Duration" class="control-label">Duration (HH:MM)</label>
-                <div class="duration-inputs">
-                    <input type="number" class="form-control" name="Hours" placeholder="Hours" min="0" max="5" />
-                    <input type="number" class="form-control" name="Minutes" placeholder="Minutes" min="0" max="59" />
-
+    <form asp-action="Create" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <!-- Image Preview Section -->
+                <div class="form-group">
+                    <img id="imagePreview" class="default-image img-fluid" src="~/images/Previsualizacion.jpeg" alt="Poster Image Preview" />
+                    <label asp-for="Poster" class="control-label">Upload Poster</label>
+                    <input type="file" asp-for="Poster" class="form-control" onchange="previewImage(event)" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
                 </div>
-                <span asp-validation-for="Duration" class="text-danger"></span>
             </div>
 
-            <!-- Rate -->
-            <div class="form-group rate-slider">
-                <label asp-for="Rate" class="control-label">Rate</label>
-                <input type="range" asp-for="Rate" class="form-control" min="0" max="5" step="0.1" id="rateSlider" oninput="updateRateValue()" />
-                <span id="rateValue">0</span>
-            </div>
+            <div class="col-lg-8 col-md-6 col-sm-12 mb-4">
+                <!-- Form Fields Section -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <!-- Title -->
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label">Title</label>
+                        <input asp-for="Title" class="form-control" placeholder="Enter movie title" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
 
-            <!-- Genres -->
-            <div class="form-group">
-                <label asp-for="Genres" class="control-label">Genres</label>
-                <div>
-                    <select id="genreDropdown" class="form-control">
-                        <option value="Action">Action</option>
-                        <option value="Adventure">Adventure</option>
-                        <option value="Animation">Animation</option>
-                        <option value="Biography">Biography</option>
-                        <option value="Comedy">Comedy</option>
-                        <option value="Crime">Crime</option>
-                        <option value="Documentary">Documentary</option>
-                        <option value="Drama">Drama</option>
-                        <option value="Family">Family</option>
-                        <option value="Fantasy">Fantasy</option>
-                        <!-- Puedes agregar más géneros aquí -->
-                    </select>
-                    <button type="button" class="btn-add" onclick="addGenre()">Add</button>
-                </div>
-                <ul id="genreList"></ul>
-                <input asp-for="Genres" id="genreInput" class="form-control" hidden />
-                <span asp-validation-for="Genres" class="text-danger"></span>
-            </div>
+                    <!-- Synopsis -->
+                    <div class="form-group">
+                        <label asp-for="Synopsis" class="control-label">Synopsis</label>
+                        <textarea asp-for="Synopsis" class="form-control" rows="4" placeholder="Enter movie synopsis"></textarea>
+                        <span asp-validation-for="Synopsis" class="text-danger"></span>
+                    </div>
 
-            <!-- Submit Button -->
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn-submit" />
-            </div>
+                    <!-- Year -->
+                    <div class="form-group">
+                        <label asp-for="Year" class="control-label">Year</label>
+                        <input asp-for="Year" class="form-control" placeholder="Enter release year" type="number" min="2004" value="2004" />
+                        <span asp-validation-for="Year" class="text-danger"></span>
+                    </div>
+
+                    <!-- Duration -->
+                    <div class="form-group">
+                        <label asp-for="Duration" class="control-label">Duration (HH:MM)</label>
+                        <div class="duration-inputs">
+                            <input type="number" class="form-control" name="Hours" placeholder="Hours" min="0" max="5" />
+                            <input type="number" class="form-control" name="Minutes" placeholder="Minutes" min="0" max="59" />
+
+                        </div>
+                        <span asp-validation-for="Duration" class="text-danger"></span>
+                    </div>
+
+                    <!-- Rate -->
+                    <div class="form-group rate-slider">
+                        <label asp-for="Rate" class="control-label">Rate</label>
+                        <input type="range" asp-for="Rate" class="form-control" min="0" max="10" step="0.1" id="rateSlider" oninput="updateRateValue()" />
+                        <span id="rateValue">0</span>
+                    </div>
+
+                    <!-- Genres -->
+                    <div class="form-group">
+                        <label asp-for="Genres" class="control-label">Genres</label>
+                        <div>
+                            <select id="genreDropdown" class="form-control">
+                                <option value="Action">Action</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Animation">Animation</option>
+                                <option value="Biography">Biography</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Crime">Crime</option>
+                                <option value="Documentary">Documentary</option>
+                                <option value="Drama">Drama</option>
+                                <option value="Family">Family</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <!-- Puedes agregar más géneros aquí -->
+                            </select>
+                            <button type="button" class="btn-add" onclick="addGenre()">Add</button>
+                        </div>
+                        <ul id="genreList"></ul>
+                        <input asp-for="Genres" id="genreInput" class="form-control" hidden />
+                        <span asp-validation-for="Genres" class="text-danger"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+
+           </div>
         </div>
-    </div>
-
-    <div style="margin-top: 30px;">
-        <a asp-action="Index" style="color: white;">Back to List</a>
-    </div>
-</form>
-
+        </form>
+  
 <script>
-    function previewImage(event) {
-        var reader = new FileReader();
-        reader.onload = function () {
-            var output = document.getElementById('imagePreview');
-            output.src = reader.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
+            function previewImage(event) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                    var output = document.getElementById('imagePreview');
+                    output.src = reader.result;
+                }
+                reader.readAsDataURL(event.target.files[0]);
+            }
 
-    function updateRateValue() {
-        document.getElementById('rateValue').innerText = document.getElementById('rateSlider').value;
-    }
+            function updateRateValue() {
+                document.getElementById('rateValue').innerText = document.getElementById('rateSlider').value;
+            }
 
-    function addGenre() {
-        const dropdown = document.getElementById('genreDropdown');
-        const selectedGenre = dropdown.options[dropdown.selectedIndex].text;
+            function addGenre() {
+                const dropdown = document.getElementById('genreDropdown');
+                const selectedGenre = dropdown.options[dropdown.selectedIndex].text;
 
-        if (!document.getElementById('genre_' + selectedGenre)) {
-            const li = document.createElement('li');
-            li.id = 'genre_' + selectedGenre;
-            li.innerText = selectedGenre;
-            li.onclick = function () {
-                this.remove();
-                updateGenreInput();
-            };
-            document.getElementById('genreList').appendChild(li);
-            updateGenreInput();
-        }
-    }
+                if (!document.getElementById('genre_' + selectedGenre)) {
+                    const li = document.createElement('li');
+                    li.id = 'genre_' + selectedGenre;
+                    li.innerText = selectedGenre;
+                    li.onclick = function () {
+                        this.remove();
+                        updateGenreInput();
+                    };
+                    document.getElementById('genreList').appendChild(li);
+                    updateGenreInput();
+                }
+            }
 
-    function updateGenreInput() {
-        const genres = [];
-        const lis = document.getElementById('genreList').getElementsByTagName('li');
-        for (let i = 0; i < lis.length; i++) {
-            genres.push(lis[i].innerText);
-        }
-        document.getElementById('genreInput').value = genres.join(' | ');
-    }
+            function updateGenreInput() {
+                const genres = [];
+                const lis = document.getElementById('genreList').getElementsByTagName('li');
+                for (let i = 0; i < lis.length; i++) {
+                    genres.push(lis[i].innerText);
+                }
+                document.getElementById('genreInput').value = genres.join(' | ');
+            }
 </script>
+
+</body>
+</html>

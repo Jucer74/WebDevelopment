@@ -25,21 +25,50 @@
         }
 
         .movie-card {
-            height: 90vh; /* Ocupa el 90% del alto de la pantalla */
             display: flex;
             flex-direction: column;
         }
 
         .card-img-top {
-            height: 60vh; /* Altura fija para todas las imágenes */
-            width: auto; /* Ancho automático para mantener proporciones */
+            width: 100%; /* Ancho completo */
             object-fit: cover; /* Ajusta la imagen para que llene el espacio sin deformarse */
-            margin: auto; /* Centra la imagen horizontalmente */
         }
 
         .card-body {
             flex-shrink: 0; /* Evita que se reduzca */
         }
+
+        .progress.rating-bar {
+            height: 25px;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        .progress-bar.filled-rating {
+            font-weight: bold;
+            text-align: center;
+            background-color: #007bff; /* Color azul para la barra de progreso llena */
+            color: white; /* Texto en color blanco para contrastar */
+            transition: width 0.5s; /* Transición suave de la anchura */
+        }
+
+            .progress-bar.filled-rating:hover {
+                background-color: #0056b3; /* Color azul más oscuro al pasar el cursor */
+            }
+
+            .progress-bar.filled-rating span {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+
+        .btn-spacing {
+            margin-top: 10px;
+        }
+
     </style>
 </header>
 
@@ -49,16 +78,27 @@
         @for (int i = 0; i < Model.Count(); i++)
         {
             <div class="carousel-item @(i == 0 ? "active" : "")">
-                <div class="d-flex justify-content-center align-items-center" style="height: 100vh; background-color: rgba(0,0,0,0.5);">
+                <div class="d-flex justify-content-center align-items-center row no-gutters" style="min-height: 100vh; background-color: rgba(0,0,0,0.5);">
                     @for (int j = 0; j < 3 && i + j < Model.Count(); j++)
                     {
                         var movie = Model.ElementAt(i + j);
-                        <div class="card movie-card mx-2">
+                        <div class="card movie-card mx-2 col-lg-4 col-md-6 col-sm-12 mb-4">
                             <img class="card-img-top" src="~/images/@movie.Poster" alt="@movie.Title">
                             <div class="card-body">
                                 <h5 class="card-title">@movie.Title</h5>
+
                                 <p class="card-text">Rating: @movie.Rate</p>
-                                <a href="@Url.Action("Details", "Movies", new { id = movie.Id })" class="btn btn-primary">View Details</a>
+
+
+                                <div class="progress rating-bar">
+                                    <div class="progress-bar filled-rating" role="progressbar" style="width: @(movie.Rate * 10)%;" aria-valuenow="@(movie.Rate * 10)" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">@movie.Rate</span>
+                                        @movie.Rate
+                                    </div>
+                                </div>
+
+
+                                <a href="@Url.Action("Details", "Movies", new { id = movie.Id })" class="btn btn-primary btn-spacing">View Details</a>
                             </div>
                         </div>
                     }
@@ -68,6 +108,7 @@
         }
 
     </div>
+
     <a class="carousel-control-prev" href="#movieCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
