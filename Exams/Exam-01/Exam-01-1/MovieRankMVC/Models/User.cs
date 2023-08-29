@@ -23,4 +23,8 @@ public class User
     [Required(ErrorMessage = "The Password is required")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
+
+    [Required(ErrorMessage = "The Password is required again")]
+    [StringLength(50)]
+    public string ConfirmationPassword { get; set; } = null!;
 }

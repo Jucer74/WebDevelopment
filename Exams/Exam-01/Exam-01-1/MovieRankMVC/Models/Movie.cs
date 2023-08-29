@@ -33,10 +33,10 @@ public class Movie
     // Include only ImageName.ext
     public string Poster { get; set; } = null!;
 
-    // Optional List separated with pipe (|) ej: Action|Adventure|Sci-fi
-    public string SelectedGenre { get; set; }
-    public List<SelectListItem> GenreOptions { get; set; }
+   // Optional List separated with pipe (|) ej: Action|Adventure|Sci-fi
+    public string? SelectedGenre { get; set; }
+    public List<SelectListItem>? GenreOptions { get; set; }
 
-    public string NewGenre { get; set; }
+    public string? NewGenre { get; set; }
 
 }
