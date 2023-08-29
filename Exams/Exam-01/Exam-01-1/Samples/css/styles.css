@@ -27,6 +27,11 @@
     font-size: 2rem;
 }
 
+/* Table */
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #f2e30e;
+}
+
 /* Heading 1 */
 .h1-blue {
     color: #342780;
