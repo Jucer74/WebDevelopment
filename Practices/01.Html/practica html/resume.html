@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        a {
+            color: white; /* Color azul, puedes cambiarlo a tu preferencia */
+            text-decoration: none; /* Sin subrayado */
+        }
+
+        /* Estilo para los enlaces cuando se les pasa el cursor */
+        a:hover {
+            color: #0056b3; /* Color azul más oscuro al pasar el cursor, puedes cambiarlo a tu preferencia */
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            background-color: #333333;
+            font-family: Arial, sans-serif;
+        }
+
+        .title {
+            margin-left: 20px;
+            margin-top: 5px;
+            color: white;
+        }
+
+        .descripcion {
+            background-color: black; /* Fondo negro para toda la línea de descripción */
+            color: white;
+            padding: 5px;
+            text-align: left; /* Justifica el texto a la izquierda */ /* Margen izquierdo para la descripción */
+            height: 1.2em; 
+            margin-top: 50px;
+            /* Fondo negro para toda la línea de descripción */
+        }
+        .container2{
+            display: flex;
+            align-items: flex-start;
+            background-color: black;
+
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .social-icons i {
+            font-size: 14px;
+            margin-left: 35px;
+            margin-top: 15px;
+            color: white;
+        }
+        .menu {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin-left: 300px; /* Espacio entre los iconos */
+            margin-top: -80px;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            
+        }
+
+        .menu-item {
+            margin: 0 10px;
+            color: white;
+        }
+        /* Estilo para la opción "Home" */
+        .home {
+            background-color: #007AFF;
+            padding: 45px 90px;
+            border-radius: 0px;
+            margin-top: -30px;
+            margin-right: auto;
+            color: white; /* Color azul, puedes cambiarlo a tu preferencia */
+            text-decoration: none; 
+        }
+        .resume {
+            background-color: #27A844;
+            padding: 45px 60px;
+            border-radius: 0px;
+            margin-top: -30px;
+            margin-right: auto;
+            
+        }
+        .work {
+            background-color: #FEC107;
+            padding: 45px 60px;
+            border-radius: 0px;
+            margin-top: -30px;
+            margin-right: auto;
+            
+        }
+        .contact {
+            background-color: #DC3546;
+            padding: 45px 60px;
+            border-radius: 0px;
+            margin-top: -30px;
+            margin-right: auto;
+            
+        }
+        .container2 {
+            display: flex;
+            align-items: flex-start;
+            background-color: #27A844;
+            font-family: Arial, sans-serif;
+        }
+        .title2 {
+            margin-left: 20px;
+            margin-top: 10px;
+            color: white;
+        }
+        .descripcion2 {
+            color: white;
+            padding: 5px;
+            text-align: right; /* Justifica el texto a la izquierda */ /* Margen izquierdo para la descripción */
+        }
+        .image2{
+            width: 1325px;
+            height: 700px;
+        }
+        .containerCajas {
+            display: flex;
+            gap: 20px; /* Espacio entre las cajas */
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .box {
+            display: inline-block;
+            width: 30%; /* Ancho de cada caja, puedes ajustarlo según tus necesidades */
+            border: 1px solid #ccc;
+            padding: 20px;
+            box-sizing: border-box; /* Incluye el borde y el padding en el ancho de la caja */
+            vertical-align: top; /* Alinea las cajas en la parte superior para evitar espacios en blanco */
+        }
+        .numero {
+            background-color:#353A40; /* Fondo negro para toda la línea de descripción */
+            color: white;
+            padding: 5px;
+            text-align: left; /* Justifica el texto a la izquierda */ /* Margen izquierdo para la descripción */
+            height: 1.2em; 
+            margin-top: 50px;
+            /* Fondo negro para toda la línea de descripción */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="person1.jpg" alt="Imagen" style="width: 300px">
+        <div>
+            <h1 class="title">Cristian Camilo Castro</h1>
+            <p class="descripcion">Juan es un estudiante apasionado de Ingeniería de </p>
+        </div>
+        <div class="social-icons">
+            <a href="enlace_a_twitter"><i class="fab fa-twitter"></i></a>
+            <a href="enlace_a_facebook"><i class="fab fa-facebook"></i></a>
+            <a href="enlace_a_instagram"><i class="fab fa-instagram"></i></a>
+            <a href="enlace_a_github"><i class="fab fa-github"></i></a>
+        </div>
+    </div>
+        <ul class="menu">
+            <li class="menu-item home">
+                <a href="Home.html">
+                    <i class="fas fa-home"></i> Home <!-- Icono de la casita con texto "Home" -->
+                </a>
+            </li>
+            <li class="menu-item resume">
+                <a href="#">
+                    <i class="fas fa-graduation-cap"></i> Resume <!-- Icono del gorro de grado con texto "Resume" -->
+                </a>
+            </li>
+        </li>
+        <li class="menu-item work">
+            <a href="work.html">
+                <i class="fas fa-folder"></i> Work <!-- Icono de la carpeta con texto "Work" -->
+            </a>
+        </li>
+        <li class="menu-item contact">
+            <a href="#">
+                <i class="fas fa-envelope"></i> Contact <!-- Icono de correo con texto "Contact" -->
+            </a>
+        </li>
+        </ul>
+    <div class="container2">
+        <div>
+            <h1 class="title2" >My Resume</h1>
+            <p class="descripcion2">estos son resumenes de mis antiguos sucesos </p>
+        </div>
+        
+    </div>
+    <h1  >Donde he trabajado?</h1>
+    <p >algunos lugares donde he trabajado<br></p>
+    <div class="container"></div>
+        <div class="box">
+            <h2>Universidad san buenaventura</h2>
+            <p>estudiante de ingenieria de sistemas</p>
+            <p class="numero"><n>posicion : estudiante</n></p>
+            <p class="numero"><n>numero: 302 413 54284</n></p>
+        </div>
+        <div class="box">
+            <h2>Banco occidente</h2>
+            <p>Analista de datos</p>
+            <p class="numero"><n>posicion : Analista de datos</n></p>
+            <p class="numero"><n>numero: 342 319 24564</n></p>
+        </div>
+        <div class="box">
+            <h2>Instituto san juan bosco</h2>
+            <p>Monitor de ingeneria de sistemas</p>
+            <p class="numero"><n>posicion : Monitor de sistemas</n></p>
+            <p class="numero"><n>numero: 342 819 20394</n></p>
+        </div>
+</body>
+</html>
