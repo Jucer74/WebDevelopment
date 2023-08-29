@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head class="bg-dark">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<style>
+    .table.table-borderless thead th {
+        border-bottom: 1px solid black;
+    }
+
+    .icono-negro {
+        color: black;
+    }
+
+    body {
+        background-color: #212529
+    }
+
+</style>
+
+<div class="container bg-dark rounded">
+    <div class="bg-yellow text-center rounded">
+        <a href="/Home/Index">
+        <img src="~/Posters/logo2.png" alt="Logo" class="img-fluid logo" />
+        </a>
+    </div>
+    <h1 class="text-white text-center">CRUD</h1>
+    <p class="mt-3 text-center">
+        <a asp-action="Create" class="btn btn-warning text-black ">Create</a>
+    </p>
+    <table class="table table-borderless bg-warning rounded">
+        <thead class="bg-dark">
+            <tr>
+                <th class="text-white">
+                    @Html.DisplayNameFor(model => model.Poster)
+                </th>
+                <th class="text-white">
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th class="text-center text-white">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Content(item.Poster)" alt="Poster" style="max-width: 100px; max-height: 150px;" />
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-link">
+                                <i class="fas fa-edit icono-negro"></i>
+                            </a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-link">
+                                <i class="fas fa-list icono-negro"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-link">
+                                <i class="fas fa-trash icono-negro"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

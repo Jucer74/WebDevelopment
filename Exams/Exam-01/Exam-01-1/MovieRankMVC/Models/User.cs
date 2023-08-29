@@ -23,10 +23,8 @@ public class User
     [Required(ErrorMessage = "The Password is required")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
-    
-    [NotMapped]
-    [Compare("Password")]
+
+    [Required(ErrorMessage = "The Confirm Password is required")]
     [StringLength(50)]
-    [PasswordPropertyText(true)]
-    public string ConfirmPassword { get; set; } = null!;    
+    public string ConfirmPassword { get; set; } = null!;
 }
