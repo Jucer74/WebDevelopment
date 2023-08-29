@@ -38,13 +38,32 @@
             flex-shrink: 0; /* Evita que se reduzca */
         }
 
-        .progress {
-            background-color: #f5f5f5;
+        .progress.rating-bar {
+            height: 25px;
+            border-radius: 5px;
+            background-color: #e0e0e0;
+            overflow: hidden;
         }
 
-        .progress-bar {
-            transition: width 0.6s ease;
+        .progress-bar.filled-rating {
+            font-weight: bold;
+            text-align: center;
+            background-color: #007bff; /* Color azul para la barra de progreso llena */
+            color: white; /* Texto en color blanco para contrastar */
+            transition: width 0.5s; /* Transición suave de la anchura */
         }
+
+            .progress-bar.filled-rating:hover {
+                background-color: #0056b3; /* Color azul más oscuro al pasar el cursor */
+            }
+
+            .progress-bar.filled-rating span {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+            }
+
 
         .btn-spacing {
             margin-top: 10px;
@@ -71,19 +90,14 @@
                                 <p class="card-text">Rating: @movie.Rate</p>
 
 
-                                <!-- Barra de progreso para el rating -->
-                                <div class="progress ">
-                                    @{
-                                        double progressBarPercentage = 0;
-                                        if (movie.Rate >= 0 && movie.Rate <= 10)
-                                        {
-                                            progressBarPercentage = (movie.Rate / 10.0) * 100;
-                                        }
-                                        <div class="progress-bar" role="progressbar" style="width: @progressBarPercentage%;" aria-valuenow="@progressBarPercentage" aria-valuemin="0" aria-valuemax="100">
-                                            @String.Format("{0:0.##}%", progressBarPercentage)
-                                        </div>
-                                    }
+                                <div class="progress rating-bar">
+                                    <div class="progress-bar filled-rating" role="progressbar" style="width: @(movie.Rate * 10)%;" aria-valuenow="@(movie.Rate * 10)" aria-valuemin="0" aria-valuemax="100">
+                                        <span class="sr-only">@movie.Rate</span>
+                                        @movie.Rate
+                                    </div>
                                 </div>
+
+
                                 <a href="@Url.Action("Details", "Movies", new { id = movie.Id })" class="btn btn-primary btn-spacing">View Details</a>
                             </div>
                         </div>
