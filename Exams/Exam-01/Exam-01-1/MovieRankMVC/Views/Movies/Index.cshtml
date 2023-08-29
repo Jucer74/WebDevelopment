@@ -17,37 +17,62 @@
                 <tr>
                     <th>Poster</th>
                     <th>Title</th>
-                    <th>Synopsis</th>
-                    <th>Year</th>
-                    <th>Duration</th>
-                    <th>Rate</th>
-                    <th>Genres</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                                <img src="https://localhost:5001/images/@item.Poster" alt="Poster" style="max-width: 50px; max-height: 50px;" />
-                        </td>
-                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Synopsis)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Year)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Duration)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Rate)</td>
-                        <td>@Html.DisplayFor(modelItem => item.Genres)</td>
-                        <td>
-                            <div class="d-flex flex-column align-items-center">
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary mb-2">Edit</a>
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary mb-2">Details</a>
-                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger mb-2">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td class="poster-cell">
+                                <div class="poster-container">
+                                    <img src="https://localhost:5001/images/@item.Poster" alt="Poster" class="poster-image" />
+                                </div>
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                            <td class="button-cell">
+                                <div class="button-group">
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-secondary">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
                 }
             </tbody>
         </table>
     </div>
 </div>
+
+<style>
+    .poster-cell {
+        text-align: center;
+    }
+
+    .poster-container {
+        position: relative;
+        width: 100px; /* Adjust width as needed */
+        height: 150px; /* 2:3 aspect ratio */
+        margin: 0 auto;
+    }
+
+    .poster-image {
+        max-width: 100%;
+        max-height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+    }
+
+    .button-cell {
+        vertical-align: middle;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 10px; /* Adjust spacing between buttons as needed */
+    }
+</style>
