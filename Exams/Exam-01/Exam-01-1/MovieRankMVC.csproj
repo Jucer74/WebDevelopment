@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Content\**" />
+    <Compile Remove="wwwroot\images\**" />
+    <Content Remove="Content\**" />
+    <Content Remove="wwwroot\images\**" />
+    <EmbeddedResource Remove="Content\**" />
+    <EmbeddedResource Remove="wwwroot\images\**" />
+    <None Remove="Content\**" />
+    <None Remove="wwwroot\images\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Posters\Ant-man-and-the-wasp-quantumania.png" />
+    <None Include="wwwroot\Posters\Avengers-Age-of-Ultron.jpg" />
+    <None Include="wwwroot\Posters\Avengers-Endgame.jpg" />
+    <None Include="wwwroot\Posters\Barbie.jpg" />
+    <None Include="wwwroot\Posters\Batman-the-dark-knight.jpg" />
+    <None Include="wwwroot\Posters\Black-panther-wakanda-forever.jpg" />
+    <None Include="wwwroot\Posters\Blue-beetle.jpg" />
+    <None Include="wwwroot\Posters\Captain-America-The-First-Avenger.jpg" />
+    <None Include="wwwroot\Posters\Elemental.jpg" />
+    <None Include="wwwroot\Posters\Guardians-of-the-galaxy-vol-3.jpg" />
+    <None Include="wwwroot\Posters\Haunted-mansion.jpg" />
+    <None Include="wwwroot\Posters\Indiana-jones-and-the-dial-of-destiny.jpg" />
+    <None Include="wwwroot\Posters\Interstellar.jpg" />
+    <None Include="wwwroot\Posters\Jules.jpg" />
+    <None Include="wwwroot\Posters\Meg-2-the-trench.jpg" />
+    <None Include="wwwroot\Posters\Mission-impossible-dead-reckoning-part-one.jpg" />
+    <None Include="wwwroot\Posters\MoviesDB.xlsx" />
+    <None Include="wwwroot\Posters\Oppenheimer.jpg" />
+    <None Include="wwwroot\Posters\Sound-of-freedom.jpg" />
+    <None Include="wwwroot\Posters\Spider-man-across-the-spider-verse-part-one.jpg" />
+    <None Include="wwwroot\Posters\Spider-Man.jpg" />
+    <None Include="wwwroot\Posters\Talk-to-me.jpg" />
+    <None Include="wwwroot\Posters\Teenage-mutant-ninja-turtles-mutant-mayhem.jpg" />
+    <None Include="wwwroot\Posters\The-last-voyage-of-the-demeter.jpg" />
+    <None Include="wwwroot\Posters\The-little-mermaid.jpg" />
+    <None Include="wwwroot\Posters\The-Lord-of-the-Rings-The-Two-Towers.jpg" />
+    <None Include="wwwroot\Posters\The-Matrix.jpg" />
+    <None Include="wwwroot\Posters\The-super-mario-bros-movie.jpg" />
+    <None Include="wwwroot\Posters\Titanic.jpg" />
+    <None Include="wwwroot\Posters\Top-Gun-Maverick.jpg" />
+    <None Include="wwwroot\Posters\Transformers-rise-of-the-beasts.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
+  </ItemGroup>
+
+</Project>
