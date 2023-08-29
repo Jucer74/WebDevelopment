@@ -5,11 +5,16 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+
+</style>
+
 <h1>Create</h1>
 
 <h4>Movie</h4>
 <hr />
 <div class="row">
+   
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -25,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
+                <input asp-for="Year" class="form-control" type="datetime"/>
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,6 +52,11 @@
                 <label asp-for="Genres" class="control-label"></label>
                 <input asp-for="Genres" class="form-control" />
                 <span asp-validation-for="Genres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PosterImage" class="control-label"></label>
+                <input asp-for="PosterImage" type="file" class="form-control-file" />
+                <span asp-validation-for="PosterImage" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

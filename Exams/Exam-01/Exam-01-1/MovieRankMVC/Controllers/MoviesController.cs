@@ -1,5 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace MovieRankMVC.Controllers
 {
@@ -7,7 +12,11 @@ namespace MovieRankMVC.Controllers
     {
         // Global Variables
         private static List<Movie> moviesList = LoadMovies();
-
+        private readonly IWebHostEnvironment _webHostEnvironment; // Agrega esta variable
+        public MoviesController(IWebHostEnvironment webHostEnvironment) // Agrega el parámetro al constructor
+        {
+            _webHostEnvironment = webHostEnvironment;
+        }
         // GET: MoviesController
         public IActionResult Index()
         {
@@ -44,7 +53,31 @@ namespace MovieRankMVC.Controllers
                 {
                     newMovie.Rate = rate;
                 }
+                // Procesar la imagen del póster
+                if (collection.Files.Count > 0)
+                {
+                    var posterImage = collection.Files[0];
+                    if (posterImage.Length > 0)
+                    {
+                        // Obtener la ruta de la carpeta donde se almacenarán las imágenes
+                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
 
+                        // Generar un nombre de archivo único para la imagen
+                        string uniqueFileName = Guid.NewGuid().ToString() + "_" + posterImage.FileName;
+
+                        // Combinar la ruta de la carpeta con el nombre del archivo
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                        // Guardar la imagen en la carpeta
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                            posterImage.CopyTo(stream);
+                        }
+
+                        // Asignar el nombre del archivo al campo Poster
+                        newMovie.Poster = uniqueFileName;
+                    }
+                }
                 newMovie.Poster = collection["Poster"].FirstOrDefault() ?? ""; // Convertir a string y luego usar coalescencia nula
                 newMovie.Genres = collection["Genres"].FirstOrDefault() ?? ""; // Convertir a string y luego usar coalescencia nula
 
