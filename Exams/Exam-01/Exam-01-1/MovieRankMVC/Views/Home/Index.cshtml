@@ -19,12 +19,21 @@
                                     <div class="card h-100">
                                         <div class="aspect-ratio-container">
                                             <div class="aspect-ratio-content">
-                                                <div class="image-container" style="background-image: url('https://localhost:5001/images/@movie.Poster');"></div>
+                                                <div class="image-container"
+                                                    style="background-image: url('https://localhost:5001/images/@movie.Poster');"></div>
                                             </div>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body text-center">
                                             <h5 class="card-title">@movie.Title</h5>
-                                            <p class="card-text">Rate: @movie.Rate</p>
+                                            <div class="rating-container">
+                                                <div class="progress rating-bar">
+                                                    <div class="progress-bar filled-rating" role="progressbar"
+                                                         style="width: @(movie.Rate * 10)%;">
+                                                        Rate @movie.Rate
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <a href="#" class="btn btn-primary">Details</a>
                                         </div>
                                     </div>
@@ -34,11 +43,13 @@
                 </div>
         }
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-target="#carouselExampleDark"
+       data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-target="#carouselExampleDark"
+       data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </a>
@@ -55,7 +66,8 @@
 }
 
 <style>
-    .carousel-control-prev, .carousel-control-next {
+    .carousel-control-prev,
+    .carousel-control-next {
         margin: 0;
         width: auto;
         color: black;
@@ -63,11 +75,13 @@
     }
 
     .carousel-control-prev {
-        left: -50px; /* Ajusta la posición izquierda */
+        left: -50px;
+        /* Ajusta la posición izquierda */
     }
 
     .carousel-control-next {
-        right: -50px; /* Ajusta la posición derecha */
+        right: -50px;
+        /* Ajusta la posición derecha */
     }
 
     .card {
@@ -83,7 +97,8 @@
     .aspect-ratio-container {
         position: relative;
         width: 100%;
-        padding-bottom: 150%; /* 2:3 Aspect Ratio */
+        padding-bottom: 150%;
+        /* 2:3 Aspect Ratio */
         overflow: hidden;
     }
 
@@ -102,4 +117,47 @@
         background-repeat: no-repeat;
         background-position: center;
     }
+
+    .rating-container {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .rating-bar {
+        flex: 1;
+        height: 10px;
+        background-color: #e0e0e0;
+        position: relative;
+        margin-right: 5px;
+    }
+
+    .filled-rating {
+        height: 100%;
+        background-color: #007bff;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .rating-value {
+        margin: 0;
+    }
+
+
+    .progress.rating-bar {
+        height: 25px;
+        border-radius: 5px;
+        background-color: #e0e0e0;
+        overflow: hidden;
+    }
+
+    .progress-bar.filled-rating {
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
 </style>
