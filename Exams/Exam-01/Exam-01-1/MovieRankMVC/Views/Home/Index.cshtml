@@ -16,8 +16,12 @@
                     {
                         var movie = Model[j];
                                 <div class="col-md-4">
-                                    <div class="card">
-                                        <img src="https://localhost:5001/images/@movie.Poster" class="d-block w-100" alt="Movie Image">
+                                    <div class="card h-100">
+                                        <div class="aspect-ratio-container">
+                                            <div class="aspect-ratio-content">
+                                                <div class="image-container" style="background-image: url('https://localhost:5001/images/@movie.Poster');"></div>
+                                            </div>
+                                        </div>
                                         <div class="card-body">
                                             <h5 class="card-title">@movie.Title</h5>
                                             <p class="card-text">Rate: @movie.Rate</p>
@@ -57,12 +61,35 @@
     }
 
     .card {
-        margin: 0 .5em;
+        margin: 0.5em;
         box-shadow: 2px 6px 8px 0 rgba(22, 22, 26, 0.18);
         border: none;
     }
 
     .carousel-inner {
         padding: 1em;
+    }
+
+    .aspect-ratio-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 150%; /* 2:3 Aspect Ratio */
+        overflow: hidden;
+    }
+
+    .aspect-ratio-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .image-container {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
 </style>
