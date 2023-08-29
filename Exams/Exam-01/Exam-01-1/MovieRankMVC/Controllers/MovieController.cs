@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MovieRankMVC.Models;
@@ -8,7 +9,13 @@ namespace MovieRankMVC.Controllers
     public class MovieController : Controller
     {
         private static List<string> CustomGenres = new List<string>();
-        private static List<Movie> moviesList = LoadMovies();
+        private static List<Movie> moviesList = new List<Movie>();
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public MovieController(IWebHostEnvironment webHostEnvironment)
+        {
+            _webHostEnvironment = webHostEnvironment;
+        }
         // GET: MovieController
         public ActionResult Index()
         {
@@ -35,42 +42,44 @@ namespace MovieRankMVC.Controllers
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection, Movie model)
+        public IActionResult Create(IFormCollection collection, Movie model, IFormFile posterFile)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                var selectedImage = collection["SelectedImage"];
+                if (posterFile != null && posterFile.Length > 0)
                 {
-                    // Aquí puedes acceder al género seleccionado a través de model.SelectedGenre
-                    // y manejarlo según sea necesario
-                    var newMovie = new Movie
+                    // Leer el archivo de imagen y convertirlo a bytes
+                    using (var memoryStream = new MemoryStream())
                     {
-                        Title = model.Title,
-                        Synopsis = model.Synopsis,
-                        Duration = model.Duration,
-                        Rate = model.Rate,
-                        Poster = model.Poster,
-                        SelectedGenre = model.SelectedGenre
-                    };
-                    moviesList.Add(newMovie);
-
-                    // Agregar nuevo género personalizado si se proporciona
-                    if (!string.IsNullOrEmpty(model.NewGenre))
-                    {
-                        CustomGenres.Add(model.NewGenre);
-                        model.GenreOptions = GetCustomGenreOptions();
+                        posterFile.CopyTo(memoryStream);
+                        model.PosterFileName = Convert.ToBase64String(memoryStream.ToArray());
                     }
-
-                    return RedirectToAction(nameof(Index));
                 }
+                // Aquí puedes acceder al género seleccionado a través de model.SelectedGenre
+                // y manejarlo según sea necesario
+
+                moviesList.Add(model);
+
+                // Agregar nuevo género personalizado si se proporciona
+                if (!string.IsNullOrEmpty(model.NewGenre))
+                {
+                    CustomGenres.Add(model.NewGenre);
+                }
+
+                // Resto del código para guardar la película
+
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                model.GenreOptions = GetCustomGenreOptions();
-                return View();
-            }
+
+            // Si no hay géneros disponibles, establece GenreOptions como una lista vacía
+            model.GenreOptions = GetCustomGenreOptions();
+
+            return View(model);
         }
+
+
+
 
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
