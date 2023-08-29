@@ -5,6 +5,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MovieRankMVC.Controllers
 {
+
     public class MoviesController : Controller
     {
         private static List<Movie> LoadMovies()
@@ -49,10 +50,16 @@ namespace MovieRankMVC.Controllers
         private static List<Movie> moviesList = LoadMovies();
 
         // GET: MoviesController
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            ViewBag.MoviesList = moviesList; // Asignar la lista a ViewBag
-            return View(ViewBag.MoviesList);
+            List<Movie> moviesList = GetMoviesList(); // Obtén la lista de películas
+            ViewBag.Movies = moviesList; // Almacena la lista en el ViewBag
+            return View(moviesList); // Pasa la lista de películas a la vista
+        }
+
+        public List<Movie> GetMoviesList()
+        {
+            return moviesList;
         }
 
         // GET: MoviesController/Details/5

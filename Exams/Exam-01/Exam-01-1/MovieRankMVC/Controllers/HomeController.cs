@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
 using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using MovieRankMVC.Controllers; // Importa el namespace de MoviesController
 
 namespace MovieRankMVC.Controllers
 {
@@ -15,8 +17,8 @@ namespace MovieRankMVC.Controllers
 
         public IActionResult Index()
         {
-            List<Movie> moviesList = TempData["MoviesList"] as List<Movie>; // Recupera la lista desde TempData
-            return View(moviesList);
+            List<Movie> moviesList = ViewBag.Movies as List<Movie>; // Accede a la lista desde el ViewBag
+            return View(moviesList); // Pasa la lista de películas a la vista
         }
 
 

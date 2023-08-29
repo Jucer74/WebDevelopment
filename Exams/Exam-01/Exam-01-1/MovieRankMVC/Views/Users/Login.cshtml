@@ -1,10 +1,8 @@
 ﻿@model MovieRankMVC.Models.User
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Movie Rank";
 }
-
-<h2>Login</h2>
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -13,22 +11,47 @@
         </div>
 }
 
-<form asp-action="Login">
-    <div class="form-group">
-        <label for="UserEmail">Email</label>
-        <input asp-for="UserEmail" class="form-control" />
-        <span asp-validation-for="UserEmail" class="text-danger"></span>
+<div class="d-flex justify-content-center min-vh-60">
+    <div class="card" style="max-width: 600px; margin: auto;">
+        <div class="card-body">
+            <div class="d-flex justify-content-center mb-4">
+                <img src="" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px; background-color:red;" />
+            </div>
+
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["ErrorMessage"]
+                </div>
+            }
+
+            <h5 class="card-title text-center">@ViewData["Title"]</h5>
+            <hr class="my-4">
+            <form asp-action="Login" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="UserEmail" class="form-label">Email</label>
+                    <input type="email" asp-for="UserEmail" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please provide a valid email.
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="Password" class="form-label">Password</label>
+                    <input type="password" asp-for="Password" class="form-control" required />
+                    <div class="invalid-feedback">
+                        Please provide a password.
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+
+            <div class="mt-3 text-center">
+                <a asp-action="Register" class="btn btn-secondary">Register</a>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-        <label for="Password">Password</label>
-        <input asp-for="Password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Login</button>
-</form>
-
-<div class="mt-3">
-    <a asp-action="Register" class="btn btn-secondary">Register</a>
 </div>
