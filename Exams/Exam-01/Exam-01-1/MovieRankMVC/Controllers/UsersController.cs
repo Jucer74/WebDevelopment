@@ -1,43 +1,86 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MovieRankMVC.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieRankMVC.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: UsersController
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private static List<User> userList = new List<User>();
 
-        // GET: UsersController/Details/5
-        public ActionResult Details(int id)
+        public UsersController()
         {
-            return View();
+            // Verificar si el usuario predeterminado ya existe
+            if (!userList.Any(u => u.UserEmail == "Admin@email.com"))
+            {
+                userList.Add(new User
+                {
+                    UserEmail = "Admin@email.com",
+                    FirstName = "Admin",
+                    LastName = "User",
+                    Password = "P4ssw0rd*01"
+                });
+            }
         }
 
         // GET: UsersController/Create
-        public ActionResult Create()
+        [HttpGet]
+        public IActionResult Create()
         {
             return View();
         }
 
         // POST: UsersController/Create
         [HttpPost]
+        public IActionResult Create(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                userList.Add(user); // Agregar el usuario a la lista
+                return RedirectToAction("Login"); // Redirigir a la página de inicio de sesión
+            }
+
+            // Si llegamos aquí, hay errores de validación, regresamos al formulario de registro
+            return View(user);
+        }
+
+        // GET: UsersController/Login
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: UsersController/Login
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Login(IFormCollection collection)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                string userEmail = collection["UserEmail"];
+                string userPassword = collection["Password"];
+
+                // Buscar el usuario en la lista userList
+                var user = userList.FirstOrDefault(u => u.UserEmail == userEmail && u.Password == userPassword);
+
+                if (user != null)
+                {
+                    // Si encontramos un usuario que coincide, redirigimos a la página principal
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ViewBag.ErrorMessage = "Credenciales incorrectas";
+                    return View("Login");
+                }
             }
             catch
             {
-                return View();
+                ViewBag.ErrorMessage = "Ocurrió un error durante el inicio de sesión";
+                return View("Login");
             }
         }
-
-
     }
 }

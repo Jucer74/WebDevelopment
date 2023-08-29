@@ -1,84 +1,53 @@
 ﻿@model IEnumerable<MovieRankMVC.Models.Movie>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Movie CRUD";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/css/stylecrud.css" />
+</head>
 
-<div class="container">
-    <div class="header">
-        <h1>Movies</h1>
-        <button class="btn-create"><a asp-action="Create">Create New</a></button>
-    </div>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>
-                    <span>ID</span>
-                </th>
-                <th>
-                    <span>Title</span>
-                </th>
-                <th>
-                    <span>Synopsis</span>
-                </th>
-                <th>
-                    <span>Year</span>
-                </th>
-                <th>
-                    <span>Duration</span>
-                </th>
-                <th>
-                    <span>Rate</span>
-                </th>
-                <th>
-                    <span>Poster</span>
-                </th>
-                <th>
-                    <span>Genres</span>
-                </th>
-                <th>
-                    <span>Actions</span>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Movies CRUD</h1>
+            <button class="btn-create"><a asp-action="Create"><i class="fas fa-plus"></i> Create New</a></button>
+        </div>
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Id)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Synopsis)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Year)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Duration)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Rate)
-                    </td>
-                    <td>
-                        <img src="@item.Poster" alt="Poster" class="poster-img" />
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Genres)
-                    </td>
-                    <td>
-                        <div class="actions">
-                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="delete-link">Delete</a>
-                        </div>
-                    </td>
+                    <th>Poster</th>
+                    <th>Title</th>
+                    <th>Synopsis</th>
+                    <th>Rate</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="~/images/@item.Poster" alt="Poster" class="poster-img" /></td>
+
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Synopsis)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Rate)</td>
+                        <td>
+                            <div class="actions">
+                                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i> Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id"><i class="fas fa-info-circle"></i> Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="delete-link"><i class="fas fa-trash-alt"></i> Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -11,17 +11,21 @@ namespace MovieRankMVC.Controllers
     public class MoviesController : Controller
     {
         // Global Variables
-        private static List<Movie> moviesList = LoadMovies();
-        private readonly IWebHostEnvironment _webHostEnvironment; // Agrega esta variable
-        public MoviesController(IWebHostEnvironment webHostEnvironment) // Agrega el parámetro al constructor
+        public static List<Movie> moviesList = LoadMovies();
+        private readonly IWebHostEnvironment _webHostEnvironment; // Declaración de la variable
+
+        // Constructor con inyección de dependencia
+        public MoviesController(IWebHostEnvironment webHostEnvironment)
         {
             _webHostEnvironment = webHostEnvironment;
         }
+
         // GET: MoviesController
         public IActionResult Index()
         {
             return View(moviesList); 
         }
+       
 
         // GET: MoviesController/Create
         public ActionResult Create()
@@ -29,69 +33,50 @@ namespace MovieRankMVC.Controllers
             return View();
         }
 
+        // POST: MoviesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Movie movie, IFormFile Poster, int Hours, int Minutes)
         {
             try
             {
-                var newMovie = new Movie
-                {
-                    Id = moviesList.Count + 1,
-                    Title = collection["Title"].FirstOrDefault() ?? "", // Convertir a string y luego usar coalescencia nula
-                    Synopsis = collection["Synopsis"].FirstOrDefault() ?? "", // Convertir a string y luego usar coalescencia nula
-                };
+                // Asignar el ID
+                movie.Id = moviesList.Count + 1;
 
-                if (int.TryParse(collection["Year"].FirstOrDefault(), out int year))
+                // Verificar si el Poster es nulo o vacío al crear una nueva película
+                if (Poster == null || Poster.Length == 0)
                 {
-                    newMovie.Year = year;
+                    ModelState.AddModelError("Poster", "The Poster is required");
+                    return View(movie); // Retorna a la vista de creación con el error
                 }
 
-                newMovie.Duration = collection["Duration"].FirstOrDefault() ?? ""; // Convertir a string y luego usar coalescencia nula
-
-                if (float.TryParse(collection["Rate"].FirstOrDefault(), out float rate))
-                {
-                    newMovie.Rate = rate;
-                }
                 // Procesar la imagen del póster
-                if (collection.Files.Count > 0)
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Poster.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    var posterImage = collection.Files[0];
-                    if (posterImage.Length > 0)
-                    {
-                        // Obtener la ruta de la carpeta donde se almacenarán las imágenes
-                        string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
-
-                        // Generar un nombre de archivo único para la imagen
-                        string uniqueFileName = Guid.NewGuid().ToString() + "_" + posterImage.FileName;
-
-                        // Combinar la ruta de la carpeta con el nombre del archivo
-                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                        // Guardar la imagen en la carpeta
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            posterImage.CopyTo(stream);
-                        }
-
-                        // Asignar el nombre del archivo al campo Poster
-                        newMovie.Poster = uniqueFileName;
-                    }
+                    Poster.CopyTo(stream);
                 }
-                newMovie.Poster = collection["Poster"].FirstOrDefault() ?? ""; // Convertir a string y luego usar coalescencia nula
-                newMovie.Genres = collection["Genres"].FirstOrDefault() ?? ""; // Convertir a string y luego usar coalescencia nula
+                movie.Poster = uniqueFileName;
 
-                moviesList.Add(newMovie);
+                // Combina las horas y minutos en el formato HH:MM
+                movie.Duration = $"{Hours.ToString("00")}:{Minutes.ToString("00")}"; // <-- Añade esta línea aquí
 
+                // Añadir la película a la lista
+                moviesList.Add(movie);
+
+                // Redirigir al índice
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-                // Manejar errores de manera adecuada (log, notificación, etc.)
                 ModelState.AddModelError("", "Error al crear la película: " + ex.Message);
                 return View();
             }
         }
+
+
         private Movie GetMovieById(int id)
         {
             // Busca la película en la lista por su ID
@@ -138,23 +123,49 @@ namespace MovieRankMVC.Controllers
         // POST: /Home/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, Movie editedMovie)
+        public IActionResult Edit(int id, Movie editedMovie, IFormFile Poster)
         {
             if (id != editedMovie.Id)
             {
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
+            if (Poster != null && Poster.Length > 0)
             {
-                // Update the edited movie in your data source
-                UpdateMovie(editedMovie);
-
-                return RedirectToAction(nameof(Index));
+                // Si hay un archivo de póster, procesarlo
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "images");
+                string uniqueFileName = Guid.NewGuid().ToString() + "_" + Poster.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    Poster.CopyTo(stream);
+                }
+                editedMovie.Poster = uniqueFileName; // Actualiza el Poster si se ha subido uno nuevo
+            }
+            else
+            {
+                // Si no se ha subido un nuevo archivo, mantén el valor anterior de Poster
+                var existingMovie = GetMovieById(id);
+                if (existingMovie != null)
+                {
+                    editedMovie.Poster = existingMovie.Poster;
+                }
+                else
+                {
+                    ModelState.AddModelError("Poster", "The Poster is required");
+                    return View(editedMovie);
+                }
             }
 
-            return View(editedMovie);
+            // Actualiza la película en la lista
+            UpdateMovie(editedMovie);
+
+            return RedirectToAction(nameof(Index));
         }
+
+
+
+
 
         // GET: MoviesController/Delete/5
         public ActionResult Delete(int id)
@@ -189,119 +200,118 @@ namespace MovieRankMVC.Controllers
         {
             List<Movie> movies = new List<Movie>();
 
-            int idCounter = 1; // Contador para asignar IDs únicos
-
             movies.Add(new Movie()
             {
- 
-                Title = "The Mysterious Galaxy",
-                Synopsis = "A group of explorers discovers a hidden galaxy with strange phenomena.",
-                Year = 2010,
-                Duration = "02:15",
-                Rate = 4.5f,
-                Poster = "mysterious-galaxy.jpg",
-                Genres = "Sci-fi|Mystery"
+                Id = movies.Count + 1,
+                Title = "Interstellar",
+                Synopsis = "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+                Year = 2014,
+                Duration = "02:49",
+                Rate = 4.6f,
+                Poster = "Interestelar.png",
+                Genres = "Sci-fi|Drama"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Comedy Chaos",
-                Synopsis = "Hilarious misadventures unfold as a small town hosts an outrageous comedy festival.",
-                Year = 2015,
-                Duration = "01:50",
-                Rate = 3.8f,
-                Poster = "comedy-chaos.jpg",
+                Id = movies.Count + 1,
+                Title = "The Hangover",
+                Synopsis = "Three buddies wake up from a bachelor party in Las Vegas, with no memory of the previous night and the bachelor missing.",
+                Year = 2009,
+                Duration = "01:40",
+                Rate = 4.0f,
+                Poster = "The Hangover.jpg",
                 Genres = "Comedy"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Love in Paris",
-                Synopsis = "Two strangers find unexpected romance on the charming streets of Paris.",
-                Year = 2018,
-                Duration = "02:05",
-                Rate = 4.2f,
-                Poster = "love-in-paris.jpg",
-                Genres = "Romance|Drama"
+                Id = movies.Count + 1,
+                Title = "Midnight in Paris",
+                Synopsis = "While on a trip to Paris with his fiancée's family, a nostalgic screenwriter finds himself mysteriously going back to the 1920s every day at midnight.",
+                Year = 2011,
+                Duration = "01:34",
+                Rate = 4.3f,
+                Poster = "Midnight in Paris.jpg",
+                Genres = "Romance|Fantasy"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Fantasy Quest",
-                Synopsis = "A young hero embarks on a mythical journey to save a fantastical world.",
-                Year = 2013,
-                Duration = "02:20",
-                Rate = 4.0f,
-                Poster = "fantasy-quest.jpg",
+                Id = movies.Count + 1,
+                Title = "The Hobbit: An Unexpected Journey",
+                Synopsis = "A reluctant Hobbit, Bilbo Baggins, sets out to the Lonely Mountain with a spirited group of dwarves to reclaim their mountain home, and the gold within it from the dragon Smaug.",
+                Year = 2012,
+                Duration = "02:49",
+                Rate = 4.2f,
+                Poster = "The_Hobbit-_An_Unexpected_Journey.jpeg",
                 Genres = "Fantasy|Adventure"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Horror House",
-                Synopsis = "A group of friends enters a haunted house, only to face their darkest fears.",
-                Year = 2017,
-                Duration = "01:45",
-                Rate = 4.3f,
-                Poster = "horror-house.jpg",
+                Id = movies.Count + 1,
+                Title = "The Conjuring",
+                Synopsis = "Paranormal investigators Ed and Lorraine Warren work to help a family terrorized by a dark presence in their farmhouse.",
+                Year = 2013,
+                Duration = "01:52",
+                Rate = 4.4f,
+                Poster = "The Conjuring.jpg",
                 Genres = "Horror|Mystery"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Action Avengers",
-                Synopsis = "A team of skilled heroes assembles to thwart a supervillain's evil plans.",
+                Id = movies.Count + 1,
+                Title = "The Avengers",
+                Synopsis = "Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.",
                 Year = 2012,
-                Duration = "02:30",
-                Rate = 4.8f,
-                Poster = "action-avengers.jpg",
+                Duration = "02:23",
+                Rate = 4.7f,
+                Poster = "The Avengers.jpg",
                 Genres = "Action|Adventure"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Sci-Fi Explorers",
-                Synopsis = "Brave astronauts journey through space to uncover the mysteries of the universe.",
-                Year = 2011,
-                Duration = "02:10",
-                Rate = 4.4f,
-                Poster = "sci-fi-explorers.jpg",
-                Genres = "Sci-fi|Adventure"
+                Id = movies.Count + 1,
+                Title = "Gravity",
+                Synopsis = "Two astronauts work together to survive after an accident leaves them stranded in space.",
+                Year = 2013,
+                Duration = "01:31",
+                Rate = 4.5f,
+                Poster = "gravity.jfif",
+                Genres = "Sci-fi|Drama"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Romantic Retreat",
-                Synopsis = "A couple escapes to a picturesque island for a romantic getaway.",
-                Year = 2019,
-                Duration = "02:00",
-                Rate = 4.6f,
-                Poster = "romantic-retreat.jpg",
+                Id = movies.Count + 1,
+                Title = "The Notebook",
+                Synopsis = "A poor yet passionate young man falls in love with a rich young woman, giving her a sense of freedom, but they are soon separated because of their social differences.",
+                Year = 2004,
+                Duration = "02:03",
+                Rate = 4.8f,
+                Poster = "TheNotebook.jpg",
                 Genres = "Romance|Drama"
             });
 
             movies.Add(new Movie()
             {
-                Id = idCounter++,
-                Title = "Comedy Central",
-                Synopsis = "Craziness ensues as a group of friends navigates a series of comedic mishaps.",
-                Year = 2014,
-                Duration = "01:55",
-                Rate = 3.9f,
-                Poster = "comedy-central.jpg",
+                Id = movies.Count + 1,
+                Title = "Bridesmaids",
+                Synopsis = "Competition between the maid of honor and a bridesmaid, over who is the bride's best friend, threatens to upend the life of an out-of-work pastry chef.",
+                Year = 2011,
+                Duration = "02:05",
+                Rate = 4.1f,
+                Poster = "Bridesmaids.jpg",
                 Genres = "Comedy"
             });
 
-
             return movies;
         }
+
+
 
     }
 }
