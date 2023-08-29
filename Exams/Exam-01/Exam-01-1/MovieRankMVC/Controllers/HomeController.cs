@@ -51,6 +51,11 @@ namespace MovieRankMVC.Controllers
             return moviesList;
         }
 
+        public ActionResult Details(int id)
+        {
+            var movie = moviesList.FirstOrDefault(x => x.Id == id);
+            return View(movie);
+        }
 
         public IActionResult Privacy()
         {
