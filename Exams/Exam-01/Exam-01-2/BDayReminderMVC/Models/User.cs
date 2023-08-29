@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieRankMVC.Models;
+namespace BDayReminderMVC.Models;
 
 public class User
 {

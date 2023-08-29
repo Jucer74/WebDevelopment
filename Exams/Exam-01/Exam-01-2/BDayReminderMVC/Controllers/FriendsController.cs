@@ -7,7 +7,6 @@ namespace BDayReminderMVC.Controllers
     public class FriendsController : Controller
     {
 
-
         private static List<Friend> friendsList = LoadFriends();
 
         // GET: FriendsController
