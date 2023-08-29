@@ -35,7 +35,12 @@
                     </ul>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Right Item</a>
+                            <div class="nav-link" id="profileLink">
+                                <div class="d-flex flex-column align-items-center">
+                                  
+                                    <span class="text-muted mt-2" id="userName" style="display: none;">@ViewData["UserName"]</span>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -56,6 +61,18 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $("#profileLink").hover(
+                function () {
+                    $("#userName").css("display", "block");
+                },
+                function () {
+                    $("#userName").css("display", "none");
+                }
+            );
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

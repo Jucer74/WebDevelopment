@@ -65,7 +65,7 @@ namespace MovieRankMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(User user)
         {
-            var existingUser = usersList.FirstOrDefault(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+            var existingUser = usersList.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
 
             if (existingUser != null)
             {
@@ -84,7 +84,8 @@ namespace MovieRankMVC.Controllers
         // GET: UsersController/Register
         public IActionResult Register()
         {
-            return View();
+            User userModel = new User(); // o carga los datos del usuario
+            return View(userModel);
         }
 
         // POST: UsersController/Register
@@ -94,18 +95,30 @@ namespace MovieRankMVC.Controllers
         {
             try
             {
-                int newId = usersList.Count + 1;
-                user.Id = newId;
+                if (ModelState.IsValid)
+                {
+                    if (user.Password == user.ConfirmPassword)
+                    {
+                        int newId = usersList.Count + 1;
+                        user.Id = newId;
 
-                usersList.Add(user);
+                        usersList.Add(user);
 
-                return RedirectToAction(nameof(Login));
+                        return RedirectToAction(nameof(Login));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "Passwords do not match.");
+                    }
+                }
+                return View();
             }
             catch
             {
                 return View();
             }
         }
+
 
     }
 }

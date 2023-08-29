@@ -10,7 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center mb-4">
-                        <img src="" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px; background-color: red; object-fit: cover;" />
+                        <img id="profileImage" src="~/images/@(Model.SelectedProfileImage).png" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px; background-color: red; object-fit: cover;" />
                     </div>
                     <h5 class="card-title text-center">@ViewData["Title"]</h5>
                     <hr class="my-4">
@@ -45,6 +45,14 @@
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
+                        <div class="mb-3">
+                            <label asp-for="SelectedProfileImage" class="form-label">Select Profile Image</label>
+                            <select asp-for="SelectedProfileImage" class="form-control" onchange="updateProfileImage()">
+                                <option value="1">Image 1</option>
+                                <option value="2">Image 2</option>
+                                <option value="3">Image 3</option>
+                            </select>
+                        </div>
                         <div class="d-flex justify-content-between mt-3">
                             <button type="submit" class="btn btn-primary">Register</button>
                             <a asp-action="Login" class="btn btn-secondary">Cancel</a>
@@ -55,3 +63,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    function updateProfileImage() {
+        var selectedImage = document.getElementById('SelectedProfileImage').value;
+        var profileImage = document.getElementById('profileImage');
+        profileImage.src = `/images/${selectedImage}.png`;
+    }
+</script>

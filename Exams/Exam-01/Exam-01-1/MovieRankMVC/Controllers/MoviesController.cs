@@ -52,7 +52,7 @@ namespace MovieRankMVC.Controllers
         // GET: MoviesController
         public IActionResult Index()
         {
-            List<Movie> moviesList = GetMoviesList(); // Obtén la lista de películas
+            
             ViewBag.Movies = moviesList; // Almacena la lista en el ViewBag
             return View(moviesList); // Pasa la lista de películas a la vista
         }
