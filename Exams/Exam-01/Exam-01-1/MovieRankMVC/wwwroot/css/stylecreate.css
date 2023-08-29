@@ -82,9 +82,10 @@ body {
 .btn-add {
     display: block;
     margin-top: 20px; /* Separación del botón de selección de archivo */
-    background-color: #094480; /* Color verde */
+    background-color: #17202A;/* Color verde */
+    color: white;
 }
 
     .btn-add:hover {
-        background-color: #07396C; /* Un verde un poco más oscuro al pasar el mouse */
+        background-color: #ff6a00;Un verde un poco más oscuro al pasar el mouse */
     }
