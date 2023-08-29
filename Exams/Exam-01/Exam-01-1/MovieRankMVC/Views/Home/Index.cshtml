@@ -34,11 +34,11 @@
                 </div>
         }
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
     </a>
@@ -56,8 +56,18 @@
 
 <style>
     .carousel-control-prev, .carousel-control-next {
-        margin: 30%;
+        margin: 0;
+        width: auto;
         color: black;
+        background: none;
+    }
+
+    .carousel-control-prev {
+        left: -50px; /* Ajusta la posición izquierda */
+    }
+
+    .carousel-control-next {
+        right: -50px; /* Ajusta la posición derecha */
     }
 
     .card {
