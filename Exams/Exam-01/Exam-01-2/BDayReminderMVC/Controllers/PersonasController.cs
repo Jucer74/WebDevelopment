@@ -57,13 +57,34 @@ namespace BDayReminderMVC.Controllers
         }
 
         // POST: PersonasController/Edit/5
+        // GET: PersonasController/Edit/5
+
+
+        // POST: PersonasController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Persona personaEditada)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var personaExistente = personasList.FirstOrDefault(p => p.Id == id);
+
+                if (personaExistente != null && ModelState.IsValid)
+                {
+                    // Actualizar los campos de la persona existente con los valores editados
+                    personaExistente.PhotoPath = personaEditada.PhotoPath;
+                    personaExistente.UserEmail = personaEditada.UserEmail;
+                    personaExistente.FirstName = personaEditada.FirstName;
+                    personaExistente.LastName = personaEditada.LastName;
+                    personaExistente.DateOfBirth = personaEditada.DateOfBirth;
+                    personaExistente.Sex = personaEditada.Sex;
+                    personaExistente.Password = personaEditada.Password;
+                    personaExistente.ConfirmPassword = personaEditada.ConfirmPassword;
+
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(personaEditada);
             }
             catch
             {
@@ -72,20 +93,21 @@ namespace BDayReminderMVC.Controllers
         }
 
 
+
         // GET: MoviesController/Delete/5
         public ActionResult Delete(int id)
         {
-            var personas = personasList.FirstOrDefault(x => x.Id == id);
-            return View(personas);
+            var persona = personasList.FirstOrDefault(x => x.Id == id);
+            return View(persona);
         }
 
-        // POST: MoviesController/Delete/5
+        // POST: PersonasController/DeleteConfirmed/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var movieToDelete = personasList.FirstOrDefault(x => x.Id == id);
-            personasList.Remove(movieToDelete);
+            var personaToDelete = personasList.FirstOrDefault(x => x.Id == id);
+            _ = personasList.Remove(personaToDelete);
 
             // Reenumerar los IDs para mantener el orden
             for (int i = 0; i < personasList.Count; i++)
