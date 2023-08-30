@@ -40,6 +40,15 @@ namespace MovieRankMVC.Controllers
         {
             try
             {
+
+                foreach (var usario in usersList)
+                {
+                    if (user.UserEmail == usario.UserEmail)
+                    {
+                        TempData["Message"] = $"User with email '{usario.UserEmail}' no valido, ya existe";
+                        return View();
+                    }
+                }
                 if (ModelState.IsValid)
                 {
                     if (user.Password == user.ConfirmPassword)

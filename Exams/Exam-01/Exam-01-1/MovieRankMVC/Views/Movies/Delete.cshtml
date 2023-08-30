@@ -1,34 +1,32 @@
 ﻿@model MovieRankMVC.Models.Movie
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Delete";
 }
-
+<script>
+    function confirmDelete() {
+        if (confirm("Are you sure you want to delete this movie?")) {
+            return true; // Continuar con el envío del formulario
+        }
+        return false; // Cancelar el envío del formulario
+    }
+</script>
 <style>
     header, footer {
         display: none;
     }
-
-    #my-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-    }
 </style>
 
-<div id="my-background"></div>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-dark text-white">
-                    <h1 class="text-center">Movie Details</h1>
+                    <h1 class="text-center">Delete Movie</h1>
                 </div>
                 <div class="card-body border border-dark">
+                    <img src="@Url.Content(Model.Poster)" class="img-fluid rounded" />
                     <dl class="row">
                         <dt class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Id)
@@ -79,31 +77,13 @@
                             @Html.DisplayFor(model => model.Genres)
                         </dd>
                     </dl>
-                    <div>
-                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Home")'">Back</button>
-                    </div>
+
+                    <form asp-action="Delete" onsubmit="return confirmDelete();">
+                        <input type="submit" value="Delete" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-danger d-inline-block">Cancel</a>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
-    <script>
-        VANTA.NET({
-            el: "#my-background",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            scale: 1.00,
-            scaleMobile: 1.00
-        });
-    </script>
-}

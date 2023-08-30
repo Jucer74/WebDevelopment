@@ -1,26 +1,29 @@
-﻿Create:
-@model MovieRankMVC.Models.User
+﻿@model MovieRankMVC.Models.User
 
 @{
     ViewData["Title"] = "View";
 }
+@{
+    var message = TempData["Message"] as string;
+    TempData.Remove("Message");  // Elimina el mensaje de TempData para que no se muestre en futuras solicitudes
+}
 
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-info">
+        @message
+    </div>
+}
 <style>
-    header, footer {
-        display: none;
+    body {
+        background-color: gray;
     }
 
-    #my-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
+    header, footer{
+        display: none;
     }
 </style>
 
-<div id="my-background"></div>
 <div class="row">
     <div class="col-md-6 mx-auto mt-5">
         <div class="card mt-5 shadow border border-dark">
@@ -57,14 +60,14 @@
                         <div class="col-md-6">
                             <div class="form-group mb-4">
                                 <label asp-for="Password" class="control-label">Password:</label>
-                                <input asp-for="Password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="***" />
+                                <input asp-for="Password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="*********" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group mb-4">
                                 <label asp-for="ConfirmPassword" class="control-label">Confirm Password:</label>
-                                <input asp-for="ConfirmPassword" type="password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="***" />
+                                <input asp-for="ConfirmPassword" type="password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="*********" />
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
@@ -80,22 +83,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
-        <script>
-            // Inicializa Vanta.js en el fondo interactivo
-            VANTA.NET({
-                el: "#my-background",
-                mouseControls: true,
-                touchControls: true,
-                gyroControls: false,
-                minHeight: 200.00,
-                minWidth: 200.00,
-                scale: 1.00,
-                scaleMobile: 1.00
-            });
-        </script>
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

@@ -1,7 +1,7 @@
-﻿@model MovieRankMVC.Models.Movie
+﻿ @model MovieRankMVC.Models.Movie
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Details";
 }
 
 <style>
@@ -10,16 +10,14 @@
     }
 </style>
 
-
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header bg-dark text-white">
-                    <h1 class="text-center">Delete Movie</h1>
+                    <h1 class="text-center">Movie Details</h1>
                 </div>
                 <div class="card-body border border-dark">
-                    <img src="@Url.Content(Model.Poster)" class="img-fluid rounded" />
                     <dl class="row">
                         <dt class="col-sm-2">
                             @Html.DisplayNameFor(model => model.Id)
@@ -70,11 +68,9 @@
                             @Html.DisplayFor(model => model.Genres)
                         </dd>
                     </dl>
-
-                    <form asp-action="Delete">
-                        <input type="submit" value="Delete" class="btn btn-primary" /> 
-                        <a asp-action="Index" class="btn btn-danger d-inline-block">Cancel</a>
-                    </form>
+                    <div>
+                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Home")'">Back</button>
+                    </div>
                 </div>
             </div>
         </div>
