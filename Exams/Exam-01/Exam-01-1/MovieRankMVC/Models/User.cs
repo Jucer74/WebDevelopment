@@ -24,7 +24,7 @@ public class User
     [StringLength(50)]
     public string Password { get; set; } = null!;
 
-    [Required(ErrorMessage = "The Password is required again")]
+    [Required(ErrorMessage = "The Confirmation of the Password is required")]
     [StringLength(50)]
-    public string ConfirmationPassword { get; set; } = null!;
+    public string ConfirmPassword { get; set; } = null!;
 }

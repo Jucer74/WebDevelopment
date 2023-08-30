@@ -67,12 +67,55 @@ namespace MovieRankMVC.Controllers
             }
             else
             {
-                TempData["ErrorMessage"] = "Email or password is incorrect"
+                TempData["ErrorMessage"] = "Email or password is incorrect";
+                return View();
             }
         }
         public IActionResult Register()
         {
-            return View();
+            User userModel = new();
+            return View(userModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(User user)
+        {
+            try 
+            {
+                if (ModelState.IsValid)
+                {
+                    var userExist = userList.FirstOrDefault(u => u.UserEmail == user.UserEmail);
+                    if (userExist != null)
+                    {
+                        ModelState.AddModelError("UserEmail", "A user is already exist.");
+                        return View();
+                    }
+
+                    if (user.Password == user.ConfirmPassword)
+                    {
+                        int newId = userList.Count + 1;
+                        user.Id = newId;
+
+                        userList.Add(user);
+
+                        return RedirectToAction(nameof(Login));
+
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "The password don't match.");
+                    }
+
+                }
+                return View();
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }
