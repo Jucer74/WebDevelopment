@@ -6,23 +6,22 @@ namespace MovieRankMVC.Controllers
 {
     public class UserController : Controller
     {
-        private static UserService _userService;
+        //private static UserService _userService;
+        private static List<User> userList = LoadUsers();
 
-        public UserController(UserService userService)
+
+        private static List<User> LoadUsers()
         {
-            _userService = userService;
-        }
+            List<User> users = new()
+            {
+                new User() {Id = 1, UserEmail = "correouser@gmail.com", FirstName = "User", LastName = "1", Password = "12345678"}
+            };
 
+            return users;
+        }
+ 
         // GET: UserController
-        public async Task<ActionResult> Index()
-        {
-            //User user = await _userService.GetById(id);
-
-            return View();
-        }
-
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Index(User user)
         {
             return View();
         }
@@ -36,16 +35,44 @@ namespace MovieRankMVC.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(User user)
         {
             try
             {
+                int newId = userList.Count + 1;
+                user.Id = newId;
+                userList.Add(user);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+
+        public IActionResult Login(User user) 
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Login(User user)
+        {
+            var userExist = userList.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+            if (userExist != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Email or password is incorrect"
+            }
+        }
+        public IActionResult Register()
+        {
+            return View();
         }
     }
 }

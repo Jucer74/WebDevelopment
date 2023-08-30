@@ -17,12 +17,27 @@ namespace MovieRankMVC.Services
             _restClient = restClient;
         }
 
+        public async Task<List<User>> GetAll()
+        {
+            var UserList = await GetAllUsers();
+            return UserList;
+        }
+
         public async Task<User> GetById(int id) 
         {
             var user = await GetUserById(id);
             return user;
         }
 
+        private async Task<List<User>> GetAllUsers()
+        {
+            var request = new RestRequest($"{baseUrl}/Users", Method.Get);
+            var response = await _restClient.GetAsync(request);
+
+            List<User>? data = JsonConvert.DeserializeObject<List<User>>(response.Content!);
+
+            return data!;
+        }
         private async Task<User> GetUserById( int id)
         {
             var request = new RestRequest($"{baseUrl}/Users/{id}", Method.Get);
