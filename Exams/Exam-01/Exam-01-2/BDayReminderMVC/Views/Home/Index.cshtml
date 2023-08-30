@@ -11,7 +11,7 @@
     <div class="carousel-inner">
         @for (int i = 0; i < Model.Count; i++)
         {
-            <div class="carousel-item @(i == 0 ? "active" : "")">
+            <div class="carousel-item @(i == 0 ? "a" : "")">
                 <img src="@Model[i].PhotoPath" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>@Model[i].FirstName @Model[i].LastName</h5>

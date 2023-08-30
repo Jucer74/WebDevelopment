@@ -1,0 +1,44 @@
+﻿@model BDayReminderMVC.Models.User
+
+<!DOCTYPE html>
+<html>
+     
+       
+<head>
+    <link rel="stylesheet" href="~wwwroot/css/site.css" asp-append-version="true" />
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form asp-action="Register" method="post">
+        <div>
+            <label for="UserEmail">Email:</label>
+            <input type="email" id="UserEmail" name="UserEmail" required />
+            <span asp-validation-for="UserEmail"></span>
+        </div>
+        <div>
+            <label for="FirstName">First Name:</label>
+            <input type="text" id="FirstName" name="FirstName" required />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div>
+            <label for="LastName">Last Name:</label>
+            <input type="text" id="LastName" name="LastName" required />
+            <span asp-validation-for="LastName"></span>
+        </div>
+        <div>
+            <label for="Password">Password:</label>
+            <input type="password" id="Password" name="Password" required />
+            <span asp-validation-for="Password"></span>
+        </div>
+        <div>
+            <label for="ConfirmPassword">Confirm Password:</label>
+            <input type="password" id="ConfirmPassword" name="ConfirmPassword" required />
+            <span asp-validation-for="ConfirmPassword"></span>
+        </div>
+        <div>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</body>
+</html>
