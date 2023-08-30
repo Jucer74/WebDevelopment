@@ -1,0 +1,3 @@
+[submodule "Exams/Exam-01/solucion"]
+	path = Exams/Exam-01/solucion
+	url = git@github.com:hacksJuanDavid/MovieRank.git
