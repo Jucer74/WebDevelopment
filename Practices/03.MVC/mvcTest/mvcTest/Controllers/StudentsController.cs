@@ -7,7 +7,7 @@ namespace mvcTest.Controllers
 {
     public class StudentsController : Controller
     {
-        public static List <Student> studentsList = loadStudents();
+        public static List<Student> studentsList = loadStudents();
         
         public static List<Student> loadStudents()
         {
