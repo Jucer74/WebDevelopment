@@ -1,0 +1,102 @@
+﻿﻿﻿
+@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<link rel="stylesheet" href="~/css/LoginStyle.css" asp-append-version="true" />
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<div class="container-fluid">
+    <form class="mx-auto needs-validation" asp-action="Login" novalidate>
+        <h3 class="text-center">Login</h3>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">User:</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@mail.com" required>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" required>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">LOGIN</button>
+        </div>
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Register</button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Sign In</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">User</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="example@mail.com" required>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="demo-content">
+                                        <div class="mb-3">
+                                            <label for="exampleInputText" class="form-label">First Name:</label>
+                                            <input type="text" class="form-control" id="exampleInputName" placeholder="First Name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText" class="form-label">Date of Birth:</label>
+                                            <input type="date" class="form-control" id="exampleInputName" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Password:</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="demo-content bg-alt">
+                                        <div class="mb-3">
+                                            <label for="exampleInputText" class="form-label">Last name:</label>
+                                            <input type="text" class="form-control" id="exampleInputName" placeholder="Last name" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputText" class="form-label">Gener:</label>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" class="form-check-input" name="customRadio" id="customRadio1">
+                                                <label class="form-check-label" for="customRadio1">Male</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" class="form-check-input" name="customRadio" id="customRadio2" checked>
+                                                <label class="form-check-label" for="customRadio2">Female</label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleInputPassword1" class="form-label">Confirm Password:</label>
+                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" data="modal">Accept</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

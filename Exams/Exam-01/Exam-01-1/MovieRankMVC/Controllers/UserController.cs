@@ -1,36 +1,91 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MovieRankMVC.Services;
+using MovieRankMVC.Models;
+using System.Collections.Generic;
 
 namespace MovieRankMVC.Controllers
 {
     public class UserController : Controller
     {
-        // GET: UserController
-        public ActionResult Login()
+        //private static UserService _userService;
+        private static List<User> userList = LoadUsers();
+
+
+        private static List<User> LoadUsers()
+        {
+            List<User> users = new()
+            {
+                new User() {Id = 1, UserEmail = "user@gmail.com", FirstName = "User", LastName = "1", Password = "12345678"}
+            };
+
+            return users;
+        }
+
+        public ActionResult Index()
         {
             return View();
         }
 
-        // GET: UserController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Login()
         {
             return View();
         }
 
-        // GET: UserController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Login(User user)
         {
-            try
+            var existingUser = userList.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+            if (existingUser != null)
             {
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "Email or password is incorrect";
+                return View();
+            }
+        }
+
+        public IActionResult Register()
+        {
+            User userModel = new();
+            return View(userModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Register(User user)
+        {
+            try 
+            {
+                if (ModelState.IsValid)
+                {
+                    var userExist = userList.FirstOrDefault(u => u.UserEmail == user.UserEmail);
+                    if (userExist != null)
+                    {
+                        ModelState.AddModelError("UserEmail", "A user is already exist.");
+                        return View();
+                    }
+
+                    if (user.Password == user.ConfirmPassword)
+                    {
+                        int newId = userList.Count + 1;
+                        user.Id = newId;
+
+                        userList.Add(user);
+
+                        return RedirectToAction(nameof(Login));
+
+                    }
+
+                    else
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "The password don't match.");
+                    }
+
+                }
+                return View();
             }
             catch
             {
@@ -38,46 +93,5 @@ namespace MovieRankMVC.Controllers
             }
         }
 
-        // GET: UserController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UserController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UserController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UserController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
