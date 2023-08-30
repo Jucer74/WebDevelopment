@@ -22,7 +22,8 @@
                 </div>
                 <div class="mb-3">
                     <label asp-for="Synopsis" class="form-label">Synopsis</label>
-                    <input asp-for="Synopsis" class="form-control" />
+                    <textarea asp-for="Synopsis" name="comentarios" rows="1" cols="10" class="form-control" required>Escribe la sinopsis</textarea>
+                    
                     <span asp-validation-for="Synopsis" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
