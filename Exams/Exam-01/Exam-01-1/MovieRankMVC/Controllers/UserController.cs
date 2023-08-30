@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Services;
 using MovieRankMVC.Models;
+using System.Collections.Generic;
 
 namespace MovieRankMVC.Controllers
 {
@@ -14,7 +15,7 @@ namespace MovieRankMVC.Controllers
         {
             List<User> users = new()
             {
-                new User() {Id = 1, UserEmail = "correouser@gmail.com", FirstName = "User", LastName = "1", Password = "12345678"}
+                new User() {Id = 1, UserEmail = "user@gmail.com", FirstName = "User", LastName = "1", Password = "12345678"}
             };
 
             return users;
