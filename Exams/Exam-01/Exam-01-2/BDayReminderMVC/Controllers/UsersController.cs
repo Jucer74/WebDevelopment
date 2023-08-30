@@ -46,7 +46,7 @@ namespace BDayReminderMVC.Controllers
         // POST: UsersController/Login
         public ActionResult Login(User CurrentUser)
         {
-            var user = userlist.Find(User => User.UserName == CurrentUser.UserName);
+            var user = userlist.Find(User => u.UserName == CurrentUser.UserName);
 
             if (user != null && user.Password == CurrentUser.Password)
             {
