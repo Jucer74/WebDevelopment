@@ -9,19 +9,19 @@ namespace BDayReminderMVC.Models
 
         [Required(ErrorMessage = "The FirstName is Required")]
         [StringLength(50)]
-        public string firstName { get; set; }
+        public string FirstName { get; set; } = null!;
 
         [Required(ErrorMessage = "The LastName is Required")]
         [StringLength(50)]
-        public string lastName { get; set; }
+        public string LastName { get; set; } = null!;
 
         [Required(ErrorMessage = "The Email is Required")]
         [DataType(DataType.EmailAddress)]
-        public string user { get; set; }
+        public string UserName { get; set; } = null!;
 
         [Required(ErrorMessage = "The Password is Required")]
         [StringLength(50)]
-        public string Password { get; set; }
+        public string Password { get; set; } = null!;
 
 
     }
