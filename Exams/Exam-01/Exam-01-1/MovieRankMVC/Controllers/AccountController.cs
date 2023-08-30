@@ -71,6 +71,9 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
+            
+            
+            
             // Verifica si el correo electrónico ya está registrado
             var existingUser = _userService.GetUserByEmail(user.UserEmail);
             if (existingUser != null)

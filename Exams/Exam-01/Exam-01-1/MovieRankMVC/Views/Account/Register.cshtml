@@ -8,67 +8,140 @@
                     <img src="/Public/Icon/person-circle.svg" width="100px" height="100px" alt="Logo de la empresa" class="img-fluid">
                 </div>
                 <div class="card-header text-center">
-                    <h2>Registrarse</h2>
+                    <h2>Register</h2>
                 </div>
                 <div class="card-body">
-                    <form asp-controller="Account" asp-action="Register" method="post">
-                        <div class="mb-3">
-                            <label for="userEmail" class="form-label">Correo Electrónico</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-envelope"></i>
-                                </span>
-                                <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+                    <form asp-controller="Account" asp-action="Register" method="post" id="registerForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="userEmail" class="form-label">Email</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-envelope"></i>
+                                        </span>
+                                        <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="firstName" class="form-label">Name</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-person"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                    </div>
+                                </div> 
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3" style="height: 4.2rem"></div>
+                                <div class="mb-3">
+                                    <label for="lastName" class="form-label">LastName</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-person"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i class="bi bi-lock"></i>
+                                        </span>
+                                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required> 
+                                        @* oninput="validarPassword()"> *@
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="mb-3">
-                            <label for="firstName" class="form-label">Nombre</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-person"></i>
-                                </span>
-                                <input type="text" class="form-control" id="firstName" name="firstName" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="lastName" class="form-label">Apellido</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-person"></i>
-                                </span>
-                                <input type="text" class="form-control" id="lastName" name="lastName" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Contraseña</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-lock"></i>
-                                </span>
-                                <input type="password" class="form-control" id="password" name="password" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label for="confirmPassword" class="form-label">Confirmar Contraseña</label>
-                            <div class="input-group">
-                                <span class="input-group-text">
-                                    <i class="bi bi-lock"></i>
-                                </span>
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                            </div>
-                        </div>
+                        
+                        
 
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Registrarse</button>
+                            <button type="submit" class="btn btn-primary">Register </button>
                         </div>
 
                         <!-- Button redirect login -->
-                        <div class="text-center">
-                            <a asp-controller="Account" asp-action="Login">¿Ya tienes una cuenta?</a>
+                        <div class="text-center mt-3">
+                            <a asp-controller="Account" asp-action="Login">Already have an account?</a>
                         </div>
                     </form>
+                    
                 </div>
             </div>
+            
+            <div id="toastNotificacion" class="position-fixed bottom-0 end-50 end p-3"></div>
         </div>
+        
     </div>
 </div>
+
+@section Scripts {
+    <script>
+    
+    var activeToast = false; 
+    
+    function validarPassword() {
+        var password = document.getElementById("password").value;
+        var confirmarPassword = document.getElementById("confirmPassword").value;
+        
+        if (password !== confirmarPassword){
+            //document.getElementById("confirmPassword").setCustomValidity("Make sure passwords match to proceed"); 
+            // esto arriba funciona el mensaje pero bloquea el submit?
+            mostrarToast("Passwords do not match");
+        } else {
+          //  document.getElementById("confirmPassword").innerHTML += `<p> Password confirmed </p>`;  // .setCustomValidity("Password: Confirmed.");    
+          //document.getElementById("confirmPassword").setCustomValidity("Password: Confirmed.");
+            mostrarToast("Password: confirmed");
+          //document.getElementById("registerForm").submit();
+        }
+        
+        if (!activeToast){
+            mostrarToast(msg);
+            activeToast = true;
+        }
+        
+    }
+    function mostrarToast(msg) {
+        var toastdiv = document.getElementById('toastNotificacion');
+        
+        var toast = document.createElement("div");
+        toast.className = "toast";
+        toast.innerHTML = `
+            <div class="toast-header">
+                <strong class="me-auto">Attention</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                ${msg}
+            </div>
+        
+        `;
+        
+        toastdiv.appendChild(toast);
+        
+        var bsToast = new bootstrap.Toast(toast);
+        bsToast.show();
+        
+        bsToast._element.addEventListener("hidden.bs.toast", function() { activeToast = false; });
+    }
+    
+    // conectamos la funcion con los eventos del input
+    document.getElementById("password").addEventListener("input",validarPassword);
+    document.getElementById("confirmPassword").addEventListener("input", validarPassword);
+    //document.getElementById("registerForm").onsubmit = validarPassword;
+    </script>
+}
