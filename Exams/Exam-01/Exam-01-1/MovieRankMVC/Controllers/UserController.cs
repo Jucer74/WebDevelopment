@@ -1,13 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using MovieRankMVC.Services;
+using MovieRankMVC.Models;
 
 namespace MovieRankMVC.Controllers
 {
     public class UserController : Controller
     {
-        // GET: UserController
-        public ActionResult Index()
+        private static UserService _userService;
+
+        public UserController(UserService userService)
         {
+            _userService = userService;
+        }
+
+        // GET: UserController
+        public async Task<ActionResult> Index()
+        {
+            //User user = await _userService.GetById(id);
+
             return View();
         }
 
