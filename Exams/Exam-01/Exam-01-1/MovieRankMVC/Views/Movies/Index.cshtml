@@ -29,8 +29,8 @@
         <img src="~/Posters/logo2.png" alt="Logo" class="img-fluid logo" />
         </a>
     </div>
-    <h1 class="text-white text-center">CRUD</h1>
-    <p class="mt-3 text-center">
+    <h1 class="text-white">CRUD</h1>
+    <p class="mt-3">
         <a asp-action="Create" class="btn btn-warning text-black ">Create</a>
     </p>
     <table class="table table-borderless bg-warning rounded">
@@ -61,13 +61,14 @@
                     <td class="text-center">
                         <div class="btn-group">
                             <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-link">
-                                <i class="fas fa-edit icono-negro"></i>
+                                <img src="~/Posters/Pencil.jpg" alt="Logo" class="img-fluid logo" />
                             </a>
                             <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-link">
-                                <i class="fas fa-list icono-negro"></i>
+                                <img src="~/Posters/CardList.jpg" alt="Logo" class="img-fluid logo" />
                             </a>
                             <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-link">
-                                <i class="fas fa-trash icono-negro"></i>
+                                <img src="~/Posters/Trash.jpg" alt="Logo" class="img-fluid logo" />
+                                
                             </a>
                         </div>
                     </td>
