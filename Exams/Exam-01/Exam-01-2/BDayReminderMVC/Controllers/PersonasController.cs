@@ -9,8 +9,6 @@ namespace BDayReminderMVC.Controllers
         private static List<Persona> personasList=LoadPersonas();
 
 
-
-
         // GET: PersonasController
         public ActionResult Index()
         {
@@ -73,43 +71,95 @@ namespace BDayReminderMVC.Controllers
             }
         }
 
-        // GET: PersonasController/Delete/5
+
+        // GET: MoviesController/Delete/5
         public ActionResult Delete(int id)
         {
-            var persona = personasList.FirstOrDefault(x => x.Id == id);
-            return View(persona);
+            var personas = personasList.FirstOrDefault(x => x.Id == id);
+            return View(personas);
         }
 
-        // POST: PersonasController/Delete/5
+        // POST: MoviesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
+            var movieToDelete = personasList.FirstOrDefault(x => x.Id == id);
+            personasList.Remove(movieToDelete);
+
+            // Reenumerar los IDs para mantener el orden
+            for (int i = 0; i < personasList.Count; i++)
             {
-                return RedirectToAction(nameof(Index));
+                personasList[i].Id = i + 1;
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction(nameof(Index));
         }
+
+
+
+
+
 
 
         private static List<Persona> LoadPersonas()
         {
             var personas = new List<Persona>();
 
-            personas.Add(new Persona() { Id = 1, FirstName = "Juan", LastName = "Rome", DateOfBirth=new DateTime(1974, 10, 8), Sex= 'M' });
-            personas.Add(new Persona() { Id = 2, FirstName = "Maria", LastName = "Rome", DateOfBirth = new DateTime(1974, 10, 8), Sex = 'F' });
-            personas.Add(new Persona() { Id = 3, FirstName = "Tatiana", LastName = "Rome", DateOfBirth = new DateTime(1974, 10, 8), Sex = 'F' });
-            personas.Add(new Persona() { Id = 4, FirstName = "Juan", LastName = "Rome", DateOfBirth = new DateTime(1974, 10, 8), Sex = 'M' });
-            
+            personas.Add(new Persona()
+            {
+                Id = 1,
+                PhotoPath = "ruta_de_la_foto_juan.jpg",
+                UserEmail = "correo1@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "contraseña123",
+                ConfirmPassword = "contraseña123",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 2,
+                PhotoPath = "ruta_de_la_foto_maria.jpg",
+                UserEmail = "correo2@example.com",
+                FirstName = "Maria",
+                LastName = "Rome",
+                Password = "contraseña456",
+                ConfirmPassword = "contraseña456",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'F'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 3,
+                PhotoPath = "ruta_de_la_foto_tatiana.jpg",
+                UserEmail = "correo3@example.com",
+                FirstName = "Tatiana",
+                LastName = "Rome",
+                Password = "contraseña789",
+                ConfirmPassword = "contraseña789",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'F'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 4,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
             return personas;
         }
-
-        
-
 
     }
 }
