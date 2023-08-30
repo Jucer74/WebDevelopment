@@ -1,0 +1,65 @@
+@* @model IEnumerable<MovieRank.Models.User> *@
+@model List<MovieRank.Models.User>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - UserList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/MovieRank.styles.css" asp-append-version="true"/>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>List</h1>
+    <p>
+        <a class="btn btn-primary" asp-action="Create">Create New</a>
+    </p>
+    <div class="table-responsive text-dark">
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Password</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.UserEmail</td>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Password</td>
+                    <td class="table-actions">
+                        <a class="btn btn-primary rounded" asp-action="Edit" asp-route-id="@user.Id">
+                            <img class="img-fluid" src="Public/Icon/pencil-square.svg" alt="Edit">
+                        </a>
+                        <a class="btn btn-success rounded" asp-action="Details" asp-route-id="@user.Id">
+                            <img class="img-fluid" src="Public/Icon/info-square-fill.svg" alt="Details">
+                        </a>
+                        <a class="btn btn-danger rounded" asp-action="Delete" asp-route-id="@user.Id">
+                            <img class="img-fluid" src="Public/Icon/trash3-fill.svg" alt="Delete">
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

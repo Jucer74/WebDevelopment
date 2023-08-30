@@ -1,0 +1,102 @@
+@model MovieRank.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MovieDetails</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MovieRank.styles.css" asp-append-version="true" />
+    <style>
+        .title-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .details-container {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .button-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="title-container">
+            <h1>Details</h1>
+        </div>
+        <div class="details-container">
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Title)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Title)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Synopsis)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Synopsis)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Year)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Year)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Duration)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Duration)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Rate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Rate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Poster)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Poster)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Genres)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Genres)
+                </dd>
+            </dl>
+            <div class="button-container">
+                <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit</a> |
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

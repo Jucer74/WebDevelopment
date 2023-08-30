@@ -1,0 +1,129 @@
+@* @model IEnumerable<MovieRank.Models.User> *@
+@model List<MovieRank.Models.User>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - UserList</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MovieRank.styles.css" asp-append-version="true" />
+    <style>
+        /* Estilos adicionales aqu� */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+                border-color: #0056b3;
+            }
+
+        .table {
+            background-color: #fff;
+        }
+
+        .thead-dark th {
+            background-color: #343a40;
+            color: #fff;
+        }
+
+        th, td {
+            vertical-align: middle !important;
+        }
+
+        .table th, .table td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .table-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+            .table-actions a {
+                margin: 0 5px;
+            }
+
+        .table-responsive {
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>List</h1>
+
+        <p>
+            <a class="btn btn-primary" asp-action="Create">Create New</a>
+        </p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.UserEmail</td>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.Password</td>
+                            <td class="table-actions">
+                                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@user.Id">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                                <a class="btn btn-success" asp-action="Details" asp-route-id="@user.Id">
+                                    <i class="fas fa-info-circle"></i> Details
+                                </a>
+                                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@user.Id">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>

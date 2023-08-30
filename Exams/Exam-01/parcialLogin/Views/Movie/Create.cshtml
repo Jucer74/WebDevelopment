@@ -1,0 +1,95 @@
+@model MovieRank.Models.Movie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - MovieCreate</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/MovieRank.styles.css" asp-append-version="true"/>
+    <style>
+        .title-container {
+            background-color: #f5f5f5; 
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ddd; 
+            max-width: 500px; 
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background-color: #fff; 
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid #ddd; 
+            max-width: 500px; 
+            margin: 0 auto; 
+        }
+
+        .button-container {
+            margin-top: 10px; 
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5">
+    <div class="title-container">
+        <h1>Create</h1>
+    </div>
+    <div class="form-container">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label">Title</label>
+                <input asp-for="Title" class="form-control"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Synopsis" class="control-label">Synopsis</label>
+                <input asp-for="Synopsis" class="form-control"/>
+                <span asp-validation-for="Synopsis" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label">Year</label>
+                <input asp-for="Year" class="form-control"/>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duration" class="control-label">Duration</label>
+                <input asp-for="Duration" class="form-control"/>
+                <span asp-validation-for="Duration" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rate" class="control-label">Rate</label>
+                <input asp-for="Rate" class="form-control"/>
+                <span asp-validation-for="Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Poster" class="control-label">Poster</label>
+                <input asp-for="Poster" class="form-control"/>
+                <span asp-validation-for="Poster" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genres" class="control-label">Genres</label>
+                <input asp-for="Genres" class="form-control"/>
+                <span asp-validation-for="Genres" class="text-danger"></span>
+            </div>
+            <div class="form-group text-center button-container">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+                <a asp-action="Index" class="btn btn-secondary ml-2">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
