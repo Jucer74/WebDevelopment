@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using BDayReminderMVC.Models;
 using Microsoft.Extensions.Primitives;
+using System;
 
 namespace BDayReminderMVC.Controllers
 {
@@ -49,7 +50,7 @@ namespace BDayReminderMVC.Controllers
                 return View();
             }
         }
-    
+
         // GET: UsersController/Edit/5
         /*public ActionResult Edit(int id)
         {
@@ -106,12 +107,54 @@ namespace BDayReminderMVC.Controllers
             }
         }*/
 
-        public ActionResult validationUser(string User, string Password)
+
+        public ActionResult ValidationUser(string User, string Password)
+        {
+
+            var user = userlist.Find(user => user.UserName == User);
+
+            var password = userlist.Find(user => user.Password == Password);
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ValidationUser(string User, string Password, IFormCollection collection)
+        {
+
+            var validationUser = userlist.Find(user => user.UserName == User);
+
+            var validationPassword = userlist.Find(user => user.Password == Password);
+
+            try
+            {
+                if (validationPassword != null && validationUser != null)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            catch
+            {
+                return View();
+            }
+
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public ActionResult Login(string user, string password,IFormCollection collection)
         {
             
 
-
-            return View();
+            return ValidationUser(user, password);
         }
 
         private static List<User> LoadUser()
