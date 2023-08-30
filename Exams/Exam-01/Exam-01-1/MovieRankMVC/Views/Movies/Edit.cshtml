@@ -1,0 +1,72 @@
+﻿@model MovieRankMVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <h1>Edit</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Movie</h4>
+            <hr />
+
+            <form method="post" asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id" />
+
+                <div class="mb-3">
+                    <label asp-for="Title" class="form-label">Title</label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Synopsis" class="form-label">Synopsis</label>
+                    <input asp-for="Synopsis" class="form-control" />
+                    <span asp-validation-for="Synopsis" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Year" class="form-label">Year</label>
+                    <input asp-for="Year" type="number" class="form-control" />
+                    <span asp-validation-for="Year" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Duration" class="form-label">Duration (hh:mm)</label>
+                    <input asp-for="Duration" type="time" class="form-control" />
+                    <span asp-validation-for="Duration" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Rate" class="form-label">Rate</label>
+                    <input asp-for="Rate" id="rate-slider" type="range" min="0" max="10" step="0.1" class="form-range" />
+                    <output id="rate-output" class="form-output">@Model.Rate</output>
+                    <span asp-validation-for="Rate" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Poster" class="form-label">Poster</label>
+                    <input asp-for="Poster" class="form-control" />
+                    <span asp-validation-for="Poster" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Genres" class="form-label">Genres</label>
+                    <input asp-for="Genres" class="form-control" />
+                    <span asp-validation-for="Genres" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Update Movie</button>
+                    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    const rateSlider = document.getElementById('rate-slider');
+    const rateOutput = document.getElementById('rate-output');
+
+    rateSlider.addEventListener('input', function() {
+        rateOutput.value = rateSlider.value;
+    });
+</script>

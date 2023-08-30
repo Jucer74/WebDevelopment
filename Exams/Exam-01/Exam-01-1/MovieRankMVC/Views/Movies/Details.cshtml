@@ -1,0 +1,40 @@
+﻿@model MovieRankMVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-5">
+    <h1>Details</h1>
+
+    <div class="card">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="~/images/@Model.Poster" alt="Movie Poster" class="img-fluid rounded" style="padding: 15px; max-height: 100%;">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Title: @Model.Title</h5>
+                    <p class="card-text">Synopsis: @Model.Synopsis</p>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0"><strong>Year:</strong> @Model.Year</p>
+                    <p class="mb-0"><strong>Duration:</strong> @Model.Duration</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="mb-0"><strong>Rate:</strong> @Model.Rate</p>
+                    <p class="mb-0"><strong>Genres:</strong> @Model.Genres</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
