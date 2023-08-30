@@ -1,5 +1,4 @@
-﻿﻿
-@model MovieRankMVC.Models.User
+﻿@model MovieRankMVC.Models.User
 
 @{
     ViewData["Title"] = "Movie Rank";
@@ -15,40 +14,40 @@
                     </div>
                     <h5 class="card-title text-center">@ViewData["Title"]</h5>
                     <hr class="my-4">
-                    <form asp-action="Register">
+                    <form asp-action="Register" onsubmit="return validateForm()">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="mb-3">
                             <label asp-for="UserEmail" class="form-label">Email</label>
-                            <input asp-for="UserEmail" class="form-control" />
+                            <input id="UserEmail" asp-for="UserEmail" class="form-control" />
                             <span asp-validation-for="UserEmail" class="text-danger"></span>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label asp-for="FirstName" class="form-label">First Name</label>
-                                <input asp-for="FirstName" class="form-control" />
+                                <input id="FirstName" asp-for="FirstName" class="form-control" />
                                 <span asp-validation-for="FirstName" class="text-danger"></span>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label asp-for="LastName" class="form-label">Last Name</label>
-                                <input asp-for="LastName" class="form-control" />
+                                <input id="LastName" asp-for="LastName" class="form-control" />
                                 <span asp-validation-for="LastName" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label asp-for="Password" class="form-label">Password</label>
-                                <input asp-for="Password" class="form-control" />
+                                <input id="Password" asp-for="Password" class="form-control" />
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
-                                <input asp-for="ConfirmPassword" class="form-control" />
+                                <input id="ConfirmPassword" asp-for="ConfirmPassword" class="form-control" />
                                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label asp-for="SelectedProfileImage" class="form-label">Select Profile Image</label>
-                            <select asp-for="SelectedProfileImage" class="form-control" onchange="updateProfileImage()">
+                            <select id="SelectedProfileImage" asp-for="SelectedProfileImage" class="form-control" onchange="updateProfileImage()">
                                 <option value="1">Profile picture 1</option>
                                 <option value="2">Profile picture  2</option>
                                 <option value="3">Profile picture  3</option>
@@ -71,5 +70,25 @@
         var selectedImage = document.getElementById('SelectedProfileImage').value;
         var profileImage = document.getElementById('profileImage');
         profileImage.src = `/images/${selectedImage}.png`;
+    }
+
+    function validateForm() {
+        var userEmail = document.getElementById('UserEmail').value;
+        var firstName = document.getElementById('FirstName').value;
+        var lastName = document.getElementById('LastName').value;
+        var password = document.getElementById('Password').value;
+        var confirmPassword = document.getElementById('ConfirmPassword').value;
+
+        if (!userEmail || !firstName || !lastName || !password || !confirmPassword) {
+            alert('All fields are required');
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return false;
+        }
+
+        return true;
     }
 </script>
