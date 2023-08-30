@@ -1,55 +1,124 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MovieRankMVC.Controllers
 {
     public class UsersController : Controller
     {
-        // Lista estática para almacenar los datos de registro
-        private static List<User> registeredUsers = new List<User>();
 
+        private static List<User> usersList = LoadUsers();
+
+
+        private static List<User> LoadUsers()
+        {
+            List<User> users = new List<User>();
+
+            users.Add(new User() { Id = 1, UserEmail = "admin@email.com", FirstName = "Admin", LastName = "User", Password = "P4ssw0rd*01" });
+
+            return users;
+        }
+
+
+        // GET: UsersController
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        // GET: UsersController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: UsersController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(User user)
+        {
+            try
+            {
+                int newId = usersList.Count + 1;
+                user.Id = newId;
+
+                usersList.Add(user);
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: UsersController/Login
         public IActionResult Login()
         {
             return View();
         }
 
+        // POST: UsersController/Login
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(User user)
+        public IActionResult Login(User user)
         {
-            var registeredUser = registeredUsers.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+            var existingUser = usersList.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
 
-            if (registeredUser != null)
+            if (existingUser != null)
             {
-                ViewBag.AuthenticatedUser = registeredUser.UserEmail;
-                return RedirectToAction("Index", "Movies");
+                // Usuario autenticado, redirigir a la página de inicio
+                return RedirectToAction("Index", "Home");
             }
             else
             {
-                ModelState.AddModelError("", "Credenciales inválidas");
+                // Usuario no encontrado o contraseña incorrecta, mostrar mensaje de error
+                TempData["ErrorMessage"] = "Email or password is incorrect";
+                return View();
             }
-
-            return View(user);
         }
 
+
+        // GET: UsersController/Register
         public IActionResult Register()
         {
-            return View();
+            User userModel = new User(); // o carga los datos del usuario
+            return View(userModel);
         }
 
+        // POST: UsersController/Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(User user)
+        public IActionResult Register(User user)
         {
-            if (ModelState.IsValid)
+            try
             {
-                // Agregar el usuario a la lista estática
-                registeredUsers.Add(user);
+                if (ModelState.IsValid)
+                {
+                    if (user.Password == user.ConfirmPassword)
+                    {
+                        int newId = usersList.Count + 1;
+                        user.Id = newId;
 
-                return RedirectToAction(nameof(Login));
+                        usersList.Add(user);
+
+                        return RedirectToAction(nameof(Login));
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("ConfirmPassword", "Passwords do not match.");
+                    }
+                }
+                return View();
             }
-            return View(user);
+            catch
+            {
+                return View();
+            }
         }
+
+
     }
 }

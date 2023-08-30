@@ -5,10 +5,12 @@ namespace MovieRankMVC.Models;
 public class Movie
 {
     [Key]
+    [Display(Name = "ID")]
     public int Id { get; set; }
 
     [Required(ErrorMessage = "The Title is required")]
     [StringLength(50)]
+    [Display(Name = "Title")]
     public string Title { get; set; } = null!;
 
     [Required(ErrorMessage = "The Synopsis is required")]
@@ -23,7 +25,7 @@ public class Movie
     // Format hh:mi
     public string Duration { get; set; } = null!;
 
-    [Required(ErrorMessage = "The Duration is required")]
+    [Required(ErrorMessage = "The Rate is required")]
     // Format 0.0
     public float Rate { get; set; }
 
