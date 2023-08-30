@@ -7,30 +7,33 @@ public class Friend
     [Key]
     public int Id { get; set; }
 
-    [Required(ErrorMessage ="The FirstName is Required")]
+    [Required(ErrorMessage = "The FirstName is Required")]
     [StringLength(50)]
+    [Display(Name = "First Name")]
     [Display(Name = "First Name" )]
     public string FirstName { get; set; } = null!;
 
     [Required(ErrorMessage = "The LastName is Required")]
     [StringLength(50)]
     [Display(Name = "Last Name")]
+    [Display(Name = "Last Name")]
     public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "The DateOfBirth is Required")]
     [DataType(DataType.Date)]
     [Display(Name = "Date Of Birth")]
+    [Display(Name = "Date Of Birth")]
     public DateTime DateOfBirth { get; set; }
 
-    [Required(ErrorMessage = "The Sex is Required")]
-    [StringLength(1)]
+    [Required(ErrorMessage = "The Gender is Required")]
     [Display(Name = "Gender")]
     public char Gender { get; set; } = 'M';
 
     [Display(Name = "Relations")]
-    public List<string> Relations { get; set; } = null!;    
-    
+    public List<string> Relations { get; set; } = null!;
+
     [Required(ErrorMessage = "The Photo is required")]
+    [Display(Name = "Photo")]
     [StringLength(50)]
     [Display(Name = "Photo")]
     // Include only ImageName.ext
