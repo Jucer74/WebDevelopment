@@ -44,3 +44,7 @@ header {
     background-color: var(--color-darkbrown);
     height: 30%;
 }
+
+.movie {
+    margin-right: 10%
+}
