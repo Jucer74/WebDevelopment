@@ -1,0 +1,129 @@
+﻿@model IEnumerable<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <h1 class="text-center" style="color:white;">Movie Carousel</h1>
+
+    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @for (int i = 0; i < Model.Count(); i += 3)
+            {
+                <div class="carousel-item @(i == 0 ? "active" : "")">
+                    <div class="row justify-content-center">
+                        @for (int j = i; j < i + 3 && j < Model.Count(); j++)
+                        {
+                            <div class="col-md-4 col-sm-6">
+                                <div class="card yugioh-card">
+                                    <div class="card-img-container">
+                                        <img src="@Url.Content(Model.ElementAt(j).Poster)" class="card-img-top img-fluid" alt="@Model.ElementAt(j).Title">
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">@Model.ElementAt(j).Title</h5>
+                                        <p class="card-text">Rate:</p>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" style="width: @(Model.ElementAt(j).Rate * 10)%" aria-valuenow="@Model.ElementAt(j).Rate" aria-valuemin="0" aria-valuemax="10"></div>
+                                        </div>
+                                        <br>
+                                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Home", new { id = Model.ElementAt(j).Id })'">Details</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="carousel-nav">
+            <a class="carousel-prev" href="#movieCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-nav-icon">❮</span>
+            </a>
+            <a class="carousel-next" href="#movieCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-nav-icon">❯</span>
+            </a>
+        </div>
+    </div>
+
+    <div id="background-container">
+        <div id="my-background"></div>
+    </div>
+</div>
+
+<style>
+    #background-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; 
+    }
+
+    #my-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .yugioh-card {
+        background-color: #4A235A;
+        color: white;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+    }
+
+    .card-img-container {
+        max-height: 480px;
+        overflow: hidden;
+    }
+
+    .carousel-nav {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+        .carousel-nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
+            background-color: #fff;
+            color: black;
+            border-radius: 50%;
+            font-size: 20px;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+</style>
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#my-background",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $('#movieCarousel').carousel();
+        });
+
+    </script>
+}
