@@ -1,5 +1,4 @@
-﻿﻿
-@model MovieRankMVC.Models.User
+﻿@model MovieRankMVC.Models.User
 
 @{
     ViewData["Title"] = "Movie Rank";
@@ -11,7 +10,6 @@
             <div class="d-flex justify-content-center mb-4">
                 <img src="~/images/Logo.jpg" alt="Profile Image" class="rounded-circle" style="width: 100px; height: 100px; object-fit: cover;" />
             </div>
-
 
             @if (TempData["ErrorMessage"] != null)
             {
@@ -33,9 +31,9 @@
 
                 <div class="mb-3">
                     <label for="Password" class="form-label">Password</label>
-                    <input type="password" asp-for="Password" class="form-control" required />
+                    <input type="password" asp-for="Password" class="form-control" required minlength="6" />
                     <div class="invalid-feedback">
-                        Please provide a password.
+                        Please provide a password (minimum 6 characters).
                     </div>
                 </div>
 
