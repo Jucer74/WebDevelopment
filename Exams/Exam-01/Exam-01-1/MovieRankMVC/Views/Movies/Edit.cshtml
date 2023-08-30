@@ -26,32 +26,53 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group mb-4">
-                            <label asp-for="Poster" class="control-label"></label>
-                            <input asp-for="Poster" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
+                            <label asp-for="Poster" class="control-label">Poster</label>
+                            <input asp-for="Poster" type="file" class="form-control-file border-dark rounded mt-2 bg-dark text-white" accept=".jpg, .jpeg, .png" />
                             <span asp-validation-for="Poster" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group mb-4">
-                            <label asp-for="Id" class="control-label"></label>
-                            <input asp-for="Id" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
+                            <label asp-for="Id" class="control-label">Id</label>
+                            <input asp-for="Id" class="form-control border-dark rounded mt-2 bg-dark text-white" />
                             <span asp-validation-for="Id" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
-                            <label asp-for="Title" class="control-label"></label>
-                            <input asp-for="Title" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
+                            <label asp-for="Title" class="control-label">Title</label>
+                            <input asp-for="Title" class="form-control border-dark rounded mt-2 bg-dark text-white" />
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
-                            <label asp-for="Synopsis" class="control-label"></label>
-                            <input asp-for="Synopsis" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
+                            <label asp-for="Synopsis" class="control-label">Synopsis</label>
+                            <input asp-for="Synopsis" class="form-control border-dark rounded mt-2 bg-dark text-white" />
                             <span asp-validation-for="Synopsis" class="text-danger"></span>
                         </div>
-                        <div class="form-group mb-4">
-                             <label asp-for="Year" class="control-label"></label>
-                             <input asp-for="Year" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
-                             <span asp-validation-for="Year" class="text-danger"></span>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label asp-for="Year" class="control-label">Year</label>
+                                    <input asp-for="Year" class="form-control border-dark rounded mt-2 bg-dark text-white" />
+                                    <span asp-validation-for="Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label asp-for="Duration" class="control-label">Duration</label>
+                                    <input asp-for="Duration" class="form-control border-dark rounded mt-2 bg-dark text-white" />
+                                    <span asp-validation-for="Duration" class="text-danger"></span>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label asp-for="Rate" class="control-label mb-1">Rate</label>
+                                <input asp-for="Rate" type="range" min="0" max="10" step="0.1" class="form-control-range custom-range border-dark rounded" id="rateRange" />
+                                <span asp-validation-for="Rate" class="text-danger"></span>
+                                <p><span>Selected Rate:</span> <span id="rateValue">0</span></p>
+                            </div>
+                        </div>
+<<<<<<< Updated upstream
                           <div class="form-group mb-4">
                                <label asp-for="Duration" class="control-label"></label>
                                <input asp-for="Duration" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
@@ -65,14 +86,20 @@
                                 <p><span>Selected Rate:</span> <span id="rateValue">0</span></p>
                             </div>
                         </div>
+=======
+>>>>>>> Stashed changes
                         <div class="form-group mb-4">
-                            <label asp-for="Genres" class="control-label"></label>
-                            <input asp-for="Genres" class="form-control border border-dark p-2 rounded mt-2 bg-dark text-white" />
+                            <label asp-for="Genres" class="control-label">Genres</label>
+                            <input asp-for="Genres" class="form-control border-dark rounded mt-2 bg-dark text-white" />
                             <span asp-validation-for="Genres" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
-                            <input type="submit" value="Save" class=" btn btn-success d-inline-block ml-2" />
-                            <a asp-action="Index" class="btn btn-danger d-inline-block">Cancel</a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-check"></i> Save
+                            </button>
+                            <a asp-action="Index" class="btn btn-danger">
+                                <i class="fas fa-times"></i> Cancel
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -96,5 +123,20 @@
 
         rateValue.innerText = rateRange.value;
 
+        const posterInput = document.querySelector('input[name="Poster"]');
+        const previewImage = document.getElementById('previewImage');
+
+        posterInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    previewImage.src = reader.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImage.src = '';
+            }
+        });
     </script>
 }
