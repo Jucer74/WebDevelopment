@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+iframe {
+    border: none;
+}
+
+/** COLORES **/
+
+#color-Gray {
+    background-color: #353A40;
+}
+
+#color-LightGray {
+    background-color: #F7F7F7;
+}
+
+#color-Yellow {
+    background-color: #FCBF06;
+}
+
+#color-Green {
+    background-color: #25A843;
+}
+
+#color-Blue {
+    background-color: #007AFF;
+}
+
+#color-Red {
+    background-color: #DD3546;
+}
+
+#color-Black {
+    background-color: black;
+}
+
+#color-White {
+    background-color: white;
+}
+
+
+/* Global Variales */
+:root {
+    /* Colors */
+    --color-darkgray: #353A40;
+    --color-lightgray: #F7F7F7;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-blue: #007AFF;
+    --color-green: #27A844;
+    --color-yellow: #FEC107;
+    --color-red: #DC3546;
+    --color-bar: #2DA643;
+    /* Dimensions */
+    --header-height: 20%;
+    --main-height: 70%;
+    --footer-height: 10%;
+    --content-width: 100%;
+    --content-height: 100%;
+}
+
+/* Dimensions */
+html, body, iframe  {
+    margin: 0; 
+    padding: 0;
+    border: 0;
+    height: var(--content-height);
+    width: var(--content-width);
+}
+
+/* Main Sections */
+header {
+    height: var(--header-height);
+}
+
+main {
+    height: var(--main-height);
+}
+
+footer {
+    height: var(--footer-height);
+}
+
+
+
+/** ESTILO DEL HEADER**/
+
+.grid {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-column-gap: 0;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.superior-der {
+    color: white;
+}
+
+ /** PARTE SUPEERIOR **/
+.grid-up {
+    display: flex;
+    padding: 3%;
+}
+
+.name {
+    font-size: 20px;
+}
+
+.social-media ul {
+    list-style-type: none;
+}
+
+.social-media li {
+    float: left;
+    text-align: center;
+    width: 7em;
+    font-size: 21px;
+}
+
+.social-media li a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+/** PARTE CENTRAL **/
+.grid-center {
+    padding: 1.5%;
+    font-size: 13px;
+} 
+
+/** PARTE INFERIOR **/
+.grid-down {
+    display: flex;
+} 
+
+.grid-down a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.grid-down p {
+    font-size: 15px;
+}
+
+button {
+    width: 25%;
+    border: none;
+    padding: 2%;
+}
+
+/** ICONOS **/
+
+.icon-home {
+    font-size: 34px;
+}
+
+.icon-cap {
+    font-size: 30px;
+}
+
+.icon-folder {
+    font-size: 30px;
+}
+
+.icon-mail {
+    font-size: 30px;
+}
+
+/** ESTILO DEL FOOTER **/ 
+
+.footer-button button a {
+    text-decoration: none;
+    cursor: pointer;
+    color: white;
+}
+
+.footer-button button { 
+    padding: 1%;
+    width: 14%;
+    border: 2px solid white;
+    background: none;
+    justify-content: center;
+    font-size: 12px;
+    margin: 3%;
+}
+
+
