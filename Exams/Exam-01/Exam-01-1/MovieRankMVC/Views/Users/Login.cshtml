@@ -52,3 +52,20 @@
         </div>
     </div>
 </div>
+
+
+<script>
+    // Recuperar el valor almacenado en localStorage
+    var lastUserEmail = localStorage.getItem("lastUserEmail");
+
+    // Si hay un último usuario almacenado, configurar el campo de email
+    if (lastUserEmail) {
+        document.getElementById("UserEmail").value = lastUserEmail;
+    }
+
+    // Manejar el evento del formulario para guardar el último usuario en localStorage
+    document.querySelector("form").addEventListener("submit", function () {
+        var userEmail = document.getElementById("UserEmail").value;
+        localStorage.setItem("lastUserEmail", userEmail);
+    });
+</script>
