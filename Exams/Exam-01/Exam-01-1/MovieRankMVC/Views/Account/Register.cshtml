@@ -97,16 +97,20 @@
     function validarPassword() {
         var password = document.getElementById("password").value;
         var confirmarPassword = document.getElementById("confirmPassword").value;
+        var msg = "";
         
         if (password !== confirmarPassword){
             //document.getElementById("confirmPassword").setCustomValidity("Make sure passwords match to proceed"); 
             // esto arriba funciona el mensaje pero bloquea el submit?
-            mostrarToast("Passwords do not match");
+            // mostrarToast("Passwords do not match");
+            msg = "Passwords do not match";
         } else {
           //  document.getElementById("confirmPassword").innerHTML += `<p> Password confirmed </p>`;  // .setCustomValidity("Password: Confirmed.");    
           //document.getElementById("confirmPassword").setCustomValidity("Password: Confirmed.");
-            mostrarToast("Password: confirmed");
+          //   mostrarToast("Password: confirmed");
           //document.getElementById("registerForm").submit();
+            msg = "Password: confirmed";
+            activeToast = false;
         }
         
         if (!activeToast){
