@@ -1,32 +1,30 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace BDayReminderMVC.Models;
-
-public class Persona
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+namespace BDayReminderMVC.Models
 {
-    [Key]
+    public class Persona
+    {
+        [Key]
+        public int Id { get; set; }
 
+        [Required(ErrorMessage = "El nombre es obligatorio")]
+        [StringLength(50)]
+        [Display(Name = "Nombre")]
+        public string FirstName { get; set; }
 
-    public int Id { get; set; }
+        [Required(ErrorMessage = "El apellido es obligatorio")]
+        [StringLength(50)]
+        [Display(Name = "Apellido")]
+        public string LastName { get; set; }
 
+        [Required(ErrorMessage = "La fecha de nacimiento es obligatoria")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de nacimiento")]
+        public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
-    [Required(ErrorMessage = "The FirstName is Required")]
-    [StringLength(50)]
-    [Display(Name = "Nombre")]
-    public string FirstName { get; set; } = null!;
-
-    [Required(ErrorMessage = "The LastName is Required")]
-    [StringLength(50)]
-    [Display(Name = "Apellido")]
-    public string LastName { get; set; } = null!;
-
-    [Required(ErrorMessage = "The DateOfBirth is Required")]
-    [DataType(DataType.Date)]
-    [Display(Name = "Fecha de nacimiento")]
-    public DateTime DateOfBirth { get; set; } = DateTime.Now;
-
-    [Required(ErrorMessage = "The Sex is Required")]
-    [StringLength(1)]
-    [Display(Name = "Sexo")]
-    public char Sex { get; set; } = 'M';
+        [Required(ErrorMessage = "El sexo es obligatorio")]
+        [StringLength(1)]
+        [Display(Name = "Sexo")]
+        public char Sex { get; set; } = 'M';
+    }
 }
