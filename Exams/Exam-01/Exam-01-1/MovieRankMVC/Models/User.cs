@@ -30,5 +30,7 @@ namespace MovieRankMVC.Models
         public string ConfirmPassword { get; set; } = null!;
 
         public int SelectedProfileImage { get; set; } = 1; // Valor por defecto
+
+        public bool RememberMe { get; set; } //checkbox
     }
 }
