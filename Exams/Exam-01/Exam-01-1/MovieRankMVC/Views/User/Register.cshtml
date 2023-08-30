@@ -1,26 +1,10 @@
-﻿@{
-    ViewData["Title"] = "Login ";
+﻿@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "Register Rank";
 }
 
-<link rel="stylesheet" href="~/css/LoginStyle.css" asp-append-version="true" />
-
-<form class="mx-auto" action="index.html">
-    <h3 class="text-center">Login</h3>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">User:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ejemplo@correo.com" required>
-    </div>
-    <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" required>
-    </div>
-    <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary">login</button>
-    </div>
-    <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registrarse</button>
-    </div>
-
+<div class="container">
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
          aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -40,15 +24,15 @@
                             <div class="col-md-6">
                                 <div class="demo-content">
                                     <div class="mb-3">
-                                        <label for="exampleInputText" class="form-label">Name:</label>
-                                        <input type="text" class="form-control" id="exampleInputName" placeholder="Nombre" required>
+                                        <label for="exampleInputText" class="form-label">First Name:</label>
+                                        <input type="text" class="form-control" id="exampleInputName" placeholder="First Name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputText" class="form-label">birthdate day:</label>
+                                        <label for="exampleInputText" class="form-label">Date of Birth:</label>
                                         <input type="date" class="form-control" id="exampleInputName" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">password:</label>
+                                        <label for="exampleInputPassword1" class="form-label">Password:</label>
                                         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="********" required>
                                     </div>
                                 </div>
@@ -56,18 +40,18 @@
                             <div class="col-md-6">
                                 <div class="demo-content bg-alt">
                                     <div class="mb-3">
-                                        <label for="exampleInputText" class="form-label">last name:</label>
-                                        <input type="text" class="form-control" id="exampleInputName" placeholder="Apellido" required>
+                                        <label for="exampleInputText" class="form-label">Last name:</label>
+                                        <input type="text" class="form-control" id="exampleInputName" placeholder="Last name" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="exampleInputText" class="form-label">genre:</label>
+                                        <label for="exampleInputText" class="form-label">Gener:</label>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="customRadio" id="customRadio1">
-                                            <label class="form-check-label" for="customRadio1">M</label>
+                                            <label class="form-check-label" for="customRadio1">Male</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input type="radio" class="form-check-input" name="customRadio" id="customRadio2" checked>
-                                            <label class="form-check-label" for="customRadio2">F</label>
+                                            <label class="form-check-label" for="customRadio2">Female</label>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -80,11 +64,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" data="modal">Accept</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
         </div>
 
-     </div>
-</form>
+    </div>
+</div>
+

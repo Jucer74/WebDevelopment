@@ -19,39 +19,13 @@ namespace MovieRankMVC.Controllers
 
             return users;
         }
- 
-        // GET: UserController
-        public ActionResult Index(User user)
+
+        public ActionResult Index()
         {
             return View();
         }
 
-        // GET: UserController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: UserController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(User user)
-        {
-            try
-            {
-                int newId = userList.Count + 1;
-                user.Id = newId;
-                userList.Add(user);
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        public IActionResult Login(User user) 
+        public IActionResult Login()
         {
             return View();
         }
@@ -60,8 +34,8 @@ namespace MovieRankMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Login(User user)
         {
-            var userExist = userList.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
-            if (userExist != null)
+            var existingUser = userList.Find(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+            if (existingUser != null)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -71,6 +45,7 @@ namespace MovieRankMVC.Controllers
                 return View();
             }
         }
+
         public IActionResult Register()
         {
             User userModel = new();
