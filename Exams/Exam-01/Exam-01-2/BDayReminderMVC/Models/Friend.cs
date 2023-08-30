@@ -28,7 +28,7 @@ public class Friend
     public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
     [Required(ErrorMessage = "The Sex is Required")]
-    public char Sex { get; set; }
+    public string Sex { get; set; }
     
     public string Relations { get; set; } = null!;    
     

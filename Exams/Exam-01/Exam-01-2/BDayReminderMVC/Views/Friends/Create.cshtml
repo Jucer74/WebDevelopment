@@ -34,9 +34,17 @@
             </div>
             <div class="form-group">
                 <label asp-for="Sex" class="control-label"></label>
-                <input asp-for="Sex" class="form-control" />
+                <div class="form-check">
+                    <input asp-for="Sex" type="radio" class="form-check-input" value="male" id="maleRadio" />
+                    <label class="form-check-label" for="maleRadio">Male</label>
+                </div>
+                <div class="form-check">
+                    <input asp-for="Sex" type="radio" class="form-check-input" value="female" id="femaleRadio" />
+                    <label class="form-check-label" for="femaleRadio">Female</label>
+                </div>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Relations" class="control-label"></label>
                 <input asp-for="Relations" class="form-control" />

@@ -53,7 +53,10 @@
                     @Html.DisplayFor(modelItem => item.DateOfBirth)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Sex)
+                    @{
+                        string formattedSex = item.Sex.Equals("male", StringComparison.OrdinalIgnoreCase) ? "Male" : "Female";
+                    }
+                    @formattedSex
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Relations)
