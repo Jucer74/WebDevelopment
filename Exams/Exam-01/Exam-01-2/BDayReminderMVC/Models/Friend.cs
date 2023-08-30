@@ -10,18 +10,15 @@ public class Friend
     [Required(ErrorMessage = "The FirstName is Required")]
     [StringLength(50)]
     [Display(Name = "First Name")]
-    [Display(Name = "First Name" )]
     public string FirstName { get; set; } = null!;
 
     [Required(ErrorMessage = "The LastName is Required")]
     [StringLength(50)]
     [Display(Name = "Last Name")]
-    [Display(Name = "Last Name")]
     public string LastName { get; set; } = null!;
 
     [Required(ErrorMessage = "The DateOfBirth is Required")]
     [DataType(DataType.Date)]
-    [Display(Name = "Date Of Birth")]
     [Display(Name = "Date Of Birth")]
     public DateTime DateOfBirth { get; set; }
 
@@ -33,7 +30,6 @@ public class Friend
     public List<string> Relations { get; set; } = null!;
 
     [Required(ErrorMessage = "The Photo is required")]
-    [Display(Name = "Photo")]
     [StringLength(50)]
     [Display(Name = "Photo")]
     // Include only ImageName.ext
