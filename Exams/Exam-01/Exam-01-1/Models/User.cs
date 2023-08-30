@@ -23,8 +23,17 @@ public class User
     [Required(ErrorMessage = "The Password is required")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
+<<<<<<< HEAD:Exams/Exam-01/Exam-01-1/Models/User.cs
 
     [Required(ErrorMessage = "The Confirm Password is required")]
     [StringLength(50)]
     public string ConfirmPassword { get; set; } = null!;
+=======
+    
+    [NotMapped]
+    [Compare("Password")]
+    [StringLength(50)]
+    [PasswordPropertyText(true)]
+    public string ConfirmPassword { get; set; } = null!;    
+>>>>>>> main:Exams/Exam-01/Exam-01-1/MovieRankMVC/Models/User.cs
 }
