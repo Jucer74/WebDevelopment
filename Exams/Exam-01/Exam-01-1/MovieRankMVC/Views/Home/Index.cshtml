@@ -1,8 +1,250 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@* @model List<MovieRank.Models.Movie>  *@
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Movie</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+    <link
+        rel="stylesheet"
+        href="~/MovieRank.styles.css"
+        asp-append-version="true"/>
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="~/lib/owl.carousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/lib/owl.carousel/dist/assets/owl.theme.default.min.css">
+
+    <style>
+        .movie-carousel-img{
+            width: 200px;
+            height: 400px;
+        }
+    </style>
+
+</head>
+<body>
+
+<!-- Carousel -->
+<!-- Carousel as Cards -->
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Example headline.</h1>
+                    <p class="card-text opacity-75">Some representative placeholder content for the first slide of the carousel.</p>
+                    <a href="#" class="btn btn-primary">Sign up today</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">Another example headline.</h1>
+                    <p class="card-text">Some representative placeholder content for the second slide of the carousel.</p>
+                    <a href="#" class="btn btn-primary">Learn more</a>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="card-title">One more for good measure.</h1>
+                    <p class="card-text">Some representative placeholder content for the third slide of this carousel.</p>
+                    <a href="#" class="btn btn-primary">Browse gallery</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
 </div>
+
+
+<!-- Optimizacion for each <- ∃comm: controller home+movie ==> services.movies -->
+<!-- Especialmente para poder conectar los datos del carousel con los de movies, despues de ser editados? -->
+<div class="container mx-auto m-5">
+    <div class="owl-carousel owl-theme owl-loaded">
+        <div class="owl-stage-outer">
+            <div class="flex justify-content-center">
+                <div class="owl-stage">
+                    @if (ViewBag.Movies != null)
+                    {
+                        @foreach (var movie in ViewBag.Movies)
+                        {
+                            <!-- Renderizar información de la película -->
+                            <div class="owl-item">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="movie-carousel-img" src="@movie.Poster" alt="Movie Poster">
+                                    <div class="card-body" style="height: 300px;">
+                                        <h5 class="card-title">@movie.Title</h5>
+                                        <p class="card-text">@movie.Synopsis</p>
+                                        <!-- Progress Bar -->
+                                        <div class="progress m-2">
+                                            <div class="progress_bar" style="width: 80%;" value=@(movie.Rate * 10)>@(movie.Rate)</div>
+                                        </div>
+                                    </div>
+                                    <a class="btn btn-primary m-4" asp-action="MovieDetails" asp-route-id="@movie.Id">Details</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container-fluid">
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title><rect width="80%" height="80%"/>
+            </svg>
+            <h2 class="fw-normal">Heading</h2>
+            <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
+            <p>
+                <a class="btn btn-secondary" href="#">View details &raquo;</a>
+            </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title><rect width="80%" height="80%"/>
+            </svg>
+            <h2 class="fw-normal">Heading</h2>
+            <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
+            <p>
+                <a class="btn btn-secondary" href="#">View details &raquo;</a>
+            </p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+            <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title><rect width="80%" height="80%"/>
+            </svg>
+            <h2 class="fw-normal">Heading</h2>
+            <p>And lastly this, the third column of representative placeholder content.</p>
+            <p>
+                <a class="btn btn-secondary" href="#">View details &raquo;</a>
+            </p>
+        </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette m-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
+            <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title><rect width="80%" height="80%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" dy=".3em">500x500</text>
+            </svg>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette m-5">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading fw-normal lh-1">Oh yeah, it’s that good. <span class="text-body-secondary">See for yourself.</span></h2>
+            <p class="lead">Another featurette? Of course. More placeholder content here to give you an idea of how this layout would work with some actual real-world content in place.</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title><rect width="80%" height="80%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" dy=".3em">500x500</text>
+            </svg>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette m-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading fw-normal lh-1">And lastly, this one. <span class="text-body-secondary">Checkmate.</span></h2>
+            <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
+        </div>
+        <div class="col-md-5">
+            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Placeholder</title><rect width="80%" height="80%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" dy=".3em">500x500</text>
+            </svg>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->
+
+</div>
+<!-- /.container -->
+
+<script src="~/lib/jquery/dist/jquery.min.js" defer></script>
+<!-- Owl Carousel Js -->
+<script src="~/lib/owl.carousel/dist/owl.carousel.min.js" defer></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" defer></script>
+<script src="~/js/site.js" asp-append-version="true" defer></script>
+<script src="/_framework/aspnetcore-browser-refresh.js"></script>
+<!-- Owl Carousel Js Logic -->
+@*Modificacion para que espere a que se cargue el contenido antes de modificarlo*@
+<script defer>
+    window.addEventListener("load", function() {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 30,
+            autoWidth:true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                768: {
+                    items: 4,
+                    nav: true,
+                    loop: false
+                },
+                992: {
+                    items: 5,
+                    nav: true,
+                    loop: false
+                },
+                1200: {
+                    items: 6,
+                    nav: true,
+                    loop: false
+                }
+            },
+            autoplay: true,
+            autoplayTimeout: 800,
+            autoplaySpeed: 50,
+            autoplayHoverPause: true
+        });
+    });
+</script>
+
+</body>
+</html>

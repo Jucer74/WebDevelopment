@@ -1,0 +1,11 @@
+{
+  "name": "MovieRankMVC",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/hacksJuanDavid/MovieRankMVC.git",
+  "author": "hacksJuanDavid <josuacoty000@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "owl.carousel": "^2.3.4"
+  }
+}

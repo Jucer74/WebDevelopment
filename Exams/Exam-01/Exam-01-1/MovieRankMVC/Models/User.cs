@@ -1,26 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 
-namespace MovieRankMVC.Models;
+namespace MovieRank.Models;
 
-public class User
+public class User : IdentityUser
 {
-    [Key]
-    public int Id { get; set; }
+    [Key] public new int Id { get; set; }
 
-    [Required(ErrorMessage = "The UserEmail is required")]
-    [EmailAddress(ErrorMessage = "The UserEmail must be a valid email address")]
-    [StringLength(300)]
+    [Required(ErrorMessage = "UserEmail is required.")]
+    [EmailAddress(ErrorMessage = "UserEmail has to be a valid address.")]
+    [StringLength(50)]
     public string UserEmail { get; set; } = null!;
 
-    [Required(ErrorMessage = "The FirstName is required")]
+    [Required(ErrorMessage = "FirstName cannot be empty.")]
     [StringLength(50)]
     public string FirstName { get; set; } = null!;
 
-    [Required(ErrorMessage = "The LastName is required")]
+    [Required(ErrorMessage = "LastName cannot be empty.")]
     [StringLength(50)]
     public string LastName { get; set; } = null!;
 
-    [Required(ErrorMessage = "The Password is required")]
+    [Required(ErrorMessage = "Password is absolutely required.")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
 }
