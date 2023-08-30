@@ -1,0 +1,87 @@
+﻿@model MovieRankMVC.Models.User
+
+@{
+    ViewData["Title"] = "View";
+}
+@{
+    var message = TempData["Message"] as string;
+    TempData.Remove("Message");  // Elimina el mensaje de TempData para que no se muestre en futuras solicitudes
+}
+
+@if (!string.IsNullOrEmpty(message))
+{
+    <div class="alert alert-info">
+        @message
+    </div>
+}
+<style>
+    body {
+        background-color: gray;
+    }
+
+    header, footer{
+        display: none;
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-6 mx-auto mt-5">
+        <div class="card mt-5 shadow border border-dark">
+            <div class="card-header bg-dark text-white">
+                <img src="~/Posters/MovieRank-Cover.png" alt="Logo" class="img-fluid" width="100" height="100" />
+                <h1 class="card-title text-center">MovieRank</h1>
+            </div>
+            <div class="card-body">
+
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group mb-4">
+                        <label asp-for="UserEmail" class="control-label">User:</label>
+                        <input asp-for="UserEmail" class="form-control border border-dark p-2 rounded mt-2" placeholder="John.Doe@gmail.com" />
+                        <span asp-validation-for="UserEmail" class="text-danger"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label asp-for="FirstName" class="control-label">First Name:</label>
+                                <input asp-for="FirstName" class="form-control border border-dark p-2 rounded mt-2" placeholder="John" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label asp-for="LastName" class="control-label">Last Name:</label>
+                                <input asp-for="LastName" class="form-control border border-dark p-2 rounded mt-2" placeholder="Doe" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label asp-for="Password" class="control-label">Password:</label>
+                                <input asp-for="Password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="*********" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group mb-4">
+                                <label asp-for="ConfirmPassword" class="control-label">Confirm Password:</label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control border border-dark p-2 rounded mt-2" type="password" placeholder="*********" />
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mb-3">
+                        <input type="submit" value="Create" class="btn btn-primary d-inline-block ml-2" />
+                        <a asp-action="Login" class="btn btn-danger d-inline-block">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -6,13 +6,28 @@
     <title>@ViewData["Title"] - StudentsMVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+<<<<<<< Updated upstream:Practices/03.MVC/StudentsMVC/Views/Shared/_Layout.cshtml
     <link rel="stylesheet" href="~/StudentsMVC.styles.css" asp-append-version="true" />
+=======
+    <link rel="stylesheet" href="~/MovieRankMVC.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+>>>>>>> Stashed changes:Exams/Exam-01/Exam-01-1/MovieRankMVC/Views/Shared/_Layout.cshtml
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
+<<<<<<< Updated upstream:Practices/03.MVC/StudentsMVC/Views/Shared/_Layout.cshtml
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">StudentsMVC</a>
+=======
+                <a href="@Url.Action("Index", "Home")">
+                    <img src="~/Posters/MovieRank-Cover.png" alt="Logo" class="img-fluid" width="100" height="100" />
+                </a>
+
+
+              
+>>>>>>> Stashed changes:Exams/Exam-01/Exam-01-1/MovieRankMVC/Views/Shared/_Layout.cshtml
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,14 +35,20 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Movies" asp-action="Index">CRUD</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
                         </li>
+                    </ul>
+                    <ul class="navbar-nav ml-auto">
+
+                        <div class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Users" asp-action="Login">
+                                <i class="fas fa-user"></i>
+                                <h8>@TempData["UserEmail"]</h8>
+                            </a>
+                        </div>
                     </ul>
                 </div>
             </div>

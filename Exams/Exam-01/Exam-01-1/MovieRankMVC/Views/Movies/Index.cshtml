@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MovieRankMVC.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<style>
+    .table.table-borderless thead th {
+        border-bottom: 1px solid black;
+    }
+
+    .icono-negro {
+        color: black;
+    }
+</style>
+
+<div class="container">
+    <h1>CRUD</h1>
+    <p class="mt-3">
+        <a asp-action="Create" class="btn btn-primary text-white">Create</a>
+    </p>
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Poster)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th class="text-center">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@Url.Content(item.Poster)" alt="Poster" style="max-width: 100px; max-height: 150px;" />
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td class="text-center">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-link">
+                                <i class="fas fa-edit icono-negro"></i>
+                            </a>
+                            <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-link">
+                                <i class="fas fa-list icono-negro"></i>
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-link">
+                                <i class="fas fa-trash icono-negro"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
