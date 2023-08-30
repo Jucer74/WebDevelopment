@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using BDayReminderMVC.Models;
+using Microsoft.Extensions.Primitives;
 
 namespace BDayReminderMVC.Controllers
 {
@@ -10,7 +11,7 @@ namespace BDayReminderMVC.Controllers
         private static List<User> userlist = LoadUser();
        
         // GET: UsersController
-        public ActionResult Index()
+       /* public ActionResult Index()
         {
             return View();
         }
@@ -20,7 +21,7 @@ namespace BDayReminderMVC.Controllers
         {
             var user = userlist.Find(user => user.Id == id);
             return View(user);
-        }
+        }*/
 
         // GET: UsersController/Create
         public ActionResult Create()
@@ -50,7 +51,7 @@ namespace BDayReminderMVC.Controllers
         }
     
         // GET: UsersController/Edit/5
-        public ActionResult Edit(int id)
+        /*public ActionResult Edit(int id)
         {
             var user = userlist.Find(user => user.Id == id);
             return View(user);
@@ -103,6 +104,14 @@ namespace BDayReminderMVC.Controllers
             {
                 return View();
             }
+        }*/
+
+        public ActionResult validationUser(string User, string Password)
+        {
+            
+
+
+            return View();
         }
 
         private static List<User> LoadUser()
@@ -111,9 +120,9 @@ namespace BDayReminderMVC.Controllers
 
             user.Add(new Models.User()
             {
-                user = "Admin@email.com",
-                firstName = "Admin",
-                lastName = "User",
+                UserName = "Admin@email.com",
+                FirstName = "Admin",
+                LastName = "User",
                 Password = " P4ssw0rd*01"
 
             });
