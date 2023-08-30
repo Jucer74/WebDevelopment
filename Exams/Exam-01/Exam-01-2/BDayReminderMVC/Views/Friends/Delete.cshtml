@@ -39,7 +39,10 @@
             @Html.DisplayNameFor(model => model.Sex)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Sex)
+            @{
+                string formattedSex = Model.Sex.Equals("male", StringComparison.OrdinalIgnoreCase) ? "Male" : "Female";
+            }
+            @formattedSex
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Relations)

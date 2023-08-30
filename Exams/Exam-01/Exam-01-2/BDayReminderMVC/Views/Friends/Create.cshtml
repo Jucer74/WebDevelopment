@@ -34,22 +34,106 @@
             </div>
             <div class="form-group">
                 <label asp-for="Sex" class="control-label"></label>
-                <div class="form-check">
-                    <input asp-for="Sex" type="radio" class="form-check-input" value="male" id="maleRadio" />
-                    <label class="form-check-label" for="maleRadio">Male</label>
-                </div>
-                <div class="form-check">
-                    <input asp-for="Sex" type="radio" class="form-check-input" value="female" id="femaleRadio" />
-                    <label class="form-check-label" for="femaleRadio">Female</label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input asp-for="Sex" type="radio" class="form-check-input" value="male" id="maleRadio" />
+                        <label class="form-check-label" for="maleRadio">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input asp-for="Sex" type="radio" class="form-check-input" value="female" id="femaleRadio" />
+                        <label class="form-check-label" for="femaleRadio">Female</label>
+                    </div>
                 </div>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Relations" class="control-label"></label>
-                <input asp-for="Relations" class="form-control" />
+                <label asp-for="Relations" class="control-label">Relations</label>
+                <div>
+                    <div id="selectedRelations" class="mb-2">
+                        <!-- Aquí se mostrarán las relaciones seleccionadas -->
+                    </div>
+                    <div class="d-flex">
+                        <button type="button" class="btn btn-primary mr-2" onclick="selectRelation('Family')">Family</button>
+                        <button type="button" class="btn btn-primary mr-2" onclick="selectRelation('School')">School</button>
+                        <button type="button" class="btn btn-primary mr-2" onclick="selectRelation('Brother')">Brother</button>
+                        <button type="button" class="btn btn-primary" onclick="selectRelation('Work')">Work</button>
+                        <!-- Agrega más botones según sea necesario -->
+                    </div>
+
+                    <div class="d-flex mt-2">
+                        <input type="text" id="customRelationInput" class="form-control mr-2" placeholder="Custom Relation">
+                        <button type="button" class="btn btn-success" onclick="addCustomRelation()">Add Relation</button>
+                    </div>
+                </div>
+                <input asp-for="Relations" id="relationsInput" type="hidden" />
                 <span asp-validation-for="Relations" class="text-danger"></span>
             </div>
+
+            <script>
+                var selectedRelations = [];
+
+                function selectRelation(relation) {
+                    var buttons = document.querySelectorAll('.btn.btn-primary');
+                    buttons.forEach(function (button) {
+                        button.classList.remove('active');
+                    });
+
+                    var selectedButton = document.querySelector('button[data-relation="' + relation + '"]');
+                    selectedButton.classList.add('active');
+
+                    var relationsInput = document.getElementById('relationsInput');
+                    relationsInput.value = relation;
+                }
+
+                function addCustomRelation() {
+                    var customRelationInput = document.getElementById('customRelationInput');
+                    var customRelation = customRelationInput.value.trim();
+
+                    if (customRelation && !selectedRelations.includes(customRelation)) {
+                        selectedRelations.push(customRelation);
+                        customRelationInput.value = ''; // Limpia el input
+                        updateSelectedRelations();
+                    }
+                }
+
+                function removeCustomRelation(relation) {
+                    var index = selectedRelations.indexOf(relation);
+                    if (index !== -1) {
+                        selectedRelations.splice(index, 1);
+                        updateSelectedRelations();
+                    }
+                }
+
+                function updateSelectedRelations() {
+                    var selectedRelationsDiv = document.getElementById('selectedRelations');
+                    selectedRelationsDiv.innerHTML = '';
+
+                    selectedRelations.forEach(function (relation) {
+                        var button = document.createElement('button');
+                        button.type = 'button';
+                        button.className = 'btn btn-primary mr-2';
+                        button.innerText = relation;
+
+                        var removeButton = document.createElement('button');
+                        removeButton.type = 'button';
+                        removeButton.className = 'btn btn-danger';
+                        removeButton.innerText = 'Remove';
+                        removeButton.addEventListener('click', function () {
+                            removeCustomRelation(relation);
+                        });
+
+                        var container = document.createElement('div');
+                        container.className = 'd-flex align-items-center';
+                        container.appendChild(button);
+                        container.appendChild(removeButton);
+
+                        selectedRelationsDiv.appendChild(container);
+                    });
+
+                    relationsInput.value = selectedRelations.join(', '); // Actualiza el valor oculto
+                }
+            </script>
             <div class="form-group">
                 <label asp-for="Photo" class="control-label"></label>
                 <input asp-for="Photo" class="form-control" />
@@ -62,7 +146,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
-                <a class="btn btn-secondary" asp-action="Index">Back</a>
+                <a class="btn btn-secondary" asp-action="Index">Cancel</a>
             </div>
             
         </form>
