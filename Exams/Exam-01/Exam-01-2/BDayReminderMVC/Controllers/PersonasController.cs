@@ -124,7 +124,7 @@ namespace BDayReminderMVC.Controllers
 
 
 
-        private static List<Persona> LoadPersonas()
+        public static List<Persona> LoadPersonas()
         {
             var personas = new List<Persona>();
 
