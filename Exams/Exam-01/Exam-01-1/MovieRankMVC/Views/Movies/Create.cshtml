@@ -17,38 +17,38 @@
 
                 <div class="mb-3">
                     <label asp-for="Title" class="form-label">Title</label>
-                    <input asp-for="Title" class="form-control" />
+                    <input asp-for="Title" class="form-control" required />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Synopsis" class="form-label">Synopsis</label>
-                    <textarea asp-for="Synopsis" name="comentarios" rows="1" cols="10" class="form-control" required>Escribe la sinopsis</textarea>
+                    <textarea asp-for="Synopsis" name="comentarios" rows="1" cols="10" class="form-control" required>Write the sinopsis</textarea>
                     <span asp-validation-for="Synopsis" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Year" class="form-label">Year</label>
-                    <input type="number" asp-for="Year" class="form-control" />
+                    <input type="number" asp-for="Year" class="form-control" required />
                     <span asp-validation-for="Year" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Duration" class="form-label">Duration</label>
-                    <input type="time" asp-for="Duration" class="form-control" />
+                    <input type="time" asp-for="Duration" class="form-control" required />
                     <span asp-validation-for="Duration" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Rate" class="form-label">Rate</label>
-                    <input type="range" asp-for="Rate" class="form-range" step="0.1" min="0" max="10" />
+                    <input type="range" asp-for="Rate" class="form-range" step="0.1" min="0" max="10" required />
                     <output class="form-output"></output>
                     <span asp-validation-for="Rate" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Poster" class="form-label">Poster</label>
-                    <input asp-for="Poster" class="form-control" />
+                    <input asp-for="Poster" class="form-control" required />
                     <span asp-validation-for="Poster" class="text-danger"></span>
                 </div>
                 <div class="mb-3">
                     <label asp-for="Genres" class="form-label">Genres</label>
-                    <input asp-for="Genres" class="form-control" />
+                    <input asp-for="Genres" class="form-control" required />
                     <span asp-validation-for="Genres" class="text-danger"></span>
                 </div>
                 <div class="d-flex justify-content-between">
