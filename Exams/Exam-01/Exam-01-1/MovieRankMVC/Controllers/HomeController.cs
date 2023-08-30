@@ -31,6 +31,7 @@ public class HomeController : Controller
             ViewBag.Movies =
                 new List<Movie>(); // Otra opción es asignar una lista vacía en caso de que no haya películas.
         }
+
         return View();
     }
 

@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Antiforgery;
+using MovieRank;
 using MovieRank.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,11 +10,22 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<MovieService>();
 builder.Services.AddScoped<UserService>();
 
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(options => { options.LoginPath = "/Account/Login"; });
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
         options.LoginPath = "/Account/Login"; // Ruta de inicio de sesión
     });
+
+builder.Services.AddAntiforgery(options =>
+{
+    options.HeaderName = "X-CSRF-TOKEN";
+    options.Cookie.Name = "MyAntiforgeryCookie";
+    options.Cookie.HttpOnly = true;
+    // Otras configuraciones antiforgery si son necesarias
+});
+
 
 var app = builder.Build();
 
@@ -31,8 +44,17 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+//
+// app.MapControllerRoute(
+//     name: "default",
+//     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+});
+
 
 app.Run();

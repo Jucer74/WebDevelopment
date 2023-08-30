@@ -14,23 +14,23 @@ namespace MovieRank.Services
             // Add users to the list
             users.Add(new User
             {
-                Id = 1, UserEmail = "jonhdoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 1, UserEmail = "jonhdoe@gmail.com", FirstName = "Perro", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 2, UserEmail = "jonhdoe2@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 2, UserEmail = "jonhdoe2@gmail.com", FirstName = "Gato", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 3, UserEmail = "doejohn@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 3, UserEmail = "doejohn@gmail.com", FirstName = "Camello", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 4, UserEmail = "johndoe@gmail.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 4, UserEmail = "johndoe@gmail.com", FirstName = "Rober", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
-                Id = 5, UserEmail = "john_doe@yahoo.com", FirstName = "John", LastName = "Doe", Password = "password"
+                Id = 5, UserEmail = "john_doe@yahoo.com", FirstName = "Stuar", LastName = "Doe", Password = "password"
             });
             users.Add(new User
             {
@@ -46,8 +46,15 @@ namespace MovieRank.Services
 
         public User GetUserById(int id)
         {
-            return _users.FirstOrDefault(user => user.Id == id);
+            return _users.FirstOrDefault(user => user.Id == id)!;
         }
+
+        public bool UserExistsEmail(string email) => _users.Any(u => u.UserEmail == email);
+
+        // public User GetUserByEmail(string email)
+        // {
+        //     return _users.FirstOrDefault(u => u.UserEmail == email)!;
+        // }
 
         public void AddUser(User user)
         {

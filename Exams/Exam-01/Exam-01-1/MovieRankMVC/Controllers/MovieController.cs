@@ -26,7 +26,6 @@ namespace MovieRank.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Movie movie)
         {
@@ -47,10 +46,8 @@ namespace MovieRank.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Edit(int id)
-        {      
-            
+        {
             Movie movie = _movieService.GetMovieById(id);
             if (movie == null)
             {
@@ -61,7 +58,6 @@ namespace MovieRank.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Movie editedMovie)
         {
@@ -94,7 +90,6 @@ namespace MovieRank.Controllers
         }
 
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Delete(int id)
         {
             Movie movie = _movieService.GetMovieById(id);
@@ -107,7 +102,6 @@ namespace MovieRank.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {

@@ -127,5 +127,6 @@ namespace MovieRank.Controllers
             var users = _userService.GetAllUsers();
             return PartialView("List", users);
         }
+
     }
 }
