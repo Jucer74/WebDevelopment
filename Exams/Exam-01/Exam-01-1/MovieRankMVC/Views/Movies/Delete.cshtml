@@ -91,7 +91,9 @@
     function confirmDelete() {
         var result = confirm("Are you sure you want to delete this movie?");
         if (result) {
-            document.querySelector('form').submit();
+            return true;
+        } else {
+            return false;
         }
     }
 </script>
