@@ -5,7 +5,6 @@ namespace BDayReminderMVC.Models;
 
 public class User
 {
-
     [Key]
     public int Id { get; set; }
 

@@ -38,7 +38,6 @@ namespace BDayReminderMVC.Controllers
                 friend.Sex = Request.Form["Sex"];
                 friendsList.Add(friend);
                 return RedirectToAction(nameof(Index));
-     
             }
             catch
             {
@@ -96,15 +95,11 @@ namespace BDayReminderMVC.Controllers
             }
         }
 
-
-
-
-
         private static List<Friend> LoadFriends()
         {
             var friends = new List<Friend>();
 
-            friends.Add(new Friend() { Id = 1, FirstName = "Miguel", LastName = "Cordoba", DateOfBirth = new DateTime(2000, 10, 8), Sex = "Male", Relations = "Relative", Photo = "/images/miguel.jpg"});
+            friends.Add(new Friend() { Id = 1, FirstName = "Miguel", LastName = "Cordoba", DateOfBirth = new DateTime(2000, 10, 8), Sex = "Male", Relations = "Relative", Photo = "/images/miguel.jpg" });
             friends.Add(new Friend() { Id = 2, FirstName = "Carlos", LastName = "Torres", DateOfBirth = new DateTime(2000, 9, 10), Sex = "Male", Relations = "Relative", Photo = "/images/cata.jpg" });
             friends.Add(new Friend() { Id = 3, FirstName = "Mario", LastName = "Perez", DateOfBirth = new DateTime(2000, 5, 8), Sex = "Male", Relations = "Relative", Photo = "/images/carlos.jpg" });
             friends.Add(new Friend() { Id = 4, FirstName = "Annie", LastName = "Cruz", DateOfBirth = new DateTime(2003, 2, 6), Sex = "Female", Relations = "Relative, friend", Photo = "/images/annie.jpg" });
