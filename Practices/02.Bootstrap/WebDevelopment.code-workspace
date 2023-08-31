@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"name": "WebDevelopment",
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "WebDevelopment",
+		"liveServer.settings.port": 5501
+	}
+}
