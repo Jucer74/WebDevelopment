@@ -5,6 +5,34 @@
     ViewData["HideNavbar"] = false; // Ocultar el navbar en esta vista
 }
 
+<style>
+    .relation-button {
+        margin-right: 5px; /* Espacio entre los botones de relación */
+        background-color: white; /* Fondo blanco */
+        color: #000; /* Color del texto negro */
+        border: 1px solid #ccc; /* Borde gris */
+    }
+
+    .relation-label {
+        display: inline-block;
+        margin-right: 5px; /* Espacio entre las etiquetas de relación */
+    }
+
+    /* Cambia el color de fondo de los botones seleccionados */
+    .active {
+        background-color: #008080; /* Cambia este color según tus preferencias */
+        color: white; /* Cambia el color del texto a blanco */
+    }
+
+    .remove-button {
+        background-color: #ff0000; /* Color de fondo del botón Remove */
+        color: white; /* Color del texto del botón Remove */
+        border: none; /* Sin borde */
+        margin-left: 5px; /* Espacio entre el botón Remove y las relaciones seleccionadas */
+        cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+    }
+</style>
+
 <h1>Edit</h1>
 
 <h4>Friend</h4>
@@ -42,33 +70,7 @@
                 </div>
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
-            <style>
-                .relation-button {
-                    margin-right: 5px; /* Espacio entre los botones de relación */
-                    background-color: white; /* Fondo blanco */
-                    color: #000; /* Color del texto negro */
-                    border: 1px solid #ccc; /* Borde gris */
-                }
-
-                .relation-label {
-                    display: inline-block;
-                    margin-right: 5px; /* Espacio entre las etiquetas de relación */
-                }
-
-                /* Cambia el color de fondo de los botones seleccionados */
-                .active {
-                    background-color: #008080; /* Cambia este color según tus preferencias */
-                    color: white; /* Cambia el color del texto a blanco */
-                }
-
-                .remove-button {
-                    background-color: #ff0000; /* Color de fondo del botón Remove */
-                    color: white; /* Color del texto del botón Remove */
-                    border: none; /* Sin borde */
-                    margin-left: 5px; /* Espacio entre el botón Remove y las relaciones seleccionadas */
-                    cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
-                }
-            </style>
+            
 
             <div class="form-group">
                 <label asp-for="Relations" class="control-label">Relations</label>

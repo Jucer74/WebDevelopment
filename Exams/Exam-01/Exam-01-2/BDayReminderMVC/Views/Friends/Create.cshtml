@@ -5,6 +5,11 @@
     ViewData["HideNavbar"] = false; // Ocultar el navbar en esta vista
 }
 
+<!-- Enlazar Bootstrap JS y jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 <style>
     /* Estilos para el contenedor principal */
     .container {
@@ -26,6 +31,32 @@
         height: auto;
     }
 
+    .relation-button {
+        margin-right: 5px; /* Espacio entre los botones de relación */
+        background-color: white; /* Fondo blanco */
+        color: #000; /* Color del texto negro */
+        border: 1px solid #ccc; /* Borde gris */
+    }
+
+    .relation-label {
+        display: inline-block;
+        margin-right: 5px; /* Espacio entre las etiquetas de relación */
+    }
+
+    /* Cambia el color de fondo de los botones seleccionados */
+    .active {
+        background-color: #008080; /* Cambia este color según tus preferencias */
+        color: white; /* Cambia el color del texto a blanco */
+    }
+
+    .remove-button {
+        background-color: #ff0000; /* Color de fondo del botón Remove */
+        color: white; /* Color del texto del botón Remove */
+        border: none; /* Sin borde */
+        margin-left: 5px; /* Espacio entre el botón Remove y las relaciones seleccionadas */
+        cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+    }
+
 
 </style>
 
@@ -37,7 +68,7 @@
 <div class="container">
     <div class="row justify-content-center">
 
-
+        <!-- Contenedor de la imagen ve -->
         <div class="container">
             <form>
                 <div class="form-group">
@@ -56,9 +87,7 @@
             <button class="btn btn-danger mt-3" id="deleteButton" disabled>Eliminar Imagen</button>
         </div>
 
-        <!-- Enlazar Bootstrap JS y jQuery -->
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
 
         <script>
             const fileInput = document.getElementById('fileToUpload');
@@ -132,10 +161,7 @@
                     <input asp-for="LastName" class="form-control" />
                     <span asp-validation-for="LastName" class="text-danger"></span>
                 </div>
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-                <style>
-                    /* Puedes agregar estilos personalizados aquí si lo deseas */
-                </style>
+         
                 <script>
                     function updateProgressBar() {
                         var selectedDate = new Date(document.getElementById("birthday").value);
@@ -182,33 +208,6 @@
                     </div>
                     <span asp-validation-for="Sex" class="text-danger"></span>
                 </div>
-                <style>
-                    .relation-button {
-                        margin-right: 5px; /* Espacio entre los botones de relación */
-                        background-color: white; /* Fondo blanco */
-                        color: #000; /* Color del texto negro */
-                        border: 1px solid #ccc; /* Borde gris */
-                    }
-
-                    .relation-label {
-                        display: inline-block;
-                        margin-right: 5px; /* Espacio entre las etiquetas de relación */
-                    }
-
-                    /* Cambia el color de fondo de los botones seleccionados */
-                    .active {
-                        background-color: #008080; /* Cambia este color según tus preferencias */
-                        color: white; /* Cambia el color del texto a blanco */
-                    }
-
-                    .remove-button {
-                        background-color: #ff0000; /* Color de fondo del botón Remove */
-                        color: white; /* Color del texto del botón Remove */
-                        border: none; /* Sin borde */
-                        margin-left: 5px; /* Espacio entre el botón Remove y las relaciones seleccionadas */
-                        cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
-                    }
-                </style>
 
                 <div class="form-group">
                     <label asp-for="Relations" class="control-label">Relations</label>
@@ -221,7 +220,7 @@
                         <div class="d-flex">
 
 
-                            <!-- Agrega más botones según sea necesario -->
+                       
                         </div>
 
                         <div class="d-flex mt-2">
