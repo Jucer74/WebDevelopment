@@ -1,32 +1,75 @@
 ﻿@model IEnumerable<BDayReminderMVC.Models.User>
 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        
+        .form-signin {
+            max-width: 400px;
+            padding: 15px;
+            margin: auto;
+            margin-top: 100px;
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-signin img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .form-signin h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .form-signin label {
+            font-weight: bold;
+        }
+        
+        .form-signin input {
+            margin-bottom: 20px;
+        }
+        
+        .form-signin button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+        .form-signin a {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-signin">
+            <form asp-action="Create">
+                
+                <h1 class="h3 mb-3 fw-normal">Log into your account</h1>
 
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-@Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <main class="form-signin w-100 m-auto">
-    <form asp-action="Create">
-            <img class="mb-4" src="https://usbcali.edu.co/sites/default/files/logousb-lineas-white-rgb.png" alt=""
-                 width="auto" height="100">
-            <h1 class="h3 mb-3 fw-normal">Log into your account</h1>
-
-            <div class="mb-3 mt-3">
                 <label for="email">User:</label>
                 <input type="email" class="form-control" id="email" placeholder="john.doe@email.com" name="email" required>
-            </div>
-            <div class="mb-3">
+
                 <label for="pwd">Password:</label>
                 <input type="password" class="form-control" id="pwd" placeholder="********" name="pswd" required>
-            </div>
 
-            <button class="btn btn-primary w-100 py-2" type="submit" id="btn-login">Log in</button>
+                <button class="btn btn-primary btn-block" type="submit" id="btn-login">Log in</button>
 
-            <p>
-            <a asp-action="Create">Register</a>
-            </p>
-        </form>
-
-    </main>
+                <p class="mt-3">
+                    <a asp-action="Create">Don't have an account? Register</a>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
