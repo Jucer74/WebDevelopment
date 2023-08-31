@@ -36,19 +36,16 @@ namespace BDayReminderMVC.Controllers
         public ActionResult Create(User user)
         {
             // Comprueba si el correo electrónico y la contraseña ingresados coinciden con algún usuario en usersList
-            var existingUser = usersList.FirstOrDefault(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
-
-            if (existingUser != null)
+            try
             {
-                // Si existe un usuario coincidente, redirige a la acción Index
+
+                usersList.Add(user);
                 return RedirectToAction(nameof(Index));
             }
-
-            // Si no hay un usuario coincidente, agrega un mensaje de error al ModelState
-            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
-
-            // Redisplay the form with the error message
-            return View(user);
+            catch
+            {
+                return View();
+            }
         }
 
 
