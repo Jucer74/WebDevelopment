@@ -1,0 +1,51 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    width: 100%;
+}
+
+.head-color{
+    background-color: #DC3546;
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+form button{
+    padding: 10px;
+    background-color: #DC3546;
+    color: white;
+}
+
+form input{
+    width: 70%;
+    margin: 10px;
+    background-color: #353A40;
+    height: 25px;
+    border-radius: 3%;
+}
+
+form textarea{
+    width: 70%;
+    margin: 10px;
+    background-color: #353A40;
+    height: 75px;
+}
+
+form label{
+    background-color: #DC3546;
+
+}
+
+form span{
+    background-color: #DC3546;
+    width: 100px;
+    height: 100px;
+}

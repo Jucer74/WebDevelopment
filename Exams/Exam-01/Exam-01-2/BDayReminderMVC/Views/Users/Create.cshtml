@@ -1,0 +1,82 @@
+﻿@model BDayReminderMVC.Models.User
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="login-container  d-flex align-items-center justify-content-center">
+    <div class="login-card col-sm-10 col-md-9 col-lg-6  bg-white rounded-5 text-secondary shadow d-flex flex-column px-4 py-5">
+        <div class="row justify-content-center">
+            <div class="square-container col-md-6 col-sm-8 col-xs-8 text-center">
+                <div class="circle-container col-7 ratio ratio-1x1 bg-dark rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="http://localhost:5000/images/Logo.png" class="logo" alt="login-icon">
+                    </div>
+                </div>
+                <div class=" login-title fs-1 fw-bold py-4">Register</div>
+            </div>
+        </div>
+
+
+        <form class=" row py-3" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-6 my-1">
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                        <input asp-for="UserName" type="email" class="form-control bg-light" placeholder="UserName" name="UserName" />
+                    </div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-6 my-1">
+
+            </div>
+
+            <div class="col-6 my-1">
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                        <input asp-for="FirstName" type="text" class="form-control bg-light" placeholder="FirstName" name="FirstName" />
+                    </div>
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-6 my-1">
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                        <input asp-for="LastName" type="text" class="form-control bg-light" placeholder="LastName" name="LastName" />
+                    </div>
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class=" col-6 my-1">
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                        <input asp-for="Password" type="password" class="form-control bg-light" placeholder="Password" name="Password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-6 my-1">
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control bg-light" placeholder="ConfirmPassword" name="ConfirmPassword" />
+                    </div>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-end col-12 mt-4 p-0">
+                <button type="submit" class="btn btn-primary py-3 my-2 px-4 fw-bold">Register</button>
+                <a asp-action="Login" id="btnCancel" class="btn btn-danger py-2 my-2 px-4 mx-2 fw-bold d-flex align-items-center justify-content-center">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>

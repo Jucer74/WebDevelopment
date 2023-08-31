@@ -1,0 +1,12 @@
+
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Logo{
+    display: flex;
+    flex-direction: row;
+}
