@@ -1,0 +1,137 @@
+﻿@model BDayReminderMVC.Models.User
+
+@{
+    Layout = "_LayoutNoNavbar";
+    ViewData["Title"] = "Create";
+}
+
+<!--
+<h1>Create</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserMail" class="control-label"></label>
+                <input asp-for="UserMail" class="form-control" />
+                <span asp-validation-for="UserMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PasswordConfirm" class="control-label"></label>
+                <input asp-for="PasswordConfirm" class="form-control" />
+                <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+-->
+
+<section>
+
+    <div class="row g-0">
+
+        <div class="col-md-2 col-sm-2"></div>
+
+        <div class="col-md-8 col-sm-8 contenedor-sesion min-vh-100">
+
+
+            <div class="d-flex justify-content-center px-lg-5 pt-lg-4 pb-lg-4 p-4 w-100">
+
+                <img class="img-fluid icon-page" src="~/Photos/cake.png" alt="game">
+
+            </div>
+
+            <div class="px-lg-5 py-lg-4 p-4 bienvenido w-100">
+
+                <h1 class="text-center mb-4">BDayReminder</h1>
+
+                <form asp-action="Create" class="row g-3 needs-validation mb-5">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="col-md-6 position-relative mb-4">
+                        <label asp-for="UserMail" for="exampleInputEmail1" class="form-label control-label">User</label>
+                        <input asp-for="UserMail" type="email" class="form-control input-inicio" placeholder="john.doe@email.com" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <div class="invalid-tooltip">
+                            Please provide a valid city.
+                        </div>
+                        <span asp-validation-for="UserMail" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 position-relative mb-4 d-none d-md-block"></div>
+
+                    <div class="col-md-6 position-relative mb-4">
+                        <label asp-for="FirstName" for="validationTooltip01" class="form-label control-label">First Name</label>
+                        <input asp-for="FirstName" type="text" class="form-control input-inicio" placeholder="John" id="validationTooltip01" required>
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 position-relative mb-4">
+                        <label asp-for="LastName" for="validationTooltip02" class="form-label control-label">Last Name</label>
+                        <input asp-for="LastName" type="text" class="form-control input-inicio" placeholder="Doe" id="validationTooltip02" required>
+                        <div class="valid-tooltip">
+                            Looks good!
+                        </div>
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="Password" for="exampleInputPassword1" class="form-label control-label">Password</label>
+                        <input asp-for="Password" type="password" placeholder="**********" class="form-control input-inicio" id="exampleInputPassword1">
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-4">
+                        <label asp-for="PasswordConfirm" for="exampleInputPassword1" class="form-label control-label">Confirm Password</label>
+                        <input asp-for="PasswordConfirm" type="password" placeholder="**********" class="form-control input-inicio" id="exampleInputPassword1">
+                        <span asp-validation-for="PasswordConfirm" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 position-relative mb-4 d-none d-md-block"></div>
+
+                    <div class="form-group col-md-3 col-sm-6">
+                        <input type="submit" value="Create" class="btn btn-primary w-100" />
+                    </div>
+
+                    <div class="form-group col-md-3 col-sm-6">
+                        <a asp-action="Login" class="btn btn-secondary w-100">Cancel</a>
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-md-2 col-sm-2"></div>
+
+    </div>
+
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

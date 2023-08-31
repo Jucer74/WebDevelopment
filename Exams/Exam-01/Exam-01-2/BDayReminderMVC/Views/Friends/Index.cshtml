@@ -1,0 +1,95 @@
+﻿@model IEnumerable<BDayReminderMVC.Models.Friend>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="crude-color">Crude</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+</p>
+
+<div class="table-responsive">
+
+    <table class="table table-color-friends align-middle">
+        <thead class="thead-light">
+            <tr>
+                <th class="caja-th-responsive">
+                    @Html.DisplayNameFor(model => model.Photo)
+                </th>
+                <th class="caja-th-responsive">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th class="caja-th-responsive">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th class="caja-th-responsive">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-5">
+
+                        <div class="caja-imagen-responsive">
+
+                            <img class=" w-50 img-fluid" src="~/Photos/@item.Photo" alt="Imagen" />
+
+                        </div>
+
+                    </td>
+                    <td class="col-2">
+
+                        <div class="d-flex justify-content-center align-items-center h-100">
+
+                            @Html.DisplayFor(modelItem => item.FirstName)
+
+                        </div>
+
+                    </td>
+                    <td class="col-2">
+
+                        <div class="d-flex justify-content-center align-items-center h-100">
+
+                            @Html.DisplayFor(modelItem => item.LastName)
+
+                        </div>
+                        
+                    </td>
+
+                    <td class="col-3">
+
+                        <div class="icon-container">
+
+                            <a href="@Url.Action("Edit", new { id = item.Id })">
+                                <img src="~/Photos/Pencil.jpg" alt="Edit" />
+                            </a>
+                            <a href="@Url.Action("Details", new { id = item.Id })">
+                                <img src="~/Photos/CardList.jpg" alt="Details" />
+                            </a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })">
+                                <img src="~/Photos/Trash.jpg" alt="Delete" />
+                            </a>
+
+                        </div>
+                        
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2023 - BDayReminderMVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+
