@@ -130,7 +130,7 @@ namespace BDayReminderMVC.Controllers
 
             personas.Add(new Persona()
             {
-                Id = 1,PhotoPath = "ruta_de_la_foto_juan.jpg",UserEmail = "correo1@example.com",FirstName = "Juan",LastName = "Rome", Password = "contraseña123", ConfirmPassword = "contraseña123",  DateOfBirth = new DateTime(1974, 10, 8),Sex = 'M'});
+                Id = 1, PhotoPath = "ruta_de_la_foto_tatiana.jpg", UserEmail = "correo1@example.com", FirstName = "Juan", LastName = "Rome", Password = "contraseña123", ConfirmPassword = "contraseña123", DateOfBirth = new DateTime(1974, 10, 8), Sex = 'M' });
 
             personas.Add(new Persona()
             {
@@ -210,8 +210,303 @@ namespace BDayReminderMVC.Controllers
                 Sex = 'M'
             });
 
+            personas.Add(new Persona()
+            {
+                Id = 8,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
 
+            personas.Add(new Persona()
+            {
+                Id = 9,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
 
+            personas.Add(new Persona()
+            {
+                Id = 10,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 11,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 12,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 13,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 14,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 15,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 16,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 17,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 18,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 19,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 20,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 21,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 22,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+            personas.Add(new Persona()
+            {
+                Id = 23,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 24,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 25,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 26,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 27,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 28,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 29,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 30,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
 
             return personas;
         }
