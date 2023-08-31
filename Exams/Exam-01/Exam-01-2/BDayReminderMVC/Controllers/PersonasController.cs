@@ -130,7 +130,7 @@ namespace BDayReminderMVC.Controllers
 
             personas.Add(new Persona()
             {
-                Id = 1, PhotoPath = "1.jpg", UserEmail = "correo1@example.com", FirstName = "Juan", LastName = "Rome", Password = "contraseña123", ConfirmPassword = "contraseña123", DateOfBirth = new DateTime(1974, 10, 8), Sex = 'M' });
+                Id = 1, PhotoPath = "1.jpg", UserEmail = "correo1@example.com", FirstName = "Camila", LastName = "Rome", Password = "contraseña123", ConfirmPassword = "contraseña123", DateOfBirth = new DateTime(1974, 10, 8), Sex = 'M' });
 
             personas.Add(new Persona()
             {
@@ -163,7 +163,7 @@ namespace BDayReminderMVC.Controllers
                 Id = 4,
                 PhotoPath = "4.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Julio",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -176,7 +176,7 @@ namespace BDayReminderMVC.Controllers
                 Id = 5,
                 PhotoPath = "5.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Sofia",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -187,9 +187,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 6,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "6.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Luisa",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -200,9 +200,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 7,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "7.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Fernanda",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -213,9 +213,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 8,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "8.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Camilo",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -226,9 +226,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 9,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "9.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Esteban",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -239,9 +239,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 10,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "10.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Esteban",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -252,9 +252,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 11,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "11.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Alberto",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -265,9 +265,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 12,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "12.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Juliana",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -278,9 +278,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 13,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "13.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Alejandra",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -291,9 +291,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 14,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "14.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Andrea",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -304,9 +304,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 15,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "15.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Carmen",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -317,7 +317,7 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 16,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "16.jpg",
                 UserEmail = "correo4@example.com",
                 FirstName = "Juan",
                 LastName = "Rome",
@@ -330,9 +330,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 17,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "17.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Santiago",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -343,9 +343,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 18,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "18.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Juana",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -356,9 +356,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 19,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "19.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Julio",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -369,9 +369,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 20,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "20.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Almaria",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -382,9 +382,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 21,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "21.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Jose",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -395,9 +395,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 22,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "22.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Esteban",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -407,9 +407,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 23,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "23.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Sofia",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -420,9 +420,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 24,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "24.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Maria",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -433,9 +433,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 25,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "25.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Alejandra",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -446,9 +446,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 26,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "26.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Sebastian",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -459,9 +459,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 27,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "27.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Wilson",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -472,9 +472,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 28,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "28.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Armando",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -485,9 +485,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 29,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "29.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Camilo",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
@@ -498,9 +498,9 @@ namespace BDayReminderMVC.Controllers
             personas.Add(new Persona()
             {
                 Id = 30,
-                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                PhotoPath = "30.jpg",
                 UserEmail = "correo4@example.com",
-                FirstName = "Juan",
+                FirstName = "Felipe",
                 LastName = "Rome",
                 Password = "otracontraseña",
                 ConfirmPassword = "otracontraseña",
