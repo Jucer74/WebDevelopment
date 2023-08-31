@@ -47,93 +47,120 @@
                 <span asp-validation-for="Sex" class="text-danger"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="Relations" class="control-label">Relations</label>
-                <div>
-                    <div id="selectedRelations" class="mb-2">
-                        <!-- Aquí se mostrarán las relaciones seleccionadas -->
-                    </div>
-                    <div class="d-flex">
-                        <button type="button" class="btn btn-primary mr-2" onclick="selectRelation('Family')">Family</button>
-                        <button type="button" class="btn btn-primary mr-2" onclick="selectRelation('School')">School</button>
-                        <button type="button" class="btn btn-primary mr-2" onclick="selectRelation('Brother')">Brother</button>
-                        <button type="button" class="btn btn-primary" onclick="selectRelation('Work')">Work</button>
-                        <!-- Agrega más botones según sea necesario -->
-                    </div>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <style>
+                    .relation-button {
+                        margin-right: 5px; /* Espacio entre los botones de relación */
+                        background-color: white; /* Fondo blanco */
+                        color: #000; /* Color del texto negro */
+                        border: 1px solid #ccc; /* Borde gris */
+                    }
 
-                    <div class="d-flex mt-2">
-                        <input type="text" id="customRelationInput" class="form-control mr-2" placeholder="Custom Relation">
-                        <button type="button" class="btn btn-success" onclick="addCustomRelation()">Add Relation</button>
+                    .relation-label {
+                        display: inline-block;
+                        margin-right: 5px; /* Espacio entre las etiquetas de relación */
+                    }
+
+                    /* Cambia el color de fondo de los botones seleccionados */
+                    .active {
+                        background-color: #FF5733; /* Cambia este color según tus preferencias */
+                        color: white; /* Cambia el color del texto a blanco */
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="form-group">
+                    <label asp-for="Relations" class="control-label">Relations</label>
+                    <div>
+                        <div id="selectedRelations" class="mb-2">
+                            <!-- Aquí se mostrarán las relaciones seleccionadas -->
+                        </div>
+                        <div id="customRelations" class="d-flex mb-2"></div> <!-- Contenedor para las nuevas etiquetas de relación -->
+
+                        <div class="d-flex">
+                            <button type="button" class="btn relation-button" data-relation="Family" onclick="selectRelation('Family')">Family</button>
+                            <button type="button" class="btn relation-button" data-relation="School" onclick="selectRelation('School')">School</button>
+                            <button type="button" class="btn relation-button" data-relation="Brother" onclick="selectRelation('Brother')">Brother</button>
+                            <button type="button" class="btn relation-button" data-relation="Work" onclick="selectRelation('Work')">Work</button>
+                            <!-- Agrega más botones según sea necesario -->
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <input type="text" id="customRelationInput" class="form-control mr-2" placeholder="Custom Relation">
+                            <button type="button" class="btn btn-success" onclick="addCustomRelation()">Add Relation</button>
+                        </div>
                     </div>
+                    <input asp-for="Relations" id="relationsInput" type="hidden" />
+                    <span asp-validation-for="Relations" class="text-danger"></span>
                 </div>
-                <input asp-for="Relations" id="relationsInput" type="hidden" />
-                <span asp-validation-for="Relations" class="text-danger"></span>
-            </div>
 
-            <script>
-                var selectedRelations = [];
+                <script>
+                    var selectedRelations = [];
 
-                function selectRelation(relation) {
-                    var buttons = document.querySelectorAll('.btn.btn-primary');
-                    buttons.forEach(function (button) {
-                        button.classList.remove('active');
-                    });
-
-                    var selectedButton = document.querySelector('button[data-relation="' + relation + '"]');
-                    selectedButton.classList.add('active');
-
-                    var relationsInput = document.getElementById('relationsInput');
-                    relationsInput.value = relation;
-                }
-
-                function addCustomRelation() {
-                    var customRelationInput = document.getElementById('customRelationInput');
-                    var customRelation = customRelationInput.value.trim();
-
-                    if (customRelation && !selectedRelations.includes(customRelation)) {
-                        selectedRelations.push(customRelation);
-                        customRelationInput.value = ''; // Limpia el input
+                    // Recuperar selecciones almacenadas al cargar la página
+                    var storedSelection = localStorage.getItem('selectedRelations');
+                    if (storedSelection) {
+                        selectedRelations = JSON.parse(storedSelection);
                         updateSelectedRelations();
                     }
-                }
 
-                function removeCustomRelation(relation) {
-                    var index = selectedRelations.indexOf(relation);
-                    if (index !== -1) {
-                        selectedRelations.splice(index, 1);
-                        updateSelectedRelations();
-                    }
-                }
-
-                function updateSelectedRelations() {
-                    var selectedRelationsDiv = document.getElementById('selectedRelations');
-                    selectedRelationsDiv.innerHTML = '';
-
-                    selectedRelations.forEach(function (relation) {
-                        var button = document.createElement('button');
-                        button.type = 'button';
-                        button.className = 'btn btn-primary mr-2';
-                        button.innerText = relation;
-
-                        var removeButton = document.createElement('button');
-                        removeButton.type = 'button';
-                        removeButton.className = 'btn btn-danger';
-                        removeButton.innerText = 'Remove';
-                        removeButton.addEventListener('click', function () {
-                            removeCustomRelation(relation);
+                    function selectRelation(relation) {
+                        var buttons = document.querySelectorAll('.btn.relation-button');
+                        buttons.forEach(function (button) {
+                            button.classList.remove('active'); // Quita la clase 'active' de todos los botones
                         });
 
-                        var container = document.createElement('div');
-                        container.className = 'd-flex align-items-center';
-                        container.appendChild(button);
-                        container.appendChild(removeButton);
+                        var selectedButton = document.querySelector('button[data-relation="' + relation + '"]');
+                        selectedButton.classList.add('active'); // Agrega la clase 'active' al botón seleccionado
 
-                        selectedRelationsDiv.appendChild(container);
-                    });
+                        var relationsInput = document.getElementById('relationsInput');
+                        relationsInput.value = relation;
 
-                    relationsInput.value = selectedRelations.join(', '); // Actualiza el valor oculto
-                }
-            </script>
+                        // Guardar la selección en el almacenamiento local
+                        localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                    }
+
+                    function addCustomRelation() {
+                        var customRelationInput = document.getElementById('customRelationInput');
+                        var customRelation = customRelationInput.value.trim();
+
+                        if (customRelation) {
+                            selectedRelations.push(customRelation);
+                            customRelationInput.value = ''; // Limpia el input
+                            updateSelectedRelations();
+
+                            // Guardar la selección en el almacenamiento local
+                            localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                        }
+                    }
+
+                    function updateSelectedRelations() {
+                        var customRelationsDiv = document.getElementById('customRelations');
+                        customRelationsDiv.innerHTML = '';
+
+                        // Etiquetas de relación seleccionadas
+                        selectedRelations.forEach(function (relation) {
+                            var button = document.createElement('button');
+                            button.type = 'button';
+                            button.className = 'btn relation-button';
+                            button.innerText = relation;
+                            button.setAttribute('data-relation', relation);
+                            button.addEventListener('click', function () {
+                                selectRelation(relation); // Al hacer clic, selecciona la etiqueta
+                            });
+
+                            customRelationsDiv.appendChild(button);
+                        });
+
+                        relationsInput.value = selectedRelations.join(', '); // Actualiza el valor oculto
+                    }
+                </script>
+            </body>
+        </html>
+
+
             <div class="form-group">
                 <label asp-for="Photo" class="control-label"></label>
                 <input asp-for="Photo" class="form-control" />
