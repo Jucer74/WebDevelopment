@@ -2,79 +2,273 @@
     ViewData["Title"] = "Home Page";
 }
 
-<main class="form-signin w-100 m-auto">
-    <form action="./home.html">
-        <img class="mb-4" src="https://usbcali.edu.co/sites/default/files/logousb-lineas-white-rgb.png" alt=""
-             width="auto" height="100">
-        <h1 class="h3 mb-3 fw-normal">Log into your account</h1>
+<!doctype html>
+<html>
 
-        <div class="mb-3 mt-3">
-            <label for="email">User:</label>
-            <input type="email" class="form-control" id="email" placeholder="john.doe@email.com" name="email" required>
-        </div>
-        <div class="mb-3">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="********" name="pswd" required>
-        </div>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Home Parcial</title>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <style></style>
+    <script type='text/javascript' src=''></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript'
+            src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+</head>
 
-        <button class="btn btn-primary w-100 py-2" type="submit" id="btn-login">Log in</button>
 
-        <p>
-            <a href="#" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-               id="btn-register" data-bs-toggle="modal" data-bs-target="#myModal" data-title="Register">Register</a>
-        </p>
-    </form>
 
-    <div id="myModal" class="modal fade" tabindex="-1">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h5 class="modal-title">Register</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+    <main oncontextmenu='return false' class='snippet-body'>
+        <section class="pt-5 pb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="p-4 text-right">
+                        <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button"
+                           data-slide="prev">
+                            <i class="fa fa-arrow-left"></i>
+                        </a>
+                        <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button"
+                           data-slide="next">
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
                     </div>
-                    <div class="modal-body">
+                    <div class="col-12">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
 
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label class="form-label">User (Email address)</label>
-                                    <input type="email" class="form-control" id="register-email" placeholder="john.doe@email.com" name="email"
-                                           required>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <div class="row">
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1532781914607-2031eca2f00d?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=7c625ea379640da3ef2e24f20df7ce8d">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1517760444937-f6397edcbbcd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=42b2d9ae6feb9c4ff98b9133addfb698">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3d2e8a2039c06dd26db977fe6ac6186a">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1532771098148-525cefe10c23?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=3f317c1f7a16116dec454fbc267dd8e4">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1532715088550-62f09305f765?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ebadb044b374504ef8e81bdec4d0e840">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=0754ab085804ae8a3b562548e6b4aa2e">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="row">
+
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=ee8417f0ea2a50d53a12665820b54e23">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1532777946373-b6783242f211?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=8ac55cf3a68785643998730839663129">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <<div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 mb-3">
+                                            <div class="card">
+                                                <img class="img-fluid" alt="100%x280"
+                                                     src="https://images.unsplash.com/photo-1532763303805-529d595877c5?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1080&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=5ee4fd5d19b40f93eadb21871757eda6">
+                                                <div class="card-body text-center alight align-items-md-center">
+                                                    <h5 class="card-title">Card title</h5>
+                                                    <p class="card-text">
+                                                        Some quick example text to build on the card
+                                                        title and make up the bulk of the card's content.
+                                                    </p>
+                                                    <div class="languages text-center alight align-items-md-center">
+
+                                                        <progress class="knowledge" value="100" max="100"></progress>
+                                                    </div>
+
+                                                    <div class="p-4">
+                                                        <a href="#" class="btn btn-danger">Details</a>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="mb-3">
-                                    <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="John" name="name" required>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="mb-3">
-                                    <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastname" placeholder="Doe" name="lastname" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label class="form-label">Password:</label>
-                                    <input type="password" class="form-control" id="password" placeholder="********" name="pswd"
-                                           required>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btn-cancel">Cancel</button>
-                        <button type="submit" class="btn btn-primary" id="btn-accept">Accept</button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
-    </div>
+        </section>
 
-</main>
+
+    </main>
+
+
+
+</html>
+
