@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="wwwroot\Controllers\FriendsController.cs" />
+    <Compile Include="wwwroot\Controllers\HomeController.cs" />
+    <Compile Include="wwwroot\Controllers\UsersController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>

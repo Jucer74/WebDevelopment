@@ -46,6 +46,12 @@
                                             <div class="card-body">
                                                 <h5 class="card-title"> @Model[j].FirstName @Model[j].LastName</h5>
                                                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                <p id="dateOfBirth">@Model[j].DateOfBirth</p>
+                                                <h2 id="daysRemaining-title">Remain days</h2>
+                                                <div class="progress">
+                                                    <div id="progressBar" class="progress-bar" style="width: 10%;"></div>
+                                                </div>
+                                                <p id="daysRemaining" class="mt-2"></p>
                                                 <a class="btn-secondary text-decoration-none p-2 mx-1 col-auto details-link"
                                                    data-id="@Model[j].Id" data-bs-toggle="modal" data-bs-target="#detailsModal">
                                                     <i class="bi bi-info-circle-fill"></i> Details
@@ -95,6 +101,49 @@
     </footer>
     <!-- Scripts -->
     <script>
+
+        var diasFaltantes = 0;
+
+        function calcularDiasFaltantes() {
+            // Obtener las fechas ingresadas por el usuario
+            const fechaInicio = new Date(document.getElementById('dateOfBirth').innerText);
+            const fechaFin = new Date();
+            fechaInicio.setFullYear(fechaFin.getFullYear());
+
+            // Si la fecha de inicio es posterior a la fecha de fin, ajustar el año de la fecha de inicio
+            if (fechaFin > fechaInicio) {
+                fechaInicio.setFullYear(fechaFin.getFullYear() + 1);
+            }
+
+            // Calcular la diferencia en milisegundos entre las dos fechas
+            let diferenciaMilisegundos = fechaInicio - fechaFin;
+
+            // Calcular los días faltantes redondeando hacia abajo
+            diasFaltantes = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+
+
+
+            if (diasFaltantes == 365) {
+                diasFaltantes = 0;
+            } else {
+                diasFaltantes++;
+            }
+
+            // Mostrar el resultado en el DOM
+            const resultadoElement = document.getElementById('daysRemaining');
+            resultadoElement.textContent = `Faltan ${diasFaltantes} dias para su cumpleaños.`;
+
+            const progres = (diasFaltantes * 100) / 365;
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progres + '%';
+
+            console.log(progres);
+
+        }
+        // Asignar la función al botón de cálculo
+        const calcularButton = document.getElementById('dateOfBirth');
+        calcularButton.addEventListener('load', calcularDiasFaltantes);
+
         // Manejar el evento de clic en los enlaces "Details"
         document.querySelectorAll('.details-link').forEach(link => {
             link.addEventListener('click', function () {
@@ -112,6 +161,8 @@
                     });
             });
         });
+
+       
     </script>
     <style>
         .carousel-control-prev {
