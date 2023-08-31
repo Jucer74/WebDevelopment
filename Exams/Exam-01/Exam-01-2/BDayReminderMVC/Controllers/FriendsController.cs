@@ -96,6 +96,10 @@ namespace BDayReminderMVC.Controllers
             }
         }
 
+
+
+
+
         private static List<Friend> LoadFriends()
         {
             var friends = new List<Friend>();

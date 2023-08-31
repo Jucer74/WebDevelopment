@@ -19,25 +19,13 @@
         padding: 20px;
     }
 
-    /* Estilos para el contenedor de imagen */
-    .image-container {
-        width: 200px;
-        height: 200px;
-        border: 2px solid #000;
-        border-radius: 15px;
-        position: relative;
-        overflow: hidden;
+    #imageContainer img {
+        max-width: 300px; /* Ancho máximo de la imagen */
+        max-height: 300px; /* Altura máxima de la imagen */
+        width: auto;
+        height: auto;
     }
 
-    input[type="file"] {
-        margin-top: 10px;
-    }
-
-    .image-preview {
-        max-width: 100%;
-        max-height: 100%;
-        display: block;
-    }
 
 </style>
 
@@ -48,10 +36,88 @@
     
 <div class="container">
     <div class="row justify-content-center">
-            <div class="image-container">
-                <img id="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
+
+
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label for="fileToUpload">Seleccionar imagen:</label>
+                    <input type="file" class="form-control-file" id="fileToUpload" accept="image/*">
+                </div>
+                <button type="button" class="btn btn-primary" id="uploadButton">Subir Imagen</button>
+
+            </form>
+
+            <div class="mt-3" id="imageContainer">
+                <!-- La imagen subida se mostrará aquí -->
             </div>
-        <input type="file" id="poster" name="poster" accept="image/*" required>
+
+            <button class="btn btn-danger mt-3" id="deleteButton" disabled>Eliminar Imagen</button>
+        </div>
+
+        <!-- Enlazar Bootstrap JS y jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <script>
+            const fileInput = document.getElementById('fileToUpload');
+            const uploadButton = document.getElementById('uploadButton');
+            const imageContainer = document.getElementById('imageContainer');
+            const deleteButton = document.getElementById('deleteButton');
+
+            uploadButton.addEventListener('click', function () {
+                const file = fileInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function () {
+                        const img = document.createElement('img');
+                        img.src = reader.result;
+
+                        imageContainer.innerHTML = '';
+                        imageContainer.appendChild(img);
+
+                        // Habilitar el botón de eliminación
+                        deleteButton.removeAttribute('disabled');
+
+                        // Guardar la imagen en el almacenamiento local
+                        localStorage.setItem('uploadedImage', reader.result);
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Por favor, selecciona una imagen.');
+                }
+            });
+
+            deleteButton.addEventListener('click', function () {
+                // Limpiar el contenedor de imágenes
+                imageContainer.innerHTML = '';
+
+                // Deshabilitar el botón de eliminación
+                deleteButton.setAttribute('disabled', 'true');
+
+                // Eliminar la imagen del almacenamiento local
+                localStorage.removeItem('uploadedImage');
+            });
+
+            // Cargar imagen almacenada del almacenamiento local al cargar la página
+            window.addEventListener('load', function () {
+                const storedImage = localStorage.getItem('uploadedImage');
+                if (storedImage) {
+                    const img = document.createElement('img');
+                    img.src = storedImage;
+
+                    imageContainer.innerHTML = '';
+                    imageContainer.appendChild(img);
+
+                    deleteButton.removeAttribute('disabled');
+                }
+            });
+        </script>
+
+
+           
         <div class="col-md-8">
             <form asp-action="Create" class="needs-validation" novalidate>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
