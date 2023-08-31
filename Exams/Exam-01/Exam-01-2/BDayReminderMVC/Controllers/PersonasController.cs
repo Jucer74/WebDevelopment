@@ -130,16 +130,7 @@ namespace BDayReminderMVC.Controllers
 
             personas.Add(new Persona()
             {
-                Id = 1,
-                PhotoPath = "ruta_de_la_foto_juan.jpg",
-                UserEmail = "correo1@example.com",
-                FirstName = "Juan",
-                LastName = "Rome",
-                Password = "contraseña123",
-                ConfirmPassword = "contraseña123",
-                DateOfBirth = new DateTime(1974, 10, 8),
-                Sex = 'M'
-            });
+                Id = 1,PhotoPath = "ruta_de_la_foto_juan.jpg",UserEmail = "correo1@example.com",FirstName = "Juan",LastName = "Rome", Password = "contraseña123", ConfirmPassword = "contraseña123",  DateOfBirth = new DateTime(1974, 10, 8),Sex = 'M'});
 
             personas.Add(new Persona()
             {
@@ -179,6 +170,48 @@ namespace BDayReminderMVC.Controllers
                 DateOfBirth = new DateTime(1974, 10, 8),
                 Sex = 'M'
             });
+
+            personas.Add(new Persona()
+            {
+                Id = 5,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 6,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+            personas.Add(new Persona()
+            {
+                Id = 7,
+                PhotoPath = "ruta_de_la_foto_otrojuan.jpg",
+                UserEmail = "correo4@example.com",
+                FirstName = "Juan",
+                LastName = "Rome",
+                Password = "otracontraseña",
+                ConfirmPassword = "otracontraseña",
+                DateOfBirth = new DateTime(1974, 10, 8),
+                Sex = 'M'
+            });
+
+
+
 
             return personas;
         }
