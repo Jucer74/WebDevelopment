@@ -5,12 +5,53 @@
     ViewData["HideNavbar"] = false; // Ocultar el navbar en esta vista
 }
 
+<style>
+    /* Estilos para el contenedor principal */
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex; /* Cambio a flexbox */
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    /* Estilos para el contenedor de imagen */
+    .image-container {
+        width: 200px;
+        height: 200px;
+        border: 2px solid #000;
+        border-radius: 15px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    input[type="file"] {
+        margin-top: 10px;
+    }
+
+    .image-preview {
+        max-width: 100%;
+        max-height: 100%;
+        display: block;
+    }
+
+</style>
+
 <h1>Create</h1>
 
 <h4>Friend</h4>
 <hr />
+    
 <div class="container">
     <div class="row justify-content-center">
+            <div class="image-container">
+                <img id="image-preview" src="#" alt="Vista previa de la imagen" style="display: none;">
+            </div>
+        <input type="file" id="poster" name="poster" accept="image/*" required>
         <div class="col-md-8">
             <form asp-action="Create" class="needs-validation" novalidate>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -201,7 +242,26 @@
                             }
                         }
                     }
+                        posterInput.addEventListener('change', function () {
+                            const file = this.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function (e) {
+                                    imagePreview.src = e.target.result;
+                                    imagePreview.style.display = 'block';
+                                    imagePreview.style.width = '100%';
+                                    imagePreview.style.height = '100%';
+                                };
+                                reader.readAsDataURL(file);
+                                // Muestra el nombre del archivo seleccionado
+                                fileName.textContent = file.name;
+                            } else {
+                                imagePreview.style.display = 'none';
+                                fileName.textContent = '';
+                            }
+                        });
                 </script>
+
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                     <a class="btn btn-secondary" asp-action="Index">Cancel</a>
