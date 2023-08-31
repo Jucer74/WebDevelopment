@@ -20,7 +20,7 @@ public class Friend
     [Required(ErrorMessage = "The DateOfBirth is Required")]
     [DataType(DataType.Date)]
     [Display(Name = "Date Of Birth")]
-    public DateTime DateOfBirth { get; set; }
+    public DateOnly DateOfBirth { get; set; }
 
     [Required(ErrorMessage = "The Gender is Required")]
     [Display(Name = "Gender")]

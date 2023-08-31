@@ -3,24 +3,45 @@
     ViewData["Title"] = "Login";
 }
 
-<div class="container-md d-flex align-items-center">
-    <div class="login col-sm-8 col-md-7 col-lg-4 text-black py-5 my-5 m-auto bg text-center bg-white shadow">
-        <div class="row">
-            <div class="container mt-3">
-                <h1 class="text-center">Login</h1>
-                <form asp-area="" asp-controller="Users" asp-action="Login">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                        <input asp-for="UserName" type="text" class="form-control" placeholder="Username">
+<div class="login-container  d-flex align-items-center justify-content-center">
+    <div class="login-card col-sm-8 col-md-7 col-lg-4  bg-white rounded-5 text-secondary shadow d-flex flex-column px-5 py-5">
+        <div class="row justify-content-center">
+            <div class="square-container col-md-4 col-sm-6 col-xs-6 text-center">
+                <div class="circle-container col-6 ratio ratio-1x1 bg-dark rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="http://localhost:5000/images/Logo.png" class="logo" alt="login-icon">
                     </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                        <input asp-for="Password" type="password" class="form-control" placeholder="Password">
-                    </div>
-                     <button type="submit" class="btn btn-primary">Login</button>
-                </form>
+                </div>
+                <div class=" login-title fs-1 fw-bold py-4">Login</div>
             </div>
         </div>
-    </div>
+
+
+        <form class="py-3" asp-controller="Friends" asp-action="Index">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                    <input asp-for="UserName" type="email" class="form-control bg-light" placeholder="UserName" name="UserName" />
+                    </div>
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-lock-fill text-secondary"></i></span>
+                        <input asp-for="Password" type="password" class="form-control bg-light" placeholder="Password" name="Password" />
+                    </div>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2 col-auto m-auto">
+                    <p class="mb-0 text-end">Don't have an account?&nbsp;</p>
+                     <a asp-action="Create" id="linkRegister" class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mb-0 text-start">Register Now</a>
+                </div>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary col-12  py-3 my-2 px-4">Login</button>
+                </div>
+            </form>
+        </div>
+ </div>
+

@@ -4,51 +4,155 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<body>
+    <div class="container mt-5">
+        <div class="border p-4">
+            <!-- Add border and padding here -->
+            <h1 class="text-center mb-4">BDayReminder</h1>
+            <form id="registrationForm" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-6">
+                    <label class="form-label">Image Preview</label>
+                    <div class="d-flex align-items-center justify-content-center mb-3">
+                        <img id="imagePreview" class="img-thumbnail" src="https://via.placeholder.com/150" alt="Image Preview">
+                    </div>
+                    <label for="imageInput" class="form-label">Choose an Image</label>
+                    <div class="input-group">
+                        <input type="file" class="form-control" id="imageInput" name="imageInput">
+                        <button type="button" class="btn btn-outline-secondary" id="uploadBtn">
+                            <i class="bi bi-cloud-upload"></i> Upload Image
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="firstName" class="form-label"><strong>First Name</strong></label>
+                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid first name.
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lastName" class="form-label"><strong>Last Name</strong></label>
+                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid last name.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="dateOfBirth" class="form-label"><strong>Date of Birth</strong></label>
+                            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+                            <div class="invalid-feedback">
+                                Please provide a valid date of birth.
+                            </div>
+                        </div>
 
-<div>
-    <h4>Friend</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Id)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Id)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Photo)
-        </dd>
-    </dl>
-</div>
-<div>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
-</div>
+                        <div class="col-md-8">
+                            <h3 class="mb-3"><strong style="font-size: 1.25rem;">Gender</strong></h3>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="Sexo" id="radioMale">
+                                <label class="form-check-label" for="radioMale">Male</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input type="radio" class="form-check-input" name="Sexo" id="radioFemale">
+                                <label class="form-check-label" for="radioFemale">Female</label>
+                            </div>
+                            <div class="invalid-feedback">
+                                Please select a gender.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h3 class="mb-3"><strong style="font-size: 1.25rem;">Relations</strong></h3>
+                            <div class="input-group mb-3">
+                                <select class="form-select" id="relationSelect">
+                                    <option value="family">Family</option>
+                                    <option value="school">School</option>
+                                    <option value="work">Work</option>
+                                    <option value="university">University</option>
+                                    <!-- Add more options as needed -->
+                                </select>
+                                <button type="button" class="btn btn-outline-secondary" id="addRelationBtn">+</button>
+                            </div>
+                            <div class="d-flex flex-wrap" id="relationList"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="btn btn-primary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('imageInput').addEventListener('change', function (event) {
+            const imagePreview = document.getElementById('imagePreview');
+            const file = event.target.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = 'https://via.placeholder.com/150';
+            }
+        });
+
+        document.getElementById('addRelationBtn').addEventListener('click', function () {
+            const relationSelect = document.getElementById('relationSelect');
+            const selectedRelation = relationSelect.value;
+
+            const relationList = document.getElementById('relationList');
+            const relationItem = document.createElement('div');
+            relationItem.classList.add('mb-2', 'me-2');
+
+            const badge = document.createElement('span');
+            badge.classList.add('badge', 'bg-primary');
+            badge.textContent = selectedRelation;
+
+            const removeBtn = document.createElement('button');
+            removeBtn.type = 'button';
+            removeBtn.classList.add('btn', 'btn-outline-danger', 'btn-sm', 'ms-1');
+            removeBtn.textContent = 'Remove';
+            removeBtn.addEventListener('click', function () {
+                relationItem.remove();
+            });
+
+            relationItem.appendChild(badge);
+            relationItem.appendChild(removeBtn);
+            relationList.appendChild(relationItem);
+        });
+
+        document.getElementById('uploadBtn').addEventListener('click', function () {
+            const imageInput = document.getElementById('imageInput');
+            const imagePreview = document.getElementById('imagePreview');
+            const imageLink = document.getElementById('imageLink');
+
+            const file = imageInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                    imageLink.value = e.target.result;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = 'https://via.placeholder.com/300';
+                imageLink.value = '';
+            }
+        });
+    </script>
+</body>

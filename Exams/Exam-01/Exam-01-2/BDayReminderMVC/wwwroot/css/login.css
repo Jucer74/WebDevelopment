@@ -1,0 +1,35 @@
+﻿*{
+    font-family: 'Barlow', sans-serif;
+}
+
+.login-container {
+    height: 100vh;
+}
+
+.login-card {
+    border-radius: 3%;
+}
+
+.square-container {
+    overflow: visible;
+    position: relative;
+}
+
+.circle-container {
+    width: 13vh;
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    width: 10vh;
+}
+
+
+.img-crud {
+    width: 5vh;
+    height: 5vh;
+    object-fit: cover;
+}

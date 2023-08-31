@@ -5,6 +5,7 @@ using Microsoft.Extensions.Primitives;
 using System;
 using System.Drawing.Printing;
 using System.Reflection;
+using Microsoft.Win32;
 
 namespace BDayReminderMVC.Controllers
 {
@@ -25,12 +26,21 @@ namespace BDayReminderMVC.Controllers
         {
             try
             {
-                userlist.Add(user);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    userlist.Add(user);
+                    return RedirectToAction("Login");
+                }
+                else
+                {
+                    // Si el modelo no es válido, regresa a la vista de registro con los mensajes de error
+                    return View(user);
+                }
+
             }
             catch
             {
-                return View();
+                return Content("ERROR");
             }
         }
 
@@ -46,7 +56,7 @@ namespace BDayReminderMVC.Controllers
         // POST: UsersController/Login
         public ActionResult Login(User CurrentUser)
         {
-            var user = userlist.Find(User => u.UserName == CurrentUser.UserName);
+            var user = userlist.Find(User => User.UserName == CurrentUser.UserName);
 
             if (user != null && user.Password == CurrentUser.Password)
             {

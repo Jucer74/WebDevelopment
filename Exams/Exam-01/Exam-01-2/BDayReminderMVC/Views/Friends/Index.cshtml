@@ -3,63 +3,112 @@
 @{
     ViewData["Title"] = "Index";
 }
+<body class= "row">
+    <header class="w-100">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <a class="navbar-brand text-white" asp-area="" asp-controller="Friends" asp-action="Index">BDayReminderMVC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon bg-white"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <ul class="navbar-nav flex-grow-1">
+                    <li class="nav-item">
+                        <a class="nav-link text-white " asp-area="" asp-controller="Friends" asp-action="Index">Friends</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
 
-<h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photo)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Photo)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+
+    <main class="col-11 text-center mx-auto container-md">
+        <div class="row">
+            <div class="col-12 d-flex justify-content-end">
+                <a class="btn btn-primary" asp-action="Create">Create</a>
+            </div>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Photo)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.DateOfBirth)
+                    </th>
+                    <th class="text-center">
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="justify-content-center align-middle">
+                        <td class="text-center">
+
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td class="text-center">
+                            <img class="img-crud rounded-circle" src="http://localhost:5000/images/Photos/@item.Photo" alt="Imagen">
+
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.FirstName)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.LastName)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td class="text-center">
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td class="text-center">
+                            <div class="row">
+                                <a class="btn-primary text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Edit", new { /* id=item.PrimaryKey */ })">
+                                    <i class="bi bi-pencil-square"></i> Edit
+                                </a>
+
+                                <a class="btn-secondary text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Details", new { /* id=item.PrimaryKey */ })">
+                                    <i class="bi bi-info-circle-fill"></i> Details
+                                </a>
+
+                                <a class="btn-danger text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Delete", new { /* id=item.PrimaryKey */ })">
+                                    <i class="bi bi-trash3-fill"></i> Delete
+                                </a>
+                            </div>
+                            
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</main>
+
+
+
+<footer class="border-top footer bg-dark p-3 text-center text-white">
+    <div class="container">
+        &copy; 2023 - BDayReminderMVC
+    </div>
+</footer>
+</body>
