@@ -35,30 +35,40 @@ namespace BDayReminderMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(User user)
         {
-            try
+            // Comprueba si el correo electrónico y la contraseña ingresados coinciden con algún usuario en usersList
+            var existingUser = usersList.FirstOrDefault(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+
+            if (existingUser != null)
             {
-                usersList.Add(user);
+                // Si existe un usuario coincidente, redirige a la acción Index
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+
+            // Si no hay un usuario coincidente, agrega un mensaje de error al ModelState
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
+            // Redisplay the form with the error message
+            return View(user);
         }
+
+
 
         // GET: UsersController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var user = usersList.FirstOrDefault(x => x.Id == id);
+            return View(user);
         }
 
         // POST: UsersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, User user)
         {
             try
             {
+                var elementIndex = usersList.FindIndex(i => i.Id == id);
+                usersList[elementIndex] = user;
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -70,16 +80,19 @@ namespace BDayReminderMVC.Controllers
         // GET: UsersController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var user = usersList.FirstOrDefault(x => x.Id == id);
+            return View(user);
         }
 
         // POST: UsersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, User user)
         {
             try
             {
+                var userDelete = usersList.FirstOrDefault(x => x.Id == user.Id);
+                usersList.Remove(userDelete);
                 return RedirectToAction(nameof(Index));
             }
             catch
