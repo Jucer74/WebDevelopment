@@ -31,9 +31,13 @@ public class Friend
     public string Sex { get; set; }
     
     public string Relations { get; set; } = null!;    
+
+
     
     [Required(ErrorMessage = "The Photo is required")]
     [StringLength(50)]
     // Include only ImageName.ext
-    public string Photo { get; set; } = null!;    
+    public string Photo { get; set; } = null!; 
+    
+
 }
