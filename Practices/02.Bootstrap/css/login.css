@@ -1,0 +1,21 @@
+body {
+    background-image: url('../img/cuatroia.jpg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+}
+
+.login-container {
+    max-width: 300px; /* Tamaño deseado del contenedor */
+    width: 100%; /* Hacer que el contenedor ocupe el 100% del ancho disponible */
+    text-align: center; /* Centrar el contenido dentro del contenedor */
+    padding: 10px;
+    background-color: #e4e3e3;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(169, 32, 32, 0.2); /* Agregar una sombra */
+}
