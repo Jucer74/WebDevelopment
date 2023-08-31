@@ -1,0 +1,189 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.caja-imagen-responsive{
+
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.caja-th-responsive{
+
+  text-align: center;
+
+}
+
+.icon-container{
+
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.table-color-friends{
+
+  background-color: white;
+  font-size: 150%;
+
+}
+
+
+
+/*PRUEBA*/
+
+.white-color{
+
+  color: white;
+
+}
+
+#img {
+  height: 280px;
+}
+
+.icon-page{
+
+  width: 15%;
+
+}
+
+.icon-page2{
+
+  height: 1%;
+}
+
+body{
+
+  background-color: #051726 !important;
+
+}
+
+.contenedor-sesion{
+
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+
+}
+
+.bienvenido{
+
+  color: white;
+
+}
+.crude-color{
+
+  color: white;
+
+}
+
+.pruba2{
+
+  max-height: min-content;
+
+}
+
+.input-inicio{
+
+  background-color: #012340;
+  border: 0;
+  color: #6c757d;
+
+}
+
+#emailHelp{
+
+  text-decoration: none;
+
+}
+
+.google-margin{
+
+  margin-right: 4px;
+
+}
+
+.facebook-margin{
+
+  margin-left: 4px;
+
+}
+
+.boton-centrar{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42%;
+
+}
+
+.no-account{
+
+  display: inline;
+  margin: 0;
+  color: white;
+
+}
+
+.crear-cuenta{
+
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  color: white!important;
+
+}
+
+.prueba{
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+/* Cambiar el color del icono de calendario en Chrome y Edge */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(40%); /* Cambiar el color del icono */
+}
+
+.icon-page2{
+
+  width: 10%;
+
+}
+
+
+@media (max-width: 991px){
+
+  .icon-page{
+
+      width: 5rem;
+  
+  }
+
+}
