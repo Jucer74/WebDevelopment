@@ -34,9 +34,11 @@ namespace BDayReminderMVC.Controllers
             try
             {
                 // Cambiar el tipo de Sex a string
+                friend.Id = friendsList.Count + 1;
                 friend.Sex = Request.Form["Sex"];
                 friendsList.Add(friend);
                 return RedirectToAction(nameof(Index));
+     
             }
             catch
             {
