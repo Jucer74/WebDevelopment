@@ -225,16 +225,8 @@
 
 
 
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoData" class="control-label"></label>
-                <input asp-for="PhotoData" type="file" class="form-control" accept="image/*">
-                <span asp-validation-for="PhotoData" class="text-danger"></span>
-            </div>
+            
+            
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
                 <a class="btn btn-secondary" asp-action="Index">Cancel</a>

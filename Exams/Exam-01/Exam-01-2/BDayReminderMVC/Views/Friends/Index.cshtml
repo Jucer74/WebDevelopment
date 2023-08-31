@@ -30,9 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Relations)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photo)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -61,16 +59,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Relations)
                 </td>
-                <td>
-                    @if (!string.IsNullOrEmpty(item.PhotoContentType) && item.PhotoData != null)
-                    {
-                        <img src="data:@item.PhotoContentType;base64,@Convert.ToBase64String(item.PhotoData)" alt="Friend Photo" width="100" height="100" />
-                    }
-                    else
-                    {
-                        <span>No Photo Available</span>
-                    }
-                </td>
+                
              
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">

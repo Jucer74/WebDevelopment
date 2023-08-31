@@ -10,7 +10,7 @@ public class Friend
 
         // Propiedades existentes...
 
-        public byte[] PhotoData { get; set; } // Datos de la imagen
+        
         public string PhotoContentType { get; set; } // Tipo de contenido de la imagen
     
    
@@ -32,10 +32,6 @@ public class Friend
     
     public string Relations { get; set; } = null!;    
     
-    [Required(ErrorMessage = "The Photo is required")]
-    [StringLength(50)]
-    // Include only ImageName.ext
-    public string Photo { get; set; } = null!;    
-
+    
 
 }
