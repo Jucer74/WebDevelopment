@@ -7,7 +7,7 @@
     <header class="w-100">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand text-white" asp-area="" asp-controller="Friends" asp-action="Index">BDayReminderMVC</a>
+            <a class="navbar-brand text-white" asp-area="" asp-controller="Friends" asp-action="Home">BDayReminderMVC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon bg-white"></span>
@@ -29,7 +29,7 @@
     <main class="col-11 text-center mx-auto container-md">
         <div class="row">
             <div class="col-12 d-flex justify-content-end">
-                <a class="btn btn-primary" asp-action="Create">Create</a>
+                <a asp-action="Create" class="btn btn-primary">Create</a>
             </div>
         </div>
 
@@ -83,15 +83,16 @@
                         </td>
                         <td class="text-center">
                             <div class="row">
-                                <a class="btn-primary text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Edit", new { /* id=item.PrimaryKey */ })">
+                                <a class="btn-primary text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Edit", new { id=item.Id })">
                                     <i class="bi bi-pencil-square"></i> Edit
                                 </a>
 
-                                <a class="btn-secondary text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Details", new { /* id=item.PrimaryKey */ })">
+                                <a class="btn-secondary text-decoration-none p-2 mx-1 col-auto details-link"
+                                   data-id="@item.Id" data-bs-toggle="modal" data-bs-target="#detailsModal">
                                     <i class="bi bi-info-circle-fill"></i> Details
                                 </a>
 
-                                <a class="btn-danger text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Delete", new { /* id=item.PrimaryKey */ })">
+                                <a class="btn-danger text-decoration-none p-2 mx-1 col-auto" href="@Url.Action("Delete", new { id=item.Id })">
                                     <i class="bi bi-trash3-fill"></i> Delete
                                 </a>
                             </div>
@@ -104,7 +105,37 @@
         </table>
 </main>
 
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Create Friend</h5>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <!-- Aquí se cargará el contenido de la vista "Details" -->
+            </div>
+            <div class="d-flex justify-content-end col-12 py-4">
+                <button class="btn btn-danger mx-5" data-bs-dismiss="modal" >Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel">Create Friend</h5>
+            </div>
+            <div class="modal-body" id="detailsModalBody">
+                <!-- Aquí se cargará el contenido de la vista "Details" -->
+            </div>
+            <div class="d-flex justify-content-end col-12 py-4">
+                <button class="btn btn-danger mx-5" data-bs-dismiss="modal" >Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <footer class="border-top footer bg-dark p-3 text-center text-white">
     <div class="container">
@@ -112,3 +143,28 @@
     </div>
 </footer>
 </body>
+
+<script>
+    // Manejar el evento de clic en los enlaces "Details"
+    document.querySelectorAll('.details-link').forEach(link => {
+        link.addEventListener('click', function () {
+            const friendId = this.getAttribute('data-id');
+            const detailsModalBody = document.getElementById('detailsModalBody');
+
+            // Realizar una solicitud AJAX para cargar el contenido de la vista "Details"
+            fetch(`/Friends/Details/${friendId}`)
+                .then(response => response.text())
+                .then(data => {
+                    detailsModalBody.innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error loading details:', error);
+                });
+        });
+    });
+</script>
+
+
+
+
+

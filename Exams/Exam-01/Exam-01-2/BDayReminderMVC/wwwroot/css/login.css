@@ -33,3 +33,17 @@
     height: 5vh;
     object-fit: cover;
 }
+
+.img-details {
+    width: 5vh;
+    height: 5vh;
+}
+.img-carousel {
+    width: 5vh;
+    height: 5vh;
+}
+.modal-body {
+    padding: 0;
+    margin: 0;
+}
+

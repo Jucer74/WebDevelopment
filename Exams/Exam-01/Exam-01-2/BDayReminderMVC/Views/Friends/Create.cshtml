@@ -4,55 +4,243 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<body class="row">
+    <header class="w-100">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Friends" asp-action="Home">BDayReminderMVC</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon bg-white"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white " asp-area="" asp-controller="Friends" asp-action="Index">Friends</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<h4>Friend</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+<div class="container mt-5 w-100">
+    <div class="justify-content-center w-100">
+        <form id="registrationForm" class="row g-3 justify-content-center" asp-controller="Friends" asp-action="Create">
+            <div class="col-md-4">
+                <div class=" d-flex align-items-center justify-content-center mb-2">
+                    <img id="imagePreview" class="w-100" src="~/images/Logo.png" alt="Image Preview">
+                </div>
+
+                <div class="input-group">
+                    <input asp-for="Photo" type="text" class="form-control" id="imageInput" name="Photo" placeholder="Photo.png">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                    <button type="button" class="btn btn-outline-secondary" id="uploadBtn">
+                        <i class="bi bi-cloud-upload"></i>
+                    </button>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">@Html.DisplayNameFor(model => model.FirstName)</label>
+                        <input asp-for="FirstName" type="text" class="form-control" id="firstName" placeholder="First Name">
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold" >@Html.DisplayNameFor(model => model.LastName)"</label>
+                        <input asp-for="LastName" type=" text" class="form-control" id="LastName" placeholder="Last Name">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="dateOfBirth" class="form-label"><strong>Date of Birth</strong></label>
+                        <input asp-for="DateOfBirth" type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        <div class="invalid-feedback">
+                            Please provide a valid date of birth.
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <h3 class=""><strong style="font-size: 1.25rem;">Gender</strong></h3>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="Gender" value="M" type="radio" class="form-check-input" name="Gender" id="radioMale">
+                            <label class="form-check-label" for="radioMale">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="Gender" value='F' type="radio" class="form-check-input" name="Gender" id="radioFemale">
+                            <label class="form-check-label" for="radioFemale">Female</label>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-4 d-flex">
+                                <label for="customRange1" class="form-label fw-bold">Remain Days:</label>
+                            </div>
+
+                            <div class="col-6 d-flex">
+                                <input type="range" class="form-range me-2" id="customRange1">
+                            </div>
+
+                            <div class="col-2 d-flex">
+                                <input type="text" class="form-control" placeholder="000" aria-label="Value">
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+            <div class="row mt-3">
+                <div class="col-md-12">
+
+                    <div class="input-group mb-3 align">
+                        <label class="form-label fw-bold mx-2">Relations</label>
+                        <a id="addRelationBtn" class="row d-flex"> <i class="bi bi-plus-circle-fill"></i></a>
+                        <a id="minusRelationBtn"  class="mx-1"> <i class="bi bi-dash-circle-fill " disabled></i> </a>
+                    </div>
+                    <div class="d-flex flex-wrap" id="relationList"></div>
+                    <div class="d-flex flex-wrap" id="relationList"></div>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="DateOfBirth" class="control-label"></label>
-                <input asp-for="DateOfBirth" class="form-control" />
-                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="d-flex justify-content-end col-12 mt-4 p-0">
+                <button type="submit" class="btn btn-primary py-3 my-2 px-4 fw-bold">Register</button>
+                <a asp-action="Index" id="btnCancel" class="btn btn-danger py-2 my-2 px-4 mx-2 fw-bold d-flex align-items-center justify-content-center">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
+</body>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const addRelationBtn = document.getElementById('addRelationBtn');
+        const minusRelationBtn = document.getElementById('minusRelationBtn');
+        const relationList = document.getElementById('relationList');
+
+        minusRelationBtn.addEventListener('click', function () {
+            removeLastButton();
+        });
+
+        addRelationBtn.addEventListener('click', function () {
+            const inputField = document.createElement('input');
+            inputField.classList.add('m-1', 'col-2');
+            inputField.placeholder = 'Enter relation text...';
+
+            const addButton = document.createElement('button');
+            addButton.classList.add('btn', 'btn-primary', 'm-1', 'col-1');
+            addButton.textContent = 'Add';
+
+            const cancelButton = document.createElement('button');
+            cancelButton.classList.add('btn', 'btn-danger', 'm-1', 'col-1');
+            cancelButton.textContent = 'Cancel';
+            cancelButton.addEventListener('click', function () {
+                inputField.remove();
+                addButton.remove();
+                cancelButton.remove();
+            });
+
+            addButton.addEventListener('click', function () {
+                const newButton = document.createElement('button');
+                newButton.classList.add('btn', 'btn-secondary', 'm-1');
+                newButton.textContent = inputField.value;
+
+                relationList.insertBefore(newButton, addButton);
+
+                inputField.remove();
+                addButton.remove();
+                cancelButton.remove();
+            });
+
+            relationList.appendChild(inputField);
+            relationList.appendChild(addButton);
+            relationList.appendChild(cancelButton);
+        });
+
+        function removeLastButton() {
+            const buttons = relationList.querySelectorAll('.btn-secondary');
+            if (buttons.length > 0) {
+                const lastButton = buttons[buttons.length - 1];
+                lastButton.remove();
+            }
+        }
+    });
+</script>
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const uploadBtn = document.getElementById('uploadBtn');
+
+        uploadBtn.addEventListener('click', function () {
+            const imageName = imageInput.value;
+            const imageUrl = "/images/Photos/" + imageName;
+            imagePreview.src = imageUrl;
+        });
+    });
+</script>
+
+<script>
+
+    var diasFaltantes = 0;
+
+    function calcularDiasFaltantes() {
+        // Obtener las fechas ingresadas por el usuario
+        const fechaInicio = new Date(document.getElementById('dateOfBirth').value);
+        const fechaFin = new Date();
+        fechaInicio.setFullYear(fechaFin.getFullYear());
+
+        // Si la fecha de inicio es posterior a la fecha de fin, ajustar el año de la fecha de inicio
+        if (fechaFin > fechaInicio) {
+            fechaInicio.setFullYear(fechaFin.getFullYear() + 1);
+        }
+
+        // Calcular la diferencia en milisegundos entre las dos fechas
+        let diferenciaMilisegundos = fechaInicio - fechaFin;
+
+        // Calcular los días faltantes redondeando hacia abajo
+        diasFaltantes = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+
+
+
+        if (diasFaltantes == 365) {
+            diasFaltantes = 0;
+        } else {
+            diasFaltantes++;
+        }
+
+        // Mostrar el resultado en el DOM
+        const resultadoElement = document.getElementById('daysRemaining');
+        resultadoElement.textContent = `Faltan ${diasFaltantes} días entre las fechas.`;
+
+        const progres = (diasFaltantes * 100) / 365;
+        const progressBar = document.getElementById('progressBar');
+        progressBar.style.width = progres + '%';
+
+        console.log(progres)
+
+
+    }
+
+
+
+    // Asignar la función al botón de cálculo
+    const calcularButton = document.getElementById('dateOfBirth');
+    calcularButton.addEventListener('change', calcularDiasFaltantes);
+
+
+
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

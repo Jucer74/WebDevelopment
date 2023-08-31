@@ -7,6 +7,13 @@ namespace BDayReminderMVC.Controllers
     public class FriendsController : Controller
     {
         private static List<Friend> friendsList = LoadFriends();
+
+        // GET: FriendsController
+        public ActionResult Home()
+        {
+            return View(friendsList);
+        }
+
         // GET: FriendsController
         public ActionResult Index()
         {
@@ -16,8 +23,8 @@ namespace BDayReminderMVC.Controllers
         // GET: FriendsController/Details/5
         public ActionResult Details(int id)
         {
-            var friends = friendsList.Find(friend => friend.Id == id);
-            return View();
+            var friend = friendsList.Find(friend => friend.Id == id);
+            return View(friend);
         }
 
         // GET: FriendsController/Create
@@ -33,14 +40,16 @@ namespace BDayReminderMVC.Controllers
         {
             try
             {
+                friends.Id = friendsList.Count + 1;
                 friendsList.Add(friends);
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
         }
+
 
         // GET: FriendsController/Edit/5
         public ActionResult Edit(int id)
@@ -75,8 +84,8 @@ namespace BDayReminderMVC.Controllers
         // GET: FriendsController/Delete/5
         public ActionResult Delete(int id)
         {
-            var Friend = friendsList.Find(friend => friend.Id == id);
-            return View();
+            var Friend = friendsList.Find(Currentfriend => Currentfriend.Id == id);
+            return View(Friend);
         }
 
         // POST: FriendsController/Delete/5

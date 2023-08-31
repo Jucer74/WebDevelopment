@@ -60,7 +60,7 @@ namespace BDayReminderMVC.Controllers
 
             if (user != null && user.Password == CurrentUser.Password)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Home", "Friends");
             }
             else
             {
