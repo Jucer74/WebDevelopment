@@ -1,31 +1,69 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<BDayReminderMVC.Models.Persona>
 
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/wwwroot/css/site.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        <h1 class="display-4 text-center">Welcome</h1>
-        <p class="text-center">Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    </div>
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             @for (int i = 0; i < Model.Count; i++)
             {
                 <div class="carousel-item @(i == 0 ? "active" : "")">
-                    <img src="~/img/@Model[i].PhotoPath" class="d-block w-100" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>@Model[i].FirstName @Model[i].LastName</h5>
-                        <p>@Model[i].DateOfBirth.ToShortDateString()</p>
+                    <div class="row">
+                        <div class="col-md-4 d-block d-sm-none">
+                            <!-- Mostrar solo 1 elemento en resoluciones de celular -->
+                        </div>
+                        <div class="col-md-4">
+                            <div class="image-container">
+                                <img src="~/img/@Model[i].PhotoPath" alt="..." class="img-fluid">
+                            </div>
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>@Model[i].FirstName @Model[i].LastName</h5>
+
+                                <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Personas", new { id = Model[i].Id })'">
+                                    Details
+                                </button>
+                            </div>
+                        </div>
+                        @if (i + 1 < Model.Count)
+                        {
+                            <div class="col-md-4 d-none d-sm-block">
+                                <div class="image-container">
+                                    <img src="~/img/@Model[i + 1].PhotoPath" alt="..." class="img-fluid">
+                                </div>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>@Model[i + 1].FirstName @Model[i + 1].LastName</h5>
+
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Personas", new { id = Model[i + 1].Id })'">
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        }
+                        @if (i + 2 < Model.Count)
+                        {
+                            <div class="col-md-4 d-none d-sm-block">
+                                <div class="image-container">
+                                    <img src="~/img/@Model[i + 2].PhotoPath" alt="..." class="img-fluid">
+                                </div>
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>@Model[i + 2].FirstName @Model[i + 2].LastName</h5>
+
+                                    <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Details", "Personas", new { id = Model[i + 2].Id })'">
+                                        Details
+                                    </button>
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             }

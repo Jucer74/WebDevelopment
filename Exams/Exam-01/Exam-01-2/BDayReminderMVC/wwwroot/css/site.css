@@ -57,3 +57,37 @@ button[type="submit"] {
     }
 }
 
+
+.carousel-inner img {
+    width: 100%; 
+    height: auto;
+}
+
+
+.carousel-inner img {
+    width: 350px;
+    height: 550px;
+}
+
+
+.carousel-caption {
+    bottom: 0;
+}
+
+
+.carousel-button {
+    margin-top: 10px; 
+}
+
+
+#carouselExampleControls {
+    max-height: 300px; 
+}
+
+
+
+
+
+
+
+

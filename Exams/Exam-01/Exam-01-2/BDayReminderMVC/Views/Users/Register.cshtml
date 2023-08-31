@@ -1,5 +1,10 @@
 ﻿@model BDayReminderMVC.Models.User
 
+@{
+
+    Layout = "_LayoutCopia";
+
+}
 <!DOCTYPE html>
 <html>
      
@@ -36,8 +41,12 @@
             <input type="password" id="ConfirmPassword" name="ConfirmPassword" required />
             <span asp-validation-for="ConfirmPassword"></span>
         </div>
-        <div>
+        
+        <div class="d-flex mt-3 justify-content-center">
             <button type="submit">Register</button>
+        </div>
+        <div class="d-flex mt-3 justify-content-center">
+            <a asp-action="Login" class="btn btn-secondary w-50">Cancel</a>
         </div>
     </form>
 </body>
