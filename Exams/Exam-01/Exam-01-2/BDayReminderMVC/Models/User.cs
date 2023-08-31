@@ -1,11 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace MovieRankMVC.Models;
+namespace BDayReminderMVC.Models;
 
 public class User
 {
     [Key]
-    public int Id { get; set; }
+    public int Id{ get; set; }
+   
+   
+
+
 
     [Required(ErrorMessage = "The UserEmail is required")]
     [EmailAddress(ErrorMessage = "The UserEmail must be a valid email address")]
@@ -24,7 +29,7 @@ public class User
     [StringLength(50)]
     public string Password { get; set; } = null!;
     
-    [NotMapped]
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     [Compare("Password")]
     [StringLength(50)]
     [PasswordPropertyText(true)]
