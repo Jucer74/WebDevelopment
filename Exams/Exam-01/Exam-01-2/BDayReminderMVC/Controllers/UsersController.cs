@@ -1,20 +1,16 @@
 ﻿using BDayReminderMVC.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BDayReminderMVC.Controllers
 {
     public class UsersController : Controller
     {
-
-
         private static List<User> usersList = new List<User>();
-
 
         // GET: UsersController
         public ActionResult Index()
         {
-            return View(usersList);
+            return View();
         }
 
         // GET: UsersController/Details/5
@@ -38,7 +34,7 @@ namespace BDayReminderMVC.Controllers
             // Comprueba si el correo electrónico y la contraseña ingresados coinciden con algún usuario en usersList
             try
             {
-
+                user.Id = usersList.Count + 1;
                 usersList.Add(user);
                 return RedirectToAction(nameof(Index));
             }
@@ -47,8 +43,6 @@ namespace BDayReminderMVC.Controllers
                 return View();
             }
         }
-
-
 
         // GET: UsersController/Edit/5
         public ActionResult Edit(int id)
@@ -96,6 +90,27 @@ namespace BDayReminderMVC.Controllers
             {
                 return View();
             }
+        }
+
+        // POST: UsersController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(User user)
+        {
+            // Comprueba si el correo electrónico y la contraseña ingresados coinciden con algún usuario en usersList
+            var existingUser = usersList.FirstOrDefault(u => u.UserEmail == user.UserEmail && u.Password == user.Password);
+
+            if (existingUser != null)
+            {
+                // Si existe un usuario coincidente, redirige a la acción Index
+                return RedirectToAction("Index", "Home", new { area = "" });
+            }
+
+            // Si no hay un usuario coincidente, agrega un mensaje de error al ModelState
+            ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+
+            // Redisplay the form with the error message
+            return View("Index");
         }
     }
 }

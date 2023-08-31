@@ -30,6 +30,4 @@ public class User
     [StringLength(50)]
     [PasswordPropertyText(true)]
     public string ConfirmPassword { get; set; } = null!;
-    
-
 }

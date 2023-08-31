@@ -4,18 +4,14 @@ namespace BDayReminderMVC.Models;
 
 public class Friend
 {
-    
-        [Key]
-        public int Id { get; set; }
+    [Key]
+    public int Id { get; set; }
 
-        // Propiedades existentes...
+    // Propiedades existentes...
 
-        
-        public string PhotoContentType { get; set; } // Tipo de contenido de la imagen
-    
-   
+    public string PhotoContentType { get; set; } // Tipo de contenido de la imagen
 
-    [Required(ErrorMessage ="The FirstName is Required")]
+    [Required(ErrorMessage = "The FirstName is Required")]
     [StringLength(50)]
     public string FirstName { get; set; } = null!;
 
@@ -29,9 +25,6 @@ public class Friend
 
     [Required(ErrorMessage = "The Sex is Required")]
     public string Sex { get; set; }
-    
-    public string Relations { get; set; } = null!;    
-    
-    
 
+    public string Relations { get; set; } = null!;
 }
