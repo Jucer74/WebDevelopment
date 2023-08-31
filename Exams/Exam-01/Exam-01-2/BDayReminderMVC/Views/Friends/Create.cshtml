@@ -74,6 +74,7 @@
                 <div class="form-group">
                     <label asp-for="Photo" for="fileToUpload">Seleccionar imagen:</label>
                     <input asp-for="Photo" type="file" class="form-control-file" id="fileToUpload" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
                 </div>
                 <button type="button" class="btn btn-primary" id="uploadButton">Subir Imagen</button>
 
@@ -219,7 +220,7 @@
                         <div class="d-flex">
 
 
-                            <!-- Agrega más botones según sea necesario -->
+                       
                         </div>
 
                         <div class="d-flex mt-2">
