@@ -104,11 +104,15 @@ namespace BDayReminderMVC.Controllers
         {
             var friends = new List<Friend>();
 
-            friends.Add(new Friend() { Id = 1, FirstName = "Miguel", LastName = "Cordoba", DateOfBirth = new DateTime(2000, 10, 8), Sex = "Male", Relations = "Relative" });
-            friends.Add(new Friend() { Id = 2, FirstName = "Carlos", LastName = "Torres", DateOfBirth = new DateTime(2000, 9, 10), Sex = "Male", Relations = "Relative" });
-            friends.Add(new Friend() { Id = 3, FirstName = "Mario", LastName = "Perez", DateOfBirth = new DateTime(2000, 5, 8), Sex = "Male", Relations = "Relative" });
-            friends.Add(new Friend() { Id = 4, FirstName = "Sebastián", LastName = "Castaño", DateOfBirth = new DateTime(2000, 3, 6), Sex = "Male", Relations = "Relative" });
-
+            friends.Add(new Friend() { Id = 1, FirstName = "Miguel", LastName = "Cordoba", DateOfBirth = new DateTime(2000, 10, 8), Sex = "Male", Relations = "Relative", Photo = "/images/miguel.jpg"});
+            friends.Add(new Friend() { Id = 2, FirstName = "Carlos", LastName = "Torres", DateOfBirth = new DateTime(2000, 9, 10), Sex = "Male", Relations = "Relative", Photo = "/images/cata.jpg" });
+            friends.Add(new Friend() { Id = 3, FirstName = "Mario", LastName = "Perez", DateOfBirth = new DateTime(2000, 5, 8), Sex = "Male", Relations = "Relative", Photo = "/images/carlos.jpg" });
+            friends.Add(new Friend() { Id = 4, FirstName = "Annie", LastName = "Cruz", DateOfBirth = new DateTime(2003, 2, 6), Sex = "Female", Relations = "Relative, friend", Photo = "/images/annie.jpg" });
+            friends.Add(new Friend() { Id = 5, FirstName = "Bianca", LastName = "Venavidez", DateOfBirth = new DateTime(2002, 6, 1), Sex = "Female", Relations = "Relative, friend", Photo = "/images/bianca.jpg" });
+            friends.Add(new Friend() { Id = 6, FirstName = "Santiago", LastName = "Moreno", DateOfBirth = new DateTime(2001, 5, 2), Sex = "Male", Relations = "Relative, lover", Photo = "/images/santi.jpg" });
+            friends.Add(new Friend() { Id = 7, FirstName = "Omar", LastName = "Bravo", DateOfBirth = new DateTime(2004, 5, 9), Sex = "Male", Relations = "Relative, associate", Photo = "/images/omar.jpg" });
+            friends.Add(new Friend() { Id = 8, FirstName = "Felipe", LastName = "Araujo", DateOfBirth = new DateTime(2003, 7, 2), Sex = "Male", Relations = "Friend", Photo = "/images/felipe.jpg" });
+            friends.Add(new Friend() { Id = 7, FirstName = "Juan", LastName = "Zúñiga", DateOfBirth = new DateTime(2001, 3, 6), Sex = "Male", Relations = "Friend", Photo = "/images/zuni.jpg" });
             return friends;
         }
     }

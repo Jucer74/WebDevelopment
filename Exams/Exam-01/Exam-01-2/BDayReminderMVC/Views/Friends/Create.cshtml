@@ -41,8 +41,8 @@
         <div class="container">
             <form>
                 <div class="form-group">
-                    <label for="fileToUpload">Seleccionar imagen:</label>
-                    <input type="file" class="form-control-file" id="fileToUpload" accept="image/*">
+                    <label asp-for="Photo" for="fileToUpload">Seleccionar imagen:</label>
+                    <input asp-for="Photo" type="file" class="form-control-file" id="fileToUpload" accept="image/*">
                 </div>
                 <button type="button" class="btn btn-primary" id="uploadButton">Subir Imagen</button>
 
