@@ -1,7 +1,6 @@
 ﻿using BDayReminderMVC.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using BDayReminderMVC.Models;
 using System.Collections.Generic;
 using System.Linq;
 
