@@ -3,14 +3,19 @@
     ViewData["Title"] = "Create";
 }
 
+@{
+    ViewData["Title"] = "Vista sin Navbar";
+    ViewData["HideNavbar"] = true; // Ocultar el navbar en esta vista
+}
 
-
+<!-- Contenido de la vista -->
 @section Scripts {
 
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
 
 
 <!DOCTYPE html>
