@@ -1,86 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio Carlos Serrato</title>
+    <link rel="stylesheet" href="src/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 </head>
-<main>
-    <body>
-        <header>
-            <section class="image">
-                <img id="persona" src="../img/Mesa de trabajo 2.jpg" alt="persona">
-            </section>
-        <section class="navar-menu">
-            <div class="personal-information">
-                <h1>Michael  Estiven Reyes</h1>
-            
-                <nav class="social-media">
-                    <ul id="social-media">
-                        <li>
-                            <a href="" class="social-link">
-                                <img src="../img/gorjeo.png" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-link">
-                                <img src="../img/facebook.png" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-link">
-                                <img src="../img/instagram.png" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" class="social-link">
-                                <img src="../img/github.png" alt="">
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            
-            <p>Multimedia engeniering</p>
-    
-            <nav class="menu">
-                <ul id="iframe-selector">
-                    <li class="home">
-                        <a  href="./Vistas/home.html" target="iframe-body">
-                            <img src="../img/icons8-casa-24 (1).png" alt="home" style="width: 50px; height: 50px;">home
-                        </a>
-                    </li>
-                    <li class="resume">
-                        <a  href="./Vistas/resume.html" target="iframe-body">
-                            <img src="../img/icons8-currículum-50 (1).png" alt="resume" >resume
-                        </a>
-                    </li>
-                    <li class="work">
-                        <a  href="./Vistas/work.html" target="iframe-body">
-                            <img src="../img/icons8-negocio-50.png" alt="work">work
-                        </a>
-                    </li>
-                    <li class="contact">
-                        <a  href="./Vistas/contact.html" target="iframe-body">
-                            <img src="../img/icons8-contacts-50.png" alt="contact">contact
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </section>
-        </header>
-    
-        <iframe name="iframe-body" src="./Vistas/home.html" frameborder="0""></iframe>
-        
-        <footer>
-           <button> <a href="" class="button-download"> Download Resume</a></button>
-        </footer>
 
-    </body>
-</main>
+<body>
+    <header id="header-portfolio">
+        <img id="profile-picture" src="src/img/person1.jpg" alt="Foto de Carlos Serrato"> 
+        <aside id="left-header"> 
+            <section id="name-socialbtn">
+                <h1 id="name">Carlos Serrato</h1>
+                <div id="social-buttons">
+                    <a class="social-btn" href="https://twitter.com/">
+                        <img class="social-icon" src="src/img/twitter.png" alt="">
+                    </a>
+                    <a class="social-btn" href="https://www.facebook.com/">
+                        <img class="social-icon" src="src/img/facebook.png" alt="">
+                    </a>
+                    <a class="social-btn" href="https://www.instagram.com/">
+                        <img class="social-icon" src="src/img/instagram.png" alt="">
+                    </a>
+                    <a class="social-btn" href="https://github.com/">
+                        <img class="social-icon" src="src/img/github.png" alt="">
+                    </a>
+                </div>
+            </section>
+            <section id="section-description">
+                <p id="description">Ingeniero Multimedia e Ingeniero de Sistemas</p>
+            </section>
+            <nav id="nav-bar">
+                <a class="nav-btn" id="home-btn" href="src/html/homeScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/home.png" alt="Home"> Home
+                </a>
+                <a class="nav-btn" id="resume-btn" href="src/html/resumeScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/graduate.png" alt="Resume"> Resume
+                </a>
+                <a class="nav-btn" id="work-btn" href="src/html/workScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/folder.png" alt="Work"> Work
+                </a>
+                <a class="nav-btn" id="contact-btn" href="src/html/homeScreen.html" target="screen">
+                    <img class="nav-icon" src="src/img/email.png" alt="Contact"> Contact
+                </a>
+            </nav>
+        </aside>
+    </header>
+
+    <main>
+        <iframe name="screen" class="screen" src="src/html/contactScreen.html" width="100%" height="400" frameborder="0" scrolling="no"></iframe>
+    </main>
+
+    <footer id="footer-portfolio">
+        <button id="download-btn"> 
+            <img id="download-icon" src="src/img/nube.png" alt="Download"> Download Resume
+        </button>
+    </footer>
+
+</body>
 </html>

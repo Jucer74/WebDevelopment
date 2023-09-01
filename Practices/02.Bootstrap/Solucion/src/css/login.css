@@ -1,0 +1,28 @@
+*{
+    font-family: 'Barlow', sans-serif;
+}
+
+.container-md{
+    height: 100vh;
+ }
+ 
+.body{
+    margin: 0;
+    padding: 0;
+
+}
+
+.login {
+    border-radius: 3%;
+}
+
+input {
+    background: none;
+    font-size: 1rem;
+    width: 100%;
+    margin: 3px 0;
+    height: 40px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #262626;
+}

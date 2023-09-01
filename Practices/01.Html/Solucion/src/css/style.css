@@ -1,0 +1,146 @@
+
+body {
+    background-color: #ffffff;
+    margin: 3%;
+    font-family: 'Roboto', sans-serif;
+}
+
+/*---------------- Header ----------------*/
+#header-portfolio {
+    display: flex;
+    height: 30%;
+    width: 100%;
+}
+
+#profile-picture {
+    height: 100%;
+    width: 30%;
+    object-fit: cover;
+}
+
+#left-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#name-socialbtn {
+    display: flex;
+    align-items: center;
+    height: 40%;
+    padding: 0 4% 0 4%;
+    background-color: #363B40;
+}
+
+#name {
+    color: #FFFFFF;
+    font-size: 3vw;
+    font-weight: 300;
+    margin: 0;
+}
+
+#social-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 55%;
+}
+
+.social-icon {
+    width: 15%;
+}
+
+.social-btn {
+    display: flex;
+    justify-content: center;
+}
+
+/*---------------- Description ----------------*/
+#section-description {
+    display: flex;
+    align-items: center;
+    padding: 0 3%;
+    background-color: #000700;
+    height: 20%;
+}
+
+#description {
+    font-weight: 300;
+    font-size: 1vw;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+/*---------------- Nav Bar ----------------*/
+#nav-bar {
+    display: flex;
+    justify-content: space-between;
+    height: 40%;
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: 500;
+}
+
+.nav-icon {
+    width: 15%;
+}
+
+#home-btn {
+    background-color: #0583F2;
+}
+
+#resume-btn {
+    background-color: #29A63C;
+}
+
+#work-btn {
+    background-color: #F2A20C;
+}
+
+#contact-btn {
+    background-color: #D93654;
+}
+
+/*---------------- Main ----------------*/
+
+.screen {
+    display: flex;
+    height: 75vw;
+}
+
+/*---------------- Footer ----------------*/
+
+#footer-portfolio {
+    display: flex;
+    height: 10vw;
+    align-items: center;
+    padding-left: 5%;
+    background-color: #363B40;
+}
+
+#download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #363B40;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    width: 15%;
+    height: 20%;
+    font-size: 1vw;
+}
+
+#download-icon {
+    width: 12%;
+    padding-right: 3%;
+}
