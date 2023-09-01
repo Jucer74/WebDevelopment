@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit";
+    ViewData["RelationsFriends"] = Model.Relations;
 }
 <div class="container mt-5 w-100">
     <div class="justify-content-center w-100">
@@ -18,6 +19,7 @@
                         <i class="bi bi-cloud-upload"></i>
                     </button>
                 </div>
+
             </div>
             <div class="col-md-8">
                 <div class="row">
@@ -36,10 +38,7 @@
                     <div class="col-md-6 mb-3">
                         <label for="dateOfBirth" class="form-label"><strong>Date of Birth</strong></label>
                         <input asp-for="DateOfBirth" type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
-                        <span asp-validation-for="LastName" class="text-danger"></span>
-                        <div class="invalid-feedback">
-                            Please provide a valid date of birth.
-                        </div>
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -61,11 +60,11 @@
                             </div>
 
                             <div class="col-6 d-flex">
-                                <input type="range" class="form-range me-2" id="customRange1">
+                                <input type="range" class="form-range me-2" min="0" max="100" value=@ViewData["daysRemainingPercent"] id="Range" disabled>
                             </div>
 
                             <div class="col-2 d-flex">
-                                <input type="text" class="form-control" placeholder="000" aria-label="Value">
+                                <input type="text" class="form-control" placeholder="000" value=@ViewData["DaysRemaining"] aria-label="Value" disabled>
                             </div>
 
                         </div>
@@ -76,18 +75,20 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-12">
-
                     <div class="input-group mb-3 align">
                         <label class="form-label fw-bold mx-2">Relations</label>
-                        <a id="addRelationBtn" class="row d-flex"> <i class="bi bi-plus-circle-fill"></i></a>
-                        <a id="minusRelationBtn" class="mx-1"> <i class="bi bi-dash-circle-fill " disabled></i> </a>
+                        <a class=""> <i class="bi bi-plus-circle-fill" disabled></i></a>
+                        <a class="mx-1"> <i class="bi bi-dash-circle-fill " disabled></i> </a>
+                        @foreach (var Relation in Model.Relations)
+                        {
+                            <button class="btn-white rounded mx-1" disabled>@Relation</button>
+                        }
                     </div>
-                    <div class="d-flex flex-wrap" id="relationList"></div>
                     <div class="d-flex flex-wrap" id="relationList"></div>
                 </div>
             </div>
             <div class="d-flex justify-content-end col-12 mt-4 p-0">
-                <button type="submit" class="btn btn-primary py-3 my-2 px-4 fw-bold">Edit</button>
+                <button type="submit" class="btn btn-primary py-2 my-2 px-4 fw-bold">Edit</button>
                 <a asp-action="Index" id="btnCancel" class="btn btn-danger py-2 my-2 px-4 mx-2 fw-bold d-flex align-items-center justify-content-center">Cancel</a>
             </div>
         </form>

@@ -1,4 +1,4 @@
-﻿*{
+﻿* {
     font-family: 'Barlow', sans-serif;
 }
 
@@ -27,7 +27,6 @@
     width: 10vh;
 }
 
-
 .img-crud {
     width: 5vh;
     height: 5vh;
@@ -38,12 +37,13 @@
     width: 5vh;
     height: 5vh;
 }
+
 .img-carousel {
     width: 5vh;
     height: 5vh;
 }
+
 .modal-body {
     padding: 0;
     margin: 0;
 }
-

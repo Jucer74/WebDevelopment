@@ -8,6 +8,7 @@
     <header class="w-100">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
+                <img src="/images/Logo.png" alt="BDayReminder Logo" width="30" height="30" class="d-inline-block align-text-top mx-4">
                 <a class="navbar-brand text-white" asp-area="" asp-controller="Friends" asp-action="Home">BDayReminderMVC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -19,17 +20,24 @@
                             <a class="nav-link text-white " asp-area="" asp-controller="Friends" asp-action="Index">Friends</a>
                         </li>
                     </ul>
+                    <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Profile">
+                            <i class="bi bi-person-fill text-white"></i>
+                        </a>
+                    </li>
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-<div class="container mt-5 w-100">
-    <div class="justify-content-center w-100">
-        <form id="registrationForm" class="row g-3 justify-content-center" asp-controller="Friends" asp-action="Create">
+    <div class="container w-100 mt-5">
+        <div class="justify-content-center w-100 px-5">
+            <form id="registrationForm" class="row g-3 justify-content-center  px-5 " asp-controller="Friends" asp-action="Create">
             <div class="col-md-4">
                 <div class=" d-flex align-items-center justify-content-center mb-2">
-                    <img id="imagePreview" class="w-100" src="~/images/Logo.png" alt="Image Preview">
+                    <img id="imagePreview" class="w-100" src="~/images/PhotoProfile.jpg" alt="Image Preview">
                 </div>
 
                 <div class="input-group">
@@ -108,14 +116,18 @@
                 </div>
             </div>
             <div class="d-flex justify-content-end col-12 mt-4 p-0">
-                <button type="submit" class="btn btn-primary py-3 my-2 px-4 fw-bold">Register</button>
-                <a asp-action="Index" id="btnCancel" class="btn btn-danger py-2 my-2 px-4 mx-2 fw-bold d-flex align-items-center justify-content-center">Cancel</a>
+                <button type="submit" class="btn btn-primary py-2 my-1 px-4 fw-bold">Create</button>
+                <a asp-action="Index" id="btnCancel" class="btn btn-danger py-2 my-1 px-4 mx-2 fw-bold d-flex align-items-center justify-content-center">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
-
+    <footer class="border-top footer bg-dark p-3 text-center text-white">
+        <div class="container">
+            &copy; 2023 - BDayReminderMVC
+        </div>
+    </footer>
 </body>
 
 
@@ -218,7 +230,6 @@
         } else {
             diasFaltantes++;
         }
-
         // Mostrar el resultado en el DOM
 
         const progres = (diasFaltantes * 100) / 365;
@@ -238,10 +249,9 @@
     // Asignar la función al botón de cálculo
     const calcularButton = document.getElementById('dateOfBirth');
     calcularButton.addEventListener('change', calcularDiasFaltantes);
-
-
-
+    
 </script>
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
