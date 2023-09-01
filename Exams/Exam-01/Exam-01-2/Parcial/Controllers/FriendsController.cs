@@ -123,7 +123,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Barry",
                 LastName = "Allen",
-                DateOfBirth = new DateTime(1989, 4, 8),
+                DateOfBirth = new DateTime(1989, 1, 8),
                 Sex = 'M'
             });
 
@@ -134,7 +134,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Bruce",
                 LastName = "Wayne",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(1975, 4, 7),
                 Sex = 'M'
             });
 
@@ -145,7 +145,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Enrico",
                 LastName = "Pucci",
-                DateOfBirth = new DateTime(1974, 1, 8),
+                DateOfBirth = new DateTime(1972, 6, 5),
                 Sex = 'M'
             });
 
@@ -157,7 +157,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Tsunayoshi",
                 LastName = "Sawada",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(2006, 10, 6),
                 Sex = 'M'
             });
             friend.Add(new Friend()
@@ -167,7 +167,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Dick",
                 LastName = "Grayson",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(1996, 12, 1),
                 Sex = 'M'
             });
             friend.Add(new Friend()
@@ -177,7 +177,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Peter",
                 LastName = "Parker",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(2002, 10, 10),
                 Sex = 'M'
             });
             friend.Add(new Friend()
@@ -197,7 +197,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Gwen",
                 LastName = "Stacy",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(1977, 2, 4),
                 Sex = 'M'
             });
             friend.Add(new Friend()
@@ -207,7 +207,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Miles",
                 LastName = "Morales",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(2006, 11, 7),
                 Sex = 'M'
             });
             friend.Add(new Friend()
@@ -217,7 +217,7 @@ namespace Parcial.Controllers
                 UserEmail = "correo1@example.com",
                 FirstName = "Barbara",
                 LastName = "Gordon",
-                DateOfBirth = new DateTime(1974, 10, 8),
+                DateOfBirth = new DateTime(1998, 9, 9),
                 Sex = 'M'
             });
             return friend;
