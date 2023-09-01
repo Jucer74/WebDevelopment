@@ -4,6 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
+
     <div class="container mt-5 w-100">
     <div class="justify-content-center w-100">
         <form id="registrationForm" class="row g-3 justify-content-center" novalidate>
@@ -12,7 +13,7 @@
                         <img id="imagePreview" class="w-100" src="http://localhost:5000/images/Photos/@Model.Photo" alt="Image Preview">
                     </div>
                     <div class="input-group">
-                    <input type="text" class="form-control" id="imageInput" name="imageInput" value=@Html.DisplayFor(model => model.Photo)>
+                    <input type="text" class="form-control" id="imageInput" name="imageInput" value=@Html.DisplayFor(model => model.Photo) disabled>
                     <button type="button" class="btn btn-outline-secondary" id="uploadBtn" disabled>
                             <i class="bi bi-cloud-upload"></i>
                         </button>
@@ -32,7 +33,7 @@
                     <div class="row">
                     <div class="col-md-6 mb-3">
                             <label for="dateOfBirth" class="form-label"><strong>Date of Birth</strong></label>
-                            <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" disabled>
+                        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")" disabled>
                             <div class="invalid-feedback">
                                 Please provide a valid date of birth.
                             </div>
@@ -60,19 +61,18 @@
                             </div>
 
                             <div class="col-6 d-flex">
-                                <input type="range" class="form-range me-2" min="0" max="100" value="0" id="Range">
+                                <input type="range" class="form-range me-2" min="0" max="100" value=@ViewData["daysRemainingPercent"] id="Range" disabled>
                             </div>
 
                             <div class="col-2 d-flex">
-                                <input type="text" class="form-control" placeholder="000" aria-label="Value">
+                                <input type="text" class="form-control" placeholder="000" value=@ViewData["DaysRemaining"] aria-label="Value" disabled>
                             </div>
 
                         </div>
                     </div>
-
-
                     </div>
                 </div>
+
             <div class="row mt-3">
                 <div class="col-md-12">
                     <div class="input-group mb-3 align">
@@ -91,65 +91,38 @@
         </div>
     </div>
 
-    <script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var diasFaltantes = 0;
+        function calcularDiasFaltantes() {
+            const fechaInicio = new Date(document.getElementById('dateOfBirth').value);
+            const fechaFin = new Date();
+            fechaInicio.setFullYear(fechaFin.getFullYear());
 
-    function reloadModalContent() {
-        var modalContent = document.getElementById('modalContent');
-        modalContent.innerHTML = '<p>Nuevo contenido del modal</p>'; // Reemplaza con tu nuevo contenido
-    }
+            if (fechaFin > fechaInicio) {
+                fechaInicio.setFullYear(fechaFin.getFullYear() + 1);
+            }
 
-    // Evento para recargar el contenido del modal cuando se abre
-    $('#myModal').on('show.bs.modal', function () {
-        reloadModalContent();
-    });
+            let diferenciaMilisegundos = fechaInicio - fechaFin;
+            diasFaltantes = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
 
-    // Evento para recargar el contenido del modal cuando se hace clic en un botón
-    $('#reloadModalButton').on('click', function () {
-        reloadModalContent();
-    });
+            if (diasFaltantes == 365) {
+                diasFaltantes = 0;
+            } else {
+                diasFaltantes++;
+            }
+            alert(diasFaltantes);
+            const progres = (diasFaltantes * 100) / 365;
+            const progressBar = document.getElementById('Range');
+            progressBar.value = progres;
 
-    var diasFaltantes = 0;
-
-    function calcularDiasFaltantes() {
-        // Obtener las fechas ingresadas por el usuario
-        const fechaInicio = new Date(document.getElementById('dateOfBirth').value);
-        const fechaFin = new Date();
-        // Cambia el año de la fecha que se ingresa por el año actual.
-        fechaInicio.setFullYear(fechaFin.getFullYear());
-
-        // Si la fecha de inicio es posterior a la fecha de fin, ajustar el año de la fecha de inicio
-        if (fechaFin > fechaInicio) {
-            fechaInicio.setFullYear(fechaFin.getFullYear() + 1);
+            const inputProgress = document.getElementById('days');
+            inputProgress.value = diasFaltantes;
         }
 
-        // Calcular la diferencia en milisegundos entre las dos fechas
-        const diferenciaMilisegundos = fechaInicio - fechaFin;
+        // Cambiar el evento a 'input'
+        const calcularInput = document.getElementById('dateOfBirth');
+        calcularInput.addEventListener('change', calcularDiasFaltantes);
 
-        // Calcular los días faltantes redondeando hacia abajo
-        diasFaltantes = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
-
-
-        if (diasFaltantes == 365) {
-            diasFaltantes = 0;
-        } else {
-            diasFaltantes++;
-        }
-
-        // Mostrar el resultado en el DOM
-        const resultadoElement = document.getElementById('daysRemaining');
-        resultadoElement.textContent = `Faltan ${diasFaltantes} días entre las fechas.`;
-
-        //Accede al atributo style de la barra de progreso y cambia el width dependiendo el porcentaje entregado por la variable progress
-        const progres = (diasFaltantes * 100) / 365;
-        //Accede al elemento que tiene la la Range desde su ID
-        const progressBar = document.getElementById('Range');
-        //Le asigna el valor de progres al value
-        progressBar.value = progres;
-
-        console.log(progres)
-
-        // Asignar la función al refresh cada vez que se cambie el valor.
-        const refresh = document.getElementById('dateOfBirth');
-        action
-
-    </script>
+    });
+</script>
