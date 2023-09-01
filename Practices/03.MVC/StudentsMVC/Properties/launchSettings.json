@@ -3,8 +3,13 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
+<<<<<<< HEAD
       "applicationUrl": "http://localhost:2219",
       "sslPort": 44398
+=======
+      "applicationUrl": "http://localhost:6209",
+      "sslPort": 44317
+>>>>>>> 2023-02-2/luilopgir
     }
   },
   "profiles": {
@@ -12,7 +17,11 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
+<<<<<<< HEAD
       "applicationUrl": "http://localhost:5232",
+=======
+      "applicationUrl": "http://localhost:5298",
+>>>>>>> 2023-02-2/luilopgir
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -21,7 +30,11 @@
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
+<<<<<<< HEAD
       "applicationUrl": "https://localhost:7001;http://localhost:5232",
+=======
+      "applicationUrl": "https://localhost:7029;http://localhost:5298",
+>>>>>>> 2023-02-2/luilopgir
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

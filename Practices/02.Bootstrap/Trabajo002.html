@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accediendo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div class="container-fluid mt-3">
+    <nav class="navbar navbar-expand-sm bg-warning navbar-dark">
+        <div class="col-xxl-12">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active">Acceder</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  <h2>Bienvenido a Checkpoint</h2>
+  <h3>Accediendo a su cuenta</h3>
+  <form action="/Trabajo002Car.html" class="was-validated">
+    <div class="mb-3 mt-3">
+        <label for="uname" class="form-label">Usuario:</label>
+        <input type="email" class="form-control" id="email" placeholder="Ingrese su Correo" name="email" required>
+        <div class="valid-feedback">Valido.</div>
+        <div class="invalid-feedback">Por favor rellenar este campo.</div>
+    </div>
+    <div class="mb-3">
+      <label for="pwd">Contraseña:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd" required>
+      <div class="valid-feedback">Valido.</div>
+        <div class="invalid-feedback">Por favor rellenar este campo.</div>
+    </div>
+    <div class="form-check mb-3">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember">Recuerdame
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <form action="/Trabajo002reg.html">
+    <div class="mb-3 mt-3">
+        <h1>
+            
+        </h1>
+        <h2>No tines una cuenta</h2>
+        <h2>Crea una!</h2>
+    <button type="submit" class="btn btn-secondary">Crear cuenta</button>
+  </form>
+</div>
+</body>
+</html>
