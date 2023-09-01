@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieRankMVC.Models;
 
+
+
 public class User
 {
     [Key]

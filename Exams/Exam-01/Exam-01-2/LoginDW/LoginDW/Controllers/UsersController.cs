@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MovieRankMVC.Models;
 
 namespace LoginDW.Controllers
+    
 {
     public class UsersController : Controller
     {
@@ -12,8 +13,13 @@ namespace LoginDW.Controllers
             return View();
         }
 
-        // POST: UsersController/Create
-        [HttpPost]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+    // POST: UsersController/Create
+    [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Register(User user)
         {
@@ -27,11 +33,7 @@ namespace LoginDW.Controllers
             }
         }
 
-        // GET: UsersController/Edit/5
-        public ActionResult Login()
-        {
-            return View();
-        }
+        
 
         // POST: UsersController/Edit/5
         [HttpPost]

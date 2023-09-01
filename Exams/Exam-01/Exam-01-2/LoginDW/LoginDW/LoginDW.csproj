@@ -13,6 +13,7 @@
     <None Remove="Views\img\" />
     <None Remove="Views\Amigos\" />
     <None Remove="Views\CRUD\" />
+    <None Remove="Views\Users\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.editorconfig" />
@@ -34,5 +35,6 @@
     <Folder Include="Views\img\" />
     <Folder Include="Views\Amigos\" />
     <Folder Include="Views\CRUD\" />
+    <Folder Include="Views\Users\" />
   </ItemGroup>
 </Project>

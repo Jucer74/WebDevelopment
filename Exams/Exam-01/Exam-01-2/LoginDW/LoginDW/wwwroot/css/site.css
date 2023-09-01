@@ -164,6 +164,21 @@ header {
         z-index: 1;
     }
 
+.login-cont {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+.login-register {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+
 .form-box h2 {
     font-size: 2em;
     color: #162938;
@@ -290,3 +305,160 @@ th {
     text-align: center;
 }
 
+.ingresar-registrarse {
+    align-content: center;
+}
+
+.login-body body {
+    background-color: #f8f9fa;
+}
+
+.login-login {
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para el div contenedor */
+.imagen-container {
+    align-content:center;
+    align-items:center;
+    width: 100px; /* Ancho del contenedor */
+    height: 100px; /* Altura del contenedor */
+    border: 2px solid #ccc; /* Borde del contenedor */
+    padding: 10px; /* Espaciado interior del contenedor */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Sombra del contenedor */
+}
+
+    /* Estilos para la imagen */
+    .imagen-container img {
+        max-width: 100px; /* La imagen se ajustará al ancho del contenedor */
+        height: 100px; /* Altura automática para mantener la proporción de aspecto */
+    }
+
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo img {
+    width: 80px;
+    height: 80px;
+}
+body {
+    background-color: #f8f9fa;
+}
+
+.container-registro {
+    max-width: 80%;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+.title-registro {
+    max-width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    margin-bottom: 20px;
+}
+
+.title-inicio-sesion {
+    max-width: 400px;
+    margin: auto;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registro-body body{
+    background-color: #f8f9fa;
+}
+
+.container-registro {
+    max-width: 80%;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.title-registro {
+    max-width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ingresar-registrarse {
+    align-content: center;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #dcdcdc;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo img {
+    width: 80px;
+    height: auto;
+}
+
+.login-form {
+    margin-bottom: 20px;
+}
+
+.title-inicio-sesion {
+    max-width: 400px;
+    margin: auto;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+}
