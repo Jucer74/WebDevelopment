@@ -62,7 +62,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
                 </div>
                 <div class="toast-body">
-                     <p>Donde irian los numeros</p>
+                    <p><span class="days-remaining-placeholder"></span></p>
                 </div>
             </div>
         </dd>
@@ -73,6 +73,9 @@
             @Html.DisplayFor(model => model.Sex)
         </dd>
     </dl>
+    @section Scripts {
+        <script src="~/js/BdayCalculator.js"></script>
+    }
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
