@@ -1,0 +1,88 @@
+﻿@model MovieRankMVC.Models.User
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/site.css" rel="stylesheet" />
+  
+  
+</head>
+<body class="login-body">
+    <div class="register">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="imagen-container">
+                        <img src="https://cdn-icons-png.flaticon.com/128/310/310818.png" alt="Descripción de la imagen">
+                    </div>
+                    <div class="title-inicio-sesion">
+                        <div class="bg-dark text-white py-4 text-center">
+                            <h1 class="display-4">Iniciar Sesión</h1>
+
+                        </div>
+                    </div>
+
+                    <div class="login-container">
+                        <div class="container-fluid" id="container-login">
+                            <form action="./home.html">
+                                <div class="mb-3 mt-3">
+                                    <label for="email" class="form-label">Usuario:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Ingrese su correo" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="pwd" class="form-label">Contraseña:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Ingrese su contraseña" name="pswd" required>
+                                </div>
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Remember me</label>
+                                </div>
+                                <div class="ingresar-registarse">
+                                    <a href="home.html">
+                                        <button type="submit" class="btn btn-primary" id="btn-ingresar">Ingresar</button>
+                                    </a>
+                                    <br>
+                                    <br>
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                        Registrarse
+                                    </button>
+                            </form>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+         </div>
+
+    </div>
+
+        </div>
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+
+</body>
+
+            <script src="site.js"></script>
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</html>
