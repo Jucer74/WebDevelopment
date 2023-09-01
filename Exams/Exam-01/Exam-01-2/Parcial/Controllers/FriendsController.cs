@@ -174,7 +174,7 @@ namespace Parcial.Controllers
             friend.Add(new Friend()
             {
                 Id = 6,
-                PhotoPath = "Ryohei_Sasagawa.png\r\n",
+                PhotoPath = "Ryohei_Sasagawa.png",
                 UserEmail = "correo1@example.com",
                 FirstName = "Ryohei",
                 LastName = "Sasagawa",
@@ -184,7 +184,7 @@ namespace Parcial.Controllers
             friend.Add(new Friend()
             {
                 Id = 7,
-                PhotoPath = "Chrome_Dokuro.png\r\n",
+                PhotoPath = "Chrome_Dokuro.png",
                 UserEmail = "correo1@example.com",
                 FirstName = "Chrome",
                 LastName = "Dokuro",

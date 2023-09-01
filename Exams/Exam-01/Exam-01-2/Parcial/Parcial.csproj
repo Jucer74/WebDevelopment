@@ -7,6 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\images\BDayReminder-Cover.png" />
+    <None Include="wwwroot\images\BDayReminder.xcf" />
+    <None Include="wwwroot\images\Cake.png" />
+    <None Include="wwwroot\images\Calendar.jpg" />
+    <None Include="wwwroot\images\CardList.jpg" />
+    <None Include="wwwroot\images\CarouselCard.jpg" />
+    <None Include="wwwroot\images\CRUD.jpg" />
+    <None Include="wwwroot\images\Dash circle.jpg" />
+    <None Include="wwwroot\images\FriendActions.jpg" />
+    <None Include="wwwroot\images\Login.jpg" />
+    <None Include="wwwroot\images\Menu.jpg" />
+    <None Include="wwwroot\images\Pencil.jpg" />
+    <None Include="wwwroot\images\Plus circle.jpg" />
+    <None Include="wwwroot\images\Register.jpg" />
+    <None Include="wwwroot\images\Trash.jpg" />
+    <None Include="wwwroot\images\Upload.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
