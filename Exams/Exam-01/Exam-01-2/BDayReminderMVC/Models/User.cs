@@ -6,7 +6,11 @@ namespace BDayReminderMVC.Models;
 public class User
 {
     [Key]
-    public int Id { get; set; }
+    public int Id{ get; set; }
+   
+   
+
+
 
     [Required(ErrorMessage = "The UserEmail is required")]
     [EmailAddress(ErrorMessage = "The UserEmail must be a valid email address")]
