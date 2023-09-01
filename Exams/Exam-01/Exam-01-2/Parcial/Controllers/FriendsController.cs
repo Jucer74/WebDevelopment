@@ -92,20 +92,21 @@ namespace Parcial.Controllers
         public ActionResult Delete(int id)
         {
             var friend = friendsList.FirstOrDefault(x => x.Id == id);
+            if (friend == null) 
+            { 
+                return RedirectToAction(nameof(Index));
+            }
             return View(friend);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var friendToDelete = friendsList.FirstOrDefault(x => x.Id == id);
-            _ = friendsList.Remove(friendToDelete);
-
-            // Reenumerar los IDs para mantener el orden
-            for (int i = 0; i < friendsList.Count; i++)
+            var friend = friendsList.Find(x => x.Id == id);
+            if(friend != null)
             {
-                friendsList[i].Id = i + 1;
+                friendsList.Remove(friend);
             }
 
             return RedirectToAction(nameof(Index));
