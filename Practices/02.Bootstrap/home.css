@@ -1,0 +1,22 @@
+header {
+    background-color: black;
+
+}
+
+h2 {
+    color: aliceblue;
+    
+}
+* {
+    text-decoration: none;
+}
+
+
+.nav {
+    flex-direction: row;
+    text-align: left;
+}
+.container-carousel {
+    width: auto;
+    height: 100px;
+}

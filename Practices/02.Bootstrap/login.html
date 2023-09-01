@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="login.css">
+    
+</head>
+<body>
+
+  <main>
+    <div class="title-inicio-sesion">
+      <div class="bg-dark text-white py-4 text-center">
+      <h1 class="display-4">Iniciar Sesión</h1>
+      
+      </div>
+    </div>
+    
+    <div class="login-container">
+      <div class="container-fluid" id="container-login">
+        <form action="./home.html">
+          <div class="mb-3 mt-3">
+            <label for="email" class="form-label">Usuario:</label>
+            <input type="email" class="form-control" id="email" placeholder="Ingrese su correo" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="pwd" class="form-label">Contraseña:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Ingrese su contraseña" name="pswd" required>
+          </div>
+          <div class="ingresar-registarse">
+            <a href="home.html">
+              <button type="submit" class="btn btn-primary" id="btn-ingresar">Ingresar</button>
+            </a>
+            <br>
+            <br>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+              Registrarse
+            </button>
+        </form>
+
+            <div class="modal" id="myModal">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form>
+                    <div class="modal-header">
+                      <h4 class="modal-title">Registrarse</h4>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                      <div class="container-registro">
+                        <div id="registro-usuario">
+                          <form class="needs-validation" action="/Practices/02.Bootstrap/login.html"   novalidate>
+                            <div class="mb-3 mt-3">
+                              <label for="email" class="form-label">Usuario:</label>
+                              <input type="email" class="form-control" id="email" placeholder="Ingrese su correo" name="email" required>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <label for="firstName" class="form-label">Nombre:</label>
+                                <input type="text" class="form-control" id="firstName"placeholder="Nombre" name="nombre" required>
+                              </div>
+                              <div class="col">
+                                <label for="lastName" class="form-label">Apellido:</label>
+                                <input type="text" class="form-control" placeholder="Apellido" name="apellido" id="lastName" required>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col">
+                                <label for="datepicker" class="row-1 col-form-label">Fecha de Nacimiento</label>
+                                <div class="input-group date" id="datepicker">
+                                  <input type="text" class="form-control" id="date"/>
+                                  <span class="input-group-append">
+                                  <span class="input-group-text bg-light d-block">
+                                      
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                        <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                                      </svg>
+                                  </span>
+                                  </span>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <label class="col-sm-3 col-form-label">Sexo:</label>
+                                <div class="col">
+                                  <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="gender" id="radioMale">
+                                    <label class="form-check-label" for="radioMale">Masculino</label>
+                                  </div>
+                                  <div class="form-check form-check-inline">
+                                    <input type="radio" class="form-check-input" name="gender" id="radioFemale">
+                                    <label class="form-check-label" for="radioFemale">Femenino</label>
+                                  </div>
+                                
+                                </div>
+                              </div>
+                            </div>
+                      
+                          
+                              
+                            
+                            <div class="row">
+                              <div class="col">
+                                <div class="mb-3" >
+                                  <label for="pwd" class="form-label">Contraseña:</label>
+                                  <input type="password" class="form-control" id="pwd" placeholder="Ingrese su contraseña" name="pswd">
+                                </div>
+                              </div>
+                              
+                              
+                              <div class="col">
+                                <div class="mb-3">
+                                  <label for="pwd" class="form-label">Confirmar contraseña:</label>
+                                  <input type="password" class="form-control" id="pwd" placeholder="Confirmar contraseña" name="pswd">
+                                </div>
+                              </div>
+                              
+                          
+                            </div>
+                            
+                            
+                          
+                      
+                
+                        
+                          
+                          
+                          </form>
+                        <hr>
+                        </div>
+                        <div>
+                          
+                          <button type="submit" class="btn btn-primary" id="btn-aceptar" >Aceptar</button>
+                      
+                          <input type="reset" class="btn btn-secondary" value="Reset">
+                        
+                          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                  </form>
+                  
+                  
+                  
+                </div>
+            
+                  
+            
+              </div>
+            </div>
+          </div>
+          
+          
+        
+  
+      </div>
+    </div>
+    
+    
+  </main>
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(function(){
+        $('#datepicker').datepicker();
+    });
+</script>
+</html>

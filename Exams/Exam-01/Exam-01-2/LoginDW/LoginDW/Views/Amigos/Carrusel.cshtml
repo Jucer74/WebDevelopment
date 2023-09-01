@@ -1,0 +1,186 @@
+﻿@{
+    ViewData["Title"] = "Carrusel";
+}
+
+<div class="text-center ">
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <title>Carrusel amigaaas</title>
+    </head>
+    <body class="">
+
+        <h4>Carrusel amigass</h4>
+        <div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card-wrapper container-sm d-flex justify-content-around">
+                        <div class="card  p-2" style="width: 18rem; height: 26rem">
+                            <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top rounded" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre de mi amigo</h5>
+
+                                <div class="container mt-5">
+                                    <p class="date-info mt-3">Days Left: 0</p>
+                                </div>
+
+                                <script>document.addEventListener('DOMContentLoaded', function () {
+                                        const targetDate = new Date('2023-09-15'); // Cambia esta fecha a la fecha deseada
+                                        const currentDate = new Date();
+
+                                        const dateInfo = document.querySelector('.date-info');//A medida de que vayan agregando tarjetas van incrementando ese numero []
+
+                                        const totalDays = (targetDate - currentDate) / (1000 * 60 * 60 * 24);
+                                        const daysLeft = Math.max(totalDays, 0);
+
+                                        dateInfo.textContent = `Days Left: ${daysLeft.toFixed(0)}`;
+                                    });</script>
+                                <button type="button" class="btn btn-secondary">Detalles</button>
+                            </div>
+                        </div>
+
+                        <div class="card  p-2" style="width: 18rem; height: 26rem">
+                            <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top rounded" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre de otro amigo</h5>
+
+                                <div class="container mt-5">
+                                    <p class="date-info mt-3">Days Left: 0</p>
+                                </div>
+
+                                <script>document.addEventListener('DOMContentLoaded', function () {
+                                        const targetDate = new Date('2023-08-31'); // Cambia esta fecha a la fecha deseada
+                                        const currentDate = new Date();
+
+                                        const dateInfo = document.querySelectorAll('.date-info')[1];//A medida de que vayan agregando tarjetas van incrementando ese numero []
+
+                                        const totalDays = (targetDate - currentDate) / (1000 * 60 * 60 * 24);
+                                        const daysLeft = Math.max(totalDays, 0);
+
+                                        dateInfo.textContent = `Days Left: ${daysLeft.toFixed(0)}`;
+                                    });</script>
+                                <button type="button" class="btn btn-secondary">Detalles</button>
+                            </div>
+                        </div>
+
+                        <div class="card  p-2" style="width: 18rem; height: 26rem">
+                            <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top rounded" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Otro nombre de amigo</h5>
+
+                                <div class="container mt-5">
+                                    <p class="date-info mt-3">Days Left: 0</p>
+                                </div>
+
+                                <script>document.addEventListener('DOMContentLoaded', function () {
+                                        const targetDate = new Date('2023-10-15'); // Cambia esta fecha a la fecha deseada
+                                        const currentDate = new Date();
+
+                                        const dateInfo = document.querySelectorAll('.date-info')[2];//A medida de que vayan agregando tarjetas van incrementando ese numero []
+
+                                        const totalDays = (targetDate - currentDate) / (1000 * 60 * 60 * 24);
+                                        const daysLeft = Math.max(totalDays, 0);
+
+                                        dateInfo.textContent = `Days Left: ${daysLeft.toFixed(0)}`;
+                                    });</script>
+                                <button type="button" class="btn btn-secondary">Detalles</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card-wrapper container-sm d-flex justify-content-around">
+                        <div class="card  p-2" style="width: 18rem; height: 26rem">
+                            <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top rounded" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre de mi amigo</h5>
+
+                                <div class="container mt-5">
+                                    <p class="date-info mt-3">Days Left: 0</p>
+                                </div>
+
+                                <script>document.addEventListener('DOMContentLoaded', function () {
+                                        const targetDate = new Date('2023-09-15'); // Cambia esta fecha a la fecha deseada
+                                        const currentDate = new Date();
+
+                                        const dateInfo = document.querySelector('.date-info')[3];//A medida de que vayan agregando tarjetas van incrementando ese numero []
+
+                                        const totalDays = (targetDate - currentDate) / (1000 * 60 * 60 * 24);
+                                        const daysLeft = Math.max(totalDays, 0);
+
+                                        dateInfo.textContent = `Days Left: ${daysLeft.toFixed(0)}`;
+                                    });</script>
+                                <button type="button" class="btn btn-secondary">Detalles</button>
+                            </div>
+                        </div>
+
+                        <div class="card  p-2" style="width: 18rem; height: 26rem">
+                            <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top rounded" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Nombre de otro amigo</h5>
+
+                                <div class="container mt-5">
+                                    <p class="date-info mt-3">Days Left: 0</p>
+                                </div>
+
+                                <script>document.addEventListener('DOMContentLoaded', function () {
+                                        const targetDate = new Date('2023-08-31'); // Cambia esta fecha a la fecha deseada
+                                        const currentDate = new Date();
+
+                                        const dateInfo = document.querySelectorAll('.date-info')[4];//A medida de que vayan agregando tarjetas van incrementando ese numero []
+
+                                        const totalDays = (targetDate - currentDate) / (1000 * 60 * 60 * 24);
+                                        const daysLeft = Math.max(totalDays, 0);
+
+                                        dateInfo.textContent = `Days Left: ${daysLeft.toFixed(0)}`;
+                                    });</script>
+                                <button type="button" class="btn btn-secondary">Detalles</button>
+                            </div>
+                        </div>
+
+                        <div class="card  p-2" style="width: 18rem; height: 26rem">
+                            <img src="https://source.unsplash.com/collection/190727/1600x900" class="card-img-top rounded" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">Otro nombre de amigo</h5>
+
+                                <div class="container mt-5">
+                                    <p class="date-info mt-3">Days Left: 0</p>
+                                </div>
+
+                                <script>document.addEventListener('DOMContentLoaded', function () {
+                                        const targetDate = new Date('2023-10-15'); // Cambia esta fecha a la fecha deseada
+                                        const currentDate = new Date();
+
+                                        const dateInfo = document.querySelectorAll('.date-info')[5];//A medida de que vayan agregando tarjetas van incrementando ese numero []
+
+                                        const totalDays = (targetDate - currentDate) / (1000 * 60 * 60 * 24);
+                                        const daysLeft = Math.max(totalDays, 0);
+
+                                        dateInfo.textContent = `Days Left: ${daysLeft.toFixed(0)}`;
+                                    });</script>
+                                <button type="button" class="btn btn-secondary">Detalles</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
+</div>
