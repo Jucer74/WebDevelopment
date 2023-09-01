@@ -25,3 +25,5 @@ app.MapControllerRoute(
     pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();
+
+app.UseStaticFiles(); // Asegúrate de que esta línea esté presente.

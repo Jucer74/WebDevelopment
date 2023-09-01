@@ -14,11 +14,18 @@
 <body>
     <div class="container-lg bg-dark text-white">
         <div class="row justify-content-center">
+            <div class="logo-header">
+                <img src="@Url.Content("~/img/logo.jpeg")" alt="Mi Imagen">
+
+            </div>
             <div class="col-md-6" id="login-form">
                 <h2 class="mb-4">Iniciar sesion</h2>
+                
                 <form action="Home
 ">
-                    <img id="logo" src="./src/img/coche-de-carreras.png" alt="logo" height="50">
+                  
+
+
 
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
@@ -28,9 +35,21 @@
                         <label for="password" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" id="password" required>
                     </div>
+                    <div class="container">
+                       
+                        <div class="left-div"> 
+                            <button type="submit" class="btn btn-primary ">Iniciar sesion </button>
+                        </div> 
+                        <div class="form-check right-div">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                            <label class="form-check-label" for="flexCheckChecked">
+                                Remember me
+                            </label>
+                        </div>
+                    </div>
 
-                    <button type="submit" class="btn btn-primary ">Iniciar sesion </button>
                 </form>
+               
                 <p class="mt-3">
                     ¿todavia no tienes una cuenta?  <a class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
                                                        id="btn-register" data-bs-toggle="modal" data-bs-target="#myModal" data-title="Register">Register</a>
@@ -46,112 +65,38 @@
                 <div class="modal-header">
                     <div class="modal-body">
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label" for="firstName">First Name:</label>
+                            <label class="col-sm-3 col-form-label" for="EmailAddress">Email Address:</label>
                             <div class="col-sm-9">
+                                <input type="text" class="form-control" id="EmailAddress" placeholder="Email Address" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="row-cols-xxl-2col-form-label" for="firstName">First Name:</label>
+                            <div class="col-sm-6">
                                 <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label" for="lastName">Last Name:</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+                            <label class="row-cols-xxl-2col-form-label" for="lastName">Last Name:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control"  id="lastName" placeholder="Last Name" required>
                             </div>
+                           
+
                         </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label" for="password">Password:</label>
-                            <div class="col-sm-9">
+                        <div class="row mb-2">
+                            <label class="row-cols-xxl-2col-form-label" for="password">Password:</label>
+                            <div class="col-sm-6">
                                 <input type="password" class="form-control" id="password" placeholder="Password" required>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label" for="confirm_password">Confirm password:</label>
-                            <div class="col-sm-9">
+                        <div class="row mb-2">
+                            <label class="row-cols-xxl-2col-form-label" for="confirm_password">Confirm password:</label>
+                            <div class="col-sm-6">
                                 <input type="password" class="form-control" id="confirm_password" placeholder="Confirm password" required>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label class="col-sm-3 col-form-label">Fecha Nacimiento:</label>
-                            <div class="col-sm-3">
-                                <select class="form-select" required>
-                                    <option value="">Date</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                    <option value="8">8</option>
-                                    <option value="9">9</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                    <option value="13">13</option>
-                                    <option value="14">14</option>
-                                    <option value="15">15</option>
-                                    <option value="16">16</option>
-                                    <option value="17">17</option>
-                                    <option value="18">18</option>
-                                    <option value="19">19</option>
-                                    <option value="20">20</option>
-                                    <option value="21">21</option>
-                                    <option value="22">22</option>
-                                    <option value="23">23</option>
-                                    <option value="24">24</option>
-                                    <option value="25">25</option>
-                                    <option value="26">26</option>
-                                    <option value="27">27</option>
-                                    <option value="28">28</option>
-                                    <option value="29">29</option>
-                                    <option value="30">30</option>
-                                    <option value="31">31</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-3">
-                                <select class="form-select" required>
-                                    <option value="">Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-3">
-                                <select class="form-select">
-                                    <option value="">2000</option>
-                                    <option value="1">2001</option>
-                                    <option value="2">2002</option>
-                                    <option value="3">2003</option>
-                                    <option value="4">2004</option>
-
-                                </select>
-                            </div>
-
-                            <div class="row mb-3">
-                                <label class="col-sm-3 col-form-label">Genero:</label>
-                                <div class="col-md-9 mt-2">
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" class="form-check-input" name="gender" id="radioMale">
-                                        <label class="form-check-label" for="radioMale">Male</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" class="form-check-input" name="gender" id="radioFemale">
-                                        <label class="form-check-label" for="radioFemale">Female</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" class="form-check-input" name="gender" id="radioNodefinido">
-                                        <label class="form-check-label" for="radioFemale">No definido</label>
-                                    </div>
-                                </div>
-                            </div>
+                        
 
                             <div class="modal-footer justify-content-center">
 

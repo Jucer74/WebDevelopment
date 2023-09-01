@@ -20,3 +20,31 @@ html {
 body {
   margin-bottom: 60px;
 }
+.left-div {
+    float: left;
+    width: 50%;
+  
+}
+
+.right-div {
+    float: left;
+    width: 50%;
+   
+}
+
+/* Limpiar el float para evitar que otros elementos se vean afectados */
+.container::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.logo-header {
+    background-image: url(wwwroot/img/logo.jpeg);
+    background-repeat: no-repeat; /* Evita la repetición de la imagen */
+    width: 150px; /* Establece el ancho deseado para el logo */
+    height: 80px; /* Establece la altura deseada para el logo */
+    margin-top: 10px;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    
+}
