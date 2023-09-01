@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-namespace MovieRankMVC.Models;
+namespace BDayReminderMVC.Models;
 
 public class User
 {
@@ -24,7 +25,7 @@ public class User
     [StringLength(50)]
     public string Password { get; set; } = null!;
     
-    [NotMapped]
+    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
     [Compare("Password")]
     [StringLength(50)]
     [PasswordPropertyText(true)]
