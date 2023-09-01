@@ -82,11 +82,11 @@
                             </div>
 
                             <div class="col-6 d-flex">
-                                <input type="range" class="form-range me-2" id="customRange1">
+                                <input type="range" class="form-range me-2" min="0" max="100" value="0" id="Range">
                             </div>
 
                             <div class="col-2 d-flex">
-                                <input type="text" class="form-control" placeholder="000" aria-label="Value">
+                                <input type="text" class="form-control" placeholder="000" value="000" id="days" aria-label="Value">
                             </div>
 
                         </div>
@@ -220,12 +220,13 @@
         }
 
         // Mostrar el resultado en el DOM
-        const resultadoElement = document.getElementById('daysRemaining');
-        resultadoElement.textContent = `Faltan ${diasFaltantes} días entre las fechas.`;
 
         const progres = (diasFaltantes * 100) / 365;
-        const progressBar = document.getElementById('progressBar');
-        progressBar.style.width = progres + '%';
+        const progressBar = document.getElementById('Range');
+        progressBar.value = progres;
+
+        const inputProgress = document.getElementById('days');
+        inputProgress.value = diasFaltantes;
 
         console.log(progres)
 
