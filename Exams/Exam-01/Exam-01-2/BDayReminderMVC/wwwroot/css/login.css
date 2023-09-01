@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ﻿* {
+=======
+﻿*{
+>>>>>>> 2023-02-2/micreyesc
     font-family: 'Barlow', sans-serif;
 }
 
@@ -27,6 +31,10 @@
     width: 10vh;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
 .img-crud {
     width: 5vh;
     height: 5vh;
@@ -37,13 +45,24 @@
     width: 5vh;
     height: 5vh;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2023-02-2/micreyesc
 .img-carousel {
     width: 5vh;
     height: 5vh;
 }
+<<<<<<< HEAD
 
 .modal-body {
     padding: 0;
     margin: 0;
 }
+=======
+.modal-body {
+    padding: 0;
+    margin: 0;
+}
+
+>>>>>>> 2023-02-2/micreyesc

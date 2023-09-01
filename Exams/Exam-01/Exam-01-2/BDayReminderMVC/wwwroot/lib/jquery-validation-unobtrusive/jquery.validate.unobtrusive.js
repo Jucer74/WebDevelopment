@@ -14,7 +14,11 @@
         // AMD. Register as an anonymous module.
         define("jquery.validate.unobtrusive", ['jquery-validation'], factory);
     } else if (typeof module === 'object' && module.exports) {
+<<<<<<< HEAD
         // CommonJS-like environments that support module.exports
+=======
+        // CommonJS-like environments that support module.exports     
+>>>>>>> 2023-02-2/micreyesc
         module.exports = factory(require('jquery-validation'));
     } else {
         // Browser global
@@ -432,4 +436,8 @@
     });
 
     return $jQval.unobtrusive;
+<<<<<<< HEAD
 }));
+=======
+}));
+>>>>>>> 2023-02-2/micreyesc

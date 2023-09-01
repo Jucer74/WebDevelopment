@@ -24,4 +24,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Users}/{action=Login}/{id?}");
 
+<<<<<<< HEAD
 app.Run();
+=======
+app.Run();
+>>>>>>> 2023-02-2/micreyesc

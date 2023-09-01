@@ -2,8 +2,13 @@
 
 @{
     ViewData["Title"] = "Edit";
+<<<<<<< HEAD
     ViewData["RelationsFriends"] = Model.Relations;
 }
+=======
+}
+
+>>>>>>> 2023-02-2/micreyesc
 <div class="container mt-5 w-100">
     <div class="justify-content-center w-100">
         <form id="registrationForm" class="row g-3 justify-content-center" asp-controller="Friends" asp-action="Edit">
@@ -19,7 +24,10 @@
                         <i class="bi bi-cloud-upload"></i>
                     </button>
                 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2023-02-2/micreyesc
             </div>
             <div class="col-md-8">
                 <div class="row">
@@ -30,7 +38,11 @@
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label fw-bold">@Html.DisplayNameFor(model => model.LastName)"</label>
+<<<<<<< HEAD
                         <input asp-for="LastName" type="text" class="form-control" id="LastName" placeholder="Last Name">
+=======
+                        <input asp-for="LastName" type=" text" class="form-control" id="LastName" placeholder="Last Name">
+>>>>>>> 2023-02-2/micreyesc
                         <span asp-validation-for="LastName" class="text-danger"></span>
                     </div>
                 </div>
@@ -38,7 +50,14 @@
                     <div class="col-md-6 mb-3">
                         <label for="dateOfBirth" class="form-label"><strong>Date of Birth</strong></label>
                         <input asp-for="DateOfBirth" type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")">
+<<<<<<< HEAD
                         <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+=======
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                        <div class="invalid-feedback">
+                            Please provide a valid date of birth.
+                        </div>
+>>>>>>> 2023-02-2/micreyesc
                     </div>
 
                     <div class="col-md-6 mb-3">
@@ -60,11 +79,19 @@
                             </div>
 
                             <div class="col-6 d-flex">
+<<<<<<< HEAD
                                 <input type="range" class="form-range me-2" min="0" max="100" value=@ViewData["daysRemainingPercent"] id="Range" disabled>
                             </div>
 
                             <div class="col-2 d-flex">
                                 <input type="text" class="form-control" placeholder="000" value=@ViewData["DaysRemaining"] aria-label="Value" disabled>
+=======
+                                <input type="range" class="form-range me-2" min="0" max="100" value="0" id="Range">
+                            </div>
+
+                            <div class="col-2 d-flex">
+                                <input type="text" class="form-control" placeholder="000" value="000" id="days" aria-label="Value">
+>>>>>>> 2023-02-2/micreyesc
                             </div>
 
                         </div>
@@ -75,6 +102,7 @@
             </div>
             <div class="row mt-3">
                 <div class="col-md-12">
+<<<<<<< HEAD
                     <div class="input-group mb-3 align">
                         <label class="form-label fw-bold mx-2">Relations</label>
                         <a class=""> <i class="bi bi-plus-circle-fill" disabled></i></a>
@@ -89,9 +117,78 @@
             </div>
             <div class="d-flex justify-content-end col-12 mt-4 p-0">
                 <button type="submit" class="btn btn-primary py-2 my-2 px-4 fw-bold">Edit</button>
+=======
+
+                    <div class="input-group mb-3 align">
+                        <label class="form-label fw-bold mx-2">Relations</label>
+                        <a id="addRelationBtn" class="row d-flex"> <i class="bi bi-plus-circle-fill"></i></a>
+                        <a id="minusRelationBtn" class="mx-1"> <i class="bi bi-dash-circle-fill " disabled></i> </a>
+                    </div>
+                    <div class="d-flex flex-wrap" id="relationList"></div>
+                    <div class="d-flex flex-wrap" id="relationList"></div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end col-12 mt-4 p-0">
+                <button type="submit" class="btn btn-primary py-3 my-2 px-4 fw-bold">Edit</button>
+>>>>>>> 2023-02-2/micreyesc
                 <a asp-action="Index" id="btnCancel" class="btn btn-danger py-2 my-2 px-4 mx-2 fw-bold d-flex align-items-center justify-content-center">Cancel</a>
             </div>
         </form>
     </div>
 </div>
 
+<<<<<<< HEAD
+=======
+<script>
+
+    var diasFaltantes = 0;
+
+    function calcularDiasFaltantes() {
+        // Obtener las fechas ingresadas por el usuario
+        const fechaInicio = new Date(document.getElementById('dateOfBirth').value);
+        const fechaFin = new Date();
+        fechaInicio.setFullYear(fechaFin.getFullYear());
+
+        // Si la fecha de inicio es posterior a la fecha de fin, ajustar el año de la fecha de inicio
+        if (fechaFin > fechaInicio) {
+            fechaInicio.setFullYear(fechaFin.getFullYear() + 1);
+        }
+
+        // Calcular la diferencia en milisegundos entre las dos fechas
+        let diferenciaMilisegundos = fechaInicio - fechaFin;
+
+        // Calcular los días faltantes redondeando hacia abajo
+        diasFaltantes = Math.floor(diferenciaMilisegundos / (1000 * 60 * 60 * 24));
+
+
+
+        if (diasFaltantes == 365) {
+            diasFaltantes = 0;
+        } else {
+            diasFaltantes++;
+        }
+
+        // Mostrar el resultado en el DOM
+
+        const progres = (diasFaltantes * 100) / 365;
+        const progressBar = document.getElementById('Range');
+        progressBar.value = progres;
+
+        const inputProgress = document.getElementById('days');
+        inputProgress.value = diasFaltantes;
+
+        console.log(progres)
+
+
+    }
+
+
+
+    // Asignar la función al botón de cálculo
+    const calcularButton = document.getElementById('dateOfBirth');
+    calcularButton.addEventListener('click', calcularDiasFaltantes);
+
+
+
+</script>
+>>>>>>> 2023-02-2/micreyesc

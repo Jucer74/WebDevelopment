@@ -32,5 +32,11 @@ public class Friend
     [Required(ErrorMessage = "The Photo is required")]
     [StringLength(50)]
     [Display(Name = "Photo")]
+<<<<<<< HEAD
     public string Photo { get; set; } = null!;
 }
+=======
+    // Include only ImageName.ext
+    public string Photo { get; set; } = null!;    
+}
+>>>>>>> 2023-02-2/micreyesc

@@ -28,4 +28,8 @@ namespace BDayReminderMVC.Models
         [StringLength(50)]
         public string ConfirmPassword { get; set; } = null!;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 2023-02-2/micreyesc

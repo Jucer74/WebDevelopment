@@ -54,6 +54,10 @@
    * --------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   const getUID = prefix => {
     do {
       prefix += Math.floor(Math.random() * MAX_UID);
@@ -75,6 +79,10 @@
         return null;
       } // Just in case some CMS puts out a full URL with the anchor appended
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
         hrefAttr = `#${hrefAttr.split('#')[1]}`;
       }
@@ -105,6 +113,10 @@
       return 0;
     } // Get transition-duration of the element
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     let {
       transitionDuration,
       transitionDelay
@@ -116,6 +128,10 @@
       return 0;
     } // If multiple durations are defined, take the first
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     transitionDuration = transitionDuration.split(',')[0];
     transitionDelay = transitionDelay.split(',')[0];
     return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
@@ -191,6 +207,10 @@
       return null;
     } // Can find the shadow root otherwise it'll return the document
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     if (typeof element.getRootNode === 'function') {
       const root = element.getRootNode();
       return root instanceof ShadowRoot ? root : null;
@@ -200,6 +220,10 @@
       return element;
     } // when we don't find a shadow root
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     if (!element.parentNode) {
       return null;
     }
@@ -217,6 +241,10 @@
    * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   const reflow = element => {
     // eslint-disable-next-line no-unused-expressions
     element.offsetHeight;
@@ -317,6 +345,10 @@
    * @return {Element|elem} The proper element
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
     let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
 
@@ -408,6 +440,10 @@
         }
       } // To please ESLint
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       return null;
     };
   }
@@ -450,6 +486,10 @@
     } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
     // this prevents the handler from being dispatched the same way as mouseover or mouseout does
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     if (customEventsRegex.test(originalTypeEvent)) {
       const wrapFn = fn => {
         return function (event) {
@@ -592,12 +632,20 @@
         });
       } // merge custom information in our event
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       if (typeof args !== 'undefined') {
         Object.keys(args).forEach(key => {
           Object.defineProperty(evt, key, {
             get() {
               return args[key];
             }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
           });
         });
       }
@@ -616,6 +664,10 @@
 
       return evt;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   };
 
   /**
@@ -669,6 +721,10 @@
         elementMap.delete(element);
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   };
 
   /**
@@ -710,6 +766,10 @@
     }
     /** Static */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static getInstance(element) {
       return Data.get(getElement(element), this.DATA_KEY);
     }
@@ -733,6 +793,10 @@
     static get EVENT_KEY() {
       return `.${this.DATA_KEY}`;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
 
   /**
@@ -792,6 +856,10 @@
       return NAME$d;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     close() {
       const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
 
@@ -806,6 +874,10 @@
       this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _destroyElement() {
       this._element.remove();
 
@@ -813,6 +885,10 @@
       this.dispose();
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Alert.getOrCreateInstance(this);
@@ -828,6 +904,10 @@
         data[config](this);
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -835,6 +915,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   enableDismissTrigger(Alert, 'close');
   /**
    * ------------------------------------------------------------------------
@@ -876,11 +960,19 @@
       return NAME$c;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     toggle() {
       // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
       this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Button.getOrCreateInstance(this);
@@ -890,6 +982,10 @@
         }
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -897,6 +993,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
     event.preventDefault();
     const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
@@ -983,6 +1083,10 @@
         left: element.offsetLeft
       };
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   };
 
   /**
@@ -1052,6 +1156,10 @@
       const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(', ');
       return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   };
 
   /**
@@ -1156,6 +1264,10 @@
       this._addEventListeners();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get Default() {
       return Default$a;
     }
@@ -1164,6 +1276,10 @@
       return NAME$b;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     next() {
       this._slide(ORDER_NEXT);
     }
@@ -1236,6 +1352,10 @@
       this._slide(order, this._items[index]);
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getConfig(config) {
       config = { ...Default$a,
         ...Manipulator.getDataAttributes(this._element),
@@ -1511,6 +1631,10 @@
       return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static carouselInterface(element, config) {
       const data = Carousel.getOrCreateInstance(element, config);
       let {
@@ -1569,6 +1693,10 @@
 
       event.preventDefault();
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -1576,6 +1704,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
   EventHandler.on(window, EVENT_LOAD_DATA_API$2, () => {
     const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE);
@@ -1668,6 +1800,10 @@
       }
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get Default() {
       return Default$9;
     }
@@ -1676,6 +1812,10 @@
       return NAME$a;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     toggle() {
       if (this._isShown()) {
         this.hide();
@@ -1809,6 +1949,10 @@
       return element.classList.contains(CLASS_NAME_SHOW$7);
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getConfig(config) {
       config = { ...Default$9,
         ...Manipulator.getDataAttributes(this._element),
@@ -1856,6 +2000,10 @@
       });
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const _config = {};
@@ -1875,6 +2023,10 @@
         }
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -1882,6 +2034,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
     // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
     if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
@@ -1982,6 +2138,10 @@
       this._inNavbar = this._detectNavbar();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get Default() {
       return Default$8;
     }
@@ -1994,6 +2154,10 @@
       return NAME$9;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     toggle() {
       return this._isShown() ? this.hide() : this.show();
     }
@@ -2023,6 +2187,10 @@
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
         [].concat(...document.body.children).forEach(elem => EventHandler.on(elem, 'mouseover', noop));
       }
@@ -2066,6 +2234,10 @@
       }
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _completeHide(relatedTarget) {
       const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$4, relatedTarget);
 
@@ -2074,6 +2246,10 @@
       } // If this is a touch-enabled device we remove the extra
       // empty mouseover listeners we added for iOS support
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       if ('ontouchstart' in document.documentElement) {
         [].concat(...document.body.children).forEach(elem => EventHandler.off(elem, 'mouseover', noop));
       }
@@ -2151,6 +2327,10 @@
         return PLACEMENT_LEFT;
       } // We need to trim the value because custom properties can also include spaces
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
 
       if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
@@ -2219,9 +2399,17 @@
       } // if target isn't included in items (e.g. when expanding the dropdown)
       // allow cycling to get the last item in case key equals ARROW_UP_KEY
 
+<<<<<<< HEAD
       getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
     } // Static
 
+=======
+
+      getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
+    } // Static
+
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Dropdown.getOrCreateInstance(this, config);
@@ -2268,6 +2456,10 @@
             continue;
           } // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
           if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
             continue;
           }
@@ -2332,6 +2524,10 @@
         Dropdown.clearMenus();
       }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -2339,6 +2535,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
   EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
   EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
@@ -2381,8 +2581,15 @@
 
       this._disableOverFlow(); // give padding to element to balance the hidden scrollbar width
 
+<<<<<<< HEAD
       this._setElementAttributes(this._element, 'paddingRight', calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
 
+=======
+
+      this._setElementAttributes(this._element, 'paddingRight', calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
+
+
+>>>>>>> 2023-02-2/micreyesc
       this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width);
 
       this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width);
@@ -2455,6 +2662,10 @@
     isOverflowing() {
       return this.getWidth() > 0;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
 
   /**
@@ -2524,6 +2735,10 @@
       });
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getElement() {
       if (!this._element) {
         const backdrop = document.createElement('div');
@@ -2577,6 +2792,10 @@
     _emulateAnimation(callback) {
       executeAfterTransition(callback, this._getElement(), this._config.isAnimated);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
 
   /**
@@ -2640,6 +2859,10 @@
       EventHandler.off(document, EVENT_KEY$7);
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _handleFocusin(event) {
       const {
         target
@@ -2678,6 +2901,10 @@
       typeCheckConfig(NAME$7, config, DefaultType$6);
       return config;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
 
   /**
@@ -2744,6 +2971,10 @@
       this._scrollBar = new ScrollBarHelper();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get Default() {
       return Default$5;
     }
@@ -2752,6 +2983,10 @@
       return NAME$6;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     toggle(relatedTarget) {
       return this._isShown ? this.hide() : this.show(relatedTarget);
     }
@@ -2843,6 +3078,10 @@
       this._adjustDialog();
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _initializeBackDrop() {
       return new Backdrop({
         isVisible: Boolean(this._config.backdrop),
@@ -3019,6 +3258,10 @@
     // the following methods are used to handle overflowing modals
     // ----------------------------------------------------------------------
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _adjustDialog() {
       const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
 
@@ -3040,6 +3283,10 @@
       this._element.style.paddingRight = '';
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config, relatedTarget) {
       return this.each(function () {
         const data = Modal.getOrCreateInstance(this, config);
@@ -3055,6 +3302,10 @@
         data[config](relatedTarget);
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -3062,6 +3313,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
     const target = getElementFromSelector(this);
 
@@ -3149,6 +3404,10 @@
       this._addEventListeners();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get NAME() {
       return NAME$5;
     }
@@ -3157,6 +3416,10 @@
       return Default$4;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     toggle(relatedTarget) {
       return this._isShown ? this.hide() : this.show(relatedTarget);
     }
@@ -3252,6 +3515,10 @@
       super.dispose();
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getConfig(config) {
       config = { ...Default$4,
         ...Manipulator.getDataAttributes(this._element),
@@ -3285,6 +3552,10 @@
       });
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Offcanvas.getOrCreateInstance(this, config);
@@ -3300,6 +3571,10 @@
         data[config](this);
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -3307,6 +3582,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
     const target = getElementFromSelector(this);
 
@@ -3569,6 +3848,10 @@
       this._setListeners();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get Default() {
       return Default$3;
     }
@@ -3585,6 +3868,10 @@
       return DefaultType$3;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     enable() {
       this._isEnabled = true;
     }
@@ -3698,6 +3985,10 @@
       // only needed because of broken event delegation on iOS
       // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       if ('ontouchstart' in document.documentElement) {
         [].concat(...document.body.children).forEach(element => {
           EventHandler.on(element, 'mouseover', noop);
@@ -3777,6 +4068,10 @@
       }
     } // Protected
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     isWithContent() {
       return Boolean(this.getTitle());
     }
@@ -3807,6 +4102,10 @@
         return;
       } // we use append for html objects to maintain js events
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       this.setElementContent(templateElement, content);
     }
 
@@ -3859,6 +4158,10 @@
       return attachment;
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _initializeOnDelegatedTarget(event, context) {
       return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig());
     }
@@ -4090,6 +4393,10 @@
       // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
       // `Object.fromEntries(keysWithDifferentValues)`
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       return config;
     }
 
@@ -4123,6 +4430,10 @@
       this._addAttachmentClass(this._getAttachment(state.placement));
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Tooltip.getOrCreateInstance(this, config);
@@ -4136,6 +4447,10 @@
         }
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -4144,6 +4459,10 @@
    * add .Tooltip to jQuery only if jQuery is present
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   defineJQueryPlugin(Tooltip);
 
   /**
@@ -4210,6 +4529,10 @@
       return DefaultType$2;
     } // Overrides
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     isWithContent() {
       return this.getTitle() || this._getContent();
     }
@@ -4220,6 +4543,10 @@
       this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT);
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getContent() {
       return this._resolvePossibleFunction(this._config.content);
     }
@@ -4228,6 +4555,10 @@
       return CLASS_PREFIX;
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Popover.getOrCreateInstance(this, config);
@@ -4241,6 +4572,10 @@
         }
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -4249,6 +4584,10 @@
    * add .Popover to jQuery only if jQuery is present
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   defineJQueryPlugin(Popover);
 
   /**
@@ -4313,6 +4652,10 @@
       this._process();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get Default() {
       return Default$1;
     }
@@ -4321,6 +4664,10 @@
       return NAME$2;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     refresh() {
       const autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION;
       const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
@@ -4354,6 +4701,10 @@
       super.dispose();
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getConfig(config) {
       config = { ...Default$1,
         ...Manipulator.getDataAttributes(this._element),
@@ -4446,6 +4797,10 @@
       SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target).filter(node => node.classList.contains(CLASS_NAME_ACTIVE$1)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE$1));
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = ScrollSpy.getOrCreateInstance(this, config);
@@ -4461,6 +4816,10 @@
         data[config]();
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -4468,6 +4827,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
     SelectorEngine.find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy));
   });
@@ -4524,6 +4887,10 @@
       return NAME$1;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     show() {
       if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
         return;
@@ -4569,6 +4936,10 @@
       }
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _activate(element, container, callback) {
       const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container) : SelectorEngine.children(container, SELECTOR_ACTIVE);
       const active = activeElements[0];
@@ -4632,6 +5003,10 @@
       }
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Tab.getOrCreateInstance(this);
@@ -4645,6 +5020,10 @@
         }
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
   /**
    * ------------------------------------------------------------------------
@@ -4652,6 +5031,10 @@
    * ------------------------------------------------------------------------
    */
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
     if (['A', 'AREA'].includes(this.tagName)) {
       event.preventDefault();
@@ -4728,6 +5111,10 @@
       this._setListeners();
     } // Getters
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static get DefaultType() {
       return DefaultType;
     }
@@ -4740,6 +5127,10 @@
       return NAME;
     } // Public
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     show() {
       const showEvent = EventHandler.trigger(this._element, EVENT_SHOW);
 
@@ -4763,6 +5154,10 @@
 
       this._element.classList.remove(CLASS_NAME_HIDE); // @deprecated
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
       reflow(this._element);
 
       this._element.classList.add(CLASS_NAME_SHOW);
@@ -4786,6 +5181,10 @@
       const complete = () => {
         this._element.classList.add(CLASS_NAME_HIDE); // @deprecated
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
         this._element.classList.remove(CLASS_NAME_SHOWING);
 
         this._element.classList.remove(CLASS_NAME_SHOW);
@@ -4808,6 +5207,10 @@
       super.dispose();
     } // Private
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     _getConfig(config) {
       config = { ...Default,
         ...Manipulator.getDataAttributes(this._element),
@@ -4871,6 +5274,10 @@
       this._timeout = null;
     } // Static
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
     static jQueryInterface(config) {
       return this.each(function () {
         const data = Toast.getOrCreateInstance(this, config);
@@ -4884,6 +5291,10 @@
         }
       });
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2023-02-2/micreyesc
   }
 
   enableDismissTrigger(Toast);
@@ -4918,5 +5329,11 @@
   };
 
   return index_umd;
+<<<<<<< HEAD
 })));
 //# sourceMappingURL=bootstrap.js.map
+=======
+
+})));
+//# sourceMappingURL=bootstrap.js.map
+>>>>>>> 2023-02-2/micreyesc
