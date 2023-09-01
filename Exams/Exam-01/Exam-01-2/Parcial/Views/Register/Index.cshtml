@@ -52,29 +52,7 @@
                 <div class="invalid-feedback">Porfavor llenar este campo.</div>
               </div>
 
-              <div class="col-sm-6 ">
-                <label for="startDate"></label>
-            <input id="startDate" class="form-control" type="date" />
-            <span id="startDateSelected"></span>
-              </div>
-
-              <div class="col-sm-6">
-                <div class="row">
-                <div class="col-md-6"> 
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>
-                    <label class="form-check-label" for="radio1">Masculino</label>
-                  </div>
-                </div>
-                <div class="col-md-6"> 
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">
-                    <label class="form-check-label" for="radio2">Femenino</label>
-                  </div>
-                </div>
-            </div>
-              </div>
-
+             
               <div class="col-sm-6 ">
                 <label for="pwd">Contraseña:</label>
                 <input type="password" class="form-control" id="pwd" placeholder="Contraseña" name="pswd" required>
@@ -111,18 +89,18 @@
                     <div class="col-md-6"> 
               <button type="submit" class="btn btn-primary">Aceptar</button>
             </div>
+            <div class="col-md-6">
+
+                            <a href="~/Home/Index" class="btn btn-secondary">cancelar</a>
+
+            </div>
                     </div>
                 </div>
 
                 </div>
             </form>
 
-            <div class="col-md-6"> 
-
-             <form asp-controller="Home" asp-action="Index">
-                <button type="submit" class="btn-secondary">Cancelar</button>
-             </form>
-              </div>
+            
 
         </div>
         
