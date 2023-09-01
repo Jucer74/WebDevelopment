@@ -1,0 +1,89 @@
+﻿@model Parcial.Models.Friend
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Friend</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PhotoPath)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PhotoPath)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dd class="col-sm-2">
+            <h6>Cuanto falta de Cumpleaños</h6>
+        </dd>
+        <dd class="col-sm-7">
+         <!--Aqui iria la barra para la cantidad de dias -->
+            <label for="customRange" class="form-label">Rango</label>
+            <input type="range" class="form-range" id="customRange" name="points" min="0" max="365">
+        </dd>
+        <!--Aqui iria la cantidad de dias, es un pop -->
+        <dd class="col-sm-3">
+            <div class="toast show">
+                <div class="toast-header">
+                    <strong class="me-auto">Esta es la pantalla</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                    <p><span class="days-remaining-placeholder" data-birthday="@Model.DateOfBirth"></span></p>
+                </div>
+            </div>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Sex)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Sex)
+        </dd>
+    </dl>
+    @section Scripts {
+        <script src="~/js/BdayCalculator.js"></script>
+    }
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) 
+
+    <form asp-action="Index">
+        <div class="mb-3 mt-3">
+            <button type="submit" class="btn btn-warning">Back To List</button>
+        </div>
+
+    </form>
+</div>
