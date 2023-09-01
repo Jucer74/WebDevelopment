@@ -56,5 +56,10 @@
 </div>
 <div>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    <a asp-action="Index">Back to List</a>
+    <form asp-action="Index">
+        <div class="mb-3 mt-3">
+            <button type="submit" class="btn btn-warning">Back To List</button>
+        </div>
+
+    </form>
 </div>
