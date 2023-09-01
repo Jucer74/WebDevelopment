@@ -1,0 +1,345 @@
+﻿@model BDayReminderMVC.Models.Friend
+
+@{
+    ViewData["Title"] = "Create";
+    ViewData["HideNavbar"] = false; // Ocultar el navbar en esta vista
+}
+
+<!-- Enlazar Bootstrap JS y jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<style>
+    /* Estilos para el contenedor principal */
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex; /* Cambio a flexbox */
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px;
+    }
+
+    #imageContainer img {
+        max-width: 300px; /* Ancho máximo de la imagen */
+        max-height: 300px; /* Altura máxima de la imagen */
+        width: auto;
+        height: auto;
+    }
+
+    .relation-button {
+        margin-right: 5px; /* Espacio entre los botones de relación */
+        background-color: white; /* Fondo blanco */
+        color: #000; /* Color del texto negro */
+        border: 1px solid #ccc; /* Borde gris */
+    }
+
+    .relation-label {
+        display: inline-block;
+        margin-right: 5px; /* Espacio entre las etiquetas de relación */
+    }
+
+    /* Cambia el color de fondo de los botones seleccionados */
+    .active {
+        background-color: #008080; /* Cambia este color según tus preferencias */
+        color: white; /* Cambia el color del texto a blanco */
+    }
+
+    .remove-button {
+        background-color: #ff0000; /* Color de fondo del botón Remove */
+        color: white; /* Color del texto del botón Remove */
+        border: none; /* Sin borde */
+        margin-left: 5px; /* Espacio entre el botón Remove y las relaciones seleccionadas */
+        cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+    }
+
+
+</style>
+
+<h1>Create</h1>
+
+<h4>Friend</h4>
+<hr />
+    
+<div class="container">
+    <div class="row justify-content-center">
+
+        <!-- Contenedor de la imagen ve -->
+        <div class="container">
+            <form>
+                <div class="form-group">
+                    <label asp-for="Photo" for="fileToUpload">Seleccionar imagen:</label>
+                    <input asp-for="Photo" type="file" class="form-control-file" id="fileToUpload" accept="image/*">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+                </div>
+                <button type="button" class="btn btn-primary" id="uploadButton">Subir Imagen</button>
+
+            </form>
+
+            <div class="mt-3" id="imageContainer">
+                <!-- La imagen subida se mostrará aquí -->
+            </div>
+
+            <button class="btn btn-danger mt-3" id="deleteButton" disabled>Eliminar Imagen</button>
+        </div>
+
+        
+
+        <script>
+            const fileInput = document.getElementById('fileToUpload');
+            const uploadButton = document.getElementById('uploadButton');
+            const imageContainer = document.getElementById('imageContainer');
+            const deleteButton = document.getElementById('deleteButton');
+
+            uploadButton.addEventListener('click', function () {
+                const file = fileInput.files[0];
+                if (file) {
+                    const reader = new FileReader();
+
+                    reader.onload = function () {
+                        const img = document.createElement('img');
+                        img.src = reader.result;
+
+                        imageContainer.innerHTML = '';
+                        imageContainer.appendChild(img);
+
+                        // Habilitar el botón de eliminación
+                        deleteButton.removeAttribute('disabled');
+
+                        // Guardar la imagen en el almacenamiento local
+                        localStorage.setItem('uploadedImage', reader.result);
+                    };
+
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Por favor, selecciona una imagen.');
+                }
+            });
+
+            deleteButton.addEventListener('click', function () {
+                // Limpiar el contenedor de imágenes
+                imageContainer.innerHTML = '';
+
+                // Deshabilitar el botón de eliminación
+                deleteButton.setAttribute('disabled', 'true');
+
+                // Eliminar la imagen del almacenamiento local
+                localStorage.removeItem('uploadedImage');
+            });
+
+            // Cargar imagen almacenada del almacenamiento local al cargar la página
+            window.addEventListener('load', function () {
+                const storedImage = localStorage.getItem('uploadedImage');
+                if (storedImage) {
+                    const img = document.createElement('img');
+                    img.src = storedImage;
+
+                    imageContainer.innerHTML = '';
+                    imageContainer.appendChild(img);
+
+                    deleteButton.removeAttribute('disabled');
+                }
+            });
+        </script>
+
+
+           
+        <div class="col-md-8">
+            <form asp-action="Create" class="needs-validation" novalidate>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="FirstName" class="form-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+         
+                <script>
+                    function updateProgressBar() {
+                        var selectedDate = new Date(document.getElementById("birthday").value);
+                        var currentDate = new Date();
+
+                        selectedDate.setFullYear(currentDate.getFullYear());
+
+                        if (selectedDate < currentDate) {
+                            selectedDate.setFullYear(currentDate.getFullYear() + 1);
+                        }
+
+                        var timeDifference = selectedDate.getTime() - currentDate.getTime();
+                        var daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+
+                        document.getElementById("daysRemaining").textContent = daysDifference;
+                        document.getElementById("daysSlider").value = daysDifference;
+                        document.getElementById("daysTextBox").value = daysDifference;
+                    }
+                </script>
+
+                <div class="form-group">
+                    <label asp-for="DateOfBirth" class="form-label"></label>
+                    <input asp-for="DateOfBirth" class="form-control" id="birthday" onchange="updateProgressBar()" />
+                    <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                </div>
+                <p class="mb-3">Faltan <span id="daysRemaining">0</span> días para tu cumpleaños.</p>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="daysTextBox" readonly>
+                </div>
+                <div class="form-group">
+                    <input type="range" class="form-control-range" id="daysSlider" min="0" max="365" value="0" step="1" onchange="updateProgressBar()">
+                </div>        
+                <div class="form-group">
+                    <label asp-for="Sex" class="form-label"></label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="Sex" type="radio" class="form-check-input" value="male" id="maleRadio" />
+                            <label class="form-check-label" for="maleRadio">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input asp-for="Sex" type="radio" class="form-check-input" value="female" id="femaleRadio" />
+                            <label class="form-check-label" for="femaleRadio">Female</label>
+                        </div>
+                    </div>
+                    <span asp-validation-for="Sex" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Relations" class="control-label">Relations</label>
+                    <div>
+                        <div id="selectedRelations" class="mb-2">
+                            <!-- Aquí se mostrarán las relaciones seleccionadas -->
+                        </div>
+                        <div id="customRelations" class="d-flex mb-2"></div> <!-- Contenedor para las nuevas etiquetas de relación -->
+
+                        <div class="d-flex">
+
+
+                       
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <input type="text" id="customRelationInput" class="form-control mr-2" placeholder="Custom Relation">
+                            <button type="button" class="btn btn-success" onclick="addCustomRelation()">Add Relation</button>
+                            <button type="button" class="btn btn-danger remove-button ml-2" onclick="removeSelectedRelations()">Remove</button>
+                        </div>
+                    </div>
+                    <input asp-for="Relations" id="relationsInput" type="hidden" />
+                    <span asp-validation-for="Relations" class="text-danger"></span>
+                </div>
+
+                <script>
+                    var selectedRelations = [];
+                    var selectedRelation; // Variable para mantener la relación seleccionada
+
+                    // Recuperar selecciones almacenadas al cargar la página
+                    var storedSelection = localStorage.getItem('selectedRelations');
+                    if (storedSelection) {
+                        selectedRelations = JSON.parse(storedSelection);
+                        updateSelectedRelations();
+                    }
+
+                    function selectRelation(relation) {
+                        var buttons = document.querySelectorAll('.btn.relation-button');
+                        buttons.forEach(function (button) {
+                            button.classList.remove('active'); // Quita la clase 'active' de todos los botones
+                        });
+
+                        var selectedButton = document.querySelector('button[data-relation="' + relation + '"]');
+                        selectedButton.classList.add('active'); // Agrega la clase 'active' al botón seleccionado
+                        selectedRelation = relation; // Actualiza la relación seleccionada
+
+                        var relationsInput = document.getElementById('relationsInput');
+                        relationsInput.value = relation;
+
+                        // Guardar la selección en el almacenamiento local
+                        localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                    }
+
+                    function addCustomRelation() {
+                        var customRelationInput = document.getElementById('customRelationInput');
+                        var customRelation = customRelationInput.value.trim();
+
+                        if (customRelation) {
+                            selectedRelations.push(customRelation);
+                            customRelationInput.value = ''; // Limpia el input
+                            updateSelectedRelations();
+
+                            // Guardar la selección en el almacenamiento local
+                            localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                        }
+                    }
+
+                    function updateSelectedRelations() {
+                        var customRelationsDiv = document.getElementById('customRelations');
+                        customRelationsDiv.innerHTML = '';
+
+                        // Etiquetas de relación seleccionadas
+                        selectedRelations.forEach(function (relation) {
+                            var button = document.createElement('button');
+                            button.type = 'button';
+                            button.className = 'btn relation-button';
+                            button.innerText = relation;
+                            button.setAttribute('data-relation', relation);
+                            button.addEventListener('click', function () {
+                                selectRelation(relation); // Al hacer clic, selecciona la etiqueta
+                            });
+
+                            customRelationsDiv.appendChild(button);
+                        });
+
+                        relationsInput.value = selectedRelations.join(', '); // Actualiza el valor oculto
+                    }
+
+                    function removeSelectedRelations() {
+                        if (selectedRelation) {
+                            var index = selectedRelations.indexOf(selectedRelation);
+                            if (index !== -1) {
+                                selectedRelations.splice(index, 1);
+                                updateSelectedRelations();
+
+                                // Guarda la selección actualizada en el almacenamiento local
+                                localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                            }
+                        }
+                    }
+                        posterInput.addEventListener('change', function () {
+                            const file = this.files[0];
+                            if (file) {
+                                const reader = new FileReader();
+                                reader.onload = function (e) {
+                                    imagePreview.src = e.target.result;
+                                    imagePreview.style.display = 'block';
+                                    imagePreview.style.width = '100%';
+                                    imagePreview.style.height = '100%';
+                                };
+                                reader.readAsDataURL(file);
+                                // Muestra el nombre del archivo seleccionado
+                                fileName.textContent = file.name;
+                            } else {
+                                imagePreview.style.display = 'none';
+                                fileName.textContent = '';
+                            }
+                        });
+                </script>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

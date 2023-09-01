@@ -1,0 +1,187 @@
+﻿@model BDayReminderMVC.Models.Friend
+
+@{
+    ViewData["Title"] = "Edit";
+    ViewData["HideNavbar"] = false; // Ocultar el navbar en esta vista
+}
+
+<style>
+    .relation-button {
+        margin-right: 5px; /* Espacio entre los botones de relación */
+        background-color: white; /* Fondo blanco */
+        color: #000; /* Color del texto negro */
+        border: 1px solid #ccc; /* Borde gris */
+    }
+
+    .relation-label {
+        display: inline-block;
+        margin-right: 5px; /* Espacio entre las etiquetas de relación */
+    }
+
+    /* Cambia el color de fondo de los botones seleccionados */
+    .active {
+        background-color: #008080; /* Cambia este color según tus preferencias */
+        color: white; /* Cambia el color del texto a blanco */
+    }
+
+    .remove-button {
+        background-color: #ff0000; /* Color de fondo del botón Remove */
+        color: white; /* Color del texto del botón Remove */
+        border: none; /* Sin borde */
+        margin-left: 5px; /* Espacio entre el botón Remove y las relaciones seleccionadas */
+        cursor: pointer; /* Cambia el cursor al pasar el ratón por encima */
+    }
+</style>
+
+<h1>Edit</h1>
+
+<h4>Friend</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sex" class="control-label"></label>
+                <div>
+                    <div class="form-check form-check-inline">
+                        <input asp-for="Sex" type="radio" class="form-check-input" value="male" id="maleRadio" />
+                        <label class="form-check-label" for="maleRadio">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input asp-for="Sex" type="radio" class="form-check-input" value="female" id="femaleRadio" />
+                        <label class="form-check-label" for="femaleRadio">Female</label>
+                    </div>
+                </div>
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+            
+
+            <div class="form-group">
+                <label asp-for="Relations" class="control-label">Relations</label>
+                <div>
+                    <div id="selectedRelations" class="mb-2">
+                        <!-- Aquí se mostrarán las relaciones seleccionadas -->
+                    </div>
+                    <div id="customRelations" class="d-flex mb-2"></div> <!-- Contenedor para las nuevas etiquetas de relación -->
+
+                    <div class="d-flex">
+
+
+                        <!-- Agrega más botones según sea necesario -->
+                    </div>
+
+                    <div class="d-flex mt-2">
+                        <input type="text" id="customRelationInput" class="form-control mr-2" placeholder="Custom Relation">
+                        <button type="button" class="btn btn-success" onclick="addCustomRelation()">Add Relation</button>
+                        <button type="button" class="btn btn-danger remove-button ml-2" onclick="removeSelectedRelations()">Remove</button>
+                    </div>
+                </div>
+                <input asp-for="Relations" id="relationsInput" type="hidden" />
+                <span asp-validation-for="Relations" class="text-danger"></span>
+            </div>
+
+            <script>
+                var selectedRelations = [];
+                var selectedRelation; // Variable para mantener la relación seleccionada
+
+                // Recuperar selecciones almacenadas al cargar la página
+                var storedSelection = localStorage.getItem('selectedRelations');
+                if (storedSelection) {
+                    selectedRelations = JSON.parse(storedSelection);
+                    updateSelectedRelations();
+                }
+
+                function selectRelation(relation) {
+                    var buttons = document.querySelectorAll('.btn.relation-button');
+                    buttons.forEach(function (button) {
+                        button.classList.remove('active'); // Quita la clase 'active' de todos los botones
+                    });
+
+                    var selectedButton = document.querySelector('button[data-relation="' + relation + '"]');
+                    selectedButton.classList.add('active'); // Agrega la clase 'active' al botón seleccionado
+                    selectedRelation = relation; // Actualiza la relación seleccionada
+
+                    var relationsInput = document.getElementById('relationsInput');
+                    relationsInput.value = relation;
+
+                    // Guardar la selección en el almacenamiento local
+                    localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                }
+
+                function addCustomRelation() {
+                    var customRelationInput = document.getElementById('customRelationInput');
+                    var customRelation = customRelationInput.value.trim();
+
+                    if (customRelation) {
+                        selectedRelations.push(customRelation);
+                        customRelationInput.value = ''; // Limpia el input
+                        updateSelectedRelations();
+
+                        // Guardar la selección en el almacenamiento local
+                        localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                    }
+                }
+
+                function updateSelectedRelations() {
+                    var customRelationsDiv = document.getElementById('customRelations');
+                    customRelationsDiv.innerHTML = '';
+
+                    // Etiquetas de relación seleccionadas
+                    selectedRelations.forEach(function (relation) {
+                        var button = document.createElement('button');
+                        button.type = 'button';
+                        button.className = 'btn relation-button';
+                        button.innerText = relation;
+                        button.setAttribute('data-relation', relation);
+                        button.addEventListener('click', function () {
+                            selectRelation(relation); // Al hacer clic, selecciona la etiqueta
+                        });
+
+                        customRelationsDiv.appendChild(button);
+                    });
+
+                    relationsInput.value = selectedRelations.join(', '); // Actualiza el valor oculto
+                }
+
+                function removeSelectedRelations() {
+                    if (selectedRelation) {
+                        var index = selectedRelations.indexOf(selectedRelation);
+                        if (index !== -1) {
+                            selectedRelations.splice(index, 1);
+                            updateSelectedRelations();
+
+                            // Guarda la selección actualizada en el almacenamiento local
+                            localStorage.setItem('selectedRelations', JSON.stringify(selectedRelations));
+                        }
+                    }
+                }
+            </script>
+            
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
