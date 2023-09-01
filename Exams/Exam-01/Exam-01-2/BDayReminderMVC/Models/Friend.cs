@@ -1,32 +1,40 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BDayReminderMVC.Models;
-
-public class Friend
+namespace Parcial.Models
 {
-    [Key]
-    public int Id { get; set; }
+    public class Friend
+    {
+        [Key]
+        public int Id { get; set; }
 
-    [Required(ErrorMessage ="The FirstName is Required")]
-    [StringLength(50)]
-    public string FirstName { get; set; } = null!;
+        [Display(Name = "AmigosPFP")]
+        public string PhotoPath { get; set; } = null!;
 
-    [Required(ErrorMessage = "The LastName is Required")]
-    [StringLength(50)]
-    public string LastName { get; set; } = null!;
+        [Required(ErrorMessage = "El correo es obligatorio")]
+        [StringLength(100)]
+        [EmailAddress(ErrorMessage = "El formato del correo no es válido")]
+        [Display(Name = "Correo")]
+        public string UserEmail { get; set; } = null!;
 
-    [Required(ErrorMessage = "The DateOfBirth is Required")]
-    [DataType(DataType.Date)]
-    public DateTime DateOfBirth { get; set; }
+        [Required(ErrorMessage = "El nombre es obligatorio")]
+        [StringLength(50)]
+        [Display(Name = "Nombre")]
+        public string FirstName { get; set; } = null!;
 
-    [Required(ErrorMessage = "The Sex is Required")]
-    [StringLength(1)]
-    public char Sex { get; set; } = 'M';
-    
-    public string Relations { get; set; } = null!;    
-    
-    [Required(ErrorMessage = "The Photo is required")]
-    [StringLength(50)]
-    // Include only ImageName.ext
-    public string Photo { get; set; } = null!;    
+        [Required(ErrorMessage = "El apellido es obligatorio")]
+        [StringLength(50)]
+        [Display(Name = "Apellido")]
+        public string LastName { get; set; } = null!;
+
+        [Required(ErrorMessage = "La fecha de nacimiento es obligatoria")]
+        [DataType(DataType.Date)]
+        [Display(Name = "Fecha de nacimiento")]
+        public DateTime DateOfBirth { get; set; }
+
+        [Required(ErrorMessage = "El sexo es obligatorio")]
+        [Display(Name = "Sexo")]
+        public char Sex { get; set; }
+
+       
+    }
 }

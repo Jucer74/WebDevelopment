@@ -1,8 +1,8 @@
-﻿using BDayReminderMVC.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Parcial.Models;
 using System.Diagnostics;
 
-namespace BDayReminderMVC.Controllers
+namespace Parcial.Controllers
 {
     public class HomeController : Controller
     {

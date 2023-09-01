@@ -1,8 +1,74 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accediendo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<header>
+<div class="container-fluid mt-3">
+    <nav class="navbar navbar-expand-sm bg-warning navbar-dark">
+        <div class="col-xxl-12">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active">Acceder</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      </div>
+    </header>
+  <h2>Bienvenido a Checkpoint</h2>
+  <h3>Accediendo a su cuenta</h3>
+  <form id="loginForm" asp-controller="HomeController1" asp-action="Index" class="was-validated">
+    <div class="mb-3 mt-3">
+        <label for="loginEmail" class="form-label">Usuario:</label>
+        <input type="email" class="form-control" id="loginEmail" placeholder="Ingrese su Correo" name="email" required>
+        <div class="valid-feedback">Valido.</div>
+        <div class="invalid-feedback">Por favor rellenar este campo.</div>
+    </div>
+    <div class="mb-3">
+      <label for="loginPwd">Contraseña:</label>
+      <input type="password" class="form-control" id="loginPwd" placeholder="Contraseña" name="pswd" required>
+      <div class="valid-feedback">Valido.</div>
+      <div class="invalid-feedback">Por favor rellenar este campo.</div>
+    </div>
+    <div class="form-check mb-3">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" name="remember">Recuérdame
+      </label>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  
+    <!-- Elemento para mostrar mensaje de error -->
+    <div id="errorMessage" class="text-danger" style="display: none;">
+      No se ha creado un usuario. Por favor, regístrate primero.
+    </div>
+</form>
+
+    <form asp-area="" asp-controller="Register" asp-action="Index">
+    <div class="mb-3 mt-3">
+        <h1>
+            
+        </h1>
+        <h2>No tines una cuenta</h2>
+        <h2>Crea una!</h2>
+        <button type="submit" class="btn btn-secondary">Crear cuenta</button>
+        </div>
+
+  </form>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+<foooter>
+    .
+</foooter>
+<script src="~/js/Login.js"></script>
+</html>

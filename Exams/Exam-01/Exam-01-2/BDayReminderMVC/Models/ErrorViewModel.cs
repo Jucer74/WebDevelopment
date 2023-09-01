@@ -1,4 +1,4 @@
-namespace BDayReminderMVC.Models
+namespace Parcial.Models
 {
     public class ErrorViewModel
     {
