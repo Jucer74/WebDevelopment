@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+
+  <title>Login y registro con Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+
+    
+  <h1 style="color: rgb(255, 255, 255); text-align: center;">BDayReminder</h1>
+
+    <style>
+    body {
+      background-image:url('https://i0.wp.com/elbatallonpluto.com/wp-content/uploads/2016/09/Blue-Background-Wallpaper.jpg?ssl=1')
+    }
+  </style>
+  
+
+  <div style="background-image: url(bday.jpg.jpg);">
+    Contenido del elemento
+</div>
+
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-6" style="display: flex; justify-content: center; align-items: center; margin: 0 auto; left: 80%;">
+      <div class="card" style="background-color: #333; color: white; font-size: 18px;">
+        <div class="card-body">
+
+          <input type="text" class="form-control" placeholder="Usuario" id="username">
+          <br>
+          <input type="password" class="form-control" placeholder="Contraseña" id="password">
+          <br>
+          <button class="btn btn-primary" onclick="acceso()">Iniciar sesión</button>
+          <br>
+          <a href="registro.html" class="btn btn-link">Registrarse</a>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div class="col-md-6">
+    </div>
+  </div>
+</div>
+
+<script>
+
+function acceso() {
+  const usernameInput = document.getElementById('username').value;
+  const passwordInput = document.getElementById('password').value;
+
+  if (usernameInput === 'Admin@email.com' && passwordInput === 'P4ssw0rd*01') {
+    window.location.href = 'menu.html';
+  } else {
+    alert(' datos incorrectos, vuelva a intentar');
+  }
+}
+</script>
+
+</body>
+</html>

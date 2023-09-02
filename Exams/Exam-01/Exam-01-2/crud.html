@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guardar Proyecto</title>
+</head>
+<body>
+
+    <style>
+        body {
+          background-image:url('https://i0.wp.com/elbatallonpluto.com/wp-content/uploads/2016/09/Blue-Background-Wallpaper.jpg?ssl=1')
+        }
+      </style>
+
+
+<h2 style="color: rgb(211, 224, 25); text-align: center;">REGISTRA UN PROYECTO</h2>
+    
+    <form id="proyectoForm">
+        <label for="nombre">Nombre del Proyecto:</label>
+        <input type="text" id="nombre" required>
+        <br><br>
+        <label for="tipo">Tipo de Proyecto:</label>
+        <input type="text" id="tipo" required>
+        <br><br>
+        <label for="fecha">Fecha de Entrega:</label>
+        <input type="date" id="fecha" required>
+        <br><br>
+        <button type="button" onclick="guardarProyecto()">Guardar Proyecto</button>
+    </form>
+    
+    <h2 style="color: rgb(211, 224, 25); text-align: center;">proyectos guardados</h2>
+
+    <ul id="listaProyectos"></ul>
+
+    <script>
+  
+        let proyectos = [];
+
+        function guardarProyecto() {
+            const nombre = document.getElementById("nombre").value;
+            const tipo = document.getElementById("tipo").value;
+            const fecha = document.getElementById("fecha").value;
+
+            // Validar que los campos no estén vacíos
+            if (nombre.trim() === "" || tipo.trim() === "" || fecha.trim() === "") {
+                alert("completa todos los campos.");
+                return;
+            }
+
+            const nuevoProyecto = {
+                nombre: nombre,
+                tipo: tipo,
+                fecha: fecha,
+            };
+            proyectos.push(nuevoProyecto);
+
+            // Limpiar los campos del formulario
+            document.getElementById("nombre").value = "";
+            document.getElementById("tipo").value = "";
+            document.getElementById("fecha").value = "";
+
+            actualizarListaProyectos();
+        }
+
+        // mostrar la lista de proyectos
+        function actualizarListaProyectos() {
+            const listaProyectos = document.getElementById("listaProyectos");
+            listaProyectos.innerHTML = ""; // Limpiar la lista
+
+            // Recorrer lista
+            proyectos.forEach((proyecto, index) => {
+                const itemLista = document.createElement("li");
+                itemLista.textContent = `Proyecto ${index + 1}: Nombre - ${proyecto.nombre}, Tipo - ${proyecto.tipo}, Fecha de Entrega - ${proyecto.fecha}`;
+                listaProyectos.appendChild(itemLista);
+            });
+        }
+    </script>
+</body>
+</html>
