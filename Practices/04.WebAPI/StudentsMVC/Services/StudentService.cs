@@ -6,7 +6,7 @@ public class StudentService : IStudentService
 {
 
     // Global Variables
-    private readonly List<Student> studentsList;
+    private static List<Student> studentsList;
 
     public StudentService()
     {
@@ -15,7 +15,9 @@ public class StudentService : IStudentService
 
     public Student Create(Student student)
     {
-        throw new NotImplementedException();
+        student.Id = GetNextSecuenceId();
+        studentsList.Add(student);
+        return student;
     }
 
     public void DeleteById(int id)
@@ -53,6 +55,12 @@ public class StudentService : IStudentService
         return students;
     }
 
+
+    private int GetNextSecuenceId()
+    {
+        var GetNextSecuenceId = studentsList.Max(x => x.Id) + 1;
+        return GetNextSecuenceId;
+    }
     #endregion Private-Methods
 
 }

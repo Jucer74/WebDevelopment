@@ -24,6 +24,7 @@ namespace StudentsMVC.Controllers
         public ActionResult Details(int id)
         {
             var student = _studentService.GetById(id);
+
             return View(student);
         }
 
@@ -39,6 +40,7 @@ namespace StudentsMVC.Controllers
         public ActionResult Create(int id, Student student)
         {
             try            {
+                _studentService.Create(student);
                 return RedirectToAction(nameof(Index));
             }
             catch
