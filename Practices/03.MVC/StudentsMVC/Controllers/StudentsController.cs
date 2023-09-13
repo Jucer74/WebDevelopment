@@ -1,22 +1,30 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentsMVC.Models;
+using StudentsMVC.Services;
 
 namespace StudentsMVC.Controllers
 {
     public class StudentsController : Controller
     {
-        private static List<Student> studentList = LoadStudents();
+
+        private IStudentService _studentService;
+        public StudentsController(IStudentService studentService)
+        {
+            _studentService = studentService;
+        }
+
         // GET: StudentsController
         public ActionResult Index()
         {
-            return View(studentList);
+            var studentsList = _studentService.GetAll();
+            return View(studentsList);
         }
 
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            var student = studentList.FirstOrDefault(x => x.Id == id);
+            var student = _studentService.GetById(id);
             return View(student);
         }
 
@@ -29,10 +37,11 @@ namespace StudentsMVC.Controllers
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Student student)
         {
             try
             {
+                _studentService.Create(student);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -44,17 +53,20 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
         {
-            var student = studentList.FirstOrDefault(x => x.Id == id);
+            var student = _studentService.GetById(id);
+
             return View(student);
         }
 
         // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Student student)
         {
             try
             {
+                _studentService.Update(id, student);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -66,17 +78,19 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            var student = studentList.FirstOrDefault(x => x.Id == id);
-            return View(student);
+            //var student = studentList.FirstOrDefault(x => x.Id == id);
+            //return View(student);
+            return View();
         }
 
         // POST: StudentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, Student student)
         {
             try
             {
+                _studentService.DeleteById(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -85,18 +99,6 @@ namespace StudentsMVC.Controllers
             }
         }
         #region Private-Methods
-
-        private static List<Student> LoadStudents()
-        {
-            List<Student> students = new List<Student>();
-
-            students.Add(new Student() { Id = 1, FirstName = "John", LastName = "Doe", DateOfBirth = new DateTime(1980, 10, 10), Sex = 'M' });
-            students.Add(new Student() { Id = 2, FirstName = "Barry", LastName = "Allen", DateOfBirth = new DateTime(2001, 7, 7), Sex = 'M' });
-            students.Add(new Student() { Id = 3, FirstName = "Diana", LastName = "Prince", DateOfBirth = new DateTime(1950, 8, 8), Sex = 'F' });
-
-            return students;
-        }
-
         #endregion Private-Methods
     }
 }
