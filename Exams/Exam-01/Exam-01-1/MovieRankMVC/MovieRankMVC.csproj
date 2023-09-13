@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Remove="NewFolder1\**" />
     <Compile Remove="NewFolder\**" />
     <Content Remove="NewFolder1\**" />
@@ -25,4 +26,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
+=======
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+>>>>>>> origin/2023-02-1/julroburi
 </Project>

@@ -23,6 +23,10 @@ public class Movie
     public string Duration { get; set; } = null!;
 
     [Required(ErrorMessage = "The Rate is required")]
+<<<<<<< HEAD
+=======
+    // Format 0.0
+>>>>>>> origin/2023-02-1/julroburi
     public float Rate { get; set; }
 
     [StringLength(50)]

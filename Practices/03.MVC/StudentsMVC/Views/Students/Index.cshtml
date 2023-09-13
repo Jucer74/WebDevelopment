@@ -3,11 +3,19 @@
 @{
     ViewData["Title"] = "Index";
 }
+<<<<<<< HEAD
 *
 /<h1>Index</h1>
 
 <p>
     <a  asp-action="Create">Create New</a>
+=======
+
+<h1>Index</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
+>>>>>>> origin/2023-02-1/julroburi
 </p>
 <table class="table">
     <thead>
@@ -43,15 +51,25 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
+<<<<<<< HEAD
                  @Html.DisplayFor(modelItem => item.DateOfBirth)
+=======
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+>>>>>>> origin/2023-02-1/julroburi
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sex)
             </td>
             <td>
+<<<<<<< HEAD
                 @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
                 @Html.ActionLink("Details", "Details", new {  id=item.Id  }) |
                 @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
+=======
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id  }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id  })
+>>>>>>> origin/2023-02-1/julroburi
             </td>
         </tr>
 }
