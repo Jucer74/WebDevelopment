@@ -91,6 +91,7 @@ namespace StudentsMVC.Controllers
         {
             try
             {
+                _studentService.DeleteById(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

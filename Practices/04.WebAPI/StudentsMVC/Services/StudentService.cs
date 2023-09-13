@@ -22,7 +22,16 @@ public class StudentService : IStudentService
 
     public void DeleteById(int id)
     {
-        throw new NotImplementedException();
+        var studentOriginal = studentsList.FirstOrDefault(x => x.Id == id);
+
+        if(studentOriginal != null)
+        {
+            throw new Exception("Not Found");
+        }
+        
+        studentsList.Remove(studentOriginal);
+
+        
     }
 
     public List<Student> GetAll()
@@ -38,7 +47,15 @@ public class StudentService : IStudentService
 
     public Student Update(int id, Student student)
     {
-        throw new NotImplementedException();
+        var studentOriginal = studentsList.FirstOrDefault(x => x.Id == id);
+
+        var studentIndex = studentsList.IndexOf(studentOriginal);
+
+         var studentInList = student;
+
+        studentsList[studentIndex] = studentInList;
+
+        return studentInList;
     }
 
     #region Private-Methods
