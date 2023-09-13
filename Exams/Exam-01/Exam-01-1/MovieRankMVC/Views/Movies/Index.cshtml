@@ -24,14 +24,14 @@
                 <button class="btn btn-primary"><a asp-action="Create" class="text-white"><i class="fas fa-plus"></i> Create New</a></button>
             </div>
         </div>
-        <div class="row mt-4">
-            <div class="col-12">
+        <div class="row mt-4  justify-content-center">
+            <div class="col-8" >
                 <table class="table table-responsive">
                     <thead>
                         <tr>
                             <th>Poster</th>
                             <th>Title</th>
-                            <th>Synopsis</th>
+                            
                             <th>Rate</th>
                             <th>Actions</th>
                         </tr>
@@ -42,7 +42,7 @@
                             <tr>
                                 <td><img src="~/images/@item.Poster" alt="Poster" class="poster-img" /></td>
                                 <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                                <td>@Html.DisplayFor(modelItem => item.Synopsis)</td>
+                                
                                 <td>@Html.DisplayFor(modelItem => item.Rate)</td>
                                 <td>
                                     <div class="actions">
