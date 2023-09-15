@@ -1,6 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using StudentsMVC.Context;
 using StudentsMVC.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("CnnStr")!));
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

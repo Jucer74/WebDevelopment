@@ -1,4 +1,5 @@
-﻿using StudentsMVC.Models;
+﻿using StudentsMVC.Context;
+using StudentsMVC.Models;
 
 namespace StudentsMVC.Services;
 
@@ -7,9 +8,11 @@ public class StudentService : IStudentService
     // Global Variables
     private static List<Student> studentsList = LoadStudents();
 
-    public StudentService()
+    private readonly AppDbContext _appDbContext;
+
+    public StudentService(AppDbContext appDbContext)
     {
-            
+        _appDbContext = appDbContext;
     }
 
     public Student Cteate(Student student)
@@ -30,7 +33,8 @@ public class StudentService : IStudentService
 
     public List<Student> GetAll()
     {
-        return studentsList;
+        //return studentsList;
+        return _appDbContext.Set<Student>().ToList<Student>();
     }
 
     public Student GetById(int id)
