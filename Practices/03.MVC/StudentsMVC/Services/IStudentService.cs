@@ -12,5 +12,5 @@ public interface IStudentService
 
     Student Update(int id, Student student);
 
-    void Delete(int id);
+    void Delete(int id, Student student);
 }
