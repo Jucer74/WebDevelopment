@@ -1,4 +1,4 @@
-CREATE TABLE `studentsdb`.`Students` (
+CREATE TABLE `schooldb`.`Students` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `FirstName` VARCHAR(50) NOT NULL,
   `LastName` VARCHAR(50) NOT NULL,
