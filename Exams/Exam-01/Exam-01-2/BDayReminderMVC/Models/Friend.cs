@@ -22,4 +22,11 @@ public class Friend
     [Required(ErrorMessage = "The Sex is Required")]
     [StringLength(1)]
     public char Sex { get; set; } = 'M';
+    
+    public string Relations { get; set; } = null!;    
+    
+    [Required(ErrorMessage = "The Photo is required")]
+    [StringLength(50)]
+    // Include only ImageName.ext
+    public string Photo { get; set; } = null!;    
 }
