@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using StudentsMVC.Models;
 using StudentsMVC.Services;
 
@@ -7,7 +6,9 @@ namespace StudentsMVC.Controllers
 {
     public class StudentsController : Controller
     {
+
         private readonly IStudentService _studentService;
+
         public StudentsController(IStudentService studentService)
         {
             _studentService = studentService;
@@ -16,20 +17,19 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController
         public ActionResult Index()
         {
-            var studentList = _studentService.GetAll();
-            return View(studentList);
+            var studentsList = _studentService.GetAll();
+            return View(studentsList);
         }
 
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
             var student = _studentService.GetById(id);
-
             return View(student);
         }
 
         // GET: StudentsController/Create
-        public ActionResult Create(Student student)
+        public ActionResult Create()
         {
             return View();
         }
@@ -37,10 +37,12 @@ namespace StudentsMVC.Controllers
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(int id, Student student)
+        public ActionResult Create(Student student)
         {
-            try            {
+            try
+            {
                 _studentService.Create(student);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -50,21 +52,21 @@ namespace StudentsMVC.Controllers
         }
 
         // GET: StudentsController/Edit/5
-        public ActionResult Edit(int id, Student student)
+        public ActionResult Edit(int id)
         {
-            //var student = studentsList.FirstOrDefault(x => x.Id == id); 
-
-            //return View(student);
-            return View();
+            var student = _studentService.GetById(id);
+            return View(student);
         }
 
         // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int id, Student student)
         {
             try
             {
+                _studentService.Update(id, student);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -76,11 +78,8 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            //var student = studentsList.FirstOrDefault(x => x.Id == id);
-
-            //return View(student);
-
-            return View();
+            var student = _studentService.GetById(id);
+            return View(student);
         }
 
         // POST: StudentsController/Delete/5
@@ -90,6 +89,8 @@ namespace StudentsMVC.Controllers
         {
             try
             {
+                _studentService.DeleteById(id);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -97,6 +98,5 @@ namespace StudentsMVC.Controllers
                 return View();
             }
         }
-
     }
 }

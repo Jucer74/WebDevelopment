@@ -4,25 +4,33 @@ namespace StudentsMVC.Services;
 
 public class StudentService : IStudentService
 {
-
     // Global Variables
-    private static List<Student> studentsList;
+    private static List<Student> studentsList = LoadStudents();
 
     public StudentService()
     {
-        studentsList = LoadStudents();
+        
     }
+
 
     public Student Create(Student student)
     {
-        student.Id = GetNextSecuenceId();
+        student.Id = GetNextSequenceId();
         studentsList.Add(student);
+
         return student;
     }
 
     public void DeleteById(int id)
     {
-        throw new NotImplementedException();
+        var studentOriginal = studentsList.FirstOrDefault(x => x.Id == (id + 1));
+
+        if (studentOriginal == null)
+        {
+            throw new Exception("Not Found");
+        }
+
+        studentsList.Remove(studentOriginal);
     }
 
     public List<Student> GetAll()
@@ -33,13 +41,19 @@ public class StudentService : IStudentService
     public Student GetById(int id)
     {
         var student = studentsList.FirstOrDefault(x => x.Id == id);
-        //validar null
+        // Validar el null
         return student;
     }
 
-    public Student Updates(int id, Student student)
+    public Student Update(int id, Student student)
     {
-        throw new NotImplementedException();
+        var studentOriginal = studentsList.FirstOrDefault(x => x.Id == id); 
+
+        var studentIndex = studentsList.IndexOf(studentOriginal);
+        
+        studentsList[studentIndex] = student;
+
+        return student;
     }
 
     #region Private-Methods
@@ -55,12 +69,12 @@ public class StudentService : IStudentService
         return students;
     }
 
-
-    private int GetNextSecuenceId()
+    private int GetNextSequenceId()
     {
-        var GetNextSecuenceId = studentsList.Max(x => x.Id) + 1;
-        return GetNextSecuenceId;
-    }
-    #endregion Private-Methods
+        var nextSequenceId = studentsList.Max(x => x.Id) + 1;
 
+        return nextSequenceId;
+    }
+
+    #endregion Private-Methods
 }

@@ -1,5 +1,3 @@
-
-
 using StudentsMVC.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
