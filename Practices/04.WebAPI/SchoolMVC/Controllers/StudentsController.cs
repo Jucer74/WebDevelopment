@@ -32,7 +32,7 @@ namespace SchoolMVC.Controllers
         {
             IList<UserDto> users = await usersService.GetUsers();
 
-            _userList = users.Select(userDto => MapperToUser(userDto)).ToList();
+           Student = users.Select(userDto => MapperToUser(userDto)).ToList();
 
             return View(_userList);
         }
