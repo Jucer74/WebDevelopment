@@ -1,18 +1,18 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
-using SchoolMVC.Config;
+
 
 namespace SchoolMVC.Models;
 
-public class Student
+public class UserDto
 {
-    [Required(ErrorMessage ="El Id es requerido")]
+    [Required(ErrorMessage = "El Id es requerido")]
     [DisplayName("Id")]
     public int Id { get; set; } = 0;
-    
-    [Required(ErrorMessage ="El Nombre es requerido")]
-    [StringLength(50,ErrorMessage="La Longitud maxima del Nombre es de 50 caracteres")]
+
+    [Required(ErrorMessage = "El Nombre es requerido")]
+    [StringLength(50, ErrorMessage = "La Longitud maxima del Nombre es de 50 caracteres")]
     [DisplayName("Nombre")]
     public string FirstName { get; set; } = null!;
 
@@ -28,7 +28,24 @@ public class Student
     public DateTime DateOfBirth { get; set; } = default!;
 
     [Required(ErrorMessage = "El Sexo es requerido")]
-    [RegularExpression("^[MF]$", ErrorMessage ="Los Valores permitidos para Sex son M o F")]
+    [RegularExpression("^[MF]$", ErrorMessage = "Los Valores permitidos para Sex son M o F")]
     [DisplayName("Sexo")]
     public char Sex { get; set; } = 'M';
+
+    private UserDto()
+    {
+
+    }
+
+    public static UserDto Build(int id, string firstname, string lastname, DateTime dateofbirth, char sex)
+    {
+        return new UserDto
+        {
+            Id = id,
+            FirstName = firstname,
+            LastName = lastname,
+            DateOfBirth = dateofbirth,
+            Sex = sex
+        };
+    }
 }
