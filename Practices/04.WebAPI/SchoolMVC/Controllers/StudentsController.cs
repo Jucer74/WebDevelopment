@@ -7,6 +7,10 @@ namespace SchoolMVC.Controllers
 {
     public class StudentsController : Controller
     {
+        private readonly IStudentsService studentsService;
+        public StudentsController() { 
+
+}
         private static List<Student> studentList = null!;
         private static int numStudents;
 
@@ -18,11 +22,11 @@ namespace SchoolMVC.Controllers
         }
 
         // GET: StudentsController
-        public async Task<ActionResult> Index()
-        {
-            studentList = await _studentService.GetAll();
-            return View(studentList);
-        }
+       // public async Task<ActionResult> Index()
+      //  {
+          //  studentList = await _studentService.GetAll();
+            //return View(studentList);
+       // }
 
         public async Task<ActionResult> ByPage(int page, int limit)
         {
