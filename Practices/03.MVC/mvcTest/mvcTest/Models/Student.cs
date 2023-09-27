@@ -7,27 +7,28 @@ namespace mvcTest.Models
         [Key]
 
         [Required]
+        [Display(Name = "Id")]
         public int StudentId { get; set; }
 
-        [Required(ErrorMessage = "Name is Required")]
+        [Required(ErrorMessage = "FirtName is Required")]
         [StringLength(100)]
-        [Display(Name = "Name")]
-        public string StudentName { get; set; } = null!;
+        [Display(Name = "FirtName")]
+        public string StudentFirstName { get; set; } = null!;
 
-        [Required]
-        [Display(Name = "Age")]
-        public int StudentAge { get; set; }
 
-        [Required]
-        [Display(Name = "Gender")]
-        public char StudentGender { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "LastName is Required")]
         [StringLength(100)]
-        [EmailAddressAttribute]
-        [Display(Name = "Email")]
-        public string StudentEmail { get; set; } = null!;
-        
+        [Display(Name = "LastName")]
+        public string StudentLastName { get; set; } = null!;
+
+        [Required]
+        [Display(Name = "Sex")]
+        public char StudentSex { get; set; }
+
+        [Required]
+        [Display(Name = "Date")]
+        public DateTime StudentDateOfBirth { get; set;}
+
 
     }
 }

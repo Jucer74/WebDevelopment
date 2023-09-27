@@ -1,34 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using mvcTest.Models;
+using mvcTest.Services;
 using System.Collections.Generic;
 
 namespace mvcTest.Controllers
 {
     public class StudentsController : Controller
     {
-        public static List<Student> studentsList = loadStudents();
-        
-        public static List<Student> loadStudents()
-        {
-            var students = new List<Student>();
-            students.Add(new Student() {StudentId = 1, StudentName = "Carlos Serrato", StudentAge = 19, StudentEmail= "email@gmail.com", StudentGender = 'M'});
-            students.Add(new Student() {StudentId = 2, StudentName = "Andrés Echeverry", StudentAge = 18, StudentEmail = "email@gmail.com", StudentGender = 'M' });
-            students.Add(new Student() {StudentId = 3, StudentName = "Julio Robles", StudentAge = 20, StudentEmail = "email@gmail.com", StudentGender = 'M' });
-            students.Add(new Student() {StudentId = 4, StudentName = "Isabella Reina", StudentAge = 17, StudentEmail = "email@gmail.com", StudentGender = 'M' });
-            return students;
-        }
-
         // GET: StudentsController
         public ActionResult Index()
         {
-            return View(studentsList);
+            return View(CrudService.GetStudenList());
         }
 
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            var student = studentsList.Find(student => student.StudentId == id); ;
+           var student = CrudService.GetStudent(id);
             return View(student);
         }
 
@@ -45,7 +34,7 @@ namespace mvcTest.Controllers
         {
             try
             {
-                studentsList.Add(student);
+                CrudService.AddStudent(student);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -57,8 +46,8 @@ namespace mvcTest.Controllers
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
         {
-            var student = studentsList.Find(student => student.StudentId == id); ;
-            return View(student);
+            var StudentToEdit = CrudService.GetStudent(id);
+            return View(StudentToEdit);
         }
 
         // POST: StudentsController/Edit/5
@@ -68,14 +57,7 @@ namespace mvcTest.Controllers
         {
             try
             {
-                var StudentToEdit = studentsList.FirstOrDefault(student => student.StudentId == id);
-                if (StudentToEdit != null)
-                {
-                    var index = studentsList.IndexOf(StudentToEdit);
-                    studentsList[index] = student;
-                }
-                
-                
+                CrudService.EditStudent(student, id);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -87,8 +69,8 @@ namespace mvcTest.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            var student = studentsList.Find(student => student.StudentId == id);
-            return View(student);
+            var StudentToDelete = CrudService.GetStudent(id);
+            return View(StudentToDelete);
         }
 
         // POST: StudentsController/Delete/5
@@ -98,14 +80,7 @@ namespace mvcTest.Controllers
         {
             try
             {
-
-                var ItemToRemove = studentsList.FirstOrDefault(student => student.StudentId == id);
-
-                if (ItemToRemove != null)
-                {
-                    studentsList.Remove(ItemToRemove);
-                }
-                
+                CrudService.DeleteStudent(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

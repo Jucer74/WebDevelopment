@@ -12,38 +12,33 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentId)
+            @Html.DisplayNameFor(model => model.StudentFirstName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentId)
+            @Html.DisplayFor(model => model.StudentFirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentName)
+            @Html.DisplayNameFor(model => model.StudentLastName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentName)
+            @Html.DisplayFor(model => model.StudentLastName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentAge)
+            @Html.DisplayNameFor(model => model.StudentSex)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentAge)
+            @Html.DisplayFor(model => model.StudentSex)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentGender)
+            @Html.DisplayNameFor(model => model.StudentDateOfBirth)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentGender)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.StudentEmail)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StudentEmail)
+            @Html.DisplayFor(model => model.StudentDateOfBirth)
         </dd>
     </dl>
     
     <form asp-action="Delete">
+        <input type="hidden" asp-for="StudentId" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

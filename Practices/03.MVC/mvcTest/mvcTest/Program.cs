@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using mvcTest.Models;
+using NuGet.Protocol.Plugins;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<WebdevContext>(options =>
+        options.UseMySQL(builder.Configuration.GetConnectionString("Connection")!));
 
 var app = builder.Build();
 
