@@ -1,27 +1,34 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using StudentsMVC.Models;
+using StudentsMVC.Services;
 
 namespace StudentsMVC.Controllers
 {
     public class StudentsController : Controller
     {
 
-        private static List<Student> studentsList = LoadStudents();
+        private readonly IStudentService studentService;
+
+        public StudentsController(IStudentService studentService)
+        {
+            this.studentService = studentService;
+        }
 
         // GET: StudentsController
         public ActionResult Index()
         {
-            return View(studentsList);
+            var studentLis = studentService.GetAll();
+            return View(studentLis);
         }
-
+ 
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            var student = studentsList.FirstOrDefault(x=> x.Id == id);
+            var student = studentService.GetById(id);
             return View(student);
         }
-
+/*
         // GET: StudentsController/Create
         public ActionResult Create()
         {
@@ -107,17 +114,7 @@ namespace StudentsMVC.Controllers
             }
         }
 
-        private static List<Student> LoadStudents()
-        {
-            var students = new List<Student>();
-
-            students.Add(new Student() { Id = 1, FirstName = "John", LastName = "Doe", DateOfBirth = new DateTime(1974,10,8), Sex='M'});
-            students.Add(new Student() { Id = 2, FirstName = "Pedro", LastName = "Perez", DateOfBirth = new DateTime(1990, 1, 18), Sex = 'M' });
-            students.Add(new Student() { Id = 3, FirstName = "Juan", LastName = "Martinez", DateOfBirth = new DateTime(2001, 3, 5), Sex = 'M' });
-            students.Add(new Student() { Id = 4, FirstName = "Camila", LastName = "Lopez", DateOfBirth = new DateTime(2010, 8, 8), Sex = 'F' });
-
-            return students;
-        }
-
+        
+*/
     }
 }
