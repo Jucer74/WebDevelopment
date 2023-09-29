@@ -1,7 +1,6 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace BDayReminderMVC.Models;
+namespace MovieRankMVC.Models;
 
 public class User
 {
@@ -24,10 +23,10 @@ public class User
     [Required(ErrorMessage = "The Password is required")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
-
-    [System.ComponentModel.DataAnnotations.Schema.NotMapped]
+    
+    [NotMapped]
     [Compare("Password")]
     [StringLength(50)]
     [PasswordPropertyText(true)]
-    public string ConfirmPassword { get; set; } = null!;
+    public string ConfirmPassword { get; set; } = null!;    
 }
