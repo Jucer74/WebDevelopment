@@ -12,6 +12,7 @@ builder.Services.AddControllersWithViews();
 
 // Add Services
 builder.Services.AddServices();
+builder.Services.AddRestClient();
 
 var app = builder.Build();
 

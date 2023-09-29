@@ -1,5 +1,8 @@
-﻿using StudentsMVC.Context;
+﻿using Newtonsoft.Json;
+using RestSharp;
+using StudentsMVC.Context;
 using StudentsMVC.Models;
+using System.Net;
 
 namespace StudentsMVC.Services;
 
@@ -9,10 +12,17 @@ public class StudentService : IStudentService
     private static List<Student> studentsList = LoadStudents();
 
     private readonly AppDbContext _appDbContext;
+    private readonly IConfiguration _configuration1;
+    private readonly RestClient _restClient;
 
-    public StudentService(AppDbContext appDbContext)
+    private readonly string studentsApiEndpoint;
+
+    public StudentService(AppDbContext appDbContext, IConfiguration configuration, RestClient restClient)
     {
         _appDbContext = appDbContext;
+        _configuration1 = configuration;
+        _restClient = restClient;
+        studentsApiEndpoint = string.Format("{0}/students", configuration.GetSection("StudentsApi").Value!);
     }
 
     public Student Cteate(Student student)
@@ -33,8 +43,25 @@ public class StudentService : IStudentService
 
     public List<Student> GetAll()
     {
-        //return studentsList;
+        return studentsList;
         return _appDbContext.Set<Student>().ToList<Student>();
+
+        //var request = new RestRequest(studentsApiEndpoint);
+
+        //var response = _restClient.Get(request);
+
+        //var responseData = response.Content!;
+
+        //var students = new List<Student>(); 
+
+        //if (response.IsSuccessful && response.StatusCode == HttpStatusCode.OK)
+        //{
+        //    students = JsonConvert.DeserializeObject<List<Student>>(responseData);
+        //}
+
+
+        //return students!;
+
     }
 
     public Student GetById(int id)
