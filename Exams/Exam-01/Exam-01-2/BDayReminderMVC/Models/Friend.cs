@@ -21,7 +21,11 @@ public class Friend
 
     [Required(ErrorMessage = "The Sex is Required")]
     [StringLength(1)]
+<<<<<<< HEAD
     public String Sex { get; set; } = "M";
+=======
+    public char Sex { get; set; } = 'M';
+>>>>>>> main
     
     public string Relations { get; set; } = null!;    
     

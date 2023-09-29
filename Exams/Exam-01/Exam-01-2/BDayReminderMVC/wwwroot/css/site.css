@@ -19,6 +19,7 @@ html {
 
 body {
   margin-bottom: 60px;
+<<<<<<< HEAD
 }
 
 .caja-imagen-responsive{
@@ -186,4 +187,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   
   }
 
+=======
+>>>>>>> main
 }
