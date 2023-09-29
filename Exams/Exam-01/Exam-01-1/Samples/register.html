@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">    
+    <!-- Styles -->
+    <link rel="stylesheet" href="./css/site.css" rel="stylesheet"/>    
+    <link rel="stylesheet" href="./css/default.css" rel="stylesheet"/>    
+    <link rel="stylesheet" href="./css/styles.css" rel="stylesheet"/>        
+</head>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="m-2 p-2 col-sm-12 col-md-8 col-xl-8 border border-1 rounded">
+            <div class="bg-yellow text-center rounded">
+                <img class="mt-3 p-2 rounded-3 border-color-blue" src="../images/clapperboard.png"  alt="">
+                <h1 class="h1-blue">MovieRank</h1>
+            </div>
+            <div>
+                <form class="row" action="./login.html">
+                    <div class="form-group mt-2">
+                        <label for="txtUserEmail">User :</label>
+                        <input id="txtUserEmail" type="email" class="form-control" placeholder="john.doe@email.com" required autofocus>
+                    </div>
+                    <div class="form-group mt-2 col-sm-6 col-md-6">
+                        <label for="txtFirstName">First Name :</label>
+                        <input id="txtFirstName" type="text" class="form-control" placeholder="John" required>
+                    </div>
+                    <div class="form-group mt-2 col-sm-6 col-md-6">
+                            <label for="txtLastName">Last Name :</label>
+                        <input id="txtLastName" type="text" class="form-control" placeholder="Doe" required>
+                    </div>
+                    <div class="form-group mt-2 col-sm-6 col-md-6">
+                        <label for="txtPassword">Password :</label>
+                        <input id="txtPassword" type="password" class="form-control" placeholder="Password" required>
+                    </div>
+                    <div class="form-group mt-2 col-sm-6 col-md-6">
+                        <label for="txtConfirmPassword">Confirm Password :</label>
+                        <input id="txtConfirmPassword" type="password" class="form-control" placeholder="Confirm Password" required>
+                    </div>
+
+                    <div class="mt-2 text-center">
+                        <button class="m-2 btn btn-lg btn-primary w-25" type="submit">Register</button>
+                        <a href="./login.html" class="m-2 btn btn-lg btn-secondary w-25" >Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+
+</body>
+</html>
