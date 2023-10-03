@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolMVC.Dtos;
 using SchoolMVC.Models;
 using SchoolMVC.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SchoolMVC.Controllers
 {
     public class StudentsController : Controller
     {
-        private static List<Student> studentList = null!;
-        private static int numStudents;
-
-        private static StudentService _studentService;
+        private readonly StudentService _studentService;
 
         public StudentsController(StudentService studentService)
         {
@@ -20,15 +20,8 @@ namespace SchoolMVC.Controllers
         // GET: StudentsController
         public async Task<ActionResult> Index()
         {
-            studentList = await _studentService.GetAll();
+            var studentList = await _studentService.GetAll();
             return View(studentList);
-        }
-
-        public async Task<ActionResult> ByPage(int page, int limit)
-        {
-            var queryResult = await _studentService.ByPage(page, limit);
-
-            return View(queryResult);
         }
 
         // GET: StudentsController/Details/5
@@ -56,17 +49,17 @@ namespace SchoolMVC.Controllers
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Student student)
+        public async Task<ActionResult> Create(Student student)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    student.Id = ++numStudents;
-                    studentList.Add(student);
+                    await _studentService.CreateStudent(student);
+                    return RedirectToAction(nameof(Index));
                 }
 
-                return RedirectToAction(nameof(Index));
+                return View(student);
             }
             catch
             {
@@ -75,9 +68,9 @@ namespace SchoolMVC.Controllers
         }
 
         // GET: StudentsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var studentFound = studentList.FirstOrDefault(u => u.Id == id);
+            var studentFound = await _studentService.GetById(id);
 
             if (studentFound == null)
             {
@@ -90,26 +83,16 @@ namespace SchoolMVC.Controllers
         // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Student student)
+        public async Task<ActionResult> Edit(Student student)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var studentFound = studentList.FirstOrDefault(u => u.Id == student.Id);
-
-                    if (studentFound == null)
-                    {
-                        return View();
-                    }
-
-                    studentFound.FirstName = student.FirstName;
-                    studentFound.LastName = student.LastName;
-                    studentFound.DateOfBirth = student.DateOfBirth;
-                    studentFound.Sex = student.Sex;
-
+                    await _studentService.EditStudent(student.Id, student);
                     return RedirectToAction(nameof(Index));
                 }
+
                 return View(student);
             }
             catch
@@ -119,9 +102,9 @@ namespace SchoolMVC.Controllers
         }
 
         // GET: StudentsController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var studentFound = studentList.FirstOrDefault(u => u.Id == id);
+            var studentFound = await _studentService.GetById(id);
 
             if (studentFound == null)
             {
@@ -134,18 +117,11 @@ namespace SchoolMVC.Controllers
         // POST: StudentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Student student)
+        public async Task<ActionResult> Delete(int id, Student student)
         {
             try
             {
-                var studentFound = studentList.FirstOrDefault(u => u.Id == student.Id);
-
-                if (studentFound == null)
-                {
-                    return View();
-                }
-
-                studentList.Remove(studentFound);
+                await _studentService.DeleteStudent(id);
                 return RedirectToAction(nameof(Index));
             }
             catch
