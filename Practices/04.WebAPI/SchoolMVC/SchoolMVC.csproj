@@ -11,4 +11,12 @@
     <PackageReference Include="RestSharp" Version="109.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Config\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WebDev.Services\WebDev.Services.csproj" />
+  </ItemGroup>
+
 </Project>

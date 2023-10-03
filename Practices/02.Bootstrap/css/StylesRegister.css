@@ -1,0 +1,92 @@
+::-webkit-datetime-edit-text { visibility:hidden;}
+::-webkit-datetime-edit-month-field { color: darkgreen; }
+::-webkit-datetime-edit-day-field { color: darkgreen; }
+::-webkit-datetime-edit-year-field { display: none; }
+::-webkit-calendar-picker-indicator { display: none; }
+
+.datepicker-container {
+  display: inline;
+  position: relative;
+  width: 100%;
+  height: 7.625rem;
+}
+
+.datepicker-input {
+  padding-left: 4rem !important;
+}
+
+.datepicker-input::before{
+  content:'/';
+  position: relative;
+  left:1.6rem;
+  color: darkgreen;
+}
+.datepicker-input::after{
+  content:'▼';
+}
+
+/* Tu estilo de fondo aquí */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../Img/wwwatercolor(2).webp'); /* Ruta a la imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+.container {
+   padding: 30px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   max-width: 600px;
+   width: 100%;
+   box-sizing: border-box;
+}
+
+/* Otros estilos aquí */
+.form-group.row {
+    margin-bottom: 60px;
+}
+
+/* Agregamos un estilo específico para el acordeón */
+#dateAccordion {
+   margin-top: 20px;
+}
+
+/* Alineación vertical de los radios y sus etiquetas */
+.radio-group label {
+   display: flex;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+/* Estilo para los radios */
+.radio-group input[type="radio"] {
+   margin-right: 10px;
+}
+
+.h1 {
+    color: #ffffff;
+    font-size: 40px;
+    font-family: Inter;
+    font-weight: bold; /* Agregado para hacer el texto en negrita */
+    letter-spacing: -2.2px;
+    margin: 0;
+  }
+
+  .h2 {
+    color: #040303;
+    font-size: 18px;
+    font-family: Inter;
+    font-weight: bold; /* Agregado para hacer el texto en negrita */
+    margin: 0;
+  }

@@ -4,61 +4,61 @@ namespace StudentsMVC.Services;
 
 public class StudentService : IStudentService
 {
-
-    // Global Variables
     private static List<Student> studentsList = LoadStudents();
 
-    public StudentService()
+    public int StudentIndex { get; private set; }
+
+    public StudentService() 
     {
-
+    
     }
-
     public Student Create(Student student)
     {
-        student.Id = GetNextSequenceId();
+        student.Id = GetNextSecuenceId();
         studentsList.Add(student);
-        return student;
+       // throw new NotImplementedException();
+       return  student;
     }
 
     public void DeleteById(int id)
     {
-        var studentOriginal = studentsList.FirstOrDefault(x => x.Id == id);
-
-        if(studentOriginal != null)
+        var studentOriginal=studentsList.FirstOrDefault(x => x.Id == id+1);
+        if (studentOriginal == null)
         {
+           
             throw new Exception("Not Found");
-        }
-        
-        studentsList.Remove(studentOriginal);
 
-        
+        }
+       // throw new NotImplementedException();
     }
 
     public List<Student> GetAll()
     {
-        return studentsList;
+
+        return studentsList;    
+        //throw new NotImplementedException();
     }
 
     public Student GetById(int id)
     {
         var student = studentsList.FirstOrDefault(x => x.Id == id);
         return student;
+        //throw new NotImplementedException();
     }
 
     public Student Update(int id, Student student)
     {
-        var studentOriginal = studentsList.FirstOrDefault(x => x.Id == id);
-
-        var studentIndex = studentsList.IndexOf(studentOriginal);
-
-         var studentInList = student;
-
-        studentsList[studentIndex] = studentInList;
+        //primero encontrarlo 
+        var studentInList= studentsList.FirstOrDefault(x => x.Id == id);
+        var studentIndex = studentsList.IndexOf(studentInList);
+        // lo asigno
+        studentInList = student;
+        //actualizaco en lista
+        studentsList[StudentIndex]=studentInList;
 
         return studentInList;
+        //  throw new NotImplementedException();
     }
-
-    #region Private-Methods
 
     private static List<Student> LoadStudents()
     {
@@ -71,11 +71,14 @@ public class StudentService : IStudentService
         return students;
     }
 
-    private int GetNextSequenceId()
+    private int GetNextSecuenceId()
     {
-        var nextSequenceId = studentsList.Max(x => x.Id) + 1;
-        return nextSequenceId;
+        var nextSecuenceId = studentsList.Max(x => x.Id) + 1;
+        return nextSecuenceId;
+
+
+
+
     }
 
-    #endregion Private-Methods
 }

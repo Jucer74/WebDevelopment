@@ -1,92 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
 
-  <body>
-    <div class="container main-content">
-      <!-- Header -->
-      <header class="container-header">
-        <div class="container-header-image">
-          <img src="./img/person1.jpg" alt="personal photo" />
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae</title>
+    <link rel="stylesheet" href="./css/Styles.css">
+
+
+</head>
+
+
+<body>
+    <div id="divHeader" class="container-row">
+        <!-- photo -->
+        <div id="divPhoto" class="box box-photo">
+            <img src="./img/4ba2123312cb69d61f99fad616c57526.jpg" />
         </div>
-        <div class="container-header-info">
-          <div class="container-header-info-networks">
-            <h1 class="name">Jhon Fuentes</h1>
-            <div class="container-header-info-networks-social">
-              <a href="#home-content">
-                <img src="./img/twitter.jpg" alt="twitter" />
-              </a>
-              <a href="#home-content">
-                <img src="./img/facebook.jpg" alt="facebook" />
-              </a>
-              <a href="#home-content">
-                <img src="./img/instagram.jpg" alt="instagram" />
-              </a>
-              <a href="#home-content">
-                <img src="./img/github.jpg" alt="github" />
-              </a>
+        <!-- actions -->
+        <div id="divActions" class="container-col box-flex">
+            <!-- name and social -->
+            <div id="divNameAndSocial" class="container-row box-flex box-name-social">
+                <div id="divName" class="box box-name">
+                    Juan José Muñoz Velasco
+                </div>
+                <div id="divTwitter" class="box box-social">
+                    twitter
+                    <img src="./icons/twitter.svg" />
+                </div>
+                <div id="divFacebook" class="box box-social">
+                    facebook
+                    <img src="./icons/facebook.svg" />
+                </div>
+                <div id="divInstagram" class="box box-social">
+                    instagram
+                    <img src="./icons/instagram.svg" />
+                </div>
+                <div id="divgithub" class="box box-social">
+                    github
+                    <img src="./icons/github.svg" />
+                </div>
             </div>
-          </div>
-          <div class="container-header-info-experienceText">
-            <h2>Experienced Full Stack Web Developer</h2>
-            <!--Example-->
-          </div>
-          <!-- Navbar -->
-          <nav class="container-header-info-nav">
-            <div class="container-header-info-nav-home">
-              <a href="./pages/home.html" target="iframeMain">
-                <img src="./img/home.jpg" alt="home" />
-              </a>
-              <a href="./pages/home.html" target="iframeMain">Home</a>
+            <!-- role or position -->
+            <div id="divRole" class="box box-role">
+                <h1>Junior Web Developer </h1>
             </div>
-            <div class="container-header-info-nav-resume">
-              <a href="./pages/resume.html" target="iframeMain">
-                <img src="./img/graduation.jpg" alt="resume" />
-              </a>
-              <a href="./pages/resume.html" target="iframeMain">Resume</a>
+            <!-- nav -->
+            <div id="divNav" class="box box-nav">
+                Nav
+                <div id="divNavHome" class="box box-nav-home">
+
+                </div>
+                <div id="divNavContact" class="box box-nav-contact">
+
+                </div>
+                <div id="divNavWork" class="box box-nav-work">
+
+                </div>
             </div>
-            <div class="container-header-info-nav-work">
-              <a href="./pages/work.html" target="iframeMain">
-                <img src="./img/file.jpg" alt="work" />
-              </a>
-              <a href="./pages/work.html" target="iframeMain">Work</a>
-            </div>
-            <div class="container-header-info-nav-contact">
-              <a href="./pages/contact.html" target="iframeMain">
-                <img src="./img/email.jpg" alt="contact" />
-              </a>
-              <a href="./pages/contact.html" target="iframeMain">Contact</a>
-            </div>
-          </nav>
         </div>
-      </header>
-
-      <!-- Home Content -->
-      <iframe
-        src="./pages/home.html"
-        frameborder="0"
-        width="100%"
-        height="525px"
-        scrolling="auto"
-        name="iframeMain"
-      ></iframe>
-      <!-- Resume Content -->
-
-      <!-- Work Content -->
-
-      <!-- Contact Content -->
     </div>
+    <!-- <ol>
+        <li><a id="linkHome" href="/home.html" target="iframeMain">Home</a></li>
+        <li><a id="linkResume" href="/resume.html" target="iframeMain">Resume</a></li>
+        <li><a id="linkWork" href="/work.html" target="iframeMain">Work</a></li>
+        <li><a id="linkContact" href="/contact.html" target="iframeMain">Contact</a></li>
+    </ol> -->
+    </header>
 
-    <footer class="container-footer">
-      <a href="#home-content">
-        <img src="./img/cloud.jpg" alt="cloud" />
-        Download Resume
-      </a>
-    </footer>
-  </body>
+
+    <main>
+        <h1>Main</h1>
+        <iframe src="Home.html" name="iframeMain"> </iframe>
+
+    </main>
+
+
+
+</body>
+
+
+
 </html>

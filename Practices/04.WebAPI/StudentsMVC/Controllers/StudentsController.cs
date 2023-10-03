@@ -7,26 +7,26 @@ namespace StudentsMVC.Controllers
 {
     public class StudentsController : Controller
     {
-
+        //Crear Servicio
         private readonly IStudentService _studentService;
         public StudentsController(IStudentService studentService)
         {
             _studentService = studentService;
         }
 
+
         // GET: StudentsController
         public ActionResult Index()
         {
-            var studentsList = _studentService.GetAll();
+          //  return View(studentsList);
+          var studentsList = _studentService.GetAll();
             return View(studentsList);
         }
 
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            //var student = studentsList.FirstOrDefault(x => x.Id == id);
-            //return View(student);
-            var student = _studentService.GetById(id);
+            var student =_studentService.GetById(id);
             return View(student);
         }
 
@@ -41,7 +41,8 @@ namespace StudentsMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Student student)
         {
-            try            {
+            try        
+            {
                 _studentService.Create(student);
                 return RedirectToAction(nameof(Index));
             }
@@ -51,13 +52,13 @@ namespace StudentsMVC.Controllers
             }
         }
 
-        // GET: StudentsController/Edit/5
+        // GET: StudentsController/Edit/5-*{
         public ActionResult Edit(int id)
         {
-            //var student = studentsList.FirstOrDefault(x => x.Id == id); 
 
-            //return View(student);
-            return View();
+            var student = _studentService.GetById(id);
+            return View(student);
+   
         }
 
         // POST: StudentsController/Edit/5
@@ -67,6 +68,7 @@ namespace StudentsMVC.Controllers
         {
             try
             {
+                _studentService.Update(id, student);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -78,10 +80,9 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            //var student = studentsList.FirstOrDefault(x => x.Id == id);
-
-            //return View(student);
-            return View();
+           var student = _studentService.GetById(id);
+           return View(student);
+       
         }
 
         // POST: StudentsController/Delete/5
@@ -99,7 +100,5 @@ namespace StudentsMVC.Controllers
                 return View();
             }
         }
-
-        
     }
 }
