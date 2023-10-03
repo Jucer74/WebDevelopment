@@ -51,11 +51,12 @@ public class StudentService : IStudentService
 
     private static List<Student> LoadStudents()
     {
-        List<Student> students = new List<Student>();
-
-        students.Add(new Student() { Id = 1, FirstName = "John", LastName = "Doe", DateOfBirth = new DateTime(1980, 10, 10), Sex = 'M' });
-        students.Add(new Student() { Id = 2, FirstName = "Barry", LastName = "Allen", DateOfBirth = new DateTime(2001, 7, 7), Sex = 'M' });
-        students.Add(new Student() { Id = 3, FirstName = "Diana", LastName = "Prince", DateOfBirth = new DateTime(1950, 8, 8), Sex = 'F' });
+        List<Student> students = new List<Student>
+        {
+            new Student() { Id = 1, FirstName = "John", LastName = "Doe", Email = "JohnDoe@email.com", DateOfBirth = new DateTime(1980, 10, 10), Sex = 'M' },
+            new Student() { Id = 2, FirstName = "Barry", LastName = "Allen", Email = "BarryAllen@email.com", DateOfBirth = new DateTime(2001, 7, 7), Sex = 'M' },
+            new Student() { Id = 3, FirstName = "Diana", LastName = "Prince", Email = "DianaPrince@email.com", DateOfBirth = new DateTime(1950, 8, 8), Sex = 'F' }
+        };
 
         return students;
     }
