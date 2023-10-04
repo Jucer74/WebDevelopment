@@ -1,0 +1,92 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Detalles";
+}
+
+<style>
+    body {
+        text-align: right;
+        font-family: Arial, sans-serif;
+    }
+
+    .row {
+        justify-content: left;
+    }
+
+    .col-md-4 {
+        margin-left: 20px;
+    }
+
+    .form-check-label {
+        text-align: left;
+    }
+
+    .form-group {
+        text-align: left;
+    }
+
+    .btn-verde {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    .btn-gris {
+        background-color: #808080;
+        color: white;
+    }
+</style>
+
+<h4>Información Cuenta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Tipo</label>
+            <div class="col-sm-8">
+                @if (Model.AccountType == "A")
+                {
+                    <span>Ahorros</span>
+                }
+                else if (Model.AccountType == "C")
+                {
+                    <span>Corriente</span>
+                }
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Cuenta</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.AccountNumber)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Propietario</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.OwnerName)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Balance</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.BalanceAmount)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Sobregiro</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.OverdraftAmount)
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-sm btn-verde mr-2">Editar</a>
+    <a asp-action="Index" class="btn btn-sm btn-gris mr-2">Volver a la lista</a>
+    <img src="~/images/devolver.png" alt="Devuelta" width="20" height="20">
+</div>

@@ -1,0 +1,118 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Eliminar Cuenta";
+}
+
+<!-- Integración de Bootstrap 4 y jQuery -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    h4 {
+        color: #333;
+        font-size: 24px;
+    }
+
+    .container {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        width: 400px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .btn-danger {
+        background-color: #d9534f;
+        border-color: #d43f3a;
+    }
+
+        .btn-danger:hover {
+            background-color: #c9302c;
+            border-color: #ac2925;
+        }
+
+    .btn-gris {
+        background-color: #ccc;
+        border-color: #999;
+    }
+
+        .btn-gris:hover {
+            background-color: #bbb;
+            border-color: #888;
+        }
+</style>
+
+<div class="container">
+    <h4 class="text-center">Eliminar Cuenta</h4>
+    <hr />
+    <div class="form-group">
+        <label>Tipo</label>
+        <span>@(Model.AccountType == "A" ? "Ahorros" : "Corriente")</span>
+    </div>
+
+    <div class="form-group">
+        <label>Cuenta</label>
+        <span>@Html.DisplayFor(model => model.AccountNumber)</span>
+    </div>
+
+    <div class="form-group">
+        <label>Propietario</label>
+        <span>@Html.DisplayFor(model => model.OwnerName)</span>
+    </div>
+
+    <div class="form-group">
+        <label>Balance</label>
+        <span>@Html.DisplayFor(model => model.BalanceAmount)</span>
+    </div>
+
+    <div class="form-group">
+        <label>Sobregiro</label>
+        <span>@Html.DisplayFor(model => model.OverdraftAmount)</span>
+    </div>
+
+    <div class="form-group mt-4 text-center">
+        <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal">
+            Eliminar
+        </button>
+        <a asp-action="Index" class="btn btn-sm btn-gris">Cancelar</a>
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar esta cuenta?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

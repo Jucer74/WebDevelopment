@@ -1,106 +1,173 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
 using MoneyBankMVC.Services;
 
-[Route("api/[controller]")]
-[ApiController]
-public class AccountsController : ControllerBase
+namespace MoneyBankMVC.Controllers
 {
-    private readonly IAccountService _accountService;
-
-    public AccountsController(IAccountService accountService)
+    public class AccountsController : Controller
     {
-        _accountService = accountService;
-    }
+        private readonly MoneybankdbContext _context;
+        private readonly IAccountService _accountService;
 
-    [HttpGet]
-    public async Task<ActionResult<List<Account>>> GetAccounts()
-    {
-        var accounts = await _accountService.ListarCuentas();
-        return Ok(accounts);
-    }
+        public AccountsController(MoneybankdbContext context, IAccountService accountService)
+        {
+            _context = context;
+            _accountService = accountService;
+        }
 
-    [HttpPost]
-    public async Task<IActionResult> CrearCuenta(Account cuenta)
-    {
-        try
+        public async Task<IActionResult> Index()
         {
-            await _accountService.CrearCuenta(cuenta);
-            return CreatedAtAction(nameof(GetAccounts), new { id = cuenta.Id }, cuenta);
+            return View(await _context.Accounts.ToListAsync());
         }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> EditarCuenta(int id, Account cuenta)
-    {
-        try
+        public async Task<IActionResult> Details(int? id)
         {
-            await _accountService.EditarCuenta(id, cuenta);
-            return NoContent();
+            var account = await _accountService.GetAccountByIdAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
         }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
 
-    [HttpPost("deposit/{id}")]
-    public async Task<IActionResult> Depositar(int id, decimal monto)
-    {
-        try
+        public IActionResult Create()
         {
-            await _accountService.Depositar(id, monto);
-            return NoContent();
+            return View();
         }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
 
-    [HttpPost("withdraw/{id}")]
-    public async Task<IActionResult> Retirar(int id, decimal monto)
-    {
-        try
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Id,AccountType,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
-            await _accountService.Retirar(id, monto);
-            return NoContent();
+            try
+            {
+                await _accountService.CrearCuenta(account);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError("BalanceAmount", ex.Message);
+                return View(account);
+            }
         }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.Message);
-        }
-    }
 
-    [HttpGet("{id}")]
-    public async Task<ActionResult<Account>> ObtenerInformacion(int id)
-    {
-        try
+        public async Task<IActionResult> Edit(int? id)
         {
-            var account = await _accountService.ObtenerInformacion(id);
-            return Ok(account);
+            var account = await _accountService.GetAccountByIdAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
         }
-        catch (Exception ex)
-        {
-            return NotFound(ex.Message);
-        }
-    }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> EliminarCuenta(int id)
-    {
-        try
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        {
+            if (id != account.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    // Llama al método del servicio para editar la cuenta
+                    await _accountService.EditarCuenta(id, account);
+                }
+                catch (InvalidOperationException ex)
+                {
+                    return NotFound(ex.Message);
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(account);
+        }
+
+        public async Task<IActionResult> Delete(int? id)
+        {
+            var account = await _accountService.GetAccountByIdAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             await _accountService.EliminarCuenta(id);
-            return NoContent();
+            return RedirectToAction(nameof(Index));
         }
-        catch (Exception ex)
+
+        public async Task<IActionResult> Depositar(int? id)
         {
-            return BadRequest(ex.Message);
+            var account = await _accountService.GetAccountByIdAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View("Depositar", account);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Depositar(int id, decimal amount)
+        {
+            try
+            {
+                await _accountService.Depositar(id, amount); // Llama al método del servicio
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Maneja la excepción si la cuenta no se encuentra
+                return NotFound(ex.Message);
+            }
+        }
+
+
+        public async Task<IActionResult> Retirar(int? id)
+        {
+            var account = await _accountService.GetAccountByIdAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View("Retirar", account);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Retirar(int id, decimal amount)
+        {
+            try
+            {
+                await _accountService.Retirar(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (InvalidOperationException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                var account = await _accountService.GetAccountByIdAsync(id);
+                if (account == null)
+                {
+                    return NotFound();
+                }
+                return View("Retirar", account);
+            }
+        }
+
+
+
     }
 }

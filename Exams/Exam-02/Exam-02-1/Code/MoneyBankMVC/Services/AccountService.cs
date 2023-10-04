@@ -1,61 +1,57 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
+using System.Security.Principal;
 
 namespace MoneyBankMVC.Services;
 
 public class AccountService : IAccountService
-{
-    private readonly ApplicationDbContext _context;
-    private const decimal MAX_OVERDRAFT = 1000000.00m; // Valor máximo de sobregiro
+{ 
+    private readonly MoneybankdbContext _context;
 
-
-
-    public AccountService(ApplicationDbContext context)
+    public AccountService(MoneybankdbContext context)
     {
         _context = context;
     }
 
-    public async Task CrearCuenta(Account cuenta)
+    public async Task CrearCuenta(Account account)
     {
-        // Validaciones de cuenta
-        if (cuenta.AccountType == "C")
+        if (account.AccountType == "A" && account.BalanceAmount <= 0)
         {
-            cuenta.BalanceAmount += MAX_OVERDRAFT; // Añadir sobregiro a cuentas corrientes
-        }
-        else if (cuenta.AccountType != "A")
-        {
-            throw new InvalidOperationException("Tipo de cuenta no válido.");
+            throw new InvalidOperationException("Para cuentas de ahorros, el balance debe ser mayor a cero.");
         }
 
-        if (cuenta.BalanceAmount < 0)
+        if (account.AccountType == "C")
         {
-            throw new InvalidOperationException("El saldo inicial no puede ser negativo.");
+            account.BalanceAmount += Account.MAX_OVERDRAFT;
         }
 
-        if (cuenta.BalanceAmount > MAX_OVERDRAFT)
-        {
-            throw new InvalidOperationException("El saldo inicial no puede exceder el máximo de sobregiro.");
-        }
+        account.CreationDate = DateTime.Now;
 
-        _context.Accounts.Add(cuenta);
+        _context.Add(account);
         await _context.SaveChangesAsync();
     }
 
-    public async Task Depositar(int id, decimal monto)
+    public async Task Depositar(int id, decimal amount)
     {
-        var account = await _context.Accounts.FindAsync(id);
-
+        var account = await GetAccountByIdAsync(id);
         if (account == null)
         {
             throw new InvalidOperationException("Cuenta no encontrada.");
         }
 
-        account.BalanceAmount += monto;
-
-        if (account.AccountType == "C" && account.BalanceAmount < 0)
+        if (account.AccountType == "A")
         {
-            // Actualizar el sobregiro en cuentas corrientes
-            account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+            account.BalanceAmount += amount;
+        }
+        else if (account.AccountType == "C")
+        {
+            account.BalanceAmount += amount;
+
+            if (account.OverdraftAmount > 0 && account.BalanceAmount < Account.MAX_OVERDRAFT)
+            {
+                account.OverdraftAmount = Account.MAX_OVERDRAFT - account.BalanceAmount;
+            }
         }
 
         await _context.SaveChangesAsync();
@@ -68,75 +64,86 @@ public class AccountService : IAccountService
 
         if (existingAccount == null)
         {
-            throw new InvalidOperationException("Cuenta no encontrada.");
+            throw new InvalidOperationException("La cuenta no existe.");
         }
 
+        // Aplicar la lógica de edición aquí
         existingAccount.AccountType = cuenta.AccountType;
-        existingAccount.CreationDate = cuenta.CreationDate;
         existingAccount.AccountNumber = cuenta.AccountNumber;
         existingAccount.OwnerName = cuenta.OwnerName;
+        existingAccount.BalanceAmount = cuenta.BalanceAmount;
+        existingAccount.OverdraftAmount = cuenta.OverdraftAmount;
 
-        _context.Entry(existingAccount).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
 
     public async Task EliminarCuenta(int id)
     {
         var account = await _context.Accounts.FindAsync(id);
+        if (account != null)
+        {
+            _context.Accounts.Remove(account);
+            await _context.SaveChangesAsync();
+        }
+    }
 
+   
+
+    public async Task Retirar(int id, decimal amount)
+    {
+        var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
         if (account == null)
         {
             throw new InvalidOperationException("Cuenta no encontrada.");
         }
 
-        _context.Accounts.Remove(account);
+        if (account.AccountType == "A")
+        {
+            if (amount <= account.BalanceAmount)
+            {
+                account.BalanceAmount -= amount;
+            }
+            else
+            {
+                throw new InvalidOperationException("Fondos Insuficientes.");
+            }
+        }
+        else if (account.AccountType == "C")
+        {
+            decimal totalAvailable = account.BalanceAmount + Account.MAX_OVERDRAFT - account.OverdraftAmount;
+
+            if (amount <= totalAvailable)
+            {
+                if (amount <= account.BalanceAmount)
+                {
+                    account.BalanceAmount -= amount;
+                }
+                else
+                {
+                    decimal amountFromOverdraft = amount - account.BalanceAmount;
+                    account.BalanceAmount = 0;
+                    account.OverdraftAmount += amountFromOverdraft;
+                }
+            }
+            else
+            {
+                throw new InvalidOperationException("Fondos Insuficientes.");
+            }
+        }
+
         await _context.SaveChangesAsync();
     }
 
-    public async Task<List<Account>> ListarCuentas()
+
+    public async Task<Account?> GetAccountByIdAsync(int? id)
     {
-        return await _context.Accounts.ToListAsync();
+        if (!id.HasValue) return null;
+        return await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id.Value);
     }
 
-    public async Task<Account> ObtenerInformacion(int id)
+    
+    public bool AccountExists(int id)
     {
-        var account = await _context.Accounts.FindAsync(id);
-
-        if (account == null)
-        {
-            throw new InvalidOperationException("Cuenta no encontrada.");
-        }
-
-        return account;
-    }
-
-    public async Task Retirar(int id, decimal monto)
-    {
-        var account = await _context.Accounts.FindAsync(id);
-
-        if (account == null)
-        {
-            throw new InvalidOperationException("Cuenta no encontrada.");
-        }
-
-        if (monto <= 0)
-        {
-            throw new InvalidOperationException("El monto de retiro debe ser mayor que cero.");
-        }
-
-        if (monto > account.BalanceAmount)
-        {
-            throw new InvalidOperationException("Fondos insuficientes para el retiro.");
-        }
-
-        account.BalanceAmount -= monto;
-
-        if (account.AccountType == "C" && account.BalanceAmount < 0)
-        {
-            // Actualizar el sobregiro en cuentas corrientes
-            account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
-        }
-
-        await _context.SaveChangesAsync();
+        return _context.Accounts.Any(e => e.Id == id);
     }
 }
