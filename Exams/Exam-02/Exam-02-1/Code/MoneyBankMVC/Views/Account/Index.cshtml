@@ -7,7 +7,10 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-verde">
+        <img src="~/images/plus.svg" alt="Crear" width="20" height="20">
+        Crear
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -60,11 +63,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
             </td>
-            <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id  }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id  }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id  })
-            </td>
+                <td>
+                    <!-- Botón Editar -->
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-editar ">
+                        <img src="~/images/pencil.svg" alt="Editar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Detalles -->
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-gris">
+                        <img src="~/images/info.svg" alt="Detalles" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Eliminar -->
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-eliminar">
+                        <img src="~/images/trash.svg" alt="Eliminar" width="20" height="20">
+                    </a>
+                </td>
         </tr>
 }
     </tbody>
