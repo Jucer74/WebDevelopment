@@ -15,16 +15,12 @@ namespace MovieRankMVC.Controllers
 
         public IActionResult Index()
         {
-            // Accede a la lista de películas del controlador Movies
-            List<Movie> movies = MoviesController.moviesList;
-
-            // Pasa la lista de películas a la vista
-            return View(movies);
+            return View();
         }
 
-        public IActionResult Logout()
+        public IActionResult Privacy()
         {
-            return RedirectToAction("Login", "Users"); // Redirigir a la página de inicio
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
