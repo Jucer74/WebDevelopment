@@ -1,7 +1,7 @@
 # Examen Tecnico
 Implemente la aplicacion (MoneyBank) para Soportar operaciones sobre Cuentas Bancarias, simulando un cajero automatico.
 
-Para ello tome utilice como base el proyecto **MoneyBankMVC** e implemente el codigo necesario par completar las fucionalidades
+Para ello utilice como base el proyecto **MoneyBankMVC** e implemente el codigo necesario par completar las fucionalidades
 
 # Base de Datos
 Utilizando el motor de Base de datos MySQL, ejecute los scripts de creacion de base de datos, creacion de usuario, creacion de tabla y el de insercion de datos para preparar el ambiente inicial de su proyecto.
@@ -16,7 +16,7 @@ Utilizando el motor de Base de datos MySQL, ejecute los scripts de creacion de b
 Basandose en la tabla de Account y la descripcion de esta cree el Modelo Necesario para relizar las operaciones dentro de MVC que supla las acciones basicas de adminitracion de los datos (CRUD)
 
 ![Main](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-Model.jpg)
-![Main](./Images/Img-Model.jpg)
+
 
 Tenga en cuenta las Anotaciones Necesarias para manejar los conceptos de :
 - Llave ([Key])
@@ -40,55 +40,55 @@ Las siguientes son las operaciones que se pueden realizar con las cuentas:
 ### Menu
 El Sistema debe tener un menu principal con el logo de la aplicacion (MoneyBankLogo.png) y la Opcion Cuentas.
 
-![Main](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/NoImage.jpg)
-![Main](./Images/Img-00-Main.jpg)
+![Main](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-00-Main.jpg)
+
 
 ### Listar Cuentas
 Al Seleccionar la Opción de Cuentas se despliega la lista de Cuentas con las opciones principales.
 
 ![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-01-Accounts.jpg)
-![Accounts](./Images/Img-01-Accounts.jpg)
+
 
 
 ### Crear Cuenta
 Al Crear un cuenta se pediran los campos necesarios, como el tipo de cuenta (Ahorros o Corriente), el propietario de la cuenta, y- El Balance inicial con el que se apertura la cuenta.
  
-![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-02-Create.jpg)
-![Accounts](./Images/Img-02-Create.jpg)
+![Create](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-02-Create.jpg)
+
 
 ### Editar Cuenta
 Al Editar la cuenta el unico valor que se podra modificar sera el Nombre del propietario de la cuenta.
 
-![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-03-Edit.jpg)
-![Accounts](./Images/Img-03-Edit.jpg)
+![Edit](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-03-Edit.jpg)
+
 
 
 ### Depositar
 Al depositar un valor a la cuenta se desplegaran los campos necesarios en modo de solo lectura y se pedira el valor a depositar.
 
-![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-04-Deposit.jpg)
-![Accounts](./Images/Img-04-Deposit.jpg)
+![Deposit](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-04-Deposit.jpg)
+
 
 
 ### Retirar
 Al depositar un valor a la cuenta se desplegaran los campos necesarios en modo de solo lectura y se pedira el valor a retirar.
 
-![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-05-Withdrawal.jpg)
-![Accounts](./Images/Img-05-Withdrawal.jpg)
+![Withdrawal](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-05-Withdrawal.jpg)
+
 
 
 ### Informacion Cuenta
 Al mostrar la informacion de la cuenta se desplegaran todos los campos pero de manera informativa, sin pertimitir editar.
 
-![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-06-Info.jpg)
-![Accounts](./Images/Img-06-Info.jpg)
+![Info](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-06-Info.jpg)
+
 
 
 ### Eliminar Cuenta
 Al Seleccionar eliminar cuenta se desplegaran los datos de modo informativo, y al selecionar la opcion Eliminar, se debe mostrar una ventana de confirmacion para garantizar qe se elimina el registro o no.
 
-![Accounts](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-07-Delete.jpg)
-![Accounts](./Images/Img-07-Delete.jpg)
+![Delete](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-07-Delete.jpg)
+
 
 
 # Consideraciones
@@ -177,7 +177,7 @@ Sobregiro= $200,000.00
 Retiro =  $500,000.00
 
 Nuevo Balance = $300,000.00
-Sobregiro = $200,000.00
+Sobregiro = $700,000.00
 
 #### Reglas
 

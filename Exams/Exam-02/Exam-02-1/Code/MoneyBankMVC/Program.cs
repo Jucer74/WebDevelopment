@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using MoneyBankMVC.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<MoneyBankMVCContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("MoneyBankMVCContext") ?? throw new InvalidOperationException("Connection string 'MoneyBankMVCContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
