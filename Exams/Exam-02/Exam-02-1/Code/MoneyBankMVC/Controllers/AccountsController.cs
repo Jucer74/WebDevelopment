@@ -18,6 +18,8 @@ namespace MoneyBankMVC.Controllers
             _apiBaseUrl = _configuration["AccountsAPIUrl"];
         }
 
+
+
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
