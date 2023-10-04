@@ -8,6 +8,11 @@ html {
   }
 }
 
+.balance-negative {
+    color: red;
+}
+
+
 /* Estilo para los botones de acción */
 .btn-action {
     margin-right: 5px; /* Espacio a la derecha de cada botón */

@@ -52,9 +52,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.OwnerName)
                 </td>
-                <td>
+                <td class="@(item.OverdraftAmount > 0 ? "balance-negative" : "")">
                     @Html.DisplayFor(modelItem => item.BalanceAmount)
                 </td>
+
                 <td>
                     @Html.DisplayFor(modelItem => item.OverdraftAmount)
                 </td>

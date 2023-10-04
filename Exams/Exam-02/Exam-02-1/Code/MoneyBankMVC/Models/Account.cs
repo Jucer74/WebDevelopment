@@ -4,6 +4,8 @@ namespace MoneyBankMVC.Models
 {
     public partial class Account
     {
+        public const decimal MAX_OVERDRAFT = 1000000.00M; // Monto máximo de sobregiro
+
         [Key]
         public int Id { get; set; }
 
@@ -26,13 +28,17 @@ namespace MoneyBankMVC.Models
         public string? OwnerName { get; set; }
 
         [Required(ErrorMessage = "El Monto del Balance es requerido.")]
-        [Range(0, double.MaxValue, ErrorMessage = "El Monto del Balance debe ser un valor positivo.")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El Monto del Balance debe ser mayor a cero.")]
         [DataType(DataType.Currency)]
+      
+
         public decimal BalanceAmount { get; set; }
 
         [Required(ErrorMessage = "El Monto del Sobregiro es requerido.")]
-        [Range(0, double.MaxValue, ErrorMessage = "El Monto del Sobregiro debe ser un valor positivo.")]
+        [Range(0, 1000000, ErrorMessage = "El Monto del Sobregiro no debe exceder $1,000,000.00.")]
         [DataType(DataType.Currency)]
         public decimal OverdraftAmount { get; set; }
+
+      
     }
 }
