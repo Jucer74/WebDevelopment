@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddDbContext<MoneybankdbContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("CnnStr"),sqlServerOptionsAction: sqlOptions =>
+{
+    sqlOptions.EnableRetryOnFailure(
+        maxRetryCount: 5,
+        maxRetryDelay: TimeSpan.FromSeconds(30),
+        errorNumbersToAdd: null);
+})
+) ;
 
 var app = builder.Build();
 
