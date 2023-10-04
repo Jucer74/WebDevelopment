@@ -4,7 +4,7 @@ from sqlalchemy.sql import func
 
 Base = declarative_base()
 
-class AccountModel(Base):
+class AccountsModel(Base):
     __tablename__ = "accounts"
 
     Id = Column(Integer, primary_key=True, autoincrement=True, index=True)

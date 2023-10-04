@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
-from Models.accountsModel import AccountModel
-from Schemas.accountsSchema import AccountSchema
+from Models.accountsModel import AccountsModel
+from Schemas.accountsSchema import AccountsSchema
 from Config.database import SessionLocal
 
 
@@ -12,7 +12,7 @@ router = APIRouter()
 @router.get("/accounts", tags=["Accounts"])
 async def get_all_accounts():
     try:
-        accounts = SessionLocal().query(AccountModel).all()
+        accounts = SessionLocal().query(AccountsModel).all()
         return accounts
     
     except Exception as e:
@@ -22,7 +22,7 @@ async def get_all_accounts():
 @router.get("/accounts/{id}", tags=["Accounts"])
 async def get_account_by_id(id: int):
     try:
-        account = SessionLocal().query(AccountModel).filter(AccountModel.Id == id).first()
+        account = SessionLocal().query(AccountsModel).filter(AccountsModel.Id == id).first()
         if account is None:
             raise HTTPException(status_code=404, detail="Account not found")
         return account
@@ -34,12 +34,12 @@ async def get_account_by_id(id: int):
 
 # Create a new account
 @router.post("/accounts", tags=["Accounts"])
-async def create_account(account: AccountSchema):
+async def create_account(account: AccountsSchema):
     # Crea una única instancia de sesión
     session = SessionLocal()
     
     try:
-        new_account = AccountModel(
+        new_account = AccountsModel(
             Id=account.Id,
             AccountType=account.AccountType,
             AccountNumber=account.AccountNumber,
@@ -69,13 +69,13 @@ async def create_account(account: AccountSchema):
 
 # Update an account
 @router.put("/accounts/{id}", tags=["Accounts"])
-async def update_account(id: int, account: AccountSchema):
+async def update_account(id: int, account: AccountsSchema):
     # Crea una única instancia de sesión
     session = SessionLocal()
 
     try:
         # Recupera la cuenta existente de la base de datos
-        existing_account = session.query(AccountModel).filter(AccountModel.Id == id).first()
+        existing_account = session.query(AccountsModel).filter(AccountsModel.Id == id).first()
 
         # Si la cuenta no existe, devuelve un error 404
         if existing_account is None:
@@ -114,7 +114,7 @@ async def delete_account(id: int):
 
     try:
         # Recupera la cuenta existente de la base de datos
-        existing_account = session.query(AccountModel).filter(AccountModel.Id == id).first()
+        existing_account = session.query(AccountsModel).filter(AccountsModel.Id == id).first()
 
         # Si la cuenta no existe, devuelve un error 404
         if existing_account is None:

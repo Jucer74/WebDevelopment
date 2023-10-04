@@ -1,0 +1,6 @@
+.\venv\Scripts\activate
+
+
+uvicorn app:app --reload
+
+pip freeze > requirements.txt
