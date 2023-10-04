@@ -6,23 +6,24 @@ namespace MoneyBankMVC.Controllers
 {
   public class AccountsController : Controller
 {
-    // Crear Servicio
-    private readonly IAccountService _accountService; // Ajusta la interfaz de servicio si es necesario
+        // Crear Servicio
+        private readonly IAccountService _accountService;
 
-    public AccountsController(IAccountService accountService)
-    {
-        _accountService = accountService;
-    }
+        public AccountsController(IAccountService accountService)
+        {
+            _accountService = accountService;
+        }
 
-    // GET: StudentsController
-    public ActionResult Index()
-    {
-        var accountsList = _accountService.GetAll(); // Ajusta el método si es necesario
-        return View(accountsList);
-    }
 
-    // GET: StudentsController/Details/5
-    public ActionResult Details(int id)
+        // GET: StudentsController
+        public async Task<ActionResult> Index()
+        {
+            var accountsList = await _accountService.GetAll();
+            return View(accountsList);
+        }
+
+        // GET: StudentsController/Details/5
+        public ActionResult Details(int id)
     {
         var account = _accountService.GetById(id); // Ajusta el método si es necesario
         return View(account);
