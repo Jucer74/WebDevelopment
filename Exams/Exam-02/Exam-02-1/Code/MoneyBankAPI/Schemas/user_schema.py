@@ -1,15 +1,16 @@
 from datetime import datetime
 from pydantic import BaseModel
 from typing import Optional
+from decimal import Decimal
 
 class UserSchema(BaseModel):
-    id: Optional[str]
+    id: str | None = None 
     AccountType: str
     CreationDate: datetime
     AccountNumber: int
     OwnerName: str
-    BalanceAmount: float
-    OverdraftAmount: float
+    BalanceAmount: Decimal
+    OverdraftAmount: Decimal
 
     def calculate_balance_and_overdraft(cls, values):
         # Calcula BalanceAmount y OverdraftAmount aquí
