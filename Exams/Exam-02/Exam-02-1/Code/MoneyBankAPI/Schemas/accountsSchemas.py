@@ -10,3 +10,9 @@ class AccountsSchema(BaseModel):
     OwnerName: str
     BalanceAmount: Decimal
     OverdraftAmount: Decimal
+
+class DepositInput(BaseModel):
+    amount: Decimal
+
+class WithdrawInput(BaseModel):
+    amount: Decimal
