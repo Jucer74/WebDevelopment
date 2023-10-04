@@ -15,14 +15,14 @@ public class AccountService : IAccountService
     {
         _client = client;
 
-        var AccountsAPIUrl = appSettings.Value.AccountsAPIUrl;
+        var accountsAPIUrlst = appSettings.Value.AccountsAPIUrl;
 
-        if (AccountsAPIUrl != null ) _client = new RestClient(AccountsAPIUrl);
+        if (accountsAPIUrlst != null ) _client = new RestClient(accountsAPIUrlst);
     }
 
     public async Task<List<Account>?> GetAllAccountsAsync()
     {
-        var request = new RestRequest(resource: "Accounts/");
+        var request = new RestRequest(resource: "/api/v1/Accounts/");
 
         var response = await _client.ExecuteAsync<List<Account>>(request);
 
@@ -38,7 +38,7 @@ public class AccountService : IAccountService
 
     public async Task<Account?> GetAccountByIdAsync(int id)
     {
-        var request = new RestRequest(resource: "Accounts/{id}");
+        var request = new RestRequest(resource: "/api/v1/Accounts/{id}");
 
         request.AddUrlSegment(name: "id", id);
 
@@ -56,7 +56,7 @@ public class AccountService : IAccountService
 
     public async Task<Account?> CreateAccountAsync(Account? account)
     {
-        var request = new RestRequest(resource:"Accounts/");
+        var request = new RestRequest(resource: "/api/v1/Accounts/");
 
         if (account == null) 
         {
@@ -83,7 +83,7 @@ public class AccountService : IAccountService
 
     public async Task<Account?> UpdateAccountAsync(int id, Account? account)
     {
-        var request = new RestRequest(resource: "Accounts/{id}");
+        var request = new RestRequest(resource: "/api/v1/Accounts/{id}");
 
         request.AddUrlSegment(name: "id", id);
 
@@ -113,7 +113,7 @@ public class AccountService : IAccountService
 
     public async Task DeleteAccountAsync(int id)
     {
-        var request = new RestRequest(resource: "Accounts/{id}");
+        var request = new RestRequest(resource: "/api/v1/Accounts/{id}");
 
         request.AddUrlSegment(name: "id", id);
 

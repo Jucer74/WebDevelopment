@@ -9,7 +9,7 @@ namespace MoneyBankMVC.Models
         public DateTime CreationDate { get; set; } = default!;
         public string AccountNumber { get; set; } = null!;
         public string OwnerName { get; set; } = null!;
-        public double BalanceAmount { get; set; }
-        public double OverdraftAmount { get; set; }
+        public double BalanceAmount { get; set; } = 0.0;
+        public double OverdraftAmount { get; set; } = 0.0;
     }
 }

@@ -18,13 +18,37 @@ namespace MoneyBankMVC.Controllers
         // GET: AccountController
         public ActionResult Index()
         {
-       
+            try
+            {
+                var account = _accountService.GetAllAccountsAsync().Result;
+
+                if (account != null)
+                {
+                    return View(account);
+                }
+                else
+                {
+                    return View(); 
+                }
+            }
+            catch
+            {
+                return View(); 
+            }
         }
 
         // GET: AccountController/Details/5
         public ActionResult Details(int id)
         {
-            
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         // GET: AccountController/Create
@@ -86,7 +110,7 @@ namespace MoneyBankMVC.Controllers
                 var account = _accountService.GetAccountByIdAsync(id).Result;
                 return View(account);
             }
-            catch 
+            catch
             {
                 return View();
             }
