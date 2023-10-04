@@ -5,7 +5,7 @@ from decimal import Decimal
 class StudentSchema(BaseModel):
     Id: int
     AccountType: str
-    CreationDate: DateTime
+    CreationDate: datetime
     AccountNumber: str
     OwnerName: str
     BalanceAmount: Decimal
