@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
@@ -159,7 +162,7 @@ namespace MoneyBankMVC.Controllers
 
                     if (amount >= amountNeededToCoverOverdraft)
                     {
-                        // Cubrimos todo el sobregiro y añadimos el remanente al balance.
+                        // Cubrimos  el sobregiro y añadimos el remanente al balance.
                         account.BalanceAmount += (amount - amountNeededToCoverOverdraft);
                         account.OverdraftAmount = 0;
                     }
