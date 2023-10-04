@@ -1,0 +1,32 @@
+﻿@model MoneyBankMVC.Models.AccountModel
+@{
+    ViewData["Title"] = "GetAccountInfo";
+}
+
+<h2>Account Information</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Account Type</dt>
+        <dd class="col-sm-10">@Model.AccountType</dd>
+
+        <dt class="col-sm-2">Account Number</dt>
+        <dd class="col-sm-10">@Model.AccountNumber</dd>
+
+        <dt class="col-sm-2">Creation Date</dt>
+        <dd class="col-sm-10">@Model.CreationDate.ToString("yyyy-MM-dd")</dd>
+
+        <dt class="col-sm-2">Owner Name</dt>
+        <dd class="col-sm-10">@Model.OwnerName</dd>
+
+        <dt class="col-sm-2">Balance Amount</dt>
+        <dd class="col-sm-10">$@Model.BalanceAmount.ToString("N2")</dd>
+
+        <dt class="col-sm-2">Overdraft Amount</dt>
+        <dd class="col-sm-10">$@Model.OverdraftAmount.ToString("N2")</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="ListAccounts" class="btn btn-primary">Back</a>
+</div>

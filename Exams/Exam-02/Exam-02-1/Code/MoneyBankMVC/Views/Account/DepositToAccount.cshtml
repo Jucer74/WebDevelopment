@@ -1,0 +1,32 @@
+﻿@model MoneyBankMVC.Models.AccountModel
+@{
+    ViewData["Title"] = "DepositToAccount";
+}
+
+<h2>Deposit to Account</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Account Type</dt>
+        <dd class="col-sm-10">@Model.AccountType</dd>
+
+        <dt class="col-sm-2">Account Number</dt>
+        <dd class="col-sm-10">@Model.AccountNumber</dd>
+
+        <dt class="col-sm-2">Balance Amount</dt>
+        <dd class="col-sm-10">$@Model.BalanceAmount.ToString("N2")</dd>
+
+        <dt class="col-sm-2">Overdraft Amount</dt>
+        <dd class="col-sm-10">$@Model.OverdraftAmount.ToString("N2")</dd>
+    </dl>
+</div>
+
+<form asp-action="DepositToAccount" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <label for="amount">Amount to Deposit</label>
+        <input type="number" class="form-control" id="amount" name="amount" required />
+    </div>
+    <button type="submit" class="btn btn-success">Deposit</button>
+    <a asp-action="ListAccounts" class="btn btn-secondary">Cancel</a>
+</form>

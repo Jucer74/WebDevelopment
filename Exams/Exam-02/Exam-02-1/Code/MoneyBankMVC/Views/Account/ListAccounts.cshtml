@@ -1,0 +1,73 @@
+﻿@model IEnumerable<AccountModel>
+@{
+    ViewData["Title"] = "ListAccounts";
+}
+
+<h2>List of Accounts</h2>
+
+<a href="@Url.Action("CreateAccount")" class="btn btn-success">
+    Crear <img src="~/images/svg/plus.svg" alt="Crear" style="width: 16px; height: 16px; vertical-align: middle;" />
+</a>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Account Type</th>
+            <th>Account Number</th>
+            <th>Creation Date</th>
+            <th>Owner Name</th>
+            <th>Balance Amount</th>
+            <th>Operations</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.AccountType</td>
+                <td>@account.AccountNumber</td>
+                <td>@account.CreationDate.ToString("yyyy-MM-dd")</td>
+                <td>@account.OwnerName</td>
+                <td>
+                    @{
+                        if (account.OverdraftAmount > 0)
+                        {
+                            <span style="color: red;">$@account.BalanceAmount.ToString("N2")</span>
+                        }
+                        else
+                        {
+                            <span>$@account.BalanceAmount.ToString("N2")</span>
+                        }
+                    }
+                </td>
+
+                <td>$@account.BalanceAmount.ToString("N2")</td>
+                <td>
+                    <a href="@Url.Action("EditAccount", new { id = account.Id })" title="Edit Account" class="btn btn-warning btn-sm">
+                        <img src="~/images/svg/pencil.svg" alt="Edit Account" style="width: 16px; height: 16px;" />
+                    </a>
+
+                    <a href="@Url.Action("DepositToAccount", new { id = account.Id })" title="Deposit" class="btn btn-success btn-sm">
+                        <img src="~/images/svg/box-arrow-in-down.svg" alt="Deposit" style="width: 16px; height: 16px;" />
+                    </a>
+
+                    <a href="@Url.Action("WithdrawFromAccount", new { id = account.Id })" title="Withdraw" class="btn btn-info btn-sm">
+                        <img src="~/images/svg/box-arrow-down.svg" alt="Withdraw" style="width: 16px; height: 16px;" />
+                    </a>
+
+                    <a href="@Url.Action("GetAccountInfo", new { id = account.Id })" title="Account Info" class="btn btn-secondary btn-sm">
+                        <img src="~/images/svg/info.svg" alt="Account Info" style="width: 16px; height: 16px;" />
+                    </a>
+
+
+                    <a href="@Url.Action("DeleteAccount", new { id = account.Id })" title="Delete Account" class="btn btn-danger btn-sm">
+                        <img src="~/images/svg/trash.svg" alt="Delete Account" style="width: 16px; height: 16px;" />
+                    </a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

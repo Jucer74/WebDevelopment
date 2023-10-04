@@ -1,0 +1,68 @@
+﻿@model MoneyBankMVC.Models.AccountModel
+
+@{
+    ViewData["Title"] = "CreateAccount";
+}
+
+<div class="container mt-5">
+    <h1>Create Account</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Account</h4>
+            <hr />
+
+            <form asp-action="CreateAccount">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="AccountType" class="form-label">Account Type</label>
+                    <select asp-for="AccountType" class="form-control" required>
+                        <option value="Ahorros">Ahorros</option>
+                        <option value="Corriente">Corriente</option>
+                    </select>
+                    <span asp-validation-for="AccountType" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="AccountNumber" class="form-label">Account Number</label>
+                    <input asp-for="AccountNumber" class="form-control" required />
+                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="OwnerName" class="form-label">Owner Name</label>
+                    <input asp-for="OwnerName" class="form-control" required />
+                    <span asp-validation-for="OwnerName" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="BalanceAmount" class="form-label">Balance Amount ($)</label>
+                    <input type="number" asp-for="BalanceAmount" class="form-control" step="0.01" required />
+                    <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="OverdraftAmount" class="form-label">Overdraft Amount ($)</label>
+                    <input type="number" asp-for="OverdraftAmount" class="form-control" step="0.01" required />
+                    <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-success">Create</button>
+                    <a asp-action="ListAccounts" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#AccountType").change(function () {
+                if ($(this).val() === "Corriente") {
+                    $("#overdraft-group").show();
+                } else {
+                    $("#overdraft-group").hide();
+                }
+            });
+        });
+    </script>
+}
