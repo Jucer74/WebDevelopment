@@ -40,7 +40,7 @@ Las siguientes son las operaciones que se pueden realizar con las cuentas:
 ### Menu
 El Sistema debe tener un menu principal con el logo de la aplicacion (MoneyBankLogo.png) y la Opcion Cuentas.
 
-![Main](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/NoImage.jpg)
+![Main](https://github.com/Jucer74/WebDevelopment/blob/main/Exams/Exam-02/Exam-02-1/Images/Img-00-Main.jpg)
 
 
 ### Listar Cuentas
