@@ -1,0 +1,142 @@
+﻿@model IEnumerable<MoneyBankMVC.Models.Account>
+
+@{
+    ViewData["Title"] = "Cuentas";
+}
+
+<style>
+    body {
+        text-align: left;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+
+    h2 {
+        color: #333;
+        font-size: 24px;
+    }
+
+    .table {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    td {
+        text-align: center;
+    }
+
+    .balance-negative {
+        color: red;
+    }
+
+    .btn-verde {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+    .btn-editar, .btn-retirar, .btn-gris, .btn-eliminar {
+        background-color: #808080;
+        color: white;
+        border: 1px solid #808080;
+    }
+
+    .btn-editar:hover, .btn-retirar:hover, .btn-gris:hover, .btn-eliminar:hover {
+        background-color: #737373;
+    }
+
+    .btn img {
+        margin-right: 5px;
+    }
+</style>
+
+<h2>Cuentas</h2>
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-verde">
+        <img src="~/images/plus.svg" alt="Crear" width="20" height="20">
+        Crear
+    </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BalanceAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OverdraftAmount)
+            </th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerName)
+                </td>
+                <td class="@(item.OverdraftAmount > 0 ? "balance-negative" : "")">
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OverdraftAmount)
+                </td>
+                <td>
+                    <!-- Botón Editar -->
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-editar ">
+                        <img src="~/images/pencil.svg" alt="Editar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Depositar -->
+                    <a asp-action="Depositar" asp-route-id="@item.Id" class="btn btn-sm btn-verde">
+                        <img src="~/images/box-arrow-in-down.svg" alt="Depositar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Retirar -->
+                    <a asp-action="Retirar" asp-route-id="@item.Id" class="btn btn-sm btn-retirar">
+                        <img src="~/images/box-arrow-down.svg" alt="Retirar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Detalles -->
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-gris">
+                        <img src="~/images/info.svg" alt="Detalles" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Eliminar -->
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-eliminar">
+                        <img src="~/images/trash.svg" alt="Eliminar" width="20" height="20">
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

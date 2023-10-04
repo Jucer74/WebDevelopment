@@ -1,0 +1,131 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Editar cuenta";
+}
+
+<style>
+    body {
+        text-align: left;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+    }
+
+    .row {
+        justify-content: center;
+    }
+
+    .col-md-4 {
+        margin-left: 0;
+    }
+
+    .form-check-label {
+        text-align: left;
+    }
+
+    .form-group {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .btn-verde {
+        background-color: #4CAF50;
+        color: white;
+        border: 1px solid #4CAF50;
+    }
+
+        .btn-verde:hover {
+            background-color: #45a049;
+        }
+
+    .btn-gris {
+        background-color: #808080;
+        color: white;
+        border: 1px solid #808080;
+    }
+
+        .btn-gris:hover {
+            background-color: #737373;
+        }
+</style>
+
+<h4>Editar cuenta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-4 col-form-label">Tipo de Cuenta</label>
+                <div class="col-sm-8">
+                    <!-- Radio buttons (mostrar al usuario pero desactivados) -->
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="savings" name="AccountTypeDisplay" value="A" class="form-check-input" disabled @(Model.AccountType == "A" ? "checked" : "") />
+                        <label class="form-check-label" for="savings">Ahorros</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" id="current" name="AccountTypeDisplay" value="C" class="form-check-input" disabled @(Model.AccountType == "C" ? "checked" : "") />
+                        <label class="form-check-label" for="current">Corriente</label>
+                    </div>
+
+                    <!-- Inputs ocultos para enviar el valor real -->
+                    @if (Model.AccountType == "A")
+                    {
+                        <input type="hidden" name="AccountType" value="A" />
+                    }
+                    else
+                    {
+                        <input type="hidden" name="AccountType" value="C" />
+                    }
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="CreationDate" class="col-sm-4 col-form-label">Fecha de Creación</label>
+                <div class="col-sm-8">
+                    <input asp-for="CreationDate" class="form-control non-editable" readonly />
+                    <span asp-validation-for="CreationDate" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="AccountNumber" class="col-sm-4 col-form-label">Número de Cuenta</label>
+                <div class="col-sm-8">
+                    <input asp-for="AccountNumber" class="form-control non-editable" readonly />
+                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="OwnerName" class="col-sm-4 col-form-label">Nombre del Propietario</label>
+                <div class="col-sm-8">
+                    <input asp-for="OwnerName" class="form-control" />
+                    <span asp-validation-for="OwnerName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="BalanceAmount" class="col-sm-4 col-form-label">Balance</label>
+                <div class="col-sm-8">
+                    <input asp-for="BalanceAmount" class="form-control non-editable" readonly />
+                    <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="OverdraftAmount" class="col-sm-4 col-form-label">Sobregiro</label>
+                <div class="col-sm-8">
+                    <input asp-for="OverdraftAmount" class="form-control non-editable" readonly />
+                    <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Guardar" class="btn btn-sm btn-verde mr-2" />
+                <a asp-action="Index" class="btn btn-sm btn-gris">Volver a la lista</a>
+            </div>
+        </form>
+    </div>
+</div>
