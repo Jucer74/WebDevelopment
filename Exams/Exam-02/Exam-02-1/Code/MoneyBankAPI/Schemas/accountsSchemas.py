@@ -8,4 +8,4 @@ class AccountsSchemas(BaseModel):
     AccountNumber: str
     OwnerName: str
     BalanceAmount: float
-    OverDraftAmount: float  # Corregido aquí
+    OverdraftAmount: float

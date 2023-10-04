@@ -65,7 +65,7 @@ namespace MoneyBankMVC.Services
         {
             var request = new RestRequest($"api/v1/accounts/{id}", Method.Get);
 
-            var response = await _restClient.ExecuteAsync<Account>(request);
+            var response =await _restClient.ExecuteAsync<Account>(request);
 
             if (response.IsSuccessful)
             {

@@ -92,7 +92,7 @@ async def update_account(id: int, account: AccountsSchemas):
         existing_account.AccountNumber = account.AccountNumber
         existing_account.OwnerName = account.OwnerName
         existing_account.BalanceAmount = account.BalanceAmount
-        existing_account.OverdraftAmount = account.OverDraftAmount  # Corregir aquí
+        existing_account.OverdraftAmount = account.OverdraftAmount  # Corregir aquí
 
         # Commit changes
         session.commit()

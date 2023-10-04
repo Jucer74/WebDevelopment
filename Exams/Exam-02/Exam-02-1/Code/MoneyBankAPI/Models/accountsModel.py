@@ -12,7 +12,7 @@ class AcccountsModel(Base):
     AccountNumber = Column(String(10), nullable=False)  
     OwnerName = Column(String(100), nullable=False)  
     BalanceAmount = Column(DECIMAL(18, 2), nullable=False)  
-    OverdraftAmount = Column(DECIMAL(18, 2), nullable=False)  
+    OverdraftAmount = Column(DECIMAL(18, 2), nullable=False)
 
 class Config:
         orm_mode = True
