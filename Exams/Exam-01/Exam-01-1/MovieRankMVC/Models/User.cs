@@ -23,4 +23,10 @@ public class User : IdentityUser
     [Required(ErrorMessage = "Password is absolutely required.")]
     [StringLength(50)]
     public string Password { get; set; } = null!;
+    
+    [NotMapped]
+    [Compare("Password")]
+    [StringLength(50)]
+    [PasswordPropertyText(true)]
+    public string ConfirmPassword { get; set; } = null!;    
 }

@@ -22,14 +22,23 @@ public class Movie
     // Format hh:mi
     public string Duration { get; set; } = null!;
 
+<<<<<<< HEAD
     // [Required(ErrorMessage = "Rating should not be empty.")]
+=======
+    [Required(ErrorMessage = "The Rate is required")]
+>>>>>>> origin/main
     // Format 0.0
     [Range(0, 10, ErrorMessage = " Rating must be in range.")]
     [DisplayFormat(DataFormatString = "{0:#.#}", ApplyFormatInEditMode = true)] // este es step -.1
     public double Rate { get; set; }
 
+<<<<<<< HEAD
     [Required(ErrorMessage = "A poster is required.")]
     [StringLength(80)]
+=======
+    [Required(ErrorMessage = "The Poster is required")]
+    [StringLength(50)]
+>>>>>>> origin/main
     // Include only ImageName.ext
     public string Poster { get; set; } = null!;
 
