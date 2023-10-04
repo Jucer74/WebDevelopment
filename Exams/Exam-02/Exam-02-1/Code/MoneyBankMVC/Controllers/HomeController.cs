@@ -1,32 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
 using System.Diagnostics;
 
 namespace MoneyBankMVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly FastAPIService _fastAPIService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+            _fastAPIService = new FastAPIService();
         }
 
         public IActionResult Index()
         {
+            // Consumir FastAPI para crear una cuenta
+            var newAccountData = new { AccountType = "Savings", OwnerName = "John Doe", BalanceAmount = 1000.0 };
+            var createdAccount = _fastAPIService.Create<Account>("api/Account", newAccountData, _fastAPIService.Get_restClient());
+
+            // Realizar otras operaciones con FastAPI según sea necesario
+
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        // Define otras acciones para consumir otras rutas de FastAPI
     }
 }

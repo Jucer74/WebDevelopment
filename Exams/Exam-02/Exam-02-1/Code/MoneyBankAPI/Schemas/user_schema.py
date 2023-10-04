@@ -4,7 +4,7 @@ from typing import Optional
 from decimal import Decimal
 
 class UserSchema(BaseModel):
-    id: str | None = None 
+    id: int | None = None 
     AccountType: str
     CreationDate: datetime
     AccountNumber: int
