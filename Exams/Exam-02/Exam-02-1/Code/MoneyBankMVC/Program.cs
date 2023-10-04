@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
-using MoneyBankMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +11,6 @@ builder.Services.AddDbContext<MoneybankdbContext>(options =>
     new MySqlServerVersion(new Version(8, 0, 21)))
 );
 
-// Agregar el servicio IAccountService con alcance (scoped)
-builder.Services.AddScoped<IAccountService, AccountService>();
 
 var app = builder.Build();
 
