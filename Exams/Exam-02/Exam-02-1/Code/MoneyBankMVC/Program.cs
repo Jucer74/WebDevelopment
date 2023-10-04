@@ -1,7 +1,17 @@
+using MoneyBankMVC.Extensions;
+using MoneyBankMVC.Services;
+using MoneyBankMVC.Settings;
+using RestSharp;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
+
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddServices();
+builder.Services.AddScoped<AccountService>();
 
 var app = builder.Build();
 
