@@ -1,0 +1,67 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Withdraw";
+}
+
+<h4>Retirar</h4>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Withdraw" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group row mb-3">
+                <label class="col-sm-4 col-form-label">Tipo</label>
+                <div class="col-sm-8">
+                    <div>
+                        <input type="radio" asp-for="AccountType" value="A" /> Ahorros
+                        <input type="radio" asp-for="AccountType" value="C" /> Corriente
+                        <span asp-validation-for="AccountType" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="AccountNumber" class="col-sm-4 col-form-label">Cuenta</label>
+                <div class="col-sm-4">
+                    <input asp-for="AccountNumber" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="OwnerName" class="col-sm-4 col-form-label">Propietario</label>
+                <div class="col-sm-8">
+                    <input asp-for="OwnerName" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="BalanceAmount" class="col-sm-4 col-form-label">Balance</label>
+                <div class="col-sm-5">
+                    <input asp-for="BalanceAmount" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label asp-for="OverdraftAmount" class="col-sm-4 col-form-label">Sobregiro</label>
+                <div class="col-sm-5">
+                    <input asp-for="OverdraftAmount" class="form-control" readonly />
+                </div>
+            </div>
+
+            <div class="form-group row mb-3">
+                <label for="amount" class="col-sm-4 col-form-label">Valor</label>
+                <div class="col-sm-5">
+                    <input type="number" id="amount" name="amount" class="form-control" step="0.01" required />
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <input type="submit" value="Aceptar" class="btn btn-sm btn-success" />
+                <a asp-action="Index" class="btn btn-sm btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
