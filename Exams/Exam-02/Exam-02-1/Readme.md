@@ -22,7 +22,7 @@ Tenga en cuenta las Anotaciones Necesarias para manejar los conceptos de :
 - Llave ([Key])
 - Requeridos (ej. El Campo Nombre del Propietario es Requerido)
 - Longitud (ej. El campo Numero de La Cuenta tiene una longitud maxima de 10 caracteres)
-- Valores (ej. El Campo Numero de la Cuentas Solo Acepta Numeros)
+- Valores (ej. El Campo Numero de la Cuenta Solo Acepta Numeros)
 - Lista de Datos (ej. El campo Tipo de Cuenta solo permite (A o C))
 - Tipos ([Date])
 
