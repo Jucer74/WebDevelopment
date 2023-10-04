@@ -1,33 +1,45 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SchoolMVC.Dtos;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using SchoolMVC.Config;
+using WebDev.Services;
 using SchoolMVC.Models;
 using SchoolMVC.Services;
+using System.Configuration;
+using System.Threading.Tasks;
 
 namespace SchoolMVC.Controllers
 {
     public class StudentsController : Controller
     {
-        private static List<Student> studentList = null!;
-        private static int numStudents;
+        private readonly StudentService _studentService;
+        private readonly ApiConfiguration _apiConfiguration;
+        private UsersService usersService;
 
-        private static StudentService _studentService;
 
-        public StudentsController(StudentService studentService)
+        public StudentsController(StudentService studentService, IOptions<ApiConfiguration> apiConfiguration )
         {
             _studentService = studentService;
+            _apiConfiguration = apiConfiguration.Value;
+            usersService = new UsersService(_apiConfiguration.ApiUsersUrl);
+
         }
 
         // GET: StudentsController
+        // GET: UsersController
+        [HttpGet]
         public async Task<ActionResult> Index()
         {
-            studentList = await _studentService.GetAll();
-            return View(studentList);
+            IList<UserDto> users = await usersService.GetUsers();
+
+           Student = users.Select(userDto => MapperToUser(userDto)).ToList();
+
+            return View(_userList);
         }
 
         public async Task<ActionResult> ByPage(int page, int limit)
         {
             var queryResult = await _studentService.ByPage(page, limit);
-
             return View(queryResult);
         }
 
@@ -48,25 +60,23 @@ namespace SchoolMVC.Controllers
         public ActionResult Create()
         {
             var student = new Student();
-            student.DateOfBirth = DateTime.Today;
-            student.Sex = 'M';
             return View(student);
         }
 
         // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Student student)
+        public async Task<ActionResult> Create(Student student)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    student.Id = ++numStudents;
-                    studentList.Add(student);
+                    await _studentService.CreateStudent(student);
+                    return RedirectToAction(nameof(Index));
                 }
 
-                return RedirectToAction(nameof(Index));
+                return View(student);
             }
             catch
             {
@@ -75,9 +85,9 @@ namespace SchoolMVC.Controllers
         }
 
         // GET: StudentsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var studentFound = studentList.FirstOrDefault(u => u.Id == id);
+            var studentFound = await _studentService.GetById(id);
 
             if (studentFound == null)
             {
@@ -90,26 +100,16 @@ namespace SchoolMVC.Controllers
         // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Student student)
+        public async Task<ActionResult> Edit(Student student)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    var studentFound = studentList.FirstOrDefault(u => u.Id == student.Id);
-
-                    if (studentFound == null)
-                    {
-                        return View();
-                    }
-
-                    studentFound.FirstName = student.FirstName;
-                    studentFound.LastName = student.LastName;
-                    studentFound.DateOfBirth = student.DateOfBirth;
-                    studentFound.Sex = student.Sex;
-
+                    await _studentService.EditStudent(student.Id, student);
                     return RedirectToAction(nameof(Index));
                 }
+
                 return View(student);
             }
             catch
@@ -119,9 +119,9 @@ namespace SchoolMVC.Controllers
         }
 
         // GET: StudentsController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
-            var studentFound = studentList.FirstOrDefault(u => u.Id == id);
+            var studentFound = await _studentService.GetById(id);
 
             if (studentFound == null)
             {
@@ -134,24 +134,23 @@ namespace SchoolMVC.Controllers
         // POST: StudentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(Student student)
+        public async Task<ActionResult> Delete(Student student)
         {
             try
             {
-                var studentFound = studentList.FirstOrDefault(u => u.Id == student.Id);
-
-                if (studentFound == null)
-                {
-                    return View();
-                }
-
-                studentList.Remove(studentFound);
+                await _studentService.DeleteStudent(student.Id);
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
                 return View();
             }
+        }
+
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllersWithViews();
+            services.Configure<ApiConfiguration>(Configuration.GetSection("ApiConfiguration"));
         }
     }
 }
