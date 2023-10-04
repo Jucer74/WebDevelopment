@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using MoneyBankMVC.Models;
 
 namespace MoneyBankMVC.Models;
 
@@ -39,24 +40,5 @@ public partial class MoneybankdbContext : DbContext
             entity.Property(e => e.OverdraftAmount).HasPrecision(18, 2);
             entity.Property(e => e.OwnerName).HasMaxLength(100);
         });
-
-        OnModelCreatingPartial(modelBuilder);
     }
-
-    internal Task<string?> ByPage(int page, int limit)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal Task<List<Account>> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    internal Task<string?> GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

@@ -21,27 +21,26 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-              return _context.Accounts != null ? 
-                          View(await _context.Accounts.ToListAsync()) :
-                          Problem("Entity set 'MoneybankdbContext.Accounts'  is null.");
+            return View(await _context.Accounts.ToListAsync());
         }
 
         // GET: Accounts/Details/5
+
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if(id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (account == null)
+            var item = await _context.Accounts.FindAsync(id);
+
+            if (item == null)
             {
-                return NotFound();
+                return NotFound(nameof(item));
             }
 
-            return View(account);
+            return View(item);
         }
 
         // GET: Accounts/Create

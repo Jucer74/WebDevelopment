@@ -11,7 +11,7 @@ public partial class Account
 
     [Display(Name = "Tipo")]
     [Required(ErrorMessage = "El campo tipo de cuenta es reuqerido")]
-    [RegularExpression("AC", ErrorMessage = "El campo tipo de cuenta solo permite (A o C)")]
+    [RegularExpression("^[AC]$", ErrorMessage = "El campo tipo de cuenta solo permite (A o C)")]
     public string AccountType { get; set; } = null!;
 
     [Display(Name = "Fecha")]
@@ -20,7 +20,7 @@ public partial class Account
 
     [Display(Name = "Cuenta")]
     [Required(ErrorMessage = "El campo numero de la cuenta es requerido")]
-    [RegularExpression("^[0,9]+$", ErrorMessage = ("El campo numero de la cuenta solo recibe numeros"))]
+    [RegularExpression("^[0-9]+$", ErrorMessage = ("El campo numero de la cuenta solo recibe numeros"))]
     public string AccountNumber { get; set; } = null!;
 
     [Display(Name = "Nombre Propietarios")]

@@ -8,14 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddDbContext<MoneybankdbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("CnnStr"),sqlServerOptionsAction: sqlOptions =>
-{
-    sqlOptions.EnableRetryOnFailure(
-        maxRetryCount: 5,
-        maxRetryDelay: TimeSpan.FromSeconds(30),
-        errorNumbersToAdd: null);
-})
-) ;
+    options.UseMySql(builder.Configuration.GetConnectionString("cadenaSQL"),
+    new MySqlServerVersion(new Version(8, 0, 21)))
+);
 
 var app = builder.Build();
 
