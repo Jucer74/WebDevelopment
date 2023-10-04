@@ -28,12 +28,12 @@ namespace MoneyBankMVC.Controllers
                 }
                 else
                 {
-                    return View();
+                    return View(); 
                 }
             }
             catch
             {
-                return View();
+                return View(); 
             }
         }
 
@@ -131,5 +131,66 @@ namespace MoneyBankMVC.Controllers
                 return View();
             }
         }
+
+        // GET: AccountController/Deposit/5
+        public ActionResult Deposit(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: AccountController/Deposit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Deposit(int id, decimal amount)
+        {
+            try
+            {
+                _ = _accountService.DepositToAccountAsync(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: AccountController/Withdraw/5
+        public ActionResult Withdraw(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: AccountController/Withdraw/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Withdraw(int id, decimal amount)
+        {
+            try
+            {
+                _ = _accountService.WithdrawFromAccountAsync(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

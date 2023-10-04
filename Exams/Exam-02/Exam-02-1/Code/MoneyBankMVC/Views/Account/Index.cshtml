@@ -64,17 +64,18 @@
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
             </td>
                 <td>
-                    <!-- Botón Editar -->
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-editar ">
                         <img src="~/images/pencil.svg" alt="Editar" width="20" height="20">
                     </a>
-
-                    <!-- Botón Detalles -->
+                    <a asp-action="Deposit" asp-route-id="@item.Id" class="btn btn-sm btn-verde">
+                        <img src="~/images/box-arrow-in-down.svg" alt="Depositar" width="20" height="20">
+                    </a>
+                    <a asp-action="Withdraw" asp-route-id="@item.Id" class="btn btn-sm btn-retirar">
+                        <img src="~/images/box-arrow-down.svg" alt="Retirar" width="20" height="20">
+                    </a>
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-gris">
                         <img src="~/images/info.svg" alt="Detalles" width="20" height="20">
                     </a>
-
-                    <!-- Botón Eliminar -->
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-eliminar">
                         <img src="~/images/trash.svg" alt="Eliminar" width="20" height="20">
                     </a>
