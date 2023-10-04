@@ -22,7 +22,7 @@ app.add_middleware(
 )
 
 # Include routers
-app.include_router(AccountsRouterRouter, tags=["Accounts"], prefix="/api/v1")
+app.include_router(AccountsRouter, tags=["Accounts"], prefix="/api/v1")
 
 # Root route
 @app.get("/", tags=["Root"])

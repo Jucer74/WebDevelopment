@@ -36,8 +36,8 @@
 static int
 slp_switch(void)
 {
-    int ret;
-    long *stackref, stsizediff;
+    register int ret;
+    register long *stackref, stsizediff;
     __asm__ volatile ("" : : : REGS_TO_SAVE);
 #ifdef __s390x__
     __asm__ volatile ("lgr %0, 15" : "=r" (stackref) : );
