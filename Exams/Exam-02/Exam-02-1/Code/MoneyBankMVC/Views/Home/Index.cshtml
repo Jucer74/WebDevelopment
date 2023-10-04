@@ -2,7 +2,26 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/apifast-js@1.0.0/dist/apifast.min.js"></script>
+
+<script>
+    const apifast = new Apifast({
+      apiKey: "<Tu API Key>",
+    });
+
+    const inputAmount = document.getElementById("inputAmount");
+    const buttonDeposit = document.getElementById("buttonDeposit");
+    const buttonWithdraw = document.getElementById("buttonWithdraw");
+
+    buttonDeposit.addEventListener("click", () => {
+      apifast.deposit(inputAmount.value).then((balance) => {
+        console.log(balance);
+      });
+    });
+
+    buttonWithdraw.addEventListener("click", () => {
+      apifast.withdraw(inputAmount.value).then((balance) => {
+        console.log(balance);
+      });
+    });
+</script>
