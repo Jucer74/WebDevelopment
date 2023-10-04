@@ -199,13 +199,11 @@ namespace MoneyBankMVC.Controllers
             }
             account.BalanceAmount += amount;
 
-            if (account.AccountType == "C")
+            if (account.AccountType == "C" && account.OverdraftAmount > 0 && account.BalanceAmount < Accounts.OVERDRAFT_LIMIT)
             {
-                if (account.OverdraftAmount > 0 && account.BalanceAmount < Accounts.OVERDRAFT_LIMIT)
-                {
-                    account.OverdraftAmount = Accounts.OVERDRAFT_LIMIT - account.BalanceAmount;
-                }
+                account.OverdraftAmount = Accounts.OVERDRAFT_LIMIT - account.BalanceAmount;
             }
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -225,6 +223,7 @@ namespace MoneyBankMVC.Controllers
             {
                 return NotFound();
             }
+
             return View(account);
         }
 
@@ -239,20 +238,51 @@ namespace MoneyBankMVC.Controllers
                 return NotFound();
             }
 
-            if (account.BalanceAmount - amount < 0)
+            if (account.AccountType == "A")
             {
-                ViewBag.ErrorMessage = "Fondos Insuficientes";
-                return View(account);
+                if (amount <= account.BalanceAmount)
+                {
+                    account.BalanceAmount -= amount;
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Fondos Insuficientes.");
+                    return View("Retirar", account);
+                }
+            }
+            else if (account.AccountType == "C")
+            {
+                decimal totalAvailable = account.BalanceAmount + Accounts.OVERDRAFT_LIMIT - account.OverdraftAmount;
+
+                if (amount <= totalAvailable)
+                {
+                    if (amount <= account.BalanceAmount)
+                    {
+                        account.BalanceAmount -= amount;
+                    }
+                    else
+                    {
+                        decimal amountFromOverdraft = amount - account.BalanceAmount;
+                        account.BalanceAmount = 0;
+                        account.OverdraftAmount += amountFromOverdraft;
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Fondos Insuficientes.");
+                    return View("Retirar", account);
+                }
             }
 
-            account.BalanceAmount -= amount;
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "El retiro fue exitoso.";
             return RedirectToAction(nameof(Index));
         }
 
         private bool AccountExists(int id)
         {
-            return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _context.Accounts.Any(e => e.Id == id);
         }
     }
 }
+

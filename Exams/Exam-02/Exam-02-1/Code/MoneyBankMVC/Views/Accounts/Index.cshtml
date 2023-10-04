@@ -29,9 +29,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.BalanceAmount)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OverdraftAmount)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -53,9 +50,6 @@
                 </td>
                 <td class="@(item.OverdraftAmount > 0 ? "balance-negative" : "")">
                     @Html.DisplayFor(modelItem => item.BalanceAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OverdraftAmount)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" style="border-radius: 10px;" class="btn btn-pastel-yellow btn-sm">
