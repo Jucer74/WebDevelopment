@@ -1,92 +1,90 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using mvcTest.Models;
 using mvcTest.Services;
-using System.Collections.Generic;
 
 namespace mvcTest.Controllers
 {
     public class StudentsController : Controller
     {
-        // GET: StudentsController
-        public ActionResult Index()
+        private readonly ICrudService _crudService;
+
+        public StudentsController(ICrudService crudService)
         {
-            return View(CrudService.GetStudenList());
+            _crudService = crudService;
         }
 
-        // GET: StudentsController/Details/5
-        public ActionResult Details(int id)
+        // GET: Students
+        public IActionResult Index()
         {
-           var student = CrudService.GetStudent(id);
-            return View(student);
+            var studentsList = _crudService.GetAll();
+            return View(studentsList);
         }
 
-        // GET: StudentsController/Create
-        public ActionResult Create()
+        // GET: Students/Details/5
+        public IActionResult Details(int id)
+        {
+            var StudentToDetails = _crudService.GetById(id);
+            return View(StudentToDetails);
+        }
+
+        // GET: Students/Create
+        public IActionResult Create()
         {
             return View();
         }
 
-        // POST: StudentsController/Create
+        // POST: Students/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Student student)
+        public IActionResult Create(Student student)
         {
-            try
-            {
-                CrudService.AddStudent(student);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _crudService.Create(student);
+            return RedirectToAction(nameof(Index));
+   
+
         }
 
-        // GET: StudentsController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: Students1/Edit/5
+        public IActionResult Edit(int id)
         {
-            var StudentToEdit = CrudService.GetStudent(id);
+            var StudentToEdit = _crudService.GetById(id);
             return View(StudentToEdit);
         }
 
-        // POST: StudentsController/Edit/5
+        // POST: Students/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Student student)
+        public IActionResult Edit(int id, Student student)
         {
-            try
-            {
-                CrudService.EditStudent(student, id);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _crudService.Update(id, student);
+            return RedirectToAction(nameof(Index));
+
         }
 
-        // GET: StudentsController/Delete/5
+        // GET: Students/Delete/5
         public ActionResult Delete(int id)
         {
-            var StudentToDelete = CrudService.GetStudent(id);
-            return View(StudentToDelete);
+            var studentToDelete = _crudService.GetById(id);
+            return View(studentToDelete);
         }
 
-        // POST: StudentsController/Delete/5
-        [HttpPost]
+        // POST: Students/Delete/5
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, Student student)
+        public IActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                CrudService.DeleteStudent(id);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _crudService.Delete(id);
+            return RedirectToAction(nameof(Index));
         }
     }
 }

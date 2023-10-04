@@ -5,7 +5,6 @@ namespace mvcTest.Models
     public class Student
     {
         [Key]
-
         [Required]
         [Display(Name = "Id")]
         public int StudentId { get; set; }
@@ -27,6 +26,7 @@ namespace mvcTest.Models
 
         [Required]
         [Display(Name = "Date")]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime StudentDateOfBirth { get; set;}
 
 

@@ -1,61 +1,52 @@
-﻿using mvcTest.Models;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using mvcTest.Models;
+using ZstdSharp.Unsafe;
 
 namespace mvcTest.Services
 {
-    public class CrudService
+    public class CrudService : ICrudService
     {
-        private static readonly List<Student> studentsList = LoadStudents();
-        CrudService() { }
-
-        private static List<Student> LoadStudents()
-        {
-            List<Student> students = new()
-            {
-                new Student() { StudentId = 1, StudentFirstName = "Carlos", StudentLastName = "Serrato", StudentDateOfBirth = DateTime.Now, StudentSex = 'M' }
-            };
-
-            return students;
+        private readonly AppDbContext _context;
+        public CrudService(AppDbContext context) {
+            _context = context;
         }
 
-        public static List<Student> GetStudenList()
+        public List<Student> GetAll()
         {
-            return studentsList;
+            return _context.Set<Student>().ToList<Student>();
         }
 
-        private static int GenerateId()
+        public Student GetById(int id)
         {
-            return studentsList.Max(x => x.StudentId) + 1;
-        }
-        public static Student GetStudent(int id)
-        {
-            var student = studentsList.Find(student => student.StudentId == id);
+            var student =_context.Student.FirstOrDefault<Student>(student => student.StudentId == id);
             return student!;
         }
 
-        public static void AddStudent(Student student)
+        public void Create(Student student)
         {
-            student.StudentId = GenerateId();
-            studentsList.Add(student);
+            _context.Add(student);
+            _context.SaveChanges();
         }
 
-        public static void DeleteStudent(int id)
+        public void Update(int id, Student student)
         {
-            var StudentToDelete = GetStudent(id);
+            _context.Update(student);
+            _context.SaveChanges();
 
-            if (StudentToDelete != null)
+        }
+
+        public void Delete(int id)
+        {
+            var studentToDelete = GetById(id);
+            
+            if (studentToDelete != null)
             {
-                studentsList.Remove(StudentToDelete);
+                _context.Remove(studentToDelete);
+                _context.SaveChanges();
             }
+
         }
 
-        public static void EditStudent(Student student, int id)
-        {
-            var StudentToEdit = GetStudent(id);
-            if (StudentToEdit != null)
-            {
-                var index = studentsList.IndexOf(StudentToEdit);
-                studentsList[index] = student;
-            }
-        }
     }
 }
