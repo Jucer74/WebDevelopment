@@ -2,6 +2,7 @@
 using MoneyBankMVC.Models;
 using MoneyBankMVC.Settings;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using RestSharp;
 using System.Security.Principal;
 
@@ -122,6 +123,58 @@ public class AccountService : IAccountService
         if (!response.IsSuccessful)
         {
             throw new ArgumentNullException(paramName: $"Error al eliminar cuenta: {response.StatusCode}");
+        }
+    }
+
+    public async Task<bool> DepositToAccountAsync(int id, decimal amount)
+    {
+        try
+        {
+            var depositData = new { amount = amount };
+            var depositJson = JsonConvert.SerializeObject(depositData);
+
+            var request = new RestRequest($"/api/v1/Accounts/{id}/deposit");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", depositJson, ParameterType.RequestBody);
+
+            var response = await _client.PostAsync(request);
+
+            if (!response.IsSuccessful)
+            {
+                throw new ArgumentNullException(paramName: $"Error al depositar cuenta: {response.StatusCode}");
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new ArgumentNullException(paramName: $"Error al depositar cuenta: {ex.Message}");
+        }
+    }
+
+    public async Task<bool> WithdrawFromAccountAsync(int id, decimal amount)
+    {
+        try
+        {
+            var withdrawData = new { amount = amount };
+            var withdrawJson = JsonConvert.SerializeObject(withdrawData);
+
+            var request = new RestRequest($"/api/v1/Accounts/{id}/withdraw");
+            request.AddHeader("Content-Type", "application/json");
+            request.AddParameter("application/json", withdrawJson, ParameterType.RequestBody);
+
+            var response = await _client.PostAsync(request);
+
+            if (!response.IsSuccessful)
+            {
+                throw new ArgumentNullException(paramName: $"Error al retirar cuenta: {response.StatusCode}");
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            throw new ArgumentNullException(paramName: $"Error al retirar cuenta: {ex.Message}");
         }
     }
 }

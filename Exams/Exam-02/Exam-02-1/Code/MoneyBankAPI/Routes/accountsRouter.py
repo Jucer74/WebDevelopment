@@ -142,7 +142,6 @@ async def deposit_to_account(id: int, deposit_data: DepositInput):
     finally:
         session.close()
 
-# Ruta para el retiro (Withdraw)
 @router.post("/Accounts/{id}/withdraw", tags=["Accounts"])
 async def withdraw_from_account(id: int, withdraw_data: WithdrawInput):
     session = SessionLocal()
