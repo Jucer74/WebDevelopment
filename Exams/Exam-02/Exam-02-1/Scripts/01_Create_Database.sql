@@ -1,1 +1,1 @@
-CREATE DATABASE `moneybankdb`;
+CREATE DATABASE moneybankdb;

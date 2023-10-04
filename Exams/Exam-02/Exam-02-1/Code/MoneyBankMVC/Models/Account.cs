@@ -15,7 +15,7 @@ namespace MoneyBankMVC.Models
         [DisplayName("Account Type")]
         public char AccountType { get; set; } = 'A';
 
-        [Required(ErrorMessage = "The date of creation is required")]
+       
         [DataType(DataType.Date)]
         [DisplayName("Date of creation")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
