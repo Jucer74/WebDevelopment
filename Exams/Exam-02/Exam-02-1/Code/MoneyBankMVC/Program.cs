@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,9 +9,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IAccountService, AccountService>();
+
 
 builder.Services.AddDbContext<MoneyBankContext>(
-        options => options.UseSqlServer(builder.Configuration.GetConnectionString("CnnStr")));
+        options => options.UseMySQL(builder.Configuration.GetConnectionString("CnnStr")!));
 
 var app = builder.Build();
 
@@ -31,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Accounts}/{action=Index}/{id?}");
 
 app.Run();

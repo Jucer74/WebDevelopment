@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.AccountType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
+                @Html.DisplayNameFor(model => model.AccountNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AccountNumber)
+                @Html.DisplayNameFor(model => model.CreationDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OwnerName)
@@ -30,7 +30,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.OverdraftAmount)
             </th>
-            <th></th>
+            <th>
+                Operaciones
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -40,10 +42,10 @@
                 @Html.DisplayFor(modelItem => item.AccountType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
+                @Html.DisplayFor(modelItem => item.AccountNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
+                @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)

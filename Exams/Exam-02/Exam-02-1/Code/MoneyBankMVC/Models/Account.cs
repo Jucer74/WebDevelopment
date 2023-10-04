@@ -6,38 +6,39 @@ namespace MoneyBankMVC.Models
 {
     public class Account
     {
-        [Required(ErrorMessage = "The Id is required")]
+        [Required(ErrorMessage = "El Id es requerido")]
         [DisplayName("Id")]
         public int Id { get; set; } = 0;
 
-        [Required(ErrorMessage = "The account type is required")]
-        [RegularExpression("^[ABC]$", ErrorMessage = "Allowed values for AccountType are A, B or C ")]
-        [DisplayName("Account Type")]
+        [Required(ErrorMessage = "El tipo de cuenta es requerido")]
+        [RegularExpression("^[AC]$", ErrorMessage = "Los valores permitidos son A o C")]
+        [DisplayName("Tipo")]
         public char AccountType { get; set; } = 'A';
 
-       
+        [Required(ErrorMessage = "El número de cuenta es requerido")]
+        [StringLength(10, ErrorMessage = "El valor de digitos es de 10")]
+        [DisplayName("Cuenta")]
+        public string AccountNumber { get; set; } = null!;
+
         [DataType(DataType.Date)]
-        [DisplayName("Date of creation")]
+        [DisplayName("Fecha")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime CreationDate { get; set; } = default!;
 
-        [Required(ErrorMessage = "The account number is required")]
-        [StringLength(10, ErrorMessage = "The maximum length of the account number is 10 characters")]
-        [DisplayName("Account Number")]
-        public string AccountNumber { get; set; } = null!;
-
-        [Required(ErrorMessage = "The owner name is required")]
-        [StringLength(100, ErrorMessage = "The maximum length of the owner name is 100 characters")]
-        [DisplayName("Owner Name")]
+        [Required(ErrorMessage = "El nombre es requerido")]
+        [StringLength(100, ErrorMessage = "La cantidad de caracteres es de máximo 100")]
+        [DisplayName("Nombre")]
         public string OwnerName { get; set; } = null!;
 
-        [Required(ErrorMessage = "The balance amount is required")]
-        //[Range(1, 18.2, ErrorMessage = "Balance Amount must be between 1 and 18.2")]
-        [DisplayName("Balance Amount")]
+        [Required(ErrorMessage = "El balance es requerido")]
+        [Range(1.0, 18.2, ErrorMessage = "El balance debe de estar en un rango de 1 y 18.2")]
+        [DisplayName("Balance")]
         public decimal BalanceAmount { get; set; }
 
-        [Required(ErrorMessage = "The overdraft amount is required")]
-        [DisplayName("Overdraft Amount")]
+        [Required(ErrorMessage = "El sobregiro es requerido")]
+        [Range(1.0, 18.2, ErrorMessage = "El balance debe de estar en un rango de 1 y 18.2")]
+        [DisplayName("Sobregiro")]
         public decimal OverdraftAmount { get; set; }
+      
     }
 }
