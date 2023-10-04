@@ -53,7 +53,6 @@ namespace MovieRankMVC.Controllers
                     using (var memoryStream = new MemoryStream())
                     {
                         posterFile.CopyTo(memoryStream);
-                        model.PosterFileName = Convert.ToBase64String(memoryStream.ToArray());
                     }
                 }
                 // Aquí puedes acceder al género seleccionado a través de model.SelectedGenre
