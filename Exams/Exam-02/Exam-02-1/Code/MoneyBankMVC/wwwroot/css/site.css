@@ -20,3 +20,52 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.btn-sm {
+    margin: 0 2px; /* pequeño margen horizontal para separarlos ligeramente */
+    padding: 0.25rem 0.3rem; /* reduce el padding si es necesario */
+}
+
+.table td {
+    white-space: nowrap; /* Esto previene que el contenido de la celda pase a la siguiente línea */
+}
+
+.btn {
+    white-space: nowrap;
+}
+
+
+.btn-pastel-yellow {
+    background-color: #FFEFB7; /* Amarillo pastel */
+    border: none;
+    color: black;
+}
+
+.btn-pastel-green {
+    background-color: #A8E4A0; /* Verde pastel */
+    border: none;
+    color: black;
+}
+
+.btn-pastel-blue {
+    background-color: #A2DFF7; /* Azul pastel */
+    border: none;
+    color: black;
+}
+
+.btn-pastel-gray {
+    background-color: #D3D3D3; /* Gris pastel (LightGray) */
+    border: none;
+    color: black;
+}
+
+.btn-pastel-pink {
+    background-color: #FFD1DC; /* Color de fondo rosado pastel */
+    border: none;
+    color: #333; /* Color de texto oscuro para contraste */
+}
+
+.balance-negative {
+    color: red;
+}

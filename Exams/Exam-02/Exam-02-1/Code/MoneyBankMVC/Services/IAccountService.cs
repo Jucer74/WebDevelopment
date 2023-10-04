@@ -2,9 +2,9 @@
 
 public interface IAccountService
 {
-    IEnumerable<Account> GetAllAccounts();
-    Account GetAccountById(int id);
-    void CreateAccount(Account account);
-    void UpdateAccount(Account account);
+    IEnumerable<Accounts> GetAllAccounts();
+    Accounts GetAccountById(int id);
+    void CreateAccount(Accounts account);
+    void UpdateAccount(Accounts account);
     void DeleteAccount(int id);
 }

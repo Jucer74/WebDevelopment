@@ -1,13 +1,15 @@
-﻿@model IEnumerable<MoneyBankMVC.Models.Account>
+﻿@model IEnumerable<MoneyBankMVC.Models.Accounts>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Cuentas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-pastel-green btn-sm" asp-action="Create" style="border-radius: 10px;">
+        <img src="~/images/plus.svg" alt="Editar" width="20" height="20" style="vertical-align: middle;">Create
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -34,32 +36,45 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerName)
+                </td>
+                <td class="@(item.OverdraftAmount > 0 ? "balance-negative" : "")">
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OverdraftAmount)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" style="border-radius: 10px;" class="btn btn-pastel-yellow btn-sm">
+                        <img src="~/images/pencil.svg" alt="Editar" width="20" height="20">
+                    </a>
+                    <a asp-action="Depositar" asp-route-id="@item.Id" style="border-radius: 10px;" class="btn btn-pastel-green btn-sm">
+                        <img src="~/images/box-arrow-in-down.svg" alt="Depositar" width="20" height="20">
+                    </a>
+                    <a asp-action="Retirar" asp-route-id="@item.Id" style="border-radius: 10px;" class="btn btn-pastel-blue btn-sm">
+                        <img src="~/images/box-arrow-down.svg" alt="Retirar" width="20" height="20">
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.Id" style="border-radius: 10px;" class="btn btn-pastel-gray btn-sm">
+                        <img src="~/images/info.svg" alt="Detalles" width="20" height="20">
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" style="border-radius: 10px;" class="btn btn-pastel-pink btn-sm">
+                        <img src="~/images/trash.svg" alt="Eliminar" width="20" height="20">
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

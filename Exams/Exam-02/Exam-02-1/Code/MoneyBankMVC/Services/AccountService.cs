@@ -14,23 +14,23 @@ namespace MoneyBankMVC.Services
             _context = context;
         }
 
-        public IEnumerable<Account> GetAllAccounts()
+        public IEnumerable<Accounts> GetAllAccounts()
         {
-            return _context.Set<Account>().ToList();
+            return _context.Set<Accounts>().ToList();
         }
 
-        public Account GetAccountById(int id)
+        public Accounts GetAccountById(int id)
         {
-            return _context.Set<Account>().Find(id);
+            return _context.Set<Accounts>().Find(id);
         }
 
-        public void CreateAccount(Account account)
+        public void CreateAccount(Accounts account)
         {
-            _context.Set<Account>().Add(account);
+            _context.Set<Accounts>().Add(account);
             _context.SaveChanges();
         }
 
-        public void UpdateAccount(Account account)
+        public void UpdateAccount(Accounts account)
         {
             _context.Entry(account).State = EntityState.Modified;
             _context.SaveChanges();
@@ -41,7 +41,7 @@ namespace MoneyBankMVC.Services
             var account = GetAccountById(id);
             if (account != null)
             {
-                _context.Set<Account>().Remove(account);
+                _context.Set<Accounts>().Remove(account);
                 _context.SaveChanges();
             }
         }

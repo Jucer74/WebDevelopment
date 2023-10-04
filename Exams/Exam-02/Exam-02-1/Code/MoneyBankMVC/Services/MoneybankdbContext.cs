@@ -16,7 +16,7 @@ public partial class MoneybankdbContext : DbContext
     {
     }
 
-    public virtual DbSet<Account> Accounts { get; set; }
+    public virtual DbSet<Accounts> Accounts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -28,7 +28,7 @@ public partial class MoneybankdbContext : DbContext
             .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
-        modelBuilder.Entity<Account>(entity =>
+        modelBuilder.Entity<Accounts>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
