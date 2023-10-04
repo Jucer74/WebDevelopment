@@ -12,31 +12,31 @@ namespace MoneyBankMVC.Controllers
     {
         private readonly MoneybankdbContext _context;
 
+        // Constructor: Inicializa el contexto de la base de datos
         public AccountsController(MoneybankdbContext context)
         {
             _context = context;
         }
 
+        // Mostrar la lista de cuentas
         public async Task<IActionResult> Index()
         {
             return View(await _context.Accounts.ToListAsync());
         }
 
+        // Mostrar detalles de una cuenta
         public async Task<IActionResult> Details(int? id)
         {
-            var account = await GetAccountByIdAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-            return View(account);
+            return await DisplayAccountForModification(id);
         }
 
+        // Vista para crear una nueva cuenta
         public IActionResult Create()
         {
             return View();
         }
 
+        // Crear una cuenta (acción POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,AccountType,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
@@ -62,16 +62,13 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
+        // Vista para editar una cuenta
         public async Task<IActionResult> Edit(int? id)
         {
-            var account = await GetAccountByIdAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-            return View(account);
+            return await DisplayAccountForModification(id);
         }
 
+        // Editar una cuenta (acción POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
@@ -105,30 +102,25 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
+        // Vista para eliminar una cuenta
         public async Task<IActionResult> Delete(int? id)
         {
-            var account = await GetAccountByIdAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-            return View(account);
+            return await DisplayAccountForModification(id);
         }
 
+        // Eliminar una cuenta (acción POST)
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
-            {
-                _context.Accounts.Remove(account);
-                await _context.SaveChangesAsync();
-                TempData["SuccessMessage"] = "La eliminación fue exitosa.";
-            }
+            _context.Accounts.Remove(account);
+            await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "La eliminación fue exitosa.";
             return RedirectToAction(nameof(Index));
         }
 
+        // Vista para depositar en una cuenta
         public async Task<IActionResult> Depositar(int? id)
         {
             var account = await GetAccountByIdAsync(id);
@@ -139,6 +131,7 @@ namespace MoneyBankMVC.Controllers
             return View("Depositar", account);
         }
 
+        // Depositar dinero en una cuenta (acción POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Depositar(int id, decimal amount)
@@ -149,41 +142,39 @@ namespace MoneyBankMVC.Controllers
                 return NotFound();
             }
 
+            // Lógica para el depósito según el tipo de cuenta
             if (account.AccountType == "A")
             {
                 account.BalanceAmount += amount;
             }
             else if (account.AccountType == "C")
             {
-                // Si hay un sobregiro
                 if (account.OverdraftAmount > 0)
                 {
                     decimal amountNeededToCoverOverdraft = account.OverdraftAmount;
 
                     if (amount >= amountNeededToCoverOverdraft)
                     {
-                        // Cubrimos  el sobregiro y añadimos el remanente al balance.
                         account.BalanceAmount += (amount - amountNeededToCoverOverdraft);
                         account.OverdraftAmount = 0;
                     }
                     else
                     {
-                        // Usamos parte del depósito para cubrir el sobregiro.
                         account.OverdraftAmount -= amount;
                     }
                 }
                 else
                 {
-                    // Si no hay sobregiro, simplemente añadir el monto depositado al balance.
                     account.BalanceAmount += amount;
                 }
             }
 
             await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "El deposito  fue exitosa.";
+            TempData["SuccessMessage"] = "El deposito fue exitoso.";
             return RedirectToAction(nameof(Index));
         }
 
+        // Vista para retirar de una cuenta
         public async Task<IActionResult> Retirar(int? id)
         {
             var account = await GetAccountByIdAsync(id);
@@ -194,6 +185,7 @@ namespace MoneyBankMVC.Controllers
             return View("Retirar", account);
         }
 
+        // Retirar dinero de una cuenta (acción POST)
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Retirar(int id, decimal amount)
@@ -204,6 +196,7 @@ namespace MoneyBankMVC.Controllers
                 return NotFound();
             }
 
+            // Lógica para el retiro según el tipo de cuenta
             if (account.AccountType == "A")
             {
                 if (amount <= account.BalanceAmount)
@@ -241,16 +234,28 @@ namespace MoneyBankMVC.Controllers
             }
 
             await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "El retiro  fue exitosa.";
+            TempData["SuccessMessage"] = "El retiro fue exitoso.";
             return RedirectToAction(nameof(Index));
         }
 
+        private async Task<IActionResult> DisplayAccountForModification(int? id)
+        {
+            var account = await GetAccountByIdAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
+        }
+
+        // Método privado para obtener una cuenta por su ID
         private async Task<Account?> GetAccountByIdAsync(int? id)
         {
             if (!id.HasValue) return null;
             return await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id.Value);
         }
 
+        // Método privado que verifica si una cuenta existe
         private bool AccountExists(int id)
         {
             return _context.Accounts.Any(e => e.Id == id);
