@@ -8,6 +8,13 @@ html {
   }
 }
 
+/* Estilo para los botones de acción */
+.btn-action {
+    margin-right: 5px; /* Espacio a la derecha de cada botón */
+    display: inline-block; /* Asegura que los botones se muestren en línea */
+    white-space: nowrap; /* Evita que los botones se envuelvan al siguiente renglón */
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -20,3 +27,22 @@ html {
 body {
   margin-bottom: 60px;
 }
+.btn-editar {
+    background-color: #FFEB9C; /* Amarillo pastel */
+}
+
+.btn-verde {
+    background-color: #B4E392; /* Verde pastel */
+}
+
+.btn-retirar {
+    background-color: #91C5FC; /* Azul pastel */
+}
+
+.btn-gris {
+    background-color: #D3D3D3; /* Gris pastel */
+}
+.btn-eliminar {
+    background-color: #FFC1C1; /* Rojo pastel */
+}
+

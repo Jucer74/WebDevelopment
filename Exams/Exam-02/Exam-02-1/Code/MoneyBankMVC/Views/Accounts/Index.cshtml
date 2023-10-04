@@ -4,10 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h2>Cuentas</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-sm btn-verde">
+        <img src="~/images/plus.svg" alt="Crear"  width="20" height="20">
+        Crear
+    </a>
 </p>
 <table class="table">
     <thead>
@@ -30,36 +33,60 @@
             <th>
                 @Html.DisplayNameFor(model => model.OverdraftAmount)
             </th>
-            <th></th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OverdraftAmount)
+                </td>
+                <td>
+                    <!-- Botón Editar -->
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-editar ">
+                        <img src="~/images/pencil.svg" alt="Editar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Depositar -->
+                    <a asp-action="Depositar" asp-route-id="@item.Id" class="btn btn-sm btn-verde">
+                        <img src="~/images/box-arrow-in-down.svg" alt="Depositar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Retirar -->
+                    <a asp-action="Retirar" asp-route-id="@item.Id" class="btn btn-sm btn-retirar">
+                        <img src="~/images/box-arrow-down.svg" alt="Retirar" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Detalles -->
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-gris">
+                        <img src="~/images/info.svg" alt="Detalles" width="20" height="20">
+                    </a>
+
+                    <!-- Botón Eliminar -->
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-eliminar">
+                        <img src="~/images/trash.svg" alt="Eliminar" width="20" height="20">
+                    </a>
+
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

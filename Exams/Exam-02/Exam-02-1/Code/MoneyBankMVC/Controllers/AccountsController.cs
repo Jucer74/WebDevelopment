@@ -52,21 +52,20 @@ namespace MoneyBankMVC.Controllers
         }
 
         // POST: Accounts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Create([Bind("Id,AccountType,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
             if (ModelState.IsValid)
             {
+                account.CreationDate = DateTime.Now; // Establecer la fecha de creación aquí
                 _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(account);
         }
-
         // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -118,6 +117,10 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
+
+
+
+
         // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -126,8 +129,7 @@ namespace MoneyBankMVC.Controllers
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
             if (account == null)
             {
                 return NotFound();
@@ -136,10 +138,11 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
+
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             if (_context.Accounts == null)
             {

@@ -1,54 +1,59 @@
 ﻿@model MoneyBankMVC.Models.Account
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles";
 }
 
-<h1>Details</h1>
+<h4>Información Cuenta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Tipo</label>
+            <div class="col-sm-8">
+                @if (Model.AccountType == "A")
+                {
+                    <span>Ahorros</span>
+                }
+                else if (Model.AccountType == "C")
+                {
+                    <span>Corriente</span>
+                }
+            </div>
+        </div>
 
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OwnerName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OwnerName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BalanceAmount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BalanceAmount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OverdraftAmount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OverdraftAmount)
-        </dd>
-    </dl>
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Cuenta</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.AccountNumber)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Propietario</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.OwnerName)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Balance</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.BalanceAmount)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Sobregiro</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.OverdraftAmount)
+            </div>
+        </div>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="mt-4">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-sm btn-verde mr-2">Editar</a>
+    <a asp-action="Index" class="btn btn-sm btn-gris mr-2">Volver a la lista</a>
+    <img src="~/images/devolver.png" alt="Devuelta" width="20" height="20">
 </div>
