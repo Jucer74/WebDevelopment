@@ -171,7 +171,23 @@ namespace MoneyBankMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // GET: Accounts/Depositar/5
+        public async Task<IActionResult> Depositar(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
 
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
+        }
+
+        // POST: Accounts/Depositar/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Depositar(int id, decimal amount)
@@ -196,6 +212,23 @@ namespace MoneyBankMVC.Controllers
 
 
 
+        // GET: Accounts/Retirar/5
+        public async Task<IActionResult> Retirar(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
+        }
+
+        // POST: Accounts/Retirar/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Retirar(int id, decimal amount)
@@ -208,18 +241,14 @@ namespace MoneyBankMVC.Controllers
 
             if (account.BalanceAmount - amount < 0)
             {
-                // Manejamos el caso en que el monto de retiro es mayor que el balance actual
                 ViewBag.ErrorMessage = "Fondos Insuficientes";
-                return View(account); // Retorna a la vista de retiro con el mensaje de error
+                return View(account);
             }
 
             account.BalanceAmount -= amount;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-
-
 
         private bool AccountExists(int id)
         {
