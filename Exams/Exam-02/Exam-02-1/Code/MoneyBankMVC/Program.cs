@@ -14,8 +14,15 @@ builder.Services.AddScoped<IAccountService, AccountService>(); // Assuming Accou
 // Move these registrations to the end
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();
+builder.Services.AddAntiforgery(options =>
+{
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+
 
 var app = builder.Build();
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

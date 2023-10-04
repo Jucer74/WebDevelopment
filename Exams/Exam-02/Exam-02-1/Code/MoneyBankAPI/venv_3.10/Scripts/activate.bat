@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\simulacion\Documents\GitHub\WebDevelopment\Exams\Exam-02\Exam-02-1\Code\MoneyBankAPI\venv_3.10
+set VIRTUAL_ENV=C:\Users\salas\Documents\GitHub\WebDevelopment\Exams\Exam-02\Exam-02-1\Code\MoneyBankAPI\venv_3.10
 
 if not defined PROMPT set PROMPT=$P$G
 

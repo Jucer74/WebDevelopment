@@ -48,25 +48,24 @@ namespace MoneyBankMVC.Controllers
             }
         }
 
-        public async Task<ActionResult> EditAsync(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-
             var account = await _accountService.GetById(id);
             return View(account);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Account account)
+        public async Task<ActionResult> Edit(int id, Account account)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _accountService.Update(id, account);
+                    await _accountService.Update(id, account);
                     return RedirectToAction(nameof(Index));
                 }
-                // Model is not valid, return to the Edit view
+
                 return View(account);
             }
             catch
@@ -76,7 +75,7 @@ namespace MoneyBankMVC.Controllers
         }
 
 
-        public async Task<ActionResult> DeleteAsync(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             var account = await _accountService.GetById(id);
             return View(account);
@@ -114,15 +113,16 @@ namespace MoneyBankMVC.Controllers
             }
             catch (Exception ex)
             {
-              
+                // Log or handle the exception
                 return View();
             }
         }
 
-        public ActionResult Withdraw()
-        {
 
-            return View();
+        public ActionResult Withdraw(int id)
+        {
+            var account = _accountService.GetById(id);
+            return View(account);
         }
 
         [HttpPost]
@@ -136,8 +136,8 @@ namespace MoneyBankMVC.Controllers
             }
             catch (Exception ex)
             {
-          
-                return View();
+                // Log or handle the exception
+                return View(nameof(Index));
             }
         }
     }

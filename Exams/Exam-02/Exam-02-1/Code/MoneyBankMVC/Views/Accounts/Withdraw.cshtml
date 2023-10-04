@@ -1,76 +1,24 @@
 ﻿@model MoneyBankMVC.Models.Account
-
 @{
-    ViewData["Title"] = "Retirar";
+    ViewData["Title"] = "Withdraw";
 }
 
-<h4>Retirar</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Withdraw" method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
+<h2>Withdraw Funds</h2>
 
-            <div class="form-group row mb-3">
-                <label class="col-sm-4 col-form-label">Tipo de Cuenta</label>
-                <div class="col-sm-8">
-                    <div class="form-check form-check-inline">
-                        <input type="radio" id="savings" name="AccountTypeDisplay" value="A" class="form-check-input" disabled @(Model.AccountType == "A" ? "checked" : "") />
-                        <label class="form-check-label" for="savings">Ahorros</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input type="radio" id="current" name="AccountTypeDisplay" value="C" class="form-check-input" disabled @(Model.AccountType == "C" ? "checked" : "") />
-                        <label class="form-check-label" for="current">Corriente</label>
-                    </div>
-                </div>
-            </div>
+<div>
+    <form asp-action="Withdraw" asp-controller="Accounts" method="post">
+        <input type="hidden" asp-for="Id" /> <!-- Use the account Id obtained in the action -->
 
-            <div class="form-group row mb-3">
-                <label asp-for="CreationDate" class="col-sm-4 col-form-label">Fecha de Creación</label>
-                <div class="col-sm-8">
-                    <input asp-for="CreationDate" class="form-control" readonly />
-                </div>
+        <div class="form-group row mb-3">
+            <label for="amount" class="col-sm-4 col-form-label">Withdrawal Amount</label>
+            <div class="col-sm-8">
+                <input type="number" id="amount" name="amount" class="form-control" step="0.01" required />
             </div>
+        </div>
 
-            <div class="form-group row mb-3">
-                <label asp-for="AccountNumber" class="col-sm-4 col-form-label">Número de Cuenta</label>
-                <div class="col-sm-8">
-                    <input asp-for="AccountNumber" class="form-control" readonly />
-                </div>
-            </div>
-
-            <div class="form-group row mb-3">
-                <label asp-for="OwnerName" class="col-sm-4 col-form-label">Nombre del Propietario</label>
-                <div class="col-sm-8">
-                    <input asp-for="OwnerName" class="form-control" readonly />
-                </div>
-            </div>
-
-            <div class="form-group row mb-3">
-                <label asp-for="BalanceAmount" class="col-sm-4 col-form-label">Balance Actual</label>
-                <div class="col-sm-8">
-                    <input asp-for="BalanceAmount" class="form-control" readonly />
-                </div>
-            </div>
-            <div class="form-group row mb-3">
-                <label asp-for="OverdraftAmount" class="col-sm-4 col-form-label">Sobregiro</label>
-                <div class="col-sm-8">
-                    <input asp-for="OverdraftAmount" class="form-control" readonly />
-                </div>
-            </div>
-
-            <div class="form-group row mb-3">
-                <label for="amount" class="col-sm-4 col-form-label">Valor a Retirar</label>
-                <div class="col-sm-8">
-                    <input type="number" id="amount" name="amount" class="form-control" step="0.01" required />
-                </div>
-            </div>
-
-            <div class="form-group mt-4">
-                <input type="submit" value="Aceptar" class="btn btn-sm btn-verde mr-2" />
-                <a asp-action="Index" class="btn btn-sm btn-gris">Cancelar</a>
-            </div>
-        </form>
-    </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Withdraw</button>
+        </div>
+    </form>
 </div>
+
