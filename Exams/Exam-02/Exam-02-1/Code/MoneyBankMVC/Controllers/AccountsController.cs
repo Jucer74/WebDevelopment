@@ -28,6 +28,22 @@ namespace MoneyBankMVC.Controllers
                         Problem("Entity set 'MoneybankdbContext.Accounts'  is null.");
         }
 
+        private async Task<ActionResult<Accounts>> GetAccountById(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return account;
+        }
+
         // GET: Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -137,18 +153,13 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            var accountResult = await GetAccountById(id);
+            if (accountResult.Result is NotFoundResult)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            return View(account);
+            return View(accountResult.Value);
         }
 
 
@@ -174,17 +185,14 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Depositar/5
         public async Task<IActionResult> Depositar(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            var accountResult = await GetAccountById(id);
+            if (accountResult.Result is NotFoundResult)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-            return View(account);
+            ViewBag.Operation = "Depositar";
+            return View(accountResult.Value);
         }
 
         // POST: Accounts/Depositar/5
@@ -213,18 +221,14 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Retirar/5
         public async Task<IActionResult> Retirar(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            var accountResult = await GetAccountById(id);
+            if (accountResult.Result is NotFoundResult)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-
-            return View(account);
+            ViewBag.Operation = "Retirar";
+            return View(accountResult.Value);
         }
 
         // POST: Accounts/Retirar/5
