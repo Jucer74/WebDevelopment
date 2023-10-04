@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 from decimal import Decimal
 
-class StudentSchema(BaseModel):
+class AccountsSchema(BaseModel):
     Id: int
     AccountType: str
     CreationDate: datetime
@@ -10,5 +10,3 @@ class StudentSchema(BaseModel):
     OwnerName: str
     BalanceAmount: Decimal
     OverdraftAmount: Decimal
-
-    Sex: str
