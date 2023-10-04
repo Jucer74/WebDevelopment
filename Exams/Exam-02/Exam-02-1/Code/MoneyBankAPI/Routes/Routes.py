@@ -3,30 +3,29 @@ from Schemas.user_schema import UserSchema
 from Config.db import engine
 from Models.Account import Accounts
 from fastapi import APIRouter, HTTPException
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import delete
 
 user = APIRouter()
+Session = sessionmaker(bind=engine)
 
 @user.get("/")
 def root():
     return {"message": "Hola"}
 # Obtener un usuario por su ID
-@user.get("/api/Account")
+
+
+@user.get("/api/Account/all")
 def get_all_accounts():
     with engine.connect() as conn:
-        try:
-            # Ejecutar la consulta SQL para obtener todos los usuarios
-            result = conn.execute(Accounts.select()).fetchall()
+        result = conn.execute(Accounts.select()).fetchall()
+        accounts = [dict(row) for row in result]
+        conn.commit()
+        conn.close()
 
-            # Depura la consulta y los resultados
-            print(result)
+    return accounts
 
-            # Convertir las filas en una lista de diccionarios, manejando columnas nulas
-            users_list = [dict(row) if row is not None else {} for row in result]
 
-            return users_list
-        except Exception as e:
-            # En caso de error, manejar la excepción y devolver un mensaje de error
-            raise HTTPException(status_code=500, detail=f"Error al obtener usuarios: {str(e)}")
 
 @user.post("/api/Account")
 def create_Account(data_account: UserSchema):
@@ -46,4 +45,25 @@ def create_Account(data_account: UserSchema):
         except Exception as e:
             # En caso de error, manejar la excepción y devolver un mensaje de error
             return HTTPException(status_code=500, detail=f"Error al crear la cuenta: {str(e)}")
+        
 
+@user.delete("/api/Account/{account_id}")
+def delete_account(account_id: int):
+    try:
+        # Crear una conexión a la base de datos
+        with engine.connect() as conn:
+            # Definir la condición para la eliminación (en este caso, por ID)
+            condition = Accounts.c.id == account_id
+
+            # Ejecutar la consulta de eliminación
+            result = conn.execute(delete(Accounts).where(condition))
+
+            # Verificar si se eliminó una fila (cuenta) o no
+            if result.rowcount == 0:
+                raise HTTPException(status_code=404, detail=f"La cuenta con ID {account_id} no existe")
+            conn.execute(delete(Accounts).where(condition))
+            conn.commit()  # Confirmar la transacción
+            
+            return {"message": f"Cuenta con ID {account_id} eliminada exitosamente"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error al eliminar la cuenta: {str(e)}")
