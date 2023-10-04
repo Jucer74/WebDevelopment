@@ -1,0 +1,61 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Account</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AccountType, htmlAttributes: new { @class = "control-label" })
+                <div class="col-md-10">
+                    @Html.RadioButtonFor(model => model.AccountType, "Ahorro") Ahorro
+                    @Html.RadioButtonFor(model => model.AccountType, "Corriente") Corriente
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" type="date" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AccountNumber" class="control-label"></label>
+                <input asp-for="AccountNumber" class="form-control" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OwnerName" class="control-label"></label>
+                <input asp-for="OwnerName" class="form-control" />
+                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BalanceAmount" class="control-label"></label>
+                <input asp-for="BalanceAmount" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OverdraftAmount" class="control-label"></label>
+                <input asp-for="OverdraftAmount" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group pt-md-4">
+                <input type="submit" value="Adicionar" class="btn btn-primary" />
+                <a class="btn btn-outline-info" asp-action="Index">Volver</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
