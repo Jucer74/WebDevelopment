@@ -1,1 +1,0 @@
-Aqui van los Schemas para los Objetos de Transporte (DTO)

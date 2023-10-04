@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using MoneyBankMVC.Context;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MoneybankdbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("cadenaSQL"),
+    new MySqlServerVersion(new Version(8, 0, 21)))
+);
 
 var app = builder.Build();
 
