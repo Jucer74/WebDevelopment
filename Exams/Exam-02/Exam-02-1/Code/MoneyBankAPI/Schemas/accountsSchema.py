@@ -11,3 +11,9 @@ class AccountsSchema(BaseModel):
     BalanceAmount: Decimal
     OverdraftAmount: Decimal
 
+class DepositInput(BaseModel):
+    amount: Decimal
+
+class WithdrawInput(BaseModel):
+    amount: Decimal
+

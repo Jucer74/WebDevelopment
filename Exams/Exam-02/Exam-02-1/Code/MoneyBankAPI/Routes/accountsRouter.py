@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 from Models.accountsModel import AccountsModel
-from Schemas.accountsSchema import AccountsSchema
+from Schemas.accountsSchema import AccountsSchema, DepositInput, WithdrawInput
 from Config.database import SessionLocal
 
 router = APIRouter()
@@ -111,5 +111,65 @@ async def delete_account(id: int):
         raise http_exc
     except Exception as e:
          return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
+    finally:
+        session.close()
+
+@router.post("/Accounts/{id}/deposit", tags=["Accounts"])
+async def deposit_to_account(id: int, deposit_data: DepositInput):
+    session = SessionLocal()
+
+    try:
+        account = session.query(AccountsModel).filter(AccountsModel.Id == id).first()
+
+        if account is None:
+            raise HTTPException(status_code=404, detail="Account not found")
+
+        if deposit_data.amount <= 0:
+            raise HTTPException(status_code=400, detail="Deposit amount must be greater than zero")
+
+        account.BalanceAmount += deposit_data.amount
+        session.commit()
+
+        session.refresh(account)
+
+        return account
+
+    except HTTPException as http_exc:
+        session.rollback()
+        raise http_exc
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
+    finally:
+        session.close()
+
+# Ruta para el retiro (Withdraw)
+@router.post("/Accounts/{id}/withdraw", tags=["Accounts"])
+async def withdraw_from_account(id: int, withdraw_data: WithdrawInput):
+    session = SessionLocal()
+
+    try:
+        account = session.query(AccountsModel).filter(AccountsModel.Id == id).first()
+
+        if account is None:
+            raise HTTPException(status_code=404, detail="Account not found")
+
+        if withdraw_data.amount <= 0:
+            raise HTTPException(status_code=400, detail="Withdraw amount must be greater than zero")
+
+        if withdraw_data.amount > account.BalanceAmount:
+            raise HTTPException(status_code=400, detail="Insufficient balance for withdrawal")
+
+        account.BalanceAmount -= withdraw_data.amount
+        session.commit()
+
+        session.refresh(account)
+
+        return account
+
+    except HTTPException as http_exc:
+        session.rollback()
+        raise http_exc
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
     finally:
         session.close()
