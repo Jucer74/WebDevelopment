@@ -1,0 +1,105 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Retirar";
+}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        text-align: center;
+    }
+
+    h4 {
+        color: #333;
+        font-size: 24px;
+        margin: 20px 0;
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-group label {
+        font-weight: bold;
+    }
+
+    .btn-verde {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-gris {
+        background-color: #6c757d;
+        color: white;
+    }
+</style>
+
+<h4>Retirar</h4>
+<hr />
+<div class="container">
+    <form asp-action="Retirar" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label>Tipo de Cuenta:</label>
+            <div>
+                @if (Model.AccountType == "A")
+                {
+                    <span>Ahorros</span>
+                }
+                else if (Model.AccountType == "C")
+                {
+                    <span>Corriente</span>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Fecha de Creación:</label>
+            <div>
+                <input asp-for="CreationDate" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Número de Cuenta:</label>
+            <div>
+                <input asp-for="AccountNumber" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Nombre del Propietario:</label>
+            <div>
+                <input asp-for="OwnerName" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Balance Actual:</label>
+            <div>
+                <input asp-for="BalanceAmount" class="form-control" readonly />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="amount">Valor a Retirar:</label>
+            <div>
+                <input type="number" id="amount" name="amount" class="form-control" step="0.01" required />
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <input type="submit" value="Aceptar" class="btn btn-sm btn-verde mr-2" />
+            <a asp-action="Index" class="btn btn-sm btn-gris">Cancelar</a>
+        </div>
+    </form>
+</div>

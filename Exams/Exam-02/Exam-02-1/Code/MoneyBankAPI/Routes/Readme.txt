@@ -1,1 +1,0 @@
-Aqui va la configuracion de las Rutas para los EndPoint que expone la API

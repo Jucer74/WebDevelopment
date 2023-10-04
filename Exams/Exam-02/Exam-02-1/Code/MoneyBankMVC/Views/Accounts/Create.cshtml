@@ -4,55 +4,119 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<style>
+    body {
+        background-color: #f5f5f5;
+        font-family: Arial, sans-serif;
+    }
 
-<h4>Account</h4>
+    h4 {
+        color: #333;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .container {
+        margin-top: 30px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        color: #333;
+        font-weight: bold;
+    }
+
+    input[type="radio"],
+    input[type="text"] {
+        background-color: #fff;
+        color: #333;
+        border: 1px solid #ccc;
+        padding: 10px;
+        width: 100%;
+    }
+
+    input[type="radio"]:checked {
+        background-color: #258cfb;
+        color: #fff;
+        border: 1px solid #258cfb;
+    }
+
+    .btn-accept {
+        background-color: #258cfb;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .btn-cancel {
+        background-color: #ccc;
+        color: #333;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    .text-danger {
+        color: red;
+    }
+</style>
+
+<h4>Crear cuenta</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" />
-                <span asp-validation-for="AccountType" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AccountNumber" class="control-label"></label>
-                <input asp-for="AccountNumber" class="form-control" />
-                <span asp-validation-for="AccountNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OwnerName" class="control-label"></label>
-                <input asp-for="OwnerName" class="form-control" />
-                <span asp-validation-for="OwnerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="BalanceAmount" class="control-label"></label>
-                <input asp-for="BalanceAmount" class="form-control" />
-                <span asp-validation-for="BalanceAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control" />
-                <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label>Tipo de Cuenta</label>
+                    <div>
+                        <input type="radio" asp-for="AccountType" value="A" id="savings" required checked /> <label for="savings">Ahorros</label>
+                        <input type="radio" asp-for="AccountType" value="C" id="current" required /> <label for="current">Corriente</label>
+                        <span asp-validation-for="AccountType" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="AccountNumber">Número de Cuenta</label>
+                    <input asp-for="AccountNumber" class="form-control" value="1234567890" />
+                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="OwnerName">Nombre del Propietario</label>
+                    <input asp-for="OwnerName" class="form-control" value="Juan Pérez" />
+                    <span asp-validation-for="OwnerName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="BalanceAmount">Balance</label>
+                    <input asp-for="BalanceAmount" class="form-control" value="1000.00" />
+                    <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="OverdraftAmount">Sobregiro</label>
+                    <input asp-for="OverdraftAmount" class="form-control" value="0.00" readonly style="background-color: #e9ecef;" />
+                    <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-accept">Aceptar</button>
+                    <a asp-action="Index" class="btn btn-cancel">Cancelar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
