@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

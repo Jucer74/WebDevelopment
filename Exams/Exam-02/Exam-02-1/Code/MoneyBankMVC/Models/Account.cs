@@ -30,15 +30,11 @@ namespace MoneyBankMVC.Models
         [Required(ErrorMessage = "El Monto del Balance es requerido.")]
         [Range(0.01, double.MaxValue, ErrorMessage = "El Monto del Balance debe ser mayor a cero.")]
         [DataType(DataType.Currency)]
-      
-
         public decimal BalanceAmount { get; set; }
 
         [Required(ErrorMessage = "El Monto del Sobregiro es requerido.")]
         [Range(0, 1000000, ErrorMessage = "El Monto del Sobregiro no debe exceder $1,000,000.00.")]
         [DataType(DataType.Currency)]
         public decimal OverdraftAmount { get; set; }
-
-      
     }
 }

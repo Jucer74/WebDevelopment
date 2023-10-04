@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
@@ -56,6 +53,7 @@ namespace MoneyBankMVC.Controllers
                 account.CreationDate = DateTime.Now;
                 _context.Add(account);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "La creacion fue exitosa.";
                 return RedirectToAction(nameof(Index));
             }
             return View(account);
@@ -86,6 +84,7 @@ namespace MoneyBankMVC.Controllers
                 {
                     _context.Update(account);
                     await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "La edicion fue exitosa.";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,6 +121,7 @@ namespace MoneyBankMVC.Controllers
             {
                 _context.Accounts.Remove(account);
                 await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "La eliminación fue exitosa.";
             }
             return RedirectToAction(nameof(Index));
         }
@@ -152,15 +152,32 @@ namespace MoneyBankMVC.Controllers
             }
             else if (account.AccountType == "C")
             {
-                account.BalanceAmount += amount;
-
-                if (account.OverdraftAmount > 0 && account.BalanceAmount < Account.MAX_OVERDRAFT)
+                // Si hay un sobregiro
+                if (account.OverdraftAmount > 0)
                 {
-                    account.OverdraftAmount = Account.MAX_OVERDRAFT - account.BalanceAmount;
+                    decimal amountNeededToCoverOverdraft = account.OverdraftAmount;
+
+                    if (amount >= amountNeededToCoverOverdraft)
+                    {
+                        // Cubrimos todo el sobregiro y añadimos el remanente al balance.
+                        account.BalanceAmount += (amount - amountNeededToCoverOverdraft);
+                        account.OverdraftAmount = 0;
+                    }
+                    else
+                    {
+                        // Usamos parte del depósito para cubrir el sobregiro.
+                        account.OverdraftAmount -= amount;
+                    }
+                }
+                else
+                {
+                    // Si no hay sobregiro, simplemente añadir el monto depositado al balance.
+                    account.BalanceAmount += amount;
                 }
             }
 
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "El deposito  fue exitosa.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -221,6 +238,7 @@ namespace MoneyBankMVC.Controllers
             }
 
             await _context.SaveChangesAsync();
+            TempData["SuccessMessage"] = "El retiro  fue exitosa.";
             return RedirectToAction(nameof(Index));
         }
 
