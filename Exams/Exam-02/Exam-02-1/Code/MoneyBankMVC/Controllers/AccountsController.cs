@@ -1,79 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc;
 using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
+using System;
+using System.Linq;
 
 namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
-        private readonly MoneybankdbContext _context;
+        private readonly IAccountService _accountService;
 
-        public AccountsController(MoneybankdbContext context)
+        public AccountsController(IAccountService accountService)
         {
-            _context = context;
+            _accountService = accountService;
         }
 
-        // GET: Accounts
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            return View(await _context.Accounts.ToListAsync());
+            var accounts = _accountService.GetAll();
+            return View(accounts);
         }
 
-        // GET: Accounts/Details/5
-
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var item = await _context.Accounts.FindAsync(id);
+            var account = _accountService.GetById(id.Value);
 
-            if (item == null)
+            if (account == null)
             {
-                return NotFound(nameof(item));
+                return NotFound();
             }
 
-            return View(item);
+            return View(account);
         }
 
-        // GET: Accounts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Accounts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public IActionResult Create([Bind("AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _accountService.Create(account);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
             }
             return View(account);
         }
 
-        // GET: Accounts/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            var account = _accountService.GetById(id.Value);
             if (account == null)
             {
                 return NotFound();
@@ -81,12 +77,9 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public IActionResult Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
             if (id != account.Id)
             {
@@ -97,35 +90,30 @@ namespace MoneyBankMVC.Controllers
             {
                 try
                 {
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
+                    _accountService.Update(id, account);
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                catch (ArgumentException)
                 {
-                    if (!AccountExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    return NotFound();
                 }
-                return RedirectToAction(nameof(Index));
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
             }
             return View(account);
         }
 
-        // GET: Accounts/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var account = _accountService.GetById(id.Value);
+
             if (account == null)
             {
                 return NotFound();
@@ -134,28 +122,76 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
-            if (_context.Accounts == null)
+            try
             {
-                return Problem("Entity set 'MoneybankdbContext.Accounts'  is null.");
+                _accountService.DeleteById(id);
+                return RedirectToAction(nameof(Index));
             }
-            var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
+            catch (ArgumentException)
             {
-                _context.Accounts.Remove(account);
+                return NotFound();
             }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return View();
+            }
         }
 
-        private bool AccountExists(int id)
+        public IActionResult Deposito(string accountType)
         {
-          return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+            ViewBag.AccountType = accountType;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Deposito(string accountType, decimal amount)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _accountService.Deposito(accountType, amount);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+            }
+            ViewBag.AccountType = accountType;
+            return View();
+        }
+
+        public IActionResult Retiro(string accountType)
+        {
+            ViewBag.AccountType = accountType;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Retiro(string accountType, decimal amount)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _accountService.Retiro(accountType, amount);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError(string.Empty, ex.Message);
+                }
+            }
+            ViewBag.AccountType = accountType;
+            return View();
         }
     }
 }

@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<MoneyBankMVC.Models.Account>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Cuentas";
 }
 
-<h1>Index</h1>
+<h1>Cuentas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -55,9 +55,12 @@
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><img src="./css/pencil.svg" alt="Edit" class="svg-icon yellow-bg" /></a>
+                    <a asp-action="Deposito" asp-route-id="@item.Id"><img src="./css/box-arrow-in-down.svg" alt="Edit" class="svg-icon green-bg" /></a>
+                    <a asp-action="Retiro" asp-route-id="@item.Id"><img src="./css/box-arrow-down.svg" alt="Edit" class="svg-icon blue-bg" /></a>
+                    <a asp-action="Details" asp-route-id="@item.Id"><img src="./css/info.svg" alt="Edit" class="svg-icon gray-bg" /></a>
+                    <a asp-action="Delete" asp-route-id="@item.Id"><img src="./css/trash.svg" alt="Edit" class="svg-icon red-bg" /></a>
+
             </td>
         </tr>
 }

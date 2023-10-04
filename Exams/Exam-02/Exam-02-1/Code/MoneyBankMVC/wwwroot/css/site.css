@@ -20,3 +20,29 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.yellow-bg {
+    background-color: yellow;
+}
+
+.green-bg {
+    background-color: green;
+}
+
+.blue-bg {
+    background-color: blue;
+}
+
+.gray-bg {
+    background-color: gray;
+}
+
+.red-bg {
+    background-color: red;
+}
+
+.svg-icon {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}

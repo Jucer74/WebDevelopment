@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Deposito";
+}
+
+<h1>Deposito</h1>
+
+@if (Model != null)
+{
+    <dl class="row">
+        <dt class="col-sm-2">Tipo de Cuenta:</dt>
+        <dd class="col-sm-10">@Model.AccountType</dd>
+
+        <dt class="col-sm-2">Saldo Actual:</dt>
+        <dd class="col-sm-10">@Model.BalanceAmount</dd>
+
+        <dt class="col-sm-2">Sobregiro:</dt>
+        <dd class="col-sm-10">@Model.OverdraftAmount</dd>
+
+        <dt class="col-sm-2">Valor a Depositar:</dt>
+        <dd class="col-sm-10">
+            @using (Html.BeginForm("Deposito", "Accounts", new { accountType = Model.AccountType }, FormMethod.Post))
+            {
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="amount" placeholder="Ingrese el valor a depositar" />
+                    <button type="submit" class="btn btn-primary">Depositar</button>
+                </div>
+            }
+        </dd>
+    </dl>
+}
