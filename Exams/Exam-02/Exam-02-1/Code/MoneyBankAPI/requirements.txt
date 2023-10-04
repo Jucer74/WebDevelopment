@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+sqlalchemy
+databases
+mysql-connector-python
+aiomysql
+python-dotenv
+pytest
+httpx
+mysqlclient
