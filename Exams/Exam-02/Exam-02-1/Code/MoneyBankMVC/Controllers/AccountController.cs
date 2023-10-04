@@ -1,0 +1,198 @@
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
+using System.Security.Principal;
+
+namespace MoneyBankMVC.Controllers
+{
+    public class AccountController : Controller
+    {
+        private readonly AccountService _accountService;
+
+        public AccountController(AccountService accountService)
+        {
+            _accountService = accountService;
+        }
+
+        // GET: AccountController
+        public ActionResult Index()
+        {
+            try
+            {
+                var account = _accountService.GetAllAccountsAsync().Result;
+
+                if (account != null)
+                {
+                    return View(account);
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: AccountController/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: AccountController/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Account account)
+        {
+            try
+            {
+                _ = _accountService.CreateAccountAsync(account);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: AccountController/Details/5
+        public ActionResult Details(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        
+
+        // GET: AccountController/Edit/5
+        public ActionResult Edit(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: AccountController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, Account account)
+        {
+            try
+            {
+                _ = _accountService.UpdateAccountAsync(id, account);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+        // GET: AccountController/Delete/5
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: AccountController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, Account account)
+        {
+            try
+            {
+                _ = _accountService.DeleteAccountAsync(id);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: AccountController/Deposit/5
+        public ActionResult Deposit(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: AccountController/Deposit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Deposit(int id, decimal amount)
+        {
+            try
+            {
+                _ = _accountService.DepositToAccountAsync(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // GET: AccountController/Withdraw/5
+        public ActionResult Withdraw(int id)
+        {
+            try
+            {
+                var account = _accountService.GetAccountByIdAsync(id).Result;
+                return View(account);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        // POST: AccountController/Withdraw/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Withdraw(int id, decimal amount)
+        {
+            try
+            {
+                _ = _accountService.WithdrawFromAccountAsync(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+    }
+}

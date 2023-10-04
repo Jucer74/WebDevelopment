@@ -1,0 +1,89 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Eliminar Cuenta";
+}
+
+<h4>Eliminar Cuenta</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Tipo</label>
+            <div class="col-sm-8">
+                @if (Model.AccountType == "A")
+                {
+                    <span>Ahorros</span>
+                }
+                else if (Model.AccountType == "C")
+                {
+                    <span>Corriente</span>
+                }
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Cuenta</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.AccountNumber)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Propietario</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.OwnerName)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Balance</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.BalanceAmount)
+            </div>
+        </div>
+
+        <div class="form-group row mb-3">
+            <label class="col-sm-4 col-form-label">Sobregiro</label>
+            <div class="col-sm-8">
+                @Html.DisplayFor(model => model.OverdraftAmount)
+            </div>
+        </div>
+
+
+
+        <div class="form-group mt-4">
+            <button type="button" class="btn btn-sm btn-danger mr-2" data-toggle="modal" data-target="#deleteConfirmationModal">
+                Eliminar
+            </button>
+            <a asp-action="Index" class="btn btn-sm btn-gris">Cancelar</a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmación -->
+<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Estás seguro de que deseas eliminar esta cuenta?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form asp-action="Delete" method="post">
+                    <input type="hidden" asp-for="Id" />
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
