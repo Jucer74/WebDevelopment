@@ -4,39 +4,6 @@
     ViewData["Title"] = "Detalles";
 }
 
-<style>
-    body {
-        text-align: right;
-        font-family: Arial, sans-serif;
-    }
-
-    .row {
-        justify-content: left;
-    }
-
-    .col-md-4 {
-        margin-left: 20px;
-    }
-
-    .form-check-label {
-        text-align: left;
-    }
-
-    .form-group {
-        text-align: left;
-    }
-
-    .btn-verde {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    .btn-gris {
-        background-color: #808080;
-        color: white;
-    }
-</style>
-
 <h4>Información Cuenta</h4>
 <hr />
 <div class="row">
@@ -88,5 +55,5 @@
 <div class="mt-4">
     <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-sm btn-verde mr-2">Editar</a>
     <a asp-action="Index" class="btn btn-sm btn-gris mr-2">Volver a la lista</a>
-    <img src="~/images/devolver.png" alt="Devuelta" width="20" height="20">
+
 </div>
