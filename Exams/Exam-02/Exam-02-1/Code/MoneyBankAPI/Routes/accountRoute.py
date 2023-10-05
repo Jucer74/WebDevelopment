@@ -4,12 +4,15 @@ from fastapi.responses import JSONResponse
 from Models.accountModel import AccountModel
 from Schemas.accountSchema import AccountSchema
 from Config.db import SessionLocal
+from sqlalchemy import func
 
 # enrutador para user <-> fastapi <-> db
 router = APIRouter()
 
 # global variable
 MAX_OVERDRAFT = 1000000
+
+
 
 # GET /Accounts
 @router.get("/Accounts", tags=["Accounts"])
@@ -23,18 +26,23 @@ async def get_all_accounts():
 
 
 # GET /Accounts/{id}
-@router.get("/Accounts/{id}", tags=["Accounts"])
+@router.get("/Accounts/{id}", response_model=AccountSchema, tags=["Accounts"])
 async def get_account_by_id (id: int):
     try:
-        account = SessionLocal().query(AccountModel).filter(AccountModel.Id == id).first()
-        if account is None:
+        session = SessionLocal()
+        account = session.query(AccountModel).filter(AccountModel.Id == id).first()
+        if account is None or id > session.query(func.max(AccountModel.Id)).scalar(): # check if id esta out of bounds
+            # pero nuevamente, no funciona. 
+            # Ignora el if y lanza el error de abajo
             raise HTTPException(status_code=404, detail="Account not found")
+        return account
     except HTTPException as httpException:
         return httpException
     except Exception as exception:
-        return JSONResponse(status_code=500, content={"Error": "Internal Server Error", "message": str(exception)})
+        return JSONResponse(status_code=500, content={"Error": f"Internal Server Error => {str(exception)}"})
     finally:
-        return account
+        #return account
+        session.close()
     
 
 # POST /Accounts
@@ -45,21 +53,22 @@ async def create_account (account: AccountSchema):
         new_account = AccountModel(
             AccountType = account.AccountType,
             CreationDate = account.CreationDate,
-            AccountNumber = account.AccountNumber,
+            AccountNumber = int(account.AccountNumber),
             OwnerName = account.OwnerName,
             BalanceAmount = account.BalanceAmount,
             OverdraftAmount = 0 if account.AccountType == "A" else account.BalanceAmount + MAX_OVERDRAFT
             # si es cuenta de ahorros, no tiene sobregiro 
         )
-
-        if account.AccountType not in ["A", "C"]:
-            raise HTTPException(status_code=500, detail="Account type must be A or C, else is not valid.")
+        
+        #mejor con pydantic y validator en el schema
+        #if account.AccountType not in ["A", "C"]:
+        #    raise HTTPException(status_code=400, detail="Account type must be A or C, else is not valid.")
         
         
         # api => db
-        SessionLocal().add(new_account)
-        SessionLocal().commit()
-        SessionLocal().refresh(new_account)
+        session.add(new_account)
+        session.commit()
+        session.refresh(new_account)
         return new_account
 
     except Exception as exception:
@@ -73,7 +82,7 @@ async def create_account (account: AccountSchema):
 async def update_account(id: int, account: AccountSchema):
     session = SessionLocal()
     try:
-        updated_account = SessionLocal().query(AccountModel).filter(AccountModel.Id == id).first()
+        updated_account = session.query(AccountModel).filter(AccountModel.Id == id).first()
         if updated_account is None:
             raise HTTPException(status_code=404, detail="Account not found!")
         
@@ -85,8 +94,8 @@ async def update_account(id: int, account: AccountSchema):
         updated_account.OverdraftAmount = account.OverdraftAmount
         
         # api => db
-        SessionLocal().commit()
-        SessionLocal().refresh(updated_account)
+        session.commit()
+        session.refresh(updated_account)
         return updated_account
 
     except HTTPException as httpException:
@@ -103,13 +112,13 @@ async def update_account(id: int, account: AccountSchema):
 async def delete_account(id: int):
     session = SessionLocal()
     try:
-        account_to_delete = SessionLocal().query(AccountModel).filter(AccountModel.Id == id).first()
+        account_to_delete = session.query(AccountModel).filter(AccountModel.Id == id).first()
         if account_to_delete is None:
             raise HTTPException(status_code=404, detail="Account not found, cannot be removed.")
         
         # api => db
-        SessionLocal().delete(account_to_delete)
-        SessionLocal().commit()
+        session.delete(account_to_delete)
+        session.commit()
         return {"message": "Account removed successfully!"}
 
     except HTTPException as httpException:
@@ -126,7 +135,7 @@ async def account_deposit(id: int, value_amount: float | int):
     session = SessionLocal()
     value_amount = Decimal(value_amount)
     try:
-        account_to_deposit = SessionLocal().query(AccountModel).filter(AccountModel.Id == id).first()
+        account_to_deposit = session.query(AccountModel).filter(AccountModel.Id == id).first()
         if account_to_deposit is None:
             raise HTTPException(status_code=404, detail="Account not found, it cannot be deposited.")
         
@@ -137,9 +146,11 @@ async def account_deposit(id: int, value_amount: float | int):
             account_to_deposit.OverdraftAmount = account_to_deposit.OverdraftAmount - value_amount
         
         # api => db
-        SessionLocal().commit()
-        SessionLocal().refresh(account_to_deposit)
-        return {"message": "Deposit made successfully!"}
+        session.commit()
+        session.refresh(account_to_deposit)
+        return {"message": "Deposit made successfully!",
+                "account": f"ID {account_to_deposit.Id}  | {account_to_deposit.OwnerName}",
+                "amount": value_amount}
 
     except HTTPException as httpException:
         session.rollback()
@@ -157,7 +168,7 @@ async def account_withdraw(id: int, value_amount: float | int):
     session = SessionLocal()
     value_amount = Decimal(value_amount)  
     try:
-        account_to_withdraw = SessionLocal().query(AccountModel).filter(AccountModel.Id == id).first()
+        account_to_withdraw = session.query(AccountModel).filter(AccountModel.Id == id).first()
         if account_to_withdraw is None:
             raise HTTPException(status_code=404, detail="Account not found, it cannot be withdrawn.")
         
@@ -165,7 +176,7 @@ async def account_withdraw(id: int, value_amount: float | int):
             if value_amount > account_to_withdraw.BalanceAmount:
                 raise HTTPException(status_code=400, detail="Fondos insuficientes, no se puede retirar más.")
         elif account_to_withdraw.AccountType == "C":    
-            if account_to_withdraw.OverdraftAmount > 0 and account_to_withdraw.BalanceAmoun < MAX_OVERDRAFT:
+            if account_to_withdraw.OverdraftAmount > 0 and account_to_withdraw.BalanceAmount < MAX_OVERDRAFT:
                 account_to_withdraw.OverdraftAmount = MAX_OVERDRAFT - account_to_withdraw.BalanceAmount
             else:
                 raise HTTPException(status_code=400, detail="Fontos Insuficientes, no se puede retirar más.") # el sobregiro maximo es de 1 millon (negative balance max)
@@ -173,9 +184,11 @@ async def account_withdraw(id: int, value_amount: float | int):
         account_to_withdraw.BalanceAmount = account_to_withdraw.BalanceAmount - value_amount
         
         # api => db
-        SessionLocal().commit()
-        SessionLocal().refresh(account_to_withdraw)
-        return {"message": "Withdraw made successfully!"}
+        session.commit()
+        session.refresh(account_to_withdraw)
+        return {"message": "Withdraw made successfully!",
+                "account": f"ID {account_to_withdraw.Id}  | {account_to_withdraw.OwnerName}",
+                "amount": value_amount}
 
     except HTTPException as httpException:
         session.rollback()
