@@ -26,15 +26,15 @@ async def get_all_accounts():
 
 
 # GET /Accounts/{id}
-@router.get("/Accounts/{id}", response_model=AccountSchema, tags=["Accounts"])
+@router.get("/Accounts/{id}", tags=["Accounts"])
 async def get_account_by_id (id: int):
     try:
         session = SessionLocal()
         account = session.query(AccountModel).filter(AccountModel.Id == id).first()
-        if account is None or id > session.query(func.max(AccountModel.Id)).scalar(): # check if id esta out of bounds
+        if account is None: #or id > session.query(func.max(AccountModel.Id)).scalar(): # check if id esta out of bounds
             # pero nuevamente, no funciona. 
             # Ignora el if y lanza el error de abajo
-            raise HTTPException(status_code=404, detail="Account not found")
+            raise HTTPException(status_code=404, detail="Account not found", headers=f"ID {id} not found.")
         return account
     except HTTPException as httpException:
         return httpException
