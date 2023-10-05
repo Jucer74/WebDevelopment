@@ -62,7 +62,6 @@ namespace MoneyBankMVC.Controllers
 
                 if (account.AccountType == 'C')
                 {
-                    // Es una cuenta corriente, ajusta el balance inicial
                     account.BalanceAmount += MAX_OVERDRAFT;
                 }
 

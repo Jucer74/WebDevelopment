@@ -1,10 +1,10 @@
 ﻿@model MoneyBankMVC.Models.Account
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Informacion";
 }
 
-<h1>Details</h1>
+<h1>Información Cuenta</h1>
 
 <div>
     <h4>Account</h4>
@@ -48,7 +48,8 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="form-group">
+
+    <a asp-action="Index" class="btn btn-success">Aceptar</a>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </div>

@@ -4,52 +4,68 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
-<h4>Account</h4>
+<h4>Cuentas</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" />
+                <label asp-for="AccountType" class="control-label">Tipo de cuenta</label>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="AccountType" value="A" id="accountTypeA" required>
+                    <label class="form-check-label" for="accountTypeA">Ahorros</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="AccountType" value="C" id="accountTypeC" required>
+                    <label class="form-check-label" for="accountTypeC">Corriente</label>
+                </div>
                 <span asp-validation-for="AccountType" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="AccountNumber" class="control-label"></label>
-                <input asp-for="AccountNumber" class="form-control" />
-                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+
+            <div class="form-group row">
+                <label asp-for="AccountNumber" class="col-sm-2 col-form-label mt-2"></label>
+                <div class="col-sm-10">
+                    <input asp-for="AccountNumber" class="form-control" />
+                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
+
+            <div class="form-group row">
+                <label asp-for="OwnerName" class="col-sm-2 col-form-label mt-2"></label>
+                <div class="col-sm-10">
+                    <input asp-for="OwnerName" class="form-control" />
+                    <span asp-validation-for="OwnerName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OwnerName" class="control-label"></label>
-                <input asp-for="OwnerName" class="form-control" />
-                <span asp-validation-for="OwnerName" class="text-danger"></span>
+
+            <div class="form-group row">
+                <label asp-for="BalanceAmount" class="col-sm-2 col-form-label mt-2"></label>
+                <div class="col-sm-10">
+                    <input asp-for="BalanceAmount" class="form-control" />
+                    <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="BalanceAmount" class="control-label"></label>
-                <input asp-for="BalanceAmount" class="form-control" />
-                <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+
+            <div class="form-group row">
+                <label asp-for="OverdraftAmount" class="col-sm-2 col-form-label mt-2"></label>
+                <div class="col-sm-10">
+                    <input asp-for="OverdraftAmount" class="form-control" />
+                    <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+                </div>
             </div>
+
             <div class="form-group">
-                <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control" />
-                <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Crear" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

@@ -4,64 +4,65 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.AccountType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccountNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OwnerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BalanceAmount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OverdraftAmount)
-            </th>
-            <th>
-                Operaciones
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OwnerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="container">
+    <h1>Cuentas</h1>
+    <p>
+       
+        <a asp-action="Create" class="btn btn-success">  <img src="~/img/plus.svg" alt=""> Crear</a>
+    </p>
+</div>
+<div class="container">
+    <table class="table table-bordered" id="usersTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccountType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AccountNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreationDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OwnerName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BalanceAmount)
+                </th>
+                <th>
+                    Operaciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AccountType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AccountNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OwnerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BalanceAmount)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><img src="~/img/pencil.svg" alt=""></a> |
+                        <a class="btn btn-success" asp-action="Deposit" asp-route-id="@item.Id"><img src="~/img/box-arrow-in-down.svg" alt=""></a> |
+                        <a class="btn btn-primary" asp-action="Withdraw" asp-route-id="@item.Id"><img src="~/img/box-arrow-down.svg" alt=""></a> |
+                        <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id"><img src="~/img/info.svg" alt=""></a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><img src="~/img/trash.svg" alt=""></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

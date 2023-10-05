@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Xml.Linq;
 
 namespace MoneyBankMVC.Models
 {
@@ -23,7 +22,7 @@ namespace MoneyBankMVC.Models
         [DataType(DataType.Date)]
         [DisplayName("Fecha")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
-        public DateTime CreationDate { get; set; } = default!;
+        public DateTime CreationDate { get; set; } = DateTime.Today;
 
         [Required(ErrorMessage = "El nombre es requerido")]
         [StringLength(100, ErrorMessage = "La cantidad de caracteres es de máximo 100")]
@@ -31,14 +30,14 @@ namespace MoneyBankMVC.Models
         public string OwnerName { get; set; } = null!;
 
         [Required(ErrorMessage = "El balance es requerido")]
-        [Range(1.0, 18.2, ErrorMessage = "El balance debe de estar en un rango de 1 y 18.2")]
+        //[Range(1.0, 18.2, ErrorMessage = "El balance debe de estar en un rango de 1 y 18.2")]
         [DisplayName("Balance")]
         public decimal BalanceAmount { get; set; }
 
         [Required(ErrorMessage = "El sobregiro es requerido")]
-        [Range(1.0, 18.2, ErrorMessage = "El balance debe de estar en un rango de 1 y 18.2")]
+        //[Range(1.0, 18.2, ErrorMessage = "El balance debe de estar en un rango de 1 y 18.2")]
         [DisplayName("Sobregiro")]
         public decimal OverdraftAmount { get; set; }
-      
+
     }
 }
