@@ -1,20 +1,13 @@
 {
   "students": [
     {
-      "id": 1,
-      "firstName": "Kelcie",
-      "lastName": "Everson",
-      "email": "keverson0@nasa.gov",
-      "sex": "F",
-      "dateOfBirth": "1995-03-22"
-    },
-    {
-      "id": 2,
-      "firstName": "Marc",
-      "lastName": "Ilyushkin",
-      "email": "milyushkin1@digg.com",
-      "sex": "M",
-      "dateOfBirth": "2000-09-08"
+      "Id": 2,
+      "FirstName": "Marco",
+      "LastName": "Ilyushkin",
+      "Email": "milyushkin1@digg.com",
+      "Sex": "M",
+      "DateOfBirth": "2000-09-08T00:00:00",
+      "id": 2
     },
     {
       "id": 3,
@@ -8002,11 +7995,20 @@
     },
     {
       "id": 1001,
-      "firstName": "Julio",
-      "lastName": "Robles",
+      "firstName": "Julio Cesar",
+      "lastName": "Robles Uribe",
       "email": "jucer74@hotmail.com",
       "sex": "M",
       "dateOfBirth": "1974-10-08"
+    },
+    {
+      "Id": 1002,
+      "FirstName": "Carlos",
+      "LastName": "Serrato",
+      "Email": "example@gmail.com",
+      "Sex": "M",
+      "DateOfBirth": "2023-10-19T15:38:00",
+      "id": 1002
     }
   ]
 }

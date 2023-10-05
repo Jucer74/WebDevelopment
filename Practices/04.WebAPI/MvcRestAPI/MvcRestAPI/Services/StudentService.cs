@@ -2,6 +2,7 @@
 using MvcRestAPI.Models;
 using RestSharp;
 using System.Net;
+using Microsoft.Extensions.Options;
 
 namespace MvcRestAPI.Services
 {
@@ -9,23 +10,47 @@ namespace MvcRestAPI.Services
     {
 
 
-       private readonly IConfiguration _configuration1;
+       private readonly IConfiguration _configuration;
        private readonly RestClient _restClient;
        private readonly string studentsApiEndpoint;
+       private static List<Student> _studentsList = new List<Student>();
+
        public StudentService(IConfiguration configuration, RestClient restClient) { 
-            _configuration1 = configuration;
+            _configuration = configuration;
             _restClient = restClient;
             studentsApiEndpoint = string.Format("{0}/students", configuration.GetSection("BaseUrl").Value!);
         }
 
-        public Student Create(Student student)
+
+        private int GetNextSequenceId()
         {
-            throw new NotImplementedException();
+            return _studentsList.Max(x => x.Id) + 1;
+        }
+
+        public void Create(Student student)
+
+        { 
+            student.Id = GetNextSequenceId();
+
+            var request = new RestRequest(studentsApiEndpoint, Method.Post);
+
+            var body = JsonConvert.SerializeObject(student);
+
+            request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+            var response = _restClient.Post(request);
+
         }
 
         public void Delete(int id, Student student)
         {
-            throw new NotImplementedException();
+            var studentToDelete = GetById(id);
+
+            if (studentToDelete.Id == student.Id)
+            {
+                var request = new RestRequest($"{studentsApiEndpoint}/{id}", Method.Delete);
+                _restClient.Delete(request);
+            }
         }
 
         public List<Student> GetAll()
@@ -36,24 +61,48 @@ namespace MvcRestAPI.Services
 
             var responseData = response.Content!;
 
-            var students = new List<Student>(); 
-
             if (response.IsSuccessful && response.StatusCode == HttpStatusCode.OK)
             {
-                students = JsonConvert.DeserializeObject<List<Student>>(responseData);
+                _studentsList = JsonConvert.DeserializeObject<List<Student>>(responseData)!;
             }
 
-             return students!;
+             return _studentsList!;
         }
 
         public Student GetById(int id)
         {
-            throw new NotImplementedException();
+            var request = new RestRequest($"{studentsApiEndpoint}/{id}", Method.Get);
+
+            var response = _restClient.Get(request);
+
+            var responseData = response.Content!;
+
+            var student = new Student();
+
+            if (response.IsSuccessful && response.StatusCode == HttpStatusCode.OK)
+            {
+                student = JsonConvert.DeserializeObject<Student>(responseData);
+            }
+
+            return student!;
+
         }
 
-        public Student Update(int id, Student student)
+        public void Update(int id, Student student)
         {
-            throw new NotImplementedException();
+            var studentToUpdate = GetById(id);
+
+            if (studentToUpdate.Id == student.Id)
+            {
+
+                var request = new RestRequest($"{studentsApiEndpoint}/{id}", Method.Put);
+
+                var body = JsonConvert.SerializeObject(student);
+
+                request.AddParameter("application/json", body, ParameterType.RequestBody);
+
+                _restClient.Put(request);
+            }
         }
     }
 }

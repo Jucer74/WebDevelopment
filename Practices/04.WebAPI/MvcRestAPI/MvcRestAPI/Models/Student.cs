@@ -7,7 +7,7 @@ namespace MvcRestAPI.Models
         [Key]
         [Required]
         [Display(Name = "Id")]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "FirtName is Required")]
         [StringLength(100)]

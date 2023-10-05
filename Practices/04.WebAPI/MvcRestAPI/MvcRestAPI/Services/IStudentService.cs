@@ -7,9 +7,9 @@ namespace MvcRestAPI.Services
 
         Student GetById(int id);
 
-        Student Create(Student student);
+        void Create(Student student);
 
-        Student Update(int id, Student student);
+        void Update(int id, Student student);
 
         void Delete(int id, Student student);
     }
