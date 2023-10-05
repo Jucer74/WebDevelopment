@@ -1,4 +1,6 @@
-# Install Libraries
+# IMPORTANTE, CAMBIAR EL PUERTO EN .ENV, NO TENIA EL PUERO 3306 DISPONIBLE, ASI QUE USE 3305
+
+## Install Libraries
 
 - pip install fastapi
 - pip install uvicorn
