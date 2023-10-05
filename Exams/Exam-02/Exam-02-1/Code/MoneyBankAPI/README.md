@@ -19,6 +19,11 @@ source 03_TAB_Accounts.sql
 source 04_INS_Accounts.sql
 
 ```
+## Database URL
 
+En `.env` debe haber:
+```bash
+DATABASE_URL="mysql://moneybankuser:M0n3yB4nkUs3r*01@localhost:3306/moneybankdb"
+```
 ---
 
