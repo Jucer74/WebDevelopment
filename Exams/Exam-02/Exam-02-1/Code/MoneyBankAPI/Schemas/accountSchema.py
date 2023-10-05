@@ -31,3 +31,11 @@ class AccountSchema(BaseModel):
         return value
     
 
+class AccountEditSchema(BaseModel):
+    #Id: int <- sql ya sabe que es autoincremental
+    AccountType: str
+    CreationDate: datetime
+    #AccountNumber: str # no se puede cambiar (no se deberia?)
+    OwnerName: str
+    BalanceAmount: float
+    OverdraftAmount: float

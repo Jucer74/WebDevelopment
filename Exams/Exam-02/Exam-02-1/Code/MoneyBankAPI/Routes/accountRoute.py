@@ -2,7 +2,7 @@ from decimal import Decimal
 from fastapi import APIRouter, HTTPException
 from fastapi.responses import JSONResponse
 from Models.accountModel import AccountModel
-from Schemas.accountSchema import AccountSchema
+from Schemas.accountSchema import AccountEditSchema, AccountSchema
 from Config.db import SessionLocal
 from sqlalchemy import func
 
@@ -79,7 +79,7 @@ async def create_account (account: AccountSchema):
 
 # PUT /Accounts/{id}
 @router.put("/Accounts/{id}", tags=["Accounts"])
-async def update_account(id: int, account: AccountSchema):
+async def update_account(id: int, account: AccountEditSchema):
     session = SessionLocal()
     try:
         updated_account = session.query(AccountModel).filter(AccountModel.Id == id).first()
@@ -88,7 +88,11 @@ async def update_account(id: int, account: AccountSchema):
         
         updated_account.AccountType = account.AccountType
         updated_account.CreationDate = account.CreationDate
-        updated_account.AccountNumber = account.AccountNumber
+        #if updated_account.AccountNumber != account.AccountNumber:
+            #raise HTTPException(status_code=400, detail="Account number cannot be changed.") #if account.AccountNumber is None else int(account.AccountNumber)
+        # should be immutable o que?
+        # update: schema alternativo <- sin este campo
+
         updated_account.OwnerName = account.OwnerName
         updated_account.BalanceAmount = account.BalanceAmount
         updated_account.OverdraftAmount = account.OverdraftAmount
@@ -175,13 +179,15 @@ async def account_withdraw(id: int, value_amount: float | int):
         if account_to_withdraw.AccountType == "A":
             if value_amount > account_to_withdraw.BalanceAmount:
                 raise HTTPException(status_code=400, detail="Fondos insuficientes, no se puede retirar más.")
-        elif account_to_withdraw.AccountType == "C":    
-            if account_to_withdraw.OverdraftAmount > 0 and account_to_withdraw.BalanceAmount < MAX_OVERDRAFT:
-                account_to_withdraw.OverdraftAmount = MAX_OVERDRAFT - account_to_withdraw.BalanceAmount
+        elif account_to_withdraw.AccountType == "C": 
+            if value_amount <= account_to_withdraw.BalanceAmount:
+                account_to_withdraw.BalanceAmount -= value_amount
+                if account_to_withdraw.OverdraftAmount > 0 and  account_to_withdraw.BalanceAmount < MAX_OVERDRAFT:
+                    account_to_withdraw.OverdraftAmount = MAX_OVERDRAFT - account_to_withdraw.BalanceAmount
+                
             else:
-                raise HTTPException(status_code=400, detail="Fontos Insuficientes, no se puede retirar más.") # el sobregiro maximo es de 1 millon (negative balance max)
+                raise HTTPException(status_code=400, detail="Fondos Insuficientes, no se puede retirar más.") # el sobregiro maximo es de 1 millon (negative balance max)
         
-        account_to_withdraw.BalanceAmount = account_to_withdraw.BalanceAmount - value_amount
         
         # api => db
         session.commit()
