@@ -1,22 +1,22 @@
 from fastapi import APIRouter, HTTPException, Depends
 from fastapi.responses import JSONResponse
+from sqlalchemy.orm import Session
+from decimal import Decimal
 from Models.accountsModel import AccountsModel
 from Schemas.accountsSchema import AccountsSchema
 from Config.database import SessionLocal
-from sqlalchemy.orm import Session
-from decimal import Decimal
 
 # Crea un nuevo enrutador
 router = APIRouter()
 
 # Constante para el valor máximo de sobregiro
-MAX_OVERDRAFT = 1000000.00
+MAX_OVERDRAFT = Decimal('1000000.00')
 
 # Función para validar el balance y sobregiro
-def validate_balance_and_overdraft(balance: float, overdraft: float, withdrawal: float) -> bool:
+def validate_balance_and_overdraft(balance: Decimal, overdraft: Decimal, withdrawal: Decimal) -> bool:
     return balance + overdraft >= withdrawal
 
-# Read all accounts
+# Leer todas las cuentas
 @router.get("/accounts", tags=["Accounts"])
 async def get_all_accounts():
     try:
@@ -28,7 +28,7 @@ async def get_all_accounts():
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
-# Read an account by Id
+# Leer una cuenta por ID
 @router.get("/accounts/{id}", tags=["Accounts"])
 async def get_account_by_id(id: int):
     try:
@@ -44,7 +44,7 @@ async def get_account_by_id(id: int):
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
-# Delete an account
+# Eliminar una cuenta
 @router.delete("/accounts/{id}", tags=["Accounts"])
 async def delete_account(id: int):
     try:
@@ -59,26 +59,29 @@ async def delete_account(id: int):
         session.commit()
         session.close()
 
-        return JSONResponse(status_code=204)  # Respuesta exitosa sin contenido
+        # Devuelve un mensaje de éxito con un código 200 OK y un mensaje personalizado
+        return JSONResponse(status_code=200, content={"message": f"Account with ID {id} has been deleted successfully."})
     
     except HTTPException as http_exc:
         session.rollback()
         raise http_exc
     except Exception as e:
+        # En caso de un error inesperado, devuelve un mensaje de error con un código 500 Internal Server Error
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
 
-# Create a new account
+
+# Crear una nueva cuenta
 @router.post("/accounts", tags=["Accounts"])
 async def create_account(account: AccountsSchema):
     try:
         session = SessionLocal()
         
         # Validaciones
-        if account.BalanceAmount < 0:
+        if account.BalanceAmount < Decimal('0'):
             raise HTTPException(status_code=400, detail="Balance must be greater than or equal to 0")
         
-        if account.AccountType == "Corriente":
+        if account.AccountType == "C":
             account.BalanceAmount += MAX_OVERDRAFT
         
         new_account = AccountsModel(
@@ -86,7 +89,7 @@ async def create_account(account: AccountsSchema):
             AccountNumber=account.AccountNumber,
             OwnerName=account.OwnerName,
             BalanceAmount=account.BalanceAmount,
-            OverdraftAmount=0 if account.AccountType == "Ahorros" else MAX_OVERDRAFT
+            OverdraftAmount=Decimal('0') if account.AccountType == "A" else MAX_OVERDRAFT
         )
         
         session.add(new_account)
@@ -102,7 +105,7 @@ async def create_account(account: AccountsSchema):
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
-# Update an account
+# Actualizar una cuenta
 @router.put("/accounts/{id}", tags=["Accounts"])
 async def update_account(id: int, account: AccountsSchema):
     try:
@@ -119,7 +122,7 @@ async def update_account(id: int, account: AccountsSchema):
         existing_account.OwnerName = account.OwnerName
 
         # Si el tipo de cuenta cambia a Corriente, actualiza el balance y el sobregiro
-        if account.AccountType == "Corriente":
+        if account.AccountType == "C":
             existing_account.BalanceAmount = account.BalanceAmount + MAX_OVERDRAFT
             existing_account.OverdraftAmount = MAX_OVERDRAFT
 
@@ -136,7 +139,7 @@ async def update_account(id: int, account: AccountsSchema):
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
-# Deposit to an account
+# Depositar en una cuenta
 @router.post("/accounts/{id}/deposit", tags=["Accounts"])
 async def deposit_to_account(id: int, deposit_amount: Decimal):
     try:
@@ -154,7 +157,7 @@ async def deposit_to_account(id: int, deposit_amount: Decimal):
 
         # Si la cuenta es Corriente y el balance actualizado es menor que el MAX_OVERDRAFT,
         # actualiza el sobregiro
-        if existing_account.AccountType == "Corriente" and existing_account.BalanceAmount < MAX_OVERDRAFT:
+        if existing_account.AccountType == "C" and existing_account.BalanceAmount < MAX_OVERDRAFT:
             existing_account.OverdraftAmount = MAX_OVERDRAFT - existing_account.BalanceAmount
 
         session.commit()
@@ -169,7 +172,7 @@ async def deposit_to_account(id: int, deposit_amount: Decimal):
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
-# Withdraw from an account
+# Retirar de una cuenta
 @router.post("/accounts/{id}/withdraw", tags=["Accounts"])
 async def withdraw_from_account(id: int, withdrawal_amount: Decimal):
     try:
@@ -184,7 +187,7 @@ async def withdraw_from_account(id: int, withdrawal_amount: Decimal):
             raise HTTPException(status_code=400, detail="Withdrawal amount must be greater than 0")
 
         # Si la cuenta es Corriente, el límite total disponible es el balance más el sobregiro
-        if existing_account.AccountType == "Corriente":
+        if existing_account.AccountType == "C":
             total_limit = existing_account.BalanceAmount + existing_account.OverdraftAmount
         else:
             # Si es una cuenta de Ahorros, el límite total disponible es solo el balance
@@ -198,11 +201,11 @@ async def withdraw_from_account(id: int, withdrawal_amount: Decimal):
                 overdraft_used = withdrawal_amount - existing_account.BalanceAmount
                 existing_account.BalanceAmount = Decimal('0')
 
-                # Solo actualiza el sobregiro si es una cuenta Corriente
-                if existing_account.AccountType == "Corriente":
+                # Siempre actualiza el sobregiro si es una cuenta Corriente
+                if existing_account.AccountType == "C":
                     existing_account.OverdraftAmount -= overdraft_used
         else:
-            raise HTTPException(status_code=400, detail="Fondos Insuficientes")
+            raise HTTPException(status_code=400, detail="Insufficient Funds")
 
         session.commit()
         session.refresh(existing_account)
@@ -215,3 +218,5 @@ async def withdraw_from_account(id: int, withdrawal_amount: Decimal):
         raise http_exc
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
+
+

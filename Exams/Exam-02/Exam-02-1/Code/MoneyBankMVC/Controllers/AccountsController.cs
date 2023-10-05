@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoneyBankMVC.Models;
 using MoneyBankMVC.Services;
+using System;
+using System.Security.Principal;
+using System.Threading.Tasks;
 
 namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
-        // Crear Servicio
         private readonly IAccountService _accountService;
 
         public AccountsController(IAccountService accountService)
@@ -14,28 +16,23 @@ namespace MoneyBankMVC.Controllers
             _accountService = accountService;
         }
 
-
-        // GET: StudentsController
-        public async Task<IActionResult> Index()
+        public async Task<ActionResult> Index()
         {
             var accountsList = await _accountService.GetAll();
             return View(accountsList);
         }
 
-        // GET: StudentsController/Details/5
-        public async Task<IActionResult> Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
             var account = await _accountService.GetById(id);
             return View(account);
         }
 
-        // GET: StudentsController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: StudentsController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Account account)
@@ -51,22 +48,25 @@ namespace MoneyBankMVC.Controllers
             }
         }
 
-        // GET: StudentsController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            var account = _accountService.GetById(id); // Ajusta el método si es necesario
+            var account = await _accountService.GetById(id);
             return View(account);
         }
 
-        // POST: StudentsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Account account)
+        public async Task<ActionResult> Edit(int id, Account account)
         {
             try
             {
-                _accountService.Update(id, account);
-                return RedirectToAction(nameof(Index));
+                if (ModelState.IsValid)
+                {
+                    await _accountService.Update(id, account);
+                    return RedirectToAction(nameof(Index));
+                }
+
+                return View(account);
             }
             catch
             {
@@ -74,14 +74,13 @@ namespace MoneyBankMVC.Controllers
             }
         }
 
-        // GET: StudentsController/Delete/5
-        public ActionResult Delete(int id)
+
+        public async Task<ActionResult> Delete(int id)
         {
-            var account = _accountService.GetById(id); // Ajusta el método si es necesario
+            var account = await _accountService.GetById(id);
             return View(account);
         }
 
-        // POST: StudentsController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, Account account)
@@ -94,6 +93,51 @@ namespace MoneyBankMVC.Controllers
             catch
             {
                 return View();
+            }
+        }
+
+        public async Task<ActionResult> Deposit(int id)
+        {
+            var account = await _accountService.GetById(id);
+            return View(account);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Deposit(int id, decimal amount)
+        {
+            try
+            {
+                await _accountService.Deposit(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                return View();
+            }
+        }
+
+
+        public ActionResult Withdraw(int id)
+        {
+            var account = _accountService.GetById(id);
+            return View(account);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Withdraw(int id, decimal amount)
+        {
+            try
+            {
+                await _accountService.Withdraw(id, amount);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                return View(nameof(Index));
             }
         }
     }
