@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from decimal import Decimal
 from datetime import datetime
 
 class AccountSchema(BaseModel):
@@ -10,3 +11,8 @@ class AccountSchema(BaseModel):
     BalanceAmount: float
     OverdraftAmount: float
 
+class DepositInput(BaseModel):
+    amount: Decimal
+
+class WithdrawInput(BaseModel):
+    amount: Decimal

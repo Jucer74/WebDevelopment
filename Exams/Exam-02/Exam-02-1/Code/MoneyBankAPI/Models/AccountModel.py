@@ -6,13 +6,13 @@ Base = declarative_base()
 class AccountModel(Base):
     __tablename__ = "Accounts"
 
-    Id = Column(Integer, primary_key=True)
-    AccountType = Column(String(1))
-    CreationDate = Column(DateTime)
-    AccountNumber = Column(String(10))
-    OwnerName = Column(String(100))
-    BalanceAmount = Column(Numeric(18, 2))
-    OverdraftAmount = Column(Numeric(18, 2))
+    Id = Column(Integer, primary_key=True, index=True)
+    AccountType = Column(String(1), nullable=False)
+    CreationDate = Column(DateTime, nullable=False)
+    AccountNumber = Column(String(10), nullable=False)
+    OwnerName = Column(String(100), nullable=False)
+    BalanceAmount = Column(Numeric(18, 2), nullable=False)
+    OverdraftAmount = Column(Numeric(18, 2), nullable=False)
 
 class Config:
         orm_mode = True

@@ -7,6 +7,7 @@ app = FastAPI()
 
 # Add origins
 origins = [
+    "http://localhost:8000",
     "http://localhost:7197",
     # Agrega aquí otras URLs permitidas si es necesario
 ]
