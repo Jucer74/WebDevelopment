@@ -18,7 +18,6 @@ namespace MoneyBankMVC.Controllers
         {
             // Consumir FastAPI para crear una cuenta
             var newAccountData = new { AccountType = "Savings", OwnerName = "John Doe", BalanceAmount = 1000.0 };
-            var createdAccount = _fastAPIService.Create<Account>("api/Account", newAccountData, _fastAPIService.Get_restClient());
 
             // Realizar otras operaciones con FastAPI según sea necesario
 

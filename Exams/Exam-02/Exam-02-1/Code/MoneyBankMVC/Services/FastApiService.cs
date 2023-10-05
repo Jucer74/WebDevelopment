@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MoneyBankMVC.Controllers;
 using MoneyBankMVC.Models;
 using RestSharp;
 using RestSharpMethod = RestSharp.Method; // Alias para RestSharp.Method
@@ -8,25 +9,31 @@ namespace MoneyBankMVC.Services
 {
     public class FastAPIService
     {
-        private readonly string fastApiBaseUrl = "localhost:8000"; // Ajusta la URL de tu servicio FastAPI
-        private readonly RestClient _restClient;
+        public  string fastApiBaseUrl = "localhost:8000"; // Ajusta la URL de tu servicio FastAPI
+        public RestClient restClient;
+
+
+        public RestClient RestClient { get => restClient; set => restClient = value; }
 
         public FastAPIService()
         {
-            _restClient = new RestClient(fastApiBaseUrl);
+            restClient = new RestClient(fastApiBaseUrl);
+
         }
 
-        public RestClient Get_restClient<T>()
+        public RestClient GetRestClient()
         {
-            return _restClient;
+
+            return restClient;
         }
 
-        public T Create<T>(string endpoint, object data, RestClient _restClient)
+
+        public async Task<Account> CreateAsync(string endpoint, object data, RestClient restClient)
         {
             var request = new RestRequest(endpoint, RestSharpMethod.Post)
                 .AddJsonBody(data);
 
-            var response = _restClient.Execute<Account>(request);
+            var response = await restClient.ExecuteAsync<Account>(request);
 
             if (response.IsSuccessful)
             {
@@ -34,20 +41,14 @@ namespace MoneyBankMVC.Services
             }
             else
             {
+                // Lanza una excepción con el mensaje de error de la respuesta
                 throw new Exception($"Error al realizar la solicitud a {endpoint}: {response.ErrorMessage}");
             }
         }
 
+
         // Define métodos para otras operaciones como obtener todos los registros, obtener un registro por ID, eliminar, actualizar, etc.
     }
 
-    internal class RestClient
-    {
-        private string fastApiBaseUrl;
 
-        public RestClient(string fastApiBaseUrl)
-        {
-            this.fastApiBaseUrl = fastApiBaseUrl;
-        }
-    }
 }
