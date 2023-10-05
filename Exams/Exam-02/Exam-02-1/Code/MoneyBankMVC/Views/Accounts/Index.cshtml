@@ -52,8 +52,16 @@
                         @Html.DisplayFor(modelItem => item.OwnerName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.BalanceAmount)
+                        @if (item.OverdraftAmount > 0)
+                        {
+                            <span style="color: red;">@item.BalanceAmount</span>
+                        }
+                        else
+                        {
+                            @item.BalanceAmount
+                        }
                     </td>
+
                     <td>
                         <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><img src="~/img/pencil.svg" alt=""></a> |
                         <a class="btn btn-success" asp-action="Deposit" asp-route-id="@item.Id"><img src="~/img/box-arrow-in-down.svg" alt=""></a> |
