@@ -1,0 +1,7 @@
+{
+    "Accounts": [
+        { "id": 1, "accountType": "C", "creationDate": "2023-06-30", "accountNumber": "3016892501", "ownerName": "Yurley Orejuela Ramirez", "balanceAmount": 1500000, "overdraftAmount": 0 }, 
+        { "id": 2, "accountType": "A", "creationDate": "2023-07-23", "accountNumber": "5263418932", "ownerName": "Libia Oquenda", "balanceAmount": 250000, "overdraftAmount": 0 }, 
+        { "id": 3, "accountType": "C", "creationDate": "2023-08-25", "accountNumber": "6703001327", "ownerName": "John Fredy Vásquez Izquierdo", "balanceAmount": 50000, "overdraftAmount": 950000 }
+    ]
+}
