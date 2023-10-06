@@ -159,5 +159,9 @@ namespace MoneyBankMVC.Controllers
         {
           return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+        public IActionResult Deposit()
+        {
+
+        }
     }
 }
