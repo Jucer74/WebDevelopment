@@ -20,3 +20,38 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+#appLogo {
+}
+
+.minimal-footer {
+  padding-top: 1px;
+  font-size: 0.8rem;
+  height: min-content;
+  line-height: 1.2rem;
+  margin-bottom: 1px;
+  padding-bottom: 0;
+  
+}
+
+/* no funciono esto */
+/*
+:root {
+  --primary: #a3d0f3;
+  --success: #ace8ae;
+  --danger: #f8c8df;
+  --light: #e9edef;
+}
+  
+*/
+
+/* valores numericos in el input form */
+.numeric {
+  -moz-appearance: textfield;
+}
+.numeric::-webkit-inner-spin-button,
+.numeric::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

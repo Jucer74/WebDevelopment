@@ -1,0 +1,102 @@
+@model IEnumerable<MoneyBankMVC.Models.Account>
+
+@{
+    ViewData["Title"] = "Cuentas";
+}
+
+<h1> Cuentas </h1>
+
+<a asp-action="Create" class="btn btn-success">
+    <img src="resources/plus.svg" alt="plus svg ico" />
+    Crear
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <!-- @Html.DisplayNameFor(model => model.AccountType) -->
+                Tipo
+            </th>
+            <th>
+                Cuenta
+            </th>
+            <th>
+                Fecha
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Balance
+            </th>
+            <th>
+                Operaciones
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @item.CreationDate.ToString("dd-MMM-yyyy")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName)
+            </td>
+            <td>
+                @{
+                    var formatBalance = string.Format("$ {0:#,0}", item.BalanceAmount);
+                    if (item.OverdraftAmount > 0)
+                    {
+                        <span class="text-danger"> @formatBalance </span>
+                    }
+                    else
+                    {
+                        @formatBalance
+                    }
+                }
+                <!-- $ @Html.DisplayFor(modelItem => item.BalanceAmount) -->
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">
+                    <div class="btn btn-warning btn-sm">
+                        <img src="resources/pencil.svg" alt="edit ico" width="12" height="12"/>
+                    </div>
+                </a>
+                <a asp-action="Deposit" asp-route-id="@item.Id">
+                    <div class="btn btn-success btn-sm border-success">
+                        <img src="resources/box-arrow-in-down.svg" alt="deposit ico" width="12" height="12" />
+                    </div>
+                </a>
+                
+                <a asp-action="Withdraw" asp-route-id="@item.Id">
+                    <div class="btn btn-primary btn-sm border-primary">
+                        <img src="resources/box-arrow-down.svg" alt="withdraw ico" width="12" height="12" />
+                    </div>
+                </a>
+                
+                <a asp-action="Details" asp-route-id="@item.Id">
+                    <div class="btn btn-outline-light btn-sm border-dark">
+                        <img src="resources/info.svg" alt="info ico" width="12" height="12" />
+                    </div>
+                </a>
+                
+                <a asp-action="Delete" asp-route-id="@item.Id">
+                    <div class="btn btn-danger btn-sm">
+                        <img src="resources/trash.svg" alt="delete ico" width="12" height="12" />
+                    </div>
+                </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

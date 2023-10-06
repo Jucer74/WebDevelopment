@@ -1,0 +1,38 @@
+@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h1>Crear Cuenta</h1>
+
+<form asp-action="Create">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label>Tipo:</label><br />
+                <label>Cuenta:</label><br /><br/> <br/>
+                <label>Propietario:</label><br /><br/>
+                <label>Balance:</label><br /><br/><br/>
+                <label>Sobregiro:</label>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="form-group">
+                <input type="radio" asp-for="AccountType" value="A" /> Ahorros &nbsp; &nbsp; &nbsp;
+                <input type="radio" asp-for="AccountType" value="C" /> Corriente<br />
+                <input asp-for="AccountNumber" class="form-control" placeholder="4281236540" /><br />
+                <input asp-for="OwnerName" class="form-control" placeholder="John Doe" /><br />
+                <input asp-for="BalanceAmount" class="form-control text-right numeric" placeholder="$ 200,00.00" /><br />
+                <input asp-for="OverdraftAmount" class="form-control text-right numeric" placeholder="0.00" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Aceptar" class="btn btn-success" /> &nbsp;
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+
