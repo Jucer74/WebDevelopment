@@ -20,12 +20,16 @@
         </div>
         <div class="col-md-9">
             <div class="form-group">
-                <input type="radio" asp-for="AccountType" value="A" /> Ahorros &nbsp; &nbsp; &nbsp;
-                <input type="radio" asp-for="AccountType" value="C" /> Corriente<br />
-                <input asp-for="AccountNumber" class="form-control" placeholder="4281236540" /><br />
-                <input asp-for="OwnerName" class="form-control" placeholder="John Doe" /><br />
-                <input asp-for="BalanceAmount" class="form-control text-right numeric" placeholder="$ 200,00.00" /><br />
-                <input asp-for="OverdraftAmount" class="form-control text-right numeric" placeholder="0.00" />
+                <label>
+                    <input type="radio" value="A" checked="checked" id="AccountTypeA" name="AccountType"> Ahorros
+                </label>
+                <label>
+                    <input type="radio" value="C" id="AccountTypeC" name="AccountType"> Corriente
+                </label>
+                <input asp-for="AccountNumber" class="form-control" placeholder="4281236540"/><br/>
+                <input asp-for="OwnerName" class="form-control" placeholder="John Doe"/><br/>
+                <input asp-for="BalanceAmount" class="form-control text-right numeric" placeholder="$ 200,00.00"/><br/>
+                <input asp-for="OverdraftAmount" class="form-control text-right numeric" placeholder="0.00"/>
             </div>
         </div>
     </div>

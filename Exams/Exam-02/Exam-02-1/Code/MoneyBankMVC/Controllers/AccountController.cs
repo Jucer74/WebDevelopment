@@ -31,6 +31,10 @@ namespace MoneyBankMVC.Controllers
         public ActionResult Create()
         {
             var createdAccount = new Account();
+            // next id is #accounts + 1
+            //createdAccount.Id = _accountService.GetAll().Result.Count + 1;
+            // max id + 1
+            createdAccount.Id = _accountService.GetAll().Result.Max(a => a.Id) + 1;
             createdAccount.CreationDate = DateTime.Now;
             return View(createdAccount);
         }

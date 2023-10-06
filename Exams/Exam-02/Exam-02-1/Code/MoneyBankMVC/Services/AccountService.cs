@@ -59,6 +59,11 @@ public class AccountService // : IAccountService
         var req = new RestRequest($"{_baseUrl}/Accounts", Method.Post);
         req.AddJsonBody(account);
         var res = await _client.PostAsync(req);
+        Console.WriteLine(res.Content);
+        Console.WriteLine((char)res.StatusCode);
+        Console.WriteLine(res.ErrorMessage);
+        Console.WriteLine(res.ErrorException?.Message);
+        Console.WriteLine(account.ToString());
         
         Account? createdAccount = JsonConvert.DeserializeObject<Account>(res.Content!);
         return createdAccount!;

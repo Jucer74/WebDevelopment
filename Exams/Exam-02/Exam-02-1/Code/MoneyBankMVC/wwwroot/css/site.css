@@ -48,10 +48,10 @@ body {
 
 /* valores numericos in el input form */
 .numeric {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 .numeric::-webkit-inner-spin-button,
 .numeric::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }

@@ -7,10 +7,13 @@ namespace MoneyBankMVC.Models
     [Table("accounts")]
     public class Account
     {
+        //database generates +1
         
-        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         public int Id { get; set; }
+        
+        // the api will generate the id and handle it with the db
 
         [Required] [StringLength(1)] public string AccountType { get; set; } = null!;
 
