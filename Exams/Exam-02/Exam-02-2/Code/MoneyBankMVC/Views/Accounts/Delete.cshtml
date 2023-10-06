@@ -4,69 +4,16 @@
     ViewData["Title"] = "Eliminar Cuenta";
 }
 
-<!-- Integración de Bootstrap 4 y jQuery -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<style>
-    body {
-        background-color: #f0f0f0;
-        font-family: Arial, sans-serif;
-    }
-
-    h4 {
-        color: #333;
-        font-size: 24px;
-        margin-top: 20px;
-    }
-
-    .container {
-        background-color: #fff;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-        padding: 20px;
-        margin-top: 20px;
-    }
-
-    .form-group label {
-        font-weight: bold;
-        color: #333;
-    }
-
-    .btn-eliminar {
-        background-color: #d9534f;
-        color: #fff;
-        border-color: #d43f3a;
-    }
-
-        .btn-eliminar:hover {
-            background-color: #c9302c;
-            border-color: #ac2925;
-        }
-
-    .btn-cancelar {
-        background-color: #ccc;
-        color: #333;
-        border-color: #999;
-    }
-
-        .btn-cancelar:hover {
-            background-color: #bbb;
-            border-color: #888;
-        }
-
-    .modal-title {
-        color: #333;
-    }
-</style>
-
-<div class="container">
+<div class="container mt-5">
     <h4>Eliminar Cuenta</h4>
     <hr />
     <div class="row">
-        <div class="col-md-4">
-            <div class="form-group row mb-3">
+        <div class="col-md-6">
+            <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Tipo</label>
                 <div class="col-sm-8">
                     @if (Model.AccountType == 'A')
@@ -80,28 +27,28 @@
                 </div>
             </div>
 
-            <div class="form-group row mb-3">
+            <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Cuenta</label>
                 <div class="col-sm-8">
                     @Html.DisplayFor(model => model.AccountNumber)
                 </div>
             </div>
 
-            <div class="form-group row mb-3">
+            <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Propietario</label>
                 <div class="col-sm-8">
                     @Html.DisplayFor(model => model.OwnerName)
                 </div>
             </div>
 
-            <div class="form-group row mb-3">
+            <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Balance</label>
                 <div class="col-sm-8">
                     @Html.DisplayFor(model => model.BalanceAmount)
                 </div>
             </div>
 
-            <div class="form-group row mb-3">
+            <div class="form-group row">
                 <label class="col-sm-4 col-form-label">Sobregiro</label>
                 <div class="col-sm-8">
                     @Html.DisplayFor(model => model.OverdraftAmount)
@@ -109,10 +56,10 @@
             </div>
 
             <div class="form-group mt-4">
-                <button type="button" class="btn btn-eliminar mr-2" data-toggle="modal" data-target="#deleteConfirmationModal">
+                <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#deleteConfirmationModal">
                     Eliminar
                 </button>
-                <a asp-action="Index" class="btn btn-cancelar">Cancelar</a>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
             </div>
         </div>
     </div>
@@ -122,7 +69,7 @@
 <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header bg-danger text-white">
                 <h5 class="modal-title" id="deleteModalLabel">Confirmar Eliminación</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -135,7 +82,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <form asp-action="Delete" method="post">
                     <input type="hidden" asp-for="Id" />
-                    <input type="submit" value="Eliminar" class="btn btn-eliminar" />
+                    <input type="submit" value="Eliminar" class="btn btn-danger" />
                 </form>
             </div>
         </div>

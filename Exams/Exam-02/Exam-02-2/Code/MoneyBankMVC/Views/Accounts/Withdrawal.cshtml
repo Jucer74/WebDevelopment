@@ -1,14 +1,14 @@
 ﻿@model MoneyBankMVC.Models.Account
 
 @{
-    ViewData["Title"] = "Depositar";
+    ViewData["Title"] = "Withdrawal";
 }
 
-<h4>Depositar</h4>
+<h4>Retirar</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Deposit" method="post">
+        <form asp-action="Withdrawal" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
 
