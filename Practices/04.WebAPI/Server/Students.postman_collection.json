@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "a5ff8f9a-d975-4c8d-b528-890b3ddc21ac",
+		"name": "Students",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7220587"
+	},
+	"item": [
+		{
+			"name": "GetAllStudents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/students/",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"students",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetStudentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/students/5",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"students",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostStudent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"firstName\": \"Julio\",\r\n    \"lastName\": \"Robles\",\r\n    \"email\": \"jucer74@hotmail.com\",\r\n    \"sex\": \"M\",\r\n    \"dateOfBirth\": \"1974-10-08\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/students",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutStudent",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1001,\r\n    \"firstName\": \"Julio Cesar\",\r\n    \"lastName\": \"Robles Uribe\",\r\n    \"email\": \"jucer74@hotmail.com\",\r\n    \"sex\": \"M\",\r\n    \"dateOfBirth\": \"1974-10-08\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseUrl}}/students/1001",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"students",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteStudent",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BaseUrl}}/students/1001",
+					"host": [
+						"{{BaseUrl}}"
+					],
+					"path": [
+						"students",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
