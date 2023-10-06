@@ -17,7 +17,7 @@ namespace MoneyBankMVC.Models
         [Required(ErrorMessage = "El campo NUMERO DE CUENTA es Requerido")]
         [MaxLength(10, ErrorMessage = "El campo NUMERO DE CUENTA tiene un maximo de caracteres es 10")]
         [RegularExpression(@"\d{10}", ErrorMessage = "El campo NUMERO DE CUENTA solo acepta numeros")]
-        public string AccountName { get; set; } = null!;
+        public string AccountNumber { get; set; } = null!;
 
         [Required(ErrorMessage = "El campo NOMBRE DEL PROPIETARIO es Requerido")]
         [MaxLength(100, ErrorMessage = "El campo NOMBRE DEL PROPIETARIO tiene un maximo de caracteres es 100")]
