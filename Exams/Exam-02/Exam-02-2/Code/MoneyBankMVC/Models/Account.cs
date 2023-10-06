@@ -7,10 +7,12 @@ namespace MoneyBankMVC.Models
         [Key]
         public int Id { get; set; }
 
+        [Display (Name = "Tipo")]
         [Required(ErrorMessage = "El campo Tipo de Cuenta es Requerido)")]
         [RegularExpression("[AC]", ErrorMessage = "El campo Tipo de Cuenta solo permite (A o C)")]
         public char AccountType { get; set; } = 'A';
 
+        [Display(Name = "Fecha")]
         [DataType(DataType.Date)]
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
