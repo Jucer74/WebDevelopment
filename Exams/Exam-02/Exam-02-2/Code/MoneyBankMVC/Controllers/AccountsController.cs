@@ -58,6 +58,16 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
+
+            // Verificar si el número de cuenta ya existe en la base de datos
+            bool isAccountNumberUnique = !_context.Accounts.Any(a => a.AccountNumber == account.AccountNumber);
+
+            if (!isAccountNumberUnique)
+            {
+                ModelState.AddModelError("AccountNumber", "El número de cuenta ya existe.");
+            }
+
+         
             if (ModelState.IsValid)
             {
                 _context.Add(account);

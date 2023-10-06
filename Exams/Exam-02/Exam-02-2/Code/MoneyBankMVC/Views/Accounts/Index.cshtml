@@ -4,6 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
+<style>
+    .balance-negative {
+        color: red;
+    }
+</style>
+
 <h1>Index</h1>
 
 <p>
@@ -48,9 +54,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
+                <td class="@(item.OverdraftAmount > 0 ? "balance-negative" : "")">
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
             </td>
