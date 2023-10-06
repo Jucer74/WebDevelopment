@@ -16,10 +16,10 @@ namespace MoneyBankMVC.Models
         [DataType(DataType.Date)]
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
-        [Required(ErrorMessage = "El Número de Cuenta es requerido.")]
-        [StringLength(10, ErrorMessage = "El Número de Cuenta debe tener una longitud máxima de 10 caracteres.")]
-        [RegularExpression("^[0-9]+$", ErrorMessage = "El Número de Cuenta solo acepta números.")]
-        public string? AccountNumber { get; set; }
+        [Required(ErrorMessage = "El campo Numero de la Cuenta es Requerido")]
+        [MaxLength(10, ErrorMessage = "El campo Numero de La Cuenta tiene una longitud maxima de 10 caracteres")]
+        [RegularExpression(@"\d{10}", ErrorMessage = "El campo Numero de la Cuenta Sólo Acepta Numeros")]
+        public string AccountNumber { get; set; } = null!;
 
         [Required(ErrorMessage = "El campo Nombre del Propietario es Requerido")]
         [MaxLength(100, ErrorMessage = "El campo Nombre del Propietario tiene una longitud maxima de 100 caracteres")]
