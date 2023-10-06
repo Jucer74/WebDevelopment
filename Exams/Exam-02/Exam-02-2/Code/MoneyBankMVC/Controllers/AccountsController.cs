@@ -192,7 +192,93 @@ namespace MoneyBankMVC.Controllers
 
                     //Aplicar la logica del deposito
 
-                    _context.Update(account);
+                    if (transaction.AccountType == 'A')
+                    {
+                        transaction.BalanceAmount += transaction.ValueAmount;
+                    }
+                    else
+                    {
+
+                        if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
+                        {
+                            transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
+}
+                        else
+                        {
+                            transaction.OverdraftAmount = 0;
+                        }
+                    }
+
+                    _context.Update(transaction);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AccountExists(transaction.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
+
+        // GET: Accounts/Withdrawal
+        public async Task<IActionResult> Withdrawal(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            Transaction transaction = MapTransaction(account);
+            transaction.Id = account.Id;
+
+            return View(transaction);
+        }
+
+        public Task<IActionResult> Withdrawal(int id, Transaction transaction)
+        {
+            return Withdrawal(id, transaction);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Withdrawal(int id, Transaction transaction, IActionResult message)
+        {
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Account account = MapAccount(transaction);
+
+                    //Aplicar la logica del retiro
+
+                    if (transaction.AccountType == 'A')
+                    {
+                        if (transaction.ValueAmount <= transaction.BalanceAmount)
+                        {
+                            transaction.BalanceAmount -= transaction.ValueAmount;
+                        }
+                    }
+
+                    _context.Update(transaction);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
