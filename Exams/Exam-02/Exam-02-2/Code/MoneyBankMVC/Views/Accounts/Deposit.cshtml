@@ -1,20 +1,27 @@
-﻿@model MoneyBankMVC.Models.Account
+﻿@model MoneyBankMVC.Models.Transaction
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Deposit";
 }
 
-<h1>Editar Cuenta</h1>
+<h1>Deposit</h1>
+
+<h4>Transaction</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Deposit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="AccountType" class="control-label"></label>
                 <input asp-for="AccountType" class="form-control" />
                 <span asp-validation-for="AccountType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
@@ -37,14 +44,19 @@
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Aceptar" class="btn btn-success" />
+                <label asp-for="ValueAmount" class="control-label"></label>
+                <input asp-for="ValueAmount" class="form-control" />
+                <span asp-validation-for="ValueAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

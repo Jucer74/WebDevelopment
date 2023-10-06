@@ -14,5 +14,6 @@ namespace MoneyBankMVC.Context
         }
 
         public DbSet<Account> Accounts { get; set; }
+
     }
 }
