@@ -58,13 +58,14 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
-            if (ModelState.IsValid)
+            if (account == null)
             {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return BadRequest("Datos no válidos.");
             }
-            return View(account);
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("Obtener", new { id = account.Id }, account);
         }
 
         // GET: Accounts/Edit/5
@@ -185,7 +186,7 @@ namespace MoneyBankMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Deposit(int id, Transaction transaction)
+        public async Task<IActionResult> Deposit(int id, char AccountType, Transaction transaction)
         {
             if (id != transaction.Id)
             {
@@ -199,6 +200,17 @@ namespace MoneyBankMVC.Controllers
                     Account account = MapAccount(transaction);
 
                     //Aplicar logico del Deposito
+                    if (AccountType == transaction.AccountType)
+                      {
+                        
+                    }
+                    else
+                    {
+
+                    }
+
+
+
 
                     _context.Update(transaction);
                     await _context.SaveChangesAsync();
