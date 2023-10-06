@@ -4,6 +4,7 @@ namespace MoneyBankMVC.Services;
 
 public class AccountService : IAccountService
 {
+    private const int MAX_OVERDRAFT = 1000000;
     private readonly MoneybankdbContext _context;
 
     public AccountService(MoneybankdbContext context)
@@ -21,9 +22,18 @@ public class AccountService : IAccountService
         _context.SaveChanges();
     }
 
-    public void Depositar(int id, Account account)
+    public void Depositar(int id, Account account, int Deposit)
     {
-        throw new NotImplementedException();
+        account.BalanceAmount += Deposit;
+
+        if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+        {
+            account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+        }
+        else
+        {
+            account.OverdraftAmount = 0;
+        }
     }
 
     public void Editar(int id, Account account)

@@ -8,7 +8,7 @@ public interface IAccountService
     List<Account> Listar();
     void Crear(Account account);
     void Editar(int id, Account account);
-    void Depositar(int id, Account account);
+    void Depositar(int id, Account account, int Deposit);
 
     void Retirar(int id, Account account);
     Account Informacion(int id);

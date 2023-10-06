@@ -62,6 +62,22 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts/Delete/5
+        public IActionResult Deposit(int id)
+        {
+            var accountToDeposit = _accountService.Informacion(id);
+            return View(accountToDeposit);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Deposit(int id, Account account, int depositAmount)
+        {
+            Console.WriteLine("Valor del depósito: " + depositAmount);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Accounts/Delete/5
         public IActionResult Delete(int id)
         {
             var accountToDelete = _accountService.Informacion(id);
