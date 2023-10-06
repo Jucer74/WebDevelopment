@@ -9,7 +9,7 @@ namespace MoneyBankMVC.Models
         public int Id { get; set; }
         [Display(Name ="Tipo")]
 
-        [Required(ErrorMessage = "(El campo Tipo de cuenta es requerido)")]
+        [Required(ErrorMessage = "(El campo Tipo de Cuenta es Requerido)")]
         [RegularExpression("[AC]",ErrorMessage ="El campo tipo de cuenta solo permite (A O C)")]
 
         public char AccountType { get; set; } = 'A';
@@ -20,7 +20,7 @@ namespace MoneyBankMVC.Models
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
         [Display(Name = "Cuenta")]
-        [Required(ErrorMessage = "El campo numero de cuenta es requerido")]
+        [Required(ErrorMessage = "El campo Numero de la Cuenta es Requerido")]
         [MaxLength(10, ErrorMessage = "El campo Numero de La Cuenta tiene una longitud maxima de 10 caracteres")]
         [RegularExpression(@"^\d{10}", ErrorMessage = "El campo Numero de la Cuenta Solo Acepta Numeros")]
         public string AccountNumber { get; set; } = null!;
@@ -28,7 +28,7 @@ namespace MoneyBankMVC.Models
 
 
         [Display(Name = "Nombre")]
-        [Required(ErrorMessage ="El campo nombre del probetiario es requqerido")]
+        [Required(ErrorMessage = "El campo Nombre del Propietario es Requerido")]
         [MaxLength(100, ErrorMessage = "El campo nombre de propietario tiene una longitud maxima de 100 caracteres")]
         public string OwnerName { get; set; } = null!;
 
