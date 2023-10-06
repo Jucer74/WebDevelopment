@@ -140,6 +140,7 @@ namespace MoneyBankMVC.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
+
         {
             if (_context.Accounts == null)
             {
@@ -153,6 +154,18 @@ namespace MoneyBankMVC.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Deposit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deposit()
+        {
+            return View();
         }
 
         private bool AccountExists(int id)
