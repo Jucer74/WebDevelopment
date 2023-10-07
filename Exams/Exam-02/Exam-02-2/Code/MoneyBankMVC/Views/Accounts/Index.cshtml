@@ -46,11 +46,11 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
-            <td>
-    <span style="color: @(item.OverdraftAmount > 0 ? "red" : "inherit");">
-        @Html.DisplayFor(modelItem => item.BalanceAmount)
-    </span>
-</td>
+                <td>
+                    <span style="color: @(item.OverdraftAmount > 0 ? "red" : "inherit");">
+                        @Html.DisplayFor(modelItem => item.BalanceAmount)
+                    </span>
+                </td>
 
             <td>
                 <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a> |
