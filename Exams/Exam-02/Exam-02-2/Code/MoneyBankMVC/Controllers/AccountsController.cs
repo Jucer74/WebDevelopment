@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
 using System.Transactions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using MoneyBankMVC.Models;
 using Microsoft.EntityFrameworkCore;
-using MoneyBankMVC.Context;
+using MoneyBankMVC.Services;
 
 namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAppDbCont _context;
 
         public AccountsController(AppDbContext context)
         {
@@ -191,23 +188,19 @@ namespace MoneyBankMVC.Controllers
         }
         private Transaction MapTrasaction(Account accountToDeposit)
         {
-            Transaction transaction = new Transaction();
+        Transaction transaction = new Transaction();
 
-            transaction.Id = accountToDeposit.Id;
-            transaction.Accountype = accountToDeposit.AccountType;
-            transaction.AccountNumber = accountToDeposit.AccountNumber;
-            transaction.BalanceAmount = accountToDeposit.BalanceAmount;
-            transaction.OverdraftAmount = accountToDeposit.OverdraftAmount;
-            transaction.CreationDate = accountToDeposit.CreationDate;
-            transaction.OwnerName = accountToDeposit.OwnerName;
+        transaction.Id = accountToDeposit.Id;
+        transaction.Accountype = accountToDeposit.AccountType;
+        transaction.AccountNumber = accountToDeposit.AccountNumber;
+        transaction.BalanceAmount = accountToDeposit.BalanceAmount;
+        transaction.OverdraftAmount = accountToDeposit.OverdraftAmount;
+        transaction.CreationDate = accountToDeposit.CreationDate;
+        transaction.OwnerName = accountToDeposit.OwnerName;
 
             return transaction;
 
         }
 
-        private bool AccountExists(int id)
-        {
-          return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
     }
 }

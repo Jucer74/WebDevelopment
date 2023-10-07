@@ -30,7 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.OverdraftAmount)
             </th>
-            <th></th>
+            <th>Operations</th>
         </tr>
     </thead>
     <tbody>
@@ -54,6 +54,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
             </td>
+
             <td>
                   
                     <a asp-action="Edit" asp-route-id="@item.Id" class=" btn btn-warning"><i class="bi bi-pencil"></i></a>
