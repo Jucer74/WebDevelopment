@@ -81,7 +81,31 @@ public class AccountService : IAccountService
         try
         {
             // Lógica para depositar dinero en la cuenta
-            // Actualiza el saldo de la cuenta y guarda en la base de datos
+
+            if (transaction.AccountType == 'A')
+            {
+                transaction.BalanceAmount += transaction.ValueAmount;
+            }
+            else
+            {
+
+                {
+                    transaction.BalanceAmount += transaction.ValueAmount;
+
+                    if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
+                    {
+                        transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
+                    }
+                    else
+                    {
+                        transaction.OverdraftAmount = 0;
+                    }
+                }
+
+
+            }
+
+            _context.Update(transaction);
 
             await _context.SaveChangesAsync();
             return true;
@@ -98,6 +122,32 @@ public class AccountService : IAccountService
         try
         {
             // Lógica para realizar un retiro de la cuenta
+
+            if (transaction.AccountType == 'A')
+            {
+                if (transaction.ValueAmount <= transaction.BalanceAmount)
+                {
+                    transaction.BalanceAmount -= transaction.ValueAmount;
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                if (transaction.ValueAmount <= transaction.BalanceAmount)
+                {
+                    transaction.BalanceAmount -= transaction.ValueAmount;
+
+                    if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
+                    {
+                        transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
+                    }
+                }
+            }
+
+            _context.Update(transaction);
 
             await _context.SaveChangesAsync();
             return true;
