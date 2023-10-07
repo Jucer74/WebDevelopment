@@ -55,9 +55,11 @@
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
+                    <a asp-action="Deposit" class="btn btn-success" asp-route-id="@item.Id"><i class="bi bi-box-arrow-in-down"></i></a>
+                    <a asp-action="Withdraw" class="btn btn-primary" asp-route-id="@item.Id"><i class="bi bi-box-arrow-down"></i></a>
+                    <a asp-action="Details" class="btn btn-secondary"  asp-route-id="@item.Id"><i class="bi bi-info"></i></a>
+                    <a asp-action="Delete" class="btn btn-danger" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
             </td>
         </tr>
 }

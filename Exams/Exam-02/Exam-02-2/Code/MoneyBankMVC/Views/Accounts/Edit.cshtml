@@ -13,16 +13,20 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" />
-                <span asp-validation-for="AccountType" class="text-danger"></span>
+
+
+            <label asp-for="AccountType" class="control-label">Tipo:</label>
+            <div class="form-check form-check-inline">
+                <input type="radio" asp-for="AccountType" value="A" class="form-check-input" />
+                <label class="form-check-label">Ahorros</label>
             </div>
-            <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            <div class="form-check form-check-inline">
+                <input type="radio" asp-for="AccountType" value="C" class="form-check-input" />
+                <label class="form-check-label">Corriente</label>
             </div>
+
+
+
             <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
                 <input asp-for="AccountNumber" class="form-control" />
