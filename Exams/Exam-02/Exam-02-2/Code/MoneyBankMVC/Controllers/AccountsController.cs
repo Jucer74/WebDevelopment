@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
+using MoneyBankMVC.Models;
 
 namespace MoneyBankMVC.Controllers
 {
@@ -55,15 +56,16 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
-            if (ModelState.IsValid)
+            if (account == null)
             {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return BadRequest("Datos no válidos.");
             }
-            return View(account);
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("Obtener", new { id = account.Id }, account);
         }
 
         // GET: Accounts/Edit/5
@@ -87,7 +89,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
             if (id != account.Id)
             {
@@ -158,5 +160,107 @@ namespace MoneyBankMVC.Controllers
         {
           return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+
+
+
+
+    
+        public async Task<IActionResult> Deposit(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            Transaction transaction = MapTransaction(account);
+
+            return View(transaction);
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deposit(int id, char AccountType, Transaction transaction)
+        {
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    Account account = MapAccount(transaction);
+
+                    //Aplicar logico del Deposito
+                    if (AccountType == transaction.AccountType)
+                      {
+                        
+                    }
+                    else
+                    {
+
+                    }
+
+
+
+
+                    _context.Update(transaction);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AccountExists(transaction.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
+
+        private Account MapAccount(Transaction transaction)
+        {
+            Account account = new Account();
+
+            account.Id = transaction.Id;
+            account.AccountType = transaction.AccountType;
+            account.CreationDate = transaction.CreationDate;
+            account.AccountNumber = transaction.AccountNumber;
+            account.OwnerName = transaction.OwnerName;
+            account.BalanceAmount = transaction.BalanceAmount;
+            account.OverdraftAmount = transaction.OverdraftAmount;
+
+            return account;
+        }
+
+        private Transaction MapTransaction(Account account)
+        {
+            Transaction transaction = new Transaction();
+
+            transaction.Id = account.Id;
+            transaction.AccountType = account.AccountType;
+            transaction.CreationDate = account.CreationDate;
+            transaction.AccountNumber = account.AccountNumber;
+            transaction.OwnerName = account.OwnerName;
+            transaction.BalanceAmount = account.BalanceAmount;
+            transaction.OverdraftAmount = account.OverdraftAmount;
+
+            return transaction;
+        }
+
+
     }
 }
