@@ -12,11 +12,23 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" />
+
+            <div class="form-group d-flex  mb-2">
+                <label asp-for="AccountType" class="control-label">Tipo</label>
+                <div class="form-check  ms-2">
+                    <input asp-for="AccountType" class="form-check-input" type="radio" value="C" id="corrienteRadio" name="AccountType" />
+                    <label class="form-check-label" for="corrienteRadio">Corriente</label>
+                </div>
+
+                <div class="form-check ms-2">
+                    <input asp-for="AccountType" class="form-check-input" type="radio" value="A" id="ahorrosRadio" name="AccountType" />
+                    <label class="form-check-label" for="ahorrosRadio">Ahorros</label>
+                </div>
+
                 <span asp-validation-for="AccountType" class="text-danger"></span>
-            </div>
+            
+    </div>
+
             <div class="form-group">
                 <label asp-for="CreationDate" class="control-label"></label>
                 <input asp-for="CreationDate" class="form-control" />
@@ -39,19 +51,25 @@
             </div>
             <div class="form-group">
                 <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control" />
+                <input asp-for="OverdraftAmount" class="form-control mb-2"/>
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+
+            <div class="d-flex">
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+                <div class="form-group ms-2">
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </div>
             </div>
+
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

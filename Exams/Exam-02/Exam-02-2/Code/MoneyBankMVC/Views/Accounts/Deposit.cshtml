@@ -1,17 +1,18 @@
-﻿@model MoneyBankMVC.Models.Account
+﻿@model MoneyBankMVC.Models.Transaction
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Deposit";
 }
 
-<h1>Edit</h1>
+<h1>Deposit</h1>
 
-<h4>Account</h4>
+<h4>Transaction</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Deposit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
             <input type="hidden" asp-for="Id" />
 
             <div class="form-group d-flex  mb-2">
@@ -29,28 +30,35 @@
                 <span asp-validation-for="AccountType" class="text-danger"></span>
 
             </div>
-
-         
-           
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
-                <input asp-for="AccountNumber" class="form-control" readonly="readonly"/>
+                <input asp-for="AccountNumber" class="form-control" readonly="readonly">
                 <span asp-validation-for="AccountNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OwnerName" class="control-label"></label>
-                <input asp-for="OwnerName" class="form-control" />
+                <input asp-for="OwnerName" class="form-control" readonly="readonly">
                 <span asp-validation-for="OwnerName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="BalanceAmount" class="control-label"></label>
-                <input asp-for="BalanceAmount" class="form-control" readonly disabled>
+                <input asp-for="BalanceAmount" class="form-control" readonly="readonly">
                 <span asp-validation-for="BalanceAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control mb-2" readonly disabled>
+                <input asp-for="OverdraftAmount" class="form-control" readonly="readonly">
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValueAmount" class="control-label"></label>
+                <input asp-for="ValueAmount" class="form-control" />
+                <span asp-validation-for="ValueAmount" class="text-danger"></span>
             </div>
             <div class="d-flex">
                 <div class="form-group">

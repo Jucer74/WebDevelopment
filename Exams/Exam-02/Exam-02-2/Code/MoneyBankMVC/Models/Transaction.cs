@@ -1,6 +1,13 @@
-﻿namespace MoneyBankMVC.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MoneyBankMVC.Models
 {
-    public class Transaction
+    public class Transaction: Account
+
     {
+
+
+       
+        public decimal ValueAmount { get; set; }
     }
 }
