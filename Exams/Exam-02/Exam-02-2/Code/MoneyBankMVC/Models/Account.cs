@@ -35,10 +35,11 @@ namespace MoneyBankMVC.Models
         [Range(0.01, double.MaxValue, ErrorMessage = "El Monto del Balance debe ser mayor a cero.")]
         [DataType(DataType.Currency)]
         public decimal BalanceAmount { get; set; }
-
-        [Display(Name = "Sobregiro")]
-        [Required(ErrorMessage = "El campo Sobregiro es Requerido")]
+        [Display(Name = "Retirar")]
+        [Required(ErrorMessage = " El campo Balance debe ser en formato Moneda")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "El Monto del Balance debe ser mayor a cero.")]
         [DataType(DataType.Currency)]
         public decimal OverdraftAmount { get; set; }
+
     }
 }

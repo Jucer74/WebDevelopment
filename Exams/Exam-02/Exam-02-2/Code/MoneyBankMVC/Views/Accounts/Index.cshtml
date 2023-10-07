@@ -5,11 +5,7 @@
 }
 
 <h1>Index</h1>
-<style>
-    .balance-negative {
-        color: red;
-    }
-</style>
+
 <p>
     <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus"></i> Crear</a>
 </p>
@@ -31,9 +27,8 @@
             <th>
                 @Html.DisplayNameFor(model => model.BalanceAmount)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OverdraftAmount)
-            </th>
+          
+          
             <th>Operaciones</th>
         </tr>
     </thead>
@@ -55,9 +50,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.BalanceAmount)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
+               
+            
+           
             <td>
 
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="bi bi-pencil"></i></a> 
