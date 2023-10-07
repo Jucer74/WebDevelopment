@@ -1,0 +1,66 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear cuenta</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group d-flex w-100 row mb-3">
+                <label asp-for="AccountType" class="control-label col-md-6">Tipo de Cuenta</label>
+
+                <div class="form-check col-md-auto ms-md-3 ms-2">
+                    <input asp-for="AccountType" class="form-check-input" type="radio" value="A" id="radioA" name="AccountType" checked />
+                    <label class="form-check-label" for="radioA">Ahorro</label>
+                </div>
+
+                <div class="form-check col-md-auto ms-md-5 ms-2">
+                    <input asp-for="AccountType" class="form-check-input" type="radio" value="C" id="radioC" name="AccountType" />
+                    <label class="form-check-label" for="radioC">Corriente</label>
+                </div>
+
+                <span asp-validation-for="AccountType" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="AccountNumber" class="control-label col-6"></label>
+                <input placeholder="1234567890" asp-for="AccountNumber" class="form-control col-4 w-25" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="OwnerName" class="control-label col-6"></label>
+                <input placeholder="John Alexander Doe Carter" asp-for="OwnerName" class="form-control col-6 w-50"/>
+                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="BalanceAmount" class="control-label col-6"></label>
+                <input placeholder="200,00.00" asp-for="BalanceAmount" class="form-control col-6 w-25" />
+                <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="OverdraftAmount" class="control-label col-6"></label>
+                <input asp-for="OverdraftAmount" class="form-control col-6 w-25" value=0 readonly="readonly" />
+                <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+            </div>
+            <div class="d-flex">
+
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-success" />
+                </div>
+                <div class="ms-3">
+                    <a class="btn btn-secondary" asp-action="Index">Cancel</a>
+                </div>
+
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

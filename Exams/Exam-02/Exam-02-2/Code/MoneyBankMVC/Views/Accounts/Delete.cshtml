@@ -1,0 +1,52 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar cuenta</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                string accountTypeName = Model.AccountType == 'A' ? "Ahorro" : Model.AccountType == 'C' ? "Corriente" : "";
+            }
+            @accountTypeName
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BalanceAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BalanceAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OverdraftAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OverdraftAmount)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Eliminar" class="btn btn-danger" />
+        <a class="btn btn-secondary ms-3" asp-action="Index">Cancelar</a>
+    </form>
+</div>

@@ -1,0 +1,72 @@
+﻿@model MoneyBankMVC.Models.Transaction
+
+@{
+    ViewData["Title"] = "Deposit";
+}
+
+<h1>Depositar</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Deposit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="AccountType" />
+            <div class="form-group d-flex w-100 row mb-3">
+                <label asp-for="AccountType" class="control-label col-md-6">Tipo de Cuenta</label>
+
+                <div class="form-check col-md-auto ms-md-3 ms-2">
+                    <input asp-for="AccountType" class="form-check-input" type="radio" value="A" id="radioA" name="AccountType" disabled />
+                    <label class="form-check-label" for="radioA">Ahorro</label>
+                </div>
+
+                <div class="form-check col-md-auto ms-md-5 ms-2">
+                    <input asp-for="AccountType" class="form-check-input" type="radio" value="C" id="radioC" name="AccountType" disabled />
+                    <label class="form-check-label" for="radioC">Corriente</label>
+                </div>
+
+                <span asp-validation-for="AccountType" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="AccountNumber" class="control-label col-6"></label>
+                <input asp-for="AccountNumber" class="form-control col-6 w-25" readonly="readonly" />
+                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="OwnerName" class="control-label col-6"></label>
+                <input asp-for="OwnerName" class="form-control col-6 w-50" readonly="readonly" />
+                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="BalanceAmount" class="control-label col-6"></label>
+                <input asp-for="BalanceAmount" class="form-control col-6 w-25" readonly="readonly" />
+                <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="OverdraftAmount" class="control-label col-6"></label>
+                <input asp-for="OverdraftAmount" class="form-control col-6 w-25" readonly="readonly" />
+                <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-3">
+                <label asp-for="ValueAmount" class="control-label col-6"></label>
+                <input asp-for="ValueAmount" class="form-control col-6 w-25" />
+                <span asp-validation-for="ValueAmount" class="text-danger"></span>
+            </div>
+            <div class="d-flex">
+
+                <div class="form-group">
+                    <input type="submit" value="Aceptar" class="btn btn-success" />
+                </div>
+                <div class="ms-3">
+                    <a class="btn btn-secondary" asp-action="Index">Cancelar</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
