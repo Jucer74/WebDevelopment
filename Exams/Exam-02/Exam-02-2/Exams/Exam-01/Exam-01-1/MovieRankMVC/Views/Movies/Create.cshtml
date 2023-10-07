@@ -1,0 +1,101 @@
+﻿@model MovieRankMVC.Models.Movie
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+    header, footer {
+        display: none;
+    }
+</style>
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h1 class="text-center">Create Movie</h1>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group mb-4">
+                            <label asp-for="Poster" class="control-label"></label>
+                            <input asp-for="Poster" class="form-control border border-dark p-2 rounded mt-2" placeholder="ImageName.jpg"/>
+                            <span asp-validation-for="Poster" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        
+                        <div class="form-group mb-4">
+                            <label asp-for="Title" class="control-label"></label>
+                            <input asp-for="Title" class="form-control border border-dark p-2 rounded mt-2" placeholder="Movie Title" />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label asp-for="Synopsis" class="control-label"></label>
+                            <input asp-for="Synopsis" class="form-control border border-dark p-2 rounded mt-2" placeholder="Movie Synopsis, with a brief argument description" />
+                            <span asp-validation-for="Synopsis" class="text-danger"></span>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label asp-for="Year" class="control-label"></label>
+                                    <input asp-for="Year" class="form-control border border-dark p-2 rounded mt-2" placeholder="2023" />
+                                    <span asp-validation-for="Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group mb-4">
+                                    <label asp-for="Duration" class="control-label"></label>
+                                    <input asp-for="Duration" class="form-control border border-dark p-2 rounded mt-2" placeholder="02:45" />
+                                    <span asp-validation-for="Duration" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <label asp-for="Rate" class="control-label mb-1"></label>
+                                <input asp-for="Rate" type="range" min="0" max="10" step="0.1" class="form-control-range custom-range" id="rateRange" />
+                                <span asp-validation-for="Rate" class="text-danger"></span>
+                                <p><span>Selected Rate:</span> <span id="rateValue">0</span></p>
+                            </div>
+                        </div>
+                        
+
+                        <div class="form-group mb-4">
+                            <label asp-for="Genres" class="control-label"></label>
+                            <input asp-for="Genres" class="form-control border border-dark p-2 rounded mt-2" />
+                            <span asp-validation-for="Genres" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <a asp-action="Index" class="btn btn-danger d-inline-block">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const rateRange = document.getElementById('rateRange');
+        const rateValue = document.getElementById('rateValue');
+
+        rateRange.addEventListener('input', function () {
+            rateValue.innerText = rateRange.value;
+        });
+
+        rateValue.innerText = rateRange.value;
+
+    </script>
+}

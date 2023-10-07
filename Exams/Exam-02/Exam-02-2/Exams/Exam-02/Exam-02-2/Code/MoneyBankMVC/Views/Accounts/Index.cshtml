@@ -1,0 +1,89 @@
+﻿@model IEnumerable<MoneyBankMVC.Models.Account>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@{
+    ViewData["Title"] = "Cuentas";
+}
+
+<h2>Cuentas</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-sm btn-verde">
+        <img src="~/images/plus.svg" >Crear </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Tipo
+            </th>
+            <th>
+                Cuenta
+            </th>
+            <th>
+                Fecha
+            </th>
+
+            <th>
+                Nombre
+            </th>
+            <th>
+                Saldo
+            </th>
+
+            <th>Operaciones</th>
+        </tr>
+
+    </thead>
+
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerName)
+                </td>
+                <td class="@(item.OverdraftAmount > 0 ? "balance-negative" : "")">
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
+                <td>
+
+
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-editar ">
+                        <img src="~/images/pencil.svg" alt="Editar" width="20" height="20">
+                    </a>
+                    <a asp-action="Depositar" asp-route-id="@item.Id" class="btn btn-sm btn-verde">
+                        <img src="~/images/box-arrow-in-down.svg" alt="Depositar" width="20" height="20">
+                    </a>
+                    <a asp-action="Retirar" asp-route-id="@item.Id" class="btn btn-sm btn-retirar">
+                        <img src="~/images/box-arrow-down.svg" alt="Retirar" width="20" height="20">
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-gris">
+                        <img src="~/images/info.svg" alt="Detalles" width="20" height="20">
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-eliminar">
+                        <img src="~/images/trash.svg" alt="Eliminar" width="20" height="20">
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
