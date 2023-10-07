@@ -2,6 +2,6 @@
 {
     public class Transaction : Account
     {
-        public decimal ValvueAmount { get;set;}
+        public decimal ValueAmount { get;set;}
     }
 }

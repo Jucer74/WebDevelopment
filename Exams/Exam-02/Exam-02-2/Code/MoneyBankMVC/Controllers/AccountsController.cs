@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
 using MoneyBankMVC.Services;
 
@@ -13,34 +7,39 @@ namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
-        private readonly AppDbContext _context;
+        //private readonly AppDbContext _context;
         private readonly IAccountService _accountService;
-        public AccountsController(AppDbContext context, IAccountService accountService)
+
+        //public AccountsController(AppDbContext context, IAccountService accountService)
+        public AccountsController(IAccountService accountService)
         {
-            _context = context;
+            //_context = context;
             _accountService = accountService;
         }
 
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-              //return _context.Accounts != null ? 
-              //            View(await _context.Accounts.ToListAsync()) :
-              //            Problem("Entity set 'AppDbContext.Accounts'  is null.");
-            var accounts= await _accountService.GetAccountsAsync();
+            //return _context.Accounts != null ?
+            //            View(await _context.Accounts.ToListAsync()) :
+            //            Problem("Entity set 'AppDbContext.Accounts'  is null.");
+            var accounts = await _accountService.GetAccountsAsync();
             return View(accounts);
         }
 
         // GET: Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            //if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            //var account = await _context.Accounts
+            //    .FirstOrDefaultAsync(m => m.Id == id);
+
+            var account =await  _accountService.FindAccountAsync(id);
             if (account == null)
             {
                 return NotFound();
@@ -67,7 +66,7 @@ namespace MoneyBankMVC.Controllers
                 //_context.Add(account);
                 //await _context.SaveChangesAsync();
 
-                account= await _accountService.CreateAccountAsync(account);
+                await _accountService.CreateAccountAsync(account);
                 return RedirectToAction(nameof(Index));
             }
             return View(account);
@@ -76,12 +75,15 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null )
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            //var account = await _context.Accounts.FindAsync(id);
+
+            var account = await _accountService.FindAccountAsync(id);
+
             if (account == null)
             {
                 return NotFound();
@@ -103,22 +105,33 @@ namespace MoneyBankMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                //try
+                //{
+                //    _context.Update(account);
+                //    await _context.SaveChangesAsync();
+                //}
+                //catch (DbUpdateConcurrencyException)
+                //{
+                //    if (!AccountExists(account.Id))
+                //    {
+                //        return NotFound();
+                //    }
+                //    else
+                //    {
+                //        throw;
+                //    }
+                //}
+
+                // Si la Cuenta No Existe
+                // Retornar Error de Validacion
+                if (!_accountService.AccountExists(id))
                 {
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                // Llamar al Servicio para Hacer el Update
+                await _accountService.EditAccountAsync(id, account);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(account);
@@ -127,13 +140,14 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            //var account = await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
+            var account = await _accountService.FindAccountAsync(id);
+
             if (account == null)
             {
                 return NotFound();
@@ -147,37 +161,47 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Accounts == null)
-            {
-                return Problem("Entity set 'AppDbContext.Accounts'  is null.");
-            }
-            var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
-            {
-                _context.Accounts.Remove(account);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+            //if (_context.Accounts == null)
+            //{
+            //    return Problem("Entity set 'AppDbContext.Accounts'  is null.");
+            //}
 
-        private bool AccountExists(int id)
-        {
-          return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
+            //var account = await _context.Accounts.FindAsync(id);
+            //if (account != null)
+            //{
+            //    _context.Accounts.Remove(account);
+            //}
 
 
-
-
-    
-        public async Task<IActionResult> Deposit(int? id)
-        {
-            if (id == null || _context.Accounts == null)
+            var account = await _accountService.FindAccountAsync(id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            //_context.Accounts.Remove(account);
+            //await _context.SaveChangesAsync();
+
+            await _accountService.DeleteAccountAsync(account);
+
+            return RedirectToAction(nameof(Index));
+        }
+
+        //private bool AccountExists(int id)
+        //{
+        //    return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+        //}
+
+        public async Task<IActionResult> Deposit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+
+            //var account = await _context.Accounts.FindAsync(id);
+            var account = await _accountService.FindAccountAsync(id);
             if (account == null)
             {
                 return NotFound();
@@ -187,11 +211,9 @@ namespace MoneyBankMVC.Controllers
             return View(transaction);
         }
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Deposit(int id, char AccountType, Transaction transaction)
+        public async Task<IActionResult> Deposit(int id, Transaction transaction)
         {
             if (id != transaction.Id)
             {
@@ -200,37 +222,15 @@ namespace MoneyBankMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+
+                var account = await _accountService.FindAccountAsync(id);
+                if (account == null)
                 {
-                    Account account = MapAccount(transaction);
-
-                    //Aplicar logico del Deposito
-                    if (AccountType == transaction.AccountType)
-                      {
-                        
-                    }
-                    else
-                    {
-
-                    }
-
-
-
-
-                    _context.Update(transaction);
-                    await _context.SaveChangesAsync();
+                    return NotFound();
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(transaction.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+
+                await _accountService.DepositAsync(account, transaction);
+
                 return RedirectToAction(nameof(Index));
             }
             return View(transaction);
@@ -265,7 +265,5 @@ namespace MoneyBankMVC.Controllers
 
             return transaction;
         }
-
-
     }
 }
