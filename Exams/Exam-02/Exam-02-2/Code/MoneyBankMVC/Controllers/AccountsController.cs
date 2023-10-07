@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
+
 
 namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
-        //ACCOUNT NUMBER
+        // ACCOUNT NUMBER
 
         [AcceptVerbs("Get", "Post")]
         public IActionResult IsAccountNumberAvailable(string accountNumber)
@@ -21,32 +23,40 @@ namespace MoneyBankMVC.Controllers
             return Json(isAccountNumberAvailable);
         }
 
-
         private readonly AppDbContext _context;
+        private readonly IAccountService _accountService; // Agrega el campo _accountService
 
-        public AccountsController(AppDbContext context)
+        public AccountsController(AppDbContext context, IAccountService accountService)
         {
             _context = context;
+            _accountService = accountService; // Inyecta el servicio
         }
 
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-              return _context.Accounts != null ? 
-                          View(await _context.Accounts.ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Accounts'  is null.");
+            var accounts = await _accountService.GetAllAccountsAsync();
+            if (accounts != null)
+            {
+                return View(accounts);
+            }
+            else
+            {
+                return Problem("Entity set 'IAccountService.GetAllAccountsAsync' is null.");
+            }
         }
+
 
         // GET: Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
@@ -54,6 +64,7 @@ namespace MoneyBankMVC.Controllers
 
             return View(account);
         }
+
 
         // GET: Accounts/Create
         public IActionResult Create()
@@ -80,18 +91,21 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
             }
+
             return View(account);
         }
+
 
         // POST: Accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -131,13 +145,13 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
@@ -145,6 +159,7 @@ namespace MoneyBankMVC.Controllers
 
             return View(account);
         }
+
 
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -167,14 +182,17 @@ namespace MoneyBankMVC.Controllers
 
 
         // GET: Accounts/Deposit
-        public async Task<IActionResult> Deposit (int? id)
+        public async Task<IActionResult> Deposit(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            int accountId = id.Value; // Obtén el valor int de id (si tiene valor)
+
+            var account = await _accountService.GetAccountByIdAsync(accountId);
+
             if (account == null)
             {
                 return NotFound();
@@ -184,6 +202,8 @@ namespace MoneyBankMVC.Controllers
 
             return View(transaction);
         }
+
+
 
 
         // POST: Accounts/Edit/5
@@ -202,13 +222,29 @@ namespace MoneyBankMVC.Controllers
             {
                 try
                 {
+                    // Obtén la cuenta correspondiente desde la base de datos
+                    var account = await GetAccountByIdAsync(id);
 
-                    Account account = MapAccount(transaction);
+                    if (account == null)
+                    {
+                        return NotFound();
+                    }
 
-                    //APLICAR LOGICA DEPOSITO
+                    // Verifica que el monto del depósito sea válido (por ejemplo, mayor que cero)
+                    if (transaction.ValueAmount <= 0)
+                    {
+                        ModelState.AddModelError("transaction.Amount", "El monto del depósito debe ser mayor que cero.");
+                        return View(transaction);
+                    }
 
+                    // Llama a la función que realiza el depósito
+                    PerformDeposit(account, transaction.ValueAmount);
+
+                    // Actualiza la cuenta en la base de datos
                     _context.Update(account);
                     await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "El depósito fue realizado con exito"; 
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -226,16 +262,37 @@ namespace MoneyBankMVC.Controllers
             return View(transaction);
         }
 
+        // Función para realizar el depósito en la cuenta
+        private void PerformDeposit(Account account, decimal amount)
+        {
+            // Verifica que la cuenta y el monto sean válidos antes de realizar el depósito
+            if (account != null && amount > 0)
+            {
+                // Aplica la lógica de depósito: Suma el monto del depósito al saldo de la cuenta
+                account.BalanceAmount += amount;
+            }
+        }
 
-        // GET: Accounts/Deposit
+        // Función para obtener una cuenta por su ID
+        private async Task<Account> GetAccountByIdAsync(int id)
+        {
+            return await _context.Accounts.FindAsync(id);
+        }
+
+
+
+        // GET: Accounts/Withdrawal
         public async Task<IActionResult> Withdrawal(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            int accountId = id.Value; // Obtén el valor int de id (si tiene valor)
+
+            var account = await _accountService.GetAccountByIdAsync(accountId);
+
             if (account == null)
             {
                 return NotFound();
@@ -245,6 +302,7 @@ namespace MoneyBankMVC.Controllers
 
             return View(transaction);
         }
+
 
 
         // POST: Accounts/Edit/5
@@ -263,13 +321,36 @@ namespace MoneyBankMVC.Controllers
             {
                 try
                 {
+                    // Obtén la cuenta correspondiente desde la base de datos
+                    var account = await GetAccountByIdAsync(id);
 
-                    Account account = MapAccount(transaction);
+                    if (account == null)
+                    {
+                        return NotFound();
+                    }
 
-                    //APLICAR LOGICA DEPOSITO
+                    // Verifica que el monto del retiro sea válido (por ejemplo, mayor que cero)
+                    if (transaction.ValueAmount <= 0)
+                    {
+                        ModelState.AddModelError("transaction.Amount", "El monto del retiro debe ser mayor que cero.");
+                        return View(transaction);
+                    }
 
+                    // Verifica que haya fondos suficientes para el retiro
+                    if (transaction.ValueAmount > account.BalanceAmount)
+                    {
+                        ModelState.AddModelError("transaction.Amount", "Fondos insuficientes.");
+                        return View(transaction);
+                    }
+
+                    // Llama a la función que realiza el retiro
+                    PerformWithdraw(account, transaction.ValueAmount);
+
+                    // Actualiza la cuenta en la base de datos
                     _context.Update(account);
                     await _context.SaveChangesAsync();
+
+                    TempData["SuccessMessage"] = "Retiro exitoso."; // Mensaje de éxito
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -286,7 +367,6 @@ namespace MoneyBankMVC.Controllers
             }
             return View(transaction);
         }
-
 
         private Account MapAccount(Transaction transaction)
         {
@@ -321,6 +401,10 @@ namespace MoneyBankMVC.Controllers
         }
 
 
+        private void PerformWithdraw(Account account, decimal amount)
+        {
+            account.BalanceAmount -= amount;
+        }
 
         private bool AccountExists(int id)
         {

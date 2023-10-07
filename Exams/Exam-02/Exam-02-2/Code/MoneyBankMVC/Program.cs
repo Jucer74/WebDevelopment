@@ -1,10 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
+using MoneyBankMVC.Services; // Agrega el namespace de tus servicios personalizados
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add DBContext
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("CnnStr")!));
+
+// Registra tu servicio personalizado
+builder.Services.AddTransient<IAccountService, AccountService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,3 +35,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
