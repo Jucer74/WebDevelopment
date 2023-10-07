@@ -172,22 +172,118 @@ namespace MoneyBankMVC.Controllers
 
             Transaction transaction = MapTransaction(account);
 
-            return View(account);
+            return View(transaction);
         }
+
+        
+       // POST: Accounts/Edit/5
+       // To protect from overposting attacks, enable the specific properties you want to bind to.
+       // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+       [HttpPost]
+       [ValidateAntiForgeryToken]
+       public async Task<IActionResult> Withdrawal(int id, Transaction transaction)
+       {
+           if (id != transaction.Id)
+           {
+               return NotFound();
+           }
+
+           if (ModelState.IsValid)
+           {
+               try
+               {
+                   // Mapear la transacción a una cuenta
+                   Account account = MapAccount(transaction);
+
+                   // Aplicar lógica de retiro
+                   // Por ejemplo, si el monto a retirar es válido, dedúcelo del BalanceAmount
+                   // Aquí debes agregar tu lógica específica para manejar retiros
+
+                   _context.Update(account);
+                   await _context.SaveChangesAsync();
+               }
+               catch (DbUpdateConcurrencyException)
+               {
+                   if (!AccountExists(transaction.Id))
+                   {
+                       return NotFound();
+                   }
+                   else
+                   {
+                       throw;
+                   }
+               }
+               return RedirectToAction(nameof(Index));
+           }
+           return View(transaction);
+       }
+
+       // Método para mapear una transacción a una cuenta
+       private Account MapAccount(Transaction transaction)
+       {
+           // Aquí debes crear una nueva instancia de Account y asignar los valores de la transacción
+           // Debes ajustar esto según la estructura real de tus clases Account y Transaction
+
+           Account account = new Account
+           {
+               Id = transaction.Id,
+               AccountType = transaction.AccountType,
+               CreationDate = transaction.CreationDate,
+               AccountNumber = transaction.AccountNumber,
+               OwnerName = transaction.OwnerName,
+               BalanceAmount = transaction.BalanceAmount,
+               OverdraftAmount = transaction.OverdraftAmount
+           };
+
+           return account;
+       }
+
+        // GET: Accounts/Deposit
+        public async Task<IActionResult> Withdrawal(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            Transaction transaction = MapTransaction(account);
+
+            return View(transaction);
+        }
+
+       
+
+
+
+
+
 
         private Transaction MapTransaction(Account account)
         {
-            Transaction transaction = new Transaction();
+            Transaction transaction =new Transaction();
 
-            Transaction.Id = account.Id;
-            Transaction.AccountType = account.AccountType;
-            Transaction.CreationDate = account.CreationDate;
-            Transaction.AccountNumber = account.AccountNumber;
-            Transaction.OwnerName = account.OwnerName;
-            Transaction.BalanceAmount = account.BalanceAmount;
-            Transaction.OverdraftAmount = account.OverdraftAmount;
+            transaction.Id = account.Id;
+            transaction.AccountType = account.AccountType;
+            transaction.CreationDate = account.CreationDate;
+            transaction.AccountNumber = account.AccountNumber;
+            transaction.OwnerName = account.OwnerName;
+            transaction.BalanceAmount = account.BalanceAmount;
+            transaction.OverdraftAmount = account.OverdraftAmount; 
 
             return transaction;
         }
+
+        private bool AccountExists(int id)
+        {
+            return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+
     }
 }
