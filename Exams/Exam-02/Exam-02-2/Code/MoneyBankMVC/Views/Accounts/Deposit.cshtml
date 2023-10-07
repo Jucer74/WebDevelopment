@@ -14,9 +14,15 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" readonly />
-                <span asp-validation-for="AccountType" class="text-danger"></span>
+                <label class="control-label">Tipo</label>
+                <div>
+                    <label class="radio-inline">
+                        <input type="radio" asp-for="AccountType" value="A" readonly checked /> Ahorros
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" asp-for="AccountType" value="C" readonly /> Corriente
+                    </label>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
