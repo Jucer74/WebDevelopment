@@ -197,19 +197,7 @@ namespace MoneyBankMVC.Controllers
             {
                 try
                 {
-                    Account account = MapAccount(transaction);
-
-                    //Aplicar logico del Deposito
-                    if (AccountType == transaction.AccountType)
-                      {
-                        
-                    }
-                    else
-                    {
-
-                    }
-
-
+                    
 
 
                     _context.Update(transaction);
