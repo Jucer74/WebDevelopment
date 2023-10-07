@@ -2,7 +2,7 @@
 
 namespace MoneyBankMVC.Models
 {
-    public class Transaction
+    public class Transaction: Account
     {
         [Display(Name = "Valor")]
         [Required(ErrorMessage = "El campo V alor es Requerido")]
