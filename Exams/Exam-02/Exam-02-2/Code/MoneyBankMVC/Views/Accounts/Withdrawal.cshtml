@@ -1,16 +1,16 @@
-﻿@model MoneyBankMVC.Models.Account
+﻿@model MoneyBankMVC.Models.Transaction
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Retirar";
 }
-
-<h4>Editar cuenta</h4>
+<h4>Retirar</h4>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Withdrawal">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="CreationDate" />
+
             <div class="form-group row my-4">
                 <label asp-for="AccountType" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9 row">
@@ -30,10 +30,11 @@
                     <span asp-validation-for="AccountType" class="text-danger"></span>
                 </div>
             </div>
+
             <div class="form-group row my-4">
                 <label asp-for="AccountNumber" class="col-sm-3 control-label"></label>
                 <div class="col-sm-4">
-                    <input asp-for="AccountNumber" class="form-control col-sm-9" readonly/>
+                    <input asp-for="AccountNumber" class="form-control col-sm-9" readonly />
                 </div>
 
                 <div class="row">
@@ -47,7 +48,7 @@
             <div class="form-group row my-4">
                 <label asp-for="OwnerName" class="control-label col-sm-3"></label>
                 <div class="col-md-9">
-                    <input asp-for="OwnerName" class="form-control" />
+                    <input asp-for="OwnerName" class="form-control" readonly />
                     <span asp-validation-for="OwnerName" class="text-danger"></span>
                 </div>
             </div>
@@ -69,15 +70,24 @@
                     <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
                 </div>
             </div>
-
+            <div class="form-group row my-4">
+                <label asp-for="TransactionAmount" class="control-label col-sm-3"></label>
+                <div class="col-md-6">
+                    <input asp-for="TransactionAmount" class="form-control" id="TransactionAmount" />
+                    <span asp-validation-for="TransactionAmount" class="text-danger"></span>
+                </div>
+            </div>
             <div class="form-group my-4">
                 <input type="submit" value="Aceptar" class="btn btn-success" />
                 <a asp-action="Index" class="btn btn-secondary  mx-3">Cancelar</a>
             </div>
+
         </form>
     </div>
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

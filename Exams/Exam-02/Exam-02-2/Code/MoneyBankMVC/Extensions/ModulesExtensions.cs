@@ -1,4 +1,5 @@
 ﻿using MoneyBankMVC.Services;
+
 namespace MoneyBankMVC.Extensions;
 
 public static class ModulesExtensions

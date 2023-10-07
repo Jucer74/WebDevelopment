@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace MoneyBankMVC.Models;
 
@@ -30,9 +28,5 @@ public partial class MoneybankdbContext : DbContext
             entity.Property(e => e.CreationDate).HasColumnType("datetime");
             entity.Property(e => e.OwnerName).HasMaxLength(100);
         });
-
-        OnModelCreatingPartial(modelBuilder);
     }
-
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

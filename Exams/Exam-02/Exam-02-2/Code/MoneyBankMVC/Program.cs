@@ -1,7 +1,7 @@
-using MoneyBankMVC.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using MoneyBankMVC.Extensions;
+using MoneyBankMVC.Models;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +12,11 @@ builder.Services.AddServices();
 
 builder.Services.AddDbContext<MoneybankdbContext>(options =>
         options.UseMySQL(builder.Configuration.GetConnectionString("CnnStr")!));
+
+var cultureInfo = new CultureInfo("en-US");
+cultureInfo.NumberFormat.CurrencyDecimalSeparator = ".";
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 var app = builder.Build();
 

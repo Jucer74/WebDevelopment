@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h4>Cuentas</h4>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class=" btn btn-success"><i class="bi bi-plus"></i> Crear</a>
 </p>
 <table class="table">
     <thead>
@@ -16,10 +16,10 @@
                 @Html.DisplayNameFor(model => model.AccountType)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
+                @Html.DisplayNameFor(model => model.AccountNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.AccountNumber)
+                @Html.DisplayNameFor(model => model.CreationDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OwnerName)
@@ -28,39 +28,48 @@
                 @Html.DisplayNameFor(model => model.BalanceAmount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OverdraftAmount)
+                Operaciones
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
+
 @foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.AccountType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
+                @Html.DisplayFor(modelItem => item.AccountNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
+                @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
-            <td>
+            @if (item.OverdraftAmount > 0)
+            {
+            <td class="text-danger">
                 @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
+                </td>
+            } else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
+            }
+
             <td>
-                @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>|
-                <a asp-action="Deposit" asp-route-id="@item.Id">Deposit</a>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil "></i></a>
+                <a class="btn btn-success" asp-action="Deposit" asp-route-id="@item.Id"><i class="bi bi-box-arrow-in-down"></i></a>
+                <a class="btn btn-primary" asp-action="Withdrawal" asp-route-id="@item.Id"><i class="bi bi-box-arrow-down"></i></a>
+                <a class="btn btn-secondary" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-info"></i></a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i></a>
+                
             </td>
         </tr>
 }
     </tbody>
 </table>
+

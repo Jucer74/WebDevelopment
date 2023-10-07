@@ -11,6 +11,7 @@ public class AccountService : IAccountService
     {
         _context = context;
     }
+
     public List<Account> Listar()
     {
         return _context.Set<Account>().ToList<Account>();
@@ -18,21 +19,58 @@ public class AccountService : IAccountService
 
     public void Crear(Account account)
     {
+        account.Id = GenerateId();
+        account.CreationDate = DateTime.Now;
+        if (account.AccountType == 'C')
+        {
+            account.OverdraftAmount = MAX_OVERDRAFT;
+            account.BalanceAmount += account.OverdraftAmount;
+        }
         _context.Add(account);
         _context.SaveChanges();
     }
 
-    public void Depositar(int id, Account account, int Deposit)
+    public void Depositar(int id, Account account, decimal depositAmount)
     {
-        account.BalanceAmount += Deposit;
+        account.BalanceAmount += depositAmount;
 
-        if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+        if (account.AccountType == 'C')
         {
-            account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+            if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+            {
+                account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+            }
+            else
+            {
+                account.OverdraftAmount = 0;
+            }
+        }
+
+        Editar(id, account);
+    }
+
+    public bool Retirar(int id, Account account, decimal withdrawal)
+    {
+        if (withdrawal <= account.BalanceAmount)
+        {
+            account.BalanceAmount -= withdrawal;
+
+            if (account.AccountType == 'C')
+            {
+                if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+                {
+                    account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+                }
+                Editar(id, account);
+                return (true);
+            }
+            Editar(id, account);
+            return (true);
         }
         else
         {
-            account.OverdraftAmount = 0;
+            Editar(id, account);
+            return (false);
         }
     }
 
@@ -59,14 +97,14 @@ public class AccountService : IAccountService
         return account!;
     }
 
-    public void Retirar(int id, Account account)
+    private int GenerateId()
     {
-        throw new NotImplementedException();
+        var Id = _context.Accounts.Max(e => e.Id) + 1;
+        return Id;
     }
 
-    private bool AccountExists(int id)
+    public bool AccountExists(string accountNumber)
     {
-        return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+        return (_context.Accounts?.Any(e => e.AccountNumber == accountNumber)).GetValueOrDefault();
     }
-
 }
