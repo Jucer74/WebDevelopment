@@ -12,9 +12,15 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-check-input" class="form-check-label" for="flexRadioDefault1"  />
-                <span asp-validation-for="AccountType" class="text-danger"></span>
+                <label asp-for="AccountType" class="control-label">Tipo:</label>
+                <div class="form-check form-check-inline">
+                    <input type="radio" asp-for="AccountType" value="A" class="form-check-input" disabled />
+                    <label class="form-check-label">Ahorros</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input type="radio" asp-for="AccountType" value="C" class="form-check-input" disabled />
+                    <label class="form-check-label">Corriente</label>
+                </div>
             </div>
             <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
@@ -32,8 +38,8 @@
                 <span asp-validation-for="BalanceAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OverdraftAmount" class="control-label" disabled></label>
-                <input asp-for="OverdraftAmount" class="form-control" disabled />
+                <label asp-for="OverdraftAmount" class="control-label" ></label>
+                <input asp-for="OverdraftAmount" class="form-control" readonly />
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
