@@ -7,24 +7,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
 
 namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
         private readonly AppDbContext _context;
-
-        public AccountsController(AppDbContext context)
+        private readonly IAccountService _accountService;
+        public AccountsController(AppDbContext context, IAccountService accountService)
         {
             _context = context;
+            _accountService = accountService;
         }
 
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-              return _context.Accounts != null ? 
-                          View(await _context.Accounts.ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Accounts'  is null.");
+              //return _context.Accounts != null ? 
+              //            View(await _context.Accounts.ToListAsync()) :
+              //            Problem("Entity set 'AppDbContext.Accounts'  is null.");
+            var accounts= await _accountService.GetAccountsAsync();
+            return View(accounts);
         }
 
         // GET: Accounts/Details/5
@@ -56,16 +60,17 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
-            if (account == null)
+            if (ModelState.IsValid)
             {
-                return BadRequest("Datos no válidos.");
-            }
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
+                //_context.Add(account);
+                //await _context.SaveChangesAsync();
 
-            return CreatedAtAction("Obtener", new { id = account.Id }, account);
+                account= await _accountService.CreateAccountAsync(account);
+                return RedirectToAction(nameof(Index));
+            }
+            return View(account);
         }
 
         // GET: Accounts/Edit/5
@@ -89,7 +94,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
             if (id != account.Id)
             {
