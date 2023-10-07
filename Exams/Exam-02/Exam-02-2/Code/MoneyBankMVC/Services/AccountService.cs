@@ -131,8 +131,7 @@ public class AccountService : IAccountService
         return (_context.Accounts?.Any(e => e.AccountNumber == accountNumber)).GetValueOrDefault();
     }
 
-    void IAccountService.Withdrawal(int id, Account account, decimal withdrawal)
-    {
-        throw new NotImplementedException();
-    }
+    
+  
+    
 }

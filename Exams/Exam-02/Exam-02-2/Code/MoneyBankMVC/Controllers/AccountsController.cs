@@ -76,10 +76,11 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts/Edit/5
-        public IActionResult Depost(int? id)
+        public IActionResult Depost(int id)
         {
-            
-            return View();
+            var Depost = _accountService.GetById(id);
+            Transaction DepositTransaction = MapTrasaction(Depost);
+            return View(DepositTransaction);
         }
 
         // POST: Accounts/Edit/5
@@ -87,13 +88,31 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Deposit(int id, Transaction despositAmount )
+        public IActionResult Depost(int id, Transaction despositAmount )
         {
             var Deposit = MapAccount(despositAmount);
             _accountService.Deposit(id, Deposit, despositAmount.ValueAmount);
-            return View();
+            return RedirectToAction(nameof(Index));
+        }
+        // GET: Accounts/Edit/5
+        public IActionResult Retiro(int id)
+        {
+            var Depost = _accountService.GetById(id);
+            Transaction DepositTransaction = MapTrasaction(Depost);
+            return View(DepositTransaction);
         }
 
+        // POST: Accounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Retiro(int id, Transaction despositAmount)
+        {
+            var Deposit = MapAccount(despositAmount);
+            _accountService.Withdrawal(id, Deposit, despositAmount.ValueAmount);
+            return RedirectToAction(nameof(Index));
+        }
         // GET: Accounts/Delete/5
         public IActionResult Delete(int id)
         {

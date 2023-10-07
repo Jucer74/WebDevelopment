@@ -1,16 +1,16 @@
 ﻿@model MoneyBankMVC.Models.Transaction
 
 @{
-    ViewData["Title"] = "Depost";
+    ViewData["Title"] = "Retiro";
 }
 
-<h1>Depost</h1>
 
-<h4>Transaction</h4>
+
+<h4>Retirar</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Depost">
+        <form asp-action="Retiro">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group row">
@@ -39,7 +39,7 @@
                 <span asp-validation-for="AccountNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OwnerName" class="control-label" ></label>
+                <label asp-for="OwnerName" class="control-label"></label>
                 <input asp-for="OwnerName" class="form-control" readonly />
                 <span asp-validation-for="OwnerName" class="text-danger"></span>
             </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ValueAmount" class="control-label"></label>
-                <input asp-for="ValueAmount" class="form-control"/>
+                <input asp-for="ValueAmount" class="form-control" />
                 <span asp-validation-for="ValueAmount" class="text-danger"></span>
             </div>
             <div class="form-group ">
@@ -64,8 +64,6 @@
             </div>
         </form>
     </div>
-
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
