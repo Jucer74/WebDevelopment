@@ -21,8 +21,8 @@
             </div>
 
 
-       
-          
+
+
             <div class="form-group row mb-3">
                 <label asp-for="AccountNumber" class="col-sm-4 col-form-label">Cuenta</label>
                 <div class="col-sm-8">
@@ -67,5 +67,7 @@
 
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

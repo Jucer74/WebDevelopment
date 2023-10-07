@@ -2,7 +2,6 @@
 {
     public class Transaction : Account
     {
-     
-        public decimal ValueAmount { get; set; }    
+        public decimal ValueAmount { get; set; }
     }
 }

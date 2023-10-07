@@ -1,98 +1,88 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using MoneyBankMVC.Context;
+﻿using Microsoft.AspNetCore.Mvc;
 using MoneyBankMVC.Models;
+using MoneyBankMVC.Services;
 
 namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IAccountService _accountService;
 
-        public AccountsController(AppDbContext context)
+        public AccountsController(IAccountService accountService)
         {
-            _context = context;
+            _accountService = accountService;
         }
 
-        // GET: Accounts
         public async Task<IActionResult> Index()
         {
-            return _context.Accounts != null ?
-                        View(await _context.Accounts.ToListAsync()) :
-                        Problem("Entity set 'AppDbContext.Accounts'  is null.");
+            var accounts = await _accountService.GetAccountsAsync();
+            return View(accounts);
         }
 
-        // GET: Accounts/Create
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return NotFound();
+            }
+
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            return View(account);
+        }
+
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Accounts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Create(Account account)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(account);
-        }
+                var success = await _accountService.CreateAccountAsync(account);
 
-
-        // GET: Accounts/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null || _context.Accounts == null)
-            {
-                return NotFound();
-            }
-
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (account == null)
-            {
-                return NotFound();
+                if (success)
+                {
+                    TempData["SuccessMessage"] = "La creación de la cuenta fue exitosa.";
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("AccountNumber", "El número de cuenta ya existe.");
+                }
             }
 
             return View(account);
         }
 
-
-
-
-        // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (!id.HasValue)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
             }
+
             return View(account);
         }
 
-        // POST: Accounts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Edit(int id, Account account)
         {
             if (id != account.Id)
             {
@@ -101,37 +91,31 @@ namespace MoneyBankMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                var success = await _accountService.UpdateAccountAsync(account);
+
+                if (success)
                 {
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
+                    TempData["SuccessMessage"] = "La edición de la cuenta fue exitosa.";
+                    return RedirectToAction(nameof(Index));
                 }
-                catch (DbUpdateConcurrencyException)
+                else
                 {
-                    if (!AccountExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ModelState.AddModelError("", "Error al intentar actualizar la cuenta.");
                 }
-                return RedirectToAction(nameof(Index));
             }
+
             return View(account);
         }
 
-        // GET: Accounts/Delete/
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (!id.HasValue)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
@@ -140,183 +124,104 @@ namespace MoneyBankMVC.Controllers
             return View(account);
         }
 
-        // POST: Accounts/Delete/
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Accounts == null)
+            var success = await _accountService.DeleteAccountAsync(id);
+
+            if (success)
             {
-                return Problem("Entity set 'AppDbContext.Accounts'  is null.");
+                TempData["SuccessMessage"] = "La eliminación de la cuenta fue exitosa.";
             }
-            var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
+            else
             {
-                _context.Accounts.Remove(account);
+                TempData["ErrorMessage"] = "Error al intentar eliminar la cuenta.";
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-
-
-
-        // GET: Accounts/Deposit
         public async Task<IActionResult> Deposit(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (!id.HasValue)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
             }
 
-            Transaction transaction = MapTransaction(account);
-
-            return View(transaction);
+            return View(account);
         }
 
-
-        // POST: Accounts/Deposit
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Deposit(int id, Transaction transaction)
+        public async Task<IActionResult> Deposit(int id, decimal amount)
         {
-            if (id != transaction.Id)
+            if (amount <= 0)
             {
-                return NotFound();
+                ModelState.AddModelError("amount", "El monto del depósito debe ser mayor a cero.");
+                return View("Deposit", await _accountService.GetAccountByIdAsync(id));
             }
 
-            if (ModelState.IsValid)
+            var success = await _accountService.DepositAsync(id, amount);
+
+            if (success)
             {
-                try
-                {
-                    Account account = MapAccount(transaction);
-
-
-
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(transaction.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage"] = "El depósito fue exitoso.";
             }
-            return View(transaction);
+            else
+            {
+                TempData["ErrorMessage"] = "Error al intentar realizar el depósito.";
+            }
+
+            return RedirectToAction(nameof(Index));
         }
 
-
-
-        // GET: Accounts/Withdrawal 
         public async Task<IActionResult> Withdrawal(int? id)
         {
-            if (id == null || _context.Accounts == null)
+            if (!id.HasValue)
             {
                 return NotFound();
             }
 
-            var account = await _context.Accounts.FindAsync(id);
+            var account = await _accountService.GetAccountByIdAsync(id.Value);
+
             if (account == null)
             {
                 return NotFound();
             }
 
-            Transaction transaction = MapTransaction(account);
-
-            return View(transaction);
+            return View(account);
         }
 
-
-        // POST: Accounts/Withdrawal
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Withdrawal(int id, Transaction transaction)
+        public async Task<IActionResult> Withdrawal(int id, decimal amount)
         {
-            if (id != transaction.Id)
+            if (amount <= 0)
             {
-                return NotFound();
+                ModelState.AddModelError("amount", "El monto del retiro debe ser mayor a cero.");
+                return View("Withdrawal", await _accountService.GetAccountByIdAsync(id));
             }
 
-            if (ModelState.IsValid)
+            var success = await _accountService.WithdrawalAsync(id, amount);
+
+            if (success)
             {
-                try
-                {
-                    Account account = MapAccount(transaction);
-
-                    // TODO: Aplicar la Logica de Deposito
-
-
-
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(transaction.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                TempData["SuccessMessage"] = "El retiro fue exitoso.";
             }
-            return View(transaction);
-        }
+            else
+            {
+                TempData["ErrorMessage"] = "Error al intentar realizar el retiro.";
+            }
 
-
-
-        //MAPPERS
-        private Account MapAccount(Transaction transaction)
-        {
-            Account account = new Account();
-
-            account.Id = transaction.Id;
-            account.AccountType = transaction.AccountType;
-            account.CreationDate = transaction.CreationDate;
-            account.AccountNumber = transaction.AccountNumber;
-            account.OwnerName = transaction.OwnerName;
-            account.BalanceAmount = transaction.BalanceAmount;
-            account.OverdraftAmount = transaction.OverdraftAmount;
-
-            return account;
-        }
-
-        private Transaction MapTransaction(Account account)
-        {
-            Transaction transaction = new Transaction();
-
-            transaction.Id = account.Id;
-            transaction.AccountType = account.AccountType;
-            transaction.CreationDate = account.CreationDate;
-            transaction.AccountNumber = account.AccountNumber;
-            transaction.OwnerName = account.OwnerName;
-            transaction.BalanceAmount = account.BalanceAmount;
-            transaction.OverdraftAmount = account.OverdraftAmount;
-
-            return transaction;
-        }
-
-
-        private bool AccountExists(int id)
-        {
-            return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+            return RedirectToAction(nameof(Index));
         }
     }
 }
