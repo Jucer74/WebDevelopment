@@ -2,8 +2,30 @@
 
 namespace MoneyBankMVC.Models
 {
+
+    public class BalanceGreaterThanZeroAttribute : ValidationAttribute
+    {
+        public BalanceGreaterThanZeroAttribute()
+        {
+            ErrorMessage = "El Balance debe ser mayor que cero.";
+        }
+
+        public override bool IsValid(object? value)
+        {
+            if (value is decimal balance)
+            {
+                return balance > 0;
+            }
+            return false;
+        }
+    }
+
     public class Account
     {
+
+
+        public const decimal MAX_OVERDRAFT = 1000000.00M; // Monto máximo de sobregiro
+
 
         [Key]
         public int Id { get; set; }
@@ -26,7 +48,6 @@ namespace MoneyBankMVC.Models
         public string AccountNumber { get; set; } = null!;
 
 
-
         [Display(Name = "Nombre")]
         [Required(ErrorMessage = "El campo Nombre del Propietario es Requerido")]
         [MaxLength(100, ErrorMessage = "El campo nombre de propietario tiene una longitud maxima de 100 caracteres")]
@@ -36,13 +57,14 @@ namespace MoneyBankMVC.Models
         [Display(Name = "Balance")]
         [Required(ErrorMessage = "El campo Balance es Requerido")]
         [RegularExpression(@"^\d+.?\d{0,2}$", ErrorMessage = "El campo Balance debe ser en formato Moneda (0.00)")]
+        [BalanceGreaterThanZero(ErrorMessage = "El Balance debe ser mayor que cero.")]
+        [DataType(DataType.Currency)]
         public decimal BalanceAmount { get; set; }
 
+        [Display(Name = "Sobregiro")]
         [Required(ErrorMessage = "El campo Sobregiro es Requerido")]
         [RegularExpression(@"^\d+.?\d{0,2}$", ErrorMessage = "El campo Sobregiro debe ser en formato Moneda (0.00)")]
+        [DataType(DataType.Currency)]
         public decimal OverdraftAmount { get; set; }
-
-
-
     }
 }

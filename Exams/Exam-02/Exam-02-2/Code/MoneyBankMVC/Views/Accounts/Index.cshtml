@@ -4,6 +4,13 @@
     ViewData["Title"] = "Index";
 }
 
+
+<style>
+    .balance-John {
+        color: red;
+    }
+</style>
+
 <h1>Index</h1>
 
 <p>
@@ -27,9 +34,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.BalanceAmount)
             </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.OverdraftAmount)
-            </th>
+            </th> *@
             <th>Operaciones</th>
         </tr>
     </thead>
@@ -48,12 +55,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
-            <td>
+                <td class="@(item.OverdraftAmount > 0 ? "balance-John" : "")">
+                    @Html.DisplayFor(modelItem => item.BalanceAmount)
+                </td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
+            </td> *@
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
                     <a asp-action="Deposit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-box-arrow-in-down"></i></a>
