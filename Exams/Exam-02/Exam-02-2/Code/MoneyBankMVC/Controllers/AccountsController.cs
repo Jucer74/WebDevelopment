@@ -88,7 +88,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Deposit    (int id, Account account, decimal depositAmount)
         {
             if (id != account.Id)
             {
@@ -141,7 +141,7 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Accounts == null)
+            if (_context.Accounts == null)  
             {
                 return Problem("Entity set 'AppDbContext.Accounts'  is null.");
             }
@@ -154,6 +154,27 @@ namespace MoneyBankMVC.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+
+        // GET: Accounts/Deposit
+        public async Task<IActionResult> Deposit(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            return View(account);
+        }
+    }
+
+
+    
 
         private bool AccountExists(int id)
         {
