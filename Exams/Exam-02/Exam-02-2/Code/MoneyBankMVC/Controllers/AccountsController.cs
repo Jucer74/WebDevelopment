@@ -156,7 +156,7 @@ namespace MoneyBankMVC.Controllers
         }
 
 
-        // GET: Accounts/Deposit
+        // GET: Accounts/Deposit/5
         public async Task<IActionResult> Deposit(int? id)
         {
             if (id == null || _context.Accounts == null)
@@ -169,17 +169,25 @@ namespace MoneyBankMVC.Controllers
             {
                 return NotFound();
             }
+
+            Transaction transaction = MapTransaction(account);
+
             return View(account);
         }
 
-
-
-
-    
-
-        private bool AccountExists(int id)
+        private Transaction MapTransaction(Account account)
         {
-          return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+            Transaction transaction = new Transaction();
+
+            Transaction.Id = account.Id;
+            Transaction.AccountType = account.AccountType;
+            Transaction.CreationDate = account.CreationDate;
+            Transaction.AccountNumber = account.AccountNumber;
+            Transaction.OwnerName = account.OwnerName;
+            Transaction.BalanceAmount = account.BalanceAmount;
+            Transaction.OverdraftAmount = account.OverdraftAmount;
+
+            return transaction;
         }
     }
 }
