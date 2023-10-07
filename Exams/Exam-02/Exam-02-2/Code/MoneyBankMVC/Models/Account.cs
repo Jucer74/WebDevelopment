@@ -39,6 +39,7 @@ namespace MoneyBankMVC.Models
 
         [Display(Name = "Fecha")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MMM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
         [Display(Name = "Cuenta")]
