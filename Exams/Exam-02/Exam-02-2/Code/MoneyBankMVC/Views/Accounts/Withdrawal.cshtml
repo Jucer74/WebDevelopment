@@ -1,13 +1,13 @@
-﻿@model MoneyBankMVC.Models.Account
+﻿@model MoneyBankMVC.Models.Transaction
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Withdrawal";
 }
 
-<h1>Editar Cuenta</h1>
+<h1>Retirar</h1>
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Withdrawal">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
 
@@ -31,7 +31,7 @@
 
             <div class="form-group">
                 <label class="control-label font-weight-bold">Propietario</label>
-                <input asp-for="OwnerName" class="form-control" />
+                <input asp-for="OwnerName" class="form-control" readonly />
                 <span asp-validation-for="OwnerName" class="text-danger"></span>
             </div>
 
@@ -47,6 +47,12 @@
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
 
+            <div class="form-group">
+                <label class="control-label font-weight-bold">Monto a Retirar</label>
+                <input asp-for="ValueAmount" class="form-control" />
+                <span asp-validation-for="ValueAmount" class="text-danger"></span>
+            </div>
+
             <div class="form-group mt-3">
                 <button type="submit" class="btn btn-success">Aceptar</button>
                 <a asp-action="Index" class="btn btn-outline-secondary ml-2">Cancelar</a>
@@ -60,3 +66,4 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+

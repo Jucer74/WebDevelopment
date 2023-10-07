@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -22,9 +23,9 @@ namespace MoneyBankMVC.Controllers
         // GET: Accounts
         public async Task<IActionResult> Index()
         {
-              return _context.Accounts != null ? 
-                          View(await _context.Accounts.ToListAsync()) :
-                          Problem("Entity set 'AppDbContext.Accounts'  is null.");
+            return _context.Accounts != null ?
+                        View(await _context.Accounts.ToListAsync()) :
+                        Problem("Entity set 'AppDbContext.Accounts' is null.");
         }
 
         // GET: Accounts/Details/5
@@ -56,17 +57,22 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
-            if (account == null)
+            if (ModelState.IsValid)
             {
-                return BadRequest("Datos no válidos.");
+                if (account.AccountType == 'C')
+                {
+                    account.BalanceAmount += 1000000;
+                }
+                _context.Add(account);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("Obtener", new { id = account.Id }, account);
+            // Si ModelState no es válido, devuelve la vista con el modelo para mostrar los errores
+            return View(account);
         }
+
 
         // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -89,7 +95,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountName,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
             if (id != account.Id)
             {
@@ -144,27 +150,19 @@ namespace MoneyBankMVC.Controllers
         {
             if (_context.Accounts == null)
             {
-                return Problem("Entity set 'AppDbContext.Accounts'  is null.");
+                return Problem("Entity set 'AppDbContext.Accounts' is null.");
             }
             var account = await _context.Accounts.FindAsync(id);
             if (account != null)
             {
                 _context.Accounts.Remove(account);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool AccountExists(int id)
-        {
-          return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
-
-
-
-
-    
+        // GET: Accounts/Deposit
         public async Task<IActionResult> Deposit(int? id)
         {
             if (id == null || _context.Accounts == null)
@@ -177,16 +175,16 @@ namespace MoneyBankMVC.Controllers
             {
                 return NotFound();
             }
+
             Transaction transaction = MapTransaction(account);
+            transaction.Id = account.Id;
 
             return View(transaction);
         }
 
-
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Deposit(int id, char AccountType, Transaction transaction)
+        public async Task<IActionResult> Deposit(int id, Transaction transaction)
         {
             if (id != transaction.Id)
             {
@@ -195,37 +193,96 @@ namespace MoneyBankMVC.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    Account account = MapAccount(transaction);
+                Account account = MapAccount(transaction);
 
-                    //Aplicar logico del Deposito
-                    if (AccountType == transaction.AccountType)
-                      {
-                        
+                // Aplicar la lógica del depósito
+
+                if (transaction.AccountType == 'A'.ToString())
+                {
+                    transaction.BalanceAmount += transaction.ValueAmount;
+                }
+                else
+                {
+                    transaction.BalanceAmount += transaction.ValueAmount;
+
+                    if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
+                    {
+                        transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
                     }
                     else
                     {
-
+                        transaction.OverdraftAmount = 0;
                     }
-
-
-
-
-                    _context.Update(transaction);
-                    await _context.SaveChangesAsync();
                 }
-                catch (DbUpdateConcurrencyException)
+
+                _context.Update(transaction);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
+
+        // GET: Accounts/Withdrawal
+        public async Task<IActionResult> Withdrawal(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            Transaction transaction = MapTransaction(account);
+            transaction.Id = account.Id;
+
+            return View(transaction);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Withdrawal(int id, Transaction transaction)
+        {
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                Account account = MapAccount(transaction);
+
+                // Aplicar la lógica del retiro
+
+                if (transaction.AccountType == 'A'.ToString())
                 {
-                    if (!AccountExists(transaction.Id))
+                    if (transaction.ValueAmount <= transaction.BalanceAmount)
                     {
-                        return NotFound();
+                        transaction.BalanceAmount -= transaction.ValueAmount;
                     }
                     else
                     {
-                        throw;
+                        // Manejar la lógica cuando no hay suficiente saldo
                     }
                 }
+                else
+                {
+                    if (transaction.ValueAmount <= transaction.BalanceAmount)
+                    {
+                        transaction.BalanceAmount -= transaction.ValueAmount;
+
+                        if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
+                        {
+                            transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
+                        }
+                    }
+                }
+
+                _context.Update(transaction);
+                await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(transaction);
@@ -236,8 +293,8 @@ namespace MoneyBankMVC.Controllers
             Account account = new Account();
 
             account.Id = transaction.Id;
-            account.AccountType = transaction.AccountType;
-            account.CreationDate = transaction.CreationDate;
+            account.AccountType = transaction.AccountType[0]; 
+            account.CreationDate = DateTime.Now;
             account.AccountNumber = transaction.AccountNumber;
             account.OwnerName = transaction.OwnerName;
             account.BalanceAmount = transaction.BalanceAmount;
@@ -251,7 +308,7 @@ namespace MoneyBankMVC.Controllers
             Transaction transaction = new Transaction();
 
             transaction.Id = account.Id;
-            transaction.AccountType = account.AccountType;
+            transaction.AccountType = account.AccountType.ToString(); 
             transaction.CreationDate = account.CreationDate;
             transaction.AccountNumber = account.AccountNumber;
             transaction.OwnerName = account.OwnerName;
@@ -262,5 +319,9 @@ namespace MoneyBankMVC.Controllers
         }
 
 
+        private bool AccountExists(int id)
+        {
+            return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
     }
 }
