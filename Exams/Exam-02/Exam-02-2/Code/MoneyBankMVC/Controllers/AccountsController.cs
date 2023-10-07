@@ -50,8 +50,19 @@ namespace MoneyBankMVC.Controllers
             else
             {
                 // Número de cuenta no existe, procede a crear la cuenta
-                _accountService.Crear(account);
-                return RedirectToAction(nameof(Index));
+                
+                var ValidBalance = _accountService.Crear(account);
+
+                if (ValidBalance)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("BalanceAmount", "El Balance debe ser Mayor a Cero");
+                    return View(account); // Devuelve la vista de creación con errores
+                }
+                
             }
         }
 

@@ -17,17 +17,23 @@ public class AccountService : IAccountService
         return _context.Set<Account>().ToList<Account>();
     }
 
-    public void Crear(Account account)
+    public bool Crear(Account account)
     {
-        account.Id = GenerateId();
-        account.CreationDate = DateTime.Now;
-        if (account.AccountType == 'C')
+        
+        if (account.BalanceAmount > 0)
         {
-            account.OverdraftAmount = MAX_OVERDRAFT;
-            account.BalanceAmount += account.OverdraftAmount;
+            account.Id = GenerateId();
+            account.CreationDate = DateTime.Now;
+            if (account.AccountType == 'C')
+            {
+                account.OverdraftAmount = MAX_OVERDRAFT;
+                account.BalanceAmount += account.OverdraftAmount;
+            }
+            _context.Add(account);
+            _context.SaveChanges();
+            return true;
         }
-        _context.Add(account);
-        _context.SaveChanges();
+        return false;
     }
 
     public void Depositar(int id, Account account, decimal depositAmount)
@@ -57,7 +63,7 @@ public class AccountService : IAccountService
 
             if (account.AccountType == 'C')
             {
-                if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+                if (account.OverdraftAmount >= 0 && account.BalanceAmount < MAX_OVERDRAFT)
                 {
                     account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
                 }

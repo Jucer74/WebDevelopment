@@ -30,7 +30,6 @@ public class Account
 
     [Required(ErrorMessage = "El campo Balance es Requerido")]
     [RegularExpression(@"^\d+.?\d{0,2}$", ErrorMessage = "El campo Balance debe ser en formato Moneda (0.00)")]
-    [Range(0.01, double.MaxValue, ErrorMessage = "El campo Balance debe ser mayor que 0")]
     [DisplayFormat(DataFormatString = "${0:N2}")]
     [Display(Name = "Balance")]
     public decimal BalanceAmount { get; set; }

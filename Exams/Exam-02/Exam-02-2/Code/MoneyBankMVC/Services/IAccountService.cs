@@ -6,7 +6,7 @@ public interface IAccountService
 {
     List<Account> Listar();
 
-    void Crear(Account account);
+    bool Crear(Account account);
 
     void Editar(int id, Account account);
 
