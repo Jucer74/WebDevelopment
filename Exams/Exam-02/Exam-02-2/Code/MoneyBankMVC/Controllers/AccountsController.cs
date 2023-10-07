@@ -57,15 +57,6 @@ namespace MoneyBankMVC.Controllers
             {
                 return View(account);
             }
-
-            /*if (ModelState.IsValid)
-            {
-                _context.Add(account);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(account);*/
         }
 
         // GET: Accounts/Edit/5
@@ -73,18 +64,6 @@ namespace MoneyBankMVC.Controllers
         {
 
             var accountToEdit = _accountService.GetById(id);
-
-
-            /*if (id == null || _context.Accounts == null)
-            {
-                return NotFound();
-            }
-
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }*/
 
             return View(accountToEdit);
         }
@@ -99,33 +78,6 @@ namespace MoneyBankMVC.Controllers
 
             _accountService.Edit(id, account);
             return RedirectToAction(nameof(Index));
-
-            /*if (id != account.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(account);*/
         }
 
         // GET: Accounts/Delete/5
@@ -133,18 +85,6 @@ namespace MoneyBankMVC.Controllers
         {
 
             var accountToDelete = _accountService.GetById(id);
-
-            /*if (id == null || _context.Accounts == null)
-            {
-                return NotFound();
-            }
-
-            var account = await _context.Accounts
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (account == null)
-            {
-                return NotFound();
-            }*/
 
             return View(accountToDelete);
         }
@@ -156,20 +96,6 @@ namespace MoneyBankMVC.Controllers
         {
 
             _accountService.Delete(id, account);
-
-            /*
-            if (_context.Accounts == null)
-            {
-                return Problem("Entity set 'AppDbContext.Accounts'  is null.");
-            }
-            var account = await _context.Accounts.FindAsync(id);
-            if (account != null)
-            {
-                _context.Accounts.Remove(account);
-            }
-            
-            await _context.SaveChangesAsync();
-            */
 
             return RedirectToAction(nameof(Index));
 
@@ -184,17 +110,6 @@ namespace MoneyBankMVC.Controllers
             Transaction Operation = MapTransaction(accountForDeposit);
             return View(Operation);
 
-            /*if (id == null || _context.Accounts == null)
-            {
-                return NotFound();
-            }
-
-            var account = await _context.Accounts.FindAsync(id);
-            if (account == null)
-            {
-                return NotFound();
-            }
-            return View(account);*/
         }
 
         // POST: Accounts/Edit/5
@@ -283,32 +198,6 @@ namespace MoneyBankMVC.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            /*if (id != account.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(account);*/
         }
 
 
