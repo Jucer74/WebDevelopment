@@ -43,7 +43,7 @@ public class AccountService : IAccountService
         }
         else
         {
-
+            account.BalanceAmount += transaction.ValueAmount;
             // Lógica Cuenta Corriente
             if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
             {
@@ -52,6 +52,39 @@ public class AccountService : IAccountService
             else
             {
                 account.OverdraftAmount = 0;
+            }
+        }
+        await EditAccountAsync(account.Id, account);
+    }
+
+    public async Task WithdrawAsync(Account account, Transaction transaction)
+    {
+        if (account.AccountType == 'A')
+        {
+            if (transaction.ValueAmount <= account.BalanceAmount)
+            {
+                account.BalanceAmount -= transaction.ValueAmount;
+            }
+            else
+            {
+                throw new InvalidOperationException("Fondos Insuficientes");
+            }
+        }
+        else
+        {
+            // Lógica Cuenta Corriente
+            if (transaction.ValueAmount <= account.BalanceAmount)
+            {
+                account.BalanceAmount -= transaction.ValueAmount;
+                if(account.OverdraftAmount >0 && account.BalanceAmount > MAX_OVERDRAFT)
+                {
+                    account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+                }
+
+            }
+            else
+            {
+                throw new InvalidOperationException("Fondos Insuficientes");
             }
         }
         await EditAccountAsync(account.Id, account);

@@ -325,7 +325,48 @@ namespace MoneyBankMVC.Controllers
             return View(transaction);
         }
         //RETIRO
-        
+        public async Task<IActionResult> Withdraw(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var account = await _accountService.FindAccountAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            Transaction transaction = MapTransaction(account);
+
+            return View(transaction);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Withdraw(int id, Transaction transaction)
+        {
+    
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                var account = await _accountService.FindAccountAsync(id);
+                if (account == null)
+                {
+                    return NotFound();
+                }
+
+                await _accountService.WithdrawAsync(account, transaction);
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
         //
         private Account MapAccount(Transaction transaction)
         {

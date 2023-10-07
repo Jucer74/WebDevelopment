@@ -14,6 +14,7 @@ public interface IAccountService
 
     Task DepositAsync(Account account, Transaction transaction);
 
+    Task WithdrawAsync(Account account, Transaction transaction);
     bool AccountExists(int id);
 
     Task<Account> FindAccountAsync(int? id);
