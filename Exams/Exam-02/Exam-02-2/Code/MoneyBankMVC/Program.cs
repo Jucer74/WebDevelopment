@@ -4,6 +4,7 @@ using MoneyBankMVC.Services;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
+
 // Add DBContext
 builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(builder.Configuration.GetConnectionString("CnnStr")!));
 
