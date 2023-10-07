@@ -14,7 +14,7 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="form-group row mb-3">
-                    <label class="col-sm-4 col-form-label">Tipo de Cuenta</label>
+                    <label class="col-sm-4 col-form-label">Tipo:</label>
                     <div class="col-sm-8">
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" asp-for="AccountType" value="A" id="savings" required checked />
@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group row mb-3">
-                    <label asp-for="AccountNumber" class="col-sm-4 col-form-label">Número de Cuenta</label>
+                    <label asp-for="AccountNumber" class="col-sm-4 col-form-label">Cuenta:</label>
                     <div class="col-sm-8">
                         <input asp-for="AccountNumber" class="form-control" value="1234567890" required />
                         <span asp-validation-for="AccountNumber" class="text-danger"></span>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group row mb-3">
-                    <label asp-for="OwnerName" class="col-sm-4 col-form-label">Nombre del Propietario</label>
+                    <label asp-for="OwnerName" class="col-sm-4 col-form-label">Propietario:</label>
                     <div class="col-sm-8">
                         <input asp-for="OwnerName" class="form-control" value="John Alexander Doe Carter" required />
                         <span asp-validation-for="OwnerName" class="text-danger"></span>
@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="form-group row mb-3">
-                    <label asp-for="BalanceAmount" class="col-sm-4 col-form-label">Balance</label>
+                    <label asp-for="BalanceAmount" class="col-sm-4 col-form-label">Balance:</label>
                     <div class="col-sm-8">
                         <input asp-for="BalanceAmount" class="form-control" required />
                         <span asp-validation-for="BalanceAmount" class="text-danger"></span>
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="form-group row mb-3">
-                    <label asp-for="OverdraftAmount" class="col-sm-4 col-form-label">Sobregiro</label>
+                    <label asp-for="OverdraftAmount" class="col-sm-4 col-form-label">Sobregiro:</label>
                     <div class="col-sm-8">
                         <input asp-for="OverdraftAmount" class="form-control" value="0.00" readonly style="background-color: #e9ecef;" />
                         <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
@@ -61,7 +61,7 @@
                 </div>
 
                 <div class="form-group mt-4">
-                    <button type="submit" class="btn btn-primary mr-2">Aceptar</button>
+                    <button type="submit" class="btn btn-success mr-2">Aceptar</button>
                     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
                 </div>
             </form>

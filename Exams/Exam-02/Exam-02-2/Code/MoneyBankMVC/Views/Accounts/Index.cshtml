@@ -10,7 +10,7 @@
     }
 </style>
 
-<h1>Index</h1>
+<h1>Cuentas</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus"></i> Crear</a>
@@ -20,12 +20,12 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.AccountType)
+            </th> 
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AccountNumber)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OwnerName)
@@ -45,12 +45,13 @@
             <td>
                 @Html.DisplayFor(modelItem => item.AccountType)
             </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountNumber)
+                </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AccountNumber)
-            </td>
+            
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
