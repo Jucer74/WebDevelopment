@@ -1,9 +1,19 @@
-﻿using MoneyBankMVC.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using MoneyBankMVC.Context;
+using MoneyBankMVC.Models;
 
 namespace MoneyBankMVC.Services;
 
 public class AccountService : IAccountService
 {
+
+    private readonly AppDbContext _context;
+
+    public AccountService(AppDbContext context)
+    {
+        _context = context;
+    }
+
     public bool Create(Account account)
     {
         throw new NotImplementedException();
@@ -26,7 +36,7 @@ public class AccountService : IAccountService
 
     public List<Account> GetAll()
     {
-        throw new NotImplementedException();
+        return _context.Set<Account>().ToList<Account>();
     }
 
     public Account GetById(int id)
