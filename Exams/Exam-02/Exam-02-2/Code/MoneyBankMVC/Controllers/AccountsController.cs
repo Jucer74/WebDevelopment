@@ -86,7 +86,7 @@ namespace MoneyBankMVC.Controllers
         public IActionResult Deposit(int id)
         {
             var accountToDeposit = _accountService.Informacion(id);
-            Transaction DepositTransaction = MapTransaction(accountToDeposit);
+            Transaction DepositTransaction = _accountService.MapTransaction(accountToDeposit);
             return View(DepositTransaction);
         }
 
@@ -94,7 +94,7 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Deposit(int id, Transaction depositTransaction)
         {
-            var account = MapAccount(depositTransaction);
+            var account = _accountService.MapAccount(depositTransaction);
             _accountService.Depositar(id, account, depositTransaction.TransactionAmount);
             return RedirectToAction(nameof(Index));
         }
@@ -103,7 +103,7 @@ namespace MoneyBankMVC.Controllers
         public IActionResult Withdrawal(int id)
         {
             var accountToWithDrawal = _accountService.Informacion(id);
-            Transaction DepositTransaction = MapTransaction(accountToWithDrawal);
+            Transaction DepositTransaction = _accountService.MapTransaction(accountToWithDrawal);
             return View(DepositTransaction);
         }
 
@@ -111,7 +111,7 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Withdrawal(int id, Transaction withdrawalTransaction)
         {
-            var account = MapAccount(withdrawalTransaction);
+            var account = _accountService.MapAccount(withdrawalTransaction);
             var Donewithdrawal = _accountService.Retirar(id, account, withdrawalTransaction.TransactionAmount);
 
             if (!Donewithdrawal)
@@ -139,35 +139,6 @@ namespace MoneyBankMVC.Controllers
         {
             _accountService.Eliminar(id, account);
             return RedirectToAction(nameof(Index));
-        }
-
-        private Transaction MapTransaction(Account accountToDeposit)
-        {
-            return new Transaction
-            {
-                Id = accountToDeposit.Id,
-                AccountType = accountToDeposit.AccountType,
-                AccountNumber = accountToDeposit.AccountNumber,
-                BalanceAmount = accountToDeposit.BalanceAmount,
-                OverdraftAmount = accountToDeposit.OverdraftAmount,
-                CreationDate = accountToDeposit.CreationDate,
-                OwnerName = accountToDeposit.OwnerName,
-                TransactionAmount = 0.0M
-            };
-        }
-
-        private Transaction MapAccount(Transaction transaction)
-        {
-            return new Transaction
-            {
-                Id = transaction.Id,
-                AccountType = transaction.AccountType,
-                AccountNumber = transaction.AccountNumber,
-                BalanceAmount = transaction.BalanceAmount,
-                OverdraftAmount = transaction.OverdraftAmount,
-                CreationDate = transaction.CreationDate,
-                OwnerName = transaction.OwnerName,
-            };
         }
     }
 }

@@ -117,4 +117,35 @@ public class AccountService : IAccountService
     {
         return (_context.Accounts?.Any(e => e.AccountNumber == accountNumber)).GetValueOrDefault();
     }
+
+
+    public Transaction MapTransaction(Account accountToDeposit)
+    {
+        return new Transaction
+        {
+            Id = accountToDeposit.Id,
+            AccountType = accountToDeposit.AccountType,
+            AccountNumber = accountToDeposit.AccountNumber,
+            BalanceAmount = accountToDeposit.BalanceAmount,
+            OverdraftAmount = accountToDeposit.OverdraftAmount,
+            CreationDate = accountToDeposit.CreationDate,
+            OwnerName = accountToDeposit.OwnerName,
+            TransactionAmount = 0.0M
+        };
+    }
+
+    public Transaction MapAccount(Transaction transaction)
+    {
+        return new Transaction
+        {
+            Id = transaction.Id,
+            AccountType = transaction.AccountType,
+            AccountNumber = transaction.AccountNumber,
+            BalanceAmount = transaction.BalanceAmount,
+            OverdraftAmount = transaction.OverdraftAmount,
+            CreationDate = transaction.CreationDate,
+            OwnerName = transaction.OwnerName,
+        };
+    }
+
 }

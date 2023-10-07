@@ -19,4 +19,9 @@ public interface IAccountService
     void Eliminar(int id, Account account);
 
     bool AccountExists(string accountNumber);
+
+    Transaction MapTransaction(Account accountToDeposit);
+
+    Transaction MapAccount(Transaction transaction);
+
 }
