@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
+using MoneyBankMVC.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(builder.
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddServices();
 
 var app = builder.Build();
 

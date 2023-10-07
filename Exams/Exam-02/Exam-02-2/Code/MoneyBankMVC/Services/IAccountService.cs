@@ -10,11 +10,13 @@ public interface IAccountService
 
     void Edit(int id, Account account);
 
-    void Deposit(int id, Account account, decimal depositAmount);
+    void Deposit(int id, Account account, decimal deposit);
 
     bool Withdrawal(int id, Account account, decimal withdrawal);
 
     Account GetById(int id);
 
     void Delete(int id, Account account);
+
+    public bool AccountExists(string accountNumber);
 }

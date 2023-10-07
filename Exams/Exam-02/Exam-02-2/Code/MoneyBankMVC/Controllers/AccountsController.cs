@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
 using MoneyBankMVC.Services;
 
@@ -15,7 +16,7 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts
-        public ActionResult Index()
+        public IActionResult Index()
         {
             var AccountList = _accountService.GetAll();
             return View(AccountList);
@@ -26,7 +27,7 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             var AccountForDetails = _accountService.GetById(id);
 
@@ -58,8 +59,11 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Account account)
+        public IActionResult Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
+
+            bool accountExists = _accountService.AccountExists(account.AccountNumber);
+
             var ValidBalance = _accountService.Create(account);
 
             if (ValidBalance)
@@ -77,15 +81,16 @@ namespace MoneyBankMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
             return View(account);*/
         }
 
         // GET: Accounts/Edit/5
-        public ActionResult Edit(int id)
+        public IActionResult Edit(int id)
         {
 
             var accountToEdit = _accountService.GetById(id);
-            return View(accountToEdit);
+            
 
             /*if (id == null || _context.Accounts == null)
             {
@@ -96,8 +101,9 @@ namespace MoneyBankMVC.Controllers
             if (account == null)
             {
                 return NotFound();
-            }
-            return View(account);*/
+            }*/
+
+            return View(accountToEdit);
         }
 
         // POST: Accounts/Edit/5
@@ -105,7 +111,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Account account)
+        public IActionResult Edit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
 
             _accountService.Edit(id, account);
@@ -140,7 +146,7 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts/Delete/5
-        public ActionResult Delete(int id)
+        public IActionResult Delete(int id)
         {
 
             var accountToDelete = _accountService.GetById(id);
@@ -163,7 +169,7 @@ namespace MoneyBankMVC.Controllers
         // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id, Account account)
+        public IActionResult DeleteConfirmed(int id, Account account)
         {
 
             _accountService.Delete(id, account);
@@ -187,7 +193,7 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts/Edit/5
-        public ActionResult Deposit(int id)
+        public IActionResult Deposit(int id)
         {
 
             var accountForDeposit = _accountService.GetById(id);
@@ -212,7 +218,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Deposit(int id, Transaction Operation)
+        public IActionResult Deposit(int id, [Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount,ValueAmount")] Transaction Operation)
         {
             var account = MapAccount(Operation);
             _accountService.Deposit(id, account, Operation.ValueAmount);
@@ -247,7 +253,7 @@ namespace MoneyBankMVC.Controllers
         }
 
         // GET: Accounts/Edit/5
-        public ActionResult Withdrawal(int id)
+        public IActionResult Withdrawal(int id)
         {
 
             var accountForWithdrawal = _accountService.GetById(id);
@@ -272,7 +278,7 @@ namespace MoneyBankMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Withdrawal(int id, Transaction Operation)
+        public IActionResult Withdrawal(int id, Transaction Operation)
         {
             var account = MapAccount(Operation);
             var Donewithdrawal = _accountService.Withdrawal(id, account, Operation.ValueAmount);

@@ -27,10 +27,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.BalanceAmount)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OverdraftAmount)
-            </th>
-            <th></th>
+            <th>Operaciones</th>
         </tr>
     </thead>
     <tbody>
@@ -52,11 +49,10 @@
                 @Html.DisplayFor(modelItem => item.BalanceAmount)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OverdraftAmount)
-            </td>
-            <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
-                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-light"><i class="bi bi-info"></i></a>
+                    <a asp-action="Deposit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-box-arrow-in-down"></i></a>
+                    <a asp-action="Withdrawal" asp-route-id="@item.Id" class="btn btn-info"><i class="bi bi-box-arrow-up"></i></a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary"><i class="bi bi-info"></i></a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash"></i></a>
             </td>
         </tr>
