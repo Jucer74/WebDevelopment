@@ -198,15 +198,21 @@ namespace MoneyBankMVC.Controllers
                     }
                     else
                     {
+                        
+                        {
+                            transaction.BalanceAmount += transaction.ValueAmount;
 
-                        if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
-                        {
-                            transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
-}
-                        else
-                        {
-                            transaction.OverdraftAmount = 0;
+                            if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < 1000000)
+                            {
+                                transaction.OverdraftAmount = 1000000 - transaction.BalanceAmount;
+                            }
+                            else
+                            {
+                                transaction.OverdraftAmount = 0;
+                            }
                         }
+                        
+                        
                     }
 
                     _context.Update(transaction);
@@ -248,14 +254,9 @@ namespace MoneyBankMVC.Controllers
             return View(transaction);
         }
 
-        public Task<IActionResult> Withdrawal(int id, Transaction transaction)
-        {
-            return Withdrawal(id, transaction);
-        }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Withdrawal(int id, Transaction transaction, IActionResult message)
+        public async Task<IActionResult> Withdrawal(int id, Transaction transaction)
         {
             if (id != transaction.Id)
             {
@@ -275,6 +276,18 @@ namespace MoneyBankMVC.Controllers
                         if (transaction.ValueAmount <= transaction.BalanceAmount)
                         {
                             transaction.BalanceAmount -= transaction.ValueAmount;
+                        }
+                    }
+                    else
+                    {
+                        if (transaction.ValueAmount <= transaction.BalanceAmount)
+                        {
+                            transaction.BalanceAmount -= transaction.ValueAmount;
+
+                            if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < 1000000)
+                            {
+                                transaction.OverdraftAmount = 1000000 - transaction.BalanceAmount;
+                            }
                         }
                     }
 
