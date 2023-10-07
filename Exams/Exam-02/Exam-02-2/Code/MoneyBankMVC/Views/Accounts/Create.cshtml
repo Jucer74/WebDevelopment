@@ -1,12 +1,11 @@
 ﻿@model MoneyBankMVC.Models.Account
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Cuenta";
 }
 
-<h1>Create</h1>
+<h1>Crear Cuenta"</h1>
 
-<h4>Account</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,7 +13,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" />
+                <input asp-for="AccountType" class="form-check-input" class="form-check-label" for="flexRadioDefault1"  />
                 <span asp-validation-for="AccountType" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -38,14 +37,14 @@
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Aceptar" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </div>
 
 @section Scripts {

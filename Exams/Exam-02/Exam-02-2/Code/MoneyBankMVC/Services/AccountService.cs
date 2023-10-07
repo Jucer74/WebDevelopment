@@ -71,10 +71,7 @@ public class AccountService : IAccountService
 
             if(account.AccountType == 'C' && account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
             {
-                if (account.BalanceAmount <= 1_000_000)
-                {
-                    account.OverdraftAmount = 1_000_000;
-                }
+                
                 account.OverdraftAmount = MAX_OVERDRAFT + account.BalanceAmount;
             }
         }
