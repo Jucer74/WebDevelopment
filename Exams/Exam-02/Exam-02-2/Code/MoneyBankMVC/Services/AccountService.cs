@@ -26,8 +26,12 @@ public class AccountService : IAccountService
             account.CreationDate = DateTime.Now;
             if (account.AccountType == 'C')
             {
-                account.OverdraftAmount = MAX_OVERDRAFT;
-                account.BalanceAmount += account.OverdraftAmount;
+                account.BalanceAmount += MAX_OVERDRAFT;
+
+                if (account.BalanceAmount < MAX_OVERDRAFT)
+                {
+                    account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+                }
             }
             _context.Add(account);
             _context.SaveChanges();
