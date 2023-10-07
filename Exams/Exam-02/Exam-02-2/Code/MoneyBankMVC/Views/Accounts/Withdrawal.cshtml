@@ -1,36 +1,38 @@
-﻿@model MoneyBankMVC.Models.Account
+﻿@model MoneyBankMVC.Models.Transaction
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Withdrawal";
 }
 
-<h1>Edit</h1>
+<h1>Withdrawal</h1>
 
-<h4>Account</h4>
+<h4>Transaction</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Withdrawal">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ValueAmount" class="control-label"></label>
+                <input asp-for="ValueAmount" class="form-control" />
+                <span asp-validation-for="ValueAmount" class="text-danger"></span>
+            </div>
             <input type="hidden" asp-for="Id" />
-            <div class="col-sm-8">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" asp-for="AccountType" value="A" id="savings" required checked disabled />
-                    <label class="form-check-label" for="savings">Ahorros</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" asp-for="AccountType" value="C" id="current" required disabled />
-                    <label class="form-check-label" for="current">Corriente</label>
-                </div>
+            <div class="form-group">
+                <label asp-for="AccountType" class="control-label"></label>
+                <input asp-for="AccountType" class="form-control" />
                 <span asp-validation-for="AccountType" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span> 
+            </div>
             <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
-                <input asp-for="AccountNumber" class="form-control" readonly="readonly" />
+                <input asp-for="AccountNumber" class="form-control" />
                 <span asp-validation-for="AccountNumber" class="text-danger"></span>
             </div>
-
             <div class="form-group">
                 <label asp-for="OwnerName" class="control-label"></label>
                 <input asp-for="OwnerName" class="form-control" />
@@ -38,23 +40,22 @@
             </div>
             <div class="form-group">
                 <label asp-for="BalanceAmount" class="control-label"></label>
-                <input asp-for="BalanceAmount" class="form-control" readonly="readonly" />
+                <input asp-for="BalanceAmount" class="form-control" />
                 <span asp-validation-for="BalanceAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control" readonly="readonly" />
+                <input asp-for="OverdraftAmount" class="form-control" />
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Aceptar" class="btn btn-success"/>
-                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-            </div>
+                <input type="submit" value="Save" class="btn btn-primary" /> 
+                <a asp-action="Index">Cancelar</a>
+            </div> 
         </form>
     </div>
 </div>
 
 
 
-
-
+                

@@ -155,6 +155,163 @@ namespace MoneyBankMVC.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        // GET: Accounts/Deposit
+        public async Task<IActionResult> Deposit (int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            Transaction transaction = MapTransaction(account);
+
+            return View(transaction);
+        }
+
+
+        // POST: Accounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Deposit(int id, Transaction transaction)
+        {
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    Account account = MapAccount(transaction);
+
+                    //APLICAR LOGICA DEPOSITO
+
+                    _context.Update(account);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AccountExists(transaction.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
+
+
+        // GET: Accounts/Deposit
+        public async Task<IActionResult> Withdrawal(int? id)
+        {
+            if (id == null || _context.Accounts == null)
+            {
+                return NotFound();
+            }
+
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+
+            Transaction transaction = MapTransaction(account);
+
+            return View(transaction);
+        }
+
+
+        // POST: Accounts/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Withdrawal(int id, Transaction transaction)
+        {
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+                    Account account = MapAccount(transaction);
+
+                    //APLICAR LOGICA DEPOSITO
+
+                    _context.Update(account);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!AccountExists(transaction.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
+
+
+        private Account MapAccount(Transaction transaction)
+        {
+            Account account = new Account();
+
+            account.Id = transaction.Id;
+            account.AccountType = transaction.AccountType;
+            account.CreationDate = transaction.CreationDate;
+            account.AccountNumber = transaction.AccountNumber;
+            account.OwnerName = transaction.OwnerName;
+            account.BalanceAmount = transaction.BalanceAmount;
+            account.OverdraftAmount = transaction.OverdraftAmount;
+
+            return account;
+        }
+
+        private Transaction MapTransaction(Account account) 
+        {
+            Transaction transaction = new Transaction();
+
+            transaction.Id = account.Id;
+            transaction.AccountType = account.AccountType;
+            transaction.CreationDate = account.CreationDate;
+            transaction.AccountNumber = account.AccountNumber;
+            transaction.OwnerName = account.OwnerName;
+            transaction.BalanceAmount = account.BalanceAmount;
+            transaction.OverdraftAmount = account.OverdraftAmount;
+
+            return transaction;
+
+
+        }
+
+
+
         private bool AccountExists(int id)
         {
           return (_context.Accounts?.Any(e => e.Id == id)).GetValueOrDefault();
