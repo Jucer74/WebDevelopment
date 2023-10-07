@@ -47,8 +47,11 @@
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
+    <span style="color: @(item.OverdraftAmount > 0 ? "red" : "inherit");">
+        @Html.DisplayFor(modelItem => item.BalanceAmount)
+    </span>
+</td>
+
             <td>
                 <a asp-action="Edit" class="btn btn-warning" asp-route-id="@item.Id"><i class="bi bi-pencil"></i></a> |
                 <a asp-action="Deposit" class="btn btn-success" asp-route-id="@item.Id"><i class="bi bi-box-arrow-in-down"></i></a> |
