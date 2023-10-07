@@ -61,6 +61,10 @@ namespace MoneyBankMVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (account.AccountType == 'C')
+                {
+                    account.BalanceAmount += 1000000;
+                }
                 _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -202,9 +206,9 @@ namespace MoneyBankMVC.Controllers
                         {
                             transaction.BalanceAmount += transaction.ValueAmount;
 
-                            if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < 1000000)
+                            if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
                             {
-                                transaction.OverdraftAmount = 1000000 - transaction.BalanceAmount;
+                                transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
                             }
                             else
                             {
@@ -277,6 +281,10 @@ namespace MoneyBankMVC.Controllers
                         {
                             transaction.BalanceAmount -= transaction.ValueAmount;
                         }
+                        else
+                        {
+                           
+                        }
                     }
                     else
                     {
@@ -284,9 +292,9 @@ namespace MoneyBankMVC.Controllers
                         {
                             transaction.BalanceAmount -= transaction.ValueAmount;
 
-                            if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < 1000000)
+                            if (transaction.OverdraftAmount > 0 && transaction.BalanceAmount < transaction.MaxOverdraft)
                             {
-                                transaction.OverdraftAmount = 1000000 - transaction.BalanceAmount;
+                                transaction.OverdraftAmount = transaction.MaxOverdraft - transaction.BalanceAmount;
                             }
                         }
                     }
