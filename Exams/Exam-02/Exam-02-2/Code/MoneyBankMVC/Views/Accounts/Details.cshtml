@@ -4,51 +4,38 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div class="container mt-5">
+    <h1>Detalles de la Cuenta</h1>
 
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreationDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AccountNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OwnerName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OwnerName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BalanceAmount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BalanceAmount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.OverdraftAmount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.OverdraftAmount)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Información de la Cuenta</h4>
+            <hr />
+
+            <dl class="row">
+                <dt class="col-sm-3">Tipo de Cuenta</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.AccountType)</dd>
+
+                <dt class="col-sm-3">Fecha de Creación</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.CreationDate)</dd>
+
+                <dt class="col-sm-3">Número de Cuenta</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.AccountNumber)</dd>
+
+                <dt class="col-sm-3">Propietario</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.OwnerName)</dd>
+
+                <dt class="col-sm-3">Balance</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.BalanceAmount)</dd>
+
+                <dt class="col-sm-3">Sobregiro</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.OverdraftAmount)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Volver a la Lista</a>
+    </div>
 </div>

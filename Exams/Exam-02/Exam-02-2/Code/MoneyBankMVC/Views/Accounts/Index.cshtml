@@ -5,9 +5,13 @@
 }
 
 <h1>Index</h1>
-
+<style>
+    .balance-negative {
+        color: red;
+    }
+</style>
 <p>
-    <a asp-action="Create" class="btn btn-success">Adicionar</a>
+    <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus"></i> Crear</a>
 </p>
 <table class="table">
     <thead>
@@ -58,7 +62,7 @@
 
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="bi bi-pencil"></i></a> 
                     <a asp-action="Deposit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-box-arrow-in-down"></i></a> 
-                    <a asp-action="Withdrawel" asp-route-id="@item.Id" class="btn btn-info"><i class="bi bi-box-arrow-down"></i></a> 
+                    <a asp-action="Withdrawal" asp-route-id="@item.Id" class="btn btn-info"><i class="bi bi-box-arrow-down"></i></a> 
                     <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary"><i class="bi bi-info" ></i></a>
                     <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash"></i> </a>
             </td>

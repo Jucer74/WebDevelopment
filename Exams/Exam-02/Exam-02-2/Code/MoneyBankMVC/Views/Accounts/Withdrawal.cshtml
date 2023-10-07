@@ -1,15 +1,17 @@
-﻿@model MoneyBankMVC.Models.Transaction
+﻿@model MoneyBankMVC.Models.Account
 
 @{
-    ViewData["Title"] = "Deposit";
+    ViewData["Title"] = "Withdrawal";
 }
 
-<h4>Deposit</h4>
+<h1>Withdrawal</h1>
+
+<h4>Account</h4>
 <hr />
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <form asp-action="Deposit" method="post">
+            <form asp-action="Withdrawal" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
 
@@ -63,15 +65,10 @@
                 </div>
 
                 <div class="form-group mt-4">
-                    <button type="submit" class="btn btn-primary mr-2" style="background-color: #28a745; color: #fff;">Aceptar</button>
+                    <button type="submit" class="btn btn-primary mr-2">Aceptar</button>
                     <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
