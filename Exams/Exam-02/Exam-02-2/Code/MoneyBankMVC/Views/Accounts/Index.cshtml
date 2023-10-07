@@ -45,9 +45,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.OwnerName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BalanceAmount)
-            </td>
+                @if (item.OverdraftAmount > 0)
+                {
+                    <td class="text-danger">
+                        @Html.DisplayFor(modelItem => item.BalanceAmount)
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BalanceAmount)
+                    </td>
+                }
             <td>
                     <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class="bi bi-pencil"></i></a>
                     <a asp-action="Deposit" asp-route-id="@item.Id" class="btn btn-success"><i class="bi bi-box-arrow-in-down"></i></a>
