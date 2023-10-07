@@ -61,6 +61,7 @@ namespace MoneyBankMVC.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,AccountType,CreationDate,AccountNumber,OwnerName,BalanceAmount,OverdraftAmount")] Account account)
         {
+
             if (ModelState.IsValid)
             {
                 //_context.Add(account);
@@ -230,6 +231,51 @@ namespace MoneyBankMVC.Controllers
                 }
 
                 await _accountService.DepositAsync(account, transaction);
+
+                return RedirectToAction(nameof(Index));
+            }
+            return View(transaction);
+        }
+
+
+        public async Task<IActionResult> Withdrawal(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+
+            //var account = await _context.Accounts.FindAsync(id);
+            var account = await _accountService.FindAccountAsync(id);
+            if (account == null)
+            {
+                return NotFound();
+            }
+            Transaction transaction = MapTransaction(account);
+
+            return View(transaction);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Withdrawal(int id, Transaction transaction)
+        {
+            if (id != transaction.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                var account = await _accountService.FindAccountAsync(id);
+                if (account == null)
+                {
+                    return NotFound();
+                }
+
+                await _accountService.WithdrawalAsync(account, transaction);
 
                 return RedirectToAction(nameof(Index));
             }

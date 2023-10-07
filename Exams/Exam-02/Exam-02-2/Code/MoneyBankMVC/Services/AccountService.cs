@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
+using System.Security.Principal;
 
 namespace MoneyBankMVC.Services;
 
@@ -17,6 +18,14 @@ public class AccountService : IAccountService
 
     public async Task CreateAccountAsync(Account account)
     {
+        if (account.AccountType == 'C')
+        {
+             account.BalanceAmount += MAX_OVERDRAFT;
+        }
+        else
+        {
+            account.OverdraftAmount = 0;
+        }
         _context.Add(account);
         await _context.SaveChangesAsync();
     }
@@ -51,6 +60,28 @@ public class AccountService : IAccountService
             account.OverdraftAmount = 0;
         }
 
+        await EditAccountAsync(account.Id, account);
+    }
+
+    public async Task WithdrawalAsync(Account account, Transaction transaction)
+    {
+        if (transaction.ValueAmount <= account.BalanceAmount)
+        {
+            account.BalanceAmount -= transaction.ValueAmount;
+
+            if(account.AccountType == 'C' && account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+            {
+                if (account.BalanceAmount <= 1_000_000)
+                {
+                    account.OverdraftAmount = 1_000_000;
+                }
+                account.OverdraftAmount = MAX_OVERDRAFT + account.BalanceAmount;
+            }
+        }
+        else
+        {
+            
+        }
         await EditAccountAsync(account.Id, account);
     }
 
