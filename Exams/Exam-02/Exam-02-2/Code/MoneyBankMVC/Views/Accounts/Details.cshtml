@@ -4,10 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
 <div>
-    <h4>Account</h4>
+    <h4>Información Cuenta</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -15,12 +14,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.AccountType)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreationDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreationDate)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.AccountNumber)
@@ -48,9 +41,10 @@
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <div>
-        <a asp-action="Index" class="btn btn-Secondary">Cancel</a>
+<div class="form-group ">
+    <input type="submit" value="Aceptar" class="btn btn-success" />
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
 </div>
-</div>
+  
+</div>  
+

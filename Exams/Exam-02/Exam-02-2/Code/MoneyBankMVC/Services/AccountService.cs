@@ -2,6 +2,7 @@
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
 
+
 namespace MoneyBankMVC.Services;
 
 public class AccountService : IAccountService
@@ -128,5 +129,10 @@ public class AccountService : IAccountService
     public bool AccountExists(string accountNumber)
     {
         return (_context.Accounts?.Any(e => e.AccountNumber == accountNumber)).GetValueOrDefault();
+    }
+
+    void IAccountService.Withdrawal(int id, Account account, decimal withdrawal)
+    {
+        throw new NotImplementedException();
     }
 }
