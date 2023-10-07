@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
+using Org.BouncyCastle.Asn1.Cmp;
 
 namespace MoneyBankMVC.Services;
 
@@ -14,15 +15,18 @@ public class AccountService : IAccountService
         _context = context;
     }
 
+    //Función para crear una cuenta bancaria
+
     public bool Create(Account account)
     {
+        //Ciclo if para poder utilizar las cuentas corrientes 
         if (account.BalanceAmount > 0)
         {
             account.Id = AutoIncrementId();
             account.CreationDate = DateTime.Now;
             if(account.AccountType == 'C')
             {
-
+                //Al balance le suma al el sobregiro maximo por el motivo de ser una cuenta corriente
                 account.BalanceAmount += MAX_OVERDRAFT;
 
                 if(account.BalanceAmount < MAX_OVERDRAFT)
@@ -31,6 +35,8 @@ public class AccountService : IAccountService
                 }
 
             }
+
+            //Se añade la cuenta a la base de datos
             _context.Add(account);
             _context.SaveChanges();
             return true;
@@ -42,7 +48,7 @@ public class AccountService : IAccountService
     //Funcion para colocar el Id diferente
     private int AutoIncrementId()
     {
-        var Id = _context.Accounts.Max(e => e.Id) + 1;
+        var Id = _context.Accounts.Max(e => e.Id) + 1; //Busca el número de datos en la base y le suma 1 al dato nuevo 
         return Id;
     }
 
