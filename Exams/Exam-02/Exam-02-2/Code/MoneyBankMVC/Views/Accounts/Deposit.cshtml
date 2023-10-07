@@ -13,9 +13,15 @@
         <form asp-action="Deposit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="AccountType" class="control-label"></label>
-                <input asp-for="AccountType" class="form-control" readonly="readonly" />
+            <div class="col-sm-8">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="AccountType" value="A" id="savings" required checked disabled />
+                    <label class="form-check-label" for="savings">Ahorros</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" asp-for="AccountType" value="C" id="current" required disabled />
+                    <label class="form-check-label" for="current">Corriente</label>
+                </div>
                 <span asp-validation-for="AccountType" class="text-danger"></span>
             </div>
             

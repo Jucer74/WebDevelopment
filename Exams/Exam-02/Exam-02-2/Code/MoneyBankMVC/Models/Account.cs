@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoneyBankMVC.Models
 {
@@ -20,6 +21,7 @@ namespace MoneyBankMVC.Models
         [Required(ErrorMessage = "El campo Numero de la Cuenta es Requerido")]
         [MaxLength(10, ErrorMessage = "El campo Numero de La Cuenta tiene una longitud maxima de 10 caracteres")]
         [RegularExpression(@"\d{10}", ErrorMessage = "El campo Numero de la Cuenta Solo Acepta Numeros")]
+        [Remote("IsAccountNumberAvailable", "Accounts", ErrorMessage = "El número de cuenta ya existe.")]
         public string AccountNumber { get; set; } = null!;
 
         [Display(Name = "Nombre")]

@@ -12,6 +12,16 @@ namespace MoneyBankMVC.Controllers
 {
     public class AccountsController : Controller
     {
+        //ACCOUNT NUMBER
+
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult IsAccountNumberAvailable(string accountNumber)
+        {
+            bool isAccountNumberAvailable = !_context.Accounts.Any(a => a.AccountNumber == accountNumber);
+            return Json(isAccountNumberAvailable);
+        }
+
+
         private readonly AppDbContext _context;
 
         public AccountsController(AppDbContext context)
