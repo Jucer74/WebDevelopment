@@ -1,0 +1,26 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Información de Cuenta</h1>
+<div class="card-body">
+    <dl class="row">
+        <dt class="col-sm-4 font-weight-bold">Tipo de Cuenta</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.AccountType)</dd>
+        <dt class="col-sm-4 font-weight-bold">Número de Cuenta</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.AccountNumber)</dd>
+        <dt class="col-sm-4 font-weight-bold">Propietario</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.OwnerName)</dd>
+        <dt class="col-sm-4 font-weight-bold">Balance</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.BalanceAmount)</dd>
+        <dt class="col-sm-4 font-weight-bold">Sobregiro</dt>
+        <dd class="col-sm-8">@Html.DisplayFor(model => model.OverdraftAmount)</dd>
+    </dl>
+</div>
+<div class="mt-3">
+    <a asp-action="Index" class="btn btn-success">Aceptar</a>
+    <a asp-action="Index" class="btn btn-outline-secondary ml-2">Cancelar</a>
+</div>
+

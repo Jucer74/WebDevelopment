@@ -1,0 +1,59 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Eliminar Cuenta</h1>
+
+<div id="deleteConfirmation">
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BalanceAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BalanceAmount)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OverdraftAmount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OverdraftAmount)
+        </dd>
+    </dl>
+</div>
+
+<form asp-action="Delete" method="post" id="deleteForm">
+    <input type="hidden" asp-for="Id" />
+    <button type="button" class="btn btn-danger" onclick="confirmDelete()">Eliminar</button> 
+    <a href="javascript:history.back()" class="btn btn-outline-secondary">Cancelar</a>
+</form>
+
+<script>
+    function confirmDelete() {
+        if (confirm('¿Estás seguro que quieres eliminar esta cuenta?')) {
+            document.getElementById("deleteForm").submit();
+            document.getElementById("deleteConfirmation").style.display = "none"; 
+        }
+    }
+</script>
+
+
