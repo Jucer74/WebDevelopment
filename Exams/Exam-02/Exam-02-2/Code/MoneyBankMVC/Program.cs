@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MoneyBankMVC.Context;
+using MoneyBankMVC.Services;
 using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,7 +14,7 @@ var cultureInfo = new CultureInfo("en-US");
 cultureInfo.NumberFormat.CurrencyDecimalSeparator = ".";
 CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
 CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
-
+builder.Services.AddScoped<IAccountService, AccountService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
