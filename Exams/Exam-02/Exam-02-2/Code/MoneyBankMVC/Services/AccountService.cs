@@ -20,6 +20,11 @@ public class AccountService : IAccountService
         return account;
     }
 
+    //public async Task<Account> Edit1AccountAsync(Account account)
+    //{
+    //    return await _context.Accounts.FindAsync(id);
+    //}
+
     public async Task<List<Account>> GetAccountsAsync()
     {
         return await _context.Accounts.ToListAsync();

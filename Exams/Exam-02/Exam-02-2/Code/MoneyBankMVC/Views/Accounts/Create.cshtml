@@ -18,11 +18,6 @@
                 <span asp-validation-for="AccountType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreationDate" class="control-label"></label>
-                <input asp-for="CreationDate" class="form-control" />
-                <span asp-validation-for="CreationDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="AccountNumber" class="control-label"></label>
                 <input asp-for="AccountNumber" class="form-control" />
                 <span asp-validation-for="AccountNumber" class="text-danger"></span>
@@ -38,8 +33,8 @@
                 <span asp-validation-for="BalanceAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control" />
+                <label asp-for="OverdraftAmount" class="control-label" disabled></label>
+                <input asp-for="OverdraftAmount" class="form-control" disabled />
                 <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
             </div>
             <div class="form-group">
