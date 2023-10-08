@@ -13,53 +13,90 @@
         <form asp-action="Deposit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <div class="row-cols-2">
-                    <div class="form-check">
-                        <input asp-for="AccountType" class="form-check-input" type="radio" value='A' checked disabled>
-                        <label asp-for="AccountType" class=" form-check-label" for="exampleRadios1">
-                            Ahorros
-                        </label>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label asp-for="AccountType" class="control-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="form-check">
+                                <input asp-for="AccountType" type="hidden"   />
+                                <input asp-for="AccountType" class="form-check-input" type="radio" value='model.' checked disabled>
+                                <label asp-for="AccountType" class=" form-check-label" for="exampleRadios1">
+                                    Ahorros
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-check">
+                                <input asp-for="AccountType" class="form-check-input" type="radio" value='C' disabled>
+                                <label asp-for="AccountType" class=" form-check-label" for="exampleRadios1">
+                                    Corriente
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input asp-for="AccountType" class="form-check-input" type="radio" value='C' disabled>
-                        <label asp-for="AccountType" class=" form-check-label" for="exampleRadios1">
-                            Corriente
-                        </label>
-                    </div>
+                    
                     <span asp-validation-for="AccountType" class="text-danger"></span>
                 </div>
             </div>
-            <div class="form-group">
-                <label asp-for="AccountNumber" class="control-label"></label>
-                <input asp-for="AccountNumber" class="form-control" readonly/>
-                <span asp-validation-for="AccountNumber" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label asp-for="AccountNumber" class="control-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="AccountNumber" class="form-control" readonly />
+                    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="OwnerName" class="control-label"></label>
-                <input asp-for="OwnerName" class="form-control" readonly />
-                <span asp-validation-for="OwnerName" class="text-danger"></span>
+            <div class="form-group row">
+               <div class="col-sm-2">
+                    <label asp-for="OwnerName" class="control-label"></label>
+               </div>
+                <div class="col-sm-10">
+                    <input asp-for="OwnerName" class="form-control" readonly />
+                    <span asp-validation-for="OwnerName" class="text-danger"></span>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="BalanceAmount" class="control-label"></label>
-                <input asp-for="BalanceAmount" class="form-control" readonly />
-                <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label asp-for="BalanceAmount" class="control-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="BalanceAmount" class="form-control" readonly />
+                    <span asp-validation-for="BalanceAmount" class="text-danger"></span>
+                </div>
+                
             </div>
-            <div class="form-group">
-                <label asp-for="OverdraftAmount" class="control-label"></label>
-                <input asp-for="OverdraftAmount" class="form-control" readonly />
-                <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+            <div class="form-group row">
+               <div class="col-sm-2">
+                    <label asp-for="OverdraftAmount" class="control-label"></label>
+               </div>
+               <div class="col-sm-10">
+                    <input asp-for="OverdraftAmount" class="form-control" readonly />
+                    <span asp-validation-for="OverdraftAmount" class="text-danger"></span>
+               </div>
+                
             </div>
-            <div class="form-group">
-                <label asp-for="ValueAmount" class="control-label"></label>
-                <input asp-for="ValueAmount" class="form-control" />
-                <span asp-validation-for="ValueAmount" class="text-danger"></span>
+            <div class="form-group row">
+                <div class="col-sm-2">
+                    <label asp-for="ValueAmount" class="control-label"></label>
+                </div>
+                <div class="col-sm-10">
+                    <input asp-for="ValueAmount" class="form-control" />
+                    <span asp-validation-for="ValueAmount" class="text-danger"></span>
+                </div>
+                
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-            <div>
-                <a asp-action="Index" class="btn btn-Secondary">Cancel</a>
+            <div class="form-group row">
+                <div class="col-sm-3">
+                    <input type="submit" value="Confirm" class="btn btn-success" />
+                </div>
+
+                <div class="col-sm-1">
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
             </div>
         </form>
     </div>

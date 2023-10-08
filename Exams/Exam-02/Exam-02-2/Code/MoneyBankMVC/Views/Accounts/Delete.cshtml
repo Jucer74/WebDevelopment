@@ -14,8 +14,19 @@
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.AccountType)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
+        <dd class="col-sm-10">
+            @if (Model.AccountType == 'A')
+            {
+                <text>
+                    Ahorro
+                </text>
+            }
+            else
+            {
+                <text>
+                    Corriente
+                </text>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreationDate)
@@ -49,11 +60,14 @@
         </dd>
     </dl>
     
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <div>
-            <a asp-action="Index" class="btn btn-Secondary">Cancel</a>
+    <form asp-action="Delete" class="row">
+        <div class="col-sm-1">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-danger" />
+        </div>
+        <div class="col-sm-1">
+            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
+
 </div>

@@ -27,11 +27,12 @@ public class AccountService : IAccountService
             if(account.AccountType == 'C')
             {
                 //Al balance le suma al el sobregiro maximo por el motivo de ser una cuenta corriente
-                account.BalanceAmount += MAX_OVERDRAFT;
 
                 if(account.BalanceAmount < MAX_OVERDRAFT)
                 {
                     account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+
+                    account.BalanceAmount += account.OverdraftAmount;
                 }
 
             }
@@ -69,17 +70,19 @@ public class AccountService : IAccountService
     {
         account.BalanceAmount += deposit;
 
-        if(account.AccountType == 'C')
+        if (account.AccountType == 'C')
         {
             if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
             {
-                account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
+                
+                account.OverdraftAmount = account.BalanceAmount - MAX_OVERDRAFT;
             }
             else
             {
                 account.OverdraftAmount = 0;
             }
         }
+ 
         
 
         Edit(id, account);
@@ -110,9 +113,8 @@ public class AccountService : IAccountService
 
             if (account.AccountType == 'C')
             {
-                account.BalanceAmount -= withdrawal;
 
-                if (account.OverdraftAmount > 0 && account.BalanceAmount < MAX_OVERDRAFT)
+                if (account.OverdraftAmount >= 0 && account.BalanceAmount < MAX_OVERDRAFT)
                 {
                     account.OverdraftAmount = MAX_OVERDRAFT - account.BalanceAmount;
                 }

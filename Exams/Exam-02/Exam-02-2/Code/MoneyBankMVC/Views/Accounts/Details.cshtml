@@ -10,11 +10,22 @@
     <h4>Account</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.AccountType)
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AccountType)
+        <dd class="col-sm-10">
+            @if (Model.AccountType == 'A')
+            {
+                <text>
+                    Ahorro
+                </text>
+            }
+            else
+            {
+               <text>
+                   Corriente
+               </text>
+            }
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CreationDate)
@@ -49,8 +60,12 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <div>
-        <a asp-action="Index" class="btn btn-Secondary">Cancel</a>
+    <div class="row">
+        <div class="col-sm-1">
+            <a asp-action="Index" asp-route-id="@Model?.Id" class="btn btn-success">Confirm</a>
+        </div>
+        <div class="col-sm-1">
+            <a asp-action="Index" class="btn btn-Secondary">Cancel</a>
+        </div>
     </div>
 </div>

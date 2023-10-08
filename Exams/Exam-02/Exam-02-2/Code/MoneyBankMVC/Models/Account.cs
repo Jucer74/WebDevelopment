@@ -34,6 +34,7 @@ namespace MoneyBankMVC.Models
 
         [Required(ErrorMessage = "El campo Sobregiro es Requerido")]
         [RegularExpression(@"^\d+.?\d{0,2}$", ErrorMessage = "El campo Sobregiro debe ser en formato Moneda (0.00)")]
+        [Display(Name = "Sobregiro")]
         public decimal OverdraftAmount { get; set; }
     }
 }

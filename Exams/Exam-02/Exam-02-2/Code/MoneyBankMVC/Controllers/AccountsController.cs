@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Build.Evaluation;
 using MoneyBankMVC.Context;
 using MoneyBankMVC.Models;
 using MoneyBankMVC.Services;
@@ -64,16 +65,27 @@ namespace MoneyBankMVC.Controllers
 
             bool accountExists = _accountService.AccountExists(account.AccountNumber);
 
-            var ValidBalance = _accountService.Create(account);
-
-            if (ValidBalance)
+            if (accountExists)
             {
-                return RedirectToAction(nameof(Index));
+                ModelState.AddModelError("AccountNumber", "La cuenta ya existe");
+                return View(account);
             }
             else
             {
-                return View(account);
+                var ValidAmount = _accountService.Create(account);
+
+                if (ValidAmount)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ModelState.AddModelError("BalanceAmount", "Debe ser diferente de 0");
+                    return View(account);
+                }
+
             }
+
 
             /*if (ModelState.IsValid)
             {
@@ -90,7 +102,7 @@ namespace MoneyBankMVC.Controllers
         {
 
             var accountToEdit = _accountService.GetById(id);
-            
+
 
             /*if (id == null || _context.Accounts == null)
             {
@@ -189,7 +201,7 @@ namespace MoneyBankMVC.Controllers
             */
 
             return RedirectToAction(nameof(Index));
-            
+
         }
 
         // GET: Accounts/Edit/5
@@ -259,6 +271,9 @@ namespace MoneyBankMVC.Controllers
 
             var accountForWithdrawal = _accountService.GetById(id);
             Transaction Operation = MapTransaction(accountForWithdrawal);
+
+            
+
             return View(Operation);
 
             /*if (id == null || _context.Accounts == null)
@@ -287,39 +302,12 @@ namespace MoneyBankMVC.Controllers
             if (!Donewithdrawal)
             {
                 ModelState.AddModelError("ValueAmount", "Fondos Insuficientes");
-                return View(account);
+                return View(Operation);
             }
             else
             {
                 return RedirectToAction(nameof(Index));
             }
-
-            /*if (id != account.Id)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(account);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!AccountExists(account.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(account);*/
         }
 
 
