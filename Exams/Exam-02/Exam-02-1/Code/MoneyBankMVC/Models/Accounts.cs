@@ -26,11 +26,9 @@ namespace MoneyBankMVC.Models
         public required string OwnerName { get; set; } = null!;
 
         [Required]
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal BalanceAmount { get; set; } = decimal.Zero;
+          public float BalanceAmount { get; set; } = 0.0f;
 
         [Required]
-        [Column(TypeName = "decimal(18, 2)")]
-        public decimal OverdraftAmount { get; set; } = decimal.Zero;
+        public float OverdraftAmount { get; set; } = 0.0f;
     }
 }

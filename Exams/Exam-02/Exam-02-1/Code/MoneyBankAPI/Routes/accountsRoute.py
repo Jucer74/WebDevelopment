@@ -26,7 +26,7 @@ def validate_and_open_account(account: AccountsSchemas) -> AcccountsModel:
     if account.OverdraftAmount > MAX_OVERDRAFT:
         raise HTTPException(status_code=400, detail="Overdraft amount exceeds the maximum limit")
 
-    return AcccountsModel(
+    return AccountsModel(
         AccountType=account.AccountType,
         CreationDate=account.CreationDate,
         AccountNumber=account.AccountNumber,
