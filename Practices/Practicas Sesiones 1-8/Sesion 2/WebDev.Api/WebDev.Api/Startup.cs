@@ -4,6 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.SqlServer;
     using Microsoft.Extensions.Configuration;
+    using Microsoft.VisualStudio.Web.CodeGeneration.Design;
 
     public class Startup
     {
