@@ -52,15 +52,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-    @RenderSection("Scripts", required: false)
-    @section Scripts{
-        <script>
-            $(document).ready(function () {
-                $('#usersTable').DataTable();
-            });
-        </script>
-    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
