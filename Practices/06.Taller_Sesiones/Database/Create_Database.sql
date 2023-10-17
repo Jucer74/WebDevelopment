@@ -1,0 +1,2 @@
+CREATE DATABASE `UsersDB`;
+USE UsersDB;
