@@ -18,6 +18,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("CnnStr"),
     new MySqlServerVersion(new Version(8, 0, 21)))
 );
+builder.Services.AddCors();
 
 builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "User API", Version = "v1" }));
 
@@ -27,7 +28,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.UseCors(options => {
+    options.WithOrigins("http://localhost:3000");
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
