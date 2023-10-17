@@ -1,9 +1,11 @@
-import React from 'react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
+
+
 
 export function List()
 {
