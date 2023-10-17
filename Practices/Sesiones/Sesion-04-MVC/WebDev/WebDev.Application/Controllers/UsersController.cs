@@ -1,36 +1,50 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Collections.Generic;
+using WebDev.Application.Config;
 using WebDev.Application.Models;
+using WebDev.Services;
+using WebDev.Services.Entities;
+
 namespace WebDev.Application.Controllers
 {
     public class UsersController : Controller
     {
-
-        private static List<User> _userList;
+        private static List<User>? _userList;
         private static int numUsers;
-        // GET: UsersController
+        private UsersService usersService;
+
+        private readonly ApiConfiguration _apiConfiguration;
+
+        public UsersController(IOptions<ApiConfiguration> apiConfiguration)
+        {
+            _apiConfiguration = apiConfiguration.Value;
+            usersService = new UsersService(_apiConfiguration.ApiUsersUrl);
+        }
+
         [HttpGet]
         public ActionResult Index()
         {
-            // Mock User List
+            // Implementa lógica para obtener la lista de usuarios desde el servicio
+            // usersService.GetUsersAsync();
+            // Luego asigna la lista de usuarios a _userList
+            // _userList = listaDeUsuariosObtenida;
+
             if (_userList is null)
             {
                 _userList = new List<User>()
-                 {
-                      new User{Id=1, Email="Julio.Robles@email.com", Name="Julio Robles", Username="jrobles", Password="Password"},
-                      new User{Id=2, Email="Pilar.Lopez@email.com", Name="Pilar Lopez", Username="plopez", Password="Password"},
-                      new User{Id=3, Email="Felipe.Daza@email.com", Name="Felipe Daza", Username="fdaza", Password="Password"},
-                 };
+                {
+                    new User{Id=1, Email="Julio.Robles@email.com", Name="Julio Robles", Username="jrobles", Password="Password"},
+                    new User{Id=2, Email="Pilar.Lopez@email.com", Name="Pilar Lopez", Username="plopez", Password="Password"},
+                    new User{Id=3, Email="Felipe.Daza@email.com", Name="Felipe Daza", Username="fdaza", Password="Password"}
+                };
                 numUsers = _userList.Count;
             }
-            // Set Object Model
+
             return View(_userList);
         }
 
-
-
-        // GET: UsersController/Details/5
         [HttpGet]
         public ActionResult Details(int id)
         {
@@ -44,13 +58,11 @@ namespace WebDev.Application.Controllers
             return View(userFound);
         }
 
-        // GET: UsersController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: UsersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(User user)
@@ -71,7 +83,6 @@ namespace WebDev.Application.Controllers
             }
         }
 
-        // GET: UsersController/Edit/5
         [HttpGet]
         public ActionResult Edit(int id)
         {
@@ -85,7 +96,6 @@ namespace WebDev.Application.Controllers
             return View(userFound);
         }
 
-        // POST: UsersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(User user)
@@ -110,7 +120,6 @@ namespace WebDev.Application.Controllers
             }
         }
 
-        // GET: UsersController/Delete/5
         [HttpGet]
         public ActionResult Delete(int id)
         {
@@ -124,7 +133,6 @@ namespace WebDev.Application.Controllers
             return View(userFound);
         }
 
-        // POST: UsersController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(User user)
