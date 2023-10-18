@@ -391,4 +391,26 @@ packages/react-devtools-inline/dist
 packages/react-devtools-shell/dist
 packages/react-devtools-timeline/dist
 
-Practices/Taller Sesiones/Sesion-07-ReactWeb/ReactWeb/usermanagerapp/
+# Dependencies
+/node_modules
+
+# Production build
+/build
+
+# Logs
+/npm-debug.log*
+/yarn-debug.log*
+/yarn-error.log*
+/debug.log
+
+# Editor files
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
