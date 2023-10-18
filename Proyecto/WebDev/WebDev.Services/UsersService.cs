@@ -12,12 +12,15 @@ namespace WebDev.Services
     public class UsersService
     {
         private HttpClient _httpClient;
+        private HttpClientHandler _httpClientHandler;
         private string BaseUrl { get; }
         public UsersService(string baseUrl)
         {
             BaseUrl = baseUrl;
 
-            _httpClient = new HttpClient();
+            _httpClientHandler = new HttpClientHandler();
+            _httpClientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+            _httpClient = new HttpClient(_httpClientHandler);
 
             SetupHttpConnection(_httpClient, baseUrl);
         }
