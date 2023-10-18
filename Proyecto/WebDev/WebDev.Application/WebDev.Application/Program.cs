@@ -1,7 +1,11 @@
+using System.Configuration;
+using WebDev.Application.Config;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.Configure<ApiConfiguration>(builder.Configuration.GetSection("ApiConfiguration"));
 
 var app = builder.Build();
 
