@@ -17,7 +17,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.8" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
