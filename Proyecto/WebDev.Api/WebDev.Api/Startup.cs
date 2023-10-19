@@ -1,56 +1,33 @@
-﻿namespace WebDev.Api
+﻿using WebDev.Api.Context;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using System;
+using Microsoft.OpenApi.Models;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Configurar la conexión a la base de datos
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql("Server=localhost;Port=3306;Database=UsersDB;User Id=Admin;Password=Admin123;Charset=utf8", new MySqlServerVersion(new Version(8, 0, 34))));
+builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "User API", Version = "v1" }));
+// Resto del código
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
 {
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
-    using Microsoft.OpenApi.Models;
-    using WebDev.Api.Context;
+    // Enable middleware to serve generated Swagger as a JSON endpoint.
+    app.UseSwagger();
 
-    public class Startup
-    {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllers();                        //UseSqlite DEBES DE UseSqlServer
-            services.AddDbContext<AppDbContext>(options => options.UseSqlite(Configuration.GetConnectionString("CnnStr")));
-            services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "User API", Version = "v1" }));
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
-
-            // Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint
-            app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
-        }
-    }
+    // Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
+    // specifying the Swagger JSON endpoint
+    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
 }
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
+app.Run();
