@@ -6,7 +6,7 @@
 <div class="container">
     <h1>User List</h1>
     <p>
-        <a asp-action="Create" class="btn btn-success">Create New</a>
+        <a asp-action="Create" class="btn btn-success"><i class="fas fa-plus"></i> Create New</a>
     </p>
 </div>
 
@@ -61,3 +61,11 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#usersTable').DataTable();
+        });
+    </script>
+}
