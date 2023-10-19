@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 
 
+//BORRAR DOS IMPORT import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome'; Y  import { faPlus } from '@fortawesome/free-solid-svg-icons';
+//BORRAR EL ICONO <Button className="left" variant="success btn-sm"> <Fas icon={faPlus} /> New</Button>
 export function List()
 {
   const baseUrl = "https://localhost:5001/api/Users";
@@ -27,7 +29,7 @@ return (
   <Container className="text-center text-md-left">
     <h1>User List</h1>
     <p>
-      <Button className="left" variant="success btn-sm"> New</Button>
+      <Button className="left" variant="success btn-sm">New</Button>
     </p>
     <Table id="UsersTable">
       <thead>
