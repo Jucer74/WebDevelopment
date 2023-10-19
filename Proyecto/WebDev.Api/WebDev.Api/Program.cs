@@ -1,44 +1,33 @@
-
-using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using WebDev.Api.Context;
+using Microsoft.EntityFrameworkCore;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+using System;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddControllers();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Name=UsersDB"));
-
-
-
+// Configurar la conexión a la base de datos
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql("Server=localhost;Port=3306;Database=UsersDB;User Id=Admin;Password=Admin123;Charset=utf8", new MySqlServerVersion(new Version(8, 0, 34))));
 builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "User API", Version = "v1" }));
+// Resto del código
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
 {
-   app.UseExceptionHandler("/Error");
-   // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-   app.UseHsts();
+    // Enable middleware to serve generated Swagger as a JSON endpoint.
+    app.UseSwagger();
+
+    // Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
+    // specifying the Swagger JSON endpoint
+    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
 app.UseAuthorization();
-
-app.MapRazorPages();
-
-app.UseEndpoints(endpoints =>
-{
-   endpoints.MapControllers();
-});
-
-app.UseSwagger();
-app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
-
+app.MapControllers();
 app.Run();
