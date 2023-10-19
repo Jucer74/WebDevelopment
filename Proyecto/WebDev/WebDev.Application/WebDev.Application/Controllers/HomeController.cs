@@ -22,12 +22,6 @@ namespace WebDev.Application.Controllers
             return View();
         }
 
-        public IActionResult Logout()
-        {
-            HttpContext.Session.SetString("IsUserLogged", "false");
-            return RedirectToAction(nameof(Index));
-        }
-
         public IActionResult Privacy()
         {
             return View();
@@ -69,6 +63,11 @@ namespace WebDev.Application.Controllers
             return View();
         }
 
+        public IActionResult Logout()
+        {
+            HttpContext.Session.SetString("IsUserLogged", "false");
+            return RedirectToAction(nameof(Index));
+        }
 
         private async Task<bool> IsValidUser(string email, string password)
         {
@@ -81,6 +80,7 @@ namespace WebDev.Application.Controllers
             HttpContext.Session.SetString("IsUserLogged", "false");
             return false;
         }
+
 
     }
 }
