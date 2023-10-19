@@ -6,7 +6,7 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { Users } from './components/Users';
+import { List, Users } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 
 
@@ -20,7 +20,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home/>} />
               <Route path="/Home" element={<Home/>} />
-              <Route path="/Users" element={<Users/>} />
+              <Route path="/Users" element={<List/>} />
               <Route path="/Login" element={<Login/>} />
               <Route element={<NoMatch/>} />
             </Routes>
