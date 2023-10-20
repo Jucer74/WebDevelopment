@@ -88,9 +88,8 @@ namespace WebDev.Api.Controller
          _context.Users.Add(user);
          await _context.SaveChangesAsync();
 
-        
-         return CreatedAtAction("GetUser", new { id = user.Id }, user);
 
+            return Created(string.Empty, new { id = user.Id });
         }
 
       // DELETE: api/Users/5
