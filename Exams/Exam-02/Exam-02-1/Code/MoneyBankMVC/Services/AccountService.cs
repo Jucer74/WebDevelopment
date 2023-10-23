@@ -61,7 +61,7 @@ public class AccountService : IAccountService
     public async Task<List<Account>?> GetAllAccountsAsync()
     {
         //GET Request with RestSharp
-        var request = new RestRequest(resource: "/api/v1/Accounts/");
+        var request = new RestRequest(resource: "/api/v1/accounts", Method.Get);
         var response = await _client.ExecuteAsync<List<Account>>(request);
 
         if (response.IsSuccessful)
