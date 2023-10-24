@@ -5,6 +5,7 @@ import { FontAwesomeIcon as Fas } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 
+//Aquí se conecta a la Api
 const baseUrl = "https://localhost:5001/api/Users";
 
 export function Users() {
