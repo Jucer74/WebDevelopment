@@ -1,28 +1,28 @@
-import React from 'react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Container, Table } from 'react-bootstrap';
 import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-export function List()
+
+export function Users()
 {
-  const baseUrl = "https://localhost:5001/api/Users";
+  const baseUrl = "https://localhost:44314/Api/Users";
 
   const [ data, setData]=useState([]);  
 
-  const GetUsers=async()=>{
-    await axios.get(baseUrl)
-    .then (response=>{
+  const GetUsers = async () => {
+    try {
+      const response = await axios.get(baseUrl);
       setData(response.data);
-    }).catch(error=>{
-      console.log(error);
-    })
-  }
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  };
 
-  useEffect(()=>{
+  useEffect(() => {
     GetUsers();
-  },[]);
+  }, []);
 
 
 return (
