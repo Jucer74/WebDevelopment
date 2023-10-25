@@ -7,12 +7,12 @@ namespace WebDev.Application.Models
         [Key]
         public int Id { get; set; }
         [Required(ErrorMessage = "El email es obligatorio")]
-        public string Email { get; set; }
+        public string Email { get; set; } = null!;
         [Required(ErrorMessage = "El nombre es obligatorio")]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
         [Required(ErrorMessage = "El nombre de usuario es obligatorio")]
-        public string Username { get; set; }
+        public string Username { get; set; } = null!;
         [Required(ErrorMessage = "El password es obligatorio")]
-        public string Password { get; set; }
+        public string Password { get; set; } = null!;
     }
 }
