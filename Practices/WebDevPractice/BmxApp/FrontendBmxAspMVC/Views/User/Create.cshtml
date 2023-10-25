@@ -1,0 +1,35 @@
+@model FrontendBmxAspMVC.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>Create User</h4>
+<hr/>
+<div class="container">
+    <form asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group w-50">
+            <label asp-for="Username" class="control-label"></label>
+            <input asp-for="Username" class="form-control"/>
+            <span asp-validation-for="Username" class="text-danger"></span>
+        </div>
+        <div class="form-group w-50">
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control"/>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group w-50">
+            <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control"/>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Create user" class="btn btn-success rounded mt-3 w-25"/>
+        </div>
+    </form>
+    <div>
+        <a asp-action="Index" class="btn btn-warning rounded mt-1 w-25">Back to List</a>
+    </div>
+</div>

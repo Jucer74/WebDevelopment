@@ -1,0 +1,164 @@
+@model IEnumerable<FrontendBmxAspMVC.Models.Bike>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Table of Bikes</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success rounded-1 m-1" >Create New Bike</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Brand)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Frame)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bars)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Stem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grips)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeatPost)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cranks)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pedals)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sprocket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrontWheel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RearWheel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrontTire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RearTire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FrontHub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RearHub)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Chain)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pegs)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Frame)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fork)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bars)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stem)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grips)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Seat)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatPost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cranks)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pedals)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sprocket)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrontWheel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RearWheel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrontTire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RearTire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FrontHub)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RearHub)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Chain)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pegs)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary rounded w-100 m-1">Edit</a> 
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary rounded w-100 m-1">Details</a> 
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger rounded w-100 m-1">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

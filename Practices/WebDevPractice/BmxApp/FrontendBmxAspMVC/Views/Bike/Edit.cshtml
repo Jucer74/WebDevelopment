@@ -1,0 +1,142 @@
+@model FrontendBmxAspMVC.Models.Bike
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Edit Bike</h4>
+<hr/>
+<div class="container">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Brand" class="control-label"></label>
+                <input asp-for="Brand" class="form-control"/>
+                <span asp-validation-for="Brand" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Model" class="control-label"></label>
+                <input asp-for="Model" class="form-control"/>
+                <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Color" class="control-label"></label>
+                <input asp-for="Color" class="form-control"/>
+                <span asp-validation-for="Color" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Frame" class="control-label"></label>
+                <input asp-for="Frame" class="form-control"/>
+                <span asp-validation-for="Frame" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Fork" class="control-label"></label>
+                <input asp-for="Fork" class="form-control"/>
+                <span asp-validation-for="Fork" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Bars" class="control-label"></label>
+                <input asp-for="Bars" class="form-control"/>
+                <span asp-validation-for="Bars" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="Stem" class="control-label"></label>
+                <input asp-for="Stem" class="form-control"/>
+                <span asp-validation-for="Stem" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Grips" class="control-label"></label>
+                <input asp-for="Grips" class="form-control"/>
+                <span asp-validation-for="Grips" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Seat" class="control-label"></label>
+                <input asp-for="Seat" class="form-control"/>
+                <span asp-validation-for="Seat" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="SeatPost" class="control-label"></label>
+                <input asp-for="SeatPost" class="form-control"/>
+                <span asp-validation-for="SeatPost" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Cranks" class="control-label"></label>
+                <input asp-for="Cranks" class="form-control"/>
+                <span asp-validation-for="Cranks" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Pedals" class="control-label"></label>
+                <input asp-for="Pedals" class="form-control"/>
+                <span asp-validation-for="Pedals" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Sprocket" class="control-label"></label>
+                <input asp-for="Sprocket" class="form-control"/>
+                <span asp-validation-for="Sprocket" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="FrontWheel" class="control-label"></label>
+                <input asp-for="FrontWheel" class="form-control"/>
+                <span asp-validation-for="FrontWheel" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="RearWheel" class="control-label"></label>
+                <input asp-for="RearWheel" class="form-control"/>
+                <span asp-validation-for="RearWheel" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="FrontTire" class="control-label"></label>
+                <input asp-for="FrontTire" class="form-control"/>
+                <span asp-validation-for="FrontTire" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="RearTire" class="control-label"></label>
+                <input asp-for="RearTire" class="form-control"/>
+                <span asp-validation-for="RearTire" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group col">
+                <label asp-for="FrontHub" class="control-label"></label>
+                <input asp-for="FrontHub" class="form-control"/>
+                <span asp-validation-for="FrontHub" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="RearHub" class="control-label"></label>
+                <input asp-for="RearHub" class="form-control"/>
+                <span asp-validation-for="RearHub" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Chain" class="control-label"></label>
+                <input asp-for="Chain" class="form-control"/>
+                <span asp-validation-for="Chain" class="text-danger"></span>
+            </div>
+            <div class="form-group col">
+                <label asp-for="Pegs" class="control-label"></label>
+                <input asp-for="Pegs" class="form-control"/>
+                <span asp-validation-for="Pegs" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Edit bike" class="btn btn-primary rounded mt-3 w-25"/>
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index" class="btn btn-warning rounded mt-1 w-25">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,203 @@
+@model FrontendBmxAspMVC.Models.Bike
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div>
+    <h4>Delete Bike</h4>
+    <hr/>
+    <p class="text-danger">Are you sure you want to delete this?</p>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <tbody>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Name)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Brand)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Brand)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Model)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Model)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Color)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Color)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Frame)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Frame)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fork)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Fork)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bars)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Bars)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stem)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Stem)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Grips)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Grips)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Seat)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Seat)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SeatPost)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.SeatPost)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cranks)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Cranks)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pedals)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pedals)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sprocket)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Sprocket)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FrontWheel)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.FrontWheel)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RearWheel)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.RearWheel)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FrontTire)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.FrontTire)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RearTire)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.RearTire)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FrontHub)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.FrontHub)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RearHub)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.RearHub)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Chain)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Chain)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pegs)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Pegs)
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <form asp-action="Delete">
+            <div class="row w-25">
+                <input type="hidden" asp-for="Id"/>
+                <input type="submit" value="Delete" class="btn btn-danger col"/>
+            </div>
+            <div class="row w-25">
+                <a asp-action="Index" class="btn btn-warning col mt-1">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>

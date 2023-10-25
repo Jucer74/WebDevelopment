@@ -1,0 +1,47 @@
+@model FrontendBmxAspMVC.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container">
+    <h4>Details User</h4>
+    <hr/>
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered">
+            <tbody>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Username)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Username)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Email)
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <td>
+                    @Html.DisplayFor(model => model.Password)
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="row w-25">
+            <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary col">Edit</a>
+        </div>
+        <div class="row w-25">
+            <a asp-action="Index" class="btn btn-warning col mt-1">Back to List</a>
+        </div>
+    </div>
+</div>

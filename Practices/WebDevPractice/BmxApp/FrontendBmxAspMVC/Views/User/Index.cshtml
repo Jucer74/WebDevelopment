@@ -1,0 +1,50 @@
+@model IEnumerable<FrontendBmxAspMVC.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Table of Users</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success rounded-1 m-1">Create New User</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary rounded w-25 m-1">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-secondary rounded w-25 m-1">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger rounded w-25 m-1">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
