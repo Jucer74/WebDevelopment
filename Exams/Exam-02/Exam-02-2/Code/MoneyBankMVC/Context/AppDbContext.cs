@@ -16,8 +16,8 @@ namespace MoneyBankMVC.Context
 
         public DbSet<Account> Accounts { get; set; }
 
-        public DbSet<MoneyBankMVC.Models.Transaction> Transaction { get; set; } = default!;
+        //public DbSet<MoneyBankMVC.Models.Transaction> Transaction { get; set; } = default!;
 
-        public DbSet<MoneyBankMVC.Models.Transaction> Withdrawal { get; set; } = default!;
+        //public DbSet<MoneyBankMVC.Models.Transaction> Withdrawal { get; set; } = default!;
     }
 }
