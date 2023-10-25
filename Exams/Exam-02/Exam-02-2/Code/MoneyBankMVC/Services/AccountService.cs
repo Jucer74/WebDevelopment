@@ -20,9 +20,7 @@ public class AccountService : IAccountService
 
     public async Task<Account> GetAccountByIdAsync(int id)
     {
-#pragma warning disable CS8603 // Posible tipo de valor devuelto de referencia nulo
-        return await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id);
-#pragma warning restore CS8603 // Posible tipo de valor devuelto de referencia nulo
+        return (await _context.Accounts.FirstOrDefaultAsync(m => m.Id == id))!;
     }
 
     public async Task<bool> CreateAccountAsync(Account account)
