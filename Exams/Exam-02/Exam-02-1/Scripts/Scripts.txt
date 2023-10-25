@@ -1,1 +1,18 @@
-Aqui van los Scripts
+PS C:\Users\cris-\OneDrive\Documentos\GitHub\WebDevelopment\Proyecto\Api\WebDev.Api> Scaffold-DbContext "server=localhost; database=UsersDB; user=Admin; password=Admin123" Pomelo.EntityFrameworkCore.MySql -OutputDir Context
+Scaffold-DbContext : El término 'Scaffold-DbContext' no se reconoce como nombre de un cmdlet, función, archivo de script o programa ejecutable. Compruebe si escribió
+correctamente el nombre o, si incluyó una ruta de acceso, compruebe que dicha ruta es correcta e inténtelo de nuevo.
+En línea: 1 Carácter: 1
++ Scaffold-DbContext "server=localhost; database=UsersDB; user=Admin; p ...
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Scaffold-DbContext:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using WebDev.Api.Context;
+using WebDev.Api.Model;
