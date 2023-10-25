@@ -1,0 +1,179 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: 18px;
+    margin: 0;
+}
+
+#perfil-foto {
+    width: 150px;
+    border-radius: 50%;
+}
+
+
+.iconos {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.iconos h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.iconos a {
+    color: #555;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+
+
+.trabajo {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.trabajo h2 {
+    font-size: 24px;
+    color: #555;
+    margin: 0;
+}
+
+
+
+.seccion {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.seccion ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.seccion li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.seccion a {
+    text-decoration: none;
+    color: #555;
+    font-size: 16px;
+}
+
+.seccion a:hover {
+    color: #333;
+}
+
+
+
+.contacto {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.contacto h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contacto p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+
+.get-in-touch {
+    text-align: center;
+    margin: 40px 0;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.get-in-touch h2 {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.get-in-touch p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+
+.formulario {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.input-container {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-container i {
+    font-size: 24px;
+    color: #555;
+    margin-right: 10px;
+}
+
+.input-container input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-container button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
