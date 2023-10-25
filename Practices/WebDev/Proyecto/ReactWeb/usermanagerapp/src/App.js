@@ -6,8 +6,9 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List } from './components/Users';
+import { Users } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
+import { List } from './components/List';
 
 
 function App() {
@@ -20,7 +21,8 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home/>} />
               <Route path="/Home" element={<Home/>} />
-              <Route path="/Users" component={<List/>} />
+              <Route path="/Users" element={<Users />}/> 
+              <Route path="/Users" component={List} />
               <Route path="/Login" element={<Login/>} />
               <Route element={<NoMatch/>} />
             </Routes>

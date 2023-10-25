@@ -18,4 +18,3 @@ export const NavigationBar = () => (
     </Navbar>
   </Container>
 )
-
