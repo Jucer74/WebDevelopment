@@ -22,7 +22,7 @@ public class AccountService : IAccountService
         
         if (account.BalanceAmount > 0)
         {
-            account.Id = GenerateId();
+            //account.Id = GenerateId();
             account.CreationDate = DateTime.Now;
             if (account.AccountType == 'C')
             {
