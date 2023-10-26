@@ -13,12 +13,13 @@
             <div class="form-group row">
                 <label class="col-sm-4 col-form-label font-weight-bold">Tipo de Cuenta:</label>
                 <div class="col-sm-8">
+                    @* Corrijo para Poder Probrar *@
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="AccountType" value="Ahorros" id="ahorrosRadio" checked>
+                        <input asp-for="AccountType" class="form-check-input" type="radio" name="AccountType" value="A" id="ahorrosRadio" checked>
                         <label class="form-check-label" for="ahorrosRadio">Cuenta de Ahorros</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="AccountType" value="Corriente" id="corrienteRadio">
+                        <input asp-for="AccountType" class="form-check-input" type="radio" name="AccountType" value="C" id="corrienteRadio">
                         <label class="form-check-label" for="corrienteRadio">Cuenta Corriente</label>
                     </div>
                 </div>
