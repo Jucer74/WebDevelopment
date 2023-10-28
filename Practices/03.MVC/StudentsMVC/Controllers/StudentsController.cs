@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json.Linq;
 using StudentsMVC.Models;
 
 namespace StudentsMVC.Controllers
 {
     public class StudentsController : Controller
     {
-        //Global Variables
+        // Global Variables
         private static List<Student> studentsList = LoadStudents();
 
         // GET: StudentsController
@@ -18,7 +18,9 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id == id);
+
+            return View(student);
         }
 
         // GET: StudentsController/Create
@@ -32,8 +34,7 @@ namespace StudentsMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
-            try
-            {
+            try            {
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -45,8 +46,9 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Edit/5
         public ActionResult Edit(int id)
         {
-            var student = studentsList.FirstOrDefault(x => x.Id == id);
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id == id); 
+
+            return View(student);
         }
 
         // POST: StudentsController/Edit/5
@@ -67,7 +69,9 @@ namespace StudentsMVC.Controllers
         // GET: StudentsController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var student = studentsList.FirstOrDefault(x => x.Id == id);
+
+            return View(student);
         }
 
         // POST: StudentsController/Delete/5
@@ -76,7 +80,8 @@ namespace StudentsMVC.Controllers
         public ActionResult Delete(int id, IFormCollection collection)
         {
             try
-            { return RedirectToAction(nameof(Index));
+            {
+                return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -85,19 +90,18 @@ namespace StudentsMVC.Controllers
         }
 
         #region Private-Methods
+
         private static List<Student> LoadStudents()
         {
             List<Student> students = new List<Student>();
 
-            students.Add(new Student() {Id= 1, FirstName = "John", LastName = "Doe", DateOfBirth = new DateTime(1980, 10, 10), Sex = 'M' });
-            students.Add(new Student() {Id= 2, FirstName = "Chonchis", LastName = "puerquis", DateOfBirth = new DateTime(1980, 12, 9), Sex = 'M' });
-            students.Add(new Student() {Id= 3, FirstName = "Pepa", LastName = "Berta", DateOfBirth = new DateTime(1980, 7, 6), Sex = 'F' });
-
-            return students;
-
+            students.Add(new Student() { Id = 1, FirstName = "John", LastName = "Doe", DateOfBirth = new DateTime(1980, 10, 10), Sex = 'M' });
+            students.Add(new Student() { Id = 2, FirstName = "Barry", LastName = "Allen", DateOfBirth = new DateTime(2001, 7, 7), Sex = 'M' });
+            students.Add(new Student() { Id = 3, FirstName = "Diana", LastName = "Prince", DateOfBirth = new DateTime(1950, 8, 8), Sex = 'F' });
             
+            return students;
         }
+
         #endregion Private-Methods
     }
-
 }
