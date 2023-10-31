@@ -1,0 +1,13 @@
+/* Default styles for larger screens */
+.carousel-container {
+    width: 100%;
+    /* Make the carousel full-width by default */
+}
+
+/* Styles for screens with a width of 500px or less */
+
+  
+
+.btn-primary {
+    margin-bottom: 5%;
+}
