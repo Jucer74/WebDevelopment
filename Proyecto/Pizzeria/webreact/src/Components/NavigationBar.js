@@ -16,7 +16,7 @@ function NavigatorBar() {
 
   const navbarStyle = {
     // Increase the width of the navbar (change the max-width value as needed)
-    maxWidth: "1200px",
+    // maxWidth: "100%",
     margin: "0 auto", // Center the navbar horizontally
   };
 
