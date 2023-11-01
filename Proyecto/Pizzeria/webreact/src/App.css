@@ -23,7 +23,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(12px + 2vmin);
   color: white;
   
 }
@@ -48,5 +48,5 @@
 .inicio-container {
   
   margin: auto;
-  width: 50%;
+  width: 90%;
 }

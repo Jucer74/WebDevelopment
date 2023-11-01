@@ -5,7 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function InfoMenu() {
   return (
     <div className="info-menu">
+      <br></br>
       <h2>Las Mejores Pizzas de La Cuidad</h2>
+      <br></br>
       <br></br>
       <div className="info-items">
         <div className="info-item">

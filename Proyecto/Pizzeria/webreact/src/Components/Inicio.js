@@ -41,8 +41,8 @@ function Inicio() {
             </button>
           </div>
         </div>
-        <div className="text-center mt-4">
-          <button className="btn btn-primary btn-lg" style={{ backgroundColor: "#e22012", borderColor: "#e22012" }}>Domicilios aquí</button>
+        <div className="text-center mt-5 ">
+          <button className="btn btn-primary btn-lg w-100" style={{ backgroundColor: "#e22012", borderColor: "#e22012" }}>Domicilios aquí</button>
         </div>
       </div>
     </div>

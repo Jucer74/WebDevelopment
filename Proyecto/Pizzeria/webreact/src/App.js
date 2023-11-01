@@ -14,8 +14,11 @@ function App() {
       </div>
       <div className="inicio-container">
         <Inicio />
-      </div>
-      <InfoMenu />
+      </div >
+      <div className="Infomenu-container">
+        <InfoMenu />
+      </div >
+      
     </div>
   );
 }
