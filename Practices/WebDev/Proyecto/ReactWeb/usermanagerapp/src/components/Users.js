@@ -1,16 +1,17 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Button, Container, Table, Form } from "react-bootstrap";
-import { FontAwesomeIcon as Fas } from "@fortawesome/react-fontawesome";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { Button, Container, Table, Form } from 'react-bootstrap';
+import { FontAwesomeIcon as Fas} from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 
 const baseUrl = "https://localhost:5001/api/Users";
 
-export function List() {
+export function List()
+{
   const [data, setData] = useState([]);
 
-  const GetUsers = async () => {
+  const getUsers = async () => {
     await axios
       .get(baseUrl)
       .then((response) => {
@@ -22,7 +23,7 @@ export function List() {
   };
 
   useEffect(() => {
-    GetUsers();
+    getUsers();
   }, []);
 
   // Control data
@@ -53,7 +54,7 @@ export function List() {
     await axios
       .post(baseUrl, currentUser)
       .then((response) => {
-        GetUsers();
+        getUsers();
         openCloseModalCreate();
       })
       .catch((error) => {
@@ -83,7 +84,7 @@ export function List() {
         break;
     }     
   }
-
+  
   const putUser = async () => {
     await axios
       .put(baseUrl + "/" + currentUser.id, currentUser)
@@ -98,7 +99,7 @@ export function List() {
             usr.password = result.password;
           }
         });
-        GetUsers();
+        getUsers();
         openCloseModalUpdate();
       })
       .catch((error) => {

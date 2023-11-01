@@ -20,7 +20,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home/>} />
               <Route path="/Home" element={<Home/>} />
-              <Route path="/Users" component={<List/>} />
+              <Route path="/Users" element={<List/>} />
               <Route path="/Login" element={<Login/>} />
               <Route element={<NoMatch/>} />
             </Routes>

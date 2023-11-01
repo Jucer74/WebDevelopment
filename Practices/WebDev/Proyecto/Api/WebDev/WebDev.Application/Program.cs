@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.ervices.AddCors();
 
 var app = builder.Build();
 
@@ -20,6 +21,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+
+app.UseCors(options => {
+    options.WithOrigins("http://localhost:3000");
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
 
 app.MapControllerRoute(
     name: "default",
