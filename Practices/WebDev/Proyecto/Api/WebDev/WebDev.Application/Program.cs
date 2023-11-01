@@ -1,8 +1,22 @@
+using WebDev.Api.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddCors();
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddDbContext<AppDbContext>(
+        options => options.UseMySQL(builder.Configuration.GetConnectionString("CnnStr")!));
+builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "User API", Version = "v1" }));
+
 
 var app = builder.Build();
 
@@ -35,5 +49,12 @@ app.MapControllerRoute(
 app.MapControllerRoute(
     name: "Users",
     pattern: "{controller=Users}/{action=Index}/{id?}");
+
+// Enable middleware to serve generated Swagger as a JSON endpoint.
+app.UseSwagger();
+
+// Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
+// specifying the Swagger JSON endpoint
+app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
 
 app.Run();

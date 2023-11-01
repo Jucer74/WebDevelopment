@@ -1,106 +1,120 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebDev.Api.Context;
 using WebDev.Application.Models;
 
-namespace WebDev.Application.Controllers
+namespace WebDev.Api.Controller
 {
-    public class UsersController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UsersController : ControllerBase
     {
-        private static List<User> _userList;
-        private static int numUsers;
+        private readonly AppDbContext _context;
 
-        public UsersController()
+        public UsersController(AppDbContext context)
         {
-            // Mock User List
-            if (_userList is null)
-            {
-                _userList = new List<User>()
-                {
-                  new User{Id=1, Email="Julio.Robles@email.com", Name="Julio Robles", Username="jrobles", Password="Password"},
-                  new User{Id=2, Email="Pilar.Lopez@email.com", Name="Pilar Lopez", Username="plopez", Password="Password"},
-                  new User{Id=3, Email="Felipe.Daza@email.com", Name="Felipe Daza", Username="fdaza", Password="Password"},
-                };
-
-                numUsers = _userList.Count;
-            }
+            _context = context;
         }
 
-        // GET: UsersController
+        // GET: api/Users
         [HttpGet]
-        public ActionResult Index()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            // Set Object Model
-            return View(_userList);
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            return await _context.Users.ToListAsync();
         }
 
-        // GET: UsersController/Details/5
-        public ActionResult Details(int id)
+        // GET: api/Users/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-            return View();
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users.FindAsync(id);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            return user;
         }
 
-        // GET: UsersController/Create
-        public ActionResult Create()
+        // PUT: api/Users/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutUser(int id, User user)
         {
-            return View();
-        }
+            if (id != user.Id)
+            {
+                return BadRequest();
+            }
 
-        // POST: UsersController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
+            _context.Entry(user).State = EntityState.Modified;
+
             try
             {
-                return RedirectToAction(nameof(Index));
+                await _context.SaveChangesAsync();
             }
-            catch
+            catch (DbUpdateConcurrencyException)
             {
-                return View();
+                if (!UserExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
             }
+
+            return NoContent();
         }
 
-        // GET: UsersController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UsersController/Edit/5
+        // POST: api/Users
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
-            try
+            if (_context.Users == null)
             {
-                return RedirectToAction(nameof(Index));
+                return Problem("Entity set 'AppDbContext.Users'  is null.");
             }
-            catch
-            {
-                return View();
-            }
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return Created(string.Empty, new { id = user.Id });
         }
 
-        // GET: UsersController/Delete/5
-        public ActionResult Delete(int id)
+        // DELETE: api/Users/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
         {
-            return View();
+            if (_context.Users == null)
+            {
+                return NotFound();
+            }
+            var user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
-        // POST: UsersController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        private bool UserExists(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return (_context.Users?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
