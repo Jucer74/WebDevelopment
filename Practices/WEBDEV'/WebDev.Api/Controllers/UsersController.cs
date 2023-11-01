@@ -94,9 +94,8 @@ namespace WebDev.Api.Controllers
             await _context.SaveChangesAsync();
 
             return Created(string.Empty, new { id = user.Id });
-      
         }
-   
+
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
