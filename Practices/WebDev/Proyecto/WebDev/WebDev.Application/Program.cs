@@ -14,6 +14,7 @@ builder.Services.AddSession(options => {
     options.IdleTimeout = TimeSpan.FromMinutes(1);//You can set Time   
 });
 builder.Services.AddMvc();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -34,6 +35,12 @@ app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseCors(options => {
+    options.WithOrigins("http://localhost:3000");
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
 
 app.MapControllerRoute(
     name: "default",
