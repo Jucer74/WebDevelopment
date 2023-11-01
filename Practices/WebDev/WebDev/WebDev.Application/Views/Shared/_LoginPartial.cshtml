@@ -1,0 +1,29 @@
+﻿@{
+    var isUserLogged = (ViewData["IsUserLogged"] != null) ? ViewData["IsUserLogged"].ToString() : "false";
+    if (isUserLogged == "true")
+    {
+        <div class="text-right">
+            <ul class="navbar-nav flex-grow-1 text-right">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark">@ViewData["User"]</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+    }
+    else
+    {
+        <div class="text-right">
+            <ul class="navbar-nav flex-grow-1 text-right">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Login">Login</a>
+                </li>
+            </ul>
+        </div>
+    }
+}
