@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using WebADev.Application.Models;
 
+
 namespace WebADev.Application.Controllers
 {
     public class HomeController : Controller
