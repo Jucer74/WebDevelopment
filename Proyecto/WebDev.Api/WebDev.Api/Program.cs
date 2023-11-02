@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title =
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -25,8 +26,14 @@ if (app.Environment.IsDevelopment())
     // Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
     // specifying the Swagger JSON endpoint
     app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
+    
 }
 
+app.UseCors(options => {
+    options.WithOrigins("http://localhost:3000");
+    options.AllowAnyMethod();
+    options.AllowAnyHeader();
+});
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

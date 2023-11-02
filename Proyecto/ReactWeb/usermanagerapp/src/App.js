@@ -6,7 +6,7 @@ import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
 import { Login } from './components/Login';
-import { List, Users } from './components/Users';
+import List from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 
 
