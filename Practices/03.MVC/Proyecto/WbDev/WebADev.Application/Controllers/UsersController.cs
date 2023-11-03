@@ -2,7 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using WebDev.Application.Models;
-
+using WebADev.Application.Config;
+using WebDev.Services;
+using Microsoft.Extensions.Options;
+using WebADev.Application.Config.WebDev.Application.Config;
+using WebDev.Services.Entities;
 
 namespace WebADev.Application.Controllers
 {
@@ -11,9 +15,23 @@ namespace WebADev.Application.Controllers
     {
         private static List<User> _userList;
         private static int numUsers;
+        private readonly Config.ApiConfiguration _apiConfiguration;
+        private readonly UsersService usersService;
+
+        public UsersController(IOptions<Config.ApiConfiguration> apiConfiguration)
+        {
+            _apiConfiguration = apiConfiguration.Value;
+
+            usersService = new UsersService(_apiConfiguration.ApiUsersUrl);
+        }
+
+
+
 
         public UsersController()
         {
+
+  
             // Mock User List
             if (_userList is null)
             {
