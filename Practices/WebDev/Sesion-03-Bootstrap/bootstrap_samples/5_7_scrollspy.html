@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+    crossorigin="anonymous">
+
+  <title>Bootstrap Sandbox</title>
+  <style>
+    body {
+      position: relative;
+      margin-top: 70px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="display-3 text-center my-4">ScrollSpy</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="dropdown">
+            <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+              2: Utilities
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="2_2_basic_typography.html">2.2 Basic Typography</a>
+              <a class="dropdown-item" href="2_3_text_alignment_display.html">2.3 Text Alignment & Display</a>
+              <a class="dropdown-item" href="2_4_floats_position.html">2.4 Floats & Position</a>
+              <a class="dropdown-item" href="2_5_colors_background.html">2.5: Colors & Background</a>
+              <a class="dropdown-item" href="2_6_spacing.html">2.6 Spacing</a>
+              <a class="dropdown-item" href="2_7_sizing.html">2.7 Sizing</a>
+              <a class="dropdown-item" href="2_8_breakpoints.html">2.8 Breakpoints</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="dropdown">
+            <button class="btn btn-success btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+              3: CSS Components
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="3_2_buttons.html">3.2 Buttons</a>
+              <a class="dropdown-item" href="3_3_navbar.html">3.3 Navbar</a>
+              <a class="dropdown-item" href="3_4_list_groups_badges.html">3.4 List Groups & Badges</a>
+              <a class="dropdown-item" href="3_5_forms.html">3.5 Forms</a>
+              <a class="dropdown-item" href="3_6_input_groups.html">3.6 Input Groups</a>
+              <a class="dropdown-item" href="3_7_alerts_progress.html">3.7 Alerts & Progress</a>
+              <a class="dropdown-item" href="3_8_tables_pagination.html">3.8 Tables & Pagination</a>
+              <a class="dropdown-item" href="3_9_cards.html">3.9 Cards</a>
+              <a class="dropdown-item" href="3_10_media_object.html">3.10 Media Objects</a>
+              <a class="dropdown-item" href="3_11_jumbotron.html">3.11 Jumbotron</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="dropdown">
+            <button class="btn btn-warning btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+              4: Grid & Flexbox
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="4_2_grid_system.html">4.2 Grid System</a>
+              <a class="dropdown-item" href="4_3_grid_alignment.html">4.3 Grid Alignment</a>
+              <a class="dropdown-item" href="4_4_flexbox.html">4.4 Flexbox</a>
+              <a class="dropdown-item" href="4_5_auto_margins_wrapping_order.html">4.5 Auto Margins & Wrap</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="dropdown">
+            <button class="btn btn-danger btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+              5: JavaScript Widgets
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="5_2_carousel.html">5.2 Carousel</a>
+              <a class="dropdown-item" href="5_3_collapse.html">5.3 Collapse</a>
+              <a class="dropdown-item" href="5_4_tooltips.html">5.4 Tooltips</a>
+              <a class="dropdown-item" href="5_5_popovers.html">5.5 Popovers</a>
+              <a class="dropdown-item" href="5_6_modals.html">5.6 Modals</a>
+              <a class="dropdown-item" href="5_7_scrollspy.html">5.7 ScrollSpy</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </header>
+
+  <div class="container">
+    <!--#################START HERE#####################-->
+    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light mb-3" id="main-nav">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#welcome">Welcome</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#services">Services</a>
+          </li class="nav-item">
+        </ul>
+      </div>
+    </nav>
+
+    <section id="welcome">
+      <h3>Welcome</h3>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, reiciendis ullam sit libero recusandae obcaecati modi,
+        iusto facere, distinctio corporis in officiis quidem vel veniam eum fugit quibusdam. Repellat quod explicabo repudiandae,
+        tenetur hic fugiat nostrum aperiam corrupti necessitatibus nulla! Nemo aperiam officiis velit nihil maiores provident
+        animi veniam error deserunt explicabo nobis et optio, labore commodi repudiandae soluta ratione numquam porro architecto
+        vel magnam libero quod aliquid? Incidunt nesciunt praesentium rem voluptatibus magni sed nihil minima nulla libero
+        impedit dolores velit, esse labore quasi! Tenetur atque autem natus nulla nisi nihil quisquam mollitia voluptas est
+        dolores aspernatur necessitatibus nesciunt cumque illo ratione, quam magnam. Eum dolorem saepe alias provident deserunt
+        doloribus iusto laudantium natus illo sint, nam, amet exercitationem architecto asperiores ea quis quos, id accusamus
+        in! Sapiente mollitia quae incidunt laboriosam animi. Tenetur, maxime molestias sequi, vero eum voluptate quod commodi,
+        dolorem ipsum minima ipsam quasi debitis non eos labore similique tempora! Nisi eius inventore magnam. Fuga placeat,
+        modi, eius officiis, nostrum dolore nisi doloremque tenetur repellat sit nesciunt iusto earum corrupti ipsam optio
+        eveniet. Quibusdam, ipsum. Maiores praesentium quasi quibusdam temporibus nostrum, est culpa nisi similique doloremque
+        atque. Quaerat quidem tempora magni culpa quas explicabo natus vitae dignissimos, temporibus debitis at perspiciatis
+        doloremque quibusdam eos ratione architecto sit nihil recusandae. Ex, eveniet cum. At autem, soluta sunt praesentium
+        nulla molestiae labore iure officiis? Voluptas assumenda ab odio harum, doloribus delectus ad a adipisci nulla exercitationem
+        alias provident iure minus magni rem earum eaque laudantium? Assumenda, est culpa? Quibusdam, recusandae voluptatum
+        quaerat modi, illum dolore, unde ea eius harum nostrum nesciunt quos quis! Dolorum ullam accusantium est, neque ducimus
+        dolorem unde laborum provident, odit eaque porro voluptate! Culpa, qui, sequi at tempore nemo tempora odio rerum
+        nostrum alias optio repellat similique facere et, voluptates necessitatibus laudantium id quam placeat! Repellendus
+        at maxime sit ut, quos quod ab sint vel ipsam eos mollitia similique fugit asperiores quas, labore sequi velit quidem
+        consectetur, nisi itaque quis laudantium. Dicta, placeat totam accusantium sapiente quos recusandae consectetur doloribus
+        asperiores eius deserunt dolor, reprehenderit quia saepe commodi eveniet possimus animi voluptate accusamus fugiat
+        necessitatibus quae? Deserunt corrupti pariatur repellendus perferendis minus consequuntur nemo, facilis optio possimus
+        culpa doloribus atque molestiae, ab expedita magni aliquam vero maxime dolore voluptatem eum omnis. Reprehenderit
+        fugiat deserunt velit aliquid reiciendis magni possimus illum amet optio aut eum ea sapiente similique ad iure dolorum
+        ut, quidem cum architecto.</p>
+    </section>
+
+    <section id="about">
+      <h3>About</h3>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam nesciunt nemo iure at, ab cupiditate consequuntur nobis hic
+      odit, animi, quos ipsum tempore consectetur vel molestias quasi a ea dolore harum aut eligendi repellat? Harum aperiam
+      aspernatur, debitis quia quos vel cumque perspiciatis enim eaque sequi beatae id in repellendus tempore quaerat error
+      voluptatibus molestiae quam asperiores sit incidunt molestias. Repellendus dolorem inventore voluptates qui sit possimus
+      cumque reprehenderit aliquam enim, laboriosam neque aliquid quas. Reprehenderit, eaque beatae architecto tempore provident
+      nostrum? Harum nemo, repellendus maiores reiciendis rerum, vero, nobis molestias natus temporibus pariatur consectetur
+      veniam aut similique optio explicabo in repellat assumenda non nulla. Aspernatur, ab? Beatae error optio iste inventore
+      qui, iure vel laborum doloremque provident praesentium incidunt, soluta, accusamus corrupti. Eligendi a amet laboriosam.
+      Dolore tempore nostrum exercitationem praesentium aperiam atque maiores numquam excepturi voluptate labore eligendi
+      nobis veritatis, accusamus harum animi ut, nisi ad cupiditate tempora sapiente, ex magni. Quod amet sed cum porro tempora,
+      incidunt impedit possimus, ratione explicabo saepe rem numquam eum voluptatem voluptatibus harum, voluptate facilis
+      aut est inventore provident minima tempore corporis maiores! Tempora dolorum quas deleniti quo nisi ratione veniam
+      ullam quia itaque quos? Consequatur enim doloremque nemo nesciunt similique voluptate facere dolores laborum tempora
+      eligendi pariatur dolor maxime et optio necessitatibus mollitia quo esse, porro minus odio cum suscipit ut recusandae
+      magnam? Nam nobis alias dolore, eos laudantium libero debitis beatae, dolor nulla reprehenderit nostrum nisi a aspernatur
+      rem id saepe ut magnam doloremque sapiente? Ducimus fugit ut provident tempore dolore at, quo eligendi non error facere
+      odit, quasi blanditiis delectus vero temporibus, placeat cupiditate reprehenderit quidem deserunt saepe. Recusandae
+      aliquid, odio id atque reiciendis, quod autem culpa aspernatur nobis aut at error. Commodi, est dicta impedit distinctio
+      quasi autem culpa repudiandae perspiciatis enim, porro magni libero ipsa maxime quam consequatur voluptatum, quas laboriosam
+      dolores sequi sint quos! Unde id, excepturi explicabo nam ex magni possimus molestiae temporibus voluptas esse cumque!
+      Eius, ea neque? Alias nisi ratione dolorum sit sunt deserunt minima dolor soluta aperiam! Ea natus voluptatum saepe,
+      tempora nobis, sunt voluptates deserunt magni fugit provident delectus sint nesciunt itaque nam blanditiis expedita,
+      iusto in quam quaerat fugiat dolorem. Animi obcaecati deleniti dolore veniam, omnis nesciunt? Non est sunt nisi doloribus!
+      Sequi amet corrupti voluptatem itaque quia doloremque sit illum doloribus modi iusto cupiditate eum nostrum repellendus
+      molestiae, qui molestias facilis excepturi eaque voluptatum ex. Reprehenderit sint veritatis reiciendis possimus totam
+      cum beatae voluptate, voluptas officiis alias error, ipsa nostrum esse eos perferendis libero. Porro corporis, omnis
+      voluptates cupiditate laborum, soluta voluptatibus incidunt quae esse atque itaque ab? In laborum totam ex architecto
+      numquam tenetur dolorum quam quo repudiandae corrupti unde quis voluptas voluptate velit aperiam sit, delectus et,
+      minima, quibusdam recusandae quos incidunt rem! Odit dignissimos, nam minus numquam ducimus consectetur placeat rerum!
+      Porro sunt quam autem nostrum dolorem illum reiciendis nulla commodi recusandae, doloribus molestias, ipsum fugit neque
+      consequuntur, consectetur odit dolores aliquam minima ab voluptatum quisquam harum id. Dicta asperiores tempora atque.
+      Ratione perferendis commodi ullam!
+    </section>
+
+    <section id="services">
+      <h3>Services</h3>
+      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sapiente laudantium reiciendis nostrum impedit voluptatum
+        repudiandae dicta deserunt praesentium eveniet assumenda, laboriosam facere. Omnis et, deleniti magnam dolorem porro
+        repellendus nemo animi quis dolores iusto impedit fugiat repellat alias voluptatibus vitae consequatur aperiam tempore
+        cum laboriosam placeat qui magni voluptatem reprehenderit. Facilis, dolore quibusdam. Adipisci impedit officiis expedita
+        suscipit cum obcaecati dolorum perferendis aliquam, non neque voluptas temporibus? Necessitatibus vel veritatis consectetur
+        repellat ab debitis, nobis suscipit alias temporibus ex facilis minima autem aut omnis sed adipisci expedita consequatur
+        officia deleniti? Eos quaerat, reiciendis autem libero vel eaque illo eveniet dolorum perspiciatis necessitatibus.
+        Modi voluptatum omnis vel nostrum assumenda impedit ducimus doloremque amet, mollitia tenetur vitae repellat. Dolore
+        nesciunt perspiciatis dolor ipsa ratione, repudiandae quasi numquam veniam maiores? Tenetur illo officia voluptates
+        vitae culpa impedit praesentium, vel rem eum corporis illum nemo minus alias delectus expedita molestiae dolores
+        sed a, distinctio suscipit quo inventore non labore! Dicta dolorum minus placeat et ad eos corrupti voluptas fugit.
+        Nulla doloremque maxime optio reiciendis omnis voluptate, praesentium placeat vero. Accusantium veritatis itaque
+        labore provident commodi dolorem excepturi repudiandae, expedita sunt alias? Eum magni culpa autem! Quisquam, suscipit?
+        Totam temporibus tempora eveniet sit non, eligendi illum assumenda pariatur illo accusamus alias deleniti, placeat
+        fugiat iusto consequatur necessitatibus recusandae! Deleniti nesciunt, impedit, nostrum sapiente molestiae optio
+        laudantium reiciendis, ratione aut repellat dolore omnis rerum quidem error consequuntur labore odit quas vero quia
+        libero consectetur ipsum aliquam aliquid. Ipsa saepe distinctio fuga nostrum, necessitatibus officiis officia illo
+        ducimus dolorem veritatis minima rem eius quaerat voluptatem velit similique, vero sapiente autem aspernatur reiciendis
+        corrupti. Sed maiores illum soluta praesentium corrupti odio accusamus omnis nulla assumenda in voluptatibus dicta
+        voluptatem dolor repellendus, et earum officia eum minus. Labore nulla hic quis. Quos saepe numquam id sequi modi
+        ab, illum quaerat fugiat magni consequatur, neque harum aliquid sit delectus! Quae voluptates consequatur doloribus
+        harum quaerat aut, repellat quas officiis nemo corporis non, tenetur odio nam inventore similique aspernatur praesentium
+        ea laboriosam temporibus veniam esse quia molestias. Ratione, voluptatibus. Voluptatum dolor soluta voluptas illum
+        officiis rerum dolorem, a provident neque est, quo alias repellat minima quia veritatis facere consequuntur excepturi
+        iure consequatur quod? Earum, vero! Amet eius placeat sed explicabo veniam ea harum minus, unde mollitia deleniti
+        veritatis nisi, corrupti sequi accusamus tenetur obcaecati fugit quae id a cum! Nemo id expedita odit facilis tenetur.
+        Enim veritatis officiis soluta aliquam omnis!</p>
+    </section>
+
+  </div>
+
+  <div style="margin-top:500px;"></div>
+
+  <!-- DO NOT USE SLIM VERSION OF JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script>
+    $('body').scrollspy({ target: '#main-nav' });
+
+    // Add smooth scrolling
+    $('#main-nav a').on('click', function (e) {
+      // Check for a hash value
+      if (this.hash !== '') {
+        // Prevent default behavior
+        e.preventDefault();
+
+        // Store hash
+        const hash = this.hash;
+
+        // Animate smooth scroll
+        $('html, body').animate({
+          scrollTop: $(hash).offset().top
+        }, 900, function () {
+          // Add hash to URL after scroll
+          window.location.hash = hash;
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
