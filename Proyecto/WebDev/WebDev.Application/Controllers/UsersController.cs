@@ -1,35 +1,72 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebDev.Application.Models;
+using WebDev.Application.Config;
+using WebDev.Services;
+using Microsoft.Extensions.Options;
+using WebDev.Services.Entities;
 
 namespace WebDev.Application.Controllers
 {
     public class UsersController : Controller
     {
-        // GET: HomeController1
-        public ActionResult Index()
+        private static List<User> _userList;
+        private static int numUsers;
+        private readonly ApiConfiguration _apiConfiguration;
+        private UsersService usersService;
+
+        public UsersController(IOptions<ApiConfiguration> apiConfiguration)
         {
-            return View();
+            _apiConfiguration = apiConfiguration.Value;
+
+            usersService = new UsersService(_apiConfiguration.ApiUsersUrl);
         }
 
-        // GET: HomeController1/Details/5
-        public ActionResult Details(int id)
+        // GET: UsersController
+        [HttpGet]
+        public async Task<ActionResult> Index()
         {
-            return View();
+            IList<UserDto> users = await usersService.GetUsers();
+
+            _userList = users.Select(userDto => MapperToUser(userDto)).ToList();
+
+            return View(_userList);
         }
 
-        // GET: HomeController1/Create
+        // GET: UsersController/Details/5
+        [HttpGet]
+        public async Task<ActionResult> Details(int id)
+        {
+            var userFound = await usersService.GetUserById(id);
+
+            if (userFound == null)
+            {
+                return NotFound();
+            }
+
+            var user = MapperToUser(userFound);
+
+            return View(user);
+        }
+
+        // GET: UsersController/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: HomeController1/Create
+        // POST: UsersController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(User user)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    var userAdded = await usersService.AddUser(MapperToUserDto(user));
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -38,19 +75,76 @@ namespace WebDev.Application.Controllers
             }
         }
 
-        // GET: HomeController1/Edit/5
-        public ActionResult Edit(int id)
+        // GET: UsersController/Edit/5
+        [HttpGet]
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var userFound = await usersService.GetUserById(id);
+
+            if (userFound == null)
+            {
+                return NotFound();
+            }
+
+            var user = MapperToUser(userFound);
+
+            return View(user);
         }
 
-        // POST: HomeController1/Edit/5
+        // POST: UsersController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(User user)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    var userModified = await usersService.UpdateUser(MapperToUserDto(user));
+
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(user);
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+
+        // GET: UsersController/Delete/5
+        [HttpGet]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var userFound = await usersService.GetUserById(id);
+
+            if (userFound == null)
+            {
+                return NotFound();
+            }
+
+            var user = MapperToUser(userFound);
+
+            return View(user);
+        }
+
+        // POST: UsersController/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Delete(User user)
+        {
+            try
+            {
+                var userFound = await usersService.GetUserById(user.Id);
+
+                if (userFound == null)
+                {
+                    return View();
+                }
+
+                var userDeleted = await usersService.DeleteUser(user.Id);
+
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -59,25 +153,27 @@ namespace WebDev.Application.Controllers
             }
         }
 
-        // GET: HomeController1/Delete/5
-        public ActionResult Delete(int id)
+        private User MapperToUser(UserDto userDto)
         {
-            return View();
+            return new User
+            {
+                Id = userDto.Id,
+                Email = userDto.Email,
+                Name = userDto.Name,
+                Username = userDto.Username,
+                Password = userDto.Password
+            };
         }
 
-        // POST: HomeController1/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        private UserDto MapperToUserDto(User user)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return UserDto.Build(
+              id: user.Id,
+              email: user.Email,
+              name: user.Name,
+              username: user.Username,
+              password: user.Password
+            );
         }
     }
 }
