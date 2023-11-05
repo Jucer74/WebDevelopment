@@ -1,6 +1,7 @@
 import React from "react";
 import "./Info.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCreditCard, faTruck, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function Info() {
   return (
@@ -16,7 +17,7 @@ function Info() {
             Puedes pagar tu pedido con tarjeta de crédito o PSE.
           </p>
           <div className="info-icon">
-            <FontAwesomeIcon icon="credit-card" />
+            <FontAwesomeIcon icon={faCreditCard} />
           </div>
         </div>
         <div className="info-item">
@@ -25,7 +26,7 @@ function Info() {
             Recibirás tu pedido en la puerta de tu casa.
           </p>
           <div className="info-icon">
-            <FontAwesomeIcon icon="truck" />
+            <FontAwesomeIcon icon={faTruck} />
           </div>
         </div>
         <div className="info-item">
@@ -34,7 +35,7 @@ function Info() {
             Tu información está protegida por nuestro sitio web seguro.
           </p>
           <div className="info-icon">
-            <FontAwesomeIcon icon="lock" />
+            <FontAwesomeIcon icon={faLock} />
           </div>
         </div>
       </div>
