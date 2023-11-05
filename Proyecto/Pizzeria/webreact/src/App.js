@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavigatorBar from "./Components/NavigationBar"; // Import the NavigatorBar component
-import Inicio from "./Components/Inicio"; // Import the Inicio component
+import NavigatorBar from "./Components/NavigationBar"; 
+import Inicio from "./Components/Inicio"; 
 import InfoMenu from "./Components/InfoMenu.js"
 
 
@@ -18,7 +18,6 @@ function App() {
       <div className="Infomenu-container">
         <InfoMenu />
       </div >
-      
     </div>
   );
 }
