@@ -13,3 +13,10 @@
 }
 
 
+/* Estilo para el botón al hacer hover */
+.btn:hover {
+    background-color: #ff5733; /* Cambia el color de fondo al hacer hover */
+    color: white; /* Cambia el color del texto al hacer hover */
+    cursor: pointer; /* Cambia el cursor al hacer hover */
+  }
+  

@@ -36,19 +36,19 @@ function NavigatorBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         {!isMobileMenuOpen && (
-          <a className="navbar-brand mx-auto" href="#">
+          <a className="navbar-brand mx-auto" href="/">
             LOGO
           </a>
         )}
         <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#" style={customStyle}>
+              <a className="nav-link" href="/Menu" style={customStyle}>
                 Menu
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" style={customStyle}>
+              <a className="nav-link" href="/Usuarios" style={customStyle}>
                 Usuarios
               </a>
             </li>
@@ -57,12 +57,12 @@ function NavigatorBar() {
         <div className="text-right">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="#" style={customStyle}>
+              <a className="nav-link" href="/Carrito" style={customStyle}>
                 <FaShoppingCart /> Carrito
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#" style={customStyle}>
+              <a className="nav-link" href="/Login" style={customStyle}>
                 <FaSignInAlt /> Login
               </a>
             </li>

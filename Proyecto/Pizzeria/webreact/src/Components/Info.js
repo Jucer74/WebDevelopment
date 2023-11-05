@@ -1,8 +1,8 @@
 import React from "react";
-import "./InfoMenu.css";
+import "./Info.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function InfoMenu() {
+function Info() {
   return (
     <div className="info-menu">
       <br></br>
@@ -42,4 +42,4 @@ function InfoMenu() {
   );
 }
 
-export default InfoMenu;
+export default Info;
