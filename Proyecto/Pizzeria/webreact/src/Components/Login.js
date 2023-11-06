@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import "./Login.css";
 import Info from "./Info"; // Opcionalmente, puedes usar "./Info" si prefieres omitir las llaves
 
 
@@ -26,7 +27,7 @@ function Registration() {
   };
 
   return (
-    <section className="vh-100" style={{ backgroundColor: '#007a53' }}>
+    <section className="container d-flex justify-content-center" style={{ backgroundColor: '#007a53' }}>
       <div className="container py-5 h-100">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col col-xl-10">
@@ -133,8 +134,13 @@ function Registration() {
             </div>
           </div>
         </div>
+
+        <div className='footerInfo'>
+        <Info />
+        </div>
+        
       </div>
-      <Info />
+      
 
     </section>
   );
