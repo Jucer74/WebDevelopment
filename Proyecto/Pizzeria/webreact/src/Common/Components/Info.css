@@ -54,6 +54,11 @@
   
   /* Responsive header */
 
+.footerInfo{
+
+  margin-top: 5rem;
+}
+
 @media (min-width: 768px) {
     .info-menu h2 {
       font-size: 32px;

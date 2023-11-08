@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import "./Login.css";
-import Info from "./Info"; // Opcionalmente, puedes usar "./Info" si prefieres omitir las llaves
+import PizzaImg from "../../Assets/Images/PizzaRegister.jpg";
 
-
-function Registration() {
+function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -22,24 +20,34 @@ function Registration() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Validar que la contraseña y la confirmación de contraseña sean iguales
+    if (formData.password !== formData.confirmPassword) {
+      alert("La contraseña y la confirmación de contraseña no coinciden.");
+      return; // Detener el envío del formulario
+    }
+
     // Aquí puedes agregar la lógica para enviar los datos del formulario al servidor
     console.log(formData); // Muestra los datos en la consola (para demostración)
   };
-
   return (
-    <section className="container d-flex justify-content-center" style={{ backgroundColor: '#007a53' }}>
-      <div className="container py-5 h-100">
-        <div className="row d-flex justify-content-center align-items-center h-100">
+    
+      <div className="container">
+
           <div className="col col-xl-12">
             <div className="card" style={{ borderRadius: '1rem' }}>
               <div className="row g-0">
-                <div className="col-md-6 col-lg-5 d-none d-md-block">
+                <div className="col-md-6 col-lg-5 d-none d-md-block" >
                   <img
-                    src="./Images/Banner1.png" // Reemplaza esto con la ruta de tu imagen
+                    src= {PizzaImg} // Reemplaza esto con la ruta de tu imagen
                     alt="registration form"
                     className="img-fluid"
-                    style={{ borderRadius: '1rem 0 0 1rem' }}
-                  />
+                    style={{
+                      borderRadius: '1rem 0 0 1rem',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover', // Controla cómo la imagen se ajusta al contenedor
+                    }}                  />
                 </div>
                 <div className="col-md-6 col-lg-7 d-flex align-items-center">
                   <div className="card-body p-4 p-lg-5 text-black">
@@ -133,17 +141,10 @@ function Registration() {
               </div>
             </div>
           </div>
-        </div>
-
-        <div className='footerInfo'>
-        <Info />
-        </div>
-
       </div>
-      
 
-    </section>
+   
   );
 }
 
-export default Registration;
+export default Register;

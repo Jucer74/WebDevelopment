@@ -1,10 +1,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Inicio.css";
-import Info  from "./Info"; // Opcionalmente, puedes usar "./Info" si prefieres omitir las llaves
-import Banner1 from "./Images/Banner1.png";
-import Banner2 from "./Images/Banner2.png";
-import Banner3 from "./Images/Banner3.jpg";
+import Info  from "../Common/Components/Info"; // Opcionalmente, puedes usar "./Info" si prefieres omitir las llaves
+import Banner1 from "../Assets/Images/Banner1.png";
+import Banner2 from "../Assets/Images/Banner2.png";
+import Banner3 from "../Assets/Images/Banner3.jpg";
 
 function Inicio() {
   return (
@@ -48,8 +48,6 @@ function Inicio() {
             Domicilios aquí
           </button>
         </div>
-
-        {/* Agrega el componente Info aquí */}
         <Info />
       </div>
     </div>

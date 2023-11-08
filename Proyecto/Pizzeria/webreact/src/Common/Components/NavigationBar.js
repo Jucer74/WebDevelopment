@@ -62,8 +62,8 @@ function NavigatorBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/Login" style={customStyle}>
-                <FaSignInAlt /> Login
+              <a className="nav-link" href="/RegisterPage" style={customStyle}>
+                <FaSignInAlt /> Register
               </a>
             </li>
           </ul>
