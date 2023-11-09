@@ -9,12 +9,11 @@ export function List() {
   const baseUrl = "https://localhost:5001/api/Pizzeria";
 
   const [data, setData] = useState([]);
-  const [currentUser, setCurrentUser] = useState({
+  const [currentPizzeria, setCurrentPizzeria] = useState({
     id: '',
-    email: '',
-    username: '',
-    name: '',
-    password: ''
+    nombre: '',
+    tamaño: '',
+    precio: ''
   });
   const [showModalCreate, setShowModalCreate] = useState(false);
   const [showModalUpdate, setShowModalUpdate] = useState(false);
@@ -39,14 +38,13 @@ export function List() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCurrentUser({
-      ...currentUser,
+    setCurrentPizzeria({
+      ...currentPizzeria,
       [name]: value
     })
   }
 
-  const getUsers = async () => {
-    // Realizar una solicitud a la API para obtener la lista de usuarios
+  const getPizzeria = async () => {
     await axios.get(baseUrl)
       .then(response => {
         setData(response.data);
@@ -56,45 +54,45 @@ export function List() {
   }
 
   useEffect(() => {
-    getUsers();
+    getPizzeria();
   }, []);
 
-  const postUser = async () => {
-    delete currentUser.id;
-    await axios.post(baseUrl, currentUser)
+  const postPizzeria = async () => {
+    delete currentPizzeria.id;
+    await axios.post(baseUrl, currentPizzeria)
       .then(response => {
-        getUsers();
+        getPizzeria();
         openCloseModalCreate();
       }).catch(error => {
         console.log(error);
       })
   }
 
-  const putUser = async () => {
-    await axios.put(baseUrl + "/" + currentUser.id, currentUser)
+  const putPizzeria = async () => {
+    await axios.put(baseUrl + "/" + currentPizzeria.id, currentPizzeria)
       .then(response => {
         var result = response.data;
-        var updatedData = data.map(usr => usr.id === currentUser.id ? result : usr);
+        var updatedData = data.map(pizzeria => pizzeria.id === currentPizzeria.id ? result : pizzeria);
         setData(updatedData);
-        getUsers();
+        getPizzeria();
         openCloseModalUpdate();
       }).catch(error => {
         console.log(error);
       })
   }
 
-  const deleteUser = async (id) => {
+  const deletePizzeria = async (id) => {
     await axios.delete(baseUrl + "/" + id)
       .then(() => {
-        setData(data.filter(usr => usr.id !== id));
+        setData(data.filter(pizzeria => pizzeria.id !== id));
         openCloseModalDelete();
       }).catch(error => {
         console.log(error);
       })
   }
 
-  const selectCurrentUser = (user, action) => {
-    setCurrentUser(user);
+  const selectCurrentPizzeria = (pizzeria, action) => {
+    setCurrentPizzeria(pizzeria);
     switch (action) {
       case "Edit":
         openCloseModalUpdate();
@@ -112,35 +110,32 @@ export function List() {
 
   return (
     <Container className="text-center text-md-left">
-      <h1>User List</h1>
+      <h1>Nuestras Pizzas</h1>
       <p>
         <Button className="left" variant="success btn-sm" onClick={() => openCloseModalCreate()}>
           <FontAwesomeIcon icon={faPlus} /> New
         </Button>
       </p>
-      <Table id="UsersTable">
+      <Table id="PizzeriaTable">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Email</th>
-            <th>Name</th>
-            <th>Username</th>
-            <th>Password</th>
-            <th>Actions</th>
+            <th>Nombre</th>
+            <th>Tamaño</th>
+            <th>Precio</th>
           </tr>
         </thead>
         <tbody>
-          {data.map(usr => (
-            <tr key={usr.id}>
-              <td>{usr.id}</td>
-              <td>{usr.email}</td>
-              <td>{usr.name}</td>
-              <td>{usr.username}</td>
-              <td>{usr.password}</td>
+          {data.map(pizzeria => (
+            <tr key={pizzeria.id}>
+              <td>{pizzeria.id}</td>
+              <td>{pizzeria.nombre}</td>
+              <td>{pizzeria.tamaño}</td>
+              <td>{pizzeria.precio}</td>
               <td>
-                <Button variant="outline-primary btn-sm" onClick={() => selectCurrentUser(usr, "Edit")}>Edit</Button>{"  "}
-                <Button variant="outline-warning btn-sm" onClick={() => selectCurrentUser(usr, "Details")}>Details</Button>{"  "}
-                <Button variant="outline-danger btn-sm" onClick={() => selectCurrentUser(usr, "Delete")}>Delete</Button>
+                <Button variant="outline-primary btn-sm" onClick={() => selectCurrentPizzeria(pizzeria, "Edit")}>Edit</Button>{"  "}
+                <Button variant="outline-warning btn-sm" onClick={() => selectCurrentPizzeria(pizzeria, "Details")}>Details</Button>{"  "}
+                <Button variant="outline-danger btn-sm" onClick={() => selectCurrentPizzeria(pizzeria, "Delete")}>Delete</Button>
               </td>
             </tr>
           ))}
@@ -149,90 +144,79 @@ export function List() {
 
     {/* Create */}
     <Modal isOpen={showModalCreate}>
-      <ModalHeader>Create User</ModalHeader>
+      <ModalHeader>Create Pizzeria</ModalHeader>
       <ModalBody>
         <Form>
           <Form.Group>
-            <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange} />
+            <Form.Label>Nombre:</Form.Label>
+            <Form.Control type="text" id="txtNombre" name="nombre" placeholder="Pizza de Tocineta" required onChange={handleChange} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Name:</Form.Label>
-            <Form.Control type="text" id="txtName" name="name" placeholder="Julio Robles" required onChange={handleChange} />
+            <Form.Label>Tamaño:</Form.Label>
+            <Form.Control type="text" id="txtTamaño" name="tamaño" placeholder="Pequeña/Mediana/Grande" required onChange={handleChange} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" id="txtUsername" name="username" placeholder="username" required onChange={handleChange} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Password:</Form.Label>
-            <Form.Control type="password" id="txtPassword" name="password" onChange={handleChange} />
+            <Form.Label>Precio:</Form.Label>
+            <Form.Control type="number" id="txtPrecio" name="precio" placeholder="el que quieras" required onChange={handleChange} />
           </Form.Group>
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button variant="primary" onClick={() => postUser()}>Create</Button>
+        <Button variant="primary" onClick={() => postPizzeria()}>Create</Button>
         <Button variant="outline-info" onClick={() => openCloseModalCreate()}>Back</Button>
       </ModalFooter>
     </Modal>
 
     {/* Update */}
     <Modal isOpen={showModalUpdate}>
-      <ModalHeader>Edit User</ModalHeader>
+      <ModalHeader>Edit Pizzeria</ModalHeader>
       <ModalBody>
         <Form>
+
           <Form.Group>
             <Form.Label>Id:</Form.Label>
-            <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser.id} />
+            <Form.Control type="number" id="txtId" name="id" readOnly value={currentPizzeria.id} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange} value={currentUser.email} />
+            <Form.Label>Nombre:</Form.Label>
+            <Form.Control type="text" id="txtNombre" name="nombre" placeholder="No lo se rick" required onChange={handleChange} value={currentPizzeria.nombre} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Name:</Form.Label>
-            <Form.Control type="text" id="txtName" name="name" placeholder="Julio Robles" required onChange={handleChange} value={currentUser.name} />
+            <Form.Label>Tamaño:</Form.Label>
+            <Form.Control type="text" id="txtTamaño" name="tamaño" placeholder="Grande" required onChange={handleChange} value={currentPizzeria.tamaño} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" id="txtUsername" name="username" placeholder="username" required onChange={handleChange} value={currentUser.username} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Password:</Form.Label>
-            <Form.Control type="password" id="txtPassword" name="password" onChange={handleChange} value={currentUser.password} />
+            <Form.Label>Precio:</Form.Label>
+            <Form.Control type="number" id="txtPrecio" name="precio" placeholder="No lo se rick" required onChange={handleChange} value={currentPizzeria.precio} />
           </Form.Group>
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button variant="primary" onClick={() => putUser()}>Save</Button>
+        <Button variant="primary" onClick={() => putPizzeria()}>Save</Button>
         <Button variant="outline-info" onClick={() => openCloseModalUpdate()}>Back</Button>
       </ModalFooter>
     </Modal>
 
     {/* Details */}
     <Modal isOpen={showModalDetails}>
-      <ModalHeader>Details User</ModalHeader>
+      <ModalHeader>Details Pizzeria</ModalHeader>
       <ModalBody>
         <Form>
           <Form.Group>
             <Form.Label>Id:</Form.Label>
-            <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser.id} />
+            <Form.Control type="number" id="txtId" name="id" readOnly value={currentPizzeria.id} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" id="txtEmail" name="email" readOnly value={currentUser.email} />
+            <Form.Label>Nombre:</Form.Label>
+            <Form.Control type="text" id="txtNombre" name="nombre" readOnly value={currentPizzeria.nombre} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Name:</Form.Label>
-            <Form.Control type="text" id="txtName" name="name" readOnly value={currentUser.name} />
+            <Form.Label>Tamaño:</Form.Label>
+            <Form.Control type="text" id="txtTamaño" name="tamaño" readOnly value={currentPizzeria.tamaño} />
           </Form.Group>
           <Form.Group>
-            <Form.Label>Username:</Form.Label>
-            <Form.Control type="text" id="txtUsername" name="username" readOnly value={currentUser.username} />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Password:</Form.Label>
-            <Form.Control type="text" id="txtPassword" name="password" readOnly value={currentUser.password} />
+            <Form.Label>Precio:</Form.Label>
+            <Form.Control type="number" id="txtPrecio" name="precio" readOnly value={currentPizzeria.precio} />
           </Form.Group>
         </Form>
       </ModalBody>
@@ -243,23 +227,23 @@ export function List() {
 
     {/* Delete */}
     <Modal isOpen={showModalDelete}>
-      <ModalHeader>Are you sure to delete this user?</ModalHeader>
+      <ModalHeader>Estas seguro de borrar esta Pizza?</ModalHeader>
       <ModalBody>
         <Form>
           <Form.Group>
             <Form.Label><b>Id:</b></Form.Label>
-            <Form.Label>{currentUser && currentUser.id}</Form.Label><br />
-            <Form.Label><b>Email:</b></Form.Label>
-            <Form.Label>{currentUser && currentUser.email}</Form.Label><br />
-            <Form.Label><b>Name:</b></Form.Label>
-            <Form.Label>{currentUser && currentUser.name}</Form.Label><br />
-            <Form.Label><b>Username:</b></Form.Label>
-            <Form.Label>{currentUser && currentUser.username}</Form.Label><br />
+            <Form.Label>{currentPizzeria.id}</Form.Label><br />
+            <Form.Label><b>Nombre:</b></Form.Label>
+            <Form.Label>{currentPizzeria.nombre}</Form.Label><br />
+            <Form.Label><b>Tamaño:</b></Form.Label>
+            <Form.Label>{currentPizzeria.tamaño}</Form.Label><br />
+            <Form.Label><b>Precio:</b></Form.Label>
+            <Form.Label>{currentPizzeria.precio}</Form.Label><br />
           </Form.Group>
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button variant="danger" onClick={() => deleteUser(currentUser.id)}>Delete</Button>
+        <Button variant="danger" onClick={() => deletePizzeria(currentPizzeria.id)}>Delete</Button>
         <Button variant="outline-info" onClick={() => openCloseModalDelete()}>Back</Button>
       </ModalFooter>
     </Modal>
