@@ -1,20 +1,28 @@
-import React, { useState } from 'react';
-import Menu from './Menu';
-import Carrito from './Carrito';
+import React, { useState } from "react";
+import Info from "../Common/Components/Info";
+import Carrito from "../Components/Carrito";
 
-const App = () => {
-  const [carrito, setCarrito] = useState([]);
-
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
-  };
-
+function CarritoPage() {
   return (
-    <div>
-      <Menu agregarAlCarrito={agregarAlCarrito} />
-      <Carrito carrito={carrito} />
+    <div
+      className="container col d-flex justify-content-center"
+      style={{ backgroundColor: "#007a53" }}
+    >
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          
+          <div>
+            <Carrito />
+          </div>
+
+          <div style={{ marginTop: "5rem" }}>
+            <Info />
+          </div>
+
+        </div>
+      </div>
     </div>
   );
-};
+}
 
-export default App;
+export default CarritoPage;

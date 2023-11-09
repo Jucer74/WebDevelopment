@@ -7,7 +7,8 @@ import RegisterPage from "./Pages/Security/RegisterPage";
 import LoginPage from "./Pages/Security/LoginPage"; 
 import MapasPage from "./Pages/MapasPage"; 
 import MenuPage from "./Pages/MenuPage"
-import CarritoPage from "./Components/Carrito";
+import CarritoPage from "./Pages/CarritoPage";
+import UserPage from "./Pages/Security/UsersPage"
 import { Layout } from './Layout';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -23,7 +24,7 @@ function App() {
               <Route path="/InicioPage" element={<InicioPage/>} />
               <Route path="/MapasPage" element={<MapasPage/>} />
               <Route path="/MenuPage" element={<MenuPage/>} />
-              {/* <Route path="/UsuariosPage" element={<UsuariosPage/>} /> */}
+              <Route path="/UserPage" element={<UserPage/>} />
               <Route path="/CarritoPage" element={<CarritoPage/>} />
               <Route path="/RegisterPage" element={<RegisterPage/>} />
               <Route path="/LoginPage" element={<LoginPage/>} />

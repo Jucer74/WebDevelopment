@@ -14,9 +14,10 @@ function InicioPage() {
             <Inicio />
           </div>
 
-          <div>
-            <Info />
+          <div >
+          <Info/>
           </div>
+
         </div>
       </div>
     </div>

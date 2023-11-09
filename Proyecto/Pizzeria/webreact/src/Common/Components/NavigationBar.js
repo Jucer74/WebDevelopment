@@ -39,7 +39,7 @@ function NavigatorBar() {
         </button>
         {!isMobileMenuOpen && (
           <a className="navbar-brand mx-auto" href="/">
-            <img src={LogoPizza} alt="Logo" style={{ width: "120px", "margin-right": "15px" }} />
+            <img src={LogoPizza} alt="Logo" style={{ width: "120px", marginRight: "15px" }} />
           </a>
         )}
 
@@ -56,11 +56,16 @@ function NavigatorBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/Usuarios" style={customStyle}>
+              <a className="nav-link" href="/UserPage" style={customStyle}>
                 Usuarios
               </a>
             </li>
             {/* Mueve "Carrito" y "Registro" al menú hamburguesa */}
+          </ul>
+        </div>
+        <div className="text-right">
+          <ul className="navbar-nav">
+            {/* Agrega el botón de inicio de sesión con el icono de usuario */}
             <li className="nav-item">
               <a className="nav-link" href="/CarritoPage" style={customStyle}>
                 <FaShoppingCart /> Carrito
@@ -71,11 +76,6 @@ function NavigatorBar() {
                 <FaSignInAlt /> Registro
               </a>
             </li>
-          </ul>
-        </div>
-        <div className="text-right">
-          <ul className="navbar-nav">
-            {/* Agrega el botón de inicio de sesión con el icono de usuario */}
             <li className="nav-item">
               <a className="nav-link" href="/LoginPage" style={customStyle}>
                 <FaUser /> Iniciar Sesión

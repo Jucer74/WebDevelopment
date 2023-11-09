@@ -15,7 +15,7 @@ function MenuPage() {
             <Menu />
           </div>
 
-          <div style={{ "margin-top": "5rem" }}>
+          <div style={{ marginTop: "5rem" }}>
           <Info/>
           </div>
 
