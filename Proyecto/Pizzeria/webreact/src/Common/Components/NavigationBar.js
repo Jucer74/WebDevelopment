@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { FaShoppingCart, FaSignInAlt } from "react-icons/fa";
+import { FaShoppingCart, FaSignInAlt, FaUser } from "react-icons/fa";
+import LogoPizza from "../../Assets/Images/LogoPizza.png";
 
 function NavigatorBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -11,20 +12,21 @@ function NavigatorBar() {
   };
 
   const customStyle = {
-    color: "#007a53", // Set the text and icon color to #007a53
+    color: "#007a53",
   };
 
   const navbarStyle = {
-    // Increase the width of the navbar (change the max-width value as needed)
-    // maxWidth: "100%",
-    margin: "0 auto", // Center the navbar horizontally
+    margin: "0 auto",
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3" style={navbarStyle}>
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light mb-3"
+      style={navbarStyle}
+    >
       <div className="container">
         <button
-          className={`navbar-toggler ${isMobileMenuOpen ? 'collapsed' : ''}`}
+          className={`navbar-toggler ${isMobileMenuOpen ? "collapsed" : ""}`}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -37,13 +39,19 @@ function NavigatorBar() {
         </button>
         {!isMobileMenuOpen && (
           <a className="navbar-brand mx-auto" href="/">
-            LOGO
+            <img src={LogoPizza} alt="Logo" style={{ width: "120px", "margin-right": "15px" }} />
           </a>
         )}
-        <div className={`collapse navbar-collapse ${isMobileMenuOpen ? 'show' : ''}`} id="navbarNav">
+
+        <div
+          className={`collapse navbar-collapse ${
+            isMobileMenuOpen ? "show" : ""
+          }`}
+          id="navbarNav"
+        >
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/Menu" style={customStyle}>
+              <a className="nav-link" href="/MenuPage" style={customStyle}>
                 Menu
               </a>
             </li>
@@ -52,18 +60,25 @@ function NavigatorBar() {
                 Usuarios
               </a>
             </li>
-          </ul>
-        </div>
-        <div className="text-right">
-          <ul className="navbar-nav">
+            {/* Mueve "Carrito" y "Registro" al menú hamburguesa */}
             <li className="nav-item">
-              <a className="nav-link" href="/Carrito" style={customStyle}>
+              <a className="nav-link" href="/CarritoPage" style={customStyle}>
                 <FaShoppingCart /> Carrito
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/RegisterPage" style={customStyle}>
-                <FaSignInAlt /> Register
+                <FaSignInAlt /> Registro
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className="text-right">
+          <ul className="navbar-nav">
+            {/* Agrega el botón de inicio de sesión con el icono de usuario */}
+            <li className="nav-item">
+              <a className="nav-link" href="/LoginPage" style={customStyle}>
+                <FaUser /> Iniciar Sesión
               </a>
             </li>
           </ul>

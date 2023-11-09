@@ -2,8 +2,12 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavigatorBar from "./Common/Components/NavigationBar"; 
-import Inicio from "./Components/Inicio"; 
+import InicioPage from "./Pages/InicioPage"; 
 import RegisterPage from "./Pages/Security/RegisterPage"; 
+import LoginPage from "./Pages/Security/LoginPage"; 
+import MapasPage from "./Pages/MapasPage"; 
+import MenuPage from "./Pages/MenuPage"
+import CarritoPage from "./Components/Carrito";
 import { Layout } from './Layout';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -15,12 +19,14 @@ function App() {
         <Layout>
           <Router>
             <Routes>
-              <Route exact path="/" element={<Inicio/>} />
-              <Route path="/Inicio" element={<Inicio/>} />
-              {/* <Route path="/Menu" element={<Menu/>} /> */}
-              {/* <Route path="/Usuarios" element={<Usuarios/>} /> */}
-              {/* <Route path="/Carrito" element={<Carrito/>} /> */}
+              <Route exact path="/" element={<InicioPage/>} />
+              <Route path="/InicioPage" element={<InicioPage/>} />
+              <Route path="/MapasPage" element={<MapasPage/>} />
+              <Route path="/MenuPage" element={<MenuPage/>} />
+              {/* <Route path="/UsuariosPage" element={<UsuariosPage/>} /> */}
+              <Route path="/CarritoPage" element={<CarritoPage/>} />
               <Route path="/RegisterPage" element={<RegisterPage/>} />
+              <Route path="/LoginPage" element={<LoginPage/>} />
               {/* <Route element={<NoMatch/>} /> */} 
             </Routes>
           </Router>
