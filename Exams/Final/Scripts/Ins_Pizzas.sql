@@ -1,0 +1,16 @@
+INSERT INTO `pizzadb`.`Pizzas` VALUES
+(1, 'Pizza Hawaina','Mediana', 20000), 
+(2, 'Pizza Napolitana','Mediana',20000), 
+(3, 'Pizza Pollo con Champiñones','Mediana',25000),
+(4, 'Pizza Vegetariana','Mediana',25000),
+(5, 'Pizza Margarita','Mediana',20000),
+(6, 'Pizza Pepperoni','Mediana',20000),
+(7, 'Pizza Marinara','Mediana',30000),
+(8, 'Pizza Cuatro Estaciones','Mediana',35000),
+(9, 'Pizza Funghi','Mediana',25000),
+(10, 'Pizza Carbonara','Mediana',30000),
+(11, 'Pizza Calzone','Mediana',25000),
+(12, 'Pizza Cuatro Quesos','Mediana',20000),
+(13, 'Pizza de Calamares','Mediana',40000),
+(14, 'Pizza Jamon y Queso','Mediana',20000),
+(15, 'Pizza Carnes al Barril','Mediana',45000);
