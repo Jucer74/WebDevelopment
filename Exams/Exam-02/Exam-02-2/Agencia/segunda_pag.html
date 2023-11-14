@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Interfaz de Viajes</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"><i class="fas fa-bed"></i> Alojamientos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-plane"></i> Vuelos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-suitcase-rolling"></i> Paquetes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-percent"></i> Ofertas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-car"></i> Alquileres</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-bicycle"></i> Actividades</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-road"></i> Circuitos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-car-side"></i> Carros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-mouse-pointer"></i> Disney</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-user-md"></i> Asistencias</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-bus"></i> Traslados</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+<div class="container mt-5">
+
+    <!-- Destinos Populares -->
+    <div class="row">
+        <div class="col-12">
+            <h4>Destinos Populares</h4>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/bali-image.jpg" class="card-img-top" alt="Bali">
+                <div class="card-body">
+                    <h5 class="card-title">Bali</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/paris-image.jpg" class="card-img-top" alt="París">
+                <div class="card-body">
+                    <h5 class="card-title">París</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="path/to/tokio-image.jpg" class="card-img-top" alt="Tokio">
+                <div class="card-body">
+                    <h5 class="card-title">Tokio</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Personaliza tu Paquete -->
+    <div class="row mt-4">
+        <div class="col-12 mb-3">
+            <h4>Personaliza tu Paquete</h4>
+        </div>
+        <div class="col-md-3">
+            <label for="origin">Origen:</label>
+            <input type="text" class="form-control" id="origin" placeholder="Ciudad">
+        </div>
+        <div class="col-md-3">
+            <label for="destination">Destino:</label>
+            <input type="text" class="form-control" id="destination" placeholder="Playa o Ciudad">
+        </div>
+        <div class="col-md-3">
+            <label for="fromDate">Desde:</label>
+            <input type="date" class="form-control" id="fromDate">
+        </div>
+        <div class="col-md-3">
+            <label for="toDate">Hasta:</label>
+            <input type="date" class="form-control" id="toDate">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label for="passengers">No. de Pasajeros:</label>
+            <input type="number" class="form-control" id="passengers" min="1" value="2">
+        </div>
+        <div class="col-md-3 mt-3">
+            <label for="accommodation">Tipo de Alojamiento:</label>
+            <select class="form-control" id="accommodation">
+                <option>Hotel 5 estrellas</option>
+                <option>Hotel 4 estrellas</option>
+                <option>Resort</option>
+                <option>Casa vacacional</option>
+            </select>
+        </div>
+        <div class="col-12 mt-3">
+            <button class="btn btn-primary">Buscar Paquete</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
