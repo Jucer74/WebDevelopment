@@ -5,6 +5,7 @@ import { Button, Container, Table, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+
 export function List() {
   const baseUrl = "https://localhost:5001/api/Pizzeria";
 
