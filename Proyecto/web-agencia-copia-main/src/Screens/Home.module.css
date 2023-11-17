@@ -1,0 +1,32 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgb(52, 41, 112), rgb(209, 81, 6));
+  padding: 20px 20px 200px;
+  align-items: center;
+}
+.titleContainer {
+  padding-top: 80px;
+}
+
+.home p {
+  font-size: 3.5em;
+  color: #f1f1f1;
+}
+
+.callToAction {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 7%;
+  margin-left: 20px;
+  transition: 0.5s;
+}
+
+.callToAction:hover {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.ctaContainer {
+  padding-top: 40px;
+}
