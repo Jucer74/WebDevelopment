@@ -1,24 +1,63 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form, Table } from 'react-bootstrap';
+import { useDropzone } from 'react-dropzone';
+import imagen1 from "../../Assets/Images/Categorias/Pastas.jpg";
+import imagen2 from "../../Assets/Images/Categorias/Pastas.jpg";
+import imagen3 from "../../Assets/Images/Categorias/Pastas.jpg";
 
 const CrudComponent = () => {
   const [showModalCreate, setShowModalCreate] = useState(false);
+  const [showModalEdit, setShowModalEdit] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    name: '',
-    username: '',
-    password: '',
+    id: '',
+    imagen: '',
+    descripcion: '',
   });
 
-  const users = [
-    { id: 1, email: 'user1@email.com', name: 'User One', username: 'user1', password: 'password1' },
-    { id: 2, email: 'user2@email.com', name: 'User Two', username: 'user2', password: 'password2' },
-    { id: 3, email: 'user3@email.com', name: 'User Three', username: 'user3', password: 'password3' },
-    { id: 4, email: 'user4@email.com', name: 'User Four', username: 'user4', password: 'password4' },
-    { id: 5, email: 'user5@email.com', name: 'User Five', username: 'user5', password: 'password5' },
-  ];
+  const [editedCategoria, setEditedCategoria] = useState({
+    id: '',
+    imagen: '',
+    descripcion: '',
+  });
 
-  const openCloseModalCreate = () => setShowModalCreate(!showModalCreate);
+  const [file, setFile] = useState(null);
+  const [categorias, setCategorias] = useState([
+    { id: 1, imagen: imagen1, descripcion: 'Pizzas' },
+    { id: 2, imagen: imagen2, descripcion: 'Pastas' },
+    { id: 3, imagen: imagen3, descripcion: 'Lasañas' },
+  ]);
+  const [autoIncrementId, setAutoIncrementId] = useState(categorias.length + 1);
+
+  const onDrop = (acceptedFiles) => {
+    const fileUrl = URL.createObjectURL(acceptedFiles[0]);
+    setFile({ file: acceptedFiles[0], url: fileUrl });
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop,
+    accept: 'image/*',
+    multiple: false,
+  });
+
+  const openCloseModalCreate = () => {
+    setShowModalCreate(!showModalCreate);
+    setFile(null);
+  };
+
+  const openEditModal = (categoria) => {
+    setEditedCategoria(categoria);
+    setShowModalEdit(true);
+  };
+
+  const closeEditModal = () => {
+    setEditedCategoria({
+      id: '',
+      imagen: '',
+      descripcion: '',
+    });
+    setShowModalEdit(false);
+    setFile(null);
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -27,76 +66,128 @@ const CrudComponent = () => {
     });
   };
 
-  const postUser = () => {
-    console.log(formData);
+  const postCategoria = () => {
+    const newCategoria = {
+      id: autoIncrementId,
+      imagen: file ? file.url : '',
+      descripcion: formData.descripcion,
+    };
+
+    setCategorias([...categorias, newCategoria]);
+    setAutoIncrementId(autoIncrementId + 1);
+
     openCloseModalCreate();
+  };
+
+  const editCategoria = () => {
+    const updatedCategorias = categorias.map((categoria) =>
+      categoria.id === editedCategoria.id
+        ? { ...editedCategoria, imagen: file ? file.url : categoria.imagen }
+        : categoria
+    );
+
+    setCategorias(updatedCategorias);
+
+    closeEditModal();
   };
 
   return (
     <>
       <div className="container">
-        <h1>User List</h1>
-        <p>
+        <h1 className="text-center">Categorías</h1>
+        <p className="text-center">
           <Button variant="success" onClick={openCloseModalCreate}>
-            <i className="fas fa-plus"></i> New
+            <i className="fas fa-plus"></i> Nueva Categoría
           </Button>
         </p>
       </div>
 
       <Modal show={showModalCreate} onHide={openCloseModalCreate}>
         <Modal.Header closeButton>
-          <Modal.Title>Create User</Modal.Title>
+          <Modal.Title>Nueva Categoría</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Email:</Form.Label>
-              <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange}/>
+              <Form.Label>Id:</Form.Label>
+              <Form.Control type="text" id="txtId" name="id" value={autoIncrementId} readOnly />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Name:</Form.Label>
-              <Form.Control type="text" id="txtName" name="name" placeholder="Bon Jovi" required onChange={handleChange}/>
+              <Form.Label>Imagen:</Form.Label>
+              <div {...getRootProps()} style={{ border: '1px dashed #ccc', padding: '20px', textAlign: 'center', cursor: 'pointer' }}>
+                <input {...getInputProps()} />
+                {file ? (
+                  <img src={file.url} alt="Imagen seleccionada" style={{ maxWidth: '100%', maxHeight: '200px', marginBottom: '10px' }} />
+                ) : (
+                  <p>Arrastra y suelta una imagen aquí, o haz clic para seleccionar una.</p>
+                )}
+              </div>
             </Form.Group>
             <Form.Group>
-              <Form.Label>Username:</Form.Label>
-              <Form.Control type="text" id="txtUsername" name="username" placeholder="username" required onChange={handleChange}/>
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Password:</Form.Label>
-              <Form.Control type="password" id="txtPassword" name="password" onChange={handleChange}/>
+              <Form.Label>Descripción:</Form.Label>
+              <Form.Control type="text" id="txtDescripcion" name="descripcion" placeholder="Descripción" required onChange={handleChange} />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" onClick={postUser}>Create</Button>
-          <Button variant="outline-info" onClick={openCloseModalCreate}>Back</Button>
+          <Button variant="primary" onClick={postCategoria}>Crear</Button>
+          <Button variant="outline-info" onClick={openCloseModalCreate}>Cancelar</Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showModalEdit} onHide={closeEditModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Editar Categoría</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>Id:</Form.Label>
+              <Form.Control type="text" id="txtIdEdit" name="id" value={editedCategoria.id} readOnly />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Imagen:</Form.Label>
+              <div {...getRootProps()} style={{ border: '1px dashed #ccc', padding: '20px', textAlign: 'center', cursor: 'pointer' }}>
+                <input {...getInputProps()} />
+                {file ? (
+                  <img src={file.url} alt="Imagen seleccionada" style={{ maxWidth: '100%', maxHeight: '200px', marginBottom: '10px' }} />
+                ) : (
+                  <img src={editedCategoria.imagen} alt={`Imagen ${editedCategoria.descripcion}`} style={{ maxWidth: '100%', maxHeight: '200px', marginBottom: '10px' }} />
+                )}
+              </div>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Descripción:</Form.Label>
+              <Form.Control type="text" id="txtDescripcionEdit" name="descripcion" value={editedCategoria.descripcion} onChange={(e) => setEditedCategoria({ ...editedCategoria, descripcion: e.target.value })} />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={editCategoria}>Guardar Cambios</Button>
+          <Button variant="outline-info" onClick={closeEditModal}>Cancelar</Button>
         </Modal.Footer>
       </Modal>
 
       <div className="container">
-        <Table striped bordered hover>
+        <Table striped bordered hover className="text-center">
           <thead>
             <tr>
               <th>Id</th>
-              <th>Email</th>
-              <th>Name</th>
-              <th>Username</th>
-              <th>Password</th>
-              <th>Actions</th>
+              <th>Imagen</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
             </tr>
           </thead>
           <tbody>
-            {users.map(user => (
-              <tr key={user.id}>
-                <td>{user.id}</td>
-                <td>{user.email}</td>
-                <td>{user.name}</td>
-                <td>{user.username}</td>
-                <td>{user.password}</td>
+            {categorias.map(categoria => (
+              <tr key={categoria.id}>
+                <td>{categoria.id}</td>
+                <td><img src={categoria.imagen} alt={`Imagen ${categoria.descripcion}`} style={{ width: '120px', height: '120px' }} /></td>
+                <td>{categoria.descripcion}</td>
                 <td>
-                  <Button variant="outline-primary" className="mr-2">Edit</Button>
-                  <Button variant="outline-warning" className="mr-2">Details</Button>
-                  <Button variant="outline-danger">Delete</Button>
+                  <Button variant="outline-primary" className="mr-2" onClick={() => openEditModal(categoria)}>Editar</Button>
+                  <Button variant="outline-danger" className="mr-2">Eliminar</Button>
+                  <Button variant="outline-dark">Productos</Button>
                 </td>
               </tr>
             ))}

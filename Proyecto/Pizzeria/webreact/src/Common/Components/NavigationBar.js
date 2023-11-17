@@ -57,7 +57,7 @@ function NavigatorBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/UserPage" style={customStyle}>
-                Usuarios
+                Productos
               </a>
             </li>
             {/* Mueve "Carrito" y "Registro" al menú hamburguesa */}
