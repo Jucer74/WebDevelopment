@@ -67,5 +67,5 @@ Para el Consumo de los datos puede utilizar cualquiera de las Siguientes Opcione
 # Notas
 - Le Proyecto debe ser subido al repositorio en su rama correspondinete dentro de la carpeta lamada  y no por fuera de ella
 - En el transcurso de las clases se deben ir mostrando avances y realizar preguntas para aclarar dudas
-- La Calificacion dependera de la calidad del proyecto y del cmplimiento de lso requisitos, asi como las explicaciones dadas en clase.
+- La Calificacion dependera de la calidad del proyecto y del cmplimiento de los requisitos, asi como las explicaciones dadas en clase.
 
