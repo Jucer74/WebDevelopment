@@ -110,7 +110,7 @@ export function List() {
   }
 
   return (
-    <Container className="text-center text-md-left">
+    <Container className="bg-white text-center text-md-left">
       <h1>Nuestras Pizzas</h1>
       <p>
         <Button className="left" variant="success btn-sm" onClick={() => openCloseModalCreate()}>

@@ -7,6 +7,7 @@ import { Home } from './components/Home';
 import { Login } from './components/Login';
 import { List } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           </Router>
         </Layout>
       </React.Fragment>
+      <Footer/>
     </div>
   );
 }
