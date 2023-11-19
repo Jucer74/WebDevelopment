@@ -1,19 +1,23 @@
 .benefits {
   display: flex;
+  text-align: center;
+
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(0deg, #1a1826, #413b5e);
-  padding-bottom: 100px;
+  background: linear-gradient(0deg, rgb(59, 56, 24), #e0bc50);
+  padding-bottom: 80px;
 }
 
 .benefits p {
   color: #f1f1f1;
-  padding-top: 20px;
-  font-size: 1.4em;
+  padding-top: 60px;
+  font-size: 1.5em;
 }
 
 .benefitsTitle {
-  font-size: 2em;
+  font-size: 3em;
   font-weight: 400;
   color: #f1f1f1;
 }
+
+

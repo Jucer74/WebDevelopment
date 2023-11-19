@@ -4,7 +4,7 @@ import styles from "./Car.module.css";
 const Car = () => {
   return (
     <div name="Car" className={styles.car}>
-      <p>We solve your company's problems by creating amazing web pages.</p>
+      <p>Carros destacados</p>
       <img
         className={styles.webImage}
         src={require("../assets/webImage.jpg")}

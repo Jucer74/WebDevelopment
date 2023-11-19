@@ -3,7 +3,7 @@
   padding-top: 100px;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(0deg, #1a1826, #413b5e);
+  background: linear-gradient(0deg, rgb(209, 81, 6), rgb(26, 20, 58));
 }
 
 .webImage {

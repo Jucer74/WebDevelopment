@@ -1,7 +1,7 @@
 .home {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, rgb(52, 41, 112), rgb(209, 81, 6));
+  background: linear-gradient(180deg, rgb(52, 41, 112), rgb(26, 20, 58));
   padding: 20px 20px 200px;
   align-items: center;
 }

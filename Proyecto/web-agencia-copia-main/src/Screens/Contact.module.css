@@ -1,9 +1,9 @@
 .contact {
   display: flex;
-  padding-top: 100px;
+  padding-top: 10px;
   padding-bottom: 100px;
   flex-direction: column;
-  background: linear-gradient(180deg, #1a1826, #413b5e);
+  background: linear-gradient(180deg, rgb(59, 56, 24), rgb(59, 56, 24));
   align-items: center;
 }
 
@@ -21,7 +21,7 @@
 }
 
 .input {
-  border: 1px solid #413b5e;
+  border: 1px solid #ffffff;
   width: 90%;
   height: 25px;
   background: none;
@@ -31,7 +31,7 @@
 }
 
 .form textarea {
-  border: 1px solid #413b5e;
+  border: 1px solid #ffffff;
   color: #f1f1f1;
   resize: none;
   width: 90%;
@@ -44,7 +44,7 @@
   height: 40px;
   border-radius: 4px;
   background: none;
-  border: 1px solid #7060c0;
+  border: 1px solid #ffffff;
   margin-top: 10px;
   color: #f1f1f1;
 }

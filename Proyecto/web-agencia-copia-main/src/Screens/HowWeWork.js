@@ -1,37 +1,42 @@
 import React from "react";
+import { Carousel } from "react-bootstrap";
 import styles from "./HowWeWork.module.css";
-import Step from "../Components/Step";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const HowWeWork = () => {
-  const steps = [
-    {
-      text: " You tell us your proposal.",
-      id: 1,
-    },
-    {
-      text: " We design your site and do a review.",
-      id: 2,
-    },
-    {
-      text: " We develop your website.",
-      id: 3,
-    },
-    {
-      text: " We deploy your website.",
-      id: 4,
-    },
-    {
-      text: " You enjoy all the benefits of having a website for your company.",
-      id: 5,
-    },
-  ];
-
   return (
-    <div name="HowWeWork" className={styles.howWeWork}>
+    <div name="HowWeWork" className={`${styles.howWeWork} text-center`}>
       <h2 className={styles.title}>How We Work</h2>
-      {steps.map((x) => (
-        <Step text={x.text} step={x.id} />
-      ))}
+      <Carousel className={`${styles.carousel} mx-auto`}>
+        <Carousel.Item>
+          {/* Contenido del primer slide */}
+          <img
+            className="d-block w-100"
+            src="https://via.placeholder.com/800x400"
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            <h3>Primer Beneficio</h3>
+            <p>Descripción del primer beneficio.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        
+        <Carousel.Item>
+          {/* Contenido del segundo slide */}
+          <img
+            className="d-block w-100"
+            src="https://via.placeholder.com/800x400"
+            alt="Second slide"
+          />
+          <Carousel.Caption>
+            <h3>Segundo Beneficio</h3>
+            <p>Descripción del segundo beneficio.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+
+        {/* Agrega más Carousel.Items según sea necesario */}
+      </Carousel>
     </div>
   );
 };
