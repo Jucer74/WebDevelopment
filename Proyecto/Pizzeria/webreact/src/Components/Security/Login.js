@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 
 export function Login() {
   const [formData, setFormData] = useState({
@@ -67,9 +69,9 @@ export function Login() {
                   </div>
 
                   <div className="pt-1 mb-4">
-                    <button className="btn btn-dark btn-lg btn-block" type="submit">
+                    <Link className="btn btn-dark btn-lg btn-block" to="/InicioPage" type="submit">
                       Iniciar Sesión
-                    </button>
+                    </Link>
                   </div>
                 </form>
               </div>

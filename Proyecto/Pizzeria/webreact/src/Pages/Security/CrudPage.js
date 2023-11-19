@@ -1,10 +1,10 @@
 import React from 'react';
 import Info from "../../Common/Components/Info"; 
-import Register from "../../Components/Security/Users"
+import Register from "../../Components/Security/Crud"
 
 
 
-export function UserPage() {
+export function CrudPage() {
   
 
   return (
@@ -27,4 +27,4 @@ export function UserPage() {
   );
 }
 
-export default UserPage;
+export default CrudPage;

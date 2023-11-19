@@ -57,7 +57,7 @@ export function NavigatorBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/UserPage" style={customStyle}>
+              <a className="nav-link" href="/CrudPage" style={customStyle}>
                 <FaTags /> Categorias y Productos
               </a>
             </li>            

@@ -10,7 +10,7 @@ import LoginPage from "./Pages/Security/LoginPage";
 import {MapasPage} from "./Pages/MapasPage"; 
 import {MenuPage} from "./Pages/MenuPage"
 import {CarritoPage} from "./Pages/CarritoPage";
-import {UserPage} from "./Pages/Security/UsersPage"
+import {CrudPage} from "./Pages/Security/CrudPage"
 
 
 
@@ -26,7 +26,7 @@ function App() {
               <Route path="/InicioPage" element={<InicioPage/>} />
               <Route path="/MapasPage" element={<MapasPage/>} />
               <Route path="/MenuPage" element={<MenuPage/>} />
-              <Route path="/UserPage" element={<UserPage/>} />
+              <Route path="/CrudPage" element={<CrudPage/>} />
               <Route path="/CarritoPage" element={<CarritoPage/>} />
               <Route path="/RegisterPage" element={<RegisterPage/>} />
               <Route path="/LoginPage" element={<LoginPage/>} />
