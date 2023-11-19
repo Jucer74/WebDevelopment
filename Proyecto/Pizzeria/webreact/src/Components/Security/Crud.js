@@ -9,6 +9,34 @@ export const CrudComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2); // Establece el número deseado de elementos por página
 
+  const [productosPorCategoria, setProductosPorCategoria] = useState({});
+  const obtenerProductosPorCategoria = (categoriaId) => {
+    // Aquí deberías implementar la lógica para obtener los productos de la categoría con el id proporcionado.
+    // Por ahora, se proporciona un ejemplo estático.
+    const productosEjemplo = [
+      {
+        id: 1,
+        categoriaId: 1,
+        imagen: "producto1.jpg",
+        nombre: "Producto 1",
+        precio: 10.99,
+      },
+      {
+        id: 2,
+        categoriaId: 1,
+        imagen: "producto2.jpg",
+        nombre: "Producto 2",
+        precio: 15.99,
+      },
+      // Agrega más productos según sea necesario
+    ];
+
+    setProductosPorCategoria({
+      ...productosPorCategoria,
+      [categoriaId]: productosEjemplo,
+    });
+  };
+
   const [showModalCreate, setShowModalCreate] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [formData, setFormData] = useState({
@@ -321,46 +349,102 @@ export const CrudComponent = () => {
           </thead>
           <tbody>
             {currentItems.map((categoria) => (
-              <tr key={categoria.id}>
-                <td>{categoria.id}</td>
-                <td>
-                  <img
-                    src={categoria.imagen}
-                    alt={`Imagen ${categoria.descripcion}`}
-                    style={{ height: "100px" }}
-                  />
-                </td>
-                <td> {categoria.descripcion}</td>
-                <td className="">
-                  <Button
-                    variant="outline-success"
-                    className="m-3"
-                    onClick={openCloseModalCreate}
-                  >
-                    <i className="fas fa-plus "></i> Nueva Categoría
-                  </Button>
-                  <Button
-                    variant="outline-primary"
-                    className="m-3"
-                    onClick={() => openEditModal(categoria)}
-                  >
-                    Editar
-                  </Button>
-                  <Button
-                    variant="outline-danger"
-                    className="m-3"
-                    onClick={() => {
-                      setCategoryIdToDelete(categoria.id);
-                      setShowDeleteConfirmationModal(true);
-                    }}
-                  >
-                    Eliminar
-                  </Button>
-                  <Button variant="outline-dark" className="m-3">
-                    Productos
-                  </Button>
-                </td>
-              </tr>
+              <React.Fragment key={categoria.id}>
+                <tr>
+                  <td>{categoria.id}</td>
+                  <td>
+                    <img
+                      src={categoria.imagen}
+                      alt={`Imagen ${categoria.descripcion}`}
+                      style={{ height: "100px" }}
+                    />
+                  </td>
+                  <td> {categoria.descripcion}</td>
+                  <td className="">
+                    <Button
+                      variant="outline-success"
+                      className="m-3"
+                      onClick={openCloseModalCreate}
+                    >
+                      <i className="fas fa-plus "></i> Nueva Categoría
+                    </Button>
+                    <Button
+                      variant="outline-primary"
+                      className="m-3"
+                      onClick={() => openEditModal(categoria)}
+                    >
+                      Editar
+                    </Button>
+                    <Button
+                      variant="outline-danger"
+                      className="m-3"
+                      onClick={() => {
+                        setCategoryIdToDelete(categoria.id);
+                        setShowDeleteConfirmationModal(true);
+                      }}
+                    >
+                      Eliminar
+                    </Button>
+                    <Button
+                      variant="outline-dark"
+                      className="m-3"
+                      onClick={() => obtenerProductosPorCategoria(categoria.id)}
+                    >
+                      Productos
+                    </Button>
+                  </td>
+                </tr>
+                {productosPorCategoria[categoria.id] && (
+                  <tr>
+                    <td colSpan="4">
+                      <Table striped bordered responsive>
+                        <thead>
+                          <tr>
+                            <th>Id</th>
+                            <th>Categoría Id</th>
+                            <th>Imagen</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {productosPorCategoria[categoria.id].map(
+                            (producto) => (
+                              <tr key={producto.id}>
+                                <td>{producto.id}</td>
+                                <td>{producto.categoriaId}</td>
+                                <td>
+                                  <img
+                                    src={producto.imagen}
+                                    alt={`Imagen ${producto.nombre}`}
+                                    style={{ height: "50px" }}
+                                  />
+                                </td>
+                                <td>{producto.nombre}</td>
+                                <td>{producto.precio}</td>
+                                <td>
+                                  <Button
+                                    variant="outline-dark"
+                                    onClick={() =>
+                                      setProductosPorCategoria({
+                                        ...productosPorCategoria,
+                                        [categoria.id]: null,
+                                      })
+                                    }
+                                  >
+                                    Cerrar
+                                  </Button>
+                                </td>
+                              </tr>
+                            )
+                          )}
+                        </tbody>
+                      </Table>
+                    </td>
+                  </tr>
+                )}
+              </React.Fragment>
             ))}
           </tbody>
         </Table>
