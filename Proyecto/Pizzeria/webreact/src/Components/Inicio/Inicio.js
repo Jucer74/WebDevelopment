@@ -8,7 +8,7 @@ import Banner3 from "../../Assets/Images/Banner3.jpg";
 // import InicioPage from "../Pages/InicioPage";
 import { Link } from "react-router-dom";
 
-function Inicio() {
+export function Inicio() {
   return (
     <div className="container d-flex justify-content-center">
       <div className="carousel-container">
@@ -22,21 +22,21 @@ function Inicio() {
               <img
                 src={Banner1}
                 className="d-block w-100 carousel-image"
-                alt="Image 1"
+                alt="banner 1"
               />
             </div>
             <div className="carousel-item">
               <img
                 src={Banner2}
                 className="d-block w-100 carousel-image"
-                alt="Image 2"
+                alt="banner 2"
               />
             </div>
             <div className="carousel-item">
               <img
                 src={Banner3}
                 className="d-block w-100 carousel-image"
-                alt="Image 3"
+                alt="banner 3"
               />
             </div>
           </div>

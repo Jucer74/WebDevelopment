@@ -1,16 +1,18 @@
 import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import NavigatorBar from "./Common/Components/NavigationBar"; 
-import InicioPage from "./Pages/InicioPage"; 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout';
+import {NavigatorBar} from "./Common/Components/NavigationBar"; 
+import {InicioPage} from "./Pages/InicioPage"; 
 import RegisterPage from "./Pages/Security/RegisterPage"; 
 import LoginPage from "./Pages/Security/LoginPage"; 
-import MapasPage from "./Pages/MapasPage"; 
-import MenuPage from "./Pages/MenuPage"
-import CarritoPage from "./Pages/CarritoPage";
-import UserPage from "./Pages/Security/UsersPage"
-import { Layout } from './Layout';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {MapasPage} from "./Pages/MapasPage"; 
+import {MenuPage} from "./Pages/MenuPage"
+import {CarritoPage} from "./Pages/CarritoPage";
+import {UserPage} from "./Pages/Security/UsersPage"
+
+
 
 function App() {
   return (
@@ -20,7 +22,7 @@ function App() {
         <Layout>
           <Router>
             <Routes>
-              <Route exact path="/" element={<InicioPage/>} />
+              <Route exact path="/" element={<LoginPage/>} />
               <Route path="/InicioPage" element={<InicioPage/>} />
               <Route path="/MapasPage" element={<MapasPage/>} />
               <Route path="/MenuPage" element={<MenuPage/>} />

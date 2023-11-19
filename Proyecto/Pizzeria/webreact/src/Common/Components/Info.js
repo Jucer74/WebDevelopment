@@ -3,7 +3,7 @@ import "./Info.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCreditCard, faTruck, faLock } from '@fortawesome/free-solid-svg-icons';
 
-function Info() {
+export function Info() {
   return (
     <div className="info-menu">
       <br></br>

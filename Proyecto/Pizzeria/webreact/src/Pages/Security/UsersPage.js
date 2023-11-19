@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Info from "../../Common/Components/Info"; 
 import Register from "../../Components/Security/Users"
 
 
 
-function UserPage() {
+export function UserPage() {
   
 
   return (
@@ -15,7 +15,7 @@ function UserPage() {
           <Register />
           </div>
 
-          <div style={{ "margin-top": "5rem" }}>
+          <div style={{ marginTop: "5rem" }}>
           <Info/>
           </div>
       </div>

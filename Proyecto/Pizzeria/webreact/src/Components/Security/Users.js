@@ -5,7 +5,7 @@ import imagen1 from "../../Assets/Images/Categorias/Pastas.jpg";
 import imagen2 from "../../Assets/Images/Categorias/Pizzas.jpg";
 import imagen3 from "../../Assets/Images/Categorias/Lasañas.jpg";
 
-const CrudComponent = () => {
+export const CrudComponent = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2); // Establece el número deseado de elementos por página
 

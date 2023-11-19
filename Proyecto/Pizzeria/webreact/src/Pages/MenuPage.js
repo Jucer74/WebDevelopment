@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Info from "../Common/Components/Info";
 import Menu from "../Components/Menu/Menu";
 
-function MenuPage() {
+export function MenuPage() {
   return (
     <div
       className="container col d-flex justify-content-center"

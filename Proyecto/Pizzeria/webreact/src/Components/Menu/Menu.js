@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Pepperoni_Img from "../../Assets/Images/Menu/Pepperoni_Img.png"
 import Carnes_Img from "../../Assets/Images/Menu/Carnes_Img.jpg"
 import Hawaiana_Img from "../../Assets/Images/Menu/Hawaiana_Img.jpg"
 import CuatroQuesos_Img from "../../Assets/Images/Menu/CuatroQuesos_Img.jpg"
 
-const Menu = () => {
+export const Menu = () => {
 
 
   const cards = [

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import { FaShoppingCart, FaSignInAlt, FaUser } from "react-icons/fa";
+import { FaShoppingCart, FaSignInAlt, FaUser, FaUtensils, FaTags } from "react-icons/fa";
 import LogoPizza from "../../Assets/Images/LogoPizza.png";
 
-function NavigatorBar() {
+
+export function NavigatorBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleMobileMenuToggle = () => {
@@ -38,7 +39,7 @@ function NavigatorBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         {!isMobileMenuOpen && (
-          <a className="navbar-brand mx-auto" href="/">
+          <a className="navbar-brand mx-auto" href="/InicioPage">
             <img src={LogoPizza} alt="Logo" style={{ width: "120px", marginRight: "15px" }} />
           </a>
         )}
@@ -52,20 +53,14 @@ function NavigatorBar() {
           <ul className="navbar-nav">
             <li className="nav-item">
               <a className="nav-link" href="/MenuPage" style={customStyle}>
-                Menu
+                <FaUtensils /> Menu
               </a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/UserPage" style={customStyle}>
-                Productos
+                <FaTags /> Categorias y Productos
               </a>
-            </li>
-            {/* Mueve "Carrito" y "Registro" al menú hamburguesa */}
-          </ul>
-        </div>
-        <div className="text-right">
-          <ul className="navbar-nav">
-            {/* Agrega el botón de inicio de sesión con el icono de usuario */}
+            </li>            
             <li className="nav-item">
               <a className="nav-link" href="/CarritoPage" style={customStyle}>
                 <FaShoppingCart /> Carrito
@@ -89,3 +84,4 @@ function NavigatorBar() {
 }
 
 export default NavigatorBar;
+

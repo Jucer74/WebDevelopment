@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function Login() {
+export function Login() {
   const [formData, setFormData] = useState({
     email: '',
     password: '',

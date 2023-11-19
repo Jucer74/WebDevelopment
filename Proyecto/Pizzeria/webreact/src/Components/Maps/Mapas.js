@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import ImagenDerecha from "../../Assets/Images/PizzaRegister.jpg";
 import "../../Components/Maps/Mapas.css";
 import "leaflet/dist/leaflet.css";
 import { Link } from "react-router-dom";
@@ -15,7 +14,7 @@ const myIcon = L.icon({
   iconAnchor: [12, 41],
 });
 
-function Mapa() {
+export function Mapa() {
   const position = [3.338296, -76.5349];
   const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -42,9 +41,9 @@ function Mapa() {
   return (
     <div className="container">
       <div className="col col-xl-12">
-        <div className="card" style={{ borderRadius: "1rem" }}>
-          <div className="row g-0">
-            <div className="col-md-6 col-lg-5 d-flex align-items-center">
+      <div className="card" style={{ borderRadius: "1rem", overflow: "hidden" }}>
+  <div className="row g-0">
+    <div className="col-md-6 col-lg-5 d-flex align-items-center">
               <MapContainer
                 center={position}
                 zoom={20}
@@ -62,7 +61,7 @@ function Mapa() {
               </MapContainer>
             </div>
             <div className="col-md-6 col-lg-7 d-flex align-items-center">
-              <div className="card-body p-4 p-lg-5 text-black">
+      <div className="card-body p-4 p-lg-5 text-black">
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="nombre" className="form-label">
@@ -76,20 +75,21 @@ function Mapa() {
                     </label>
                     <input type="tel" className="form-control" id="telefono" name="telefono" onChange={handleInputChange} required />
                   </div>
-                  <div className="mb-3">
+                  <div className="mb-5">
                     <label htmlFor="descripcion" className="form-label">
                       Descripción
                     </label>
                     <textarea className="form-control" id="descripcion" name="descripcion" onChange={handleInputChange} required></textarea>
                   </div>
-                  <div className="d-flex justify-content-between" style={{ "margin-left": "20%" ,  "margin-right": "20%"  }}>
-                    <Link to="/MenuPage" className="btn btn-dark btn-lg" >
-                      Ordena Aquí
-                    </Link>
-                    <button type="submit" className="btn btn-dark btn-lg">
-                      Enviar Contacto
-                    </button>
-                  </div>
+                  <div className="d-flex justify-content-center">
+  <Link to="/MenuPage" className="btn btn-dark btn-lg mx-2" role="button">
+    Ordena Aquí
+  </Link>
+  <button type="submit" className="btn btn-dark btn-lg mx-2" role="button">
+    Enviar Contacto
+  </button>
+</div>
+
                 </form>
               </div>
             </div>

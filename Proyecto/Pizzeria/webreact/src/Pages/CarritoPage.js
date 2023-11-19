@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Info from "../Common/Components/Info";
 import Carrito from "../Components/Carrito";
 
-function CarritoPage() {
+export function CarritoPage() {
   return (
     <div
       className="container col d-flex justify-content-center"

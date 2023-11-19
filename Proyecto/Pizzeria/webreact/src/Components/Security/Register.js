@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PizzaImg from "../../Assets/Images/PizzaRegister.jpg";
 
-function Register() {
+export function Register() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',

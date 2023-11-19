@@ -5,7 +5,7 @@ import Carnes_Img from "../Assets/Images/Menu/Carnes_Img.jpg";
 import Hawaiana_Img from "../Assets/Images/Menu/Hawaiana_Img.jpg";
 import CuatroQuesos_Img from "../Assets/Images/Menu/CuatroQuesos_Img.jpg";
 
-const Carrito = () => {
+export const Carrito = () => {
   const cards = [
     {
       name: "Pepperoni",
@@ -52,8 +52,8 @@ const Carrito = () => {
       <div className="container h-100 py-5">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-10">
-            <div class="d-flex justify-content-between align-items-center mb-4">
-              <h2 class="fw-bold mb-0 text-black">Carrito de Compras </h2>
+            <div className="d-flex justify-content-between align-items-center mb-4">
+              <h2 className="fw-bold mb-0 text-black">Carrito de Compras </h2>
             </div>
 
             {cartItems.map((item, index) => (
@@ -113,7 +113,7 @@ const Carrito = () => {
             <div>
               <div>
                 <button
-                  class="btn btn-dark btn-block btn-lg"
+                  className="btn btn-dark btn-block btn-lg"
                   style={{ marginBottom: "-1.5rem" }}
                   type="button"
                   data-bs-toggle="modal"
@@ -123,37 +123,37 @@ const Carrito = () => {
                 </button>
 
                 <div
-                  class="modal fade"
+                  className="modal fade"
                   id="paymentModal"
-                  tabindex="-1"
+                  tabIndex="-1"
                   aria-labelledby="paymentModalLabel"
                   aria-hidden="true"
                 >
-                  <div class="modal-dialog">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="paymentModalLabel">
+                  <div className="modal-dialog">
+                    <div className="modal-content">
+                      <div className="modal-header">
+                        <h5 className="modal-title" id="paymentModalLabel">
                           Pago Realizado
                         </h5>
                         <button
                           type="button"
-                          class="btn-close"
+                          className="btn-close"
                           data-bs-dismiss="modal"
                           aria-label="Cerrar"
                         ></button>
                       </div>
-                      <div class="modal-body">
-                        <div class="d-flex justify-content-center">
-                          <i class="fas fa-check-circle fa-5x text-success"></i>
+                      <div className="modal-body">
+                        <div className="d-flex justify-content-center">
+                          <i className="fas fa-check-circle fa-5x text-success"></i>
                         </div>
-                        <p class="text-center mt-3">
+                        <p className="text-center mt-3">
                           ¡Tu pago se ha realizado con éxito!
                         </p>
                       </div>
-                      <div class="modal-footer">
+                      <div className="modal-footer">
                         <button
                           type="button"
-                          class="btn btn-secondary"
+                          className="btn btn-secondary"
                           data-bs-dismiss="modal"
                         >
                           Cerrar
