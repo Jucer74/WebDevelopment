@@ -1,5 +1,0 @@
-/*Estilos boton*/
-.btn-bd-primary{font-weight: 600;color:#fff;background-color: #750000;border-color: #750000}
-.btn-bd-primary:hover,.btn-bd-primary:active{color:#fff;background-color: #700b0b;border-color: #700b0b}
-.btn-bd-primary:focus{box-shadow:0 0 0 3px rgba(121,82,179,0.25)}
-
