@@ -12,3 +12,16 @@
   font-weight: 400;
   text-align: center;
 }
+
+.carouselImage {
+  
+  height: 400px; /* Ajusta la altura según tus necesidades */
+  object-fit: cover; /* Ajusta el comportamiento de la imagen (cover, contain, etc.) */
+  border-radius: 50px; /* Ajusta el radio del borde según tus preferencias */
+}
+
+/* HowWeWork.module.css */
+
+.carousel-inner {
+  transition: none !important;
+}

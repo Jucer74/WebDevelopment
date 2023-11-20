@@ -4,6 +4,7 @@ import styles from "./NavBar.module.css";
 import { AiOutlineMenu } from "react-icons/ai";
 import { AiOutlineClose } from "react-icons/ai";
 import { useScrollPosition } from "../Hooks/scrollPosition";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const NavBar = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);

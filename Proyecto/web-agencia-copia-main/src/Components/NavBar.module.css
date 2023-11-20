@@ -5,7 +5,14 @@
   position: fixed;
   justify-content: space-around;
   align-items: center;
+  
 }
+
+.navLink {
+  text-decoration: none;
+  
+}
+
 
 .navOpen {
   display: flex;

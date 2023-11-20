@@ -1,9 +1,9 @@
-.car {
+.howWeWork {
   display: flex;
   padding-top: 100px;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(0deg, rgb(209, 81, 6), rgb(26, 20, 58));
+  background: linear-gradient(0deg, rgb(109, 108, 108), rgb(180, 180, 180));
 }
 
 .webImage {
