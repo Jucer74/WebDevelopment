@@ -19,6 +19,19 @@ export const CrudComponent = () => {
   };
 
 
+  const [showInfoModal, setShowInfoModal] = useState(false);
+  const [selectedCategoryInfo, setSelectedCategoryInfo] = useState(null);
+
+  const openInfoModal = (category) => {
+    setSelectedCategoryInfo(category);
+    setShowInfoModal(true);
+  };
+
+  const closeInfoModal = () => {
+    setSelectedCategoryInfo(null);
+    setShowInfoModal(false);
+  };
+
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2); // Establece el número deseado de elementos por página
 
@@ -217,6 +230,37 @@ export const CrudComponent = () => {
 
   return (
     <>
+
+<Modal show={showInfoModal} onHide={closeInfoModal}>
+  <Modal.Header closeButton>
+    <Modal.Title>Información de la Categoría</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    {selectedCategoryInfo && (
+      <>
+        <p>ID: {selectedCategoryInfo.id}</p>
+        <p>Categoría: {selectedCategoryInfo.descripcion}</p>
+        {selectedCategoryInfo.imagen && (
+          <div>
+            <p>Imagen:</p>
+            <img
+              src={selectedCategoryInfo.imagen}
+              alt={`Imagen ${selectedCategoryInfo.descripcion}`}
+              style={{ maxWidth: '100%', maxHeight: '700px' }}
+            />
+          </div>
+        )}
+        {/* Add more information as needed */}
+      </>
+    )}
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="outline-info" onClick={closeInfoModal}>
+      Cerrar
+    </Button>
+  </Modal.Footer>
+</Modal>
+
       
       <Modal show={showModalCreate} onHide={openCloseModalCreate}>
         <Modal.Header closeButton>
@@ -457,7 +501,7 @@ export const CrudComponent = () => {
             <tr>
               <th>Id</th>
               <th>Imagen</th>
-              <th>Descripción</th>
+              <th>Categorias</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -498,6 +542,13 @@ export const CrudComponent = () => {
                       }}
                     >
                       Eliminar
+                    </Button>
+                    <Button
+                      variant="outline-warning"
+                      className="m-2"
+                      onClick={() => openInfoModal(categoria)}
+                    >
+                      Información
                     </Button>
                     <Button
                       variant="outline-dark"
