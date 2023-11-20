@@ -1,11 +1,24 @@
 import React, { useState } from "react";
 import { Button, Modal, Form, Table } from "react-bootstrap";
 import { useDropzone } from "react-dropzone";
-import imagen1 from "../../Assets/Images/Categorias/Pastas.jpg";
-import imagen2 from "../../Assets/Images/Categorias/Pizzas.jpg";
+import imagen1 from "../../Assets/Images/Categorias/Pizzas.jpg";
+import imagen2 from "../../Assets/Images/Categorias/Pastas.jpg";
 import imagen3 from "../../Assets/Images/Categorias/Lasañas.jpg";
 
 export const CrudComponent = () => {
+
+  const [expandedCategoryId, setExpandedCategoryId] = useState(null);
+
+  const toggleProductos = (categoriaId) => {
+    setExpandedCategoryId((prevCategoryId) =>
+      prevCategoryId === categoriaId ? null : categoriaId
+    );
+    if (!productosPorCategoria[categoriaId]) {
+      obtenerProductosPorCategoria(categoriaId);
+    }
+  };
+
+
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(2); // Establece el número deseado de elementos por página
 
@@ -155,12 +168,56 @@ export const CrudComponent = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = categorias.slice(indexOfFirstItem, indexOfLastItem);
+
+  //productos -------------------------------------------------------------------------------
+  
+  // Agrega el estado y la función para controlar el modal de Nuevo Producto
+  const [autoIncrementProductId, setAutoIncrementProductId] = useState(1);
+  const [showModalCreateProducto, setShowModalCreateProducto] = useState(false);
+  // const [productoIdToDelete, setProductoIdToDelete] = useState(null);
+  const [
+    showDeleteProductoConfirmationModal,
+    setShowDeleteProductoConfirmationModal,
+  ] = useState(false);
+
+  const openNuevoProductoModal = (categoriaId) => {
+    // Puedes establecer el estado o realizar otras acciones necesarias aquí
+    setShowModalCreateProducto(true);
+  };
+
+  const closeNuevoProductoModal = () => {
+    // Puedes realizar acciones de limpieza o establecer el estado aquí
+    setShowModalCreateProducto(false);
+  };
+
+  const postProducto = () => {
+    // Agrega la lógica para crear un nuevo producto aquí
+    // Puedes utilizar la información del formulario y realizar las acciones necesarias
+    // No olvides cerrar el modal después de crear el producto
+    closeNuevoProductoModal();
+  };
+
+  const openEditModalProducto = (producto) => {
+    // Agrega la lógica para abrir el modal de edición de producto
+    // Puedes utilizar la información del producto para inicializar el formulario de edición
+  };
+
+  const setProductoIdToDelete = (productId) => {
+    // Agrega la lógica para establecer el id del producto a eliminar
+    // Puedes utilizar este id más tarde en la función deleteProducto
+    setProductoIdToDelete(productId);
+    setShowDeleteProductoConfirmationModal(true);
+  };
+
+  const deleteProducto = () => {
+    // Agrega la lógica para eliminar el producto con el id almacenado en productoIdToDelete
+    // No olvides cerrar el modal de confirmación después de eliminar el producto
+    setShowDeleteProductoConfirmationModal(false);
+  };
+
   return (
     <>
-      <div className="container " style={{ background: "white%" }}>
-        <p className="text-center"></p>
-      </div>
-
+      
       <Modal show={showModalCreate} onHide={openCloseModalCreate}>
         <Modal.Header closeButton>
           <Modal.Title>Nueva Categoría</Modal.Title>
@@ -337,6 +394,63 @@ export const CrudComponent = () => {
         </Modal.Footer>
       </Modal>
 
+      <Modal show={showModalCreateProducto} onHide={closeNuevoProductoModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Nuevo Producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>Id:</Form.Label>
+              {/* Puedes utilizar una lógica similar a la del Id de la categoría */}
+              {/* Aquí, estoy usando un ejemplo simple con autoincremento */}
+              <Form.Control
+                type="text"
+                id="txtIdProducto"
+                name="id"
+                value={autoIncrementProductId}
+                readOnly
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Imagen:</Form.Label>
+              {/* Aquí, deberías implementar la funcionalidad para cargar la imagen */}
+              {/* Puedes utilizar la misma lógica que en el formulario de nueva categoría */}
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Nombre:</Form.Label>
+              <Form.Control
+                type="text"
+                id="txtNombreProducto"
+                name="nombre"
+                placeholder="Nombre"
+                required
+                // Agrega la función onChange correspondiente
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Precio:</Form.Label>
+              <Form.Control
+                type="number"
+                id="txtPrecioProducto"
+                name="precio"
+                placeholder="Precio"
+                required
+                // Agrega la función onChange correspondiente
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={postProducto}>
+            Crear
+          </Button>
+          <Button variant="outline-info" onClick={closeNuevoProductoModal}>
+            Cancelar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
       <div className="container">
         <Table striped bordered hover responsive className="text-center">
           <thead>
@@ -363,21 +477,21 @@ export const CrudComponent = () => {
                   <td className="">
                     <Button
                       variant="outline-success"
-                      className="m-3"
+                      className="m-2"
                       onClick={openCloseModalCreate}
                     >
                       <i className="fas fa-plus "></i> Nueva Categoría
                     </Button>
                     <Button
                       variant="outline-primary"
-                      className="m-3"
+                      className="m-2"
                       onClick={() => openEditModal(categoria)}
                     >
                       Editar
                     </Button>
                     <Button
                       variant="outline-danger"
-                      className="m-3"
+                      className="m-2"
                       onClick={() => {
                         setCategoryIdToDelete(categoria.id);
                         setShowDeleteConfirmationModal(true);
@@ -387,8 +501,8 @@ export const CrudComponent = () => {
                     </Button>
                     <Button
                       variant="outline-dark"
-                      className="m-3"
-                      onClick={() => obtenerProductosPorCategoria(categoria.id)}
+                      className="m-2"
+                      onClick={() => toggleProductos(categoria.id)}
                     >
                       Productos
                     </Button>
@@ -396,7 +510,7 @@ export const CrudComponent = () => {
                 </tr>
                 {productosPorCategoria[categoria.id] && (
                   <tr>
-                    <td colSpan="4">
+                    <td colSpan="6">
                       <Table striped bordered responsive>
                         <thead>
                           <tr>
@@ -424,7 +538,40 @@ export const CrudComponent = () => {
                                 <td>{producto.nombre}</td>
                                 <td>{producto.precio}</td>
                                 <td>
+                                <Button
+                                variant="outline-success"
+                                className="m-2"
+                                onClick={() =>
+                                  openNuevoProductoModal(categoria.id)
+                                }
+                              >
+                                Nuevo Producto
+                              </Button>
+                                  
                                   <Button
+                                    variant="outline-primary"
+                                    className="m-2"
+                                    onClick={() =>
+                                      openEditModalProducto(producto)
+                                    }
+                                  >
+                                    Editar
+                                  </Button>
+                                  <Button
+                                    variant="outline-danger"
+                                    className="m-2"
+                                    onClick={() => {
+                                      setProductoIdToDelete(producto.id);
+                                      setShowDeleteProductoConfirmationModal(
+                                        true
+                                      );
+                                    }}
+                                  >
+                                    Eliminar
+                                  </Button>
+
+                                  <Button
+                                  className="m-2"
                                     variant="outline-dark"
                                     onClick={() =>
                                       setProductosPorCategoria({
@@ -439,6 +586,7 @@ export const CrudComponent = () => {
                               </tr>
                             )
                           )}
+                          
                         </tbody>
                       </Table>
                     </td>
