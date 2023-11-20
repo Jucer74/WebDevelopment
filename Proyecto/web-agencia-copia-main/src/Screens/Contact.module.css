@@ -1,6 +1,6 @@
 .contact {
   display: flex;
-  padding-top: 10px;
+  padding-top: 100px;
   padding-bottom: 100px;
   flex-direction: column;
   background: linear-gradient(180deg,  rgb(26, 20, 58), rgb(26, 20, 58));
