@@ -1,0 +1,4 @@
+python -m venv venv   //crea el entorno virtual
+venv\Scripts\activate //activa entorno
+
+uvicorn main:app --reload     //para iniciar

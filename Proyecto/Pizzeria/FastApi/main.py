@@ -51,3 +51,5 @@ async def read_producto(producto_id: int, db: Session = Depends(get_db)):
     if producto is None:
         raise HTTPException(status_code=404, detail="Producto no encontrado")
     return producto
+
+
