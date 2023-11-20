@@ -13,7 +13,7 @@ const HowWeWork = () => {
       <h2 className={styles.title}>Featured Cars</h2>
       <Row className="justify-content-center">
         {/* Card para el primer beneficio */}
-        <Col xs={12} md={4}>
+        <Col xs={12} md={2}>
           <Card className={`${styles.card} mx-auto`}>
             <Card.Img variant="top" src={car1} alt="First slide" />
             <Card.Body>
@@ -26,7 +26,7 @@ const HowWeWork = () => {
         </Col>
 
         {/* Card para el segundo beneficio */}
-        <Col xs={12} md={4}>
+        <Col xs={12} md={2}>
           <Card className={`${styles.card} mx-auto`}>
             <Card.Img variant="top" src={car2} alt="Second slide" />
             <Card.Body>
@@ -39,7 +39,7 @@ const HowWeWork = () => {
         </Col>
 
         {/* Card para el tercer beneficio */}
-        <Col xs={12} md={4}>
+        <Col xs={12} md={2}>
           <Card className={`${styles.card} mx-auto`}>
             <Card.Img variant="top" src={car3} alt="Third slide" />
             <Card.Body>
