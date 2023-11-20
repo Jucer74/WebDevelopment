@@ -1,0 +1,71 @@
+﻿@model MoneyBankMVC.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountType)
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.AccountType == 'A')
+            {
+                <text>
+                    Ahorro
+                </text>
+            }
+            else
+            {
+               <text>
+                   Corriente
+               </text>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreationDate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CreationDate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AccountNumber)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AccountNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OwnerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BalanceAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BalanceAmount)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OverdraftAmount)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OverdraftAmount)
+        </dd>
+    </dl>
+</div>
+<div>
+    <div class="row">
+        <div class="col-sm-1">
+            <a asp-action="Index" asp-route-id="@Model?.Id" class="btn btn-success">Confirm</a>
+        </div>
+        <div class="col-sm-1">
+            <a asp-action="Index" class="btn btn-Secondary">Cancel</a>
+        </div>
+    </div>
+</div>
