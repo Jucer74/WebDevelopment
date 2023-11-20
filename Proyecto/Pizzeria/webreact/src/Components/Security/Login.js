@@ -78,7 +78,7 @@ export function Login() {
                         </div>
                         <div className="modal-footer">
                           <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Cerrar</button>
-                          <Link type="button" className="btn btn-primary" to="/InicioPage">Inicio</Link>
+                          <Link type="button" className="btn btn-primary" to="/InicioPage">Siguiente</Link>
                         </div>
                       </div>
                     </div>
