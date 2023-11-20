@@ -4,6 +4,8 @@ import { useDropzone } from "react-dropzone";
 import imagen1 from "../../Assets/Images/Categorias/Pizzas.jpg";
 import imagen2 from "../../Assets/Images/Categorias/Pastas.jpg";
 import imagen3 from "../../Assets/Images/Categorias/Lasañas.jpg";
+import imagen4 from "../../Assets/Images/Productos/Productos_icon.png";
+
 
 export const CrudComponent = () => {
 
@@ -43,14 +45,14 @@ export const CrudComponent = () => {
       {
         id: 1,
         categoriaId: 1,
-        imagen: "producto1.jpg",
+        imagen: imagen4,
         nombre: "Producto 1",
         precio: 10.99,
       },
       {
         id: 2,
         categoriaId: 1,
-        imagen: "producto2.jpg",
+        imagen: imagen4,
         nombre: "Producto 2",
         precio: 15.99,
       },
