@@ -4,6 +4,7 @@ import React from 'react';
 import MenuBar from './components/LandingPage/MenuBar';
 import MuestraUsuarioLogeado from './components/LandingPage/MuestraUsuarioLogeado';
 
+
 const App = () => {
   // Tu lógica de la aplicación aquí
   return (
