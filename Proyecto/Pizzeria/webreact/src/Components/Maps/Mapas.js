@@ -41,13 +41,22 @@ export function Mapa() {
   return (
     <div className="container">
       <div className="col col-xl-12">
-      <div className="card" style={{ borderRadius: "1rem", overflow: "hidden" }}>
-  <div className="row g-0">
-    <div className="col-md-6 col-lg-5 d-flex align-items-center">
+        <div
+          className="card"
+          style={{ borderRadius: "1rem", overflow: "hidden" }}
+        >
+          <div className="row g-0">
+            <div className="col-md-6 col-lg-5 d-flex align-items-center">
               <MapContainer
                 center={position}
                 zoom={20}
-                style={{ height: "70%", minHeight: "300px", width: "100%", margin: "20px", boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)" }}
+                style={{
+                  height: "70%",
+                  minHeight: "300px",
+                  width: "100%",
+                  margin: "20px",
+                  boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
+                }}
               >
                 <TileLayer
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -61,35 +70,64 @@ export function Mapa() {
               </MapContainer>
             </div>
             <div className="col-md-6 col-lg-7 d-flex align-items-center">
-      <div className="card-body p-4 p-lg-5 text-black">
+              <div className="card-body p-4 p-lg-5 text-black">
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="nombre" className="form-label">
                       Nombre
                     </label>
-                    <input type="text" className="form-control" id="nombre" name="nombre" onChange={handleInputChange} required />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="nombre"
+                      name="nombre"
+                      onChange={handleInputChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="telefono" className="form-label">
                       Teléfono
                     </label>
-                    <input type="tel" className="form-control" id="telefono" name="telefono" onChange={handleInputChange} required />
+                    <input
+                      type="number"
+                      className="form-control"
+                      id="telefono"
+                      name="telefono"
+                      onChange={handleInputChange}
+                      pattern="\d*"
+                      required
+                    />
                   </div>
+
                   <div className="mb-5">
                     <label htmlFor="descripcion" className="form-label">
                       Descripción
                     </label>
-                    <textarea className="form-control" id="descripcion" name="descripcion" onChange={handleInputChange} required></textarea>
+                    <textarea
+                      className="form-control"
+                      id="descripcion"
+                      name="descripcion"
+                      onChange={handleInputChange}
+                      required
+                    ></textarea>
                   </div>
                   <div className="d-flex justify-content-center">
-  <Link to="/MenuPage" className="btn btn-dark btn-lg mx-2" role="button">
-    Ordena Aquí
-  </Link>
-  <button type="submit" className="btn btn-dark btn-lg mx-2" role="button">
-    Enviar Contacto
-  </button>
-</div>
-
+                    <Link
+                      to="/MenuPage"
+                      className="btn btn-dark btn-lg mx-2"
+                      role="button"
+                    >
+                      Ordena Aquí
+                    </Link>
+                    <button
+                      type="submit"
+                      className="btn btn-dark btn-lg mx-2"
+                      role="button"
+                    >
+                      Enviar Contacto
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
