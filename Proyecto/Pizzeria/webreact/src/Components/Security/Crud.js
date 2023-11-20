@@ -56,6 +56,13 @@ export const CrudComponent = () => {
         nombre: "Producto 2",
         precio: 15.99,
       },
+      {
+        id: 3,
+        categoriaId: 1,
+        imagen: imagen4,
+        nombre: "Producto 3",
+        precio: 12.00,
+      },
       // Agrega más productos según sea necesario
     ];
 
@@ -189,7 +196,14 @@ export const CrudComponent = () => {
   // Agrega el estado y la función para controlar el modal de Nuevo Producto
   const [autoIncrementProductId, setAutoIncrementProductId] = useState(1);
   const [showModalCreateProducto, setShowModalCreateProducto] = useState(false);
-  // const [productoIdToDelete, setProductoIdToDelete] = useState(null);
+const [productoFormData, setProductoFormData] = useState({
+  id: autoIncrementProductId,
+  categoriaId: null, // Ajusta según tus necesidades
+  imagen: null,
+  nombre: "",
+  precio: "",
+});
+
   const [
     showDeleteProductoConfirmationModal,
     setShowDeleteProductoConfirmationModal,
@@ -197,8 +211,35 @@ export const CrudComponent = () => {
 
   const openNuevoProductoModal = (categoriaId) => {
     // Puedes establecer el estado o realizar otras acciones necesarias aquí
+    setProductoFormData({
+      ...productoFormData,
+      id: autoIncrementProductId,
+      categoriaId: categoriaId,
+      imagen: null,
+      nombre: "",
+      precio: "",
+    });
     setShowModalCreateProducto(true);
   };
+
+  const onDropProducto = (acceptedFiles) => {
+    const fileUrl = URL.createObjectURL(acceptedFiles[0]);
+    setProductoFormData((prevFormData) => ({
+      ...prevFormData,
+      imagen: { file: acceptedFiles[0], url: fileUrl },
+    }));
+  };
+
+  const {
+    getRootProps: getRootPropsProducto,
+    getInputProps: getInputPropsProducto
+  } = useDropzone({
+    onDrop: onDropProducto,
+    accept: "image/*",
+    multiple: false,
+  });
+
+  
 
   const closeNuevoProductoModal = () => {
     // Puedes realizar acciones de limpieza o establecer el estado aquí
@@ -206,12 +247,51 @@ export const CrudComponent = () => {
   };
 
   const postProducto = () => {
+    // Validar que los campos no estén vacíos y que se haya seleccionado una categoría e imagen
+    if (!productoFormData.categoriaId) {
+      alert("Por favor, selecciona una categoría para el producto.");
+      return;
+    }
+  
+    if (!productoFormData.imagen) {
+      alert("Por favor, selecciona una imagen para el producto.");
+      return;
+    }
+  
+    if (
+      productoFormData.nombre.trim() === "" ||
+      productoFormData.precio.trim() === ""
+    ) {
+      alert("Por favor, completa todos los campos para el producto.");
+      return;
+    }
+  
     // Agrega la lógica para crear un nuevo producto aquí
-    // Puedes utilizar la información del formulario y realizar las acciones necesarias
-    // No olvides cerrar el modal después de crear el producto
+    // Puedes utilizar la información de productoFormData y realizar las acciones necesarias
+    console.log("Nuevo Producto:", productoFormData);
+  
+    // Actualiza el estado productosPorCategoria
+    setProductosPorCategoria((prevProductos) => {
+      const categoriaId = productoFormData.categoriaId;
+      const newProducto = {
+        id: productoFormData.id,
+        categoriaId: productoFormData.categoriaId,
+        imagen: productoFormData.imagen,
+        nombre: productoFormData.nombre,
+        precio: productoFormData.precio,
+      };
+  
+      return {
+        ...prevProductos,
+        [categoriaId]: [...(prevProductos[categoriaId] || []), newProducto],
+      };
+    });
+  
+    // Cierra el modal después de crear el producto
     closeNuevoProductoModal();
   };
-
+  
+  
   const openEditModalProducto = (producto) => {
     // Agrega la lógica para abrir el modal de edición de producto
     // Puedes utilizar la información del producto para inicializar el formulario de edición
@@ -411,9 +491,7 @@ export const CrudComponent = () => {
         </Modal.Footer>
       </Modal>
 
-      <Modal
-        show={showDeleteConfirmationModal}
-        onHide={() => setShowDeleteConfirmationModal(false)}
+      <Modal show={showDeleteConfirmationModal} onHide={() => setShowDeleteConfirmationModal(false)}
       >
         <Modal.Header closeButton>
           <Modal.Title>Confirmar Eliminación</Modal.Title>
@@ -441,61 +519,99 @@ export const CrudComponent = () => {
       </Modal>
 
       <Modal show={showModalCreateProducto} onHide={closeNuevoProductoModal}>
-        <Modal.Header closeButton>
-          <Modal.Title>Nuevo Producto</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group>
-              <Form.Label>Id:</Form.Label>
-              {/* Puedes utilizar una lógica similar a la del Id de la categoría */}
-              {/* Aquí, estoy usando un ejemplo simple con autoincremento */}
-              <Form.Control
-                type="text"
-                id="txtIdProducto"
-                name="id"
-                value={autoIncrementProductId}
-                readOnly
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Imagen:</Form.Label>
-              {/* Aquí, deberías implementar la funcionalidad para cargar la imagen */}
-              {/* Puedes utilizar la misma lógica que en el formulario de nueva categoría */}
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Nombre:</Form.Label>
-              <Form.Control
-                type="text"
-                id="txtNombreProducto"
-                name="nombre"
-                placeholder="Nombre"
-                required
-                // Agrega la función onChange correspondiente
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Precio:</Form.Label>
-              <Form.Control
-                type="number"
-                id="txtPrecioProducto"
-                name="precio"
-                placeholder="Precio"
-                required
-                // Agrega la función onChange correspondiente
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={postProducto}>
-            Crear
-          </Button>
-          <Button variant="outline-info" onClick={closeNuevoProductoModal}>
-            Cancelar
-          </Button>
-        </Modal.Footer>
-      </Modal>
+  <Modal.Header closeButton>
+    <Modal.Title>Nuevo Producto</Modal.Title>
+  </Modal.Header>
+  <Modal.Body>
+    <Form>
+      <Form.Group>
+        <Form.Label>Id:</Form.Label>
+        <Form.Control
+          type="text"
+          id="txtIdProducto"
+          name="id"
+          value={productoFormData.id}
+          readOnly
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Categoría Id:</Form.Label>
+        {/* Agrega un campo para seleccionar la categoría */}
+        <Form.Control
+          as="select"
+          name="categoriaId"
+          value={productoFormData.categoriaId}
+          onChange={(e) =>
+            setProductoFormData({
+              ...productoFormData,
+              categoriaId: e.target.value,
+            })
+          }
+        >
+          <option value={1}>Categoría 1</option>
+          <option value={2}>Categoría 2</option>
+          {/* Agrega más opciones según tus categorías */}
+        </Form.Control>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Imagen:</Form.Label>
+        <div {...getRootPropsProducto()} style={{ border: "1px dashed #ccc", padding: "20px", textAlign: "center", cursor: "pointer" }}>
+          <input {...getInputPropsProducto()} />
+          {productoFormData.imagen ? (
+            <img
+              src={productoFormData.imagen.url}
+              alt="Imagen seleccionada"
+              style={{ maxWidth: "100%", maxHeight: "200px", marginBottom: "10px" }}
+            />
+          ) : (
+            <p>Arrastra y suelta una imagen aquí, o haz clic para seleccionar una.</p>
+          )}
+        </div>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Nombre:</Form.Label>
+        <Form.Control
+          type="text"
+          id="txtNombreProducto"
+          name="nombre"
+          placeholder="Nombre"
+          required
+          onChange={(e) =>
+            setProductoFormData({
+              ...productoFormData,
+              nombre: e.target.value,
+            })
+          }
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Precio:</Form.Label>
+        <Form.Control
+          type="number"
+          id="txtPrecioProducto"
+          name="precio"
+          placeholder="Precio"
+          required
+          onChange={(e) =>
+            setProductoFormData({
+              ...productoFormData,
+              precio: e.target.value,
+            })
+          }
+        />
+      </Form.Group>
+    </Form>
+  </Modal.Body>
+  <Modal.Footer>
+    <Button variant="primary" onClick={postProducto}>
+      Crear
+    </Button>
+    <Button variant="outline-info" onClick={closeNuevoProductoModal}>
+      Cancelar
+    </Button>
+  </Modal.Footer>
+</Modal>
+
 
       <div className="container">
         <Table striped bordered hover responsive className="text-center">
