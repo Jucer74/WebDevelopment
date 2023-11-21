@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import mysql.connector
+from typing import Optional
 
 app = FastAPI()
 
@@ -28,6 +29,28 @@ class Categoria(BaseModel):
     imagen_url: str
     descripcion: str
 
+
+# modelo users
+class User(BaseModel):
+    name: str
+    email: str
+    birthDate: str
+    password: str
+
+
+############################# USUARIOS    ##
+@app.post("/register/")
+async def create_user(user: User):
+    db = get_db()
+    cursor = db.cursor()
+    sql = "INSERT INTO Users (name, email, birthDate, password) VALUES (%s, %s, %s, %s)"
+    val = (user.name, user.email, user.birthDate, user.password)
+    try:
+        cursor.execute(sql, val)
+        db.commit()
+        return {"message": "User created successfully!"}
+    except mysql.connector.Error as err:
+        raise HTTPException(status_code=400, detail="Email already exists")
 
 
 
@@ -135,5 +158,8 @@ async def delete_producto(id: int):
 
     db.commit()
     return {"mensaje": "producto eliminado"}
+
+
+
 
 

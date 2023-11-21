@@ -33,3 +33,16 @@ INSERT INTO productos (categoria_id, imagen_url, nombre, precio) VALUES
     (2, 'producto4.jpg', 'Pasta Bolognesa', 14.99),
     (3, 'producto5.jpg', 'Lasaña de Carne', 18.99),
     (3, 'producto6.jpg', 'Lasaña Vegetariana', 16.99);
+
+    
+CREATE TABLE IF NOT EXISTS Users (
+    id INT AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    birthDate DATE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO Users (name, email, birthDate, password) 
+VALUES ('Admin User', 'admin@correo.com', '1990-01-01', 'Admin123');
