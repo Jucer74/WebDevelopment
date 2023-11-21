@@ -41,6 +41,6 @@ export const footerData = [
 	},
 	{
 		title: 'Legal',
-		links: ['GDPR', 'Política de privacidad', 'Términos de servicio', 'Aviso legal'],
+		links: [ 'Política de privacidad', 'Términos de servicio', 'Aviso legal'],
 	},
 ];
