@@ -5,6 +5,12 @@
       "username": "usuario1",
       "password": "usuario1",
       "email": "usuario1@example.com"
+    },
+    {
+      "username": "fandom123@hotmail.com",
+      "email": "fandom123@hotmail.com",
+      "password": "123456",
+      "id": 2
     }
   ],
   "travels": [
@@ -35,24 +41,11 @@
       ]
     },
     {
-      "name": "asd",
-      "description": "asd",
-      "originCity": "w",
-      "destinationCity": "qsdas",
-      "price": 0,
-      "id": 3,
-      "images": [
-        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
-        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
-        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
-      ]
-    },
-    {
       "name": "sda",
       "description": "rwe",
       "originCity": "qw",
       "destinationCity": "asd",
-      "price": 0,
+      "price": "800000",
       "images": [
         "https://img.freepik.com/free-photo/beautiful-scenery-landscape-yellowstone-with-mountains-sunrise_181624-5953.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
         "https://img.freepik.com/free-photo/beautiful-scenery-landscape-yellowstone-with-mountains-sunrise_181624-5953.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"

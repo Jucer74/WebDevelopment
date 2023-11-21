@@ -18,6 +18,7 @@ export const Register = () => {
   };
 
   const handleRegister = (e) => {
+    e.preventDefault()
     authService
       .register(credentials)
       .then((user) => {
