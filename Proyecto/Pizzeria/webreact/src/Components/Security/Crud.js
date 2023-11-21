@@ -6,9 +6,7 @@ import imagen2 from "../../Assets/Images/Categorias/Pastas.jpg";
 import imagen3 from "../../Assets/Images/Categorias/Lasañas.jpg";
 import imagen4 from "../../Assets/Images/Productos/Productos_icon.png";
 
-
 export const CrudComponent = () => {
-
   const [expandedCategoryId, setExpandedCategoryId] = useState(null);
 
   const toggleProductos = (categoriaId) => {
@@ -19,7 +17,6 @@ export const CrudComponent = () => {
       obtenerProductosPorCategoria(categoriaId);
     }
   };
-
 
   const [showInfoModal, setShowInfoModal] = useState(false);
   const [selectedCategoryInfo, setSelectedCategoryInfo] = useState(null);
@@ -61,7 +58,7 @@ export const CrudComponent = () => {
         categoriaId: 1,
         imagen: imagen4,
         nombre: "Producto 3",
-        precio: 12.00,
+        precio: 12.0,
       },
       // Agrega más productos según sea necesario
     ];
@@ -192,17 +189,17 @@ export const CrudComponent = () => {
   const currentItems = categorias.slice(indexOfFirstItem, indexOfLastItem);
 
   //productos -------------------------------------------------------------------------------
-  
+
   // Agrega el estado y la función para controlar el modal de Nuevo Producto
   const [autoIncrementProductId, setAutoIncrementProductId] = useState(1);
   const [showModalCreateProducto, setShowModalCreateProducto] = useState(false);
-const [productoFormData, setProductoFormData] = useState({
-  id: autoIncrementProductId,
-  categoriaId: null, // Ajusta según tus necesidades
-  imagen: null,
-  nombre: "",
-  precio: "",
-});
+  const [productoFormData, setProductoFormData] = useState({
+    id: autoIncrementProductId,
+    categoriaId: null, // Ajusta según tus necesidades
+    imagen: null,
+    nombre: "",
+    precio: "",
+  });
 
   const [
     showDeleteProductoConfirmationModal,
@@ -232,14 +229,12 @@ const [productoFormData, setProductoFormData] = useState({
 
   const {
     getRootProps: getRootPropsProducto,
-    getInputProps: getInputPropsProducto
+    getInputProps: getInputPropsProducto,
   } = useDropzone({
     onDrop: onDropProducto,
     accept: "image/*",
     multiple: false,
   });
-
-  
 
   const closeNuevoProductoModal = () => {
     // Puedes realizar acciones de limpieza o establecer el estado aquí
@@ -252,12 +247,12 @@ const [productoFormData, setProductoFormData] = useState({
       alert("Por favor, selecciona una categoría para el producto.");
       return;
     }
-  
+
     if (!productoFormData.imagen) {
       alert("Por favor, selecciona una imagen para el producto.");
       return;
     }
-  
+
     if (
       productoFormData.nombre.trim() === "" ||
       productoFormData.precio.trim() === ""
@@ -265,11 +260,11 @@ const [productoFormData, setProductoFormData] = useState({
       alert("Por favor, completa todos los campos para el producto.");
       return;
     }
-  
+
     // Agrega la lógica para crear un nuevo producto aquí
     // Puedes utilizar la información de productoFormData y realizar las acciones necesarias
     console.log("Nuevo Producto:", productoFormData);
-  
+
     // Actualiza el estado productosPorCategoria
     setProductosPorCategoria((prevProductos) => {
       const categoriaId = productoFormData.categoriaId;
@@ -280,18 +275,17 @@ const [productoFormData, setProductoFormData] = useState({
         nombre: productoFormData.nombre,
         precio: productoFormData.precio,
       };
-  
+
       return {
         ...prevProductos,
         [categoriaId]: [...(prevProductos[categoriaId] || []), newProducto],
       };
     });
-  
+
     // Cierra el modal después de crear el producto
     closeNuevoProductoModal();
   };
-  
-  
+
   const openEditModalProducto = (producto) => {
     // Agrega la lógica para abrir el modal de edición de producto
     // Puedes utilizar la información del producto para inicializar el formulario de edición
@@ -312,38 +306,36 @@ const [productoFormData, setProductoFormData] = useState({
 
   return (
     <>
+      <Modal show={showInfoModal} onHide={closeInfoModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Información de la Categoría</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {selectedCategoryInfo && (
+            <>
+              <p>ID: {selectedCategoryInfo.id}</p>
+              <p>Categoría: {selectedCategoryInfo.descripcion}</p>
+              {selectedCategoryInfo.imagen && (
+                <div>
+                  <p>Imagen:</p>
+                  <img
+                    src={selectedCategoryInfo.imagen}
+                    alt={`Imagen ${selectedCategoryInfo.descripcion}`}
+                    style={{ maxWidth: "100%", maxHeight: "700px" }}
+                  />
+                </div>
+              )}
+              {/* Add more information as needed */}
+            </>
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="outline-info" onClick={closeInfoModal}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
-<Modal show={showInfoModal} onHide={closeInfoModal}>
-  <Modal.Header closeButton>
-    <Modal.Title>Información de la Categoría</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    {selectedCategoryInfo && (
-      <>
-        <p>ID: {selectedCategoryInfo.id}</p>
-        <p>Categoría: {selectedCategoryInfo.descripcion}</p>
-        {selectedCategoryInfo.imagen && (
-          <div>
-            <p>Imagen:</p>
-            <img
-              src={selectedCategoryInfo.imagen}
-              alt={`Imagen ${selectedCategoryInfo.descripcion}`}
-              style={{ maxWidth: '100%', maxHeight: '700px' }}
-            />
-          </div>
-        )}
-        {/* Add more information as needed */}
-      </>
-    )}
-  </Modal.Body>
-  <Modal.Footer>
-    <Button variant="outline-info" onClick={closeInfoModal}>
-      Cerrar
-    </Button>
-  </Modal.Footer>
-</Modal>
-
-      
       <Modal show={showModalCreate} onHide={openCloseModalCreate}>
         <Modal.Header closeButton>
           <Modal.Title>Nueva Categoría</Modal.Title>
@@ -491,7 +483,9 @@ const [productoFormData, setProductoFormData] = useState({
         </Modal.Footer>
       </Modal>
 
-      <Modal show={showDeleteConfirmationModal} onHide={() => setShowDeleteConfirmationModal(false)}
+      <Modal
+        show={showDeleteConfirmationModal}
+        onHide={() => setShowDeleteConfirmationModal(false)}
       >
         <Modal.Header closeButton>
           <Modal.Title>Confirmar Eliminación</Modal.Title>
@@ -519,103 +513,126 @@ const [productoFormData, setProductoFormData] = useState({
       </Modal>
 
       <Modal show={showModalCreateProducto} onHide={closeNuevoProductoModal}>
-  <Modal.Header closeButton>
-    <Modal.Title>Nuevo Producto</Modal.Title>
-  </Modal.Header>
-  <Modal.Body>
-    <Form>
-      <Form.Group>
-        <Form.Label>Id:</Form.Label>
-        <Form.Control
-          type="text"
-          id="txtIdProducto"
-          name="id"
-          value={productoFormData.id}
-          readOnly
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Categoría Id:</Form.Label>
-        {/* Agrega un campo para seleccionar la categoría */}
-        <Form.Control
-          as="select"
-          name="categoriaId"
-          value={productoFormData.categoriaId}
-          onChange={(e) =>
-            setProductoFormData({
-              ...productoFormData,
-              categoriaId: e.target.value,
-            })
-          }
-        >
-          <option value={1}>Categoría 1</option>
-          <option value={2}>Categoría 2</option>
-          {/* Agrega más opciones según tus categorías */}
-        </Form.Control>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Imagen:</Form.Label>
-        <div {...getRootPropsProducto()} style={{ border: "1px dashed #ccc", padding: "20px", textAlign: "center", cursor: "pointer" }}>
-          <input {...getInputPropsProducto()} />
-          {productoFormData.imagen ? (
-            <img
-              src={productoFormData.imagen.url}
-              alt="Imagen seleccionada"
-              style={{ maxWidth: "100%", maxHeight: "200px", marginBottom: "10px" }}
-            />
-          ) : (
-            <p>Arrastra y suelta una imagen aquí, o haz clic para seleccionar una.</p>
-          )}
-        </div>
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Nombre:</Form.Label>
-        <Form.Control
-          type="text"
-          id="txtNombreProducto"
-          name="nombre"
-          placeholder="Nombre"
-          required
-          onChange={(e) =>
-            setProductoFormData({
-              ...productoFormData,
-              nombre: e.target.value,
-            })
-          }
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Precio:</Form.Label>
-        <Form.Control
-          type="number"
-          id="txtPrecioProducto"
-          name="precio"
-          placeholder="Precio"
-          required
-          onChange={(e) =>
-            setProductoFormData({
-              ...productoFormData,
-              precio: e.target.value,
-            })
-          }
-        />
-      </Form.Group>
-    </Form>
-  </Modal.Body>
-  <Modal.Footer>
-    <Button variant="primary" onClick={postProducto}>
-      Crear
-    </Button>
-    <Button variant="outline-info" onClick={closeNuevoProductoModal}>
-      Cancelar
-    </Button>
-  </Modal.Footer>
-</Modal>
-
+        <Modal.Header closeButton>
+          <Modal.Title>Nuevo Producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group>
+              <Form.Label>Id:</Form.Label>
+              <Form.Control
+                type="text"
+                id="txtIdProducto"
+                name="id"
+                value={productoFormData.id}
+                readOnly
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Categoría Id:</Form.Label>
+              {/* Agrega un campo para seleccionar la categoría */}
+              <Form.Control
+                as="select"
+                name="categoriaId"
+                value={productoFormData.categoriaId}
+                onChange={(e) =>
+                  setProductoFormData({
+                    ...productoFormData,
+                    categoriaId: e.target.value,
+                  })
+                }
+              >
+                <option value={1}>Categoría 1</option>
+                <option value={2}>Categoría 2</option>
+                {/* Agrega más opciones según tus categorías */}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Imagen:</Form.Label>
+              <div
+                {...getRootPropsProducto()}
+                style={{
+                  border: "1px dashed #ccc",
+                  padding: "20px",
+                  textAlign: "center",
+                  cursor: "pointer",
+                }}
+              >
+                <input {...getInputPropsProducto()} />
+                {productoFormData.imagen ? (
+                  <img
+                    src={productoFormData.imagen.url}
+                    alt="Imagen seleccionada"
+                    style={{
+                      maxWidth: "100%",
+                      maxHeight: "200px",
+                      marginBottom: "10px",
+                    }}
+                  />
+                ) : (
+                  <p>
+                    Arrastra y suelta una imagen aquí, o haz clic para
+                    seleccionar una.
+                  </p>
+                )}
+              </div>
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Nombre:</Form.Label>
+              <Form.Control
+                type="text"
+                id="txtNombreProducto"
+                name="nombre"
+                placeholder="Nombre"
+                required
+                onChange={(e) =>
+                  setProductoFormData({
+                    ...productoFormData,
+                    nombre: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Precio:</Form.Label>
+              <Form.Control
+                type="number"
+                id="txtPrecioProducto"
+                name="precio"
+                placeholder="Precio"
+                required
+                onChange={(e) =>
+                  setProductoFormData({
+                    ...productoFormData,
+                    precio: e.target.value,
+                  })
+                }
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={postProducto}>
+            Crear
+          </Button>
+          <Button variant="outline-info" onClick={closeNuevoProductoModal}>
+            Cancelar
+          </Button>
+        </Modal.Footer>
+      </Modal>
 
       <div className="container">
+        <Button
+          variant="btn btn-dark"
+          className="m-2"
+          onClick={openCloseModalCreate}
+        >
+          <i className="fas fa-plus "></i> Nueva Categoría
+        </Button>
         <Table striped bordered hover responsive className="text-center">
+        
           <thead>
+          <caption style={{ textAlign: "center", color: "white", fontWeight: "bold" }} >Categorías</caption>
             <tr>
               <th>Id</th>
               <th>Imagen</th>
@@ -637,13 +654,6 @@ const [productoFormData, setProductoFormData] = useState({
                   </td>
                   <td> {categoria.descripcion}</td>
                   <td className="">
-                    <Button
-                      variant="outline-success"
-                      className="m-2"
-                      onClick={openCloseModalCreate}
-                    >
-                      <i className="fas fa-plus "></i> Nueva Categoría
-                    </Button>
                     <Button
                       variant="outline-primary"
                       className="m-2"
@@ -675,13 +685,22 @@ const [productoFormData, setProductoFormData] = useState({
                     >
                       Productos
                     </Button>
+                    <Button
+                      variant="outline-success"
+                      className="m-2"
+                      onClick={() => openNuevoProductoModal(categoria.id)}
+                    >
+                      Nuevo Producto
+                    </Button>
                   </td>
                 </tr>
+
                 {productosPorCategoria[categoria.id] && (
                   <tr>
                     <td colSpan="6">
                       <Table striped bordered responsive>
                         <thead>
+                        <caption style={{ textAlign: "center", color: "black", fontWeight: "bold" }}>Productos</caption>
                           <tr>
                             <th>Id</th>
                             <th>Categoría Id</th>
@@ -691,6 +710,7 @@ const [productoFormData, setProductoFormData] = useState({
                             <th>Acciones</th>
                           </tr>
                         </thead>
+
                         <tbody>
                           {productosPorCategoria[categoria.id].map(
                             (producto) => (
@@ -707,16 +727,6 @@ const [productoFormData, setProductoFormData] = useState({
                                 <td>{producto.nombre}</td>
                                 <td>{producto.precio}</td>
                                 <td>
-                                <Button
-                                variant="outline-success"
-                                className="m-2"
-                                onClick={() =>
-                                  openNuevoProductoModal(categoria.id)
-                                }
-                              >
-                                Nuevo Producto
-                              </Button>
-                                  
                                   <Button
                                     variant="outline-primary"
                                     className="m-2"
@@ -740,7 +750,7 @@ const [productoFormData, setProductoFormData] = useState({
                                   </Button>
 
                                   <Button
-                                  className="m-2"
+                                    className="m-2"
                                     variant="outline-dark"
                                     onClick={() =>
                                       setProductosPorCategoria({
@@ -755,7 +765,6 @@ const [productoFormData, setProductoFormData] = useState({
                               </tr>
                             )
                           )}
-                          
                         </tbody>
                       </Table>
                     </td>
@@ -770,6 +779,7 @@ const [productoFormData, setProductoFormData] = useState({
           style={{ textAlign: "center", color: "white", fontWeight: "bold" }}
         >
           <Button
+            className="btn-dark"
             onClick={() => setCurrentPage(currentPage - 1)}
             disabled={currentPage === 1}
           >
@@ -780,6 +790,7 @@ const [productoFormData, setProductoFormData] = useState({
             {Math.ceil(categorias.length / itemsPerPage)}
           </span>
           <Button
+            className="btn-dark"
             onClick={() => setCurrentPage(currentPage + 1)}
             disabled={
               currentPage === Math.ceil(categorias.length / itemsPerPage)
