@@ -1,0 +1,63 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "usuario1",
+      "password": "usuario1",
+      "email": "usuario1@example.com"
+    }
+  ],
+  "travels": [
+    {
+      "id": 1,
+      "name": "viaje1",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex repellendus veritatis atque reiciendis ducimus adipisci quia, delectus quae ipsa eveniet neque aliquid magni ullam doloribus sunt voluptates, provident cum distinctio.",
+      "originCity": "Cali",
+      "destinationCity": "Barcelona",
+      "price": 700,
+      "images": [
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "viaje2",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam corporis ipsum sed optio at? Perferendis, distinctio. Qui sint nostrum animi repudiandae, velit aperiam commodi facere iusto nesciunt error id minima. Sit vero saepe odio nesciunt. Natus quo vero modi nulla. Veritatis quo optio exercitationem magni ratione consectetur, quibusdam, perferendis sequi mollitia minima dolor corrupti aliquid, natus deleniti doloribus unde non!",
+      "originCity": "Barcelona",
+      "destinationCity": "Cali",
+      "price": 1100,
+      "images": [
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
+      ]
+    },
+    {
+      "name": "asd",
+      "description": "asd",
+      "originCity": "w",
+      "destinationCity": "qsdas",
+      "price": 0,
+      "id": 3,
+      "images": [
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
+      ]
+    },
+    {
+      "name": "sda",
+      "description": "rwe",
+      "originCity": "qw",
+      "destinationCity": "asd",
+      "price": 0,
+      "images": [
+        "https://img.freepik.com/free-photo/beautiful-scenery-landscape-yellowstone-with-mountains-sunrise_181624-5953.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
+        "https://img.freepik.com/free-photo/beautiful-scenery-landscape-yellowstone-with-mountains-sunrise_181624-5953.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
+      ],
+      "id": 5
+    }
+  ]
+}
