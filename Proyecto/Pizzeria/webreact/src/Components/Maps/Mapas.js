@@ -70,7 +70,11 @@ export function Mapa() {
               </MapContainer>
             </div>
             <div className="col-md-6 col-lg-7 d-flex align-items-center">
+              
               <div className="card-body p-4 p-lg-5 text-black">
+              <h5 className="h2 fw-bold mb-3 pb-3" style={{ letterSpacing: '1px' }}>
+                    Contacto
+                  </h5>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="nombre" className="form-label">
