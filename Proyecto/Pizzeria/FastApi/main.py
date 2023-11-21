@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import mysql.connector
+from datetime import date
 from typing import Optional
 
 app = FastAPI()
@@ -32,11 +33,41 @@ class Categoria(BaseModel):
 
 # modelo users
 class User(BaseModel):
+    id: int
     name: str
     email: str
-    birthDate: str
+    birthDate: date
     password: str
 
+# modelo para obtener un usuario por su ID
+class UserID(BaseModel):
+    id: int
+
+@app.get("/users/")
+async def get_users():
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM Users")
+    users = cursor.fetchall()
+    return {"users": users}
+
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(f"SELECT * FROM Users WHERE id = {user_id}")
+    user = cursor.fetchone()
+    if user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"user": user}
+
+@app.delete("/users/{user_id}")
+async def delete_user(user_id: int):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(f"DELETE FROM Users WHERE id = {user_id}")
+    db.commit()
+    return {"message": "User deleted successfully!"}
 
 ############################# USUARIOS    ##
 @app.post("/register/")
@@ -52,6 +83,19 @@ async def create_user(user: User):
     except mysql.connector.Error as err:
         raise HTTPException(status_code=400, detail="Email already exists")
 
+@app.get("/users/")
+async def get_users():
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT * FROM Users")
+    users = cursor.fetchall()
+    return {"users": users}
+
+@app.get("/users/{user_id}")
+async def get_user(user_id: int):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute(f"SELECT * FROM Users WHERE id = {user_id}")
 
 
 ###################     CATEGORIAS
