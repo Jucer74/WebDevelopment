@@ -50,7 +50,6 @@ body {
     position: fixed;
     height: 33vh;
     display: grid;
-    font-size: max(1vw,11px);
     /* border: 1px solid #ffeead; */
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 44% 24% 32%;
@@ -130,7 +129,7 @@ body {
     font-weight: 360;
 =======
 #profile-name {
-    font-size: 3em;
+    font-size: clamp(16px,4vw,48px);
     font-weight: 300;
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
     padding: 5%;
@@ -160,10 +159,14 @@ body {
 
 .socialico img {
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: clamp(11px, 1.2vw,18px);
 =======
     width: max(10px, 0.9vw);
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
+=======
+    width: clamp(14px, 1.2vw,18px);
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
     filter: invert(100%);
 }
 
@@ -174,6 +177,7 @@ body {
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
+<<<<<<< HEAD
     font-size: 0.7em;
     font-weight: 400;
     max-width: 67vw;
@@ -185,6 +189,10 @@ body {
 }
 .profile-navbar a {
     font-size: 0.6rem;
+=======
+    font-size: clamp(12px, 1.2vw, 16px);
+    font-weight: 500;
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
 }
 
 <<<<<<< HEAD
@@ -233,9 +241,14 @@ body {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 .profile-navbar-item span {
     font-size: 2vw;
+=======
+.profile-navbar-item a span {
+    font-size: 4vh;
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
 }
 
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
@@ -297,13 +310,14 @@ body {
     color: white;
     position: sticky;
     height: 20vh;
-    padding-left: 3%;
+    padding-left: 3vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
     top: 0;
     font-size: 0.9em;
+<<<<<<< HEAD
     line-height: 0.9;
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
 
@@ -329,6 +343,22 @@ body {
     margin: 0;
     font-weight: 300;
     padding-right: 2vh;
+=======
+    line-height: 0.8;
+    z-index: 0;
+}
+
+iframe {
+    top: 33vh;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: block;
+    position: absolute;
+    height: calc(100vh - 30vh);
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
 }
 
 <<<<<<< HEAD

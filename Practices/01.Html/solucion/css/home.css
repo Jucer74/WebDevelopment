@@ -1,5 +1,6 @@
 /* Si solo se usa iframe, todos los css son innecesarios */
 /* al estar luego internos en cada html. */
+<<<<<<< HEAD
 
 
 /* En efecto, no se como hacer para para que la 
@@ -11,6 +12,10 @@ referenciando un archivo css */
     background-color: #0c80fe;
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+#headerbanner {
+    background-color: #0c80fe;
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
 }
 
 /*
@@ -19,7 +24,11 @@ referenciando un archivo css */
     padding: 3vh;
 }
 
+<<<<<<< HEAD
 #page-column {
+=======
+#homediv {
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
     line-height: 0.9;
 }
 
@@ -30,6 +39,7 @@ referenciando un archivo css */
     align-items: center;
     padding: 3vh;
 }
+<<<<<<< HEAD
 
 #headerbanner {
     grid-area: header-banner;
@@ -129,3 +139,6 @@ hr {
     z-index: 0;
 }
 >>>>>>> 1e4f3d28 (esta vez me engomé muchisimo con el css y no he hecho lo principal, que)
+=======
+*/
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)

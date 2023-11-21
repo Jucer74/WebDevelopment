@@ -1,7 +1,11 @@
 
 #headerbanner {
     background-color: #f4bb0a;
+<<<<<<< HEAD
     /*color: white;
+=======
+    color: white;
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
     position: sticky;
     height: 20vh;
     display: flex;
@@ -12,7 +16,11 @@
     font-size: 0.9em;
     line-height: 0.8;
     z-index: 0;
+<<<<<<< HEAD
     /* padding order: top right bottom left
     */
+=======
+    /* padding order: top right bottom left */
+>>>>>>> 5e8134a6 (al menos ya tengo el home, re enfermizo. cuadrando para iframe)
 
 }
