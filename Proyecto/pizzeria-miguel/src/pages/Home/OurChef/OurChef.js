@@ -8,11 +8,11 @@ const OurChef = () => {
             <div className='container'>
                 <div className='chef-content'>
                     <h1 className='heading-primary'>
-                        Nuestras <span>Sedes</span>
+                        Our <span>Restaurants</span>
                     </h1>
 
                     <p className='text-white'>
-                    El mejor lugar para pasarla chimba.
+                    The best place to have a good time.
                     </p>
                 </div>
             </div>
@@ -24,47 +24,35 @@ const OurChef = () => {
             <div className='grid-container py-md'>
                 <div className='grid-item chef-info'>
                     <h3 className='heading-tertiary'>
-                        <span>Jardín Plaza</span>
+                        <span>Sheffield</span>
                     </h3>
 
-                    <h4>Sede Principal</h4>
+                    <h4>main restaurant</h4>
 
-                    <p>Ven y visitanos, estamos ubicados en la Cra. 98#16-200, ¡Te esperamos!.</p>
+                    <p>Come and visit us, we are located at Cra. 98#16-200, We are waiting for you!.</p>
                 </div>
 
                 <div className='grid-item chef-info'>
                     <h3 className='heading-tertiary'>
-                        <span>Chipichape</span>
+                        <span>Cali</span>
                     </h3>
 
-                    <h4>Sede Norte</h4>
+                    <h4>America</h4>
 
-                    <p>Ven y visitanos, estamos ubicados en la Calle 38 Nte. #6N-45, ¡Te esperamos!.</p>
+                    <p>Come and visit us, we are located on Calle 38 Norte. #6N-45, We are waiting for you!.</p>
                 </div>
-
-
 
                 <div className='grid-item chef-info'>
                     <h3 className='heading-tertiary'>
-                        <span>Parque del Perro</span>
+                        <span>Singapore</span>
                     </h3>
 
-                    <h4>Sede Oeste</h4>
+                    <h4>Asia</h4>
 
-                    <p>Ven y visitanos, estamos ubicados en la Cra. 34 #3-2 a 3-166, ¡Te esperamos!.</p>
+                    <p>Come and visit us, we are located at Cra. 34 #3-2 to 3-166, We are waiting for you!.</p>
                 </div>
 
 
-
-                <div className='grid-item chef-info'>
-                    <h3 className='heading-tertiary'>
-                        <span>Valle del Lili</span>
-                    </h3>
-
-                    <h4>Sede Sur</h4>
-
-                    <p>Ven y visitanos, estamos ubicados en la Calle 45a #60, ¡Te esperamos!.</p>
-                </div>
             </div>
 
 

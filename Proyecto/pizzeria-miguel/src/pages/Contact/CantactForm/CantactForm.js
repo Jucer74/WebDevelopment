@@ -3,7 +3,6 @@ import './CantactForm.css'
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import bgImage from '../../../assets/cake.jpg'
 
 const CantactForm = () => {
@@ -14,7 +13,7 @@ const CantactForm = () => {
            <Card.Body>
                <Card.Title>Google Maps</Card.Title>
                <Card.Text>
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.92203084829!2d-76.5300936249538!3d3.3692356517601527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a17491d2a5f9%3A0xf06c44da2d3c8a74!2sCentro%20Comercial%20Jard%C3%ADn%20Plaza!5e0!3m2!1ses!2sco!4v1700466453961!5m2!1ses!2sco"
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d304524.00058471283!2d-1.829087101054806!3d53.39526275721332!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48790aa9fae8be15%3A0x3e2827f5af06b078!2sSheffield%2C%20Reino%20Unido!5e0!3m2!1ses!2sco!4v1700599197797!5m2!1ses!2sco"
                       width="100%" height="538" frameborder="0" style={{border:0}} allowfullscreen></iframe>
                </Card.Text>
            </Card.Body>
@@ -54,7 +53,7 @@ const CantactForm = () => {
                     </div>
                 </form>
 
-                <button>Enviar</button>
+                <button>Send</button>
             </div>
         </div>
     </div>

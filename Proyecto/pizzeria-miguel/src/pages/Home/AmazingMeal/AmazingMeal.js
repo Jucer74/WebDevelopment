@@ -39,28 +39,28 @@ const AmazingMeal = () => {
 
           <div className="amazing-content">
             <h2 className="heading-secondary">
-              Increibles Pizzas <span className="ampersand">&#38;</span>
+            Amazing pizzas <span className="ampersand">&#38;</span>
               <br />
               <span>
-                Los Mejores <br /> Sabores
+                The best <br /> ingredients
               </span>
             </h2>
 
-            <h4>¡Esperamos verte pronto!</h4>
+            <h4>We hope to see you soon!</h4>
 
             <p>
-            En el rincón acogedor de nuestra pizzería, cada porción es una obra maestra de sabores irresistibles. 
-            Desde la suavidad de la masa hasta la explosión de ingredientes frescos, cada bocado 
-            es una aventura culinaria. 
+            In the cozy corner of our pizzeria, each slice is a masterpiece of irresistible flavors.
+            From the softness of the dough to the explosion of fresh ingredients, every bite
+            It is a culinary adventure.
               <br />
               <br />
-              En nuestra carta, descubrirás las combinaciones más exquisitas que harán de cada pizza un festín 
-              para el paladar. ¡Bienvenido al lugar donde los mejores sabores se 
-              encuentran en cada deliciosa porción de pizza!
+              In our menu, you will discover the most exquisite combinations that will make each pizza a feast.
+              for the palate. Welcome to the place where the best flavors are
+              found in every delicious slice of pizza!
             </p>
 
             <blockquote>
-            Porque los momentos perfectos siempre incluyen pizza.
+            Because the perfect moments always include pizza.
             </blockquote>
           </div>
         </div>
