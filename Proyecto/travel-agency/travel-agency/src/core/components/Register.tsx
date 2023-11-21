@@ -23,8 +23,9 @@ export const Register = () => {
       .register(credentials)
       .then((user) => {
         if (user) {
-          console.log("Usuario:", user);
+          console.log("Usuario:", user);    
           setRegisterError("");
+          window.location.reload()
         } else {
           setRegisterError("La confirmacion de la contraseña es erronea o el usuario ya existe");
         }

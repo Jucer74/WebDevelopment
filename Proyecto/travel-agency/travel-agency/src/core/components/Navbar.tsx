@@ -69,11 +69,12 @@ export const Navbar = ({ user }) => {
                 </button>
               </div>
             ) : (
+              <><p>{user.email}</p>
               <form className="d-flex" onSubmit={handleLogout}>
                 <button type="submit" className="btn btn-dark text-nowrap">
                   Cerrar sesion
                 </button>
-              </form>
+              </form></>
             )}
           </div>
         </div>

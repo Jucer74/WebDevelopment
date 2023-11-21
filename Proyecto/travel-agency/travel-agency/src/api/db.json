@@ -11,6 +11,30 @@
       "email": "fandom123@hotmail.com",
       "password": "123456",
       "id": 2
+    },
+    {
+      "username": "1234@hotmai.com",
+      "email": "1234@hotmai.com",
+      "password": "12345",
+      "id": 3
+    },
+    {
+      "username": "12345@hotmail.com",
+      "email": "12345@hotmail.com",
+      "password": "12345",
+      "id": 4
+    },
+    {
+      "username": "14@hotmail.com",
+      "email": "14@hotmail.com",
+      "password": "1234",
+      "id": 5
+    },
+    {
+      "username": "144@hotmail.com",
+      "email": "144@hotmail.com",
+      "password": "12345",
+      "id": 6
     }
   ],
   "travels": [
@@ -23,8 +47,8 @@
       "price": 700,
       "images": [
         "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
-        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph",
-        "https://img.freepik.com/free-photo/beautiful-scenery-road-forest-with-lot-colorful-autumn-trees_181624-31720.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
+        "https://th.bing.com/th/id/R.c43c2dbe83d7b9c45b9cd028ad2be95f?rik=1XA%2bzNs65HAKAQ&riu=http%3a%2f%2fimagenpng.com%2fwp-content%2fuploads%2f2017%2f01%2f01C.jpg&ehk=3M3iTyM%2fl%2fKdBS6GpktK2jwUScw4SNFEKRtQmxQwa38%3d&risl=&pid=ImgRaw&r=0",
+        "https://th.bing.com/th/id/R.0be904c2ff7c471a5197ef365991d4eb?rik=Umz%2fOCwyRBO9TA&riu=http%3a%2f%2fwww.ifam.es%2fuk%2fwp-content%2fuploads%2fsites%2f15%2f2015%2f08%2fimagenes-de-paisajes-hermosos-4.jpg&ehk=KykJkeoaviA1fYkn2t4mUGt0ikpXDpTduzPsyO7q72s%3d&risl=&pid=ImgRaw&r=0"
       ]
     },
     {
@@ -51,6 +75,18 @@
         "https://img.freepik.com/free-photo/beautiful-scenery-landscape-yellowstone-with-mountains-sunrise_181624-5953.jpg?size=626&ext=jpg&ga=GA1.1.1320307648.1699769940&semt=sph"
       ],
       "id": 5
+    },
+    {
+      "name": "francia",
+      "description": "2123",
+      "originCity": "paris",
+      "destinationCity": "francia",
+      "price": "1000",
+      "images": [
+        "https://th.bing.com/th/id/OIP.GlUJci86rQZQtbLqqb3ZogHaEs?rs=1&pid=ImgDetMain",
+        "https://th.bing.com/th/id/OIP.y3CH_n9C_gQklbFvmmYS8AHaEK?rs=1&pid=ImgDetMain"
+      ],
+      "id": 7
     }
   ]
 }

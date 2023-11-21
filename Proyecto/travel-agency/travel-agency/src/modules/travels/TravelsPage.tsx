@@ -112,14 +112,14 @@ export const TravelsPage = () => {
           </form>
         </div>
         <div className="col-auto text-end">
-          <button
+          {user.email!==''?(<button
             type="button"
             className="btn btn-dark"
             data-bs-toggle="modal"
             data-bs-target="#createTravelModal"
           >
             Crear viaje
-          </button>
+          </button>):(<p></p>)}
         </div>
       </div>
       <div className={"row " + STYLE.contentPaddingY}>
