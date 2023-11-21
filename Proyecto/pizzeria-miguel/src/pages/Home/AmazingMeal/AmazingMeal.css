@@ -1,0 +1,82 @@
+.amazing-container {
+    display: flex;
+    gap: 5%;
+}
+
+.amazing-carousal {
+    width: 65%;
+    margin-bottom: 50px;
+}
+
+.amazing-carousal img {
+    width: 100%;
+    height: 80vh;
+    border-radius: 5px;
+}
+
+.slick-prev:before,
+.slick-next:before,
+.slick-dots li.slick-active button:before {
+    color: var(--color-primary) !important;
+}
+
+.amazing-content {
+    width: 30%;
+}
+
+.amazing-content p {
+    padding: 20px 0;
+}
+
+.amazing-card-container {
+    display: flex;
+    gap: 5%;
+    padding-top: 50px;
+}
+
+.amazing-card {
+    width: 30%;
+}
+
+.amazing-card-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.amazing-card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.amazing-card-content p {
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 768px ) {
+    .amazing-container {
+        flex-direction: column;
+    }
+
+    .amazing-carousal {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    .amazing-content {
+        width: 100%;
+    }
+
+    .amazing-card-container {
+        flex-direction: column;
+    }
+
+    .amazing-card {
+        width: 100%;
+    }
+
+    .amazing-card-left {
+        margin-bottom: 20px;
+    }
+}

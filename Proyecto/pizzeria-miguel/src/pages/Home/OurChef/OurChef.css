@@ -1,0 +1,23 @@
+.chef-img {
+    background-image: url('../../../assets/restaurant.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 85vh;
+    position: relative;
+}
+
+.chef-content {
+    position: absolute;
+    bottom: 5%;
+    padding: 10px;
+    background-color: var(--color-primary);
+}
+
+.chef-info h4 {
+    text-transform: uppercase;
+}
+
+.chef-info p {
+    padding-top: 10px;
+}

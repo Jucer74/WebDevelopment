@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-primary: #c3512f;
+  --color-secondary: #7c6853;
+  --color-tertiary: #342f29;
+  --color-white: #fff;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h3 {
+  color: var(--color-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h4,
+p,
+label {
+  color: var(--color-secondary);
+}
+
+h4 {
+  font-weight: normal;
+}
+
+p,
+label {
+  font-size: 13px;
+}
+
+.section {
+  padding: 70px 0;
+}
+
+.container {
+  max-width: 1310px;
+  margin: 0 auto;
+  padding: 0 50px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.ampersand {
+  font-family: 'Libre Baskerville', serif;
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+blockquote {
+  color: var(--color-secondary);
+  border-left: 7px solid var(--color-primary);
+  padding-left: 20px;
+}
+
+.heading-primary {
+  color: var(--color-white);
+  font-size: 60px;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.1;
+  padding-bottom: 10px;
+}
+
+.heading-primary span {
+  font-weight: 700;
+}
+
+.heading-secondary {
+  font-size: 28px;
+  font-weight: 300;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.heading-secondary span {
+  font-weight: 600;
+}
+
+.heading-tertiary {
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.heading-tertiary span {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+}
+
+.py-md {
+  padding: 50px 0;
+}
+
+.special-word {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+.text-white {
+  color: var(--color-white);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .heading-primary {
+    font-size: 45px;
+  }
+}
