@@ -11,8 +11,11 @@
     position: absolute;
     bottom: 5%;
     padding: 10px;
-    background-color: var(--color-primary);
-}
+    background-color: #E21D0E;
+    border-radius: 20px; /* Bordes suaves */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra suave */
+ }
+ 
 
 .chef-info h4 {
     text-transform: uppercase;

@@ -11,6 +11,10 @@
   --color-secondary: #7c6853;
   --color-tertiary: #342f29;
   --color-white: #fff;
+  --color-yellow: #FEAE01;
+  --color-orange: #d84900;
+  --color-red: #DC0A17;
+  --color-black: #000000;
 }
 
 body {
@@ -34,7 +38,7 @@ h3 {
 h4,
 p,
 label {
-  color: var(--color-secondary);
+  color: var(--color-black);
 }
 
 h4 {
@@ -62,7 +66,7 @@ button {
   text-transform: capitalize;
   font-weight: 600;
   color: var(--color-white);
-  background-color: var(--color-primary);
+  background-color: var(--color-yellow);
   border: none;
   cursor: pointer;
 }
@@ -78,8 +82,8 @@ button:hover {
 }
 
 blockquote {
-  color: var(--color-secondary);
-  border-left: 7px solid var(--color-primary);
+  color: var(--color-black);
+  border-left: 7px solid var(--color-orange);
   padding-left: 20px;
 }
 
@@ -115,7 +119,7 @@ blockquote {
 
 .heading-tertiary span {
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-red);
 }
 
 .grid-container {

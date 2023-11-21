@@ -54,7 +54,7 @@ const CantactForm = () => {
                     </div>
                 </form>
 
-                <button>Submit</button>
+                <button>Enviar</button>
             </div>
         </div>
     </div>

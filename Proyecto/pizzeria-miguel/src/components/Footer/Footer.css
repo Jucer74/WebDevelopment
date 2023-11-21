@@ -1,5 +1,5 @@
 .footer {
-    background-color: var(--color-tertiary);
+    background-color: var(--color-yellow);
 }
 
 .footer-grid-item :nth-child(2) {

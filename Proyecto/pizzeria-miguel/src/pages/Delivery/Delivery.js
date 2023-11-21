@@ -9,8 +9,6 @@ const Delivery = () => {
     <div>
       <HeroImage
         bgImage={bgImage}
-        heading={["eat at ", <span>Home</span>]}
-        text="Delivery avialable Mon – Fri, 10am – 16pm"
       />
       <DeliveryInfo />
       <AddToCart />
