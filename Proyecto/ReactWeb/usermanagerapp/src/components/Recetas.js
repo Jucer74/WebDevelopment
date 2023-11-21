@@ -7,7 +7,7 @@ import { Button, Container, Table, Form } from 'react-bootstrap';
 
 const baseUrl = "https://localhost:5001/api/Users";
 
-export function ListUsers() {
+export function ListRecetas() {
 
 
     const [data, setData] = useState([]);
@@ -15,10 +15,12 @@ export function ListUsers() {
     // Control data
     const [currentUser, setCurrentUser] = useState({
         id: '',
-        email: '',
-        username: '',
-        name: '',
-        password: ''
+        nombre_receta: '',
+        tipo_cocina: '',
+        dificultad: '',
+        tiempo_coccion: '',
+        tiempo_preparacion: '',
+        imagen: '',
     });
 
 
@@ -128,10 +130,12 @@ export function ListUsers() {
                 var updatedData = data;
                 updatedData.map(usr => {
                     if (usr.id === currentUser.id) {
-                        usr.email = result.email;
-                        usr.name = result.name;
-                        usr.username = result.username;
-                        usr.password = result.password;
+                        usr.nombre_receta = result.nombre_receta;
+                        usr.tipo_cocina = result.tipo_cocina;
+                        usr.dificultad = result.dificultad;
+                        usr.tiempo_coccion = result.tiempo_coccion;
+                        usr.tiempo_preparacion = result.tiempo_preparacion;
+                        usr.imagen = result.imagen;
                     }
                 });
                 getUsers();
@@ -154,7 +158,7 @@ export function ListUsers() {
 
     return (
         <Container className="text-center text-md-left">
-            <h1>User List</h1>
+            <h1>Lista de Recetas</h1>
             <p>
                 <Button className="left" variant="success btn-sm" onClick={() => openCloseModalCreate()}> <Fas icon={faPlus} /> New</Button>
             </p>
@@ -162,10 +166,12 @@ export function ListUsers() {
                 <thead>
                     <tr>
                         <th>Id</th>
-                        <th>Email</th>
-                        <th>Name</th>
-                        <th>Username</th>
-                        <th>Password</th>
+                        <th>Nombre Receta</th>
+                        <th>Tipo cocina</th>
+                        <th>Dificultad</th>
+                        <th>Tiempo de coccino</th>
+                        <th>Tiempo de preparacion</th>
+                        <th>Imagen</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -173,10 +179,12 @@ export function ListUsers() {
                     {data.map(usr => (
                         <tr key={usr.id}>
                             <td>{usr.id}</td>
-                            <td>{usr.email}</td>
-                            <td>{usr.name}</td>
-                            <td>{usr.username}</td>
-                            <td>{usr.password}</td>
+                            <td>{usr.nombre_receta}</td>
+                            <td>{usr.tipo_cocina}</td>
+                            <td>{usr.dificultad}</td>
+                            <td>{usr.tiempo_coccion}</td>
+                            <td>{usr.tiempo_preparacion}</td>
+                            <td>{usr.imagen}</td>
                             <td>
                                 <Button variant="outline-primary" onClick={() => selectCurrentUser(usr, "Edit")}>Edit</Button>{"  "}
                                 <Button variant="outline-warning" onClick={() => selectCurrentUser(usr, "Details")}>Details</Button>{"  "}
@@ -191,25 +199,34 @@ export function ListUsers() {
 
             {/* Create */}
             <Modal isOpen={showModalCreate}>
-                <ModalHeader>Create User</ModalHeader>
+                <ModalHeader>Crear Receta</ModalHeader>
                 <ModalBody>
                     <Form>
                         <Form.Group>
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange} />
+                            <Form.Label>Nombre:</Form.Label>
+                            <Form.Control type="text" id="txtNombre_receta" name="nombre_receta" placeholder="Nombre" required onChange={handleChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" id="txtName" name="name" placeholder="Julio Robles" required onChange={handleChange} />
+                            <Form.Label>Tipo de cocina:</Form.Label>
+                            <Form.Control type="text" id="txtTipo_cocina" name="tipo_cocina" placeholder="Tipo cocina" required onChange={handleChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Username:</Form.Label>
-                            <Form.Control type="text" id="txtUsername" name="username" placeholder="username" required onChange={handleChange} />
+                            <Form.Label>Dificultad:</Form.Label>
+                            <Form.Control type="text" id="txtDificultad" name="dificultad" placeholder="Dificultad" required onChange={handleChange} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control type="password" id="txtPassword" name="password" onChange={handleChange} />
+                            <Form.Label>Tiempo  coccion:</Form.Label>
+                            <Form.Control type="text" id="txtTiempo_coccion" name="tiempo_coccion" placeholder="tiempo coccion" required onChange={handleChange} />
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Tiempo preparacion:</Form.Label>
+                            <Form.Control type="text" id="txtTiempo_preparacion" name="tiempo_preparacion" placeholder="tiempo preparacion" required onChange={handleChange} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>imagen:</Form.Label>
+                            <Form.Control type="text" id="txtImagen" name="imagen" placeholder="imagen" required onChange={handleChange} />
+                        </Form.Group>
+                        
                     </Form>
                 </ModalBody>
                 <ModalFooter>
@@ -221,7 +238,7 @@ export function ListUsers() {
 
             {/* Details */}
             <Modal isOpen={showModalDetails}>
-                <ModalHeader>Details User</ModalHeader>
+                <ModalHeader>Detalles receta</ModalHeader>
                 <ModalBody>
                     <Form>
                         <Form.Group>
@@ -229,20 +246,28 @@ export function ListUsers() {
                             <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser && currentUser.id} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control type="email" id="txtEmail" name="email" readOnly value={currentUser && currentUser.email} />
+                            <Form.Label>Nombre receta:</Form.Label>
+                            <Form.Control type="text" id="txtNombre_receta" name="nombre_receta" readOnly value={currentUser && currentUser.nombre_receta} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Name:</Form.Label>
-                            <Form.Control type="text" id="txtName" name="name" readOnly value={currentUser && currentUser.name} />
+                            <Form.Label>Tipo cocina:</Form.Label>
+                            <Form.Control type="text" id="txtTipo_cocina" name="tipo_cocina" readOnly value={currentUser && currentUser.tipo_cocina} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Username:</Form.Label>
-                            <Form.Control type="text" id="txtUsername" name="username" readOnly value={currentUser && currentUser.username} />
+                            <Form.Label>Dificultad:</Form.Label>
+                            <Form.Control type="text" id="txtDificultad" name="dificultad" readOnly value={currentUser && currentUser.dificultad} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control type="text" id="txtPassword" name="password" readOnly value={currentUser && currentUser.password} />
+                            <Form.Label>Tiempo coccion:</Form.Label>
+                            <Form.Control type="text" id="txtTiempo_coccion" name="tiempo_coccion" readOnly value={currentUser && currentUser.tiempo_coccion} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Tiempo preparacion:</Form.Label>
+                            <Form.Control type="text" id="txtTiempo_preparacion" name="tiempo_preparacion" readOnly value={currentUser && currentUser.tiempo_preparacion} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Imagen:</Form.Label>
+                            <Form.Control type="text" id="txtImagen" name="imagen" readOnly value={currentUser && currentUser.imagen} />
                         </Form.Group>
                     </Form>
                 </ModalBody>
@@ -254,18 +279,24 @@ export function ListUsers() {
 
             {/* Delete */}
             <Modal isOpen={showModalDelete}>
-                <ModalHeader>Are you sure to delete this user?</ModalHeader>
+                <ModalHeader>Quieres eliminar esta receta?</ModalHeader>
                 <ModalBody>
                     <Form>
                         <Form.Group>
                             <Form.Label><b>Id:</b></Form.Label>
                             <Form.Label>{currentUser && currentUser.id}</Form.Label><br />
-                            <Form.Label><b>Email:</b></Form.Label>
-                            <Form.Label>{currentUser && currentUser.email}</Form.Label><br />
-                            <Form.Label><b>Name:</b></Form.Label>
-                            <Form.Label>{currentUser && currentUser.name}</Form.Label><br />
-                            <Form.Label><b>Username:</b></Form.Label>
-                            <Form.Label>{currentUser && currentUser.username}</Form.Label><br />
+                            <Form.Label><b>Nombre receta:</b></Form.Label>
+                            <Form.Label>{currentUser && currentUser.nombre_receta}</Form.Label><br />
+                            <Form.Label><b>Tipo cocina:</b></Form.Label>
+                            <Form.Label>{currentUser && currentUser.tipo_cocina}</Form.Label><br />
+                            <Form.Label><b>Dificultad:</b></Form.Label>
+                            <Form.Label>{currentUser && currentUser.dificultad}</Form.Label><br />
+                            <Form.Label><b>Tiempo coccion:</b></Form.Label>
+                            <Form.Label>{currentUser && currentUser.tiempo_coccion}</Form.Label><br />
+                            <Form.Label><b>Tiempo preparacion:</b></Form.Label>
+                            <Form.Label>{currentUser && currentUser.tiempo_preparacion}</Form.Label><br />
+                            <Form.Label><b>Imagen:</b></Form.Label>
+                            <Form.Label>{currentUser && currentUser.imagen}</Form.Label><br />
                         </Form.Group>
                     </Form>
                 </ModalBody>
@@ -285,21 +316,30 @@ export function ListUsers() {
                             <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser && currentUser.id} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Email:</Form.Label>
-                            <Form.Control type="email" id="txtEmail" name="email" placeholder="username@domain.com" required onChange={handleChange} value={currentUser && currentUser.email} />
+                            <Form.Label>Nombre receta:</Form.Label>
+                            <Form.Control type="text" id="txtNombre_receta" name="nombre_receta" placeholder="nombre_receta" required onChange={handleChange} value={currentUser && currentUser.nombre_receta} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label >Name:</Form.Label>
-                            <Form.Control type="text" id="txtName" name="name" placeholder="Julio Robles" required onChange={handleChange} value={currentUser && currentUser.name} />
+                            <Form.Label >Tipo cocina:</Form.Label>
+                            <Form.Control type="text" id="txtTipo_cocina" name="tipo_cocina" placeholder="tipo_cocina" required onChange={handleChange} value={currentUser && currentUser.tipo_cocina} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Username:</Form.Label>
-                            <Form.Control type="text" id="txtUsername" name="username" placeholder="username" required onChange={handleChange} value={currentUser && currentUser.username} />
+                            <Form.Label>Dificultad:</Form.Label>
+                            <Form.Control type="text" id="txtDificultad" name="dificultad" placeholder="dificultad" required onChange={handleChange} value={currentUser && currentUser.dificultad} />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Password:</Form.Label>
-                            <Form.Control type="password" id="txtPassword" name="password" onChange={handleChange} value={currentUser && currentUser.password} />
+                            <Form.Label>Tiempo de coccion:</Form.Label>
+                            <Form.Control type="text" id="txtTiempo_coccion" name="tiempo_coccion" placeholder="tiempo_coccion" required onChange={handleChange} value={currentUser && currentUser.tiempo_coccion} />
                         </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Tiempo de preparacion:</Form.Label>
+                            <Form.Control type="text" id="txtTiempo_preparacion" name="tiempo_preparacion" placeholder="tiempo_preparacion" required onChange={handleChange} value={currentUser && currentUser.tiempo_preparacion} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Imagen:</Form.Label>
+                            <Form.Control type="text" id="txtImagen" name="imagen" placeholder="imagen" required onChange={handleChange} value={currentUser && currentUser.imagen} />
+                        </Form.Group>
+                        
                     </Form>
                 </ModalBody>
                 <ModalFooter>
@@ -313,4 +353,4 @@ export function ListUsers() {
 
     );
 }
-export default ListUsers;
+export default ListRecetas;
