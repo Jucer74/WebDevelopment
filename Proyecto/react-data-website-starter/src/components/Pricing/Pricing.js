@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Heading, TextWrapper } from '../../globalStyles';
+import { Heading, TextWrapper } from '../../globalStyles';
 import { IconContext } from 'react-icons/lib';
 import {
 	PricingSection,
@@ -45,7 +45,7 @@ function Pricing() {
 											</PricingCardFeature>
 										))}
 									</PricingCardFeatures>
-									<Button>Get Started</Button>
+									
 								</PricingCardInfo>
 							</PricingCard>
 						))}
