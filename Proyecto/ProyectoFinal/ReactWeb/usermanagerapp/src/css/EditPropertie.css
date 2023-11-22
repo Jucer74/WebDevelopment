@@ -1,0 +1,71 @@
+/* Estilos CSS */
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+  }
+  
+  .card {
+    width: 350px;
+    height: auto; /* Cambiado a auto para que se ajuste al contenido */
+    background-color: #fff;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .card .info {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #e1dede;
+    background-color: #e5e5e5;
+  }
+  
+  .card .info button {
+    height: 30px;
+    width: 80px;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    background-color: #000;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
+  .card .forms {
+    padding: 15px;
+  }
+  
+  .card .inputs {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  
+  .card .inputs span {
+    font-size: 12px;
+  }
+  
+  .card .inputs input {
+    height: 40px;
+    padding: 0px 10px;
+    font-size: 17px;
+    box-shadow: none;
+    outline: none;
+  }
+  
+  .card .inputs input[type="text"][readonly] {
+    border: 2px solid rgba(0, 0, 0, 0);
+  }
+  
+/* Estilo para la imagen */
+.img {
+    width: 100%; /* Ancho del 100% del contenedor */
+    max-width: 300px; /* Establecer el ancho máximo deseado */
+    height: auto; /* Altura automática para mantener la proporción */
+    display: block; /* Eliminar espacios adicionales por defecto */
+    margin: 0 auto; /* Centrar la imagen dentro del contenedor */
+  }

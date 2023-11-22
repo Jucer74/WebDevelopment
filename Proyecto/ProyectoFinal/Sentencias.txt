@@ -1,0 +1,33 @@
+create database Inmobiliaria;
+use inmobiliaria;
+CREATE TABLE inmuebles (
+  id_inmueble INT auto_increment PRIMARY KEY,
+  precio INT,
+  num_habitaciones INT,
+  barrio VARCHAR(50),
+  metros_cuadrados INT,
+  num_banos INT,
+  titulo VARCHAR(100),
+  creado_por INT
+);
+
+CREATE TABLE usuarios (
+  id_usuario INT auto_increment PRIMARY KEY,
+  nombre_usuario VARCHAR(50),
+  correo_electronico VARCHAR(100),
+  contrasena VARCHAR(255)
+);
+
+INSERT INTO usuarios (nombre_usuario, correo_electronico, contrasena) 
+VALUES 
+  ('Usuario1', 'usuario1@example.com', 'contrasena1'),
+  ('Usuario2', 'usuario2@example.com', 'clave456'),
+  ('Usuario3', 'usuario3@example.com', 'contrasena3');
+
+INSERT INTO inmuebles (precio, num_habitaciones, barrio, metros_cuadrados, num_banos, titulo, creado_por)
+VALUES
+  (120000, 4, 'Barrio A', 90, 2, 'Casa 3', 1),  -- Asociado al usuario con id_usuario=1
+  (200000, 5, 'Barrio B', 150, 4, 'Casa Grande', 2),  -- Asociado al usuario con id_usuario=2
+  (95000, 3, 'Barrio C', 75, 2, 'Apartamento 2', 3),  -- Asociado al usuario con id_usuario=3
+  (180000, 4, 'Barrio D', 120, 3, 'Chalet Elegante', 1),  -- Asociado al usuario con id_usuario=1
+  (85000, 2, 'Barrio A', 65, 1, 'Casa 4', 2);  -- Asociado al usuario con id_usuario=2

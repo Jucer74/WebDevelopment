@@ -1,0 +1,41 @@
+/* Home.css */
+body {
+  height: 100%;
+  font-family: 'Noto Sans', sans-serif;
+  background-color: #ab4493;
+}
+
+.container {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-item {
+  text-align: center;
+}
+
+.card {
+  width: 18rem;
+  margin: 0 auto;
+}
+
+/* Media queries for responsive adjustments */
+@media (max-width: 992px) {
+  /* Adjust styles for screens smaller than 992px */
+  .card {
+    width: 100%; /* Make the card full width on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Adjust styles for screens smaller than 768px */
+  .carousel-item {
+    display: flex;
+    justify-content: center;
+  }
+
+  .card {
+    width: 80%; /* Adjust the width of the card as needed for small screens */
+  }
+}
