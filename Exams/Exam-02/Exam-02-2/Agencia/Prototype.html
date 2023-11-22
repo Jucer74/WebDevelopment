@@ -39,12 +39,41 @@
         }
     </style>
 </head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Carrusel con Bootstrap</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy1qQaC66wahbttfMlO6K91xI2fDg" crossorigin="anonymous">
 <body class="bg-light">
+
+    
+    
     <div class="container">
         <div class="header">Wander Wave</div>
         <div class="row">
             <div class="col-md-7">
-                <img src="path-to-image.jpg" alt="Travel Image" class="img-fluid">
+                <div class="container mt-5">
+                    <div id="miCarrusel" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="./imagenes/TRAVEL.png" class="d-block w-100" alt="Primera imagen">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./imagenes/tra2.png" class="d-block w-100" alt="Segunda imagen">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="./imagenes/tra3.png" class="d-block w-100" alt="Tercera imagen">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#miCarrusel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Anterior</span>
+                        </a>
+                        <a class="carousel-control-next" href="#miCarrusel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Siguiente</span>
+                        </a>
+                    </div>
+                </div>
             </div>
             <div class="col-md-5 right-content">
                 <h2>Wander Wave</h2>
@@ -54,7 +83,7 @@
                     <input type="email" id="correo" class="form-control">
                 </div>
                 <!-- Puedes agregar más campos de entrada aquí -->
-                <button class="btn travel-button">Travel</button>
+                <button class="btn travel-button">Inicia</button>
             </div>
         </div>
         <!-- Botones en la parte inferior -->
@@ -95,5 +124,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js" integrity="sha384-XiEXYRU4LZmUu5l5Y7jibP45LrFC8aOYbhDNBWsjpG9IhZd5LwCZMzfnQJXI1aS" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy1qQaC66wahbttfMlO6K91xI2fDg" crossorigin="anonymous"></script>
+
 </body>
 </html>
