@@ -15,25 +15,38 @@ class UserModel(Base):
     is_active = Column(Boolean, default=True)
     phone = Column(String(50), nullable = True)
 
+    class Config:
+        orm_mode = True
+        from_attributes = True
+
 
 class IngredientModel(Base):
     __tablename__ = "ingredients"
     
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String(50))
     pizza_id = Column(Integer, ForeignKey("pizzas.id"))
     pizza = relationship("PizzaModel", back_populates="ingredients")
+    image = Column(String(300), nullable = True)
+
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
 
 class PizzaModel(Base):
     __tablename__ = "pizzas"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     name = Column(String(50))
     description = Column(String(80))
     ingredients = relationship("IngredientModel", back_populates="pizza")
+    images = Column(String(1000)) # if not list, then string then split ?
     price = Column(Float)
 
+    class Config:
+        orm_mode = True
+        from_attributes = True
 
 # Ordenes: many to many order-pizza
 order_pizza_association = Table('order-pizza', Base.metadata,
@@ -44,7 +57,7 @@ order_pizza_association = Table('order-pizza', Base.metadata,
 class OrderModel(Base):
     __tablename__ = "orders"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     user_id = Column(Integer, ForeignKey("users.id"))
     pizzas = relationship("PizzaModel", secondary=order_pizza_association)
     total = Column(Float)

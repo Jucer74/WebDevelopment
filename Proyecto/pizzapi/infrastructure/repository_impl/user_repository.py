@@ -11,6 +11,9 @@ class UserRepositoryImpl(UserInterface):
     def __init__(self, db_session: Session):
         self.db = db_session
 
+    def __exit__(self):
+        self.db.close()
+
     def get_all_users(self, db: Session) -> List[UserModel]:
         return self.db.query(UserModel).all()
 

@@ -7,8 +7,9 @@ from .ingredient import Ingredient
 class Pizza(BaseModel):
     id: int
     name: str
-    ingredients: List[Ingredient]
+    ingredients: List[Ingredient] | None
     description: str
     price: float
+    images: List[str] | None
     
 

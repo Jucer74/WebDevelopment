@@ -20,6 +20,9 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
 
-Base.metadata.create_all(bind=engine) # creamos las tablas sin o existen
+Base.metadata.create_all(bind=engine) # creamos las tablas sin o existen # realmente no parece crear las tablas pero
+# alembic se encarga de migrarlas
+# 
+
 
 

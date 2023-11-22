@@ -24,7 +24,7 @@ class UserService:
         if self.get_user_by_email(db, user_data.email):
             raise ValueError("User already exists")
        
-        # Create a new User model instance
+        # new model instance
         new_user = UserModel(
             # id = user_data.id,
             email=user_data.email, 
