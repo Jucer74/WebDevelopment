@@ -66,7 +66,9 @@ async def update_user(user_id: int, update_data: UserUpdateDTO, db: Session = De
 
         if not user:
             raise HTTPException(status_code=404, detail="User not found")
+        
         return user
+    
     except Exception as e:
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
     

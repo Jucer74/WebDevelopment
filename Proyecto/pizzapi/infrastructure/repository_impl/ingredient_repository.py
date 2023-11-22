@@ -10,8 +10,8 @@ class IngredientRepositoryImpl(IngredientInterface):
     def __init__(self, db_session: Session):
         self.db = db_session
 
-    def __exit__(self):
-        self.db.close()
+    #def __exit__(self):
+    #    self.db.close()
 
     def get_all_ingredients(self, db: Session) -> List[IngredientModel]:
         return self.db.query(IngredientModel).all()

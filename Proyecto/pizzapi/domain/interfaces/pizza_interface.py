@@ -27,3 +27,4 @@ class PizzaInterface(ABC):
     @abstractmethod
     def delete_pizza(self, pizza_id: int) -> bool:
         pass
+    

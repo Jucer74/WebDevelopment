@@ -46,7 +46,7 @@ async def get_pizzas(db: Session = Depends(get_db)):
             name=pizza.name,
             description=pizza.description,
             ingredients=[ingredient.id for ingredient in pizza.ingredients],  #map to id
-            images=pizza.images.split(','),
+            images=pizza.images.replace("{","").replace("}","").split(','),
             price=pizza.price
         ) for pizza in pizzas]
 
@@ -68,14 +68,29 @@ async def get_pizza_by_id(pizza_id: int, db: Session = Depends(get_db)):
             name=pizza.name,
             description=pizza.description,
             ingredients=[ingredient.id for ingredient in pizza.ingredients],  #map to id
-            images=pizza.images.split(','),
+            images=pizza.images.replace("{","").replace("}","").split(','),
             price=pizza.price
         )
         return pizza_response
 
     except Exception as e:
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
-    
+
+
+@router.get("/pizzas/{pizza_id}/images", response_model=List[str], tags=["Pizzas"])
+async def get_pizza_images(pizza_id: int, db: Session = Depends(get_db)):
+    pizza_service = get_pizza_service(db)
+    try:
+        pizza = pizza_service.get_pizza_by_id(db, pizza_id)
+        if not pizza:
+            raise HTTPException(status_code=404, detail="Pizza not found")
+        
+        return pizza.images.replace("{","").replace("}","").split(',')
+
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
+
+
 
 @router.post("/pizzas/create", response_model=PizzaResponseDTO, tags=["Pizzas"])
 async def create_pizza(pizza_create_dto: PizzaCreateDTO, db: Session = Depends(get_db)):
@@ -90,7 +105,7 @@ async def create_pizza(pizza_create_dto: PizzaCreateDTO, db: Session = Depends(g
             name=pizza.name,
             description=pizza.description,
             ingredients=[ingredient.id for ingredient in pizza.ingredients],  #map to id
-            images=pizza.images.split(','),
+            images=pizza.images.replace("{","").replace("}","").split(','),
             price=pizza.price
         )
         return new_pizza
@@ -104,7 +119,7 @@ async def update_pizza(pizza_id: int, pizza_update_dto: PizzaUpdateDTO, db: Sess
     try:
         pizza = pizza_service.update_pizza(db, pizza_id, pizza_update_dto)
 
-        
+
         if not pizza:
             raise HTTPException(status_code=404, detail="Pizza not found")
         
@@ -113,7 +128,7 @@ async def update_pizza(pizza_id: int, pizza_update_dto: PizzaUpdateDTO, db: Sess
             name=pizza.name,
             description=pizza.description,
             ingredients=[ingredient.id for ingredient in pizza.ingredients],  #map to id
-            images=pizza.images.split(','),
+            images=pizza.images.replace("{","").replace("}","").split(','),
             price=pizza.price
         )
 

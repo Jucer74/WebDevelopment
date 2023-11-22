@@ -52,6 +52,10 @@ class PizzaService:
     
     def get_pizza_by_id(self, db: Session, pizza_id: int) -> PizzaModel:
         return self.pizza_repository.get_pizza_by_id(db, pizza_id)
+
+    
+    def get_pizza_images(self, db: Session, pizza_id: int) -> List[str]:
+        return self.pizza_repository.get_pizza_images(db, pizza_id)
     
 
     def get_pizza_by_name(self, db: Session, pizza_name: str) -> PizzaModel:
@@ -61,7 +65,8 @@ class PizzaService:
     def get_all_pizzas(self, db: Session) -> List[PizzaModel]:
         return self.pizza_repository.get_all_pizzas(db)
     
-
+    def get_ingredient_by_id(self, db: Session, ingredient_id: int) -> IngredientModel:
+        return self.ingredient_repository.get_ingredient_by_id(db, ingredient_id)
 
     def get_ingredients_pizza(self, db: Session, pizza_id: int) -> List[IngredientModel]:
         ingredientes = []
@@ -74,21 +79,35 @@ class PizzaService:
     def update_pizza(self, db: Session, pizza_id: int, pizza_data: PizzaUpdateDTO) -> PizzaModel:
         pizza = self.pizza_repository.get_pizza_by_id(db, pizza_id)
         if not pizza:
-            raise HTTPException(status_code=404, detail="Pizza not found")
-        
-        updated_pizza = PizzaModel(
-            id = pizza_data.id,
-            name = pizza_data.name,
-            description = pizza_data.description,
-            price = pizza_data.price,
-            ingredients = [self.get_ingredient_by_id(db, ingredient_id) for ingredient_id in pizza_data.ingredients],
-            images=pizza_data.images, #pizza_data.ingredients,
-        
-        )
-        try:
-            return self.pizza_repository.update_pizza(db, pizza_id, updated_pizza)
-        except Exception as e:
-            raise HTTPException(status_code=400, detail=f"Error updating pizza: {str(e)}")
+            return None
+
+        ingredientes = []
+        for ingredient_id in pizza_data.ingredients:
+            ingredient = self.ingredient_repository.get_ingredient_by_id(db, ingredient_id)
+            if ingredient:
+                ingredientes.append(ingredient)
+
+        pizza_data.ingredients = ingredientes
+
+        for key, value in pizza_data.model_dump(exclude_unset=True).items():
+            setattr(pizza, key, value)
+        db.commit()
+        db.refresh(pizza)
+        return pizza
+
+        # updated_pizza = PizzaModel(
+        #     id=pizza_id,
+        #     name=pizza_data.name,
+        #     description=pizza_data.description,
+        #     price=pizza_data.price,
+        #     ingredients=pizza_data.ingredients,
+        #     images=pizza_data.images
+        # )
+
+        # try:
+        #     return self.pizza_repository.update_pizza(db, updated_pizza)
+        # except Exception as e:
+        #     raise HTTPException(status_code=400, detail=f"Error updating pizza: {str(e)}")
     
 
     def delete_pizza(self, db: Session, pizza_id: int) -> bool:

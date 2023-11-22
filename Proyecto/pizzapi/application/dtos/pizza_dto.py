@@ -15,7 +15,6 @@ class PizzaCreateDTO(BaseModel):
 
 
 class PizzaUpdateDTO(BaseModel):
-    id : Optional[int] = None
     name: Optional[str] = None
     description: Optional[str] = None
     price: Optional[float] = None
@@ -23,7 +22,7 @@ class PizzaUpdateDTO(BaseModel):
     images: Optional[list] = []
 
     class Config:
-        orm_mode = True
+        #orm_mode = True
         from_attributes = True
 
 

@@ -11,8 +11,9 @@ class PizzaRepositoryImpl(PizzaInterface):
     def __init__(self, db_session: Session):
         self.db = db_session
     
-    def __exit__(self):
-        self.db.close()
+    #def __exit__(self): # esto funcionara como destructor?
+    #    self.db.close() # cierra la sesion de la base de datos
+        # que se instancia con el servicio
 
     def get_all_pizzas(self, db: Session) -> List[PizzaModel]:
         return self.db.query(PizzaModel).all()
@@ -32,6 +33,9 @@ class PizzaRepositoryImpl(PizzaInterface):
 
     def get_pizza_by_name(self, db: Session, name: str) -> PizzaModel:
         return self.db.query(PizzaModel).filter(PizzaModel.name == name).first()
+
+    def get_pizza_images(self, db: Session, pizza_id: int) -> List[str]:
+        return self.db.query(PizzaModel).filter(PizzaModel.id == pizza_id).first().images
     
 
     def update_pizza(self, db: Session, updated_pizza: PizzaUpdateDTO) -> PizzaModel:
@@ -43,8 +47,8 @@ class PizzaRepositoryImpl(PizzaInterface):
         for attr, val in updated_pizza.model_dump(exclude_unset=True).items():
             setattr(pizza, attr, val)
 
-        db.commit()
-        db.refresh(pizza)
+        self.db.commit()
+        self.db.refresh(pizza)
 
         return pizza
     

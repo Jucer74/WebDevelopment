@@ -64,10 +64,9 @@ async def create_ingredient(ingredient_create_dto: IngredientCreateDTO, db: Sess
 async def update_ingredient(ingredient_id: int, ingredient_update_dto: IngredientUpdateDTO, db: Session = Depends(get_db)):
     ing_service = get_ingredient_service(db)
     try:
-        ingredient = ing_service.get_ingredient_by_id(db, ingredient_id)
+        ingredient = ing_service.update_ingredient(db, ingredient_id, ingredient_update_dto)
         if not ingredient:
             raise HTTPException(status_code=404, detail="Ingredient not found")
-        ingredient = ing_service.update_ingredient(db, ingredient_id, ingredient_update_dto)
         return ingredient
     except Exception as e:
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})

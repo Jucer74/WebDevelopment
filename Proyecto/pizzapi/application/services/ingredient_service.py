@@ -25,7 +25,7 @@ class IngredientService:
         
     
     def get_ingredient_by_id(self, db: Session, ingredient_id: int) -> IngredientModel:
-        return self.ingredient_repository.get_ingredient_by_id(db, ingredient_id)
+       return self.ingredient_repository.get_ingredient_by_id(db, ingredient_id)
 
     def get_ingredient_by_name(self, db: Session, ingredient_name: str) -> IngredientModel:
         return self.ingredient_repository.get_ingredient_by_name(db, ingredient_name)
@@ -39,7 +39,11 @@ class IngredientService:
         ingredient = self.ingredient_repository.get_ingredient_by_id(db, ingredient_id)
         if not ingredient:
             raise HTTPException(status_code=404, detail="Ingredient not found")
-        return self.ingredient_repository.update_ingredient(db, ingredient_id, ingredient_data)
+        for key, value in ingredient_data.model_dump(exclude_unset=True).items():
+            setattr(ingredient, key, value)
+        db.commit()
+        db.refresh(ingredient)
+        return ingredient
     
 
     def delete_ingredient(self, db: Session, ingredient_id: int) -> bool:

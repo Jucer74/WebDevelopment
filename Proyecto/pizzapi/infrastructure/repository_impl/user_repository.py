@@ -11,8 +11,8 @@ class UserRepositoryImpl(UserInterface):
     def __init__(self, db_session: Session):
         self.db = db_session
 
-    def __exit__(self):
-        self.db.close()
+    #def __exit__(self):
+    #    self.db.close()
 
     def get_all_users(self, db: Session) -> List[UserModel]:
         return self.db.query(UserModel).all()
@@ -42,6 +42,7 @@ class UserRepositoryImpl(UserInterface):
         
         for k,v in user.dict(exclude_unset=True).items():
             setattr(user, k, v)
+            
         self.db.commit()
         self.db.refresh(user)
         
