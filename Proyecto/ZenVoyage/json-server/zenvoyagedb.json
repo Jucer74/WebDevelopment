@@ -1,0 +1,109 @@
+{
+  "accounts": [
+    {
+      "id": 1,
+      "UserEmail": "karenperez2@gmail.com",
+      "FirstName": "Karen",
+      "LastName": "Pérez",
+      "Password": "1234567"
+    },
+    {
+      "id": 2,
+      "UserEmail": "gomezalex856@gmail.com",
+      "FirstName": "Alex",
+      "LastName": "Grazón",
+      "Password": "1234567"
+    },
+    {
+      "id": 3,
+      "UserEmail": "eric85el@gmail.com",
+      "FirstName": "Eric",
+      "LastName": "Smith",
+      "Password": "1234567"
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "AccountId": 1,
+      "Address": "Cra. 72 #13a-56",
+      "City": "Cali",
+      "Country": "Colombia",
+      "PhoneNumber": "+57 321-856-4720",
+      "Preferences": "Playa, Aventura"
+    },
+    {
+      "id": 2,
+      "AccountId": 2,
+      "Address": "San Alberto 1300-1398",
+      "City": "Córdoba",
+      "Country": "Argentina",
+      "PhoneNumber": "+54-9-11-1234-5678",
+      "Preferences": "Cultura, Gastronomía"
+    },
+    {
+      "id": 3,
+      "AccountId": 3,
+      "Address": "1520-1506 6 St SW",
+      "City": "Calgary",
+      "Country": "Canadá",
+      "PhoneNumber": "+1 123-456-7890",
+      "Preferences": "Montaña, Relax"
+    }
+  ],
+  "destinations": [
+    {
+      "id": 1,
+      "DestinationName": "Isla Barú",
+      "City": "Cartagena",
+      "Country": "Colombia",
+      "Amount": 89.7,
+      "Description": "Barú se encuentran entre las atracciones más populares de Cartagena. En este tour, podrás disfrutar de este destino a tu propio ritmo.",
+      "DestinationType": "Playa",
+      "Image": "https://media.staticontent.com/media/pictures/95a44715-93fd-41f8-96e3-702bbc45d56d/235x143"
+    },
+    {
+      "id": 2,
+      "DestinationName": "Tour de día completo en Machu Picchu",
+      "City": "Urubamba",
+      "Country": "Perú",
+      "Amount": 384.47,
+      "Description": "Este tour te llevará a Machu Picchu, la ciudad perdida de los Incas y con fascinantes vistas de los Andes. Vas a viajar a la estación Ollantaytambo.",
+      "DestinationType": "Cultural",
+      "Image": "https://media.staticontent.com/media/pictures/a4953145-083d-4b74-a183-f6de0a9ac192/950x696"
+    },
+    {
+      "id": 3,
+      "DestinationName": "City tour Hop on Hop off Madrid",
+      "City": "Madrid",
+      "Country": "España",
+      "Amount": 1500.75,
+      "Description": "Explora cómodamente la ciudad a bordo de un autobús turístico de 2 pisos. Descubre la ciudad al detalle con un mismo ticket.",
+      "DestinationType": "Ciudad",
+      "Image": "https://media.staticontent.com/media/pictures/0d3fbe62-51aa-4628-8bd9-d48fdd45df36/1366x406"
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "ClientId": 1,
+      "DestinationId": 3,
+      "BookingDate": "2024-01-15",
+      "TotalAmount": 1800.5
+    },
+    {
+      "id": 2,
+      "ClientId": 2,
+      "DestinationId": 1,
+      "BookingDate": "2024-02-20",
+      "TotalAmount": 96.7
+    },
+    {
+      "id": 3,
+      "ClientId": 3,
+      "DestinationId": 2,
+      "BookingDate": "2024-03-10",
+      "TotalAmount": 450.47
+    }
+  ]
+}
