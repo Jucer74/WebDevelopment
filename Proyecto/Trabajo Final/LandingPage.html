@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LandingPage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="./css/site.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/default.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="./css/styles.css" rel="stylesheet"/>
+    <style>
+        body {
+            background-color: #e6e7e9;
+            margin-bottom: 70px; /* Altura del footer */
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <img src="./src/Logo.png" alt="DreamGoal Logo" width="40" height="30" class="d-inline-block align-text-top">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">DreamGoal</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="nav-link text-nav-option btn" href="javascript:void(0)" onclick="location.href='CRUD-Master Detail.html'">
+                            CRUD
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Maria De Los Angeles Plaza!">
+                        <i class="bi bi-person-fill"></i>
+                    </a>
+                </li>
+            </ul>            
+        </div>
+    </nav>
+    <p class="text-light fs-4 fw-bold m-0 py-3 text-black text-start text-center">
+        Welcome Back TO DreamGoal
+    </p>
+
+    <!-- Carousel -->
+    <div id="demo" class="carousel slide d-flex align-items-center justify-content-center" data-bs-ride="carousel" style="height: 86vh;">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+        </div>
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner text-center">
+            <div class="carousel-item active">
+                <img src="./Image/futbol.jpg" alt="futbol" class="d-block mx-auto" style="width:65%">
+                <div class="carousel-caption">
+                    <h3>La magia está en ti.</h3>
+                    <p>"Cree en ti mismo y todo será posible."</p>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <img src="./Image/Juego.jpg" alt="ImageJugadores" class="d-block mx-auto" style="width:65%">
+                <div class="carousel-caption">
+                    <h3>La felicidad</h3>
+                    <p>es la clave del éxito!</p>
+                </div>
+            </div>
+            <div class="carousel-item ">
+                <img src="./Image/Jugadas.jpg" alt="ImageJugadores" class="d-block mx-auto" style="width:65%">
+                <div class="carousel-caption">
+                    <h3>Lucha</h3>
+                    <p>por tus sueños!</p>
+                </div>
+            </div>
+        </div>
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+    <br>
+   <!-- Cuadrado Negro con Texto Blanco -->
+<div class="bg-dark d-flex flex-column align-items-start justify-content-center text-center" style="height: 70vh; position: relative;">
+    <!-- Geolocalizador -->
+    <div id="Pos" class="text-white fs-4 mb-4" style="position: absolute; top: 0; right: 0;">Posición: </div>
+    <div id="PosLink" class="mb-4" style="position: absolute; bottom: 0; right: 0;">
+        <a href="#" target="_blank" class="text-white">Mostrar en el mapa</a>
+    </div>
+
+    <!-- Formulario de contacto -->
+    <div class="container mt-5">
+        <div class="row justify-content-start">
+            <div class="col-md-6">
+                <h2 class="mb-4 text-white">Formulario de Contacto</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label text-black text-start text-white">Nombre</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label text-white">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="mensaje" class="form-label text-white">Mensaje</label>
+                        <textarea class="form-control" id="mensaje" name="mensaje" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success text-white">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik"></iframe>
+</div>
+    <!-- Footer -->
+    <footer class="fixed-bottom">
+        <div class="text-center p-3" style="background-color: #272829; color: white;">
+            © 2023 - DreamGoal
+        </div>
+    </footer>
+
+    <!-- Script de geolocalización -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+
+        var posElt;
+        var posLinkElt;
+
+        window.addEventListener('load', function(){
+            posElt = document.getElementById('Pos');
+            posLinkElt = document.querySelector('#PosLink > a');
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(geoposOK, geoposKO);
+            }
+            else {
+                console.error("Geolocalización no es compatible en tu navegador.");
+            }
+        });
+
+        function geoposOK(pos) {
+            var lat = pos.coords.latitude;
+            var long = pos.coords.longitude;
+            posElt.textContent = `Posición: ${lat}, ${long}`;
+            posLinkElt.href = `https://maps.google.com/?q=${lat},${long}`;
+            posLinkElt.textContent = 'Mostrar tu posición en un mapa';
+        }
+
+        function geoposKO(err) {
+            console.warn(err.message);
+            let msg;
+            switch(err.code) {
+                case err.PERMISSION_DENIED:
+                    msg = "No nos has dado permiso para obtener tu posición";
+                    break;
+                case err.POSITION_UNAVAILABLE:
+                    msg = "Tu posición actual no está disponible";
+                    break;
+                case err.TIMEOUT:
+                    msg = "No se ha podido obtener tu posición en un tiempo prudencial";
+                    break;
+                default:
+                    msg = "Error desconocido";
+                    break;
+            }
+            posElt.textContent = msg;
+        }
+    </script>
+</body>
+
+</html>
