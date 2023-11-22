@@ -53,3 +53,13 @@ class IngredientRepositoryImpl(IngredientInterface):
         self.db.delete(ingredient)
         self.db.commit()
         return True
+    
+    
+    def delete_duplicates(self, db: Session) -> bool:
+        ingredients = self.db.query(IngredientModel).all()
+        for ingredient in ingredients:
+            if self.db.query(IngredientModel).filter(IngredientModel.name == ingredient.name).count() > 1:
+                self.db.delete(ingredient)
+                self.db.commit()
+        return True
+    

@@ -52,6 +52,10 @@ class IngredientService:
             raise HTTPException(status_code=404, detail="Ingredient not found")
         return self.ingredient_repository.delete_ingredient(db, ingredient_id)
     
+    
+    def delete_duplicates(self, db: Session) -> bool:
+        return self.ingredient_repository.delete_duplicates(db)
+    
 
     
     

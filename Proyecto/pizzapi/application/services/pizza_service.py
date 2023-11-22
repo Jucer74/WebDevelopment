@@ -113,6 +113,9 @@ class PizzaService:
     def delete_pizza(self, db: Session, pizza_id: int) -> bool:
         #pizza = self.pizza_repository.get_pizza_by_id(db, pizza_id)
         return self.pizza_repository.delete_pizza(db, pizza_id)
+
+    def delete_duplicates(self, db: Session) -> bool:
+        return self.pizza_repository.delete_duplicates(db)
         
     
     

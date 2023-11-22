@@ -22,3 +22,7 @@ class OrderInterface(ABC):
     @abstractmethod
     def get_all(self) -> List[Order]:
         pass
+
+    @abstractmethod
+    def get_orders_by_user_id(self, user_id: int) -> List[Order]:
+        pass

@@ -16,7 +16,7 @@ from mockdata import create_mock_data
 router = APIRouter()
 
 
-@router.post("/pizza/create_mock_data", tags=["Pizzas"])
+@router.post("/create_mock_data", tags=["default"])
 def populate_mock_data(db: Session = Depends(get_db)):
     try:
         create_mock_data(db)
@@ -116,5 +116,14 @@ async def delete_pizza(pizza_id: int, db: Session = Depends(get_db)):
     pizza_service = get_pizza_service(db)
     try:
         return pizza_service.delete_pizza(db, pizza_id)
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
+
+
+@router.delete("/pizzas", response_model=bool, tags=["Pizzas"])
+async def delete_duplicates(db: Session = Depends(get_db)):
+    pizza_service = get_pizza_service(db)
+    try:
+        return pizza_service.delete_duplicates(db)
     except Exception as e:
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})

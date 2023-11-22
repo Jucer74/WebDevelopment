@@ -11,7 +11,7 @@ class PizzaRepositoryImpl(PizzaInterface):
     def __init__(self, db_session: Session):
         self.db = db_session
     
-    #def __exit__(self): # esto funcionara como destructor?
+    #def __exit__(self): # esto funcionara como destructor? -> No
     #    self.db.close() # cierra la sesion de la base de datos
         # que se instancia con el servicio
 
@@ -60,4 +60,13 @@ class PizzaRepositoryImpl(PizzaInterface):
             return False
         self.db.delete(pizza)
         self.db.commit()
+        return True
+
+
+    def delete_duplicates(self, db: Session) -> bool:
+        pizzas = self.db.query(PizzaModel).all()
+        for pizza in pizzas:
+            if self.db.query(PizzaModel).filter(PizzaModel.name == pizza.name).count() > 1:
+                self.db.delete(pizza)
+                self.db.commit()
         return True

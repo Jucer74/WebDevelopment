@@ -72,6 +72,15 @@ async def update_ingredient(ingredient_id: int, ingredient_update_dto: Ingredien
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
     
 
+@router.delete("/ingredients", response_model=bool, tags=["Ingredients"])
+async def delete_duplicates(db: Session = Depends(get_db)):
+    ing_service = get_ingredient_service(db)
+    try:
+        return ing_service.delete_duplicates(db)
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
+
+
 
 @router.delete("/ingredients/{ingredient_id}", response_model=bool, tags=["Ingredients"])
 async def delete_ingredient(ingredient_id: int, db: Session = Depends(get_db)):

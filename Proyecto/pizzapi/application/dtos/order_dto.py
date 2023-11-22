@@ -8,16 +8,16 @@ from domain.models.order import StatusOrder
 class OrderCreateDTO(BaseModel):
     id : Optional[int] = None
     user_id: int
-    pizzas: List[PizzaResponseDTO]
+    pizzas: List[int]
+    #pizzas: List[PizzaResponseDTO]
     total: float
-    created_at: datetime
-    updated_at: datetime
+    created_at: datetime = datetime.now()
+    updated_at: datetime = datetime.now()
     address: str
-    status: Optional[StatusOrder] = StatusOrder.PENDING
+    status: Optional[StatusOrder] = "Pending"
     phone: Optional[str] = None
     payment_method: Optional[str] = None
     
-
     class Config:
         orm_mode = True
         from_attributes = True
@@ -37,6 +37,7 @@ class OrderUpdateDTO(BaseModel):
 class OrderResponseDTO(BaseModel):
     id: int
     user_id: int
+    #pizzas: List[list]
     pizzas: List[PizzaResponseDTO]
     total: float
     created_at: datetime

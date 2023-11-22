@@ -27,12 +27,12 @@ class PizzaUpdateDTO(BaseModel):
 
 
 class PizzaResponseDTO(BaseModel):
-    id: int
+    id: Optional[int]
     name: str
     description: Optional[str] = None
     price: float
-    images: Optional[list] = []
-    ingredients: Optional[list] = [] 
+    images: Optional[List[str]] = []
+    ingredients: Optional[List[str]] = [] 
 
     class Config:
         orm_mode = True
