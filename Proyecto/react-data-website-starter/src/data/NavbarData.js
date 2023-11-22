@@ -1,7 +1,7 @@
 export const data = [
 	{
 		to: '/',
-		text: 'About',
+		text: 'Sobre',
 		id: 'about',
 	},
 	{
