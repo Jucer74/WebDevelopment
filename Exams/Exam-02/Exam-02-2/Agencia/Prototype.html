@@ -12,20 +12,19 @@
     <style>
         .container {
             margin-top: 50px;
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 10px;
         }
 
         .header {
-            background-color: #333;
-            color: #fff;
+            background-color: #ffffff;
             padding: 20px;
             text-align: center;
             border-radius: 10px 10px 0 0;
         }
 
         .right-content {
-            background-color: #f4f4f4;
+            background-color: #ffffff;
             padding: 20px;
         }
 
@@ -36,6 +35,27 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+        }
+        .navbar {
+            background-color: white;
+            padding: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+            display: flex; /* Utilizamos flexbox para alinear elementos */
+            justify-content: space-between; /* Alinea los elementos al inicio y al final del navbar */
+        }
+
+        /* Estilos para los botones en el navbar */
+        .navbar-btn {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #333; /* Color del texto */
+            border: 1px solid #ccc; /* Borde del botón */
+            border-radius: 5px; /* Esquinas redondeadas */
+            transition: background-color 0.3s ease; /* Transición suave al pasar el ratón */
+        }
+
+        .navbar-btn:hover {
+            background-color: #f0f0f0; /* Cambia el color de fondo al pasar el ratón */
         }
     </style>
 </head>
@@ -48,7 +68,13 @@
     
     
     <div class="container">
-        <div class="header">Wander Wave</div>
+        <div class="navbar">
+            
+            <a href="#" class="navbar-btn" style="margin-left: auto;">Inicio</a>
+            <a href="#" class="navbar-btn">Login</a>
+        <div>
+
+        
         <div class="row">
             <div class="col-md-7">
                 <div class="container mt-5">
