@@ -8,3 +8,7 @@ python-dotenv
 pydantic[email]
 passlib
 alembic
+mysql-connector-python
+pymysql
+mariadb
+aiomysql
