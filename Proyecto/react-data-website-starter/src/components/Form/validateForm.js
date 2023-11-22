@@ -1,4 +1,4 @@
-export default function validateForm({ name, email, password, confirmPass }) {
+export default function validateForm({ name, email }) {
 	if (!name.trim()) {
 		return 'Nombre requerido';
 	}

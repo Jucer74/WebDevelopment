@@ -1,7 +1,7 @@
 export const data = [
 	{
 		to: '/',
-		text: 'Login',
+		text: 'Iniciar sesión',
 	},
 	{
 		to: '/pricing',
