@@ -75,31 +75,16 @@ async def get_pizza_by_id(pizza_id: int, db: Session = Depends(get_db)):
 
     except Exception as e:
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
-
-
-@router.get("/pizzas/{pizza_id}/images", response_model=List[str], tags=["Pizzas"])
-async def get_pizza_images(pizza_id: int, db: Session = Depends(get_db)):
-    pizza_service = get_pizza_service(db)
-    try:
-        pizza = pizza_service.get_pizza_by_id(db, pizza_id)
-        if not pizza:
-            raise HTTPException(status_code=404, detail="Pizza not found")
-        
-        return pizza.images.replace("{","").replace("}","").split(',')
-
-    except Exception as e:
-        return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
-
-
+    
 
 @router.post("/pizzas/create", response_model=PizzaResponseDTO, tags=["Pizzas"])
 async def create_pizza(pizza_create_dto: PizzaCreateDTO, db: Session = Depends(get_db)):
     try:
         pizza_service = get_pizza_service(db)
-        pizza = pizza_service.create_pizza(db, pizza_create_dto)
-        if not pizza:
+        pizza_e = pizza_service.get_pizza_by_name(db, pizza_create_dto.name)
+        if pizza_e:
             raise HTTPException(status_code=400, detail="Pizza already exists")
-        
+        pizza = pizza_service.create_pizza(db, pizza_create_dto)
         new_pizza = PizzaResponseDTO(
             id=pizza.id,
             name=pizza.name,
@@ -118,22 +103,10 @@ async def update_pizza(pizza_id: int, pizza_update_dto: PizzaUpdateDTO, db: Sess
     pizza_service = get_pizza_service(db)
     try:
         pizza = pizza_service.update_pizza(db, pizza_id, pizza_update_dto)
-
-
         if not pizza:
             raise HTTPException(status_code=404, detail="Pizza not found")
-        
-        updated_pizza = PizzaResponseDTO(
-            id=pizza.id,
-            name=pizza.name,
-            description=pizza.description,
-            ingredients=[ingredient.id for ingredient in pizza.ingredients],  #map to id
-            images=pizza.images.replace("{","").replace("}","").split(','),
-            price=pizza.price
-        )
-
-        return updated_pizza
-    
+        else:
+            return pizza
     except Exception as e:
         return JSONResponse(status_code=500, content={"message": f"Error {str(e)}"})
     

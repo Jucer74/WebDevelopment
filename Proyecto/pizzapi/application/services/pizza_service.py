@@ -18,7 +18,7 @@ class PizzaService:
         if self.get_pizza_by_id(db, pizza_data.id) is not None or self.get_pizza_by_name(db, pizza_data.name) is not None:
             raise HTTPException(status_code=400, detail="Pizza already exists")
         
-        pizza_images = pizza_data.images + [self.ingredient_repository.get_ingredient_by_id(db, ing).image for ing in pizza_data.ingredients]
+        #pizza_images = pizza_data.images + [self.ingredient_repository.get_ingredient_by_id(db, ing).image for ing in pizza_data.ingredients]
 
         pizza_images = []
         for url in pizza_data.images:
