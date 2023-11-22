@@ -77,14 +77,14 @@ class PizzaService:
             raise HTTPException(status_code=404, detail="Pizza not found")
         
         updated_pizza = PizzaModel(
-            # id = pizza_data.id,
+            id = pizza_data.id,
             name = pizza_data.name,
             description = pizza_data.description,
             price = pizza_data.price,
-            ingredients = pizza_data.ingredients,
-            images = pizza_data.images
+            ingredients = [self.get_ingredient_by_id(db, ingredient_id) for ingredient_id in pizza_data.ingredients],
+            images=pizza_data.images, #pizza_data.ingredients,
+        
         )
-
         try:
             return self.pizza_repository.update_pizza(db, pizza_id, updated_pizza)
         except Exception as e:
