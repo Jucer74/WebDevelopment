@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import { Home } from './components/Home';
-import { Login } from './components/Login';
+import { CitasMedicasLogin, Login } from './components/Login';
 import { List } from './components/Users';
 import { NavigationBar } from './components/NavigationBar';
 
@@ -18,7 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Users" element={<List />} />
-              <Route path="/Login" element={<Login />} />
+              <Route path="/Login" element={<CitasMedicasLogin  />} />
               <Route element={<NoMatch />} />
             </Routes>
           </Router>

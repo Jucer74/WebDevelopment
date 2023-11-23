@@ -6,6 +6,8 @@ import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 
+const imgUrl = 'https://www.researchgate.net/publication/262720064/figure/fig1/AS:614179920695298@1523443312138/Figura-1-caduceo-de-hermes-o-mercurio-en-http-eswikipediaorg-wiki-caduceo.png';
+
 export const CitasMedicasLogin = ({ setLogoutUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +40,8 @@ export const CitasMedicasLogin = ({ setLogoutUser }) => {
 
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
+            <div className="login-header" style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: 'cover', height: '200px' }}>
+      </div>
       <div className="login-container p-4 rounded" style={{ backgroundColor: "#2196F3", color: "white" }}>
         <h2 className="text-center">Sanitas Login</h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
