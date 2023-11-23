@@ -1,0 +1,59 @@
+.contact-card {
+  background-color: #5a1816;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.form-horizontal {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  background-color: #ffb600;
+  color: #fff;
+  border: 1px solid #ffb600;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #ff9900;
+  border: 1px solid #ff9900;
+}
+.submit-button-2 {
+  background-color: #670506;
+  color: #fff;
+  border: 1px solid #670506;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.submit-button-2:hover {
+  background-color: #ff9900;
+  border: 1px solid #ff9900;
+}
+
+

@@ -1,0 +1,65 @@
+/* styles.css */
+
+.footer {
+    background-color: #5A1816;
+    color: white; /* Cambia el color del texto a blanco */
+    padding: 30px 0;
+    text-align: center;
+    
+  }
+  
+  .footer h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600; /* Cambia el peso de la fuente a extra bold */
+  }
+  
+  .social-icons {
+    margin-top: 20px;
+  }
+  
+  .social-icons .icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #ffffff; /* color azul, puedes personalizarlo */
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Opcional: Estilo para los títulos "Restaurantes" y "Soporte" */
+  .footer h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900; /* Cambia el peso de la fuente a extra bold */
+  }
+
+  h2 {
+    font-family: 'Poppins';
+  font-weight: 900;
+  color: #f75e22f7; /* Cambia el color según tus preferencias */
+  }
+  .button-separation {
+    margin-right: 20px;
+   }
+   
+   .mi-boton {
+    background-color: #1c503d; /* Cambia esto al color que desees */
+    color: white; /* Cambia esto al color del texto que desees */
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+   }
+
+   .mi-boton:hover {
+    background-color: #f6f6f6; /* Cambia esto al color que desees cuando el mouse esté sobre el botón */
+    color: white; /* Cambia esto al color del texto que desees cuando el mouse esté sobre el botón */
+   }
+   
