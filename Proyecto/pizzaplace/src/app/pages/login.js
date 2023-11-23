@@ -4,7 +4,12 @@ import { useRouter } from 'next/router';
 
 // import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../store/authSlice'
-import { HandleLogin } from '../services/login';
+// import { HandleLogin } from '../services/login';
+import { loginSuccess, loginFailure } from '../store/authSlice';
+
+import { useDispatch } from 'react-redux';
+
+import { handleLogin } from '../services/login';
 
 export default function Login() {
 
@@ -27,7 +32,7 @@ export default function Login() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         // dispatch(login({ email, password }));
-        HandleLogin(email, password);
+        await handleLogin(email, password);
     };
 
 

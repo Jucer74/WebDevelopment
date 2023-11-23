@@ -1,6 +1,7 @@
 // export const config = { runtime: 'client' }
 "use client"
 import { useDispatch } from 'react-redux';
+import { loginSuccess, loginFailure } from '../utils/actions';
 
 
 const HandleLogin = async (email, password) => {
@@ -26,4 +27,32 @@ const HandleLogin = async (email, password) => {
         dispatch(loginFailure(error.message));
     }
 };
+
+export default HandleLogin;
+
+
+export const handleLogin = async (email, password, dispatch) => {
+    try {
+        const response = await fetch('http://localhost:8000/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.detail || 'Login failed');
+        }
+
+        dispatch(loginSuccess(data.access_token));
+    } catch (error) {
+        dispatch(loginFailure(error.message));
+    }
+};
+
+
+
 
