@@ -12,6 +12,7 @@ import { SignIn } from './components/Singin/Singin';
 import { SignUp } from './components/Singup/Singup';
 import { Users } from './components/Users/Users';
 import { Products } from './components/Products/Products';
+import { UserProductsDetails } from './components/UserProductsDetails/UserProductsDetails';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/Singup" element={<SignUp />} />
             <Route path="/Users" element={<Users />} />
             <Route path="/Products" element={<Products />} />
+            <Route path="/Products/:ProductId?" element={<UserProductsDetails/>} />
           </Routes>
           <Footer />
         </div>

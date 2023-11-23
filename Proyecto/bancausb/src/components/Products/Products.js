@@ -4,6 +4,7 @@ import { Button, Table, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
+import { Link } from 'react-router-dom';
 
 const baseUrlUser = "https://localhost:5001/api/Users";
 
@@ -11,7 +12,7 @@ const baseUrlProducts = "https://localhost:5001/api/Products";
 
 export function Products() {
   const [data, setData] = useState([]);
-  const [currentUser, setCurrentUser] = useState({
+  const [currentProduct, setcurrentProduct] = useState({
     id: "",
     name: "",
     Users: []
@@ -19,13 +20,15 @@ export function Products() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCurrentUser({
-      ...currentUser,
+    setcurrentProduct({
+      ...currentProduct,
       [name]: value,
     });
+    console.log(currentProduct)
   };
 
   const [showModalCreate, setShowModalCreate] = useState(false);
+
   const openCloseModalCreate = () => {
     setShowModalCreate(!showModalCreate);
   };
@@ -58,18 +61,18 @@ export function Products() {
     GetProducts();
   }, []);
 
-  const postUser = async () => {
-    delete currentUser.id;
+  const postProduct = async () => {
+    delete currentProduct.id;
     await axios
-      .post(baseUrlUser, currentUser)
+      .post(baseUrlProducts, currentProduct)
       .then((response) => {
-        GetUsers();
+        GetProducts();
         openCloseModalCreate();
       })
       .catch((error) => {
         console.log(error);
       });
-      console.log(currentUser);
+      console.log(currentProduct);
   };
 
   const [showModalUpdate, setShowModalUpdate] = useState(false);
@@ -77,15 +80,12 @@ export function Products() {
     setShowModalUpdate(!showModalUpdate);
   };
 
-  const selectCurrentUser=(user, action)=>{
-    setCurrentUser(user);
+  const selectcurrentProduct=(user, action)=>{
+    setcurrentProduct(user);
     switch (action) {
       case "Edit":
         openCloseModalUpdate();
-        break;
-      case "Details":
-        openCloseModalDetails();
-        break;      
+        break;  
       case "Delete":
         openCloseModalDelete();
         break;             
@@ -94,32 +94,24 @@ export function Products() {
     }     
   }
 
-  const putUser = async () => {
+  const putProduct = async () => {
     await axios
-      .put(baseUrlUser + "/" + currentUser.id, currentUser)
+      .put(baseUrlProducts + "/" + currentProduct.id, currentProduct)
       .then((response) => {
         var result = response.data;
         var updatedData = data;
         updatedData.map((usr) => {
-            if (usr.id === currentUser.id) {
-              usr.email = result.userEmail;
+            if (usr.id === currentProduct.id) {
               usr.name = result.firstName;
-              usr.username = result.lastName;
-              usr.password = result.password;
             }
             return usr;
           });
-        GetUsers();
+        GetProducts();
         openCloseModalUpdate();
       })
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const [showModalDetails, setShowModalDetails] = useState(false);
-  const openCloseModalDetails = () => {
-    setShowModalDetails(!showModalDetails);
   };
 
   const [showModalDelete, setShowModalDelete]= useState(false);
@@ -128,9 +120,9 @@ export function Products() {
   }
 
   const deleteUser = async() => {
-    await axios.delete(baseUrlUser+"/"+ currentUser.id)
+    await axios.delete(baseUrlProducts+"/"+ currentProduct.id)
     .then (()=>{
-      setData(data.filter(usr=>usr.id!==currentUser.id));
+      setData(data.filter(usr=>usr.id!==currentProduct.id));
       openCloseModalDelete();
     }).catch(error=>{
       console.log(error);
@@ -138,7 +130,7 @@ export function Products() {
   }  
   
   return (
-    <div className=" crud-container m-5 justify-content-between">
+    <div className=" m-5 justify-content-between">
     <div className="row col-10 d-flex justify-content-between align-items-center m-auto p-1">
       <h1 className="col-auto text-start">Productos</h1>
       <Button className="col-auto text-end" variant="success btn-sm" onClick={() => openCloseModalCreate()}>
@@ -162,9 +154,11 @@ export function Products() {
               <td>{usr.id}</td>
               <td>{usr.name}</td>
               <td>
-                <Button className="btn-sm" variant="outline-primary" onClick={() => selectCurrentUser(usr, "Edit")}>Edit</Button>{"  "}
-                <Button className="btn-sm"variant="outline-warning" onClick={() => selectCurrentUser(usr, "Details")}>Details</Button>{"  "}
-                <Button className="btn-sm"variant="outline-danger" onClick={() => selectCurrentUser(usr, "Delete")}>Delete</Button>
+                <Button className="btn-sm" variant="outline-primary" onClick={() => selectcurrentProduct(usr, "Edit")}>Edit</Button>{"  "}
+                <Link to={`/Products/${usr.id}`}> 
+                <Button className="btn-sm" variant="outline-warning">Details</Button> 
+                </Link>
+                <Button className="btn-sm"variant="outline-danger" onClick={() => selectcurrentProduct(usr, "Delete")}>Delete</Button>
               </td>
               </tr>
             ))}
@@ -182,16 +176,16 @@ export function Products() {
               <Form.Label>Nombre del producto:</Form.Label>
               <Form.Control
                 type="text"
-                name="ProductName"
+                name="name"
                 placeholder="Cuenta Ahorro"
-                value={currentUser.userEmail}
+                value={currentProduct.userEmail}
                 onChange={handleChange}
               />
             </Form.Group>
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button variant="primary" onClick={() => postUser()}>
+          <Button variant="primary" onClick={() => postProduct()}>
             Create
           </Button>
           <Button variant="outline-info" onClick={() => openCloseModalCreate()}>
@@ -212,19 +206,7 @@ export function Products() {
                 id="txtId"
                 name="id"
                 readOnly
-                value={currentUser && currentUser.id}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Email:</Form.Label>
-              <Form.Control
-                type="email"
-                id="txtEmail"
-                name="email"
-                placeholder="username@domain.com"
-                required
-                onChange={handleChange}
-                value={currentUser && currentUser.email}
+                value={currentProduct && currentProduct.id}
               />
             </Form.Group>
             <Form.Group>
@@ -236,35 +218,13 @@ export function Products() {
                 placeholder="Julio Robles"
                 required
                 onChange={handleChange}
-                value={currentUser && currentUser.name}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Username:</Form.Label>
-              <Form.Control
-                type="text"
-                id="txtUsername"
-                name="username"
-                placeholder="username"
-                required
-                onChange={handleChange}
-                value={currentUser && currentUser.username}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Password:</Form.Label>
-              <Form.Control
-                type="password"
-                id="txtPassword"
-                name="password"
-                onChange={handleChange}
-                value={currentUser && currentUser.password}
+                value={currentProduct && currentProduct.name}
               />
             </Form.Group>
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button variant="primary" onClick={() => putUser()}>
+          <Button variant="primary" onClick={() => putProduct()}>
             Save
           </Button>
           <Button variant="outline-info" onClick={() => openCloseModalUpdate()}>
@@ -273,59 +233,6 @@ export function Products() {
         </ModalFooter>
       </Modal>
 
-      {/* Details */}
-        <Modal isOpen={showModalDetails}     centered={true}>
-        <ModalHeader>Details User</ModalHeader>
-        <ModalBody>
-            <Form>
-            <Form.Group className="col-12 my-1">
-                <Form.Label>Id:</Form.Label>
-                <Form.Control type="text" id="txtId" name="id" readOnly value={currentUser && currentUser.id}/>
-            </Form.Group>
-            <Form.Group className="col-12 my-1">
-                <Form.Label>Correo Electrónico:</Form.Label>
-                <Form.Control type="email" id="txtEmail" name="email" readOnly value={currentUser && currentUser.userEmail}/>
-            </Form.Group>
-            
-            <div  className="row my-1"> 
-              <Form.Group className="col-6">
-                  <Form.Label>Nombre:</Form.Label>
-                  <Form.Control type="text" id="txtName" name="Nombre" readOnly value={currentUser && currentUser.firstName}/>
-              </Form.Group>
-              <Form.Group className="col-6">
-                  <Form.Label>Apellido:</Form.Label>
-                  <Form.Control type="text" id="txtUsername" name="Apellido" readOnly value={currentUser && currentUser.lastName}/>
-              </Form.Group>
-            </div>
-
-            <div  className="row my-1"> 
-              <Form.Group className="col-6">
-                  <Form.Label>Contraseña:</Form.Label>
-                  <Form.Control type="text" id="txtName" name="Nombre" readOnly value={currentUser && currentUser.password}/>
-              </Form.Group>
-              <Form.Group className="col-6">
-                  <Form.Label>Rol:</Form.Label>
-                  <Form.Control type="text" id="txtUsername" name="Apellido" readOnly value={currentUser && currentUser.role}/>
-              </Form.Group>
-            </div>
-
-            <Form.Group className="my-1">
-              <Form.Label>Productos:</Form.Label>
-              <ul>
-                  {currentUser && currentUser.products && currentUser.products.map((product, index) => (
-                      <li key={index}>
-                          {product.name}
-                      </li>
-                  ))}
-              </ul>
-              </Form.Group>
-            </Form>
-            
-        </ModalBody>
-        <ModalFooter>
-            <Button variant="outline-info" onClick={()=>openCloseModalDetails()}>Back</Button>
-        </ModalFooter>
-        </Modal>
         {/* Delete */}
         <Modal isOpen={showModalDelete}>
         <ModalHeader>Are you sure to delete this user?</ModalHeader>
@@ -333,18 +240,18 @@ export function Products() {
             <Form>
             <Form.Group>
                 <Form.Label><b>Id:</b></Form.Label>
-                <Form.Label>{currentUser && currentUser.id}</Form.Label><br/>
+                <Form.Label>{currentProduct && currentProduct.id}</Form.Label><br/>
                 <Form.Label><b>Email:</b></Form.Label>
-                <Form.Label>{currentUser && currentUser.email}</Form.Label><br/>
+                <Form.Label>{currentProduct && currentProduct.email}</Form.Label><br/>
                 <Form.Label><b>Name:</b></Form.Label>
-                <Form.Label>{currentUser && currentUser.name}</Form.Label><br/>
+                <Form.Label>{currentProduct && currentProduct.name}</Form.Label><br/>
                 <Form.Label><b>Username:</b></Form.Label>
-                <Form.Label>{currentUser && currentUser.username}</Form.Label><br/>
+                <Form.Label>{currentProduct && currentProduct.username}</Form.Label><br/>
             </Form.Group>
             </Form>
         </ModalBody>
         <ModalFooter>
-            <Button variant="danger" onClick={()=>deleteUser(currentUser.id)}>Delete</Button>
+            <Button variant="danger" onClick={()=>deleteUser(currentProduct.id)}>Delete</Button>
             <Button variant="outline-info" onClick={()=>openCloseModalDelete()}>Back</Button>
         </ModalFooter>
         </Modal>
