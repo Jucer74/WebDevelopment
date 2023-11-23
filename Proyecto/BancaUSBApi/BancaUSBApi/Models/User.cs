@@ -22,6 +22,5 @@ public partial class User
 
     public string Role { get; set; } = null!;
 
-    [JsonIgnore]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using BancaUSBApi.Models;
 using BancaUSBApi.Context;
+using BancaUSBApi.Dto;
 
 namespace BancaUSBApi.Controllers
 {
@@ -23,34 +24,65 @@ namespace BancaUSBApi.Controllers
 
         // GET: api/Products
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProducts()
         {
-          if (_context.Products == null)
-          {
-              return NotFound();
-          }
-            return await _context.Products.Include(u => u.Users).ToListAsync();
+            var products = await _context.Products
+                .Include(p => p.Users)
+                .ToListAsync();
+
+            if (products == null || !products.Any())
+            {
+                return NotFound();
+            }
+
+            var productDtos = products.Select(product => new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Users = product.Users.Select(user => new UserDto
+                {
+                    Id = user.Id,
+                    UserEmail = user.UserEmail,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Password = user.Password,
+                    Role = user.Role
+                }).ToList()
+            }).ToList();
+
+            return productDtos;
         }
 
         // GET: api/Products/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductDto>> GetProduct(int id)
         {
-          if (_context.Products == null)
-          {
-              return NotFound();
-          }
             var product = await _context.Products
                 .AsNoTracking()
-                .Include(u => u.Users)
-                .FirstOrDefaultAsync(u => u.Id == id);
+                .Include(p => p.Users)
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (product == null)
             {
                 return NotFound();
             }
 
-            return product;
+            var productDto = new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Users = product.Users.Select(user => new UserDto
+                {
+                    Id = user.Id,
+                    UserEmail = user.UserEmail,
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    Password = user.Password,
+                    Role = user.Role
+                }).ToList()
+            };
+
+            return productDto;
         }
 
 
@@ -126,11 +158,15 @@ namespace BancaUSBApi.Controllers
             {
                 return NotFound();
             }
-            var product = await _context.Products.FindAsync(id);
+            var product = await _context.Products.Include(u => u.Users).FirstOrDefaultAsync(u => u.Id == id);
             if (product == null)
             {
                 return NotFound();
             }
+
+            product.Users.Clear();
+            _context.Entry(product).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
 
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();

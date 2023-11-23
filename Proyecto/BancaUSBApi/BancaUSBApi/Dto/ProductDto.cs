@@ -10,8 +10,7 @@ namespace BancaUSBApi.Dto
 
         public string Name { get; set; } = null!;
 
-        [JsonIgnore]
-        public virtual ICollection<User> Users { get; set; } = new List<User>();
+        public virtual ICollection<UserDto> Users { get; set; } = new List<UserDto>();
 
 
     }

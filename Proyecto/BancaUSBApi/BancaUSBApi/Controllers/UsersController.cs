@@ -24,7 +24,7 @@ namespace BancaUSBApi.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
             var users = await _context.Users.Include(u => u.Products).ToListAsync();
 
@@ -33,27 +33,12 @@ namespace BancaUSBApi.Controllers
                 return NotFound();
             }
 
-            var userDtos = users.Select(user => new UserDto
-            {
-                Id = user.Id,
-                UserEmail = user.UserEmail,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Password = user.Password,
-                Role = user.Role,
-                Products = user.Products.Select(product => new ProductDto
-                {
-                    Id = product.Id,
-                    Name = product.Name
-                }).ToList()
-            }).ToList();
-
-            return userDtos;
+            return users;
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<UserDto>> GetUser(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
             var user = await _context.Users
                 .AsNoTracking()
@@ -65,25 +50,11 @@ namespace BancaUSBApi.Controllers
                 return NotFound();
             }
 
-            var userDto = new UserDto
-            {
-                Id = user.Id,
-                UserEmail = user.UserEmail,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Role = user.Role,
-                Products = user.Products.Select(product => new ProductDto
-                {
-                    Id = product.Id,
-                    Name = product.Name
-                }).ToList()
-            };
-
-            return userDto;
+            return user;
         }
 
         [HttpGet("{id}/Products")]
-        public async Task<ActionResult<IEnumerable<Product>>> GetProductsByUserId(int id)
+        public async Task<ActionResult<IEnumerable<ProductDto>>> GetProductsByUserId(int id)
         {
             var userProducts = await _context.Users
                 .Where(u => u.Id == id)
@@ -146,29 +117,30 @@ namespace BancaUSBApi.Controllers
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
 
-        // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            if (_context.Users == null)
-            {
-                return NotFound();
-            }
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.Include(u => u.Products).FirstOrDefaultAsync(u => u.Id == id);
             if (user == null)
             {
                 return NotFound();
             }
 
+            user.Products.Clear();
+            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            // Eliminar al usuario
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok("Usuario Borrado correctamente");
         }
 
 
-        [HttpPost("{userId}/AddProduct")]
-        public async Task<IActionResult> AddProductToUser(int userId, [FromBody] Product product)
+
+        [HttpPost("{userId}/UpdateProducts")]
+        public async Task<IActionResult> UpdateProducts(int userId, [FromBody] List<int> productIds)
         {
             var user = await _context.Users.Include(u => u.Products).FirstOrDefaultAsync(u => u.Id == userId);
 
@@ -177,19 +149,37 @@ namespace BancaUSBApi.Controllers
                 return NotFound("Usuario no encontrado");
             }
 
-            // Verifica si el producto ya está asociado al usuario
-            var existingProduct = user.Products.FirstOrDefault(p => p.Id == product.Id);
-            if (existingProduct != null)
+            // Obtener los productos existentes en la base de datos
+            var existingProducts = await _context.Products.Where(p => productIds.Contains(p.Id)).ToListAsync();
+
+            // Verificar si todos los productos existen en la base de datos
+            if (existingProducts.Count != productIds.Count)
             {
-                return BadRequest("El producto ya está asociado al usuario");
+                return NotFound("Algunos productos no existen en la base de datos");
             }
 
-            // Agrega el producto al usuario y guarda los cambios
-            user.Products.Add(product);
+            // Agregar los nuevos productos al usuario y eliminar los que no están en la lista
+            var userProductIds = user.Products.Select(p => p.Id).ToList();
+
+            foreach (var product in existingProducts)
+            {
+                if (!userProductIds.Contains(product.Id))
+                {
+                    user.Products.Add(product);
+                }
+            }
+
+            var productsToRemove = user.Products.Where(p => !existingProducts.Any(ep => ep.Id == p.Id)).ToList();
+            foreach (var productToRemove in productsToRemove)
+            {
+                user.Products.Remove(productToRemove);
+            }
+
             await _context.SaveChangesAsync();
 
-            return Ok("Producto añadido al usuario correctamente");
+            return Ok("Productos añadidos al usuario correctamente");
         }
+
 
 
         [HttpDelete("{userId}/RemoveProduct/{productId}")]

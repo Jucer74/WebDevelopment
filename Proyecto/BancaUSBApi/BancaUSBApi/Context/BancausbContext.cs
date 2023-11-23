@@ -18,6 +18,8 @@ public partial class BancausbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
 
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Product>(entity =>
@@ -50,11 +52,11 @@ public partial class BancausbContext : DbContext
                     "Userproduct",
                     r => r.HasOne<Product>().WithMany()
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("userproducts_ibfk_2"),
                     l => l.HasOne<User>().WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("userproducts_ibfk_1"),
                     j =>
                     {
