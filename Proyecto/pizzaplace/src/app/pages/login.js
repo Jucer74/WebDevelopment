@@ -1,11 +1,10 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-// import { useRouter } from 'next/router';
+import { useRouter } from 'next/router';
 
-
-import { useSelector } from 'react-redux';
+// import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../store/authSlice'
-// import { HandleLogin } from '../app/services/login';
+import { HandleLogin } from '../services/login';
 
 export default function Login() {
 
@@ -18,20 +17,22 @@ export default function Login() {
 
 
     useEffect(() => {
-        // if (!isLoading && !error) {
+        //if (!isLoading && !error) {
+        // if (!error){
             // router.push('/home');
-            console.log('Login successful:');
+        console.log('Login successful:');
         //}
-    })//, [isLoading, error]);
+    }) //, [isLoading, error];
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         // dispatch(login({ email, password }));
-        HandleLogin(email, password, dispatch);
+        HandleLogin(email, password);
     };
 
 
     return (
+
         <div className="flex items-center justify-center h-screen bg-bgOscuro">
             <div className="p-6 bg-white border border-pizzaRed rounded-lg shadow-lg">
                 <h2 className="mb-6 text-3xl font-bold text-center text-pizzaRed">PizzaPalace Login</h2>

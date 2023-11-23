@@ -1,10 +1,10 @@
 // export const config = { runtime: 'client' }
 "use client"
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 
-const HandleLogin = async (email, password, dispatch) => {
-    // const dispatch = useDispatch();
+const HandleLogin = async (email, password) => {
+    const dispatch = useDispatch();
     try {
         const response = await fetch('http://localhost:8000/users/login', {
             method: 'POST',

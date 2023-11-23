@@ -8,6 +8,7 @@
   },
   "include": [
     "./src/**/*",
-    "./src/app/store/cartreducer.js"
+    "./src/app/store/cartreducer.js",
+    "./src/app/store/*"
   ]
 }
