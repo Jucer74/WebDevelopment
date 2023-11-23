@@ -69,7 +69,8 @@ function Nav() {
       </div>
 
       <NavLink to="/contact" className="nav-item nav-link">Contact</NavLink>
-      <NavLink to="/rent" className="nav-item nav-link">Rent</NavLink>
+      {/* <NavLink to="/rent" className="nav-item nav-link">Rent</NavLink> */}
+
     </div>
   </div>
 </nav>
