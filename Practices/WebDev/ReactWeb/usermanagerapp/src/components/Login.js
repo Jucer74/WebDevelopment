@@ -6,7 +6,7 @@ import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 
-export const Login = ({ setLogoutUser }) => {
+export const CitasMedicasLogin = ({ setLogoutUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -38,12 +38,12 @@ export const Login = ({ setLogoutUser }) => {
 
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
-      <div className="login-container p-4 rounded bg-dark text-light">
-        <h2 className="text-center">RealEstate Login</h2>
+      <div className="login-container p-4 rounded" style={{ backgroundColor: "#2196F3", color: "white" }}>
+        <h2 className="text-center">Sanitas Login</h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <Form onSubmit={login}>
           <FormGroup className="mb-3">
-            <Label for="username" className="d-flex align-items-center">
+            <Label for="username" className="d-flex align-items-center" style={{ color: "white" }}>
               <FontAwesomeIcon icon={faUser} className="me-2" />
               Username
             </Label>
@@ -56,7 +56,7 @@ export const Login = ({ setLogoutUser }) => {
             />
           </FormGroup>
           <FormGroup className="mb-3">
-            <Label for="password" className="d-flex align-items-center">
+            <Label for="password" className="d-flex align-items-center" style={{ color: "white" }}>
               <FontAwesomeIcon icon={faLock} className="me-2" />
               Password
             </Label>
@@ -68,14 +68,15 @@ export const Login = ({ setLogoutUser }) => {
               required
             />
           </FormGroup>
-          <Button color="primary" type="submit" className="w-100">
+          <Button color="light" type="submit" className="w-100" style={{ backgroundColor: "#64B5F6", color: "white" }}>
             Login
           </Button>
         </Form>
-        <p className="text-center mt-3">
-          Don't have an account? <Link to="/register">Register</Link> yourself
+        <p className="text-center mt-3" style={{ color: "white" }}>
+          Don't have an account? <Link to="/register" style={{ color: "white", textDecoration: "underline" }}>Register</Link> yourself
         </p>
       </div>
     </div>
   );
 };
+
