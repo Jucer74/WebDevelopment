@@ -1,100 +1,170 @@
-// Bookings.js (o MyBookings.js)
 import React, { useState, useEffect } from 'react';
-import { Container, Button, Modal, Form, Card } from 'react-bootstrap';
 import axios from 'axios';
+import { Button, Container, Table, Form, Modal} from 'react-bootstrap';
+import { FontAwesomeIcon as Fas } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
+const baseUrl = "http://localhost:3001/bookings";
 
 const Bookings = () => {
   const [bookings, setBookings] = useState([]);
-  const [destinations, setDestinations] = useState([]);
-  const [currentClientId] = useState(1);
-  const [selectedDestination, setSelectedDestination] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [selectedBooking, setSelectedBooking] = useState(null);
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:3001/bookings`)
-      .then(response => {
+    axios
+      .get(baseUrl)
+      .then((response) => {
         setBookings(response.data);
       })
-      .catch(error => {
-        console.error('Error fetching bookings:', error);
+      .catch((error) => {
+        console.log(error);
       });
-
-  
-    axios.get('http://localhost:3001/destinations')
-      .then(response => {
-        setDestinations(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching destinations:', error);
-      });
-  }, [currentClientId]);
+  }, []);
 
   const handleShowModal = () => setShowModal(true);
-  const handleCloseModal = () => setShowModal(false);
-
-  const reserveDestination = () => {
-   
-    handleCloseModal();
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setSelectedBooking(null);
+    setFormData({});
   };
+
+  const handleEditBooking = (booking) => {
+    if (booking && booking.Destination) {
+      setSelectedBooking(booking);
+      setFormData({
+        City: booking.Destination.City,
+        DestinationType: booking.Destination.DestinationType,
+      });
+      handleShowModal();
+    } else {
+     
+      console.error('Booking o Destination es undefined');
+    }
+  };
+  
+
+  const handleDeleteBooking = (bookingId) => {
+    axios
+      .delete(`${baseUrl}/${bookingId}`)
+      .then(() => {
+        setBookings(bookings.filter((booking) => booking.id !== bookingId));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const reserveDestination = async () => {
+    if (!selectedBooking) {
+    
+      await axios.post('http://localhost:3001/bookings', selectedBooking)
+        .then(response => {
+          setBookings([...bookings, response.data]); 
+          handleCloseModal();
+        })
+        .catch(error => {
+          console.error('Error creando reserva:', error);
+        });
+    } else {
+      
+      await axios.put(`http://localhost:3001/bookings/${selectedBooking.id}`, selectedBooking)
+        .then(response => {
+          const updatedBookings = bookings.map(booking =>
+            booking.id === selectedBooking.id ? response.data : booking
+          );
+          setBookings(updatedBookings);
+          handleCloseModal();
+        })
+        .catch(error => {
+          console.error('Error editando reserva:', error);
+        });
+    }
+  };
+  
 
   return (
     <Container className="text-center text-md-left">
-      <h1>My Bookings</h1>
-      <Button variant="primary" onClick={handleShowModal}>
-        Reservar Destino
-      </Button>
-
-      <div className="mt-4">
-        {bookings.map((booking, index) => (
-          <Card key={index} className="mb-2">
-            <Card.Body>
-              <Card.Title>{booking.DestinationName}</Card.Title>
-              <Card.Text>
-                <p>{booking.Description}</p>
-                <p>Ciudad: {booking.City}</p>
-                <p>País: {booking.Country}</p>
-                <p>Cantidad: ${booking.Amount}</p>
-                <p>Tipo: {booking.DestinationType}</p>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
-
+      <h1>Mis reservas</h1>
+      <p>
+        <Button
+          className="left"
+          variant="success btn-sm"
+          onClick={() => {
+            setSelectedBooking(null);
+            handleShowModal();
+          }}
+        >
+          {" "}
+          <Fas icon={faPlus} /> Nueva Reserva
+        </Button>
+      </p>
+      <Table id="BookingsTable">
+        <thead>
+          <tr>
+            <th>Destino</th>
+            <th>Ciudad</th>
+            <th>País</th>
+            <th>Cantidad</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {bookings.map((booking) => (
+            <tr key={booking.id}>
+              <td>{booking.DestinationName}</td>
+              <td>{booking.City}</td>
+              <td>{booking.Country}</td>
+              <td>${booking.Amount}</td>
+              <td>{booking.DestinationType}</td>
+              <td>
+                <Button variant="outline-primary" onClick={() => handleEditBooking(booking)}>
+                  Editar
+                </Button>{"  "}
+                <Button variant="outline-danger" onClick={() => handleDeleteBooking(booking.id)}>
+                  Eliminar
+                </Button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Reservar Destino</Modal.Title>
+          <Modal.Title>{selectedBooking ? 'Editar Reserva' : 'Reservar Destino'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group controlId="formDestination">
-              <Form.Label>Selecciona un destino:</Form.Label>
+            <Form.Group controlId="formCity">
+              <Form.Label>Ciudad</Form.Label>
               <Form.Control
-                as="select"
-                onChange={(e) => setSelectedDestination(destinations.find(dest => dest.id === parseInt(e.target.value)))}
-              >
-                <option value="">Selecciona un destino...</option>
-                {destinations.map(dest => (
-                  <option key={dest.id} value={dest.id}>{dest.DestinationName}</option>
-                ))}
-              </Form.Control>
+                type="text"
+                placeholder="Ingrese la ciudad"
+                name="City"
+                value={formData.City || ''}
+                onChange={(e) => setFormData({ ...formData, City: e.target.value })}
+              />
             </Form.Group>
-            {selectedDestination && (
-              <div>
-                <p>Detalles del destino:</p>
-                <p>{selectedDestination.Description}</p>
-                <p>City: {selectedDestination.City}, Country: {selectedDestination.Country}</p>
-                <p>Amount: ${selectedDestination.Amount}</p>
-              </div>
-            )}
+            <Form.Group controlId="formDestinationType">
+              <Form.Label>Tipo de Destino</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Ingrese el tipo de destino"
+                name="DestinationType"
+                value={formData.DestinationType || ''}
+                onChange={(e) => setFormData({ ...formData, DestinationType: e.target.value })}
+              />
+            </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseModal}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={reserveDestination} disabled={!selectedDestination}>
-            Reservar
+          <Button variant="primary" onClick={reserveDestination}>
+            {selectedBooking ? 'Guardar Cambios' : 'Reservar'}
           </Button>
         </Modal.Footer>
       </Modal>

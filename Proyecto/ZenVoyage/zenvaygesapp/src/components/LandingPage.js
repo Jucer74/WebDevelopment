@@ -48,7 +48,7 @@ const LandingPage = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="imagen4.jpg"
+            src="imagen3.jpg"
             alt="Tercera imagen"
           />
           <Carousel.Caption>

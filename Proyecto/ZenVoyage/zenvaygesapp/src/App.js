@@ -5,12 +5,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
 import { NoMatch } from './components/NoMatch';
 import LandingPage from './components/LandingPage';
-import { Login } from './components/Login';
+import Login from './components/Login';
 import Users from './components/Users';
-import { Clients } from './components/Clients';
+import Clients from './components/Clients';
 import Destinations from './components/Destinations';
 import Bookings from './components/Bookings';
 import { NavigationBar } from './components/NavigationBar';
+import BookingConfirmation from './components/BookingConfirmation';
+import ContactUs from './components/ContactUs';
+import Register from './components/Register';
+
 
 function App() {
   return (
@@ -26,6 +30,9 @@ function App() {
               <Route path="/Clients" element={<Clients/>} />
               <Route path="/Destinations" element={<Destinations/>} />
               <Route path="/Bookings" element={<Bookings/>} />
+              <Route path="/BookingConfirmation" element={<BookingConfirmation/>} />
+              <Route path="/ContactUs" element={<ContactUs/>} />
+              <Route path="/Register" element={<Register/>} />
               <Route path="/Login" element={<Login/>} />
               <Route element={<NoMatch/>} />
             </Routes>
