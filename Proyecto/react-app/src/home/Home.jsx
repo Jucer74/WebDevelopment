@@ -84,10 +84,10 @@ function Home() {
 
           />
           <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardTitle>Toyota Camry Red</MDBCardTitle>
             <MDBCardText>
-              This is a longer card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.
+            The Toyota Camry is a mid-size car manufactured by the Japanese company Toyota. 
+            First introduced in 1982, the Camry has gone through several generations and has become one of the best-selling cars worldwide.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -100,10 +100,10 @@ function Home() {
             position='top'
           />
           <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardTitle>Toyota Camry White</MDBCardTitle>
             <MDBCardText>
-              This is a longer card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.
+            The Toyota Camry is a mid-size car manufactured by the Japanese company Toyota. 
+            First introduced in 1982, the Camry has gone through several generations and has become one of the best-selling cars worldwide.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -116,10 +116,10 @@ function Home() {
             position='top'
           />
           <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardTitle>BMW</MDBCardTitle>
             <MDBCardText>
-              This is a longer card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.
+              BMW, which stands for Bayerische Motoren Werke AG (Bavarian Motor Works in English), 
+              is a German multinational company that produces luxury vehicles and motorcycles.The company was founded in 1916 and has its headquarters in Munich, Germany.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -132,10 +132,10 @@ function Home() {
             position='top'
           />
           <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardTitle>Mercedes-Benz</MDBCardTitle>
             <MDBCardText>
-              This is a longer card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.
+            Mercedes-Benz is a German global automobile marque and a division of Daimler AG.
+            The brand is synonymous with high-quality craftsmanship, cutting-edge technology, and a focus on comfort and innovation.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -148,10 +148,10 @@ function Home() {
             position='top'
           />
           <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardTitle>Nissan</MDBCardTitle>
             <MDBCardText>
-              This is a longer card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.
+            Nissan Motor Co., Ltd. is a Japanese multinational automobile manufacturer. 
+            It is one of the largest automakers in the world and is part of the Renault–Nissan–Mitsubishi Alliance. Nissan's headquarters are located in Yokohama, Japan.
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
@@ -164,10 +164,10 @@ function Home() {
             position='top'
           />
           <MDBCardBody>
-            <MDBCardTitle>Card title</MDBCardTitle>
+            <MDBCardTitle>Toyota Camry S (Sport)</MDBCardTitle>
             <MDBCardText>
-              This is a longer card with supporting text below as a natural lead-in to additional content.
-              This content is a little bit longer.
+            The Toyota Camry S, a dynamic fusion of elegance and speed that transforms your driving experience into an exhilarating journey. 
+            this sporty sedan redefines the classic Camry with a touch of adrenaline..
             </MDBCardText>
           </MDBCardBody>
         </MDBCard>
