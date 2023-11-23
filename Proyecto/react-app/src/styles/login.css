@@ -1,0 +1,13 @@
+
+
+  h4{
+    font-size: 50px;
+  }
+
+  /* En tu hoja de estilos CSS */
+.btn-custom-color {
+    background-color: #2e2b2b; /* Puedes ajustar este color a tu preferencia */
+    color: #ffffff; /* Puedes ajustar este color al texto del botón */
+    /* Otros estilos que desees agregar */
+  }
+  

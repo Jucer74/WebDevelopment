@@ -1,0 +1,2 @@
+createSlice: Permite definir reductores y acciones en un solo lugar, 
+de manera más concisa y en el index.js  se encuentra el configureStore
