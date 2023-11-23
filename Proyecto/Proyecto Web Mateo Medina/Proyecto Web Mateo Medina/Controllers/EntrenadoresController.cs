@@ -6,10 +6,10 @@ namespace Proyecto_Web_Mateo_Medina.Controllers
 {
     public class EntrenadoresController : Controller
     {
-        private static List<Entrenador> listaEntrenadores = new List<Entrenador>
+        private static List<EntrenadorModel> listaEntrenadores = new List<EntrenadorModel>
     {
-        new Entrenador { FirstName = "Juan", LastName = "Pérez" },
-        new Entrenador { FirstName = "María", LastName = "Gómez" },
+        new EntrenadorModel { FirstName = "Juan", LastName = "Pérez" },
+        new EntrenadorModel { FirstName = "María", LastName = "Gómez" },
         // Puedes agregar más entrenadores aquí...
     };
         // GET: EntrenadoresController
