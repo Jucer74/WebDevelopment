@@ -99,7 +99,7 @@ namespace Proyecto_Web_Mateo_Medina.Controllers
                 if (usuariosRegistrados.Any(u => u.UserEmail == newUser.UserEmail))
                 {
                     ViewBag.Error = "El correo electrónico ya está registrado.";
-                    return View();
+                    return View("Index");
                 }
 
                 // Agregar nuevo usuario a la lista de usuarios registrados
