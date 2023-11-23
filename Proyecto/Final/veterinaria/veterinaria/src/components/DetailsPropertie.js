@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Container, Card, Button } from "react-bootstrap";
-import Casa2 from "../img/OIP.jpg";
+import Casa2 from "../img/Logo.png";
 import { useNavigate } from "react-router-dom";
 
 export const DetailsPropertie = () => {

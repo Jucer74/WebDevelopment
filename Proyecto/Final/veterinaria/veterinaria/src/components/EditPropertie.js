@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import Casa from "../img/casa.jpg";
+import Casa from "../img/Logo.png";
 
 const EditPropertie = () => {
   const [precio, setPrecio] = useState(0);

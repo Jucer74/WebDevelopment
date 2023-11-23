@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import Casa from "../img/casa.jpg";
+import Casa from "../img/Logo.png";
 
 export const CreatePropertie = () => {
   const [precio, setPrecio] = useState('');

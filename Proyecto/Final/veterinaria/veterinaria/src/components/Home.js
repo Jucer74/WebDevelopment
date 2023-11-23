@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, Container, Card, Button, Row, Col } from "react-bootstrap";
 import "../css/Home.css";
-import Casa2 from "../img/OIP.jpg";
+import Casa2 from "../img/RebajasNavidad.jpg";
+import Casa3 from "../img/QuienesSomos.jpg";
+import Casa4 from "../img/Funebres.png";
 
 export const Home = () => {
   const [properties, setProperties] = useState([]);
@@ -34,7 +36,7 @@ export const Home = () => {
 
   return (
     <Container className="container">
-      <h1>Home</h1>
+      <h1>Principal</h1>
 
       <Carousel indicators={false} slide={true}>
         {[...Array(Math.ceil(properties.length / 3))].map((_, rowIndex) => (
@@ -63,14 +65,44 @@ export const Home = () => {
                           </Button>
                         </Card.Body>
                       </Card>
+                      
                     )}
                   </Col>
+                  
                 );
               })}
             </Row>
           </Carousel.Item>
         ))}
       </Carousel>
+      <Card style={{ width: "40rem" }}>
+                        <Card.Img variant="top" src={Casa3} />
+                        <Card.Body>
+                          <Card.Title> Quienes Somos: </Card.Title>
+                          <Card.Text>
+                          <br />
+                            Somos una empresa dedicada al cuidado de las mascotas
+                            que lleva en el mercado desde el año 2002 
+                            trabajando en pro del bienestar de cada mascota.
+                            Ofrecemos todo tipo de servicios especializados y de la mejor calidad. <br />
+                            <br />
+                            Siempre pensando en la salud y el bienestar de las mascota 
+                            y en la tranquilidad de nuestros usuarios.
+                            En nuestra tienda para mascotas, encontrarás todo tipo de accesorios 
+                            y utilidades que te podrán facilitar la vida con tu mascota 
+                            y a su vez mejorar su salud y estado de ánimo.
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
+                      <Card style={{ width: "40rem" }}>
+                        <Card.Img variant="top" src={Casa4} />
+                        <Card.Body>
+                          <Card.Title> Proximamente </Card.Title>
+                          <Card.Text>
+                            Servicio Exequial para tu amigo
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
     </Container>
   );
 };

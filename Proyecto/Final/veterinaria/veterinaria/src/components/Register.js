@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import YourImage from "../img/Portada.jpg";
+import YourImage from "../img/Logo.png";
 import "../css/Register.css"; 
 
 export const Register = () => {
@@ -77,7 +77,7 @@ export const Register = () => {
         </div>
         <div className="form__right">
           <div className="form__padding-right">
-            <h1 className="form__title">Register</h1>
+            <h1 className="form__title">¡REGISTRATE!</h1>
             <input
               type="text"
               placeholder="Email"

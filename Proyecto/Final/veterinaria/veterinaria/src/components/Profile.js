@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Button, Row, Col } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import YourImage from "../img/R.png";
-import Casa from "../img/casa.jpg";
+import YourImage from "../img/Persona.jpg";
+import Casa from "../img/Producto.jpg";
 import "../css/Profile.css"; 
 
 export const Profile = () => {

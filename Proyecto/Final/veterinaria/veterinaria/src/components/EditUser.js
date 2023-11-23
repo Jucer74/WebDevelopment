@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import UserProfileImage from '../img/R.png';
+import UserProfileImage from '../img/Persona.jpg';
 
 export const EditUser = () => {
   const [nombre, setNombre] = useState('');
