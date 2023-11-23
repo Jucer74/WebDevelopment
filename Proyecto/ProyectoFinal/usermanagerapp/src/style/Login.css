@@ -1,0 +1,17 @@
+/* Login.css */
+
+.login-container {
+    background-color: #28a745; /* Color verde de la barra de navegación */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login-form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+  }
+  

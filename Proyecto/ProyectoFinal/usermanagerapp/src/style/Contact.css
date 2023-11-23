@@ -1,0 +1,31 @@
+/* Contact.css */
+
+.contact-page-container {
+  margin: 50px auto;
+  max-width: 600px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+}
+
+form {
+  margin-top: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  resize: vertical; /* Permite cambiar la altura verticalmente */
+}
+
+button {
+  margin-top: 10px;
+}

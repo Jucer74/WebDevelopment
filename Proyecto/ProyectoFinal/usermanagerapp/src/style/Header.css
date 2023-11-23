@@ -1,0 +1,75 @@
+/* NavigationBar.css */
+
+/* Estilos generales */
+.typesimple {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #2ecc71; /* Barra verde principal */
+    color: #ecf0f1; /* Texto en fondo oscuro */
+    font-family: 'Kaushan Script', cursive; /* Cambia la fuente a cursiva */
+  }
+  
+  /* Estilos del logo y nombre de la marca */
+  .brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  /* Estilos del nombre de la marca */
+  .brandname {
+    font-size: 1.5rem;
+    font-weight: bold;
+    animation: fadeInDown 1s ease-in-out;
+  }
+  
+  /* Define la animación fadeInDown */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Estilos para la navegación */
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    font-family: 'Kaushan Script', cursive; /* Cambia la fuente a cursiva */
+  }
+  
+  .nav-link {
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  .nav-link:hover {
+    color: #215c2f; /* Resalta al pasar el mouse */
+  }
+  
+  /* Estilos para los botones */
+  .button1,
+  .button2 {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e9edf0; /* Borde azul */
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Kaushan Script', cursive; /* Cambia la fuente a cursiva */
+  }
+  
+  .button1:hover,
+  .button2:hover {
+    background-color: #215c2f; /* Resalta al pasar el mouse */
+    color: #ecf0f1; /* Texto en fondo oscuro */
+  }
