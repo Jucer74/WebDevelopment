@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registrar</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <style>
+     body {
+            background-color: #000000; 
+            background-image: url('./images/home\ studio\ back.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    
+    .btn-primary {
+        background-color: #000000;
+        border-color: #0CF25D;
+    }
+</style>
+
+</head>
+<body class="bg-black d-flex justify-content-center align-items-center vh-100">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+   <div class="container">
+    <div class="bg-white p-3 rounded-3 text-secondary">
+      <form class="row g-3 mt-3">
+
+        <div class="col-6">
+          <label for="email-user" class="form-label">Email o User</label>
+          <input type="email" class="form-control" id="email-user" placeholder="Escribe tu Email O User"/>
+
+        </div>
+        <div class="col-6">
+          <label for="inputpass" class="form-label" >contraseña</label>
+          <input type="password" class="form-control" id="inputpass" placeholder="escribe tu contraseña"/>
+
+        </div>
+
+        <div class="col-6">
+          <label for="inputname" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="inputname" placeholder="Nombre" />
+
+        </div>
+        <div class="col-6">
+          <label for="inputlastname" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="inputlastname" placeholder="Apellido" />
+
+        </div>
+        
+        <div class="col-6">
+          <label for="borninput" class="form-label">Fecha de nacimiento</label>
+          <input type="date" name="" class="form-control" id="borninput"/>
+        </div>
+
+        <div class="col-3 gender-details">
+        
+         <span class="gender-title">Gender</span>
+         <div class="category">
+          <label for="">
+            <input type="radio" name="gender">
+            <span class="dot one"></span>
+            <span class="gender">Masculino</span>
+          </label>
+
+          <label for="">
+            <input type="radio" name="gender">
+            <span class="dot one"></span>
+            <span class="gender">Femenino</span>
+          </label>
+
+          <label for="">
+            <input type="radio" name="gender">
+            <span class="dot one"></span>
+            <span class="gender">Prefiero no decirlo</span>
+          </label>
+
+         </div>
+        </div>
+
+        
+
+        <div class="col-12">
+          <div class="form-check">
+            <input type="checkbox" id="checkterms" class="form-check-input">
+            <label for="checkterms">acepto los terminos</label>
+
+          </div>
+        </div>
+
+        <div class="col-2">
+          <button type="submit" id="Aceptar" class="btn btn btn-primary" onclick="register()">Aceptar</button>
+
+        </div>
+    
+        <div class="my-3">
+          <span><a href="login.html">Volver al login</a></span>
+         
+      </div>
+
+      </form>
+
+    </div>
+   </div>
+<script src="./valid.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+</body>
+</html>
