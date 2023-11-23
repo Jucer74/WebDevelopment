@@ -1,0 +1,7 @@
+.custom-container-style {
+    width: 80%; /* Personaliza el ancho según tus necesidades */
+    max-width: 1200px; /* Establece un ancho máximo si lo deseas */
+    margin-left: auto; /* Centra el contenedor horizontalmente */
+    margin-right: auto;
+    /* Puedes agregar más estilos según sea necesario */
+  }

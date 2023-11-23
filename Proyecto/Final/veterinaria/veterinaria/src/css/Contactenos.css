@@ -1,0 +1,106 @@
+/* Importación de fuentes de google fonts */
+@import url(https://fonts.googleapis.com/css?family=Noto+Sans);
+
+body {
+  height: 100%;
+  font-family: 'Noto Sans', sans-serif;
+  background-color: #A67B5B;
+}
+
+.contact_form {
+  max-width: 600px; /* Adjust the max-width based on your design */
+  width: 80%;
+  margin: 80px auto;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #fbfbfb;
+  position: relative;
+}
+
+/* Nuevo estilo para el contenedor del mapa */
+.contact_form iframe {
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+input,
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  float: center;
+}
+
+button {
+  height: 45px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  background-color: #ab4493;
+  border-color: #ab4493;
+  border-style: solid;
+  border-radius: 10px;
+  width: 100%;
+  cursor: pointer;
+}
+
+button p {
+  color: #fff;
+}
+
+.aviso {
+  font-size: 13px;
+  color: #0e0e0e;
+}
+
+h1 {
+  font-size: 39px;
+  text-align: left;
+  padding-bottom: 20px;
+  color: #ab4493;
+}
+
+h3 {
+  font-size: 16px;
+  padding-bottom: 30px;
+  color: #0e0e0e;
+}
+
+p {
+  font-size: 14px;
+  color: #0e0e0e;
+}
+
+::-webkit-input-placeholder {
+  color: #a8a8a8;
+}
+
+::-webkit-textarea-placeholder {
+  color: #a8a8a8;
+}
+
+.formulario input:focus {
+  outline: 0;
+  border: 1px solid #97d848;
+}
+
+.formulario textarea:focus {
+  outline: 0;
+  border: 1px solid #97d848;
+}
+
+/* Add media queries for responsive adjustments */
+@media (max-width: 600px) {
+  /* Adjust styles for screens smaller than 600px */
+  .contact_form {
+    padding: 20px;
+  }
+  
+  button {
+    width: 100%;
+  }
+}
