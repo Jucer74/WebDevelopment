@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Registrarse";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Utiliza un layout común si lo tienes
+}
+
+<div class="container">
+    <h2>Registrarse</h2>
+    @if (!string.IsNullOrEmpty(ViewBag.Error))
+    {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+    }
+    @if (!string.IsNullOrEmpty(ViewBag.Success))
+    {
+            <div class="alert alert-success">@ViewBag.Success</div>
+    }
+    <form method="post" action="@Url.Action("Registro", "Usuario")">
+        <div class="form-group">
+            <label for="userEmail">Correo electrónico:</label>
+            <input type="email" class="form-control" id="userEmail" name="userEmail" required>
+        </div>
+        <div class="form-group">
+            <label for="firstName">Nombre:</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" required>
+        </div>
+        <div class="form-group">
+            <label for="lastName">Apellido:</label>
+            <input type="text" class="form-control" id="lastName" name="lastName" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Contraseña:</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label for="confirmPassword">Confirmar Contraseña:</label>
+            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrarse</button>
+    </form>
+</div>

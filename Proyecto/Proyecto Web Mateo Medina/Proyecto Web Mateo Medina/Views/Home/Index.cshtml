@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Principal</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Página Principal</h1>
+        
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title text-center">Iniciar Sesión</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Formulario de inicio de sesión -->
+                        <form id="loginForm" action="@Url.Action("Login", "Users")" method="post">
+                            <div class="form-group">
+                                <label for="loginEmail">Correo electrónico:</label>
+                                <input type="email" class="form-control" id="loginEmail" name="userEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Contraseña:</label>
+                                <input type="password" class="form-control" id="loginPassword" name="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                        </form>
+                        <hr>
+                        <p class="text-center">¿Aún no tienes cuenta? <a href="#registro" data-toggle="modal" data-target="#registroModal">Regístrate aquí</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Registro -->
+    <div class="modal fade" id="registroModal" tabindex="-1" role="dialog" aria-labelledby="registroModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registroModalLabel">Registro</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario de registro -->
+                    <form id="registroForm" action="@Url.Action("Registro", "Users")" method="post">
+                        <div class="form-group">
+                            <label for="registroEmail">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="registroEmail" name="userEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registroNombre">Nombre:</label>
+                            <input type="text" class="form-control" id="registroNombre" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registroApellido">Apellido:</label>
+                            <input type="text" class="form-control" id="registroApellido" name="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registroPassword">Contraseña:</label>
+                            <input type="password" class="form-control" id="registroPassword" name="password" required>
+                        </div>
+                        <button type="submit" class="btn btn-success btn-block">Registrarse</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
