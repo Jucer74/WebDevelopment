@@ -39,7 +39,6 @@ function App() {
     <div className="App">
       <React.Fragment>
         <LandingPage />
-        <Layout>
           <Router>
             <Routes>
               <Route exact path="/" element={<Register/>} />
@@ -49,7 +48,6 @@ function App() {
               <Route element={<NoMatch/>} /> */}
             </Routes>
           </Router>
-        </Layout>
       </React.Fragment>
     </div>
   );
