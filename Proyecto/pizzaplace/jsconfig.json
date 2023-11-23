@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@store/*": ["./src/app/store/*"]
+    }
+  },
+  "include": [
+    "./src/**/*",
+    "./src/app/store/cartreducer.js"
+  ]
+}

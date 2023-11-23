@@ -32,7 +32,7 @@ class PizzaResponseDTO(BaseModel):
     description: Optional[str] = None
     price: float
     images: Optional[List[str]] = []
-    ingredients: Optional[List[str]] = [] 
+    ingredients: Optional[List[str | int]] = [] 
 
     class Config:
         orm_mode = True

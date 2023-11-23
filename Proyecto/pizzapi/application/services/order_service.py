@@ -1,6 +1,7 @@
 from typing import List
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
+from domain.models.order import Order
 from domain.schemas import PizzaModel, UserModel, OrderModel
 from application.dtos.order_dto import OrderCreateDTO, OrderResponseDTO, OrderUpdateDTO
 from domain.interfaces.order_interface import OrderInterface
@@ -45,16 +46,18 @@ class OrderService:
     def get_order_by_id(self, db: Session, order_id: int) -> OrderModel:
         return self.order_repository.get(db, order_id)
     
-    def update_order(self, db: Session, order_id: int, order_data: OrderUpdateDTO) -> OrderModel:
-        order = self.order_repository.get(db, order_id)
+    
+    def update_order(self, db: Session, order_id: int, order_data: OrderModel) -> Order:
+        order = self.get_order_by_id(db, order_id)
+        #self.order_repository.get(db, order_id)
         if not order:
             return None
         
-        for k,v in order_data.model_dump(exclude_unset=True).items():
-            setattr(order, k, v)
+        #for k,v in order_data.model_dump(exclude_unset=True).items():
+        #   setattr(order, k, v)
             
-        self.order_repository.update(db, order)
-        return order
+        updated = self.order_repository.update(db, order_data)
+        return updated
     
 
     def delete_order(self, db: Session, order_id: int) -> bool:

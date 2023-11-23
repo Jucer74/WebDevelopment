@@ -11,6 +11,7 @@ class UserModel(Base):
     name = Column(String(50), nullable = False)
     last_name = Column(String(50), nullable = False)
     email = Column(String(50), unique=True, index=True, nullable = False)
+    # password = Column(String(255), nullable = False)
     hashed_password = Column(String(255), nullable = False)
     is_active = Column(Boolean, default=True)
     phone = Column(String(50), nullable = True)
@@ -71,6 +72,10 @@ class OrderModel(Base):
 class Config:
     orm_mode = True
     from_attributes = True
+
+
+
+
 
 
                     

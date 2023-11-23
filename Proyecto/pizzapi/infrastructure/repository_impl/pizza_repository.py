@@ -38,7 +38,7 @@ class PizzaRepositoryImpl(PizzaInterface):
         return self.db.query(PizzaModel).filter(PizzaModel.id == pizza_id).first().images
     
 
-    def update_pizza(self, db: Session, updated_pizza: PizzaUpdateDTO) -> PizzaModel:
+    def update_pizza(self, db: Session, updated_pizza: PizzaModel) -> PizzaModel:
         pizza = self.db.query(PizzaModel).filter(PizzaModel.id == updated_pizza.id).first()
 
         if not pizza:

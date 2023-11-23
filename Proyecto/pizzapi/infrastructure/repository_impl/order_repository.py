@@ -14,7 +14,7 @@ class OrderRepositoryImpl(OrderInterface):
         return db.query(OrderModel).all()
     
 
-    def create(self, db: Session, order: OrderModel) -> OrderResponseDTO:
+    def create(self, db: Session, order: OrderModel) -> OrderModel:
         self.db.add(order)
         self.db.commit()
         self.db.refresh(order)
@@ -24,15 +24,15 @@ class OrderRepositoryImpl(OrderInterface):
     # quise probar otra notacion a ver
     # como cambia la legibilidad
 
-    def get(self, db: Session, order_id: int) -> OrderResponseDTO:
-        return db.query(OrderResponseDTO).filter(OrderResponseDTO.id == order_id).first()
+    def get(self, db: Session, order_id: int) -> OrderModel:
+        return db.query(OrderModel).filter(OrderModel.id == order_id).first()
     
 
-    def get_orders_by_user_id(self, db: Session, user_id: int) -> List[OrderResponseDTO]:
-        return db.query(OrderModel).filter(OrderResponseDTO.user_id == user_id).all()
+    def get_orders_by_user_id(self, db: Session, user_id: int) -> List[OrderModel]:
+        return db.query(OrderModel).filter(OrderModel.user_id == user_id).all()
     
 
-    def update(self, db: Session, order: OrderUpdateDTO) -> OrderResponseDTO:
+    def update(self, db: Session, order: OrderModel) -> OrderModel:
         order = db.query(OrderModel).filter(OrderModel.id == order.id).first()
 
         if not order:

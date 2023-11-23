@@ -12,3 +12,4 @@ mysql-connector-python
 pymysql
 mariadb
 aiomysql
+pyjwt

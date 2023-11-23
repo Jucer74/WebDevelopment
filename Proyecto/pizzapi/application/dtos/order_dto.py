@@ -24,6 +24,8 @@ class OrderCreateDTO(BaseModel):
 
 
 class OrderUpdateDTO(BaseModel):
+    id: Optional[int] = None
+    user_id: Optional[int] = None
     status: Optional[StatusOrder] = None
     updated_at: Optional[datetime] = datetime.now()
     phone: Optional[str] = None
