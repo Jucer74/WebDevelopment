@@ -195,7 +195,7 @@ export function Products() {
       </Modal>
 
       {/* Update */}
-      <Modal isOpen={showModalUpdate}>
+      <Modal isOpen={showModalUpdate } centered>
         <ModalHeader>Edit User</ModalHeader>
         <ModalBody>
           <Form>
@@ -234,19 +234,15 @@ export function Products() {
       </Modal>
 
         {/* Delete */}
-        <Modal isOpen={showModalDelete}>
+        <Modal isOpen={showModalDelete} centered>
         <ModalHeader>Are you sure to delete this user?</ModalHeader>
         <ModalBody>
             <Form>
             <Form.Group>
                 <Form.Label><b>Id:</b></Form.Label>
                 <Form.Label>{currentProduct && currentProduct.id}</Form.Label><br/>
-                <Form.Label><b>Email:</b></Form.Label>
-                <Form.Label>{currentProduct && currentProduct.email}</Form.Label><br/>
                 <Form.Label><b>Name:</b></Form.Label>
                 <Form.Label>{currentProduct && currentProduct.name}</Form.Label><br/>
-                <Form.Label><b>Username:</b></Form.Label>
-                <Form.Label>{currentProduct && currentProduct.username}</Form.Label><br/>
             </Form.Group>
             </Form>
         </ModalBody>

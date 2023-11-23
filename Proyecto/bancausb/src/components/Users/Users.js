@@ -34,9 +34,6 @@ export function Users() {
     });
   };
 
-
-
-  
   const [availableProducts, setAvailableProducts] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState([]);
 
@@ -57,6 +54,9 @@ export function Users() {
     });
   };
 
+
+  
+
   const [showModalCreate, setShowModalCreate] = useState(false);
   const openCloseModalCreate = () => {
     clearUserData();
@@ -67,7 +67,7 @@ export function Users() {
     try {
       console.log(userId, products);
       const response = await axios.post(
-        `https://localhost:5001/api/Users/${userId}/AddProducts`,
+        `https://localhost:5001/api/Users/${userId}/UpdateProducts`,
         products
       );
       GetUsers();
@@ -77,7 +77,6 @@ export function Users() {
       throw error; // Maneja el error según tu lógica en el frontend
     }
   };
-
   const GetUsers = async () => {
     await axios
       .get(baseUrlUser)
@@ -144,7 +143,7 @@ export function Users() {
   };
 
   const putUser = async () => {
-    console.log(currentUser.products)
+    console.log(currentUser.products);
     await axios
       .put(baseUrlUser + "/" + currentUser.id, currentUser)
       .then((response) => {
@@ -161,7 +160,10 @@ export function Users() {
         });
         GetUsers();
         openCloseModalUpdate();
-        addUserProduct(currentUser.id, currentUser.products.map(p=>p.id));
+        addUserProduct(
+          currentUser.id,
+          currentUser.products.map((p) => p.id)
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -192,6 +194,24 @@ export function Users() {
       });
   };
 
+  const toggleProductSelection = (productId) => {
+    const isSelected = currentUser.products.some((p) => p.id === productId);
+    let updatedProducts;
+  
+    if (isSelected) {
+      updatedProducts = currentUser.products.filter((p) => p.id !== productId);
+    } else {
+      const selectedProduct = availableProducts.find((p) => p.id === productId);
+      updatedProducts = [...currentUser.products, selectedProduct];
+    }
+  
+    setCurrentUser({
+      ...currentUser,
+      products: updatedProducts,
+    });
+  };
+  
+  
   return (
     <div className=" crud-container m-5 justify-content-between">
       <div className="row col-10 d-flex justify-content-between align-items-center m-auto p-1">
@@ -286,6 +306,7 @@ export function Users() {
                     placeholder="username@domain.com"
                     value={currentUser.userEmail}
                     onChange={handleChange}
+                    required
                   />
                 </Form.Group>
                 <Form.Group>
@@ -296,6 +317,7 @@ export function Users() {
                     placeholder="Julio"
                     value={currentUser.firstName}
                     onChange={handleChange}
+                    required
                   />
                 </Form.Group>
                 <Form.Group>
@@ -306,6 +328,7 @@ export function Users() {
                     placeholder="Robles"
                     value={currentUser.lastName}
                     onChange={handleChange}
+                    required
                   />
                 </Form.Group>
                 <Form.Group>
@@ -315,6 +338,7 @@ export function Users() {
                     name="password"
                     value={currentUser.password}
                     onChange={handleChange}
+                    required
                   />
                 </Form.Group>
                 <Form.Group>
@@ -325,6 +349,7 @@ export function Users() {
                     value={currentUser.role}
                     onChange={handleChange}
                   >
+                    <option value="">Seleccionar rol</option>
                     <option value="cliente">Cliente</option>
                     <option value="administrador">Administrador</option>
                   </Form.Control>
@@ -365,7 +390,7 @@ export function Users() {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button variant="primary" onClick={() => postUser()}>
+          <Button variant="primary" type="submit" onClick={() => postUser()}>
             Create
           </Button>
           <Button variant="outline-info" onClick={() => openCloseModalCreate()}>
@@ -438,40 +463,22 @@ export function Users() {
                 {/* Productos */}
                 <Form.Group>
                   <Form.Label>Productos:</Form.Label>
-                  {availableProducts.map((product) => (
-                    <Form.Check
-                      key={product.id}
-                      type="checkbox"
-                      id={`product-${product.id}`}
-                      label={product.name}
-                      checked={currentUser.products.some(
-                        (p) => p.id === product.id
-                      )}
-                      onChange={(e) => {
-                        const selectedProductId = product.id;
-                        const isChecked = e.target.checked;
+                  {availableProducts.map((product) => {
+                    const isChecked = currentUser.products.some(
+                      (p) => p.id === product.id
+                    );
 
-                        let updatedSelectedProducts;
-
-                        if (isChecked) {
-                          updatedSelectedProducts = [
-                            ...currentUser.products,
-                            product,
-                          ];
-                        } else {
-                          updatedSelectedProducts = currentUser.products.filter(
-                            (p) => p.id !== selectedProductId
-                          );
-                        }
-
-                        setCurrentUser({
-                          ...currentUser,
-                          products: updatedSelectedProducts,
-                        });
-
-                      }}
-                    />
-                  ))}
+                    return (
+                      <Form.Check
+                        key={product.id}
+                        type="checkbox"
+                        id={`product-${product.id}`}
+                        label={product.name}
+                        checked={isChecked}
+                        onChange={() => toggleProductSelection(product.id)}
+                      />
+                    );
+                  })}
                 </Form.Group>
               </div>
             </div>
@@ -581,7 +588,7 @@ export function Users() {
         </ModalFooter>
       </Modal>
       {/* Delete */}
-      <Modal isOpen={showModalDelete}>
+      <Modal isOpen={showModalDelete} centered>
         <ModalHeader>Are you sure to delete this user?</ModalHeader>
         <ModalBody>
           <Form>
@@ -589,23 +596,27 @@ export function Users() {
               <Form.Label>
                 <b>Id:</b>
               </Form.Label>
-              <Form.Label>{currentUser && currentUser.id}</Form.Label>
+              <Form.Label> {currentUser && currentUser.id}</Form.Label>
               <br />
               <Form.Label>
                 <b>Email:</b>
               </Form.Label>
-              <Form.Label>{currentUser && currentUser.email}</Form.Label>
+              <Form.Label> {currentUser && currentUser.userEmail}</Form.Label>
               <br />
               <Form.Label>
                 <b>Name:</b>
               </Form.Label>
-              <Form.Label>{currentUser && currentUser.name}</Form.Label>
+              <Form.Label> {currentUser && currentUser.firstName}</Form.Label>
               <br />
               <Form.Label>
                 <b>Username:</b>
               </Form.Label>
-              <Form.Label>{currentUser && currentUser.username}</Form.Label>
+              <Form.Label> {currentUser && currentUser.lastName}</Form.Label>
               <br />
+              <Form.Label>
+                <b>Password:</b>
+              </Form.Label>
+              <Form.Label> {currentUser && currentUser.password}</Form.Label>
             </Form.Group>
           </Form>
         </ModalBody>
