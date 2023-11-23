@@ -80,36 +80,68 @@ namespace Proyecto_Web_Mateo_Medina.Controllers
             }
         }
 
-        // Acción para iniciar sesión
+        // Lista estática para almacenar datos de usuarios (simulando una base de datos)
+        private static List<User> usuariosRegistrados = new List<User>();
+
+        // Acción para la vista de registro de usuario
+        public ActionResult Registro()
+        {
+            return View();
+        }
+
+        // Acción para el proceso de registro de usuario
+        [HttpPost]
+        public ActionResult Registro(User newUser)
+        {
+            if (ModelState.IsValid)
+            {
+                // Verificar si el usuario ya está registrado
+                if (usuariosRegistrados.Any(u => u.UserEmail == newUser.UserEmail))
+                {
+                    ViewBag.Error = "El correo electrónico ya está registrado.";
+                    return View();
+                }
+
+                // Agregar nuevo usuario a la lista de usuarios registrados
+                usuariosRegistrados.Add(newUser);
+
+                // Redirigir a la página principal (Index) después del registro exitoso
+                return RedirectToAction("Index");
+            }
+
+            return View(newUser);
+        }
+
+        // Acción para el proceso de inicio de sesión
         [HttpPost]
         public ActionResult Login(string userEmail, string password)
         {
-            // Lógica de autenticación - aquí se debe implementar la lógica de verificación de credenciales
-            if (userEmail == "correo@ejemplo.com" && password == "contraseña") // Comprobación de credenciales (ejemplo simplificado)
+            // Verificar si las credenciales coinciden con algún usuario registrado
+            var user = usuariosRegistrados.FirstOrDefault(u => u.UserEmail == userEmail && u.Password == password);
+
+            if (user != null)
             {
-                // Si las credenciales son válidas, se redirige al LandingPage (por ejemplo)
+                // Autenticación exitosa, redirigir al LandingPage
                 return RedirectToAction("LandingPage");
             }
 
-            // Si las credenciales son inválidas, se muestra el mensaje de error y se vuelve a la página principal (Index)
+            // Autenticación fallida, mostrar mensaje de error
             ViewBag.Error = "Credenciales inválidas. Por favor, intenta de nuevo.";
             return View("Index");
         }
-
-        // Acción para la página de aterrizaje (LandingPage)
         public ActionResult LandingPage()
         {
-            return View(); // Vista LandingPage.cshtml
+            return View();
         }
 
-        // Acción para el registro de usuarios
-        [HttpPost]
-        public ActionResult Registro(string userEmail, string firstName, string lastName, string password)
-        {
-            // Lógica de registro de usuarios - aquí se debe implementar la lógica para almacenar los datos del nuevo usuario
-            // En este ejemplo, simplemente redirigimos al Index después del registro exitoso
-            ViewBag.Success = "¡Registro exitoso! Por favor, inicia sesión.";
-            return View("Index");
-        }
+    }
+
+    // Modelo de Usuario (simulando una entidad de base de datos)
+    public class User
+    {
+        public string UserEmail { get; set; }
+        public string Password { get; set; }
+        // Otros campos según tu necesidad (nombre, apellidos, etc.)
     }
 }
+
