@@ -1,25 +1,32 @@
+// Importa la función createSlice de Redux Toolkit
 import { createSlice } from '@reduxjs/toolkit';
 
-// create slice
-
+// Define el nombre del slice
 const name = 'alert';
+
+// Crea el estado inicial del slice
 const initialState = createInitialState();
+
+// Crea los reducers del slice
 const reducers = createReducers();
+
+// Crea el slice usando createSlice
 const slice = createSlice({ name, initialState, reducers });
 
-// exports
-
+// Exporta las acciones y el reducer del slice
 export const alertActions = { ...slice.actions };
 export const alertReducer = slice.reducer;
 
-// implementation
+// Implementación de funciones auxiliares
 
+// Función para crear el estado inicial
 function createInitialState() {
     return {
         value: null
-    }
+    };
 }
 
+// Función para crear los reducers
 function createReducers() {
     return {
         success,
@@ -27,8 +34,9 @@ function createReducers() {
         clear
     };
 
-    // payload can be a string message ('alert message') or 
-    // an object ({ message: 'alert message', showAfterRedirect: true })
+    // success reducer: actualiza el estado con un mensaje de éxito
+    // payload puede ser un mensaje de cadena ('alert message') o un objeto
+    // ({ message: 'alert message', showAfterRedirect: true })
     function success(state, action) {
         state.value = {
             type: 'alert-success',
@@ -37,6 +45,9 @@ function createReducers() {
         };
     }
 
+    // error reducer: actualiza el estado con un mensaje de error
+    // payload puede ser un mensaje de cadena ('alert message') o un objeto
+    // ({ message: 'alert message', showAfterRedirect: true })
     function error(state, action) {
         state.value = {
             type: 'alert-danger',
@@ -45,9 +56,10 @@ function createReducers() {
         };
     }
 
+    // clear reducer: limpia el estado de la alerta
     function clear(state) {
-        // if showAfterRedirect flag is true the alert is not cleared 
-        // for one route change (e.g. after successful registration)
+        // Si el indicador showAfterRedirect es true, la alerta no se limpia
+        // después de un cambio de ruta (por ejemplo, después de un registro exitoso)
         if (state.value?.showAfterRedirect) {
             state.value.showAfterRedirect = false;
         } else {
