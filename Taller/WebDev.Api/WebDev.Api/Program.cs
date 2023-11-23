@@ -8,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configurar la conexión a la base de datos
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql("Server=localhost;Port=3306;Database=carAccount;User Id=caruser;Password=123456789;Charset=utf8", new MySqlServerVersion(new Version(8, 0, 34))));
-builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "Car API", Version = "v1" }));
+    options.UseMySql("Server=localhost;Port=3306;Database=UsersDB;User Id=Admin;Password=Admin123;Charset=utf8", new MySqlServerVersion(new Version(8, 0, 34))));
+builder.Services.AddSwaggerGen(s => s.SwaggerDoc("v1", new OpenApiInfo { Title = "User API", Version = "v1" }));
 // Resto del código
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -25,7 +25,7 @@ if (app.Environment.IsDevelopment())
 
     // Enable middleware to serve swagger-ui (HTML. JS, CSS, etc.),
     // specifying the Swagger JSON endpoint
-    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Cars API"));
+    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Users API"));
     
 }
 
