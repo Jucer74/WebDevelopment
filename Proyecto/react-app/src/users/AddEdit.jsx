@@ -28,7 +28,7 @@ function AddEdit() {
             .transform(x => x === '' ? undefined : x)
             // password optional in edit mode
             .concat(id ? null : Yup.string().required('Password is required'))
-            .min(6, 'Password must be at least 6 characters')
+            .min(9, 'Password must be at least 9 characters')
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -95,7 +95,7 @@ function AddEdit() {
                         <div className="mb-3 col">
                             <label className="form-label">
                                 Password
-                                {id && <em className="ml-1">(Leave blank to keep the same password)</em>}
+                                {id && <em className="ml-1">(Keep the same password)</em>}
                             </label>
                             <input name="password" type="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
                             <div className="invalid-feedback">{errors.password?.message}</div>
