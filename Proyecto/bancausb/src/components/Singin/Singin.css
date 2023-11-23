@@ -1,0 +1,33 @@
+.login-container{
+font-family: 'Barlow', sans-serif;
+background-color: #393939;
+height: 90vh;
+}
+
+.login-title{
+    color: #393939;
+}
+
+.btn-login{
+  background-color: #EF630E;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  color: white;
+}
+
+.btn-login:hover{
+background-color: #393939;
+font-family: 'Barlow', sans-serif;
+font-weight: 600;
+color: white;
+}
+
+.texto-responsivo {
+    font-size: 1em;
+  }
+  
+  @media (max-width: 768px) {
+    .texto-responsivo {
+      font-size: 0.7em; 
+    }
+  }

@@ -1,0 +1,25 @@
+.title{
+    text-align: 'left';
+}
+
+td{
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    td, th {
+      font-size: 0.7rem; /* Tamaño de fuente para dispositivos móviles */
+    }
+  }
+
+  @media (max-width: 768px) {
+    .btn-sm {
+      font-size: 0.8rem; /* Reducción del tamaño de fuente para botones en pantallas pequeñas */
+      padding: 0.2rem 0.4rem; /* Ajustar el padding para mantener la proporción */
+    }
+  }
+  
+.crud-container{
+    height: 75vh;
+}
+

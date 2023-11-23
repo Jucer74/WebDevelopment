@@ -1,0 +1,30 @@
+.navbar {
+    font-family: 'Barlow', sans-serif;
+
+  }
+  
+.navbar-brand {
+    color: #EF630E;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.navbar-brand img {
+    width: 40px;
+    height: auto;
+  }
+
+
+  .navbar-toggle {
+    border: none; 
+    outline: none; 
+  }
+  
+
+  .nav-link{
+    font-weight: 600;
+    color: #393939;
+  }
+  .nav-link:hover {
+    color: #EF630E; 
+  }

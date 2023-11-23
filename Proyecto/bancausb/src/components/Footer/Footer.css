@@ -1,0 +1,15 @@
+.footer {
+    font-family: 'Barlow', sans-serif;
+    background-color: #393939;
+    color: white;
+    flex-shrink: 0;
+    bottom: 0;
+  }
+  
+.title-footer{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+.text-right{
+    font-size: 1rem;
+}

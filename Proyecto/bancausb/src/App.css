@@ -1,0 +1,33 @@
+body {
+  font-family: 'Barlow', sans-serif;
+  margin: 0;
+}
+
+.App {
+  margin: 0;
+  text-align: center;
+  border: '2px solid red';
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrapper {
+  flex: 1;
+}
+
+.Footer {
+  flex-shrink: 0;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Routes{
+  position: relative;;
+}

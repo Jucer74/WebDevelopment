@@ -1,0 +1,13 @@
+.body{
+    background-color: white;
+}
+.carousel {
+    max-width: 90%; 
+    margin: auto;
+    text-align: center;
+  }
+  
+  .carousel-item img {
+    max-width: 100%;
+    height: auto;
+  }
