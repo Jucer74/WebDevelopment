@@ -13,6 +13,6 @@ namespace WebDev.Api.Context
         {
         }
 
-        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<citasmedicas> citasmedicas { get; set; }
     }
 }

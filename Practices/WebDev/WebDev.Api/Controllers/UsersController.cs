@@ -12,46 +12,46 @@ namespace WebDev.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class citasmedicasController : ControllerBase
     {
         private readonly AppDbContext _context;
 
-        public UsersController(AppDbContext context)
+        public citasmedicasController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users
+        // GET: api/citasmedicas
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<citasmedicas>>> Getcitasmedicas()
         {
-            return await _context.Users.ToListAsync();
+            return await _context.citasmedicas.ToListAsync();
         }
 
-        // GET: api/Users/5
+        // GET: api/citasmedicas/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<citasmedicas>> Getcitasmedicas(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            var citasmedicas = await _context.citasmedicas.FindAsync(id);
 
-            if (user == null)
+            if (citasmedicas == null)
             {
                 return NotFound();
             }
 
-            return user;
+            return citasmedicas;
         }
 
-        // PUT: api/Users/5
+        // PUT: api/citasmedicas/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public async Task<IActionResult> Putcitasmedicas(int id, citasmedicas citasmedicas)
         {
-            if (id != user.Id)
+            if (id != citasmedicas.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(citasmedicas).State = EntityState.Modified;
 
             try
             {
@@ -72,27 +72,28 @@ namespace WebDev.Api.Controllers
             return NoContent();
         }
 
-        // POST: api/Users
+        // POST: api/citasmedicas
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<citasmedicas>> Postcitasmedicas(citasmedicas citasmedicas
+            )
         {
-            _context.Users.Add(user);
+            _context.citasmedicas.Add(citasmedicas);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id =citasmedicas.Id }, citasmedicas);
         }
 
-        // DELETE: api/Users/5
+        // DELETE: api/citasmedicas/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public async Task<IActionResult> Deletecitasmedicas(int id)
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null)
+            var citasmedicas = await _context.citasmedicas.FindAsync(id);
+            if (citasmedicas == null)
             {
                 return NotFound();
             }
 
-            _context.Users.Remove(user);
+            _context.citasmedicas.Remove(citasmedicas);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -100,7 +101,7 @@ namespace WebDev.Api.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.citasmedicas.Any(e => e.Id == id);
         }
     }
 }

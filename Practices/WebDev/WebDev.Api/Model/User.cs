@@ -2,7 +2,7 @@
 
 namespace WebDev.Api.Model
 {
-    public class User
+    public class citasmedicas
     {
         [Key]
         public int Id { get; set; }
