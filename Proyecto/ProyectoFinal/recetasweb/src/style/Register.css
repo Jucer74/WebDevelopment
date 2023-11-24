@@ -1,0 +1,23 @@
+.register-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+  margin-top: 50px;
+}
+
+.register-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 500px) {
+  .register-container {
+    max-width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+  }
+}

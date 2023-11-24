@@ -22,9 +22,9 @@ function App() {
               <Route path="/Home" element={<Layout><NavigationBar /><Home /></Layout>} />
               <Route path="/Users" element={<Users/>} />
               <Route path="/Login" element={<Login/>} />
+              <Route path="/Contact" element={<Layout><NavigationBar /><Contact/></Layout>} />
+              <Route path="/Consult" element={<Layout><NavigationBar /><Consult/></Layout>} />
               <Route path="/register" element={<Register/>} />
-              <Route path="/Consult" element={<Consult/>} />
-              <Route path="/Contact" element={<Contact/>} />
               <Route element={<NoMatch/>} />
             </Routes>
           </Router>

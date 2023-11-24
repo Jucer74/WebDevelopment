@@ -3,11 +3,31 @@ from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from Config.database import SessionLocal
 from Models.users import Users
+from Models.recetaModel import recetas
 from Models.propertyData import Property
 from Schemas.usersSchemas import UsersSchemas
 from Schemas.propertyDataSchema import PropertySchema
+from Schemas.recetasSchema import recetasSchema
 
 router = APIRouter()
+
+
+#Buscador
+@router.get("/recipes/{name}", tags=["Recetas"])
+async def get_recipes(name: str):
+    try:
+        # Utiliza la función ilike para realizar una búsqueda que no sea sensible a mayúsculas y minúsculas
+        recipes = SessionLocal().query(recetas).filter(recetas.titulo.ilike(f"%{name}%")).all()
+
+        if not recipes:
+            raise HTTPException(status_code=404, detail="User not found")
+
+        return recipes
+
+    except HTTPException as http_exc:
+        raise http_exc
+    except Exception as e:
+        return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
 
 # Get properti by id
@@ -116,27 +136,23 @@ async def get_all_propeties():
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": "Internal Server Error", "detail": str(e)})
 
- #Create account
-@router.post("/propertie/create", tags=["Properties"])
-async def create_propertie(property_data: PropertySchema):
+ #Create receta
+@router.post("/recipe/create", tags=["Receta"])
+async def create_propertie(recipe_data: recetasSchema):
     session = SessionLocal()
     
     try:
-        new_propertie = Property(
-            precio=property_data.precio,
-            num_habitaciones=property_data.num_habitaciones,
-            barrio=property_data.barrio,
-            metros_cuadrados=property_data.metros_cuadrados,
-            num_banos=property_data.num_banos,
-            titulo=property_data.titulo,
-            creado_por=property_data.creado_por
+        new_recipe = recetas(
+            titulo=recipe_data.titulo,
+           descripcion=recipe_data.descripcion,
+ 
         )
         
-        session.add(new_propertie)
+        session.add(new_recipe)
         session.commit()
-        session.refresh(new_propertie)
+        session.refresh(new_recipe)
         
-        return new_propertie
+        return new_recipe
     
     except HTTPException as http_exc:
         session.rollback()

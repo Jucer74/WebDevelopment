@@ -1,5 +1,10 @@
 /* NavigationBar.css */
+ .Navbar{
 
+  background-color: #2ecc71; /* Barra verde principal */
+
+
+}
 /* Estilos generales */
 .typesimple {
     display: flex;
@@ -7,7 +12,7 @@
     align-items: center;
     padding: 1rem;
     background-color: #2ecc71; /* Barra verde principal */
-    color: #ecf0f1; /* Texto en fondo oscuro */
+    color: #2ecc71; /* Texto en fondo oscuro */
     font-family: 'Kaushan Script', cursive; /* Cambia la fuente a cursiva */
   }
   

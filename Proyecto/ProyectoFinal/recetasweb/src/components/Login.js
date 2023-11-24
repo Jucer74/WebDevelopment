@@ -12,14 +12,14 @@ export const Login = (props) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (!username || !password) {
       setError('Por favor, complete todos los campos.');
       return;
     }
-
+  
     setIsLoading(true);
-
+  
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/v1/login/${username},${password}`, {
         method: 'POST',
@@ -28,25 +28,31 @@ export const Login = (props) => {
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       if (!response.ok) {
         const errorMessage = await response.text();
-        setError('Credenciales inválidas. Por favor, inténtelo de nuevo.');
-
+  
         if (response.status === 401) {
           setError('Usuario o contraseña no son correctos, inténtalo de nuevo');
+        } else {
+          setError('Error del servidor. Por favor, inténtelo de nuevo.');
         }
-
+  
         console.error('Error del servidor:', errorMessage || 'No se proporcionó un mensaje de error');
         return;
       }
-
+  
       const data = await response.json();
+      if (!data.user_id) {
+        setError('Usuario no encontrado. Verifica tus credenciales e inténtalo de nuevo.');
+        return;
+      }
+  
       localStorage.setItem('user_id', data.user_id);
       localStorage.setItem('isLoggedIn', 'true');
       const userId = localStorage.getItem('user_id');
       console.log(userId);
-
+  
       navigate('/home');
     } catch (error) {
       console.error('Error al iniciar sesión:', error);
@@ -55,7 +61,6 @@ export const Login = (props) => {
       setIsLoading(false);
     }
   };
-
   const handleRegistroClick = () => {
     navigate('/register');
   };
@@ -72,7 +77,7 @@ export const Login = (props) => {
             onChange={(e) => setUsername(e.target.value)}
           />
         </Form.Group>
-
+  
         <Form.Group controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -82,14 +87,16 @@ export const Login = (props) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-
+  
         <Button variant="success" type="submit">
           Login
         </Button>
-
+  
         <Button variant="primary" onClick={handleRegistroClick}>
           Registro
         </Button>
+  
+        {error && <div className="error-message">{error}</div>}
       </Form>
     </div>
   );
