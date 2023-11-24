@@ -104,7 +104,7 @@ const EditProduct= () => {
   };
 
   const handleCancel = () => {
-    navigate('/profile');
+    navigate('/Home');
   };
 
   return (
