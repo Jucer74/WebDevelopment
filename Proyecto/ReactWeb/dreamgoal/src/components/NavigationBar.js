@@ -9,8 +9,8 @@ export const NavigationBar = () => (
         <Navbar bg="dark" variant="dark">
         
         <Navbar.Brand href="/"><img src={Logo} alt = "Logo" width="30"/> DreamGoal</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="respnsive-navbar-nav">
             <Nav className="mr-auto">
             <Nav.Link href="/Home">Home</Nav.Link>
             <Nav.Link href = "/Users">Users</Nav.Link>
@@ -23,4 +23,3 @@ export const NavigationBar = () => (
         </Navbar>
     </div>
 )
-

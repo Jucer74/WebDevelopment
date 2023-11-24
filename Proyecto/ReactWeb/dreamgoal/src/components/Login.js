@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BiAt } from 'react-icons/bi';
 import carouselImg from '../Image/carouselImg';
 
 export const Login = () => {
-  function redirigirAMenu() {
-    var usuario = document.getElementsByName("usrname")[0].value;
-    var contraseña = document.getElementsByName("Password")[0].value;
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-    // Para fines de demostración, se asume que el usuario y la contraseña son válidos
+  const redirigirAMenu = () => {
+    const usuario = username.trim();
+    const contraseña = password.trim();
+
+    // For demonstration purposes, assuming the username and password are valid
     if (usuario && contraseña) {
-      window.location.href = "/Home"; // Redirigir a LandingPage.html
+      window.location.href = "/Home"; // Redirect to LandingPage.html
     } else {
-      alert("Please enter valid credentials..");
+      alert("Please enter valid credentials.");
     }
-  }
+  };
 
   return (
     <div className="bg-white p-5 rounded-5 text-secondary shadow d-flex flex-column" style={{ width: '25rem', margin: 'auto', marginTop: '5vh' }}>
@@ -37,18 +42,34 @@ export const Login = () => {
       <form className="was-validated mt-4">
         <div className="input-group mb-3">
           <span className="input-group-text bg-dark">
-            <i className="bi bi-at"></i>
+            <BiAt />
           </span>
-          <input type="email" className="form-control bg-light" placeholder="Usuario" name="usrname" required />
+          <input
+            type="email"
+            className="form-control bg-light"
+            placeholder="Email"
+            name="usrname"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
           <div className="invalid-feedback">
-            Please enter a valid username.
+            Please enter a valid email.
           </div>
         </div>
         <div className="input-group mb-3">
           <span className="input-group-text bg-dark">
-            <i className="bi bi-at"></i>
+            <BiAt />
           </span>
-          <input type="password" className="form-control bg-light" placeholder="Contraseña" name="Password" required />
+          <input
+            type="password"
+            className="form-control bg-light"
+            placeholder="Password"
+            name="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           <div className="invalid-feedback">
             Please enter a valid password.
           </div>
@@ -57,7 +78,9 @@ export const Login = () => {
         <div className="d-flex justify-content-around mt-1">
           <div className="form-check">
             <input className="form-check-input" type="checkbox" id="rememberMe" />
-            <label className="form-check-label" htmlFor="rememberMe" style={{ fontSize: '0.9rem' }}>Remember me</label>
+            <label className="form-check-label" htmlFor="rememberMe" style={{ fontSize: '0.9rem' }}>
+              Remember me
+            </label>
           </div>
         </div>
         <div className="btn btn-success text-white w-100 mt-4 fw-semibold shadow-sm" onClick={redirigirAMenu}>
@@ -71,5 +94,4 @@ export const Login = () => {
     </div>
   );
 };
-
 

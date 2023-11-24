@@ -7,7 +7,7 @@ export const Register = () => {
     var contraseña = document.getElementsByName("Password")[0].value;
     var ConfirmContraseña = document.getElementsByName("ConfirmPassword")[0].value;
     if (contraseña === ConfirmContraseña) {
-        window.location.href = "/Home"; // Redirigir a LandingPage.html
+        window.location.href = "/"; // Redirigir a LandingPage.html
       } else {
         alert("Please passwords must be the same... ");
       } // Puedes ajustar la ruta según tus necesidades
