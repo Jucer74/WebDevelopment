@@ -13,7 +13,7 @@ export const NavigationBar = () => (
           <Nav.Item><Nav.Link href="/Libros">Libros</Nav.Link></Nav.Item>
         </Nav>
         <Nav className="ms-auto">
-          <Nav.Item><Nav.Link className='mx-5' href="/Login" >Login</Nav.Link></Nav.Item>
+          <Nav.Item><Nav.Link className='mx-5' href="/" >Login</Nav.Link></Nav.Item>
         </Nav>
       </Navbar.Collapse>        
     </Navbar>
