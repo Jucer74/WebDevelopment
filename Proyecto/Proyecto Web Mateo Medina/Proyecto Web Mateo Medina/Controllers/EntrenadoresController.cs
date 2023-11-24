@@ -34,16 +34,20 @@ namespace Proyecto_Web_Mateo_Medina.Controllers
         // POST: EntrenadoresController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(EntrenadorModel nuevoEntrenador)
         {
-            try
+            // Aquí puedes realizar la validación de los datos del nuevo entrenador, por ejemplo:
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                // Agregar el nuevo entrenador a la lista
+                listaEntrenadores.Add(nuevoEntrenador);
+
+                // Redirigir de vuelta a la lista de entrenadores después de agregarlo
+                return RedirectToAction("ListaEntrenadores");
             }
-            catch
-            {
-                return View();
-            }
+
+            // Si la validación falla, vuelve a mostrar el formulario de creación con los errores
+            return View(nuevoEntrenador);
         }
 
         // GET: EntrenadoresController/Edit/5
