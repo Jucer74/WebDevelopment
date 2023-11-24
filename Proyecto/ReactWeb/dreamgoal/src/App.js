@@ -18,18 +18,16 @@ const App = () => {
   return (
     <div>
       <React.Fragment>
-        <NavigationBar />
-        <Layout>
+
         <Router>
             <Routes>
-              <Route path="/Home" element={<Home />} />
-              <Route path="/Users" element={<Users />} />
+              <Route path="/Home" element={<Layout><NavigationBar /><Home /></Layout>} />
+              <Route path="/Users" element={<Layout><NavigationBar /><Users /></Layout>} />
               <Route path="/" element={<Login />} />
               <Route path="/Register" element={<Register />}/>
               <Route element={<NoMatch/>} />
             </Routes>
           </Router>
-        </Layout>
         <Footer/>
         </React.Fragment>
     </div>
