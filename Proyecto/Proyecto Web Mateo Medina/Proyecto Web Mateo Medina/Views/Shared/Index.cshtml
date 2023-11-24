@@ -28,6 +28,12 @@
                                 <input type="password" class="form-control" id="loginPassword" name="password" required>
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+                            @if (!string.IsNullOrEmpty(ViewBag.Error))
+                            {
+                                <div class="alert alert-danger" role="alert">
+                                    @ViewBag.Error
+                                </div>
+                            }
                         </form>
                         <hr>
                         <p class="text-center">¿Aún no tienes cuenta? <a href="#registro" data-toggle="modal" data-target="#registroModal">Regístrate aquí</a></p>
