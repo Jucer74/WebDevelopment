@@ -1,0 +1,35 @@
+/* Consult.css */
+
+/* Carousel Styles */
+.typegiant-cards-slider {
+    margin: 20px;
+  }
+  
+  .carousel-inner {
+    max-height: 400px; /* Ajusta la altura máxima según sea necesario */
+  }
+  
+  .carousel-item {
+    text-align: center;
+  }
+  
+  /* Heading Styles */
+  .heading-text1 {
+    margin-bottom: 20px;
+  }
+  
+  .heading-title {
+    font-size: 48px; /* Ajusta el tamaño del título según sea necesario */
+  }
+  
+  /* Subheading Styles */
+  .subheading1 {
+    margin-top: 10px;
+  }
+  
+  /* Search Form Styles */
+  .subheading1 .form-control {
+    width: 100%;
+    max-width: 300px; /* Ajusta el ancho máximo del campo de búsqueda según sea necesario */
+    margin-top: 10px;
+  }

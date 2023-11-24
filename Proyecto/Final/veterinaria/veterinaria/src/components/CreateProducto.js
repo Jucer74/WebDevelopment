@@ -1,47 +1,29 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Casa from '../img/Logo.png';
+import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import Casa from "../img/Logo.png";
 
-const EditPropertie = () => {
-  const [precio, setPrecio] = useState(0);
-  const [cantidad, setCantidad] = useState(0);
+export const CreateProducto = () => {
   const [nombre, setNombre] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [cantidad, setCantidad] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [errores, setErrores] = useState({
+    nombre: '',
     precio: '',
     cantidad: '',
-    nombre: '',
     descripcion: '',
   });
   const navigate = useNavigate();
 
-  // Obtener el propertyId almacenado en localStorage
-  const propertyId = localStorage.getItem('propertyId');
-  const userId = localStorage.getItem('user_id');
-
-  useEffect(() => {
-    // Realizar la solicitud al servidor para obtener los detalles de la propiedad
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/properties/${propertyId}`);
-        const data = await response.json();
-        console.log('Datos de la propiedad:', data);
-
-        // Actualizar el estado con los detalles de la propiedad
-        setPrecio(data.precio);
-        setCantidad(data.cantidad);
-        setNombre(data.nombre);
-        setDescripcion(data.descripcion);
-      } catch (error) {
-        console.error('Error al obtener los detalles de la propiedad:', error);
-      }
-    };
-
-    fetchData();
-  }, [propertyId]);
-
   const handleSave = async () => {
     let hayErrores = false;
+
+    if (!nombre) {
+      setErrores(prevErrores => ({ ...prevErrores, nombre: 'Este campo no puede estar vacío' }));
+      hayErrores = true;
+    } else {
+      setErrores(prevErrores => ({ ...prevErrores, nombre: '' }));
+    }
 
     if (!precio) {
       setErrores(prevErrores => ({ ...prevErrores, precio: 'Este campo no puede estar vacío' }));
@@ -57,13 +39,6 @@ const EditPropertie = () => {
       setErrores(prevErrores => ({ ...prevErrores, cantidad: '' }));
     }
 
-    if (!nombre) {
-      setErrores(prevErrores => ({ ...prevErrores, nombre: 'Este campo no puede estar vacío' }));
-      hayErrores = true;
-    } else {
-      setErrores(prevErrores => ({ ...prevErrores, nombre: '' }));
-    }
-
     if (!descripcion) {
       setErrores(prevErrores => ({ ...prevErrores, descripcion: 'Este campo no puede estar vacío' }));
       hayErrores = true;
@@ -75,36 +50,35 @@ const EditPropertie = () => {
       return;
     }
 
-    const updatedProperty = {
-      id: parseInt(propertyId, 10),
-      nombre: nombre,
-      precio: precio,
-      cantidad: cantidad,
-      descripcion: descripcion,
-    };
-
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/product/update/${propertyId}`, {
-        method: 'PUT',
+      const response = await fetch(`http://127.0.0.1:8000/api/v1/product/create`, {
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(updatedProperty),
+        body: JSON.stringify({
+          id: 0,
+          nombre: nombre,
+          precio: parseInt(precio, 10),
+          cantidad: parseInt(cantidad, 10),
+          descripcion: descripcion,
+        }),
       });
 
-      if (response.ok) {
-        console.log('Propiedad actualizada con éxito');
-        navigate('/profile');
-      } else {
-        console.error('Error al actualizar la propiedad:', response.statusText);
+      if (!response.ok) {
+        throw new Error(`Error al crear el producto: ${response.statusText}`);
       }
+
+      const responseData = await response.json();
+      console.log('Producto creado con éxito:', responseData);
+      navigate("/Home");
     } catch (error) {
-      console.error('Error al actualizar la propiedad:', error);
+      console.error(error.message);
     }
   };
 
   const handleCancel = () => {
-    navigate('/profile');
+    navigate("/productos");
   };
 
   return (
@@ -115,24 +89,6 @@ const EditPropertie = () => {
         </div>
         <div className="forms">
           <div className="inputs">
-            <span>Precio</span>
-            <input
-              type="number"
-              value={precio}
-              onChange={(e) => setPrecio(parseInt(e.target.value, 10))}
-            />
-            {errores.precio && <p className="error-message">{errores.precio}</p>}
-          </div>
-          <div className="inputs">
-            <span>Cantidad</span>
-            <input
-              type="number"
-              value={cantidad}
-              onChange={(e) => setCantidad(parseInt(e.target.value, 10))}
-            />
-            {errores.cantidad && <p className="error-message">{errores.cantidad}</p>}
-          </div>
-          <div className="inputs">
             <span>Nombre</span>
             <input
               type="text"
@@ -142,9 +98,26 @@ const EditPropertie = () => {
             {errores.nombre && <p className="error-message">{errores.nombre}</p>}
           </div>
           <div className="inputs">
-            <span>Descripción</span>
+            <span>Precio</span>
             <input
-              type="text"
+              type="number"
+              value={precio}
+              onChange={(e) => setPrecio(e.target.value)}
+            />
+            {errores.precio && <p className="error-message">{errores.precio}</p>}
+          </div>
+          <div className="inputs">
+            <span>Cantidad</span>
+            <input
+              type="number"
+              value={cantidad}
+              onChange={(e) => setCantidad(e.target.value)}
+            />
+            {errores.cantidad && <p className="error-message">{errores.cantidad}</p>}
+          </div>
+          <div className="inputs">
+            <span>Descripción</span>
+            <textarea
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
             />
@@ -164,4 +137,4 @@ const EditPropertie = () => {
   );
 };
 
-export default EditPropertie;
+export default CreateProducto;

@@ -19,9 +19,9 @@ export const EditUser = () => {
         const data = await response.json();
         console.log('Datos del usuario:', data);
 
-        setNombre(data.nombre_usuario);
-        setCorreo(data.correo_electronico);
-        setContrasena(data.contrasena);
+        setNombre(data.username);
+        setCorreo(data.email);
+        setContrasena(data.user_password);
       } catch (error) {
         console.error('Error al obtener los detalles del usuario:', error);
       }

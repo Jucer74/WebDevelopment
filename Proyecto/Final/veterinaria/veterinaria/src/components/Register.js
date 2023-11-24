@@ -44,9 +44,9 @@ export const Register = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          nombre_usuario: username,
-          correo_electronico: email,
-          contrasena: password,
+          username: username,
+          email: email,
+          user_password: password,
         }),
       });
 

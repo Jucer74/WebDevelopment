@@ -12,10 +12,12 @@ import { NavigationBar } from './components/NavigationBar';
 import { Profile } from './components/Profile';
 import { Contactenos } from './components/Contactenos';
 import EditPropertie from './components/EditPropertie';
+import EditProduct from './components/EditProduct';
 import DeletePropertie from './components/DeletePropertie';
-import CreatePropertie  from './components/CreatePropertie';
+import CreateProducto  from './components/CreateProducto';
 import EditUser from './components/EditUser';
 import { DetailsPropertie } from './components/DetailsPropertie';
+import { Buscar } from './components/Buscar';
 
 
 function App() {
@@ -23,16 +25,18 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          <Route path="/" element={<Home/>} />
+          <Route path="/" element={<Login/>} />
           <Route path="/Home" element={<Layout><NavigationBar /><Home /></Layout>} />
           <Route path="/Users" element={<Layout><NavigationBar /><Users /></Layout>} />
           <Route path="/Profile" element={<Layout><NavigationBar /><Profile /></Layout>} />
           <Route path="/Contactenos" element={<Layout><NavigationBar /><Contactenos/></Layout>} />
           <Route path="/EditPropertie" element={<Layout><NavigationBar /><EditPropertie/></Layout>} />
+          <Route path="/EditProduct" element={<Layout><NavigationBar /><EditProduct/></Layout>} />
           <Route path="/EditUser" element={<Layout><NavigationBar /><EditUser/></Layout>} />
           <Route path="/DeletePropertie" element={<Layout><NavigationBar /><DeletePropertie/></Layout>} />
-          <Route path="/CreatePropertie" element={<Layout><NavigationBar /><CreatePropertie/></Layout>} />
+          <Route path="/CreateProducto" element={<Layout><NavigationBar /><CreateProducto/></Layout>} />
           <Route path="/DetailsPropertie" element={<Layout><NavigationBar /><DetailsPropertie/></Layout>} />
+          <Route path="/Buscar" element={<Layout><NavigationBar /><Buscar/></Layout>} />
           <Route path="/Login" element={<Login />} />
           <Route path="/Register" element={<Register />} />
 

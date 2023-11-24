@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Casa from '../img/Logo.png';
 
-const EditPropertie = () => {
+const EditProduct= () => {
   const [precio, setPrecio] = useState(0);
   const [cantidad, setCantidad] = useState(0);
   const [nombre, setNombre] = useState('');
@@ -16,16 +16,16 @@ const EditPropertie = () => {
   const navigate = useNavigate();
 
   // Obtener el propertyId almacenado en localStorage
-  const propertyId = localStorage.getItem('propertyId');
+  const productId = localStorage.getItem('product_id');
   const userId = localStorage.getItem('user_id');
 
   useEffect(() => {
     // Realizar la solicitud al servidor para obtener los detalles de la propiedad
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:8000/api/v1/properties/${propertyId}`);
+        const response = await fetch(`http://127.0.0.1:8000/api/v1/products/${productId}`);
         const data = await response.json();
-        console.log('Datos de la propiedad:', data);
+        console.log('Datos del producto:', data);
 
         // Actualizar el estado con los detalles de la propiedad
         setPrecio(data.precio);
@@ -33,12 +33,12 @@ const EditPropertie = () => {
         setNombre(data.nombre);
         setDescripcion(data.descripcion);
       } catch (error) {
-        console.error('Error al obtener los detalles de la propiedad:', error);
+        console.error('Error al obtener los detalles del producto:', error);
       }
     };
 
     fetchData();
-  }, [propertyId]);
+  }, [productId]);
 
   const handleSave = async () => {
     let hayErrores = false;
@@ -76,7 +76,7 @@ const EditPropertie = () => {
     }
 
     const updatedProperty = {
-      id: parseInt(propertyId, 10),
+      id: parseInt(productId, 10),
       nombre: nombre,
       precio: precio,
       cantidad: cantidad,
@@ -84,7 +84,7 @@ const EditPropertie = () => {
     };
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/product/update/${propertyId}`, {
+      const response = await fetch(`http://127.0.0.1:8000/api/v1/productos/${productId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -96,10 +96,10 @@ const EditPropertie = () => {
         console.log('Propiedad actualizada con éxito');
         navigate('/profile');
       } else {
-        console.error('Error al actualizar la propiedad:', response.statusText);
+        console.error('Error al actualizar el producto:', response.statusText);
       }
     } catch (error) {
-      console.error('Error al actualizar la propiedad:', error);
+      console.error('Error al actualizar el producto', error);
     }
   };
 
@@ -164,4 +164,4 @@ const EditPropertie = () => {
   );
 };
 
-export default EditPropertie;
+export default EditProduct;

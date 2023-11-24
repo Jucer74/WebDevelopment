@@ -83,6 +83,10 @@ export const Profile = () => {
     navigate("/EditUser");
  };
 
+ const handleCreate = () => {
+  navigate("/CreateProducto");
+};
+
   return (
     <div className="profile-container">
       {loading ? (
@@ -93,8 +97,8 @@ export const Profile = () => {
             <div className="user-info"> 
               <img src={YourImage} alt="User" style={{ width: '100px', height: '100px' }} />
               <div>
-              <h2>{userData?.nombre_usuario}</h2>
-              <h2>Email: {userData?.correo_electronico}</h2>
+              <h2>{userData?.username}</h2>
+              <h2>Email: {userData?.email}</h2>
               </div>
               <Button variant="success" onClick={handleEditUser}>
                  Editar Perfil
@@ -102,40 +106,12 @@ export const Profile = () => {
               <Button variant="success" onClick={handleLogout}>
                  Logout
               </Button>
-              <Button variant="success" onClick={() => navigate("/CreatePropertie")}>
-              Crear Nuevo Inmueble
+              <Button variant="success" onClick={() => navigate("/CreateProducto")}>
+              Crear Producto
              </Button>
             </div>
           </div>
-          <div className="inmuebles-container">
-            {inmuebles.length > 0 ? (
-              <Row xs={1} md={2} lg={3} xl={4} className="g-4">
-                {inmuebles.map((inmueble, index) => (
-                  <Col key={inmueble.id}>
-                    {index !== undefined && (
-                      <Card>
-                        <Card.Img variant="top" src={Casa} />
-                        <Card.Body>
-                          <Card.Title>Titulo: {inmueble.titulo}</Card.Title>
-                          <Card.Text>
-                            Precio: {inmueble.precio}<br />
-                            Habitaciones: {inmueble.num_habitaciones}<br />
-                            Metros Cuadrados: {inmueble.metros_cuadrados}<br />
-                            Número de Baños: {inmueble.num_banos}<br />
-                            Barrio: {inmueble.barrio}
-                          </Card.Text>
-                          <Button variant="primary" onClick={() => handleEdit(index)}>Editar</Button>
-                          <Button variant="danger" onClick={() => handleDelete(index)}>Eliminar</Button>
-                        </Card.Body>
-                      </Card>
-                    )}
-                  </Col>
-                ))}
-              </Row>
-            ) : (
-              <p>No hay inmuebles disponibles</p>
-            )}
-          </div>
+
         </React.Fragment>
       )}
     </div>
