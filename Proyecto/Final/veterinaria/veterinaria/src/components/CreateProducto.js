@@ -78,7 +78,7 @@ export const CreateProducto = () => {
   };
 
   const handleCancel = () => {
-    navigate("/productos");
+    navigate("/Home");
   };
 
   return (
