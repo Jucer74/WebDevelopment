@@ -22,24 +22,24 @@ namespace CitasMedicasApi.Controllers
 
         // GET: api/Especializacions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Especializacion>>> GetEspecializacions()
+        public async Task<ActionResult<IEnumerable<Especializacion>>> GetEspecializaciones()
         {
-          if (_context.Especializacions == null)
+          if (_context.Especializaciones == null)
           {
               return NotFound();
           }
-            return await _context.Especializacions.ToListAsync();
+            return await _context.Especializaciones.ToListAsync();
         }
 
         // GET: api/Especializacions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Especializacion>> GetEspecializacion(int id)
         {
-          if (_context.Especializacions == null)
+          if (_context.Especializaciones == null)
           {
               return NotFound();
           }
-            var especializacion = await _context.Especializacions.FindAsync(id);
+            var especializacion = await _context.Especializaciones.FindAsync(id);
 
             if (especializacion == null)
             {
@@ -85,11 +85,11 @@ namespace CitasMedicasApi.Controllers
         [HttpPost]
         public async Task<ActionResult<Especializacion>> PostEspecializacion(Especializacion especializacion)
         {
-          if (_context.Especializacions == null)
+          if (_context.Especializaciones == null)
           {
-              return Problem("Entity set 'CitasMedicasBdContext.Especializacions'  is null.");
+              return Problem("Entity set 'CitasMedicasBdContext.Especializaciones'  is null.");
           }
-            _context.Especializacions.Add(especializacion);
+            _context.Especializaciones.Add(especializacion);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetEspecializacion", new { id = especializacion.Id }, especializacion);
@@ -99,17 +99,17 @@ namespace CitasMedicasApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEspecializacion(int id)
         {
-            if (_context.Especializacions == null)
+            if (_context.Especializaciones == null)
             {
                 return NotFound();
             }
-            var especializacion = await _context.Especializacions.FindAsync(id);
+            var especializacion = await _context.Especializaciones.FindAsync(id);
             if (especializacion == null)
             {
                 return NotFound();
             }
 
-            _context.Especializacions.Remove(especializacion);
+            _context.Especializaciones.Remove(especializacion);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -117,7 +117,7 @@ namespace CitasMedicasApi.Controllers
 
         private bool EspecializacionExists(int id)
         {
-            return (_context.Especializacions?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Especializaciones?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
