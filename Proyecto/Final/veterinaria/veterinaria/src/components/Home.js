@@ -39,7 +39,7 @@ export const Home = () => {
 
   return (
     <Container className="text-center container">
-    <h1>Principal</h1>
+
 
       <Carousel>
         <Carousel.Item>
