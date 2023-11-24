@@ -1,31 +1,42 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Layout } from './Layout';
-import { NoMatch } from './components/NoMatch';
-import { Home } from './components/Home'; // Reemplazar este import con tu nuevo código de Home
-import { CitasMedicasLogin, Login } from './components/Login';
-import { List } from './components/Users';
-import { NavigationBar } from './components/NavigationBar';
+import { Carousel } from 'react-bootstrap';
 
-function App() {
+const Home = () => {
   return (
-    <div className="App">
-      <React.Fragment>
-        <NavigationBar />
-        <Layout>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} /> 
-              <Route path="/Users" element={<List />} />
-              <Route path="/Login" element={<CitasMedicasLogin />} />
-              <Route element={<NoMatch />} />
-            </Routes>
-          </Router>
-        </Layout>
-      </React.Fragment>
+    <div className="container">
+      <h1>Bienvenido a eps sanitas</h1>
+      <Carousel>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="Images/medicos.png"
+            alt="First slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="Images/hospital.png"
+            alt="Second slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="Images/virtual.png"
+            alt="Third slide"
+          />
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src="Images/consulta.png"
+            alt="Fourth slide"
+          />
+        </Carousel.Item>
+      </Carousel>
     </div>
   );
-}
+};
 
-export default App;
+export default Home;

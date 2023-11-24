@@ -8,16 +8,16 @@ namespace WebDev.Api.Model
         public int Id { get; set; }
 
         [Required]
-        public string Email { get; set; } = null!;
+        public string Patient { get; set; } = null!;
 
         [Required]
-        public string Name { get; set; } = null!;
+        public string Doctor { get; set; } = null!;
 
         [Required]
-        public string Password { get; set; } = null!;
+        public string Office { get; set; } = null!;
 
         [Required]
-        public string Username { get; set; } = null!;
+        public string Status { get; set; } = null!;
 
     }
 }

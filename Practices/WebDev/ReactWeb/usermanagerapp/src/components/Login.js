@@ -6,14 +6,12 @@ import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 
 import axios from "axios";
 
-const imgUrl = 'https://www.researchgate.net/publication/262720064/figure/fig1/AS:614179920695298@1523443312138/Figura-1-caduceo-de-hermes-o-mercurio-en-http-eswikipediaorg-wiki-caduceo.png';
-
 export const CitasMedicasLogin = ({ setLogoutUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  
+
   const login = (e) => {
     e.preventDefault();
     axios
@@ -33,15 +31,17 @@ export const CitasMedicasLogin = ({ setLogoutUser }) => {
         setError("");
         setEmail("");
         setPassword("");
-        navigate('/Home');
+        navigate("/Home");
       })
       .catch((error) => setError(error.response.data.message));
   };
 
+  const register = () => {
+    navigate("/Register");
+  };
+
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
-            <div className="login-header" style={{ backgroundImage: `url(${imgUrl})`, backgroundSize: 'cover', height: '200px' }}>
-      </div>
       <div className="login-container p-4 rounded" style={{ backgroundColor: "#2196F3", color: "white" }}>
         <h2 className="text-center">Sanitas Login</h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
@@ -72,15 +72,17 @@ export const CitasMedicasLogin = ({ setLogoutUser }) => {
               required
             />
           </FormGroup>
+          
           <Button color="light" type="submit" className="w-100" style={{ backgroundColor: "#64B5F6", color: "white" }}>
             Login
           </Button>
+          <p className="text-center mt-3" style={{ color: "white" }}>
+            ¿No tienes cuenta? <Link to="/Register" style={{ color: "white", textDecoration: "underline" }}>Registrarse</Link>
+          </p>
         </Form>
-        <p className="text-center mt-3" style={{ color: "white" }}>
-          Don't have an account? <Link to="/register" style={{ color: "white", textDecoration: "underline" }}>Register</Link> yourself
-        </p>
       </div>
     </div>
   );
 };
+
 
