@@ -1,0 +1,2 @@
+CREATE DATABASE `RecipesDB`;
+USE RecipesDB;
