@@ -1,0 +1,14 @@
+.footer-container {
+    background-color: #343a40; /* color de fondo */
+    color: white; /* color de texto */
+    padding: 1.5rem; /* espaciado interno */
+  }
+  
+  .footer-column {
+    border-right: 1px solid white; /* borde derecho */
+  }
+  
+  .footer-contact {
+    margin-bottom: 10px; /* margen inferior */
+  }
+  
