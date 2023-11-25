@@ -38,7 +38,7 @@ export const Contact = () => {
 
   return (
     <Container style={{ maxWidth: '600px', marginTop: '50px' }}>
-      <h2>Contact Us</h2>
+      <h2>Contact Form</h2>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formName">
           <Form.Label>Name</Form.Label>
@@ -83,12 +83,12 @@ export const Contact = () => {
           </Alert>
         )}
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" style={{ marginTop: '15px' }}> 
           Send Message
         </Button>
-      </Form>
+      </Form> 
 
-      <div style={{ marginTop: '20px' }}>
+      <div style={{ marginTop: '25px' }}>
   <iframe
     title="Map"
     width="100%"

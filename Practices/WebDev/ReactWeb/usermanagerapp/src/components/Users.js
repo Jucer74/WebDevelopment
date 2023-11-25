@@ -6,10 +6,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export function List() {
-  const baseUrl = "https://localhost:5001/api/Users";
+  const baseUrl = "https://localhost:5001/api/citasmedicas";
 
   const [data, setData] = useState([]);
-  const [currentUser, setCurrentUser] = useState({
+  const [citasmedicas, setCitasmedicas] = useState({
     id: '',
     patient: '',
     doctor: '',
@@ -39,13 +39,13 @@ export function List() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCurrentUser({
-      ...currentUser,
+    setCitasmedicas({
+      ...citasmedicas,
       [name]: value
     })
   }
 
-  const getUsers = async () => {
+  const getCitas = async () => {
     await axios.get(baseUrl)
       .then(response => {
         setData(response.data);
@@ -55,51 +55,54 @@ export function List() {
   }
 
   useEffect(() => {
-    getUsers();
+    getCitas();
   }, []);
 
-  const postUser = async () => {
-    delete currentUser.id;
-    await axios.post(baseUrl, currentUser)
+  const postCita = async () => {
+    delete citasmedicas.id;
+    await axios.post(baseUrl, citasmedicas)
       .then(response => {
-        getUsers();
+        getCitas();
         openCloseModalCreate();
       }).catch(error => {
         console.log(error);
       })
   }
 
-  const putUser = async () => {
-    await axios.put(baseUrl + "/" + currentUser.id, currentUser)
+  const putCita = async () => {
+    await axios.put(baseUrl + "/" + citasmedicas.id, citasmedicas)
       .then(response => {
         var result = response.data;
-        var updatedData = data.map(usr => usr.id === currentUser.id ? result : usr);
+        var updatedData = data.map(cita => cita.id === citasmedicas.id ? result : cita);
         setData(updatedData);
-        getUsers();
+        getCitas();
         openCloseModalUpdate();
       }).catch(error => {
         console.log(error);
       })
   }
 
-  const deleteUser = async (id) => {
+  const deleteCita = async (id) => {
     await axios.delete(baseUrl + "/" + id)
       .then(() => {
-        setData(data.filter(usr => usr.id !== id));
+        setData(data.filter(cita => cita.id !== id));
         openCloseModalDelete();
       }).catch(error => {
         console.log(error);
       })
   }
 
-  const selectCurrentUser = (user, action) => {
-    setCurrentUser(user);
+  const selectCurrentCita = (cita, action) => {
+    setCitasmedicas(cita);
+    openModalForAction(action);
+  };
+  const openModalForAction = (action) => {
     switch (action) {
       case "Edit":
-        openCloseModalUpdate();
+        setShowModalUpdate(true); // Activa el modal de edición
         break;
       case "Details":
-        openCloseModalDetails();
+        setShowModalDetails(true); // Activa el modal de detalles
         break;
       case "Delete":
         openCloseModalDelete();
@@ -107,45 +110,65 @@ export function List() {
       default:
         break;
     }
-  }
+  };
 
   return (
     <Container className="text-center text-md-left">
-      <h1>User List</h1>
+      <h1>Citas Médicas</h1>
       <p>
         <Button className="left" variant="success btn-sm" onClick={() => openCloseModalCreate()}>
-          <FontAwesomeIcon icon={faPlus} /> New
+          <FontAwesomeIcon icon={faPlus} /> Nuevo
         </Button>
       </p>
-      <Table id="UsersTable">
+      <Table id="CitasTable">
         <thead>
           <tr>
             <th>Id</th>
-            <th>Patient</th>
-            <th>Doctor</th>
-            <th>Office</th>
-            <th>Status</th>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Consultorio</th>
+            <th>Estado</th>
           </tr>
         </thead>
         <tbody>
-          {data.map(usr => (
-            <tr key={usr.id}>
-              <td>{usr.id}</td>
-              <td>{usr.patient}</td>
-              <td>{usr.doctor}</td>
-              <td>{usr.office}</td>
-              <td>{usr.status}</td>
+          {data.map(cita => (
+            <tr key={cita.id}>
+              <td>{cita.id}</td>
+              <td>{cita.patient}</td>
+              <td>{cita.doctor}</td>
+              <td>{cita.office}</td>
+              <td>{cita.status}</td>
               <td>
-                <Button variant="outline-primary btn-sm" onClick={() => selectCurrentUser(usr, "Edit")}>Edit</Button>{"  "}
-                <Button variant="outline-warning btn-sm" onClick={() => selectCurrentUser(usr, "Details")}>Details</Button>{"  "}
-                <Button variant="outline-danger btn-sm" onClick={() => selectCurrentUser(usr, "Delete")}>Delete</Button>
+                <Button variant="outline-primary btn-sm" onClick={() => selectCurrentCita(cita, "Edit")}>Editar</Button>{"  "}
+                <Button variant="outline-warning btn-sm" onClick={() => selectCurrentCita(cita, "Details")}>Detalles</Button>{"  "}
+                <Button variant="outline-danger btn-sm" onClick={() => deleteCita(cita.id)}>Eliminar</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
+       {/* Modales */}
+       <Modal isOpen={showModalDetails} toggle={openCloseModalDetails}>
+        <ModalHeader>Detalles</ModalHeader>
+        <ModalBody>
+          {/* Mostrar los detalles de la cita aquí */}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="secondary" onClick={openCloseModalDetails}>Cerrar</Button>
+        </ModalFooter>
+      </Modal>
+
+      <Modal isOpen={showModalUpdate} toggle={openCloseModalUpdate}>
+        <ModalHeader>Editar</ModalHeader>
+        <ModalBody>
+          {/* Formulario para editar los datos */}
+        </ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={putCita}>Guardar cambios</Button>{' '}
+          <Button color="secondary" onClick={openCloseModalUpdate}>Cancelar</Button>
+        </ModalFooter>
+      </Modal>
       
-      {/* Resto del código para los modales... */}
     </Container>
   );
 }

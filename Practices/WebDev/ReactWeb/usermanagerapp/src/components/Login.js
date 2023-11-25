@@ -14,13 +14,15 @@ export const CitasMedicasLogin = ({ setLogoutUser }) => {
 
   const login = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:4000/api/auth/login", {
+    if (!email || !password) {
+      setError("Por favor, complete todos los campos.");
+      return;
+    }
+      axios.post("http://localhost:4000/api/auth/login", {
         email,
         password,
       })
       .then((response) => {
-        console.log("response", response);
         localStorage.setItem(
           "login",
           JSON.stringify({
@@ -33,6 +35,7 @@ export const CitasMedicasLogin = ({ setLogoutUser }) => {
         setPassword("");
         navigate("/Home");
       })
+      
       .catch((error) => setError(error.response.data.message));
   };
 

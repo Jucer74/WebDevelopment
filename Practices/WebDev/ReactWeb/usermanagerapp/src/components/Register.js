@@ -12,14 +12,14 @@ export const RegistroNuevo = () => {
   const handleRegistro = (e) => {
     e.preventDefault();
     // Aquí podrías enviar los datos de registro a tu backend
-    // axios.post("http://localhost:4000/api/auth/register", { email, nombre, password })
-    //   .then((response) => {
+     axios.post("http://localhost:4000/api/auth/register", { email, nombre, password })
+       .then((response) => {
     //     // Manejar la respuesta según lo necesites
-    //     navigate("/Login");
-    //   })
-    //   .catch((error) => {
+         navigate("/Login");
+       })
+       .catch((error) => {
     //     // Manejar el error si la solicitud falla
-    //   });
+       });
     // Por ahora, solo redirigir al usuario de vuelta al login
     navigate("/Login");
   };
